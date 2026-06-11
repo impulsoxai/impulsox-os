@@ -33,7 +33,7 @@ alimentam o plano do mês seguinte. A cada volta, o sistema conhece melhor quem
 compra de você — e acerta mais.
 
 Você não precisa saber marketing. Precisa responder algumas perguntas sobre o seu
-negócio e aprovar o que faz sentido. O método já vem embutido, em 30 automações que
+negócio e aprovar o que faz sentido. O método já vem embutido, em 32 automações que
 trabalham em cima do que o sistema sabe sobre a sua empresa.
 
 ---
@@ -70,10 +70,12 @@ marketing sai daqui pra frente.
 
 ---
 
-## As 30 automações
+## As 32 automações
 
 ### Fundação — o sistema aprende quem você é
 - **`/plugar`** liga o sistema em poucos minutos: negócio, oferta e foco.
+- **`/abrir`** é o "bom dia" do sistema: carrega o contexto, mostra o degrau atual e o
+  que está pendente em poucas linhas — pra você começar o dia sabendo onde parou.
 - **`/voz`** aprende como você fala numa entrevista de 30 minutos. É o que faz cada
   texto sair na sua voz, não na voz genérica de qualquer IA.
 - **`/identidade`** extrai a marca do seu site ou cria do zero, logo incluso.
@@ -105,6 +107,8 @@ marketing sai daqui pra frente.
 - **`/pagina`** entrega a landing page padrão R$ 5.000.
 - **`/seo`** deixa a página achável no Google e citável pelo ChatGPT — auditoria
   on-page, Schema e a camada GEO, com os blocos prontos pra colar.
+- **`/geo`** descobre se as IAs (ChatGPT, Gemini, Perplexity) já citam o negócio, mapeia
+  de quais fontes elas puxam o nicho e monta o plano pra você passar a ser citado.
 
 ### Captura de leads
 - **`/criar-ebook`** produz a isca digital completa — guia diagramado com a sua marca

@@ -47,7 +47,11 @@ Conferir, nesta ordem:
    nova).
 2. **O catálogo de skills nativas** em `docs/skills-prontas.md` — Claude Code já traz
    skill pronta pra documentos, planilhas, apresentações e afins.
-3. Só o que sobra vira skill nova.
+3. **O catálogo de ferramentas** em `docs/ferramentas.md` — se a skill nova precisa fazer
+   algo "de fora" (renderizar imagem, publicar, ler API, calcular métrica), a ferramenta
+   já pode estar documentada com padrão de uso, `.env` e script. Não duplicar código que
+   já existe; usar a ferramenta de lá.
+4. Só o que sobra vira skill nova.
 
 Quando já existe cobertura, mostrar o caminho em vez de criar duplicata.
 
@@ -78,6 +82,10 @@ skills do sistema:
 - Seção "Regras" com o que sempre e o que nunca fazer.
 - Calibrada com `nucleo/voz.md` e `nucleo/negocio.md` — skill genérica é skill ruim.
 - Arquivos de apoio (template, exemplo) dentro da pasta da própria skill.
+
+Se a skill usa uma ferramenta externa (API/CLI/conector) **ainda não catalogada**,
+registrar ela em `docs/ferramentas.md` no mesmo movimento (o que resolve · precisa de
+conta? · `.env` · script · pegadinha) — pra próxima skill já encontrar o padrão.
 
 Depois de criar, registrar a skill nova no `README.md` (na lista "As N automações",
 atualizando a contagem do título) e sugerir `/salvar`.

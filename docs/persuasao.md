@@ -3,8 +3,56 @@
 > Lido pelas skills de produção (`/post`, `/linkedin`, `/ads-google`, `/ads-meta`,
 > `/pagina`, `/lancar-produto`, `/criar-ebook`) antes de escrever qualquer peça que
 > precisa convencer. Base: Cialdini (As Armas da Persuasão), Loewenstein (lacuna de
-> informação) e prática de copy BR. Persuasão aqui é tornar a decisão clara — nunca
+> informação), Schwartz (consciência e sofisticação) e prática de copy BR. Persuasão aqui
+> é tornar a decisão clara — nunca
 > manipular. As regras inegociáveis do fim valem mais que qualquer técnica.
+
+## Antes dos gatilhos — em que ponto o público está
+
+Gatilho certo no público errado não converte. O mesmo anúncio que vende pra quem já procura
+a solução afunda com quem nem sabe que tem o problema. Então, antes de escolher gatilho, o
+sistema diagnostica duas coisas (base: Eugene Schwartz, *Breakthrough Advertising*).
+
+### 1. Nível de consciência — o quanto o público já sabe
+
+| Nível | O público... | Por onde a peça abre |
+|---|---|---|
+| **Inconsciente** | não sabe que tem o problema | pela dor/situação do dia a dia, sem falar de produto ainda |
+| **Consciente do problema** | sente a dor, não conhece as saídas | nomear a dor com precisão + mostrar que existe saída |
+| **Consciente da solução** | sabe que existe solução, não conhece a sua | a solução pelo resultado que entrega, diferenciando da categoria |
+| **Consciente do produto** | conhece o seu, não decidiu | a oferta, a prova, o que te separa do concorrente |
+| **Mais consciente** | só falta o empurrão | oferta direta, condição, próximo passo (aqui escassez real cabe) |
+
+Regra prática: a peça abre no nível **onde o público está**, não onde a empresa gostaria que
+estivesse. Falar de oferta pra quem é "consciente do problema" queima a peça; ensinar o
+básico pra quem é "mais consciente" entedia e perde a venda.
+
+Como o nível se conecta à intenção do calendário:
+- Inconsciente / consciente do problema → intenção **Ensinar** (a maioria do topo de funil)
+- Consciente da solução → **Posicionar** (por que a sua abordagem, e não a categoria)
+- Consciente do produto / mais consciente → **Vender** (oferta, prova, chamada)
+
+### 2. Nível de sofisticação — quantas promessas iguais o público já ouviu
+
+Quanto mais o nicho já foi anunciado, mais gasta a promessa direta.
+
+- **Nicho novo** (pouca propaganda): promessa simples e direta funciona ("seu WhatsApp
+  respondendo cliente sozinho").
+- **Nicho médio:** a promessa precisa de um **mecanismo** — como funciona, o que te torna
+  diferente ("responde sozinho porque foi testado em 98 cenários antes de atender").
+- **Nicho saturado** (todo mundo promete o mesmo): a promessa direta soa como as outras —
+  ganhar por **identificação e ângulo novo** (história, posição contraintuitiva, prova que
+  ninguém mais tem), não por gritar a mesma promessa mais alto.
+
+Regra prática: se todo concorrente já diz o que você ia dizer, troque o **ângulo**, não o
+volume. Isso conversa direto com a régua de ouro da voz ("ambição grande, entrega calma"):
+em nicho saturado, calma com ângulo novo vence grito com promessa repetida.
+
+### Como aplicar (uma linha no fluxo)
+
+Antes de escolher os gatilhos da peça, responder em silêncio: em que nível de consciência
+este público está, e quão sofisticado é o nicho? A resposta decide por onde a peça abre — e
+só então entram os gatilhos da tabela abaixo.
 
 ## Os gatilhos que vendem (e como cada um soa)
 
@@ -77,16 +125,23 @@ o conserto é baixar o gancho, nunca inflar o texto.
 | **Posicionar** | Pertencimento + coerência + curiosidade | Opinião contraintuitiva: "todo mundo faz X, **mas**..." |
 | **Vender** | Escassez/urgência real + aversão à perda + prova social | Oferta com prazo/limite verdadeiro e um caso que sustenta |
 
+> Nota: a intenção também segue a **consciência do público** (seção do topo) — Ensinar serve
+> inconsciente/consciente-do-problema; Posicionar, consciente-da-solução; Vender,
+> consciente-do-produto/mais-consciente.
+
 ## Regras inegociáveis
 
-1. **Máximo 2 gatilhos dominantes por peça.** Empilhar cinco vira banca de feirão —
+1. **Diagnosticar antes de persuadir.** Definir o nível de consciência do público e a
+   sofisticação do nicho antes de escolher gatilho. Peça que abre no nível errado se
+   reescreve, não se "ajusta".
+2. **Máximo 2 gatilhos dominantes por peça.** Empilhar cinco vira banca de feirão —
    o público sente o cheiro e recua.
-2. **Escassez e urgência só com fato verificável.** Vagas que existem, data que vale.
+3. **Escassez e urgência só com fato verificável.** Vagas que existem, data que vale.
    Falsa escassez é a mentira mais cara do marketing.
-3. **Prova social e transformação só com material real.** Sem caso, sem número → a peça
+4. **Prova social e transformação só com material real.** Sem caso, sem número → a peça
    muda de intenção ou pede o material. Nunca inventa.
-4. **Todo loop aberto fecha** — na peça ou em destino anunciado.
-5. **Medo com responsabilidade:** aversão à perda nomeia custo real; nunca catastrofiza
+5. **Todo loop aberto fecha** — na peça ou em destino anunciado.
+6. **Medo com responsabilidade:** aversão à perda nomeia custo real; nunca catastrofiza
    pra paralisar.
-6. **O teste final:** se o cliente descobrisse exatamente como a peça foi construída,
+7. **O teste final:** se o cliente descobrisse exatamente como a peça foi construída,
    continuaria confiando na marca? Não → reescrever.

@@ -26,6 +26,8 @@ Precisa do **degrau 1** (serviços e região do `nucleo/negocio.md`).
 
 - `nucleo/negocio.md` (serviços, região, diferencial) e `nucleo/voz.md` (as respostas
   a avaliações saem na voz da marca)
+- `nucleo/perfil.md` — esta skill só faz sentido em perfis com região (`pme-local`, às
+  vezes `profissional-liberal`). Perfil `criador` não tem presença local — não rodar
 - `nucleo/provas.md` — avaliações boas viram prova; a `/provas` pede mais
 
 O sistema **nunca pede a senha do painel do Google**: entrega tudo pronto (textos,

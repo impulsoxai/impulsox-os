@@ -21,6 +21,10 @@ Autoria: ImpulsoX AI. Conteúdo original.
 Roda no degrau 1 (só a URL). Tudo que extrair aqui alimenta a escada — se a empresa
 virar cliente, o `/cliente` aproveita a extração inteira.
 
+É uma skill do modo `agencia` (ver `nucleo/perfil.md`): faz sentido quando o negócio
+vende marketing como serviço e diagnostica um prospect. Negócio próprio dos outros perfis
+não costuma rodar `/raio-x` em si mesmo — usa `/desempenho` pra olhar pra dentro.
+
 ## O que auditar (com a URL na mão)
 
 ### 1. Site — fundação

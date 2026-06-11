@@ -4,6 +4,7 @@
 da Vivian em 11/06/2026).
 
 **Fatos confirmados:**
+- Perfil: `agencia` (`nucleo/perfil.md`) — com canal/criador previsto pro futuro.
 - Voz definida (`nucleo/voz.md`), validada com frases-teste.
 - Produtos, cliente-alvo, diferencial e crença (`nucleo/negocio.md`).
 - Foco: crescer, EUA, primeiros pilotos (`nucleo/foco.md`).

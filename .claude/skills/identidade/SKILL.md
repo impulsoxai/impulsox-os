@@ -56,8 +56,10 @@ Mostrar o guia ao usuário. Perguntar se algo deve mudar agora que está documen
 ## Caminho CRIAR (a marca não existe ainda)
 
 ### 1. Coletar contexto e referências
-Ler `nucleo/negocio.md` e `nucleo/voz.md` (quem é, como fala). Depois pedir referências —
-**é o que mais eleva a qualidade**:
+Ler `nucleo/negocio.md`, `nucleo/voz.md` e `nucleo/perfil.md` (quem é, como fala, que tipo
+de negócio). O perfil orienta o clima visual: criador pede personalidade e cara própria;
+profissional liberal pede sobriedade que passa confiança; PME local pede clareza e calor.
+Depois pedir referências — **é o que mais eleva a qualidade**:
 
 > "Pra eu criar algo com a sua cara e não genérico: me manda prints de **2 ou 3 sites ou
 > marcas que você admira**. Pra cada um, me diz em uma frase o que te agrada — é a cor? a

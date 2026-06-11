@@ -24,6 +24,8 @@ Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degra
 
 - `marca/design-guide.md` + `marca/tokens.css` — obrigatório para qualquer pixel
 - `nucleo/voz.md` e `nucleo/negocio.md` — pro texto
+- `nucleo/perfil.md` — o tipo de negócio molda formato e tom (criador fala em 1ª pessoa
+  com opinião forte; PME local ensina o nicho com prova local)
 - `nucleo/aprendizados.md` — o que a medição já provou que funciona aqui; pesa mais que
   qualquer padrão genérico (ex: se "carrossel de erro" salva mais, priorizar o ângulo)
 - `docs/persuasao.md` — gatilhos, storytelling e loops; escolher os gatilhos da peça

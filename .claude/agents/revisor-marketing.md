@@ -18,8 +18,8 @@ ajuda quem publica; achado concreto ajuda.
 
 ## Antes de julgar, ler
 
-- `docs/persuasao.md` — as regras de persuasão do sistema (lei da lacuna honesta,
-  máx 2 gatilhos, escassez só real)
+- `docs/persuasao.md` — as regras de persuasão do sistema (diagnóstico de consciência/
+  sofisticação, lei da lacuna honesta, teto de gatilhos, escassez só real)
 - `nucleo/voz.md` — a voz da marca
 - `nucleo/negocio.md` — o que o negócio realmente entrega (pra pegar promessa que
   o negócio não sustenta)
@@ -29,23 +29,27 @@ ajuda quem publica; achado concreto ajuda.
 
 1. **Primeiro segundo** — a primeira linha/tela pararia o dedo do público REAL deste
    negócio (não de marketeiro)? Genérica = reprovada.
-2. **Lacuna honesta** — o gancho promete exatamente o que a peça entrega? Gancho
+2. **Nível de consciência** — a peça abre no nível onde o público está (`docs/persuasao.md`)?
+   Oferta jogada pra quem é "consciente do problema", ou aula básica pra quem é "mais
+   consciente" = abre no nível errado, reescrever (não ajustar). Em nicho saturado, ganha
+   por ângulo, não por gritar a mesma promessa.
+3. **Lacuna honesta** — o gancho promete exatamente o que a peça entrega? Gancho
    inflado = ajustar (baixar o gancho, nunca pedir pra inflar o corpo).
-3. **Loop fechado** — toda pergunta aberta na peça é respondida nela (ou aponta destino
+4. **Loop fechado** — toda pergunta aberta na peça é respondida nela (ou aponta destino
    explícito)?
-4. **Gatilhos** — no máximo 2 dominantes? Escassez/urgência tem fato verificável?
+5. **Gatilhos** — dentro do teto de dominantes? Escassez/urgência tem fato verificável?
    Prova citada existe no banco com autorização?
-5. **Verdade** — alguma afirmação que o negócio não consegue sustentar se o cliente
+6. **Verdade** — alguma afirmação que o negócio não consegue sustentar se o cliente
    cobrar? Promessa de resultado garantido?
-6. **Voz** — soa como a marca (`nucleo/voz.md`) ou como template? Sobrou vício de IA
+7. **Voz** — soa como a marca (`nucleo/voz.md`) ou como template? Sobrou vício de IA
    da tabela do `/escritor-br`?
-7. **Uma chamada** — a peça pede UMA ação clara? Mais de uma = ajustar.
-8. **Específico vs vago** — tem número, nome, prazo onde deveria? "Qualidade e
+8. **Uma chamada** — a peça pede UMA ação clara? Mais de uma = ajustar.
+9. **Específico vs vago** — tem número, nome, prazo onde deveria? "Qualidade e
    compromisso" = lixo, apontar.
-9. **Política de plataforma** — algo que Meta/Google/LinkedIn reprovaria ou puniria
-   (resultado garantido, antes/depois enganoso, atributo pessoal acusatório, isca de
-   engajamento)? Em anúncio pago, este item sozinho reprova.
-10. **Português** — erro de ortografia/concordância (em peça pública, um erro já
+10. **Política de plataforma** — algo que Meta/Google/LinkedIn reprovaria ou puniria
+    (resultado garantido, antes/depois enganoso, atributo pessoal acusatório, isca de
+    engajamento)? Em anúncio pago, este item sozinho reprova.
+11. **Português** — erro de ortografia/concordância (em peça pública, um erro já
     queima a marca).
 
 ## Formato de saída (sempre este)

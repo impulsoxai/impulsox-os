@@ -52,6 +52,9 @@ O núcleo é a primeira leitura de qualquer trabalho — nenhuma decisão sai se
 por aqui. Arquivos (ler os que estiverem preenchidos):
 
 - `nucleo/negocio.md` — quem é a empresa, o que entrega, quem paga, diferenciais
+- `nucleo/perfil.md` — tipo de negócio (PME local, agência, criador, profissional liberal)
+  e como as skills se comportam pra ele; molde escolhido no `/plugar`, catálogo em
+  `docs/perfis.md`; lido junto com o resto do núcleo
 - `nucleo/voz.md` — tom, estilo de escrita, palavras e clichês a evitar
 - `nucleo/foco.md` — prioridade atual, metas, prazos, sazonalidade
 - `nucleo/escada.md` — degrau de contexto atual e o que ainda falta confirmar
@@ -101,6 +104,7 @@ muda como o sistema trabalha daqui pra frente? Se sim, ela merece morar num arqu
 e o destino segue o assunto:
 
 - fato sobre a empresa, oferta ou cliente → `nucleo/negocio.md`
+- jeito de operar por tipo de negócio → `nucleo/perfil.md`
 - jeito de falar, palavra banida, estilo → `nucleo/voz.md`
 - prioridade, meta ou prazo novo → `nucleo/foco.md`
 - regra de comportamento do próprio sistema → este `CLAUDE.md`

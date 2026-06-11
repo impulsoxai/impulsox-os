@@ -25,6 +25,9 @@ Com degrau 3+ (entrevista feita), o plano sai calibrado de verdade.
 ## O que ler antes
 
 - `nucleo/negocio.md` — o que vende, pra quem, diferencial
+- `nucleo/perfil.md` — o TIPO de negócio; o **"Mix do /calendario"** de lá substitui a
+  proporção padrão desta skill (criador 45/30/10/15, PME local 35/30/15/20 etc.). Perfil
+  `agencia` não fixa mix: usar o `perfil.md` do cliente cuja sessão está aberta
 - `nucleo/foco.md` — prioridade do mês, sazonalidade, datas
 - `nucleo/voz.md` — tom (afeta o tipo de pauta que cabe)
 - `nucleo/aprendizados.md` — o que a medição já provou que funciona pra este negócio;
@@ -42,7 +45,10 @@ Nunca propor mais do que ele confirmar. Plano abandonado em duas semanas é pior
 plano modesto cumprido.
 
 ### 2. Mistura de intenções
-Distribuir as peças do mês entre quatro intenções, nesta proporção como padrão:
+Distribuir as peças do mês entre quatro intenções. A proporção vem do **"Mix do
+/calendario"** do `nucleo/perfil.md` — cada tipo de negócio tem o seu (criador
+45/30/10/15, PME local 35/30/15/20, profissional liberal 40/25/20/15). Sem `perfil.md`
+preenchido, usar o padrão genérico abaixo:
 - **Ensinar (40%)** — resolver dúvida real do cliente do negócio; é o que gera salvamento
   e compartilhamento, os sinais que o algoritmo mais valoriza em 2026
 - **Provar (25%)** — resultado, bastidor, depoimento, antes/depois (só com material real)

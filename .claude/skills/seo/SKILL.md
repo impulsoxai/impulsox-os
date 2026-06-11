@@ -1,12 +1,13 @@
 ---
 name: seo
 description: >
-  Use quando uma página precisa ser achada no Google E citada pelas IAs — "/seo",
-  "otimiza essa página", "por que não apareço no Google?", "deixa o site achável",
-  "quero aparecer no ChatGPT", "SEO da landing", ou logo depois do /pagina antes de
-  publicar. Faz auditoria on-page + camada GEO (Schema JSON-LD, answer-first, FAQ,
-  robots pra GPTBot/CCBot) e entrega o relatório com nota mais os blocos prontos pra
+  Use quando uma página precisa ser achada no Google E estruturada pra ser citável por
+  IA — "/seo", "otimiza essa página", "por que não apareço no Google?", "deixa o site
+  achável", "Schema da página", "SEO da landing", ou logo depois do /pagina antes de
+  publicar. Faz auditoria on-page + os blocos GEO da página (Schema JSON-LD, answer-first,
+  FAQ, robots pra GPTBot/CCBot) e entrega o relatório com nota mais os blocos prontos pra
   colar. Serve pra página do /pagina, site externo por URL, ou artigo do /conteudo.
+  (Medir se as IAs CITAM a empresa de verdade e o monitoramento mensal é o `/geo`.)
 ---
 
 # /seo — Achável no Google, citável pela IA
@@ -73,9 +74,11 @@ Conferir e anotar nota por item (✅ ok / ⚠️ ajustar / ❌ ausente):
   — alinhar com o padrão do `marca/design-guide.md` e o alvo do CLAUDE.md global
   (LCP < 2.5s, CLS < 0.1)
 
-## Fase 3 — Camada GEO (o jogo da IA)
+## Fase 3 — Blocos GEO da página (o jogo da IA, on-page)
 
-O que faz a página ser **citada** por motor generativo, além de rankeada:
+O que faz a página ser **citada** por motor generativo, além de rankeada — a parte que
+mora no código da página. (Medir se a empresa É citada hoje, mapear as fontes que a IA usa
+no nicho e o loop mensal é o `/geo`; aqui é a execução estrutural numa página.)
 
 - **Answer-first em cada seção.** A resposta vem antes da história. IA extrai parágrafos
   auto-suficientes — cada bloco precisa fazer sentido fora de contexto.
@@ -111,6 +114,8 @@ Dois produtos:
 - Depois do **`/pagina`**: rodar `/seo` antes de publicar é o passo que fecha a entrega
   de R$ 5.000 — página bonita que ninguém acha não vale.
 - Dentro do **`/raio-x`**: a auditoria on-page/GEO alimenta a nota de presença digital.
+- O **`/geo`** mede se as IAs citam a empresa e mapeia as fontes do nicho; quando o plano
+  dele pede Schema/FAQ numa página, é o `/seo` que gera os blocos. /geo decide, /seo marca.
 - Para negócio local: cruzar com **`/local`** (o jogo do Maps é o complemento do orgânico).
 - Todo texto novo (FAQ, meta) passa pelo **`/escritor-br`** antes de fechar.
 

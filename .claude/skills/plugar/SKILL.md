@@ -32,13 +32,23 @@ trava exigindo informação que o usuário ainda não tem.
    > só o que falta, ou prefere apagar e montar de novo?"
    Núcleo virgem → entrar direto na conversa.
 
-2. **Modo de uso.** Perguntar:
-   > "Este sistema vai cuidar do marketing do **seu próprio negócio**, ou você atende
-   > **vários clientes** (agência/freelancer)?"
-   - Negócio próprio → o núcleo da raiz (`nucleo/`) é desse negócio. Seguir aqui.
-   - Vários clientes → o núcleo da raiz passa a descrever a **sua agência**; cada cliente
-     entra depois em `clientes/<nome>/` pela skill de plugar cliente. Continuar a
-     entrevista mirando a agência como o "negócio" desta rodada.
+2. **Perfil do negócio.** Pra moldar o sistema ao caso, perguntar (uma escolha):
+   > "Pra eu moldar o sistema ao seu caso, qual te descreve melhor?
+   > 1. **Negócio local** — você vende um produto/serviço numa região (loja, clínica, restaurante…)
+   > 2. **Agência / consultoria** — você atende vários clientes
+   > 3. **Criador / canal** — YouTube, marca pessoal, infoproduto, newsletter
+   > 4. **Profissional liberal** — serviço especializado entregue por você"
+
+   A escolha mapeia num molde de `docs/perfis.md` (`pme-local` · `agencia` · `criador` ·
+   `profissional-liberal`) que vira o `nucleo/perfil.md` na Fase 3.
+   - **Agência** → o núcleo da raiz passa a descrever a **sua agência**; cada cliente entra
+     depois em `clientes/<nome>/` pela skill de plugar cliente (que também pergunta o perfil
+     DELE — um cliente pode ser criador, PME local etc.). Continuar a entrevista mirando a
+     agência como o "negócio" desta rodada.
+   - **Os outros três** → o núcleo da raiz (`nucleo/`) é desse negócio. Seguir aqui.
+
+   Esta skill **nunca** sobrescreve a raiz `CLAUDE.md` (a constituição do produto). O perfil
+   só molda o comportamento via `nucleo/perfil.md` — escrito junto com o resto do núcleo.
 
 ## Fase 1 — Definir o degrau de partida
 
@@ -82,6 +92,14 @@ se repete.
    precisando quando chegou?"
 4. "Por que escolhem você e não o concorrente? O que te diferencia de verdade?"
 
+A pergunta 3 se adapta ao perfil escolhido na Fase 0:
+- **criador** → "Quem é a sua audiência — quem assiste/segue você — e como você pretende
+  monetizar (patrocínio, infoproduto, comunidade)?" (criador não tem "cliente que fecha";
+  tem audiência e monetização indireta)
+- **pme-local** → manter, puxando **região** e o diferencial **local** ("o que te traz
+  cliente do bairro/cidade?")
+- **agencia** e **profissional-liberal** → manter como está.
+
 **Sobre a voz (provisório — a voz de verdade vem depois, no `/voz`):**
 5. "Em uma frase, como a marca fala? (ex: próxima e descontraída / técnica e precisa /
    sóbria e premium) — só pro sistema não sair mudo enquanto a gente não faz a entrevista
@@ -103,6 +121,10 @@ escrever como a pessoa fala. Marcar a voz como provisória até o `/voz` rodar.
 
 Com o que veio da extração + entrevista, escrever:
 - `nucleo/negocio.md` — respostas 1-4 (+ extração): o que é, o que entrega, quem paga, diferencial
+- `nucleo/perfil.md` — a partir do molde escolhido na Fase 0 (catálogo em `docs/perfis.md`):
+  copiar os campos do molde (cliente, skills que lideram, ênfase da escada, o que se produz
+  mais, o que não se aplica, mix do `/calendario`) já **preenchidos pro caso deste negócio**,
+  nunca placeholder. Perfil `agencia` herda o mix por cliente (não fixa um aqui).
 - `nucleo/voz.md` — respostas 5-6: tom provisório, exemplos, lista do que evitar.
   Marcar no topo do arquivo que é esboço, a ser substituído pela entrevista do `/voz`.
 - `nucleo/foco.md` — respostas 7-8: prioridade, metas, prazos, sazonalidade
@@ -115,6 +137,7 @@ Regras de escrita do núcleo:
 ## Fase 4 — Registrar a escada
 
 Atualizar `nucleo/escada.md`:
+- **Perfil escolhido** como fato confirmado (ex: "perfil: criador")
 - **Degrau atual** alcançado (1 se só extração, 3 se entrevista completa)
 - Lista de **fatos confirmados** e **suposições a confirmar**
 - **Próximo degrau** e o que falta pra subir (ex: "passar exports de ads → degrau 4")
@@ -132,9 +155,9 @@ Passar para a `/identidade` os achados visuais da Fase 2A (cores, fontes, logo d
 
 Resumir o que ficou configurado e o degrau atingido:
 ```
-✓ Modo: [negócio próprio | agência]
+✓ Perfil: [PME local | agência | criador | profissional liberal]
 ✓ Degrau de contexto: [n] — [o que isso permite]
-✓ Núcleo: negocio.md · voz.md · foco.md
+✓ Núcleo: negocio.md · perfil.md · voz.md · foco.md
 ✓ Fatos confirmados: [n]   Suposições a confirmar: [n]
 ✓ Voz: provisória — rodar /voz pra entrevista de verdade
 → Próximo: /voz (a voz do dono) · /identidade (marca) · depois, produção de conteúdo
