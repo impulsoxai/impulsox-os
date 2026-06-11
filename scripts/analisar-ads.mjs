@@ -25,7 +25,9 @@ function falhar(msg) {
 
 // --- argumentos -------------------------------------------------------------
 const args = process.argv.slice(2);
-const arquivo = args.find((a) => !a.startsWith("--"));
+const FLAGS_COM_VALOR = new Set(["--mapa", "--plataforma"]);
+const posicionais = args.filter((a, i) => !a.startsWith("--") && !FLAGS_COM_VALOR.has(args[i - 1]));
+const arquivo = posicionais[0];
 if (!arquivo) falhar("informe o arquivo CSV.");
 const mapaIdx = args.indexOf("--mapa");
 if (mapaIdx === -1 || !args[mapaIdx + 1]) falhar("--mapa é obrigatório.");
@@ -77,7 +79,12 @@ function numero(bruto) {
 }
 
 // --- leitura ----------------------------------------------------------------
-const texto = readFileSync(arquivo, "utf8").replace(/^﻿/, "");
+let texto;
+try {
+  texto = readFileSync(arquivo, "utf8").replace(/^﻿/, "");
+} catch (e) {
+  falhar(`não consegui ler "${arquivo}": ${e.code === "ENOENT" ? "arquivo não existe" : e.message}`);
+}
 const linhas = parseCSV(texto);
 if (linhas.length < 2) falhar("CSV sem dados.");
 
