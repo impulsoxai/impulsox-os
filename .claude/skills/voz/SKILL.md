@@ -57,36 +57,18 @@ conversando com um amigo dono de negócio. É a fala solta que carrega a voz.
 
 ### O roteiro da entrevista
 
-Tudo sobre o negócio — nada de pedir o dono pra se autoanalisar. A voz sai do **jeito**
-que ele responde; o núcleo sai do **conteúdo**.
+Seis perguntas, todas sobre o negócio — nada de pedir o dono pra se autoanalisar. A voz
+sai do **jeito** que ele responde; o núcleo sai do **conteúdo**.
 
-**Bloco 1 — O negócio e o porquê**
-1. Conta o teu negócio como se eu não soubesse nada: o que faz, pra quem, e por que ele
-   existe?
-2. O que te fez começar isso? Teve um momento — um problema teu ou de um cliente — que
-   acendeu a luz?
-3. No que você acredita sobre o teu mercado que a maioria dos concorrentes não acredita,
-   ou não tem coragem de falar em voz alta?
+1. Me conta tudo sobre a sua empresa: como você começou, pra onde quer ir.
+2. Qual o perfil do seu cliente? Quem compra de você?
+3. Por que comprar da sua empresa?
+4. Prova social: tem cliente satisfeito, caso ou resultado real pra contar?
+5. Tem alguma palavra que você não usa de jeito nenhum?
+6. Tem alguma empresa ou pessoa que você admira (no jeito de comunicar)?
 
-**Bloco 2 — O cliente**
-4. O cliente que você mais gostou de atender: quem era, como chegou até você, e o que
-   mudou pra ele depois?
-5. Quando alguém te procura, do que essa pessoa tá com medo? E o que ela quer ganhar?
-
-**Bloco 3 — Diferencial, prova e a mensagem**
-6. Por que escolhem você, e não o mais barato? Responde como se eu fosse um cliente
-   desconfiado, de braço cruzado.
-7. Um resultado concreto que você entregou — número, prazo, o que aconteceu de verdade.
-   Um caso real, não "ajudei muita gente".
-8. Se você pudesse cravar UMA frase na cabeça de todo cliente teu, qual seria?
-
-**Bloco 4 — Os limites (curto e concreto)**
-9. Tem palavra, promessa ou jeitão de marketing que te dá nojo, que você nunca quer ver
-   saindo no teu nome? Fala todas que vierem.
-10. (opcional) Tem alguma marca ou pessoa cujo jeito de comunicar você curte? Só pra eu
-    calibrar o tom — não pra copiar.
-
-Se o dono engrenar e falar muito além das perguntas, ótimo: deixar correr. Quanto mais
+São abertas de propósito: a pergunta 1 sozinha já puxa origem, visão e a mensagem da
+marca. Se o dono engrenar e falar muito além delas, ótimo — deixar correr. Quanto mais
 fala solta, mais voz.
 
 ## Fase 2 — Receber a transcrição
@@ -118,13 +100,13 @@ Seções do `voz.md`:
   (cruzar com `docs/persuasao.md`). Escassez só real; contrato do hook (entrega o que
   promete).
 - **Tom: faz / não faz** — listas concretas, do jeito dele.
-- **Vocabulário** — usa / inglês ok / evita. As banidas saem da pergunta 9; o inglês
+- **Vocabulário** — usa / inglês ok / evita. As banidas saem da pergunta 5; o inglês
   natural e as expressões próprias saem do corpo da fala (o que ele de fato usou).
 - **Mecânica de escrita** — emoji, tamanho de frase, pontuação, caixa-alta, hashtags.
-- **Pilares de conteúdo** — as convicções (perguntas 1-3) e a mensagem central
-  (pergunta 8) que todo post defende.
-- **Calibragem por referência** — quem o dono admira (pergunta 10, se respondida); a
-  anti-referência sai do que ele disse dar nojo (pergunta 9).
+- **Pilares de conteúdo** — as convicções que todo post defende, das perguntas 1 e 3
+  (origem, visão e por que comprar).
+- **Calibragem por referência** — quem o dono admira (pergunta 6); a anti-referência sai
+  por contraste — o que ele evita (pergunta 5) e o oposto do que admira.
 
 Regras de escrita do arquivo:
 - Não inventar voz. Se a fala não deu material pra uma seção, marcar `_a confirmar_`.
