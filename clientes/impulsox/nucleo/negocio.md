@@ -5,7 +5,7 @@
 
 ## Uma frase
 
-A ImpulsoX impulsiona o seu negócio com IA. Por isso o nome ImpulsoX.
+A ImpulsoX impulsiona o seu negócio com IA.
 
 ## O que é
 
