@@ -1,0 +1,19 @@
+# Segredos — nunca commitar
+.env
+.env.*
+!.env.example
+*.token
+*-secret*
+
+# Dependências
+node_modules/
+
+# Saídas e temporários
+.tmp/
+producao/**/rascunho-*
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+.firecrawl/
