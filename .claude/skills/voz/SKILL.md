@@ -11,14 +11,15 @@ description: >
 
 # /voz — Aprender a voz do dono
 
-Voz não sai de duas perguntas rápidas. Sai de ouvir o dono falar solto por meia hora —
-contando história, defendendo o que acredita, reclamando do que odeia no mercado. É na
-fala corrida que aparece o ritmo, o vocabulário, a convicção e os tiques que fazem a
-marca soar como uma pessoa específica, e não como qualquer empresa do nicho.
+Voz não sai de perguntar "como você fala?" — dono de negócio responde isso genérico
+("profissional, mas próximo"). A voz aparece **em como ele fala do próprio negócio**:
+quando explica o que faz, conta por que começou, defende no que acredita e crava a
+mensagem que quer passar, ele entrega ritmo, vocabulário e convicção sem perceber. O
+roteiro desta skill é todo sobre o **negócio** — a voz é o que se extrai da fala.
 
-Esta skill entrega um roteiro, recebe a transcrição da entrevista e destila tudo num
-`voz.md` rico — o mesmo nível de profundidade que separa um texto que soa como o dono de
-um texto com cara de modelo de IA.
+Por isso a entrevista faz trabalho duplo: a mesma transcrição vira o `voz.md` rico **e**
+enriquece o núcleo (`negocio.md`, `foco.md`) com os fatos que aparecerem. Cliente que já
+tem negócio adora falar dele — e é exatamente disso que o sistema precisa.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
@@ -54,52 +55,47 @@ conversando com um amigo dono de negócio. É a fala solta que carrega a voz.
 > Depois cola a transcrição aqui — pode ser bruta, com "é", "tipo", "sei lá". Quanto mais
 > crua, melhor pra mim.
 
-### O roteiro da entrevista de voz
+### O roteiro da entrevista
 
-**Bloco 1 — Origem e convicção**
-1. Explica, como se a gente estivesse num bar e eu fosse um amigo dono de negócio que não
-   entende nada de IA: o que a sua empresa faz e por que ela existe?
-2. O que te fez começar isso? Teve um momento, um problema seu ou de um cliente, que
+Tudo sobre o negócio — nada de pedir o dono pra se autoanalisar. A voz sai do **jeito**
+que ele responde; o núcleo sai do **conteúdo**.
+
+**Bloco 1 — O negócio e o porquê**
+1. Conta o teu negócio como se eu não soubesse nada: o que faz, pra quem, e por que ele
+   existe?
+2. O que te fez começar isso? Teve um momento — um problema teu ou de um cliente — que
    acendeu a luz?
-3. No que você acredita sobre o seu mercado que a maioria dos seus concorrentes não
-   acredita — ou não tem coragem de falar em voz alta?
+3. No que você acredita sobre o teu mercado que a maioria dos concorrentes não acredita,
+   ou não tem coragem de falar em voz alta?
 
-**Bloco 2 — O cliente e a virada**
-4. Pensa no cliente que você mais gostou de atender. Quem era, como chegou até você, e o
-   que mudou pra ele depois?
-5. Quando alguém fecha com você, o que essa pessoa tava com medo que acontecesse? E o que
-   ela esperava ganhar?
+**Bloco 2 — O cliente**
+4. O cliente que você mais gostou de atender: quem era, como chegou até você, e o que
+   mudou pra ele depois?
+5. Quando alguém te procura, do que essa pessoa tá com medo? E o que ela quer ganhar?
 
-**Bloco 3 — Diferencial e prova**
-6. Por que escolhem você, e não o concorrente mais barato? Responde como se eu fosse um
-   cliente desconfiado, de braço cruzado.
-7. Conta um resultado concreto que você já entregou — com número, prazo, o que aconteceu
-   de verdade. Nada de "ajudei muita gente"; um caso real.
+**Bloco 3 — Diferencial, prova e a mensagem**
+6. Por que escolhem você, e não o mais barato? Responde como se eu fosse um cliente
+   desconfiado, de braço cruzado.
+7. Um resultado concreto que você entregou — número, prazo, o que aconteceu de verdade.
+   Um caso real, não "ajudei muita gente".
+8. Se você pudesse cravar UMA frase na cabeça de todo cliente teu, qual seria?
 
-**Bloco 4 — A voz (sobre como você fala)**
-8. Tem alguma marca, criador ou pessoa cujo jeito de comunicar você admira? Quem, e o que
-   exatamente você curte no jeito dela falar?
-9. O oposto: que tipo de comunicação no seu mercado te dá nojo? Você nunca quer soar assim
-   como?
-10. Tem palavra, expressão ou promessa que você não suporta ver no marketing? Fala todas
-    que vierem na cabeça.
-11. Você usa inglês no dia a dia? Que termos saem naturais na sua boca, e quais você acha
-    forçado?
+**Bloco 4 — Os limites (curto e concreto)**
+9. Tem palavra, promessa ou jeitão de marketing que te dá nojo, que você nunca quer ver
+   saindo no teu nome? Fala todas que vierem.
+10. (opcional) Tem alguma marca ou pessoa cujo jeito de comunicar você curte? Só pra eu
+    calibrar o tom — não pra copiar.
 
-**Bloco 5 — Ambição e tom**
-12. Você acha que o que você faz é uma virada grande pro cliente? Conta o tamanho disso —
-    do seu jeito, sem ensaiar discurso.
-13. Quando você quer convencer alguém de algo importante, você é mais de afirmar com calma
-    ou de cutucar com urgência? Dá um exemplo de como você falaria.
-14. Se a sua empresa fosse uma pessoa sentada na mesa com o cliente, ela seria mais
-    professor, vendedor, consultor ou parceiro? Por quê?
+Se o dono engrenar e falar muito além das perguntas, ótimo: deixar correr. Quanto mais
+fala solta, mais voz.
 
 ## Fase 2 — Receber a transcrição
 
-Quando o dono colar a transcrição, ler inteira antes de escrever qualquer coisa. Não
-resumir por cima: caçar as **palavras exatas** que ele repete, as expressões próprias, o
-jeito de abrir e fechar uma ideia, onde ele acelera e onde ele afirma com calma. A voz
-está nas escolhas dele, não nas minhas.
+Quando o dono colar a transcrição, ler inteira antes de escrever qualquer coisa. Ler com
+**dois ouvidos**: um pro JEITO (a voz — palavras exatas que ele repete, expressões
+próprias, jeito de abrir e fechar uma ideia, onde acelera e onde afirma com calma) e um
+pro CONTEÚDO (fatos do negócio: o que vende, pra quem, diferencial, casos, prioridade —
+matéria pro núcleo). A voz está nas escolhas dele, não nas minhas.
 
 Se a transcrição veio curta ou pulou blocos, seguir com o que há e marcar os blocos
 faltantes como suposição — sem travar.
@@ -122,16 +118,31 @@ Seções do `voz.md`:
   (cruzar com `docs/persuasao.md`). Escassez só real; contrato do hook (entrega o que
   promete).
 - **Tom: faz / não faz** — listas concretas, do jeito dele.
-- **Vocabulário** — usa / inglês ok / evita. As palavras banidas saem direto da pergunta 10.
+- **Vocabulário** — usa / inglês ok / evita. As banidas saem da pergunta 9; o inglês
+  natural e as expressões próprias saem do corpo da fala (o que ele de fato usou).
 - **Mecânica de escrita** — emoji, tamanho de frase, pontuação, caixa-alta, hashtags.
-- **Pilares de conteúdo** — as convicções (perguntas 1-3) que todo post defende.
-- **Calibragem por referência** — quem admira (pergunta 8) e a anti-referência (pergunta 9).
+- **Pilares de conteúdo** — as convicções (perguntas 1-3) e a mensagem central
+  (pergunta 8) que todo post defende.
+- **Calibragem por referência** — quem o dono admira (pergunta 10, se respondida); a
+  anti-referência sai do que ele disse dar nojo (pergunta 9).
 
 Regras de escrita do arquivo:
 - Não inventar voz. Se a fala não deu material pra uma seção, marcar `_a confirmar_`.
 - Preferir a palavra do dono à palavra "bonita". Se ele diz "atende", não trocar por
   "atendimento omnichannel".
 - Não deixar aviso de placeholder no arquivo final.
+
+## Fase 3B — Aproveitar o que o negócio entregou
+
+A mesma fala que deu a voz deu fatos. Não desperdiçar: separar o que apareceu sobre o
+negócio e **propor** (nunca sobrescrever no escuro) a atualização do núcleo:
+- fatos de oferta, cliente, diferencial, casos → `nucleo/negocio.md`
+- prioridade, meta, sazonalidade que surgiram → `nucleo/foco.md`
+- prova/caso real mencionado → sinalizar pra `/provas` formalizar e autorizar
+
+Se o `/plugar` já preencheu esses arquivos, comparar: o que a entrevista confirma vira
+fato; o que contradiz, perguntar antes de trocar. Mostrar ao dono a lista do que entrou
+no núcleo — cirúrgico, uma linha por mudança.
 
 ## Fase 4 — Validar com o dono
 
@@ -147,9 +158,9 @@ contamina toda peça futura; vale o minuto a mais.
 
 ## Fase 5 — Registrar a escada
 
-Atualizar `nucleo/escada.md` (ou o do cliente): degrau 3 alcançado na dimensão voz, blocos
-do roteiro confirmados vs faltantes, e o que falta pra completar (ex: "dono pulou o bloco
-5 — refazer quando tiver tempo").
+Atualizar `nucleo/escada.md` (ou o do cliente): degrau 3 alcançado (voz + núcleo
+enriquecido pela entrevista), blocos do roteiro confirmados vs faltantes, e o que falta
+pra completar (ex: "dono pulou o bloco 3 — refazer quando tiver tempo").
 
 ## Regras
 
