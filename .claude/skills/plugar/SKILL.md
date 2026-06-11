@@ -9,10 +9,11 @@ description: >
 
 # /plugar — Ligar o sistema para um negócio
 
-Primeiro comando depois de instalar o ImpulsoX-OS. Não pode falhar nem soar burocrático.
-É uma conversa de descoberta: uma pergunta por vez, escutando de verdade. O objetivo é o
-sistema sair daqui sabendo quem é a empresa, como ela fala e onde está o atrito do dia a
-dia — no degrau de contexto mais alto que a informação disponível permitir.
+Primeiro comando da vida do sistema — e a primeira impressão do produto. Tem que fluir
+como conversa boa, não como formulário de cadastro: cada pergunta espera a resposta,
+cada resposta muda a próxima. Quando termina, o sistema conhece a empresa, o jeito dela
+falar e a dor que ela quer resolver — no degrau de contexto mais alto que a informação
+disponível permitir.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
@@ -27,8 +28,9 @@ trava exigindo informação que o usuário ainda não tem.
 
 1. **Já tem contexto?** Conferir se `nucleo/negocio.md`, `nucleo/voz.md`, `nucleo/foco.md`
    já têm conteúdo real (não o placeholder "_(vazio...)_"). Se algum tiver, perguntar:
-   > "Já existe contexto preenchido aqui. Recomeço do zero ou complemento o que falta?"
-   Se for setup limpo, seguir direto.
+   > "Encontrei um núcleo já preenchido. Quer que eu aproveite o que está aí e pergunte
+   > só o que falta, ou prefere apagar e montar de novo?"
+   Núcleo virgem → entrar direto na conversa.
 
 2. **Modo de uso.** Perguntar:
    > "Este sistema vai cuidar do marketing do **seu próprio negócio**, ou você atende
@@ -67,14 +69,17 @@ entrevista ou o cliente confirmar.
 
 ## Fase 2B — Entrevista
 
-Perguntas em ordem, **uma por vez**, esperando a resposta antes da próxima. Resposta vaga:
-repetir uma vez pedindo concretude; não insistir mais que isso — registrar o que vier.
-Se a Fase 2A já respondeu uma pergunta, pular ela.
+Ritmo de conversa: lançar a pergunta, esperar, só então seguir. Resposta vaga ganha
+**uma** segunda chance ("me dá um exemplo concreto?"); se continuar vaga, entra como
+está e o campo fica marcado pra refino futuro. Pergunta que a Fase 2A já respondeu não
+se repete.
 
 **Sobre o negócio:**
-1. "Como você chama o que você faz? (nome da empresa, ou seu nome se for marca pessoal)"
-2. "Em uma frase, do jeito que você explicaria pro vizinho: o que a empresa entrega?"
-3. "Quem te paga? Descreve o cliente real em uma ou duas frases — sem persona genérica."
+1. "Qual o nome do negócio? (se a marca é você, vale o seu nome mesmo)"
+2. "Um cliente em potencial te para e pergunta 'o que vocês fazem?'. Qual a sua
+   resposta de uma frase?"
+3. "Pensa no último cliente que fechou com você: quem era e o que ele estava
+   precisando quando chegou?"
 4. "Por que escolhem você e não o concorrente? O que te diferencia de verdade?"
 
 **Sobre a voz:**
@@ -132,7 +137,8 @@ Mencionar a tarefa repetida da pergunta 9 como candidata a virar automação no 
 
 ## Regras
 
-- O setup completo deve durar 5-7 minutos de conversa. Se o usuário enrolar numa pergunta,
-  registrar o que tem e seguir.
-- Não fazer perguntas além das listadas sem motivo claro.
+- Mirar em ~5 minutos de conversa; nunca passar muito disso. Pergunta emperrada não
+  segura o setup — anota-se o que veio e a conversa anda.
+- O roteiro é fechado: pergunta fora da lista só quando uma resposta abriu lacuna que
+  impede o sistema de trabalhar.
 - Nunca bloquear por falta de informação — descer um degrau é sempre opção.

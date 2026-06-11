@@ -13,6 +13,11 @@ node_modules/
 producao/**/rascunho-*
 *.log
 
+# Dados de cliente real — nunca versionar no produto
+.claude/skills/impulsox-chatgpt-ads/deliverables/
+.firecrawl-cache/
+eskina*
+
 # Sistema
 .DS_Store
 Thumbs.db

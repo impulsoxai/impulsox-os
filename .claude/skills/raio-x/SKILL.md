@@ -82,6 +82,10 @@ visível derruba Conversão inteira; blog inexistente pesa menos que oferta conf
 Quando for material de reunião, gerar também a versão apresentável (PDF via skill de
 PDF, com a marca da agência) — 2 páginas no máximo; relatório de 20 páginas ninguém lê.
 
+Prospect demonstrou interesse depois do diagnóstico? O passo seguinte é a `/proposta` —
+ela consome este relatório e transforma os problemas apontados em proposta comercial
+fechável, no mesmo dia.
+
 ## Regras
 
 - Cada problema apontado tem evidência (o que foi visto, onde). Nada de crítica vaga.

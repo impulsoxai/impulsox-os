@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "client": "Orlando Eats (2 restaurants)",
+    "advertiser_country": "US",
+    "delivery_language": "en",
+    "currency": "USD",
+    "generated_at": "2026-05-30T12:00:00Z",
+    "platform_facts_verified_at": "2026-05-30T00:00:00Z",
+    "skill_version": "1.1.0",
+    "schema_version": "1.2",
+    "fact_sheet_ref": "orlando-eats-fact-sheet.json",
+    "facts_verified_at": "2026-05-31T00:00:00Z"
+  },
+  "verdict": {
+    "decision": "fix_first",
+    "score": 15,
+    "criteria": [
+      { "name": "Clear buyer", "points": 2, "max": 2, "note": "Tourists and families near Disney/Orlando." },
+      { "name": "Specific problem", "points": 2, "max": 2, "note": "Deciding where to eat tonight in an unfamiliar city." },
+      { "name": "One-sentence offer", "points": 2, "max": 2, "note": "Family-friendly Italian dining minutes from the parks." },
+      { "name": "Landing page ready", "points": 1, "max": 2, "note": "Has a site; reservations page needs the pixel + clearer CTA." },
+      { "name": "Conversation fit", "points": 2, "max": 2, "note": "High volume of 'where to eat in Orlando' moments." },
+      { "name": "Provable claim", "points": 2, "max": 2, "note": "4.6 Google rating, 1,200+ reviews — verifiable." },
+      { "name": "Measurable conversion", "points": 1, "max": 2, "note": "Online reservations exist; needs event wiring." },
+      { "name": "Reason to act now", "points": 1, "max": 2, "note": "Tourists decide same-day; nudge works but no urgency offer yet." },
+      { "name": "Eligibility (country + category)", "points": 2, "max": 2, "note": "US advertiser, local_services — allowed." }
+    ],
+    "blockers": [
+      "Install OpenAI pixel on the reservation flow and fire appointment_scheduled.",
+      "Add a clear 'Reserve a table' CTA above the fold on the landing page."
+    ],
+    "eligibility": {
+      "advertiser_country_ok": true,
+      "category": "local_services",
+      "category_allowed": true,
+      "landing_page_ready": false
+    }
+  },
+  "offer": {
+    "name": "Orlando Eats — family Italian near the parks",
+    "landing_page": "https://example.com/orlando-eats/reserve",
+    "price": "$$ (entrees $14-29)",
+    "buyer": "Tourists and families visiting Orlando, deciding where to eat near Disney/Universal.",
+    "problem": "In an unfamiliar city, they ask ChatGPT where to eat and want a trustworthy, family-friendly pick nearby.",
+    "proof": ["4.6 Google rating", "1,200+ reviews", "5 min from Disney Springs"],
+    "constraints": ["No alcohol-led promotions", "No health/diet outcome claims"]
+  },
+  "campaign": {
+    "name": "Orlando Eats - Local Dining - US",
+    "objective": "clicks",
+    "budget_daily": 50,
+    "geo": { "countries": ["US"], "regions": ["Florida"], "dmas": ["Orlando-Daytona Beach-Melbourne"], "zips": ["32830", "32819", "32821"] }
+  },
+  "ad_groups": [
+    {
+      "name": "Where to eat - Exploring",
+      "user_state": "exploring",
+      "moment": "Asking ChatGPT where to eat in Orlando without a specific place in mind.",
+      "offer_angle": "Be the trustworthy nearby family pick.",
+      "context_hints": [
+        "where to eat in orlando",
+        "best restaurants near disney",
+        "good dinner spots orlando",
+        "family restaurants near universal",
+        "places to eat near disney springs",
+        "orlando dining recommendations",
+        "kid friendly restaurants orlando",
+        "where to have dinner near the parks",
+        "italian restaurant orlando",
+        "casual dinner orlando tonight"
+      ],
+      "exclusions": ["fine dining only", "bars and nightlife"],
+      "landing_page": "https://example.com/orlando-eats/reserve",
+      "ads": [
+        {
+          "angle": "use_case",
+          "title": "Family dinner near Disney",
+          "copy": "Casual Italian, 5 min from Disney Springs. Reserve a table.",
+          "image_direction": "Warm shot of a family table with pasta, parks skyline soft in background.",
+          "final_url": "https://example.com/orlando-eats/reserve?utm_source=chatgpt&utm_medium=paid&utm_campaign=orlando_eats&utm_content=exploring__family_dinner",
+          "utms": { "source": "chatgpt", "medium": "paid", "campaign": "orlando_eats", "content": "exploring__family_dinner", "term": "where to eat orlando" },
+          "framework_note": "AIDA — exploring/unaware"
+        },
+        {
+          "angle": "proof",
+          "title": "4.6 stars, 1,200+ reviews",
+          "copy": "One of Orlando's top-rated family spots. Book tonight.",
+          "image_direction": "Clean review-badge card over a plated dish.",
+          "final_url": "https://example.com/orlando-eats/reserve?utm_source=chatgpt&utm_medium=paid&utm_campaign=orlando_eats&utm_content=exploring__reviews",
+          "utms": { "source": "chatgpt", "medium": "paid", "campaign": "orlando_eats", "content": "exploring__reviews", "term": "best restaurant orlando" },
+          "framework_note": "4U — exploring/unaware"
+        }
+      ]
+    },
+    {
+      "name": "Tonight - Booking",
+      "user_state": "booking",
+      "moment": "Ready to pick a place and reserve for tonight.",
+      "offer_angle": "Make reserving frictionless.",
+      "context_hints": [
+        "book a table orlando",
+        "dinner reservation near disney",
+        "restaurant reservation orlando tonight",
+        "last minute table orlando",
+        "reserve family restaurant orlando",
+        "where to have dinner tonight orlando",
+        "open restaurants near disney tonight",
+        "table for four near universal",
+        "date night dinner orlando",
+        "walk in or reserve orlando dinner"
+      ],
+      "exclusions": ["catering inquiries", "private events"],
+      "landing_page": "https://example.com/orlando-eats/reserve",
+      "ads": [
+        {
+          "angle": "speed",
+          "title": "Reserve a table tonight",
+          "copy": "Open tables near Disney Springs. Book in under a minute.",
+          "image_direction": "Phone showing a simple reservation confirmation.",
+          "final_url": "https://example.com/orlando-eats/reserve?utm_source=chatgpt&utm_medium=paid&utm_campaign=orlando_eats&utm_content=booking__tonight",
+          "utms": { "source": "chatgpt", "medium": "paid", "campaign": "orlando_eats", "content": "booking__tonight", "term": "book table orlando" },
+          "framework_note": "BAB — booking/most-aware"
+        }
+      ]
+    }
+  ],
+  "measurement": {
+    "pixel_id": null,
+    "events": [
+      { "event": "page_viewed", "data_type": "contents", "browser_pixel": true, "capi": false, "value_minor_units": null, "currency": "USD" },
+      { "event": "appointment_scheduled", "data_type": "customer_action", "browser_pixel": true, "capi": true, "value_minor_units": null, "currency": "USD" }
+    ],
+    "dedup": { "event_id_strategy": "Use reservation confirmation id as event_id on both pixel and CAPI." }
+  },
+  "landing_fixes": [
+    "Add 'Reserve a table' CTA above the fold.",
+    "Install OpenAI pixel in <head>; fire appointment_scheduled on reservation confirmation.",
+    "Ensure the page does not block OpenAI user agents."
+  ],
+  "launch_checklist": [
+    { "item": "Client owns the Ads Manager account and invited ImpulsoX", "done": false },
+    { "item": "Advertiser name + favicon set", "done": false },
+    { "item": "Pixel installed and tested (debug:true)", "done": false },
+    { "item": "Ads submitted for review", "done": false }
+  ],
+  "optimization": {
+    "thresholds": { "pause_ctr_below": 0.4, "after_clicks": 200, "scale_cpa_below": 15 },
+    "day_1": ["Confirm serving, clicks, UTMs firing, reservation event received."],
+    "day_2_3": ["Pause rejected/broken ads. Ignore ads with < 100 clicks."],
+    "day_4_7": ["Compare ad groups by reservations, not CTR. Clone any ad with reservations."],
+    "day_8_14": ["Shift budget to lowest cost per reservation. Add 2-3 fresh variations."]
+  },
+  "client_brief": {
+    "what_we_measure": "We track online reservations as the primary conversion, plus clicks and landing-page views.",
+    "expectations": "ChatGPT Ads is a new channel without stable benchmarks. A local restaurant is a medium fit; the main goal of this first run is to learn the channel and produce real data.",
+    "disclaimers": "No results are guaranteed. This is an early, experimental ad channel; spend is the client's and performance can vary."
+  }
+}

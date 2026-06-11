@@ -19,6 +19,12 @@ Autoria: ImpulsoX AI. Conteúdo original.
 ## O que ler antes
 
 - `nucleo/voz.md` e `nucleo/negocio.md`
+- `docs/persuasao.md` — gatilhos e storytelling; no LinkedIn os que mais rendem são
+  **autoridade demonstrada** (ensinar o que só quem faz sabe), **prova social
+  específica** (caso com número) e **reciprocidade** (entregar valor completo, não
+  teaser). Escassez quase nunca cabe — o público de lá fareja pressão de venda
+- `docs/formulas.md` — moldes testados; quando um serve ao tema, usar como esqueleto
+  (priorizando os **validados aqui**) e registrar o nome da fórmula no arquivo da peça
 - `producao/calendario/<mes>.md` — tema e intenção, se veio do calendário
 - Perguntar uma vez e registrar em `nucleo/voz.md`: o post sai no **perfil pessoal**
   (do dono/sócio) ou na **página da empresa**? Perfil pessoal alcança mais; página
@@ -36,11 +42,20 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 **Linhas 1-2 — o corte.** Só elas aparecem antes do "ver mais". Têm que criar a pergunta
 na cabeça do leitor sem caça-clique. Afirmação contraintuitiva, número concreto ou cena
-real funcionam; "Você sabia que..." não.
+real funcionam; "Você sabia que..." não. O corte abre um loop — e a lei da lacuna
+honesta do playbook vale dobrado aqui: prometer "o erro que custou R$ 40 mil" e entregar
+obviedade queima o autor com o público mais cético das redes.
 
 **Corpo — uma ideia, com lastro.** Parágrafos de 1-3 linhas com respiro entre eles
 (leitura mobile). Argumento → exemplo concreto vivido → consequência prática. O leitor
 tem que sair com algo que consegue aplicar ou repetir na reunião de segunda.
+
+**Quando o tema permite, contar como história.** O formato que mais segura leitura no
+LinkedIn é a cena vivida na espinha do playbook: cena concreta (reunião, ligação, erro)
+→ tensão → a virada (o "mas") → lição aplicável. Primeira pessoa, detalhe que só quem
+viveu teria. O leitor é o herói em potencial; o autor é quem já passou por ali — nunca
+o gênio que acerta sempre. História de sucesso sem tropeço no meio não convence ninguém
+nessa rede.
 
 **Fecho — abre conversa.** Pergunta genuína que um par responderia, ou posição firme que
 convida discordância civilizada. Nunca "concorda? 👇".
@@ -79,6 +94,8 @@ empresa pode ser automatizada via `/publicar` quando configurada.
 - Nunca prometer alcance ("isso vai bombar").
 - Nunca inventar caso, cliente ou número. História precisa ter acontecido; dado precisa
   ter fonte.
+- Regras inegociáveis do `docs/persuasao.md` valem inteiras: máximo 2 gatilhos por
+  post, todo loop aberto no corte fecha no corpo.
 - Sem tagging de gente aleatória pra forçar alcance; sem pod de engajamento.
 - Um post por ideia. Sobrou ideia boa → vira a próxima linha do calendário.
 - Atualizar o Status no calendário quando aprovado.

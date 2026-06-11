@@ -71,6 +71,12 @@ Clichês e tiques que denunciam texto de IA em PT-BR. Caçar e cortar:
 - A voz é reconhecível como a da marca (bate com `nucleo/voz.md`).
 - Toda afirmação concreta é verdadeira — humanizar **nunca** inventa fato, número ou
   depoimento. Dado que não existe vira instrução de substituição, não invenção.
+- **O gancho entrega o que promete.** Se a primeira linha abre uma pergunta, o texto
+  fecha ela na intensidade prometida (lei da lacuna honesta do `docs/persuasao.md`).
+  Gancho inflado demais pro conteúdo → baixar o gancho, não inflar o texto.
+- A reescrita **preserva os gatilhos da peça**: humanizar não pode diluir a
+  especificidade (número exato, nome, prazo) nem desmontar a estrutura de história
+  (tensão → "mas" → desfecho) que a skill de origem construiu.
 
 ## Uso embutido
 

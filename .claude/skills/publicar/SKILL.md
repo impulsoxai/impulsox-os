@@ -58,7 +58,9 @@ existir. Não travar o resto: o que não tem credencial sai em modo assistido.
 2. **Conferir aprovação.** Status aprovado no calendário ou confirmação na conversa.
    Em dúvida, perguntar — publicar errado custa caro.
 3. **Pré-voo.** Imagens no tamanho certo (1080x1350), legenda final pós-`/escritor-br`,
-   link funcionando, alt text disponível.
+   link funcionando, alt text disponível. Peça de intenção "vender": passou pelo
+   `/revisar` (crivo do revisor sênior)? Se não, rodar antes — pra anúncio pago é
+   obrigatório, pra orgânico de venda é o padrão.
 4. **Publicar por destino:**
    - **Instagram carrossel:** subir cada imagem como container filho → criar container
      `CAROUSEL` com a legenda → publicar. Imagem única e reel seguem o fluxo equivalente

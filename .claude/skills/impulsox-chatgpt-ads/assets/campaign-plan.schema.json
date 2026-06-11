@@ -1,0 +1,218 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://impulsox.ai/schemas/campaign-plan.schema.json",
+  "title": "ImpulsoX ChatGPT Ads Campaign Plan",
+  "description": "Canonical campaign object. Single source of truth. Renders to PDF, bulk-upload CSV, and client-brief.",
+  "type": "object",
+  "required": ["meta", "verdict", "offer", "campaign", "ad_groups", "measurement", "optimization", "client_brief"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["client", "advertiser_country", "delivery_language", "currency", "generated_at", "platform_facts_verified_at", "skill_version", "schema_version", "fact_sheet_ref", "facts_verified_at"],
+      "additionalProperties": false,
+      "properties": {
+        "client": { "type": "string", "minLength": 1 },
+        "advertiser_country": { "enum": ["US", "CA", "AU", "NZ", "GB", "BR", "MX", "JP", "KR"] },
+        "delivery_language": { "enum": ["en", "pt-br"] },
+        "currency": { "type": "string", "minLength": 3, "maxLength": 3 },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "platform_facts_verified_at": { "type": "string", "format": "date-time" },
+        "skill_version": { "type": "string" },
+        "schema_version": { "type": "string", "minLength": 1 },
+        "fact_sheet_ref": { "type": "string", "minLength": 1 },
+        "facts_verified_at": { "type": "string" }
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "required": ["decision", "score", "criteria", "eligibility"],
+      "additionalProperties": false,
+      "properties": {
+        "decision": { "enum": ["launch", "fix_first", "narrow", "do_not_launch", "prepare_pilot"] },
+        "score": { "type": "integer", "minimum": 0, "maximum": 18 },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "points", "max"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "points": { "type": "integer", "minimum": 0 },
+              "max": { "type": "integer", "minimum": 1 },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "blockers": { "type": "array", "items": { "type": "string" } },
+        "eligibility": {
+          "type": "object",
+          "required": ["advertiser_country_ok", "category", "category_allowed", "landing_page_ready"],
+          "additionalProperties": false,
+          "properties": {
+            "advertiser_country_ok": { "type": "boolean" },
+            "pilot_announced": { "type": "boolean" },
+            "category": { "enum": ["local_services", "consumer_goods", "travel_experiences", "digital_products_education", "other"] },
+            "category_allowed": { "type": "boolean" },
+            "landing_page_ready": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "offer": {
+      "type": "object",
+      "required": ["name", "landing_page", "buyer", "problem"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "landing_page": { "type": "string", "format": "uri" },
+        "price": { "type": "string" },
+        "buyer": { "type": "string", "minLength": 1 },
+        "problem": { "type": "string", "minLength": 1 },
+        "proof": { "type": "array", "items": { "type": "string" } },
+        "constraints": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "campaign": {
+      "type": "object",
+      "required": ["name", "objective", "budget_daily", "geo"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "objective": { "enum": ["clicks", "reach"] },
+        "budget_daily": { "type": "number", "exclusiveMinimum": 0 },
+        "geo": {
+          "type": "object",
+          "required": ["countries"],
+          "additionalProperties": false,
+          "properties": {
+            "countries": { "type": "array", "items": { "enum": ["US", "CA", "AU", "NZ", "GB", "BR", "MX", "JP", "KR"] }, "minItems": 1 },
+            "regions": { "type": "array", "items": { "type": "string" } },
+            "dmas": { "type": "array", "items": { "type": "string" } },
+            "zips": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "ad_groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "user_state", "moment", "offer_angle", "context_hints", "landing_page", "ads"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "user_state": { "enum": ["exploring", "comparing", "planning", "fixing", "buying", "booking"] },
+          "moment": { "type": "string", "minLength": 1 },
+          "offer_angle": { "type": "string", "minLength": 1 },
+          "context_hints": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 8, "maxItems": 15 },
+          "exclusions": { "type": "array", "items": { "type": "string" } },
+          "landing_page": { "type": "string", "format": "uri" },
+          "ads": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["angle", "title", "copy", "final_url", "utms", "framework_note"],
+              "additionalProperties": false,
+              "properties": {
+                "angle": { "enum": ["pain", "use_case", "comparison", "outcome", "speed", "proof", "cost", "risk_reduction"] },
+                "title": { "type": "string", "minLength": 1, "maxLength": 50 },
+                "copy": { "type": "string", "minLength": 1, "maxLength": 100 },
+                "image_direction": { "type": "string" },
+                "final_url": { "type": "string", "format": "uri" },
+                "utms": {
+                  "type": "object",
+                  "required": ["source", "medium", "campaign"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "source": { "const": "chatgpt" },
+                    "medium": { "const": "paid" },
+                    "campaign": { "type": "string" },
+                    "content": { "type": "string" },
+                    "term": { "type": "string" }
+                  }
+                },
+                "framework_note": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "required": ["events", "dedup"],
+      "additionalProperties": false,
+      "properties": {
+        "pixel_id": { "type": ["string", "null"] },
+        "events": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["event", "data_type", "browser_pixel", "capi"],
+            "additionalProperties": false,
+            "properties": {
+              "event": { "type": "string" },
+              "data_type": { "enum": ["contents", "customer_action", "plan_enrollment", "custom"] },
+              "browser_pixel": { "type": "boolean" },
+              "capi": { "type": "boolean" },
+              "value_minor_units": { "type": ["integer", "null"] },
+              "currency": { "type": "string" }
+            }
+          }
+        },
+        "dedup": {
+          "type": "object",
+          "required": ["event_id_strategy"],
+          "additionalProperties": false,
+          "properties": { "event_id_strategy": { "type": "string" } }
+        }
+      }
+    },
+    "landing_fixes": { "type": "array", "items": { "type": "string" } },
+    "launch_checklist": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["item", "done"],
+        "additionalProperties": false,
+        "properties": { "item": { "type": "string" }, "done": { "type": "boolean" } }
+      }
+    },
+    "optimization": {
+      "type": "object",
+      "required": ["thresholds", "day_1", "day_2_3", "day_4_7", "day_8_14"],
+      "additionalProperties": false,
+      "properties": {
+        "thresholds": {
+          "type": "object",
+          "required": ["pause_ctr_below", "after_clicks", "scale_cpa_below"],
+          "additionalProperties": false,
+          "properties": {
+            "pause_ctr_below": { "type": "number", "minimum": 0 },
+            "after_clicks": { "type": "integer", "minimum": 0 },
+            "scale_cpa_below": { "type": "number", "minimum": 0 }
+          }
+        },
+        "day_1": { "type": "array", "items": { "type": "string" } },
+        "day_2_3": { "type": "array", "items": { "type": "string" } },
+        "day_4_7": { "type": "array", "items": { "type": "string" } },
+        "day_8_14": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "client_brief": {
+      "type": "object",
+      "required": ["what_we_measure", "expectations", "disclaimers"],
+      "additionalProperties": false,
+      "properties": {
+        "what_we_measure": { "type": "string", "minLength": 1 },
+        "expectations": { "type": "string", "minLength": 1 },
+        "disclaimers": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

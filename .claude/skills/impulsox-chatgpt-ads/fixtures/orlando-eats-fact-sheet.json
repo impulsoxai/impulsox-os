@@ -1,0 +1,50 @@
+{
+  "domain": "example.com",
+  "scraped_at": "2026-05-30T12:00:00Z",
+  "business_name": "Orlando Eats — family Italian near the parks",
+  "prices": [
+    {
+      "item": "entrees",
+      "amount_minor": 1400,
+      "currency": "USD",
+      "covers": "individual entree, price range start — pasta and similar dishes"
+    },
+    {
+      "item": "entrees (max)",
+      "amount_minor": 2900,
+      "currency": "USD",
+      "covers": "individual entree, price range end — premium dishes"
+    }
+  ],
+  "menu_items": [
+    "Family-style pasta",
+    "Pizza",
+    "Salads",
+    "Kids menu"
+  ],
+  "hours": [
+    { "day": "Monday", "open": "11:00 AM", "close": "9:00 PM" },
+    { "day": "Tuesday", "open": "11:00 AM", "close": "9:00 PM" },
+    { "day": "Wednesday", "open": "11:00 AM", "close": "9:00 PM" },
+    { "day": "Thursday", "open": "11:00 AM", "close": "9:00 PM" },
+    { "day": "Friday", "open": "11:00 AM", "close": "10:00 PM" },
+    { "day": "Saturday", "open": "11:00 AM", "close": "10:00 PM" },
+    { "day": "Sunday", "open": "11:00 AM", "close": "9:00 PM" }
+  ],
+  "rating": {
+    "value": 4.6,
+    "source": "Google Reviews"
+  },
+  "review_count": {
+    "value": 1200,
+    "source": "Google Reviews (1,200+ reviews)"
+  },
+  "address": "5 min from Disney Springs, Orlando, FL",
+  "reservation_method": "Online reservations (example.com/reserve)",
+  "site_claims": [
+    "Family-friendly Italian dining minutes from the parks",
+    "4.6 Google rating, 1,200+ reviews",
+    "5 min from Disney Springs"
+  ],
+  "extraction_complete": true
+}

@@ -19,6 +19,7 @@ Autoria: ImpulsoX AI. Conteúdo original.
 ## O que ler antes
 
 - `nucleo/negocio.md`, `nucleo/foco.md`, `marca/design-guide.md`
+- `nucleo/provas.md` — o criativo de prova só usa material com status autorizada
 - `producao/ads/analise-*.md` — se existe análise, partir das sugestões dela
 - `producao/posts/` — criativos orgânicos que performaram são candidatos a anúncio
 
@@ -51,9 +52,23 @@ Acionar o **`/post`** para cada peça estática/carrossel, com a diretriz de an�
 gancho mais direto que o orgânico, oferta explícita, uma chamada só. Textos (primário
 125 chars visíveis, título 40, descrição 30) passam pelo **`/escritor-br`**.
 
+**Persuasão por criativo** (ver `docs/persuasao.md`): cada criativo do conjunto carrega
+**um ângulo de gatilho diferente** — é isso que "variação real" significa:
+- um de **prova/transformação** (caso real, antes/depois com material verdadeiro)
+- um de **aversão à perda** (o custo de continuar como está, nomeado sem terrorismo)
+- um de **curiosidade** (loop aberto no gancho que o próprio criativo fecha)
+- a oferta com **escassez só quando real** (turma com data, agenda com limite)
+
+Texto primário em PAS quando é anúncio frio: a dor como o público descreve →
+o custo de conviver com ela → a saída com chamada única. As 125 chars visíveis têm que
+segurar sozinhas — o "ver mais" é o corte. Remarketing inverte: já conhecem a marca,
+abrir direto na oferta com prova.
+
 Regras de criativo que evitam reprovação e fadiga:
 - Sem promessa de resultado garantido, sem "você" acusatório em tema sensível (políticas
   da Meta), sem antes/depois enganoso
+- Escassez inventada além de antiética é risco de conta: a Meta pune urgência falsa
+  como prática enganosa
 - Variação real entre criativos (ângulos diferentes, não a mesma arte em 4 cores)
 
 ## Passo 4 — Plano de configuração

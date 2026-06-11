@@ -1,0 +1,437 @@
+/* =====================================================
+   ImpulsoX AI — ChatGPT Ads Campaign Packet
+   Dark Premium Theme · v2.0
+   Mirrors the KnowledgeX Data Audit Report identity.
+   ===================================================== */
+
+:root {
+  --cor-primaria:    #06060d;
+  --cor-secundaria:  #0e0f14;
+  --cor-fundo-alt:   #13141a;
+  --cor-destaque:    #7c3aed;
+  --cor-acento:      #d4af37;
+  --cor-acento2:     #e94560;
+  --cor-texto:       #f0f0f0;
+  --cor-texto-suave: #8888aa;
+  --cor-borda:       #1e1e2e;
+  --cor-borda-gold:  rgba(212, 175, 55, 0.25);
+  --cor-ok:          #10b981;
+  --cor-aviso:       #d4af37;
+  --cor-erro:        #e94560;
+
+  --fonte-titulo: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+  --fonte-serif:  'Georgia', 'Times New Roman', serif;
+  --fonte-corpo:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --fonte-mono:   'Courier New', Consolas, monospace;
+}
+
+/* =====================================================
+   RESET + IMPRESSÃO
+   ===================================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  font-size: 10.5px;
+  color: var(--cor-texto);
+  background: var(--cor-primaria);
+  line-height: 1.65;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* =====================================================
+   WRAPPER — padding interno, grid de fundo, cantos
+   ===================================================== */
+.packet-body {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 52px 60px 44px;
+  background: var(--cor-secundaria);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid dourado sutil */
+.packet-body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(212,175,55,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212,175,55,0.04) 1px, transparent 1px);
+  background-size: 70px 70px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Cantos dourados — top-left e top-right */
+.packet-body::after {
+  content: '';
+  position: fixed;
+  top: 28px; left: 28px;
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--cor-acento);
+  border-right: none; border-bottom: none;
+  opacity: 0.65;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Fallback: quando o markdown é renderizado direto no body sem wrapper */
+body {
+  padding: 52px 60px 44px;
+  position: relative;
+}
+
+/* =====================================================
+   CAPA — H1 com faixa de cobertura
+   ===================================================== */
+h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--cor-texto);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 -60px 0;
+  padding: 56px 60px 44px;
+  background: var(--cor-primaria);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bloom roxo na capa */
+h1::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(124,58,237,0.20), transparent 60%);
+  pointer-events: none;
+}
+
+/* Linha dourada abaixo do h1 */
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 60px;
+  width: 80px; height: 2px;
+  background: var(--cor-acento);
+}
+
+/* Eyebrow acima do título — via data-label no markdown não funciona,
+   mas o blockquote logo abaixo do h1 vira a nota de metadados */
+
+/* Destaque dourado itálico dentro do h1 — usar <em> no markdown */
+h1 em {
+  font-family: var(--fonte-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cor-acento);
+}
+
+/* =====================================================
+   BLOCKQUOTE — nota de metadados (logo após h1)
+   ===================================================== */
+blockquote {
+  background: rgba(212, 175, 55, 0.04);
+  border: 1px solid var(--cor-borda-gold);
+  border-left: 3px solid var(--cor-acento);
+  padding: 14px 18px;
+  margin: 28px 0 36px;
+  color: var(--cor-texto-suave);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+}
+
+blockquote p { margin: 0; }
+blockquote strong { color: var(--cor-acento); font-weight: 700; }
+
+/* =====================================================
+   H2 — SEÇÕES NUMERADAS
+   ===================================================== */
+h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--cor-texto);
+  letter-spacing: -0.01em;
+  margin: 44px 0 16px;
+  padding-bottom: 14px;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+/* Linha completa abaixo */
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, var(--cor-acento), var(--cor-borda) 30%, transparent);
+}
+
+/* Número de seção — extraído do markdown como "1." etc.
+   Cor roxa automática para o primeiro token */
+h2 em {
+  font-family: var(--fonte-corpo);
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cor-acento);
+  padding: 3px 8px;
+  border: 1px solid var(--cor-borda-gold);
+  background: rgba(212,175,55,0.06);
+  margin-right: 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* =====================================================
+   H3 — SUB-SEÇÕES
+   ===================================================== */
+h3 {
+  font-family: var(--fonte-corpo);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+  margin: 24px 0 10px;
+  padding-left: 12px;
+  border-left: 2px solid var(--cor-acento);
+}
+
+/* =====================================================
+   PARÁGRAFOS
+   ===================================================== */
+p {
+  font-size: 11px;
+  color: var(--cor-texto);
+  line-height: 1.7;
+  margin: 8px 0;
+}
+
+/* =====================================================
+   LISTAS
+   ===================================================== */
+ul, ol {
+  margin: 10px 0 10px 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+li {
+  font-size: 11px;
+  color: var(--cor-texto);
+  line-height: 1.6;
+  padding: 7px 12px 7px 28px;
+  background: var(--cor-fundo-alt);
+  border: 1px solid var(--cor-borda);
+  position: relative;
+}
+
+/* Bullet dourado */
+li::before {
+  content: '·';
+  position: absolute;
+  left: 12px;
+  color: var(--cor-acento);
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+ol { counter-reset: item; }
+ol li { padding-left: 36px; }
+ol li::before {
+  counter-increment: item;
+  content: counter(item);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  background: var(--cor-primaria);
+  color: var(--cor-acento);
+  font-family: var(--fonte-titulo);
+  font-size: 10px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--cor-borda);
+}
+
+/* Checkboxes do Launch Checklist */
+li input[type="checkbox"] { accent-color: var(--cor-destaque); margin-right: 6px; }
+
+/* =====================================================
+   TABELAS
+   ===================================================== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 14px 0 24px;
+  border: 1px solid var(--cor-borda);
+  font-size: 9.5px;
+}
+
+thead {
+  background: var(--cor-primaria);
+  border-bottom: 1px solid var(--cor-borda-gold);
+}
+
+th {
+  padding: 11px 12px;
+  text-align: left;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cor-acento);
+  vertical-align: middle;
+}
+
+td {
+  padding: 9px 12px;
+  color: var(--cor-texto);
+  vertical-align: top;
+  border-bottom: 1px solid var(--cor-borda);
+  line-height: 1.55;
+}
+
+tr:last-child td { border-bottom: none; }
+
+tbody tr:nth-child(odd)  td { background: var(--cor-secundaria); }
+tbody tr:nth-child(even) td { background: var(--cor-fundo-alt); }
+
+/* Coluna de código/nome de arquivo */
+td code {
+  font-family: var(--fonte-mono);
+  font-size: 9px;
+  color: var(--cor-acento);
+  background: var(--cor-primaria);
+  padding: 2px 5px;
+  border: 1px solid var(--cor-borda);
+}
+
+/* =====================================================
+   CÓDIGO INLINE E BLOCOS
+   ===================================================== */
+code {
+  font-family: var(--fonte-mono);
+  font-size: 9px;
+  color: var(--cor-acento);
+  background: var(--cor-primaria);
+  padding: 2px 5px;
+  border: 1px solid var(--cor-borda);
+}
+
+pre {
+  background: var(--cor-primaria);
+  border: 1px solid var(--cor-borda);
+  border-left: 2px solid var(--cor-destaque);
+  padding: 14px 16px;
+  margin: 12px 0;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--cor-texto-suave);
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+/* =====================================================
+   HR — SEPARADOR
+   ===================================================== */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, var(--cor-acento), transparent);
+  opacity: 0.4;
+  margin: 24px 0;
+}
+
+/* =====================================================
+   LINKS
+   ===================================================== */
+a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+}
+
+/* =====================================================
+   STRONG / EM inline
+   ===================================================== */
+strong { color: var(--cor-texto); font-weight: 700; }
+
+p em, li em, td em {
+  font-family: var(--fonte-serif);
+  font-style: italic;
+  color: var(--cor-acento);
+}
+
+/* =====================================================
+   RODAPÉ — via último parágrafo ou ::after no body
+   ===================================================== */
+body::after {
+  content: 'ImpulsoX AI  ·  impulsoxai.com.br  ·  CONFIDENCIAL';
+  display: block;
+  margin-top: 44px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 8.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+  text-align: center;
+}
+
+/* =====================================================
+   QUEBRAS DE PÁGINA
+   ===================================================== */
+@media print {
+  h2 { page-break-before: always; }
+  h2:first-of-type { page-break-before: avoid; }
+  table { page-break-inside: avoid; }
+  li { page-break-inside: avoid; }
+}
+
+/* =====================================================
+   CLASSES UTILITÁRIAS (usáveis no markdown via HTML inline)
+   ===================================================== */
+
+/* Badge de veredito */
+.verdict-launch    { color: var(--cor-ok);      border: 1px solid var(--cor-ok);      padding: 2px 10px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; background: rgba(16,185,129,0.1); }
+.verdict-fix-first { color: var(--cor-aviso);   border: 1px solid var(--cor-aviso);   padding: 2px 10px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; background: rgba(212,175,55,0.1); }
+.verdict-narrow    { color: var(--cor-destaque); border: 1px solid var(--cor-destaque);padding: 2px 10px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; background: rgba(124,58,237,0.1); }
+.verdict-dnl       { color: var(--cor-erro);    border: 1px solid var(--cor-erro);    padding: 2px 10px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; background: rgba(233,69,96,0.1); }
+
+/* Score bar */
+.score-num {
+  font-family: var(--fonte-titulo);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--cor-destaque);
+  letter-spacing: -0.02em;
+}

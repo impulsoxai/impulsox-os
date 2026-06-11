@@ -97,6 +97,14 @@ Salvar em `producao/ads/analise-<YYYY-MM-DD>.md`:
 Explicar em linguagem de dono de negócio, não de gestor de tráfego. Cada recomendação
 com o número que a sustenta.
 
+## Passo 6 — Gravar o que fica
+
+Padrão consolidado (não número cru) vai pra seção **Tráfego pago** de
+`nucleo/aprendizados.md`, com data e evidência em uma linha — é o que `/ads-google`,
+`/ads-meta` e `/calendario` leem antes de propor o próximo ciclo. Primeira vez que
+exports reais entram no sistema → atualizar `nucleo/escada.md` (degrau 4 no eixo de
+dados de campanha).
+
 ## Regras
 
 - Nunca recomendar pausa com dado insuficiente — dinheiro já gasto não volta, decisão

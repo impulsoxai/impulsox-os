@@ -27,6 +27,9 @@ Com degrau 3+ (entrevista feita), o plano sai calibrado de verdade.
 - `nucleo/negocio.md` — o que vende, pra quem, diferencial
 - `nucleo/foco.md` — prioridade do mês, sazonalidade, datas
 - `nucleo/voz.md` — tom (afeta o tipo de pauta que cabe)
+- `nucleo/aprendizados.md` — o que a medição já provou que funciona pra este negócio;
+  quando há aprendizado consolidado, ele **pesa mais que o padrão genérico** desta skill
+  (ex: se "ensinar" salva 3x mais aqui, a proporção de intenções se ajusta a isso)
 - `producao/` — o que já foi publicado (não repetir tema recente)
 
 ## Como montar o plano
@@ -46,6 +49,11 @@ Distribuir as peças do mês entre quatro intenções, nesta proporção como pa
 - **Posicionar (20%)** — opinião e ponto de vista da marca; o que ela defende e critica
 - **Vender (15%)** — oferta direta com chamada clara
 Se o foco do mês é lançamento/data forte, subir Vender pra ~25% naquela janela.
+
+Quando possível, dar ao mês um **fio condutor**: uma pergunta grande do nicho que as
+peças respondem em pedaços (loop de série — ver `docs/persuasao.md`). Quem acompanha
+volta pra próxima peça; o mapa intenção → gatilhos do playbook orienta a produção de
+cada uma.
 
 ### 3. Formato por rede
 - **Instagram:** carrossel é o formato orgânico mais forte (maior engajamento mediano em
@@ -98,5 +106,6 @@ o que ele apontar e salvar.
   "dicas de [área]" não.
 - Não repetir tema dos últimos 60 dias (conferir `producao/`).
 - Sem promessa de resultado ("vai viralizar") — o plano organiza, não garante.
-- Plano é vivo: replanejar no fim do mês com o que os números mostrarem (quando houver
-  dados, a skill de análise alimenta o próximo ciclo).
+- Plano é vivo: no fim do mês, rodar `/desempenho` antes do próximo `/calendario` — os
+  aprendizados que ela grava em `nucleo/aprendizados.md` calibram o ciclo seguinte. Se o
+  mês fechou sem medição, sugerir a medição antes de planejar de novo.

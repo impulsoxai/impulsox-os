@@ -44,6 +44,12 @@ Padrão para serviço local / PME (ajustar ao caso):
 - **Anúncios:** 2 por grupo, responsivos — 10+ títulos (30 chars) e 4 descrições
   (90 chars) por anúncio, todos colados na intenção do grupo. Texto passa pelo
   `/escritor-br` — anúncio com cara de IA não clica.
+- **Gatilhos nos títulos** (ver `docs/persuasao.md`): em 30 caracteres ganha quem é
+  específico — número real ("desde 2011", "atendemos em 24h", "nota 4,9 ★"), prova
+  social conferível e urgência **só quando verdadeira** (promoção com data real).
+  Distribuir os títulos do responsivo entre 3 ângulos: especificidade/prova,
+  benefício direto e chamada de ação — o leilão testa as combinações sozinho. PAS
+  cabe nas descrições: a dor na primeira, a saída na segunda.
 - **Extensões:** sitelinks, frase de destaque, chamada (telefone) e local quando houver.
 
 ## Passo 3 — Gerar o arquivo de importação

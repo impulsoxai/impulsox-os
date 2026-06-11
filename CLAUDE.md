@@ -1,7 +1,7 @@
 # ImpulsoX-OS — Sistema Operacional de Marketing IA-Ready
 
-> O marketing da empresa roda em cima deste arquivo.
-> Aqui ficam as regras de como o sistema lê o contexto, decide, produz e aprende.
+> Este arquivo é a constituição do sistema: define como ele lê contexto,
+> decide, produz, mede e aprende. Tudo que sai daqui obedece ao que está aqui.
 > Produto da ImpulsoX AI · impulsoxai.com.br
 
 ---
@@ -14,7 +14,9 @@ mantém a identidade da marca e produz marketing real — conteúdo, anúncios, 
 sempre dentro do que a empresa é e do que ela precisa agora.
 
 A tese: marketing deixa de ser tarefa solta e vira processo de circuito fechado.
-Decide → produz → publica → mede → corrige. O sistema não substitui o dono do negócio;
+Decide (`/calendario`) → produz (`/post`, `/linkedin`, `/conteudo`) → publica
+(`/publicar`) → mede (`/desempenho`, `/analisar-ads`) → corrige (aprendizados
+realimentam o próximo `/calendario`). O sistema não substitui o dono do negócio;
 vira parte da operação dele.
 
 ---
@@ -46,16 +48,23 @@ e sabe na hora o que pode afirmar e o que precisa validar.
 
 ## O cérebro — pasta `nucleo/`
 
-Antes de qualquer resposta ou decisão, ler os arquivos do núcleo que já estiverem
-preenchidos:
+O núcleo é a primeira leitura de qualquer trabalho — nenhuma decisão sai sem passar
+por aqui. Arquivos (ler os que estiverem preenchidos):
 
 - `nucleo/negocio.md` — quem é a empresa, o que entrega, quem paga, diferenciais
 - `nucleo/voz.md` — tom, estilo de escrita, palavras e clichês a evitar
 - `nucleo/foco.md` — prioridade atual, metas, prazos, sazonalidade
 - `nucleo/escada.md` — degrau de contexto atual e o que ainda falta confirmar
+- `nucleo/aprendizados.md` — o que a medição real já provou que funciona neste negócio;
+  aprendizado consolidado pesa mais que qualquer padrão genérico de skill
+- `nucleo/provas.md` — banco de provas sociais (depoimentos, casos, números) com status
+  de autorização; peça pública só usa prova autorizada
 
-Usar isso como base de tudo, sem anunciar a leitura. Para qualquer peça visual
-(post, anúncio, página), ler também `marca/design-guide.md`.
+O contexto entra no trabalho em silêncio — o usuário vê o resultado calibrado, não o
+relatório de leitura. Para qualquer peça visual (post, anúncio, página), ler também
+`marca/design-guide.md`. Para qualquer peça que precisa convencer (post, anúncio,
+página, e-mail), ler `docs/persuasao.md` — gatilhos, storytelling e as regras
+inegociáveis de persuasão honesta.
 
 Quanto melhor o núcleo, melhor a entrega. Núcleo vazio não impede o sistema de
 trabalhar — só o faz operar em degrau mais baixo, com mais suposições marcadas.
@@ -73,9 +82,11 @@ se existe, ela extrai e documenta.
 
 ## Como o sistema decide o que fazer
 
-Antes de executar qualquer pedido, verificar se existe uma skill em `.claude/skills/`
-que cobre a tarefa. Se existe, seguir a skill. Se não existe mas a tarefa parece
-repetível, oferecer transformá-la em skill ao terminar — nunca para tarefas pontuais.
+Todo pedido passa por um roteamento em três níveis: primeiro as automações da casa
+(`.claude/skills/` — se uma cobre a tarefa, ela manda), depois o catálogo de skills
+nativas do Claude Code (`docs/skills-prontas.md`), e só então execução direta. Tarefa
+executada direto que tem cara de rotina (vai se repetir) → oferecer a `/automatizar`
+ao fechar; tarefa pontual termina em si mesma, sem cerimônia.
 
 Ordem quando o pedido é amplo ("cuida do meu Instagram este mês"): primeiro a skill de
 estratégia/calendário decide **o quê** e **quando**, depois as skills de produção
@@ -85,18 +96,19 @@ executam cada peça.
 
 ## Aprender com o uso
 
-Quando o usuário corrigir algo de forma que vale pra sempre ("na verdade é assim",
-"nunca faça X", "prefiro assim", "sempre que..."), oferecer salvar no lugar certo:
+Correção do usuário é insumo, não só ajuste da peça da vez. O teste: essa informação
+muda como o sistema trabalha daqui pra frente? Se sim, ela merece morar num arquivo —
+e o destino segue o assunto:
 
-- Sobre o negócio → `nucleo/negocio.md`
-- Sobre tom e estilo → `nucleo/voz.md`
-- Sobre prioridade → `nucleo/foco.md`
-- Sobre comportamento do sistema nesta pasta → este `CLAUDE.md`
-- Sobre visual → `marca/design-guide.md`
+- fato sobre a empresa, oferta ou cliente → `nucleo/negocio.md`
+- jeito de falar, palavra banida, estilo → `nucleo/voz.md`
+- prioridade, meta ou prazo novo → `nucleo/foco.md`
+- regra de comportamento do próprio sistema → este `CLAUDE.md`
+- decisão visual → `marca/design-guide.md`
 
-Salvar com uma linha nova clara, mostrando o que foi adicionado. Sem reformatar o
-arquivo inteiro. Não perguntar quando a correção é óbvia do contexto imediato — só
-quando a informação tem valor duradouro.
+A gravação é cirúrgica: acrescenta-se a linha nova e mostra-se ao usuário o que entrou
+— o resto do arquivo permanece intocado. Correção que só vale pra peça em edição se
+aplica e morre ali; oferecer registro apenas quando o aprendizado sobrevive à sessão.
 
 ---
 

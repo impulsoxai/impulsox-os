@@ -1,0 +1,84 @@
+{
+  "_nota": "Fixture FICTÍCIA para testes — negócio, domínio e cardápio inventados. Estrutura e valores de teste preservam os casos do validador (preço com escopo, rating, reviews).",
+  "domain": "restaurantexemplo.com",
+  "scraped_at": "2026-05-31T00:00:00Z",
+  "business_name": "Sabor da Casa Brazilian Restaurant",
+  "prices": [
+    {
+      "item": "feijoada buffet",
+      "amount_minor": 2790,
+      "currency": "USD",
+      "covers": "weekend feijoada buffet, per person — does NOT include churrasco, a la carte items, or any other dish. Weekends only (Saturday and Sunday)."
+    },
+    {
+      "item": "picanha na chapa",
+      "amount_minor": 7900,
+      "currency": "USD",
+      "covers": "500g cut of picanha (churrasco), shareable, serves 2 people — does NOT include feijoada"
+    },
+    {
+      "item": "moqueca de peixe (individual)",
+      "amount_minor": 2900,
+      "currency": "USD",
+      "covers": "individual main dish, 1 person — fish stew with rice and farofa"
+    },
+    {
+      "item": "trio da casa (appetizer)",
+      "amount_minor": 4200,
+      "currency": "USD",
+      "covers": "appetizer sampler for sharing — beef bites, fried yuca, and cheese bread"
+    },
+    {
+      "item": "estrogonofe de frango",
+      "amount_minor": 2500,
+      "currency": "USD",
+      "covers": "individual dish — chicken stroganoff, served with rice"
+    },
+    {
+      "item": "caipirinha da casa",
+      "amount_minor": 900,
+      "currency": "USD",
+      "covers": "single house cocktail"
+    },
+    {
+      "item": "pudim de leite (dessert)",
+      "amount_minor": 1400,
+      "currency": "USD",
+      "covers": "individual dessert — Brazilian condensed milk flan"
+    }
+  ],
+  "menu_items": [
+    "Feijoada buffet (weekends)",
+    "Picanha na Chapa",
+    "Moqueca de Peixe",
+    "Trio da Casa",
+    "Estrogonofe de Frango",
+    "Salada da Casa",
+    "Pudim de Leite"
+  ],
+  "hours": [
+    { "day": "Monday", "open": "12:00 PM", "close": "12:00 AM" },
+    { "day": "Tuesday", "open": "12:00 PM", "close": "12:00 AM" },
+    { "day": "Wednesday", "open": "12:00 PM", "close": "12:00 AM" },
+    { "day": "Thursday", "open": "12:00 PM", "close": "12:00 AM" },
+    { "day": "Friday", "open": "12:00 PM", "close": "12:00 AM" },
+    { "day": "Saturday", "open": "12:00 PM", "close": "12:00 AM" },
+    { "day": "Sunday", "open": "12:00 PM", "close": "12:00 AM" }
+  ],
+  "rating": {
+    "value": 4.9,
+    "source": "Google Reviews"
+  },
+  "review_count": {
+    "value": 7500,
+    "source": "Google Reviews (restaurantexemplo.com homepage)"
+  },
+  "address": "International Drive, Orlando, FL",
+  "reservation_method": "OpenTable",
+  "site_claims": [
+    "authentic Brazilian recipes",
+    "fresh ingredients daily",
+    "family-owned since 2010"
+  ],
+  "extraction_complete": true
+}
