@@ -17,6 +17,11 @@ a qualidade de quem a fez.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico do
+`/raio-x` do prospect eleva muito a qualidade, mas não é pré-requisito.
+
 ## O que ler antes
 
 - O diagnóstico do `/raio-x` do prospect (se existe — é a melhor matéria-prima)
@@ -69,6 +74,6 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - Escopo sem ambiguidade: o que NÃO está incluso aparece escrito (briga futura
   evitada na assinatura).
 - Texto passa pelo `/escritor-br`; peça inteira respeita as regras do
-  `docs/persuasao.md` (máx 2 gatilhos: aqui, aversão à perda + prova).
+  `docs/persuasao.md` (dentro do teto de gatilhos de lá: aqui, aversão à perda + prova).
 - Proposta perdida vira aprendizado: perguntar o motivo e registrar no
   `nucleo/aprendizados.md` quando o usuário souber.

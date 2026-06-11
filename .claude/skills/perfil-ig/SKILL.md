@@ -16,6 +16,10 @@ landing page do Instagram. Rodar antes de investir em tráfego.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Precisa do **degrau 1** (negócio e voz); capas e fixados pedem **degrau 2** (marca).
+
 ## O que ler antes
 
 - `nucleo/negocio.md` (o que vende, pra quem, diferencial) e `nucleo/voz.md`

@@ -16,6 +16,11 @@ vira insumo de post, anúncio e página.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Roda do **degrau 0** (a voz calibra o pedido, mas não trava). Quanto mais material o
+usuário tiver, mais rico o banco.
+
 ## O que ler antes
 
 - `nucleo/voz.md` e `nucleo/negocio.md` — o pedido de depoimento sai na voz da marca

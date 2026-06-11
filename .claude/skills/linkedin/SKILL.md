@@ -16,9 +16,16 @@ com assinatura pessoal e conversa real nos comentários. Esta skill escreve pra 
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Roda no degrau 0; a partir do **degrau 3** (voz real do `/voz`) o texto sai na voz do
+autor, não genérico — e no LinkedIn voz genérica é morte na primeira linha.
+
 ## O que ler antes
 
 - `nucleo/voz.md` e `nucleo/negocio.md`
+- `nucleo/aprendizados.md` — o que já se provou que funciona nesta conta; pesa mais que
+  padrão genérico
 - `docs/persuasao.md` — gatilhos e storytelling; no LinkedIn os que mais rendem são
   **autoridade demonstrada** (ensinar o que só quem faz sabe), **prova social
   específica** (caso com número) e **reciprocidade** (entregar valor completo, não
@@ -94,8 +101,8 @@ empresa pode ser automatizada via `/publicar` quando configurada.
 - Nunca prometer alcance ("isso vai bombar").
 - Nunca inventar caso, cliente ou número. História precisa ter acontecido; dado precisa
   ter fonte.
-- Regras inegociáveis do `docs/persuasao.md` valem inteiras: máximo 2 gatilhos por
-  post, todo loop aberto no corte fecha no corpo.
+- Regras inegociáveis do `docs/persuasao.md` valem inteiras: o teto de gatilhos por
+  post, e todo loop aberto no corte fecha no corpo.
 - Sem tagging de gente aleatória pra forçar alcance; sem pod de engajamento.
 - Um post por ideia. Sobrou ideia boa → vira a próxima linha do calendário.
 - Atualizar o Status no calendário quando aprovado.

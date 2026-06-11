@@ -16,6 +16,11 @@ completo — pesquisa, texto, diagramação com a marca — e o caminho de distr
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Roda no **degrau 1** (negócio e voz); a diagramação fica boa de verdade no **degrau 2**
+(marca).
+
 ## O que ler antes
 
 - `nucleo/negocio.md`, `nucleo/voz.md` — o e-book tem que soar como a marca

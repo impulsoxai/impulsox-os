@@ -79,8 +79,8 @@ skills do sistema:
 - Calibrada com `nucleo/voz.md` e `nucleo/negocio.md` — skill genérica é skill ruim.
 - Arquivos de apoio (template, exemplo) dentro da pasta da própria skill.
 
-Depois de criar, registrar a skill nova no `CLAUDE.md` da pasta (linha na lista de
-automações) e sugerir `/salvar`.
+Depois de criar, registrar a skill nova no `README.md` (na lista "As N automações",
+atualizando a contagem do título) e sugerir `/salvar`.
 
 ## Regras
 

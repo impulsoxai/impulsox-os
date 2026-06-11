@@ -15,10 +15,17 @@ pelo `/escritor-br` antes de fechar.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degrau 2**
+(com `marca/` definida). Sem marca, marca a peça como feita com defaults.
+
 ## O que ler antes
 
 - `marca/design-guide.md` + `marca/tokens.css` — obrigatório para qualquer pixel
 - `nucleo/voz.md` e `nucleo/negocio.md` — pro texto
+- `nucleo/aprendizados.md` — o que a medição já provou que funciona aqui; pesa mais que
+  qualquer padrão genérico (ex: se "carrossel de erro" salva mais, priorizar o ângulo)
 - `docs/persuasao.md` — gatilhos, storytelling e loops; escolher os gatilhos da peça
   pela intenção do calendário (mapa no playbook) **antes** de escrever
 - `docs/formulas.md` — moldes de estrutura testados; quando um serve ao tema, usar como
@@ -136,8 +143,8 @@ aplicada à risca. Marcar a peça como "feita com defaults — rodar /identidade
 
 - Nunca inventar dado, depoimento ou resultado. Sem material real pra "Provar", trocar a
   intenção da peça ou pedir o material.
-- Máximo 2 gatilhos dominantes por peça; escassez/urgência só com fato verificável
-  (regras inegociáveis do `docs/persuasao.md` valem inteiras aqui).
+- Respeitar o teto de gatilhos dominantes por peça e a escassez/urgência só com fato
+  verificável — as regras inegociáveis do `docs/persuasao.md` valem inteiras aqui.
 - Sem emoji como decoração de design (na legenda, só se a voz da marca usa).
 - Acessibilidade: contraste legível; descrição alt sugerida junto da legenda.
 - Uma chamada por peça. Peça que pede três coisas não consegue nenhuma.

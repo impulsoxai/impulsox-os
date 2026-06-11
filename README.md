@@ -58,6 +58,13 @@ sistema e deixa tudo no ponto. Se hoje o dia está corrido, entregue só a URL d
 seu site: o sistema extrai o que conseguir sozinho e já começa a produzir. O
 refino vem depois, no seu ritmo.
 
+**O que liga na hora:** a produção. Calendário, posts e páginas saem já no primeiro
+dia. **O que liga depois:** medir e publicar no automático dependem de você conectar
+Instagram e Meta — uns minutos, uma vez só. É quando essas contas entram que o
+circuito de aprendizado fecha de vez: o sistema passa a medir o que postou e a
+corrigir o plano do mês seguinte sozinho. Primeiro você produz; o sistema que aprende
+liga logo em seguida.
+
 Última dica de instalação: dê à pasta o nome da sua empresa. É dela que o
 marketing sai daqui pra frente.
 
@@ -99,10 +106,13 @@ marketing sai daqui pra frente.
 - **`/seo`** deixa a página achável no Google e citável pelo ChatGPT — auditoria
   on-page, Schema e a camada GEO, com os blocos prontos pra colar.
 
-### Produtos digitais — do material ao lançamento
-- **`/criar-ebook`** produz o material completo, diagramado e pronto pra capturar lead.
-- **`/lancar-produto`** monta o lançamento inteiro, no método validado e adaptado
-  ao Brasil.
+### Captura de leads
+- **`/criar-ebook`** produz a isca digital completa — guia diagramado com a sua marca
+  + a página que troca ele por contato. É assim que você constrói lista.
+
+E quando um cliente realmente tem um produto pra vender, **`/lancar-produto`** monta o
+lançamento inteiro (método PLF adaptado ao Brasil). Vale quando há audiência e produto
+de verdade — é uma máquina de lançamento, não um truque de venda.
 
 ### Venda e retenção — fechar e segurar o cliente
 - **`/provas`** monta o banco de provas sociais: pedir, lapidar e autorizar

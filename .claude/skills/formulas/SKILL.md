@@ -33,8 +33,8 @@ Usuário traz uma peça: texto colado, print ou link público. Extrair, nesta or
    lista, confissão). Qual loop ela abre?
 2. **A estrutura** — mapear o esqueleto tela a tela ou parágrafo a parágrafo: onde
    está a tensão, onde o "mas", onde a prova, como fecha.
-3. **Os gatilhos** — quais do `docs/persuasao.md` estão em jogo (máx 2 dominantes —
-   se a peça empilha mais, anotar; viral mal-feito também ensina).
+3. **Os gatilhos** — quais do `docs/persuasao.md` estão em jogo (o persuasao.md define
+   o teto de dominantes — se a peça empilha mais, anotar; viral mal-feito também ensina).
 4. **O formato** — carrossel/texto/vídeo, tamanho, ritmo visual.
 5. **Por que segurou** — uma frase honesta. "Não sei dizer" é resposta válida; fórmula
    forçada de cima de um acaso vira superstição.

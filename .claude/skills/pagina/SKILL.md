@@ -62,7 +62,9 @@ Escrever o texto completo antes do layout (layout serve o texto, não o contrár
 - Performance como requisito: imagens otimizadas (WebP, `loading="lazy"` abaixo da
   dobra), zero framework por padrão, fontes com `font-display: swap`
 - `prefers-reduced-motion` respeitado em qualquer animação
-- Dados estruturados no `<head>`: `LocalBusiness`/`Organization` + `FAQPage` do FAQ
+- Dados estruturados no `<head>`: `LocalBusiness`/`Organization` + `FAQPage` do FAQ.
+  A camada de Schema/GEO completa e suas regras moram no `/seo` (autoridade única) —
+  rodar `/seo` antes de publicar fecha a auditoria on-page + citabilidade por IA
 - Acessibilidade: contraste AA, foco visível, alt em toda imagem com conteúdo
 
 **Proibições de estética genérica de IA** (mesmo espírito do `/identidade`): sem

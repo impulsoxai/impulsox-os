@@ -15,6 +15,11 @@ decisão.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Precisa do **degrau 1** (oferta, região e diferencial do `nucleo/negocio.md`). Abaixo
+disso, perguntar o mínimo antes de montar — campanha sem oferta clara queima dinheiro.
+
 ## O que ler antes
 
 - `nucleo/negocio.md` (oferta, região, diferencial) e `nucleo/foco.md` (prioridade)

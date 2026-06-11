@@ -16,6 +16,11 @@ conseguiria fazer sozinho no Gerenciador.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Precisa do **degrau 1** pra estrutura; os criativos pedem **degrau 2** (marca). Sem
+marca, gera o plano e marca os criativos como defaults até a `/identidade` rodar.
+
 ## O que ler antes
 
 - `nucleo/negocio.md`, `nucleo/foco.md`, `marca/design-guide.md`

@@ -15,6 +15,11 @@ posts, anúncios, páginas — lê o resultado desta skill. É a base; vale faze
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Roda do **degrau 0** — é a skill que CRIA o contexto visual (leva a marca ao degrau 2).
+Não espera nada pronto; quanto mais referência o usuário der, melhor calibra.
+
 ## Dois caminhos
 
 Decidir cedo qual se aplica (a `/plugar` já pode ter indicado):

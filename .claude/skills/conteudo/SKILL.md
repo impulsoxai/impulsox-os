@@ -15,6 +15,11 @@ o jeito mais barato de manter presença em todos os canais.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Precisa do **degrau 1** (negócio e voz). Abaixo, pergunta o mínimo e marca o pacote
+como rascunho a confirmar.
+
 ## O que ler antes
 
 - `nucleo/negocio.md`, `nucleo/voz.md`, `nucleo/foco.md`
@@ -49,7 +54,9 @@ Estrutura que funciona pra leitor E pra máquina de busca (clássica ou IA):
 
 Junto do artigo, gerar o bloco de dados estruturados (JSON-LD: `Article` + `FAQPage`)
 num arquivo ao lado, pronto pra colar no site. Não anunciar isso como "estratégia GEO" —
-é simplesmente como artigo bem feito se escreve em 2026.
+é simplesmente como artigo bem feito se escreve em 2026. As regras de Schema/GEO (que
+tipos, como marcar, robots pra IA) são do `/seo`, a autoridade única — quando o artigo
+vai pro site, passar pelo `/seo` evita divergência de marcação.
 
 **Texto passa pelo `/escritor-br`** antes de fechar.
 

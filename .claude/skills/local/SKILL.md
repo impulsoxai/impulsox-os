@@ -18,6 +18,10 @@ cuida do Perfil de Empresa no Google de ponta a ponta.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Degrau mínimo (Escada de Contexto)
+
+Precisa do **degrau 1** (serviços e região do `nucleo/negocio.md`).
+
 ## O que ler antes
 
 - `nucleo/negocio.md` (serviços, região, diferencial) e `nucleo/voz.md` (as respostas
