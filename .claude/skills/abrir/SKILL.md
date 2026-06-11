@@ -2,8 +2,9 @@
 name: abrir
 description: >
   Use no começo de uma sessão de trabalho pra carregar o contexto do negócio e ver onde
-  as coisas estão — "/abrir", "começar", "bom dia", "o que temos pra hoje", "abre o
-  sistema", ou no primeiro turno depois de um tempo sem mexer. Lê o núcleo, anuncia o
+  as coisas estão — "/abrir", "começar o dia", "bom dia", "o que temos pra hoje", "abre o
+  sistema", "onde paramos", ou no primeiro turno depois de um tempo sem mexer. (Primeira
+  instalação do sistema é o `/plugar`, não esta.) Lê o núcleo, anuncia o
   degrau da Escada de Contexto e o foco do mês, e mostra o que está pendente — em poucas
   linhas, sem relatório.
 ---

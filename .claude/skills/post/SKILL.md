@@ -52,6 +52,57 @@ avisar que o resultado melhora depois do `/identidade`.
 
 Formato não especificado → escolher pelo tema e intenção, dizendo o porquê em uma linha.
 
+## Três modos de imagem (texto é o padrão)
+
+Ortogonal ao formato: decide se a peça é só tipografia ou leva foto. Perguntar (ou inferir
+do pedido). **Texto é o default — só sai dele se o usuário pedir foto.**
+
+**Modo 1 — Texto (padrão).** Carrossel só com tipografia, os módulos (TESE, DADO, PASSOS,
+CONTRASTE, FALA, HISTÓRIA, FECHO) e a régua tipográfica abaixo. Nada muda. Regra de marca:
+se a tipografia já resolve com credibilidade, não forçar foto — pra cliente premium, texto
+limpo costuma passar mais credibilidade que foto "com cara de IA".
+
+**Modo 2 — Você traz a foto (sem API, custo zero).** O usuário gera a imagem onde quiser
+(ChatGPT, Gemini, banco, foto real própria) e salva em `dados/imagens/`. A skill **encaixa**
+a foto no carrossel respeitando a marca — não gera nada, só faz o design. Foto no carrossel
+desde o dia 1, sem chave, sem custo.
+1. Usuário aponta o arquivo em `dados/imagens/`.
+2. Conferir a imagem: resolução mínima pro slide; avisar se vier pequena/esticada.
+3. Perguntar **o layout deste post** (ver "Layouts de foto") — escolha por post, não fixa.
+4. Encaixar a foto, aplicar overlay/tokens da marca, renderizar o PNG (Playwright, como sempre).
+
+**Modo 3 — Geração via OpenAI (ativa, opcional por post).** A skill gera a foto via API quando
+o usuário pede ("gera uma foto de…"). Usa `scripts/gerar-imagem.mjs` com `OPENAI_API_KEY` no
+`.env` (ver `docs/ferramentas.md`). **Se o script ainda não existe ou não há chave**, avisar em
+uma linha e cair no Modo 2 (o usuário gera a foto onde quiser e solta em `dados/imagens/`) —
+nunca travar a peça por causa disso.
+1. Usuário descreve a imagem desejada.
+2. Montar o prompt **em inglês** (a API rende melhor) a partir da descrição + clima visual do
+   `marca/design-guide.md`.
+3. Mostrar o prompt e gerar via script.
+4. **Mostrar a imagem e pedir aprovação ANTES de usar.** Não aprovou → ajustar prompt e regerar.
+5. Aprovada → mesmo fluxo de encaixe do Modo 2.
+
+## Layouts de foto (o usuário escolhe a cada post)
+
+Com foto (Modo 2 ou 3), oferecer e deixar o usuário decidir na hora:
+
+- **Capa com foto** — foto de fundo na capa (slide 1) com overlay escuro pra legibilidade
+  (`linear-gradient` sobre a imagem) + título grande por cima. Slides internos seguem texto.
+- **Split foto+texto** — slide dividido: foto de um lado (~50%), texto do outro (kicker +
+  título + apoio). Bom pra "mostrar e explicar".
+- Pode ser foto só na capa, ou em um slide interno específico — perguntar onde.
+
+Regra: a foto **não** vira papel de parede de todos os slides. Entra onde agrega (capa, um
+slide de prova/contexto); o miolo educativo continua na tipografia forte que já funciona.
+
+**Marca e segurança (vale pros 3 modos):**
+- **Nunca rosto identificável gerado por IA.** Pessoa reconhecível, só foto real com autorização.
+- Foto sempre sob os tokens da marca: overlay, cor de destaque, tipografia — a foto serve o
+  design, não atropela. Imagem que briga com a paleta da marca não entra.
+- Contraste do texto sobre a foto: mínimo 4.5:1 (medir, não estimar). O overlay existe pra isso.
+- Modo 3 sempre pede aprovação visual antes de usar a imagem gerada.
+
 ## Anatomia do carrossel
 
 **Tela 1 — o gancho.** Decide se o dedo para. Promessa específica ou tensão real, sem

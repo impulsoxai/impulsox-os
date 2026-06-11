@@ -119,12 +119,21 @@ Regras gerais que valem pra toda ferramenta:
   negócio). `gh` opcional (automatiza a criação do repo).
 - **Quem usa:** `/salvar`.
 
-## Gerar imagem por IA (a documentar quando a melhoria #6 entrar)
+## Gerar imagem por IA
 
-> Placeholder reservado. A Anthropic não gera imagem, então o `/post` com foto precisará de uma
-> rota externa (ex.: OpenAI `gpt-image`, ou Replicate/Flux). Quando a melhoria #6 for construída,
-> registrar aqui: provedor, variável de `.env`, script, custo por imagem e a regra de segurança
-> (nunca gerar rosto identificável). Até lá, o `/post` é só HTML→PNG.
+### OpenAI — API de geração de imagem (`gpt-image`)
+- **Resolve:** gerar foto pro carrossel do `/post` (Modo 3) quando a tipografia não basta —
+  a Anthropic não gera imagem, então a rota é externa.
+- **Conta:** sim — conta OpenAI com billing pré-pago (cobra por imagem gerada).
+- **`.env`:** `OPENAI_API_KEY` (raiz ou pasta do cliente).
+- **Script:** `scripts/gerar-imagem.mjs` — recebe prompt (inglês) + caminho de saída, salva o
+  PNG. Erros tratados em português (sem chave, chave inválida/sem crédito, rate limit, prompt
+  recusado). **A chave nunca aparece em log nem em mensagem de erro.**
+- **Pegadinha:** prompt em **inglês** rende melhor. Custo é por imagem — gerar só quando
+  aprovado. A API pode devolver URL ou base64 conforme a versão; o script trata os dois.
+- **Regra de segurança:** **nunca gerar rosto identificável.** Pessoa reconhecível só com foto
+  real autorizada (Modo 2). Aprovação visual obrigatória antes de usar a imagem.
+- **Quem usa:** `/post` (Modo 3). O Modo 2 (usuário traz a foto) não usa API — custo zero.
 
 ---
 
