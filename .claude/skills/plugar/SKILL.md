@@ -82,10 +82,15 @@ se repete.
    precisando quando chegou?"
 4. "Por que escolhem você e não o concorrente? O que te diferencia de verdade?"
 
-**Sobre a voz:**
-5. "Como a marca fala? (ex: próxima e descontraída / técnica e precisa / sóbria e
-   premium) — me dá um exemplo de algo que soa como vocês."
+**Sobre a voz (provisório — a voz de verdade vem depois, no `/voz`):**
+5. "Em uma frase, como a marca fala? (ex: próxima e descontraída / técnica e precisa /
+   sóbria e premium) — só pro sistema não sair mudo enquanto a gente não faz a entrevista
+   de voz."
 6. "Tem palavra, promessa ou estilo que você **não** quer ver no seu marketing?"
+
+Deixar explícito que isto é um esboço: a voz boa não sai de duas perguntas rápidas. Sai
+da entrevista longa do `/voz` (30+ min de áudio do dono) — é ela que faz o sistema
+escrever como a pessoa fala. Marcar a voz como provisória até o `/voz` rodar.
 
 **Sobre o foco:**
 7. "O que é prioridade nos próximos meses? (vender mais de quê, pra quem, até quando)"
@@ -98,7 +103,8 @@ se repete.
 
 Com o que veio da extração + entrevista, escrever:
 - `nucleo/negocio.md` — respostas 1-4 (+ extração): o que é, o que entrega, quem paga, diferencial
-- `nucleo/voz.md` — respostas 5-6: tom, exemplos, lista do que evitar
+- `nucleo/voz.md` — respostas 5-6: tom provisório, exemplos, lista do que evitar.
+  Marcar no topo do arquivo que é esboço, a ser substituído pela entrevista do `/voz`.
 - `nucleo/foco.md` — respostas 7-8: prioridade, metas, prazos, sazonalidade
 
 Regras de escrita do núcleo:
@@ -130,10 +136,15 @@ Resumir o que ficou configurado e o degrau atingido:
 ✓ Degrau de contexto: [n] — [o que isso permite]
 ✓ Núcleo: negocio.md · voz.md · foco.md
 ✓ Fatos confirmados: [n]   Suposições a confirmar: [n]
-→ Próximo: /identidade (marca) · depois, produção de conteúdo
+✓ Voz: provisória — rodar /voz pra entrevista de verdade
+→ Próximo: /voz (a voz do dono) · /identidade (marca) · depois, produção de conteúdo
 ```
 Se houver suposições, listar as principais para o usuário confirmar quando puder.
 Mencionar a tarefa repetida da pergunta 9 como candidata a virar automação no futuro.
+
+Recomendar o `/voz` como próximo passo de maior retorno: enquanto a voz for provisória,
+todo texto sai mais genérico do que poderia. A entrevista de 30 min é o que mais eleva a
+qualidade de tudo que o sistema escreve.
 
 ## Regras
 
