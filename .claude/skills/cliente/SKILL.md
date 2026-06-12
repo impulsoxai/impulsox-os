@@ -91,7 +91,20 @@ Conforme a resposta 4:
 
 Atualizar `clientes/<slug>/nucleo/escada.md` com o degrau alcançado e as pendências.
 
-## Passo 5 — Resumo e próximo passo
+## Passo 5 — Mapear rotinas (dimensiona o retainer)
+
+Ainda no onboarding, uma entrevista curta — é o que transforma "atendo esse cliente" em
+escopo de retainer definido. Perguntar:
+> "O que você (ou a equipe do cliente) repete toda semana e gostaria de tirar das costas?"
+
+Listar as candidatas, **estimar o ganho** de cada uma (tempo/semana) e propor 2-3
+automações concretas. As aprovadas viram skill pela `/automatizar`, criadas em
+`.claude/skills/` DESTE clone quando são específicas do cliente. **Regra de ouro:** se a
+automação serve a todos os clientes, ela nasce no template (ImpulsoX-OS), não aqui — e desce
+pelo `/atualizar-motor`. O conjunto de rotinas mapeadas dimensiona o escopo (e o preço) do
+retainer.
+
+## Passo 6 — Resumo e próximo passo
 
 ```
 ✓ Cliente plugado: clientes/<slug>/

@@ -27,6 +27,21 @@ Conferir primeiro o que já foi plantado:
 - O histórico da própria conversa — se o pedido nasceu de "cansei de fazer isso", a
   rotina já está descrita; não re-perguntar o que acabou de ser dito.
 
+## Modo proativo — mapear rotinas
+
+Além de reagir a "cansei de fazer isso", esta skill roda proativa: varrer as rotinas do
+negócio antes de virarem queixa. Entrevista curta:
+> "O que você (ou sua equipe) repete toda semana?"
+
+Listar as candidatas, **estimar o ganho** de cada uma (tempo/semana economizado) e propor
+2-3 automações concretas — o resto fica pra próxima rodada (teto de 3). É o mesmo motor da
+fase de mapeamento do `/cliente`.
+
+**Onde a skill nasce (regra de ouro):** automação específica deste negócio/cliente →
+`.claude/skills/` do clone. Automação que serve a **qualquer** cliente → nasce no template
+(ImpulsoX-OS) e desce pelo `/atualizar-motor`. Nunca instalar melhoria de motor direto num
+clone.
+
 ## Descoberta (quando a rotina ainda não está clara)
 
 Três perguntas, uma por vez:
