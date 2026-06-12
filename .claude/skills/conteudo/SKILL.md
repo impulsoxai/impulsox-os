@@ -25,6 +25,22 @@ como rascunho a confirmar.
 - `nucleo/negocio.md`, `nucleo/voz.md`, `nucleo/foco.md`
 - `producao/calendario/<mes>.md` — se o tema veio de lá
 - `producao/artigos/` — não repetir artigo existente
+- `dados/` — transcrição de vídeo do dono, quando a entrada for repurposing (ver abaixo)
+
+## Entrada por vídeo (repurposing)
+
+O tema não precisa nascer em branco: um vídeo de 10 minutos do dono já tem artigo,
+carrossel e LinkedIn dentro. Quando a entrada é um vídeo:
+
+- **Transcrição na mão** (arquivo do usuário em `dados/`) → ler e tratar a fala como a
+  matéria-prima do pacote: a voz já está ali, o conteúdo já está ali.
+- **Só o link** → se o `yt-dlp` estiver instalado (ver `docs/ferramentas.md`), baixar a
+  legenda/transcrição automática; se não estiver, pedir a transcrição ao usuário (ditado
+  do WhatsApp, Otter, Whisper) — nunca inventar o que o vídeo disse.
+
+A fala do dono é a melhor fonte de voz que existe — preferir as palavras dele às "bonitas".
+Daí segue o fluxo normal: fechar o ângulo (Passo 1) a partir do que o vídeo entregou.
+`/radar` lista os vídeos existentes do cliente como fonte de pauta (camada 5).
 
 ## Passo 1 — Fechar o ângulo
 
