@@ -81,6 +81,10 @@ intake (URL) -> extract-facts.mjs -> fact-sheet.json -> Step 0.6 Phase 1 (operat
 1. **Intake.** Ask for the client's site URL first. Then gather remaining inputs ONE question
    at a time, no jargon. Offer the `client-intake-form.md` if the client prefers a form.
    After step 0.5/0.6, auto-fill from the fact sheet — ask only budget, geo, conversion goal.
+   If this clone has a `nucleo/ofertas.md`, read it to seed the offer context (benefit
+   framing, differentials, common objections, commercial priority) and cross-check the fact
+   sheet. The scraped site stays the single source of truth for prices/claims — `ofertas.md`
+   informs angle and objection handling, never overrides an extracted price.
 0.5. **Factual extraction.** Load `references/factual-extraction.md`. Run:
    ```
    node skill/scripts/extract-facts.mjs <client-url> deliverables/<client>-fact-sheet.json

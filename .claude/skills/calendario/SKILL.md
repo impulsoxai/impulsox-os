@@ -29,6 +29,8 @@ Com degrau 3+ (entrevista feita), o plano sai calibrado de verdade.
   proporção padrão desta skill (criador 45/30/10/15, PME local 35/30/15/20 etc.). Perfil
   `agencia` não fixa mix: usar o `perfil.md` do cliente cuja sessão está aberta
 - `nucleo/foco.md` — prioridade do mês, sazonalidade, datas
+- `nucleo/ofertas.md` — catálogo de ofertas; o **mix do mês é proporcional à prioridade
+  comercial** de cada oferta (prioridade alta aparece mais no plano)
 - `nucleo/voz.md` — tom (afeta o tipo de pauta que cabe)
 - `nucleo/aprendizados.md` — o que a medição já provou que funciona pra este negócio;
   quando há aprendizado consolidado, ele **pesa mais que o padrão genérico** desta skill

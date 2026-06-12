@@ -24,6 +24,8 @@ Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degra
 
 - `marca/design-guide.md` + `marca/tokens.css` — obrigatório para qualquer pixel
 - `nucleo/voz.md` e `nucleo/negocio.md` — pro texto
+- `nucleo/ofertas.md` — cada oferta rende ângulos de pauta: **educativo** (como funciona),
+  **objeção** (a dúvida que trava a venda) e **prova** (caso ou número real)
 - `nucleo/perfil.md` — o tipo de negócio molda formato e tom (criador fala em 1ª pessoa
   com opinião forte; PME local ensina o nicho com prova local)
 - `nucleo/aprendizados.md` — o que a medição já provou que funciona aqui; pesa mais que

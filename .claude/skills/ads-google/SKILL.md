@@ -23,6 +23,8 @@ disso, perguntar o mínimo antes de montar — campanha sem oferta clara queima 
 ## O que ler antes
 
 - `nucleo/negocio.md` (oferta, região, diferencial) e `nucleo/foco.md` (prioridade)
+- `nucleo/ofertas.md` — **cada oferta de prioridade alta é um grupo de anúncio candidato**
+  (palavras-chave e copy saem do benefício e das objeções da oferta)
 - `producao/ads/analise-*.md` — se `/analisar-ads` já rodou, as campanhas sugeridas lá
   são o ponto de partida (dados > opinião)
 

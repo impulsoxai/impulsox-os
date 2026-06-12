@@ -100,6 +100,21 @@ A pergunta 3 se adapta ao perfil escolhido na Fase 0:
   cliente do bairro/cidade?")
 - **agencia** e **profissional-liberal** → manter como está.
 
+**Sobre as ofertas (no máximo 3 nesta primeira rodada):**
+Pra cada oferta principal — no máximo três agora, o resto entra depois pelo `/atualizar`:
+- "O que é essa oferta, em uma frase concreta? E pra quem ela é?"
+- "Quanto custa — valor ou faixa?"
+- "Qual o benefício principal **na linguagem do cliente** — o resultado que ele leva?"
+- "O que diferencia essa oferta do concorrente?"
+- "Que objeções aparecem na hora de vender? (ex: 'é caro', 'não tenho tempo')"
+- "Tem época de alta ou baixa? Alguma data que puxa essa oferta?"
+- "Entre as suas ofertas, qual você mais quer vender agora?" (prioridade comercial)
+
+Anotar cada oferta no formato de `nucleo/ofertas.md`. Mais de três ofertas no negócio →
+registrar as três prioritárias agora e avisar que as outras entram depois com o
+`/atualizar`. Negócio sem oferta clara (ex: criador ainda monetizando) → deixar o arquivo
+com o que houver e marcar o resto como suposição, sem travar.
+
 **Sobre a voz (provisório — a voz de verdade vem depois, no `/voz`):**
 5. "Em uma frase, como a marca fala? (ex: próxima e descontraída / técnica e precisa /
    sóbria e premium) — só pro sistema não sair mudo enquanto a gente não faz a entrevista
@@ -128,6 +143,8 @@ Com o que veio da extração + entrevista, escrever:
 - `nucleo/voz.md` — respostas 5-6: tom provisório, exemplos, lista do que evitar.
   Marcar no topo do arquivo que é esboço, a ser substituído pela entrevista do `/voz`.
 - `nucleo/foco.md` — respostas 7-8: prioridade, metas, prazos, sazonalidade
+- `nucleo/ofertas.md` — bloco de ofertas: um bloco por oferta (até 3), no formato do
+  arquivo. Campo sem resposta firme entra marcado `(?)`; nunca inventar preço ou objeção.
 
 Regras de escrita do núcleo:
 - Não inventar. Resposta vaga entra como veio, ou vira um campo marcado "_a confirmar_".

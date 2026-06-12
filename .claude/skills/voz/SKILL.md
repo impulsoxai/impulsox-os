@@ -121,6 +121,12 @@ negócio e **propor** (nunca sobrescrever no escuro) a atualização do núcleo:
 - fatos de oferta, cliente, diferencial, casos → `nucleo/negocio.md`
 - prioridade, meta, sazonalidade que surgiram → `nucleo/foco.md`
 - prova/caso real mencionado → sinalizar pra `/provas` formalizar e autorizar
+- ofertas que apareceram (preço, benefício, objeção, diferencial) → `nucleo/ofertas.md`
+
+Se `nucleo/ofertas.md` ainda estiver vazio (só o template) ao fim da entrevista,
+**oferecer completá-lo agora** — a fala já fez o dono descrever o que vende, pra quem e
+por quê; é o melhor momento pra montar o catálogo sem nova pergunta. Preencher um bloco
+por oferta com o que a transcrição deu; campo sem base entra `(?)`.
 
 Se o `/plugar` já preencheu esses arquivos, comparar: o que a entrevista confirma vira
 fato; o que contradiz, perguntar antes de trocar. Mostrar ao dono a lista do que entrou

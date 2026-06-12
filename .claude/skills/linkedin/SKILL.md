@@ -24,6 +24,8 @@ autor, não genérico — e no LinkedIn voz genérica é morte na primeira linha
 ## O que ler antes
 
 - `nucleo/voz.md` e `nucleo/negocio.md`
+- `nucleo/ofertas.md` — cada oferta rende ângulos: **educativo**, **objeção** e **prova**
+  (no LinkedIn, puxar mais o educativo/autoridade que a venda direta)
 - `nucleo/perfil.md` — o tipo de negócio molda o tom (criador e profissional liberal vivem
   de voz pessoal e autoridade; agência fala pelo cliente, na voz DELE)
 - `nucleo/aprendizados.md` — o que já se provou que funciona nesta conta; pesa mais que

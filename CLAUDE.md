@@ -52,6 +52,8 @@ O núcleo é a primeira leitura de qualquer trabalho — nenhuma decisão sai se
 por aqui. Arquivos (ler os que estiverem preenchidos):
 
 - `nucleo/negocio.md` — quem é a empresa, o que entrega, quem paga, diferenciais
+- `nucleo/ofertas.md` — catálogo de ofertas (o que é, pra quem, preço, benefício, objeções,
+  sazonalidade, prioridade comercial); alimenta calendário, conteúdo, anúncios e proposta
 - `nucleo/perfil.md` — tipo de negócio (PME local, agência, criador, profissional liberal)
   e como as skills se comportam pra ele; molde escolhido no `/plugar`, catálogo em
   `docs/perfis.md`; lido junto com o resto do núcleo
