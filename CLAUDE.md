@@ -83,6 +83,22 @@ se existe, ela extrai e documenta.
 
 ---
 
+## Ferramentas de design de terceiros — revisão obrigatória
+
+`impeccable`, `Taste Skill` e `Open Design` são ferramentas **externas** (de terceiros), não
+skills da ImpulsoX. Antes de usar qualquer uma com pasta de **cliente**, revisar: confiança do
+plugin, credenciais de provedor e permissões de MCP.
+
+- **Open Design roda um daemon local.** Confirmar que está preso ao `localhost` (não exposto à
+  rede) e que as chaves de API ficam seladas. Reconferir isso a cada atualização da ferramenta.
+- **Nenhuma dessas ferramentas impõe a marca dela.** Todas leem `marca/design-guide.md` e
+  `marca/tokens.css` do negócio. A marca é sempre a do cliente — a ferramenta ajusta dentro
+  dela, nunca troca paleta, fonte ou identidade por defaults próprios.
+- **Atualizam rápido.** Reconferir o README oficial antes de cada upgrade — comando e versão
+  mudam.
+
+---
+
 ## Como o sistema decide o que fazer
 
 Todo pedido passa por um roteamento em três níveis: primeiro as automações da casa
