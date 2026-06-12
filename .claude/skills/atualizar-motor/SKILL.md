@@ -84,7 +84,19 @@ ganhou a seção do Schwartz, `/post` mudou". Nada de despejar diff cru.
 > → **parar e avisar**: "o template mexeu num arquivo de dado, isso precisa de revisão manual
 > com `/atualizar`, não entra no automático". Motor e dado não se misturam nunca.
 
-### Passo 2 — Aplicar só o motor
+### Passo 2 — Marcar o ponto de rollback e aplicar só o motor
+
+Antes de sobrescrever qualquer skill, ler a versão do template e cravar uma tag local de
+rollback — assim dá pra voltar ao motor anterior com um comando, sem caçar hash:
+
+```bash
+# versão atual do clone (rodapé do CLAUDE.md): "· vX.Y.Z*"
+VERSAO_ATUAL=$(grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' CLAUDE.md | tail -1)
+git tag "pre-atualizacao-$VERSAO_ATUAL"
+```
+
+> A tag fica só neste clone (nunca se empurra pro `origin`). Para desfazer a atualização
+> depois de fechada: `git reset --hard pre-atualizacao-<versao>`.
 
 Trazer do template apenas os caminhos de motor, deixando o núcleo deste negócio intocado:
 
@@ -118,9 +130,23 @@ avisar o usuário que algo saiu do esperado. Dado alterado é abortar, sem exce�
 
 1. Rodar `/abrir` — o resumo tem que sair igual a antes (nome, degrau, tom da voz rica). Se a
    voz sumiu ou ficou genérica, o núcleo foi tocado → abortar pelo branch de segurança.
-2. Se há skills novas, listá-las pro usuário ("agora você tem `/geo`, `/atualizar-motor`…").
-3. `/salvar` no repo PRIVADO deste negócio (`origin`) — registra o motor atualizado.
-4. Apagar o branch de segurança só depois de tudo confirmado.
+2. Gravar `motor-versao.md` na raiz do clone — o carimbo do motor que este negócio roda agora
+   (versão lida do `CLAUDE.md` já aplicado, data e hash do commit do template):
+
+   ```bash
+   VERSAO=$(grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' CLAUDE.md | tail -1)
+   HASH=$(git rev-parse --short template/main)
+   printf '# Motor\n\nVersão: %s\nAtualizado em: %s\nCommit do template: %s\n' \
+     "$VERSAO" "$(date +%F)" "$HASH" > motor-versao.md
+   ```
+
+   Esse arquivo é só rastreio do clone (não é motor) — fica fora do `/atualizar-motor` na
+   próxima rodada e nunca sobe pro template.
+3. Se há skills novas, listá-las pro usuário ("agora você tem `/geo`, `/atualizar-motor`…").
+4. `/salvar` no repo PRIVADO deste negócio (`origin`) — registra o motor atualizado e o
+   `motor-versao.md`.
+5. Apagar o branch de segurança só depois de tudo confirmado. A tag `pre-atualizacao-<versao>`
+   fica — é a rede de rollback até a próxima atualização.
 
 ## Regras
 
