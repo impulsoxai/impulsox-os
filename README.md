@@ -83,6 +83,8 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 - **`/cliente`** pluga um cliente novo em modo agência, com núcleo e marca próprios.
 - **`/raio-x`** diagnostica qualquer presença digital só com a URL.
 - **`/pagina`** entrega a landing page padrão R$ 5.000.
+- **`/premium-design`** extrai o DNA visual de sites de referência e recombina numa
+  identidade nova — o motor de design que abastece `/identidade` e `/pagina`.
 - **`/seo`** deixa a página achável no Google e citável pela IA — on-page, Schema e GEO.
 - **`/geo`** descobre se as IAs já citam o negócio e monta o plano pra passar a ser citado.
 

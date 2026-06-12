@@ -79,7 +79,9 @@ trabalhar — só o faz operar em degrau mais baixo, com mais suposições marca
 `marca/design-guide.md` (cores, tipografia, regras visuais), `marca/logo/` (arquivos do
 logo em suas variações) e `marca/tokens.css` (variáveis de design). Toda peça que o
 sistema gera respeita isso. Se a marca ainda não existe, a skill de identidade cria;
-se existe, ela extrai e documenta.
+se existe, ela extrai e documenta. `marca/design-systems/` é a biblioteca de design
+systems extraídos e recombinados de referências reais pela `/premium-design` — é o
+acervo de DNA visual que alimenta `/identidade` e `/pagina`.
 
 ---
 
