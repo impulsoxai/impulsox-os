@@ -80,6 +80,18 @@ recorrentes, contraste, peso tipográfico, densidade, clima. Anotar o que o usu�
 gostar em cada referência — isso direciona, não copiar as referências.
 
 ### 2. Propor 3 direções
+**As direções nascem de DNA real, não da imaginação da IA.** Se o usuário topar trazer
+2-3 URLs de referência (ou aceitar as que a `/premium-design` sugere onde buscar —
+Awwwards, Godly, Landbook), chamar a `/premium-design`: ela captura o código-fonte,
+extrai um design system por referência e **recombina** com o briefing da marca (núcleo +
+o que o usuário disse gostar em cada referência). As **três direções** viram três
+recombinações distintas do mesmo acervo — cada uma herda peso diferente das referências.
+O passo a passo é dela; aqui só se consome o resultado, que já chega pronto pra virar guia.
+
+Fallback (só se o usuário não quiser trazer referência): propor as três direções da
+imaginação, como abaixo — e **marcar no resultado** que a marca saiu "sem DNA real",
+sugerindo rodar a `/premium-design` depois pra elevar a partir de referências de verdade.
+
 Apresentar **três** direções de marca distintas, cada uma com:
 - Um conceito em uma frase (o sentimento que ela passa)
 - Paleta (primária + secundária + neutros + destaque, com hex)

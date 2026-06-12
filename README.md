@@ -29,7 +29,7 @@ passam por um revisor sênior antes de ir ao ar. Os números do mês alimentam o
 do mês seguinte — a cada volta, o sistema conhece melhor quem compra de você.
 
 Você não precisa saber marketing. Responde algumas perguntas sobre o seu negócio,
-aprova o que faz sentido, e deixa o resto com as 32 automações que já vêm prontas.
+aprova o que faz sentido, e deixa o resto com as 37 automações que já vêm prontas.
 
 ---
 
@@ -56,7 +56,7 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 
 ---
 
-## As 32 automações
+## As 37 automações
 
 ### Fundação — o sistema aprende quem você é
 - **`/plugar`** liga o sistema: negócio, oferta e foco, em poucos minutos.
@@ -66,6 +66,7 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 - **`/escritor-br`** é o filtro: nenhum texto sai com cara de IA.
 
 ### Conteúdo — acaba o branco na tela
+- **`/radar`** pesquisa o nicho e devolve 15-20 ideias de pauta pontuadas, com demanda real.
 - **`/calendario`** decide o que postar e quando, por você.
 - **`/post`** e **`/linkedin`** entregam a peça pronta, com a sua cara.
 - **`/conteudo`** pega um tema e estica em artigo, Instagram e LinkedIn.
@@ -83,8 +84,12 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 - **`/cliente`** pluga um cliente novo em modo agência, com núcleo e marca próprios.
 - **`/raio-x`** diagnostica qualquer presença digital só com a URL.
 - **`/pagina`** entrega a landing page padrão R$ 5.000.
+- **`/premium-design`** extrai o DNA visual de sites de referência e recombina numa
+  identidade nova — o motor de design que abastece `/identidade` e `/pagina`.
 - **`/seo`** deixa a página achável no Google e citável pela IA — on-page, Schema e GEO.
 - **`/geo`** descobre se as IAs já citam o negócio e monta o plano pra passar a ser citado.
+- **`/analisar-dados`** lê uma planilha de qualquer área e devolve resumo executivo — com
+  os números calculados em código, não estimados.
 
 ### Captura de leads
 - **`/criar-ebook`** produz a isca digital e a página que a troca por contato.
@@ -94,6 +99,7 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 - **`/provas`** monta o banco de provas sociais: pedir, lapidar, autorizar.
 - **`/local`** coloca o negócio no Google Maps e responde avaliações na sua voz.
 - **`/proposta`** transforma o raio-x numa proposta fechável.
+- **`/email`** escreve sequência de boas-vindas, newsletter e follow-up — sem virar spam.
 - **`/relatorio`** fecha o mês num relatório que o cliente entende — e renova.
 
 ### Sistema — a engrenagem que mantém tudo girando
@@ -102,6 +108,7 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 - **`/salvar`** faz backup no GitHub sem você precisar saber git.
 - **`/atualizar`** confere se a memória do sistema ainda bate com a realidade.
 - **`/automatizar`** transforma a tarefa que você repete numa automação nova.
+- **`/atualizar-motor`** traz as melhorias do template pros clones sem tocar no núcleo.
 
 ---
 

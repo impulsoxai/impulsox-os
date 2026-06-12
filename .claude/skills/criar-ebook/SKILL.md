@@ -71,6 +71,9 @@ Salvar em `producao/ebooks/<slug>/` (fonte + PDF final).
 - **Isca:** acionar `/pagina` pra página de captura enxuta (promessa + 3 bullets do que
   o leitor leva + formulário mínimo: nome e e-mail/WhatsApp) + e-mail/mensagem de
   entrega pronta. Mencionar LGPD (consentimento + finalidade no formulário).
+- **Nutrição pós-captura:** acionar `/email` pra sequência de boas-vindas (4-5 e-mails:
+  entrega da isca → melhor conteúdo → prova → oferta com objeção respondida → convite).
+  Quem baixou a isca é o lead mais quente; a sequência transforma download em conversa.
 - **Pago:** preparar o material de venda — descrição pra plataforma (Hotmart/Kiwify ou
   similar), 3 argumentos centrais, FAQ de compra. O cadastro na plataforma é do usuário;
   o sistema entrega o pacote pronto pra subir.

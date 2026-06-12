@@ -52,6 +52,8 @@ O núcleo é a primeira leitura de qualquer trabalho — nenhuma decisão sai se
 por aqui. Arquivos (ler os que estiverem preenchidos):
 
 - `nucleo/negocio.md` — quem é a empresa, o que entrega, quem paga, diferenciais
+- `nucleo/ofertas.md` — catálogo de ofertas (o que é, pra quem, preço, benefício, objeções,
+  sazonalidade, prioridade comercial); alimenta calendário, conteúdo, anúncios e proposta
 - `nucleo/perfil.md` — tipo de negócio (PME local, agência, criador, profissional liberal)
   e como as skills se comportam pra ele; molde escolhido no `/plugar`, catálogo em
   `docs/perfis.md`; lido junto com o resto do núcleo
@@ -79,7 +81,9 @@ trabalhar — só o faz operar em degrau mais baixo, com mais suposições marca
 `marca/design-guide.md` (cores, tipografia, regras visuais), `marca/logo/` (arquivos do
 logo em suas variações) e `marca/tokens.css` (variáveis de design). Toda peça que o
 sistema gera respeita isso. Se a marca ainda não existe, a skill de identidade cria;
-se existe, ela extrai e documenta.
+se existe, ela extrai e documenta. `marca/design-systems/` é a biblioteca de design
+systems extraídos e recombinados de referências reais pela `/premium-design` — é o
+acervo de DNA visual que alimenta `/identidade` e `/pagina`.
 
 ---
 
@@ -161,4 +165,4 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 
 ---
 
-*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.1*
+*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.0*

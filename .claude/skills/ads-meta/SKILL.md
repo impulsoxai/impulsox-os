@@ -24,6 +24,8 @@ marca, gera o plano e marca os criativos como defaults até a `/identidade` roda
 ## O que ler antes
 
 - `nucleo/negocio.md`, `nucleo/foco.md`, `marca/design-guide.md`
+- `nucleo/ofertas.md` — **cada oferta de prioridade alta é um conjunto de anúncios
+  candidato** (a objeção da oferta vira ângulo de criativo)
 - `nucleo/provas.md` — o criativo de prova só usa material com status autorizada
 - `producao/ads/analise-*.md` — se existe análise, partir das sugestões dela
 - `producao/posts/` — criativos orgânicos que performaram são candidatos a anúncio

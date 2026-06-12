@@ -20,6 +20,8 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 - `marca/design-guide.md` + `marca/tokens.css` — sem marca, rodar `/identidade` antes
   (página premium sem identidade não existe; aqui a escada TEM degrau mínimo: 2)
+- `marca/design-systems/` — a biblioteca de design systems extraídos/recombinados pela
+  `/premium-design`; é de lá que sai o DS que rege a construção (ver Etapa 3)
 - `nucleo/negocio.md`, `nucleo/voz.md` — oferta e voz
 - `producao/raio-x/` — se houver diagnóstico, os vazamentos apontados viram requisitos
 
@@ -68,6 +70,11 @@ Escrever o texto completo antes do layout (layout serve o texto, não o contrár
   de coleta no lugar)
 
 ## Etapa 3 — Construção
+
+Antes de codar, escolher um design system de `marca/design-systems/` (ou rodar
+`/premium-design` pra criar um a partir de referências reais). O DS é **lei** de cor,
+tipo, espaçamento, animação e interação — a página o obedece. As proibições de estética
+genérica abaixo continuam valendo como rede de segurança, não como ponto de partida.
 
 - HTML5 semântico, CSS moderno (custom properties consumindo `marca/tokens.css`, grid,
   `clamp()` pra tipografia fluida), JavaScript só onde tem função

@@ -24,6 +24,8 @@ Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degra
 
 - `marca/design-guide.md` + `marca/tokens.css` — obrigatório para qualquer pixel
 - `nucleo/voz.md` e `nucleo/negocio.md` — pro texto
+- `nucleo/ofertas.md` — cada oferta rende ângulos de pauta: **educativo** (como funciona),
+  **objeção** (a dúvida que trava a venda) e **prova** (caso ou número real)
 - `nucleo/perfil.md` — o tipo de negócio molda formato e tom (criador fala em 1ª pessoa
   com opinião forte; PME local ensina o nicho com prova local)
 - `nucleo/aprendizados.md` — o que a medição já provou que funciona aqui; pesa mais que
@@ -131,6 +133,29 @@ Módulos de composição (vocabulário próprio do ImpulsoX-OS):
 **Texto por tela:** título até ~8 palavras; apoio até ~25. Carrossel não é slide de
 palestra — quem quer texto longo vai pra legenda.
 
+## Layouts nomeados (como a tela aparece)
+
+Módulo é **o que a tela diz** (TESE, DADO, PASSOS…); layout é **como ela aparece**. Um
+módulo cabe em vários layouts — escolher o que dá mais força ao módulo daquela tela:
+
+- **CAPA** — eyebrow (kicker em CAIXA ALTA) + título grande + `@handle` discreto. Abertura.
+- **SOLO** — split 50/50: foto ou elemento gráfico de um lado, texto do outro ("mostrar e
+  explicar").
+- **DUO** — texto no topo + dois blocos embaixo (duas fotos, dois cards). Par de exemplos,
+  antes/depois lado a lado.
+- **NÚMERO** — numeral de 200–320px, peso 800, na cor de destaque, como elemento gráfico,
+  com h2 + apoio. É o layout natural do módulo **DADO**.
+- **CITAÇÃO** — aspas grandes em marca d'água + a frase + atribuição. Layout do módulo **FALA**.
+- **CTA FINAL** — fundo na cor de destaque + logo + a chamada única. Layout do módulo **FECHO**.
+
+**Ritmo dos layouts:** alternar o fundo escuro ↔ claro ↔ destaque ao longo do carrossel
+(nunca dois slides seguidos com o mesmo fundo) e usar **no mínimo 2 layouts diferentes** por
+peça — carrossel inteiro no mesmo layout cansa e tem cara de template.
+
+Exemplo (layout + módulo juntos): tela 1 em **CAPA**; tela 2 leva o módulo **DADO** no
+layout **NÚMERO** (numeral gigante na cor de destaque); tela 3, um **CONTRASTE** em **DUO**;
+fecho com o módulo **FECHO** no layout **CTA FINAL**, fundo de destaque.
+
 ## Régua tipográfica (números, não adjetivos)
 
 Telas de 1080x1350 vistas num celular de ~400px de largura: o que parece grande no
@@ -146,9 +171,11 @@ definir valores próprios — e quando definir, os dele mandam.
 | Numerador de tela (02/07) | 22–24px | 500–600 | +0.1em | canto superior, todas as telas |
 | Numeral do módulo DADO | 220–320px | 800 | -0.02em | é o elemento gráfico da tela |
 
-**Princípio de contraste tipográfico:** o que é grande fecha o tracking (negativo);
-o que é pequeno abre (positivo, caixa alta). É esse contraste — não cor extra — que dá
-cara editorial à peça.
+**Princípio de contraste tipográfico:** o que é grande fecha o tracking, o que é pequeno
+abre — é esse contraste, não cor extra, que dá cara editorial à peça. Regra concreta:
+títulos grandes com kerning apertado (`letter-spacing ≈ -0.035em`) contra eyebrows/kickers
+pequenos em CAIXA ALTA com kerning aberto (`≥ 0.22em`). Aplicar pelos tokens da marca
+quando existirem; estes valores são o default quando não.
 
 **Grade fixa:** margem lateral de 88px (~8% da largura); área de respiro generosa —
 tela confortável tem no máximo 60% da altura ocupada por conteúdo. Logo discreto +
@@ -163,8 +190,9 @@ O perfil é visto como grade de 3 colunas — capa nova nunca é decidida no vá
   destaque (ordem livre, repetição em sequência proibida).
 - Antes de fechar a capa, conferir as últimas capas em `producao/posts/` (ou no
   calendário). Sem registro local e usuário não lembra? Pedir um print do perfil.
-- Registrar o registro usado na linha do calendário (ex: "capa: escuro") pra próxima
-  peça não depender de memória de sessão.
+- Registrar o tipo de capa usado tanto na linha do calendário quanto no `legenda.md` da
+  peça (ex: "capa: escuro / layout: NÚMERO") — rastreio que solta a próxima peça da
+  memória de sessão.
 
 ## Crivo de design (impeccable)
 
