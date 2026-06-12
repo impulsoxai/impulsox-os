@@ -69,6 +69,9 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
    `producao/propostas/` se o prospect ainda não tem pasta.
 4. Registrar no fim da pasta do cliente: data de envio, validade, status (enviada /
    negociando / fechada / perdida) — insumo pro follow-up.
+5. **Follow-up:** proposta enviada e silêncio não é "não" — acionar `/email` pra sequência
+   de follow-up (3 toques: resumo do valor → prova/caso → pergunta de fechamento, nunca
+   tom de cobrança). É o que recupera proposta parada sem queimar a relação.
 
 ## Regras
 
