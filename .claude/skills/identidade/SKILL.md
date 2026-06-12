@@ -55,6 +55,16 @@ Mostrar o guia ao usuário. Perguntar se algo deve mudar agora que está documen
 
 ## Caminho CRIAR (a marca não existe ainda)
 
+**Canvas de criação — Open Design (quando disponível).** Sem marca pronta, o Open Design
+(plugin MCP `open-design`, daemon local em `127.0.0.1:7456`, roda na subscription Claude Pro
+do usuário) é o canvas preferido pra criar e iterar a identidade ao vivo: paleta, tipografia
+e composição renderizam em tempo real e o usuário ajusta conversando — bem acima do specimen
+estático. Esta é a **exceção criadora** à regra "nunca impor marca": aqui não existe marca
+ainda, então o Open Design ajuda a CRIAR junto com o usuário. O resultado é sempre destilado
+pra `marca/design-guide.md` + `marca/tokens.css` + `marca/logo/` — a fonte de verdade é o
+núcleo da marca, não o projeto do Open Design. Daemon desligado ou indisponível → seguir com
+as 3 direções + specimen abaixo, sem travar.
+
 ### 1. Coletar contexto e referências
 Ler `nucleo/negocio.md`, `nucleo/voz.md` e `nucleo/perfil.md` (quem é, como fala, que tipo
 de negócio). O perfil orienta o clima visual: criador pede personalidade e cara própria;
@@ -117,6 +127,8 @@ estáveis.
 Antes de fechar, renderizar um **specimen** — um HTML simples mostrando logo, paleta em
 blocos, a tipografia em título/corpo e um botão de exemplo — e gerar uma imagem (Playwright
 screenshot). O usuário aprova vendo, não imaginando. Ajustar e re-renderizar até aprovar.
+Com o Open Design ativo (Caminho CRIAR), a validação já acontece no próprio canvas ao vivo;
+o specimen renderizado cobre o caso sem o daemon.
 
 ## Atualizar a escada
 

@@ -166,13 +166,51 @@ O perfil é visto como grade de 3 colunas — capa nova nunca é decidida no vá
 - Registrar o registro usado na linha do calendário (ex: "capa: escuro") pra próxima
   peça não depender de memória de sessão.
 
+## Crivo de design (impeccable)
+
+Antes de virar PNG, todo carrossel passa por um polimento de design com a impeccable —
+entre o HTML montado de cada tela e a renderização via Playwright. É o que tira a peça do
+"bom" e leva ao acabamento premium, sem fugir da marca.
+
+impeccable instala **por máquina** (`claude plugin install impeccable@impeccable`). Se
+`/impeccable` não existir nesta máquina, avisar em uma linha e seguir sem o crivo — nunca
+travar a peça por falta da ferramenta.
+
+**Só os comandos que fazem sentido em peça estática 1080x1350** — carrossel é imagem, não
+web (sem hover, foco, responsividade ou animação):
+- `/impeccable critique` — hierarquia, clareza, ressonância
+- `/impeccable typeset` — tipografia
+- `/impeccable layout` — espaço e ritmo
+- `/impeccable colorize` — cor estratégica (dentro da paleta da marca)
+- `/impeccable bolder` / `quieter` — intensidade
+- `/impeccable distill` — tirar excesso
+
+**Nunca rodar os comandos de web** (não se aplicam a imagem estática): `audit` (a11y),
+`harden`, `animate`, `onboard`, `optimize`, `adapt` e qualquer coisa de responsividade.
+
+**Limites do crivo:**
+- LÊ `marca/tokens.css` + `marca/design-guide.md` + a régua tipográfica acima. AJUSTA
+  dentro da marca; **nunca** troca paleta, fonte ou identidade por defaults da ferramenta.
+- Cuida **só do visual** (tipografia, espaço, cor, hierarquia). NÃO mexe no texto/copy
+  (isso é do `/escritor-br`) nem nos gatilhos (`docs/persuasao.md`).
+
+**Válvula de escape (pra não pesar no dia a dia):**
+- Por padrão o crivo roda sempre. Se o usuário disser "pula o polimento", "rápido" ou
+  "sem crivo" neste post, gerar direto sem a etapa.
+- Quando pular, avisar em uma linha: "gerado sem o crivo de design, a pedido".
+
 ## Produção técnica
+
+Ordem: montar HTML das telas → `/escritor-br` (texto) → **crivo de design** (impeccable,
+no visual) → render Playwright → aprovação.
 
 1. Gerar um HTML por tela (1080x1350) usando **exclusivamente** as variáveis de
    `marca/tokens.css` — nada de cor ou fonte fora da marca.
-2. Renderizar cada HTML em PNG via Playwright (screenshot da viewport exata).
-3. Salvar em `producao/posts/<YYYY-MM-DD>-<slug-do-tema>/` (HTMLs + PNGs + `legenda.md`).
-4. Mostrar as imagens ao usuário pra aprovação antes de dar por pronto.
+2. **Crivo de design** (seção acima): passar cada tela pela impeccable, salvo se o usuário
+   pediu pra pular. Visual só — texto e gatilhos ficam intocados.
+3. Renderizar cada HTML em PNG via Playwright (screenshot da viewport exata).
+4. Salvar em `producao/posts/<YYYY-MM-DD>-<slug-do-tema>/` (HTMLs + PNGs + `legenda.md`).
+5. Mostrar as imagens ao usuário pra aprovação antes de dar por pronto.
 
 ## Legenda
 
@@ -202,3 +240,11 @@ aplicada à risca. Marcar a peça como "feita com defaults — rodar /identidade
 - Acessibilidade: contraste legível; descrição alt sugerida junto da legenda.
 - Uma chamada por peça. Peça que pede três coisas não consegue nenhuma.
 - Atualizar o Status no calendário quando a peça for aprovada.
+
+## Teste de aceitação (comportamental)
+
+1. Carrossel padrão → passa pelo crivo de design (impeccable) antes do render; o visual
+   melhora sem trocar paleta, fonte ou tokens.
+2. Usuário diz "pula o polimento" → a peça sai direto, sem o crivo, com aviso em uma linha.
+3. impeccable não instalada nesta máquina → avisa e gera sem o crivo; nunca trava.
+4. Em todos os casos: o crivo nunca mexeu no texto (é do `/escritor-br`) nem na marca.

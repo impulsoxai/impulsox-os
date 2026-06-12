@@ -24,13 +24,26 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - `producao/raio-x/` — se houver diagnóstico, os vazamentos apontados viram requisitos
 
 **Ferramentas opcionais (usar quando instaladas):**
-- **Open Design** (plugin MCP `open-design`, daemon local na porta 7456) — canvas de
+- **Open Design** (plugin MCP `open-design`, daemon local em `127.0.0.1:7456`) — canvas de
   iteração visual ao vivo: criar projeto, gerar artefato, o usuário/cliente vê o design
   renderizar em tempo real e itera conversando. Ideal pra Etapa 2→3 e pra reunião de
   apresentação. Requer o daemon ativo (`pnpm tools-dev` na pasta do Open Design); se o
   MCP não responder, avisar como subir o daemon e seguir sem ele.
-- **impeccable** — executor de qualidade (`init` → `shape` → `craft` → `critique` →
-  `polish`) com regras determinísticas anti-estética-de-IA.
+- **impeccable** — executor de qualidade de design anti-estética-de-IA. Instala por máquina
+  (`claude plugin install impeccable@impeccable`); se `/impeccable` não existir, seguir sem
+  ela. Comandos reais, cada um roda solto via `/impeccable <cmd>` (NÃO existe encadeamento
+  fixo `init→shape→craft…`): `shape` (planejar UX antes de codar), `craft` (fluxo completo
+  de construção), `critique` (hierarquia/clareza/ressonância), `audit` (a11y, performance,
+  responsivo), `polish` (acabamento final), `typeset`/`layout`/`colorize` (tipografia, espaço,
+  cor), `bolder`/`quieter`/`distill` (intensidade), `live` (variações no browser).
+  Fluxo sugerido sobre o HTML gerado: `shape` → `craft` → `critique` + `audit` → `polish`.
+
+**Regra firme:** quando usar Open Design ou impeccable, elas LEEM `marca/design-guide.md` +
+`marca/tokens.css` e trabalham DENTRO da marca do negócio — nunca impõem paleta, fonte ou
+identidade próprias. A marca é sempre a do cliente. (Num clone com a marca já preenchida,
+`/impeccable init` pode capturar esse contexto de forma persistente; é opcional, porque a
+regra de ler os arquivos da marca já garante a fidelidade.)
+
 Sem nenhuma das duas, seguir o processo desta skill — as regras abaixo cobrem o essencial.
 
 ## Etapa 1 — Estrutura antes de pixel
