@@ -41,6 +41,18 @@ saber o que cada clone está rodando e o que ainda falta puxar do template.
   `pre-atualizacao-<versao>` antes de sobrescrever as skills do clone.
 - `CLAUDE.md` — versão 0.2.0; menções a `marca/design-systems/` e
   `nucleo/ofertas.md`.
+- `README.md` — contagem 32 → **37 automações**; `/radar`, `/email`, `/analisar-dados`,
+  `/premium-design` e `/atualizar-motor` listados nas seções.
+
+### Notas de implementação (aprendizados)
+- O `/post` já trazia "Sequência de capas no feed" e o princípio de contraste de uma
+  versão anterior; a Fase 1.3 **reforçou** (kerning explícito, registro no `legenda.md`)
+  em vez de duplicar seção.
+- `node --test scripts/` não expande o diretório nesta versão do Node (24.x): rodar os
+  arquivos de teste explicitamente (`node --test scripts/*.test.mjs` ou listando-os).
+- `yt-dlp` (repurposing no `/conteudo`) e o bot de Telegram (alertas headless) ainda **não**
+  estão em `docs/ferramentas.md`; as referências ficaram condicionais ("quando o clone
+  adotar"), pra não apontar pra entrada inexistente.
 
 ## [0.1.0] — 2026-06-10
 

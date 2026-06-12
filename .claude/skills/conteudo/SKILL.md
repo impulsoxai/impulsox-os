@@ -34,9 +34,10 @@ carrossel e LinkedIn dentro. Quando a entrada é um vídeo:
 
 - **Transcrição na mão** (arquivo do usuário em `dados/`) → ler e tratar a fala como a
   matéria-prima do pacote: a voz já está ali, o conteúdo já está ali.
-- **Só o link** → se o `yt-dlp` estiver instalado (ver `docs/ferramentas.md`), baixar a
-  legenda/transcrição automática; se não estiver, pedir a transcrição ao usuário (ditado
-  do WhatsApp, Otter, Whisper) — nunca inventar o que o vídeo disse.
+- **Só o link** → se o `yt-dlp` estiver instalado na máquina, baixar a legenda/transcrição
+  automática; se não estiver, pedir a transcrição ao usuário (ditado do WhatsApp, Otter,
+  Whisper) — nunca inventar o que o vídeo disse. (Ferramenta nova entra no `docs/ferramentas.md`
+  quando o clone a adotar.)
 
 A fala do dono é a melhor fonte de voz que existe — preferir as palavras dele às "bonitas".
 Daí segue o fluxo normal: fechar o ângulo (Passo 1) a partir do que o vídeo entregou.

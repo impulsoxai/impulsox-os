@@ -59,10 +59,11 @@ chave por cliente pra fechar custo e auditar o que o cron fez.
 
 ### Notificação de falha
 
-Job que falha tem que gritar — ninguém está olhando o terminal. Reaproveitar o **bot de
-Telegram já existente** (ver `docs/ferramentas.md`): se o `claude -p` sair com código ≠ 0 ou
-o JSON marcar erro, mandar uma linha pro chat do operador ("`<cliente>`: `/publicar` headless
-falhou às 06:00 — ver `logs/headless-2026-06-12.json`"). Sucesso é silencioso; só a falha avisa.
+Job que falha tem que gritar — ninguém está olhando o terminal. Mandar o aviso por um **bot
+de Telegram** configurado no clone (token no `.env`): se o `claude -p` sair com código ≠ 0 ou
+o JSON marcar erro, uma linha pro chat do operador ("`<cliente>`: `/publicar` headless falhou
+às 06:00 — ver `logs/headless-2026-06-12.json`"). Sucesso é silencioso; só a falha avisa.
+Quando o clone configurar esse bot, registrar o padrão no `docs/ferramentas.md`.
 
 ## Jobs candidatos
 
