@@ -36,6 +36,9 @@ Com degrau 3+ (entrevista feita), o plano sai calibrado de verdade.
   quando há aprendizado consolidado, ele **pesa mais que o padrão genérico** desta skill
   (ex: se "ensinar" salva 3x mais aqui, a proporção de intenções se ajusta a isso)
 - `producao/` — o que já foi publicado (não repetir tema recente)
+- `producao/radar/<mês>.md` — as ideias pesquisadas do mês (oferta, palavra-chave,
+  pontuação). **Se não existir, oferecer rodar `/radar` antes** — calendário com radar
+  sai embasado em demanda real; sem ele, sai do núcleo e marca as pautas como suposição.
 
 ## Como montar o plano
 
