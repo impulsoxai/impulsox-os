@@ -124,6 +124,12 @@ essa estrutura e registra o degrau de contexto. Ao trabalhar para um cliente, ab
 sessão dentro da pasta dele: o sistema carrega o contexto do cliente por cima do núcleo
 da própria agência.
 
+Melhoria de motor nasce no template (este ImpulsoX-OS) e desce pros clones pelo
+`/atualizar-motor`: a skill puxa do repo-template só as skills, este `CLAUDE.md` e os
+`docs/`, e nunca toca no núcleo, na marca ou na produção de cada negócio. Regra de ouro:
+melhoria de sistema → no template; trabalho de marketing → no clone. Nunca instalar
+melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em cada um.
+
 ---
 
 ## Conduta
