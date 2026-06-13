@@ -90,6 +90,30 @@ Prospect demonstrou interesse depois do diagnóstico? O passo seguinte é a `/pr
 ela consome este relatório e transforma os problemas apontados em proposta comercial
 fechável, no mesmo dia.
 
+## Mini-redesign (opcional — a prova de valor da reunião)
+
+Diagnóstico aponta o problema; o mini-redesign **mostra a solução**. Reescreve e
+re-renderiza só a **abertura (dobra inicial)** do site auditado num "antes → depois" —
+a peça que faz o prospect ver, não imaginar, o que a ImpulsoX entrega. Gerar quando o
+raio-x vai pra reunião comercial; pular num diagnóstico só técnico.
+
+Escopo firme: **só a abertura**, nunca a página inteira. Página completa é o `/pagina`,
+depois de fechar o contrato — o mini-redesign é a amostra, não a entrega.
+
+1. **Copy da abertura** — rodar o `/copy` pra reescrever promessa/headline/subtítulo/CTA
+   da dobra, a partir do que o scraping extraiu (oferta, público). Degrau 1 (só a URL):
+   sem `voz.md` do prospect, escrever em tom premium neutro e marcar "confirmar voz".
+   A copy passa pelo `/escritor-br` antes de renderizar (mesmo gate do `/copy`).
+2. **Render antes → depois** — capturar a abertura ATUAL do site (Playwright, screenshot
+   da dobra) e montar a abertura NOVA em HTML/CSS premium (sem a marca da agência — é o
+   site do prospect; usar cor/logo extraídos do próprio site quando houver, defaults
+   premium quando não). Renderizar a versão nova em **390px e 1440px**.
+3. **Entrega** — em `producao/raio-x/<dominio>-redesign/`: as capturas antes/depois e o
+   HTML da abertura nova. Na reunião, a imagem lado a lado vale mais que o relatório.
+
+Honestidade obrigatória: rotular como **demonstração da abertura**, não página pronta.
+Nada de prova inventada na copy — sem depoimento real, a abertura não exibe número/caso.
+
 ## Regras
 
 - Cada problema apontado tem evidência (o que foi visto, onde). Nada de crítica vaga.

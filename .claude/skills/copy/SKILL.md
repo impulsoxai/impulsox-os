@@ -175,5 +175,5 @@ O `/pagina` consome este arquivo como fonte do texto (já revisado pelo `/escrit
 
 `/copy` é **motor** (skill do sistema). Nasce no template ImpulsoX-OS e desce pros clones
 via `/atualizar-motor`. Registrada na lista de automações do `README.md` (seção Premium) e
-plugada na **Etapa 2 — Copy** do `/pagina` (a etapa de COPY roda esta skill). Quando o
-`/raio-x` ganhar uma etapa de mini-redesign, chamar `/copy` ali também.
+plugada na **Etapa 2 — Copy** do `/pagina` (a etapa de COPY roda esta skill) e na etapa
+de **mini-redesign** do `/raio-x` (copy da abertura do "antes → depois").
