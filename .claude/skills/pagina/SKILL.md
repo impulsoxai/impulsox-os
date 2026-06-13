@@ -60,14 +60,21 @@ Definir e aprovar com o usuário ANTES de codar (mensagem curta, não documento)
 
 ## Etapa 2 — Copy
 
-Escrever o texto completo antes do layout (layout serve o texto, não o contrário):
+O texto vem antes do layout (layout serve o texto, não o contrário). **Esta etapa roda
+o `/copy`** — a engine de copy de conversão da casa (headline em sprint, estrutura
+provada, gate de repetição, voz da marca dirigindo). O `/pagina` consome
+`producao/copy/<pagina>.md` como fonte do texto; não reescrever copy à mão aqui.
+
+O que o `/copy` já garante (e esta etapa exige antes de seguir pro layout):
 - Resposta direta no primeiro bloco: o visitante entende em 5 segundos o que é, pra
   quem e por que confiar
 - Específico > superlativo: "atendemos em até 2h" > "atendimento ágil"
 - FAQ com 5-8 perguntas reais respondidas de forma direta
-- **Todo o texto passa pelo `/escritor-br`**
 - Prova que não existe não entra: sem depoimento real, a seção sai (instrução explícita
   de coleta no lugar)
+
+**Gate de entrega da copy:** todo o texto passa pelo `/escritor-br` (naturalidade pt-BR)
+ANTES de virar layout. Copy não revisada pelo `/escritor-br` não entra na Etapa 3.
 
 ## Etapa 3 — Construção
 

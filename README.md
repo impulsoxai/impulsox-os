@@ -29,7 +29,7 @@ passam por um revisor sênior antes de ir ao ar. Os números do mês alimentam o
 do mês seguinte — a cada volta, o sistema conhece melhor quem compra de você.
 
 Você não precisa saber marketing. Responde algumas perguntas sobre o seu negócio,
-aprova o que faz sentido, e deixa o resto com as 37 automações que já vêm prontas.
+aprova o que faz sentido, e deixa o resto com as 38 automações que já vêm prontas.
 
 ---
 
@@ -56,7 +56,7 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 
 ---
 
-## As 37 automações
+## As 38 automações
 
 ### Fundação — o sistema aprende quem você é
 - **`/plugar`** liga o sistema: negócio, oferta e foco, em poucos minutos.
@@ -84,6 +84,7 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 - **`/cliente`** pluga um cliente novo em modo agência, com núcleo e marca próprios.
 - **`/raio-x`** diagnostica qualquer presença digital só com a URL.
 - **`/pagina`** entrega a landing page padrão R$ 5.000.
+- **`/copy`** escreve a copy que converte da landing — roda antes do layout no `/pagina`.
 - **`/premium-design`** extrai o DNA visual de sites de referência e recombina numa
   identidade nova — o motor de design que abastece `/identidade` e `/pagina`.
 - **`/seo`** deixa a página achável no Google e citável pela IA — on-page, Schema e GEO.

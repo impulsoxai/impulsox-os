@@ -152,7 +152,11 @@ Antes de entregar, varrer a copy inteira:
 - As **3 opções de headline** com a recomendação.
 - Nota de quais blocos têm **prova real** vs **pendente** (pra `/provas` resolver).
 
-O `/pagina` consome este arquivo como fonte do texto.
+**Gate de entrega (obrigatório):** antes de salvar/entregar e antes de devolver pro
+`/pagina`, a copy completa passa pelo **`/escritor-br`** (naturalidade pt-BR, tira cara
+de IA). É o último passo — copy que não passou pelo `/escritor-br` não está pronta.
+
+O `/pagina` consome este arquivo como fonte do texto (já revisado pelo `/escritor-br`).
 
 ## Checklist final (rodar antes de entregar)
 
@@ -170,5 +174,6 @@ O `/pagina` consome este arquivo como fonte do texto.
 ## Onde registrar
 
 `/copy` é **motor** (skill do sistema). Nasce no template ImpulsoX-OS e desce pros clones
-via `/atualizar-motor`. Registrar na lista de automações do `CLAUDE.md` (seção Sistema) e
-adicionar o passo "chamar `/copy` na etapa de COPY" ao `/pagina` e ao `/raio-x`.
+via `/atualizar-motor`. Registrada na lista de automações do `README.md` (seção Premium) e
+plugada na **Etapa 2 — Copy** do `/pagina` (a etapa de COPY roda esta skill). Quando o
+`/raio-x` ganhar uma etapa de mini-redesign, chamar `/copy` ali também.
