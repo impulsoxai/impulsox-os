@@ -1,5 +1,13 @@
 # Captura de código-fonte de referências
 
+> **Passo de install (uma vez por projeto, antes da captura automática):**
+> ```bash
+> npm i -D playwright && npx playwright install chromium
+> ```
+> Sem isso, o script Playwright abaixo falha (`Cannot find module 'playwright'`) e a
+> captura **cai para o método manual** — e a skill DEVE avisar isso em voz alta
+> (ver "Aviso de fallback" no fim deste arquivo). Nunca degradar em silêncio.
+
 ## Onde achar referências premium
 
 - **Awwwards** (awwwards.com) — vencedores de prêmios, o padrão-ouro
@@ -32,13 +40,28 @@ O HTML inicial vem vazio — é preciso capturar o DOM **renderizado**:
 3. DevTools → Sources (ou aba Network filtrando CSS) → salvar todos os `.css`
 4. Para animações via JS: Sources → procurar arquivos não-minificados; se tudo for minificado, capturar pelo menos os keyframes CSS e descrever o comportamento JS observado no prompt de extração
 
-Alternativa automatizada (Playwright, já no stack ImpulsoX via CEPEA scraper):
+Alternativa automatizada (Playwright). Salvar como `captura.js` e rodar pela toolchain
+do projeto, que garante o binário resolvido:
+```bash
+npx playwright install chromium   # idempotente; pula se já instalado
+node captura.js https://site.com
+```
 ```javascript
-const { chromium } = require('playwright');
+// captura.js — DOM renderizado + CSS computado de qualquer site, incluindo SPAs.
+let chromium;
+try {
+  ({ chromium } = require('playwright'));
+} catch (e) {
+  console.error('Playwright indisponível, usando captura manual');
+  console.error('Instale com: npm i -D playwright && npx playwright install chromium');
+  console.error('Ou use os métodos manuais 1-2 (Ctrl+S / wget) deste arquivo.');
+  process.exit(2); // sinaliza fallback — quem chama deve anunciar e cair pro manual
+}
 (async () => {
+  const url = process.argv[2] || 'https://site.com';
   const browser = await chromium.launch();
   const page = await browser.newPage();
-  await page.goto('https://site.com', { waitUntil: 'networkidle' });
+  await page.goto(url, { waitUntil: 'networkidle' });
   // rolar até o fim para disparar lazy-load e animações de scroll
   await page.evaluate(async () => {
     for (let y = 0; y < document.body.scrollHeight; y += 400) {
@@ -57,9 +80,22 @@ const { chromium } = require('playwright');
   );
   require('fs').writeFileSync('styles.css', styles);
   await browser.close();
-})();
+})().catch(e => { console.error('CAPTURA FALHOU:', e.message); process.exit(1); });
 ```
-Este script é o equivalente caseiro do "Site Downloader" — captura DOM renderizado + CSS computado de qualquer site, incluindo SPAs.
+Este script é o equivalente caseiro do "Site Downloader". Se ele sair com código 2
+("Playwright indisponível"), a skill **avisa em voz alta e passa pro método manual** —
+nunca segue calada (ver "Aviso de fallback" abaixo).
+
+## Aviso de fallback — obrigatório
+
+Quando a captura automática falhar (Playwright ausente, exit 2; ou rede/Cloudflare
+bloqueando), a skill **anuncia explicitamente** antes de continuar:
+
+> ⚠️ **Playwright indisponível, usando captura manual** — instale com
+> `npm i -D playwright && npx playwright install chromium` para captura automática.
+
+Só então segue pelos métodos 1-2 (Ctrl+S / wget) ou pede o `rendered.html` ao usuário.
+Degradar em silêncio é proibido: o usuário precisa saber que entrou no caminho manual.
 
 ### 4. CSS computado de um elemento específico
 Quando só interessa um componente (um botão, um card): DevTools → Elements → selecionar elemento → aba Computed ou Styles → copiar. Útil para extrair um efeito pontual sem baixar o site inteiro.

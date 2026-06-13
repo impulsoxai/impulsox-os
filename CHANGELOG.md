@@ -7,6 +7,23 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.1] — 2026-06-13
+
+### Corrigido
+- `/premium-design` — captura automática via Playwright não resolvia o módulo nesta
+  máquina (`Cannot find module 'playwright'`). Playwright + Chromium agora são
+  dependência do projeto (`npm i -D playwright`), e o script de `references/captura.md`
+  roda por argumento de URL (`node captura.js <url>`) com passo de install documentado
+  no topo.
+- `/premium-design` — o fallback para captura manual deixou de ser silencioso: quando o
+  Playwright está ausente (script sai com código 2) ou a rede bloqueia, a skill anuncia
+  em voz alta "⚠️ Playwright indisponível, usando captura manual" antes de cair pros
+  métodos manuais. Regra gravada no `SKILL.md` (Fase 1) e em `references/captura.md`.
+
+### Adicionado
+- `package.json` / `package-lock.json` — `playwright` em devDependencies (motor de
+  captura do `/premium-design`).
+
 ## [0.2.0] — 2026-06-12
 
 ### Adicionado

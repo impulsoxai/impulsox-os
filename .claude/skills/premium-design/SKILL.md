@@ -56,8 +56,15 @@ system destilado (ruído de analytics e markup irrelevante polui o contexto).
 O usuário traz 1-3 URLs de referência (Awwwards, Godly.website, Landbook — critério:
 o *estilo* serve ao cliente, não o conteúdo). A skill captura sozinha com o script
 Playwright de `references/captura.md` (DOM renderizado + CSS computado, com scroll
-completo pra disparar lazy-load e animações). Fallbacks manuais no mesmo arquivo.
-Limpar ruído antes de extrair (instruções lá).
+completo pra disparar lazy-load e animações). Pré-requisito uma vez por projeto:
+`npm i -D playwright && npx playwright install chromium` (instruções no topo do
+reference). Limpar ruído antes de extrair (instruções lá).
+
+**Fallback nunca é silencioso.** Se a captura automática falhar (Playwright ausente —
+script sai com código 2 — ou bloqueio de rede/Cloudflare), a skill **anuncia em voz
+alta** antes de seguir: "⚠️ Playwright indisponível, usando captura manual" + o comando
+de install. Só então cai pros métodos manuais (Ctrl+S / wget / `rendered.html` do
+usuário). Degradar calado é proibido: o usuário tem que saber que entrou no caminho manual.
 
 ### Fase 2 — Extração e recombinação
 
