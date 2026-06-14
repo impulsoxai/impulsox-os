@@ -121,19 +121,24 @@ Regras gerais que valem pra toda ferramenta:
 
 ## Gerar imagem por IA
 
-### OpenAI — API de geração de imagem (`gpt-image`)
-- **Resolve:** gerar foto pro carrossel do `/post` (Modo 3) quando a tipografia não basta —
-  a Anthropic não gera imagem, então a rota é externa.
-- **Conta:** sim — conta OpenAI com billing pré-pago (cobra por imagem gerada).
-- **`.env`:** `OPENAI_API_KEY` (raiz ou pasta do cliente).
-- **Script:** `scripts/gerar-imagem.mjs` — recebe prompt (inglês) + caminho de saída, salva o
-  PNG. Erros tratados em português (sem chave, chave inválida/sem crédito, rate limit, prompt
-  recusado). **A chave nunca aparece em log nem em mensagem de erro.**
-- **Pegadinha:** prompt em **inglês** rende melhor. Custo é por imagem — gerar só quando
-  aprovado. A API pode devolver URL ou base64 conforme a versão; o script trata os dois.
-- **Regra de segurança:** **nunca gerar rosto identificável.** Pessoa reconhecível só com foto
-  real autorizada (Modo 2). Aprovação visual obrigatória antes de usar a imagem.
-- **Quem usa:** `/post` (Modo 3). O Modo 2 (usuário traz a foto) não usa API — custo zero.
+### Fal.ai — geração de imagem (FLUX)
+- **Resolve:** gera imagem pro carrossel/reel do `/post` (Modo 3) e stills do pipeline de vídeo.
+- **Conta:** sim — Fal.ai com crédito pré-pago. **`.env`:** `FAL_KEY`.
+- **Script:** `scripts/gerar-imagem.mjs` — `--prompt` (inglês), `--saida`, `--modelo schnell|dev`, `--ref` (imagem-referência da marca). schnell (~$0,003) pra iterar, dev (~$0,025) pro final.
+- **Pegadinha:** prompt em inglês rende melhor; nomes de modelo podem mudar (reconferir painel da Fal). Resposta vem como URL ou data-URI — o script trata os dois.
+- **Segurança:** nunca rosto identificável sem foto real autorizada. Chave nunca em log.
+- **Quem usa:** `/post`, `/identidade`, `/criar-ebook`, `/relatorio`, `/perfil-ig`.
+
+### Fal.ai — geração de vídeo (reel)
+- **Resolve:** anima uma still on-brand em clipe (5-15s). Base do reel do `/post`.
+- **Conta:** mesma `FAL_KEY`. **Modelos:** Wan 2.5 (~$0,05/s, default) ou Kling (~$0,07/s).
+- **Script:** `scripts/gerar-video.mjs` (orquestra still→anima→ffmpeg). Fila assíncrona (submit + polling).
+- **Quem usa:** `/post` (modo reel). Custo de um reel 20s ≈ $1-1,50.
+
+### ffmpeg — montagem de vídeo
+- **Resolve:** costura clipes, queima legenda, mixa trilha, exporta vertical 1080x1920.
+- **Conta:** não — binário local. **Instalar:** `choco install ffmpeg` (Win) / `brew install ffmpeg` (Mac).
+- **Quem usa:** `scripts/gerar-video.mjs`. Trilha: arquivo royalty-free em `dados/audio/` do clone.
 
 ---
 

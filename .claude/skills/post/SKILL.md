@@ -50,9 +50,12 @@ avisar que o resultado melhora depois do `/identidade`.
 1. **Carrossel (5-9 telas)** — padrão para ensinar, provar e posicionar. Formato
    1080x1350 (4:5), o de maior alcance orgânico.
 2. **Post único** — um dado forte, uma frase de posição, um bastidor.
-3. **Roteiro de reel** — quando o tema pede movimento: roteiro cena a cena (gancho nos
-   primeiros 2s, desenvolvimento, fecho), texto de tela e instrução de gravação. O
-   usuário grava; o sistema não gera vídeo.
+3. **Reel** — quando o tema pede movimento: roteiro cena a cena (gancho nos primeiros 2s,
+   desenvolvimento, fecho), texto de tela e instrução de gravação. A skill entrega o roteiro
+   pra aprovação e, aprovado, **gera o reel** via `scripts/gerar-video.mjs` (still on-brand →
+   anima → legenda → trilha → 1080x1920). Vídeo é a parte cara: só gera depois do roteiro
+   aprovado; o final passa por `/revisar` antes de publicar. (Alternativa sempre válida: o
+   usuário grava ele mesmo a partir do roteiro.)
 
 Formato não especificado → escolher pelo tema e intenção, dizendo o porquê em uma linha.
 
@@ -75,14 +78,15 @@ desde o dia 1, sem chave, sem custo.
 3. Perguntar **o layout deste post** (ver "Layouts de foto") — escolha por post, não fixa.
 4. Encaixar a foto, aplicar overlay/tokens da marca, renderizar o PNG (Playwright, como sempre).
 
-**Modo 3 — Geração via OpenAI (ativa, opcional por post).** A skill gera a foto via API quando
-o usuário pede ("gera uma foto de…"). Usa `scripts/gerar-imagem.mjs` com `OPENAI_API_KEY` no
+**Modo 3 — Geração via Fal.ai (ativa, opcional por post).** A skill gera a foto via API quando
+o usuário pede ("gera uma foto de…"). Usa `scripts/gerar-imagem.mjs` com `FAL_KEY` no
 `.env` (ver `docs/ferramentas.md`). **Se o script ainda não existe ou não há chave**, avisar em
 uma linha e cair no Modo 2 (o usuário gera a foto onde quiser e solta em `dados/imagens/`) —
 nunca travar a peça por causa disso.
 1. Usuário descreve a imagem desejada.
-2. Montar o prompt **em inglês** (a API rende melhor) a partir da descrição + clima visual do
-   `marca/design-guide.md`.
+2. Montar o prompt **em inglês** (a API rende melhor) a partir da descrição + a paleta/mood do
+   `marca/design-guide.md` — é o que mantém a imagem dentro da marca. Quando houver uma
+   imagem-referência da marca, passá-la via `--ref` pro script (image-to-image fica on-brand).
 3. Mostrar o prompt e gerar via script.
 4. **Mostrar a imagem e pedir aprovação ANTES de usar.** Não aprovou → ajustar prompt e regerar.
 5. Aprovada → mesmo fluxo de encaixe do Modo 2.
