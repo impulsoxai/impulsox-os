@@ -39,6 +39,26 @@ absorvidos (em PT-BR, não copiados em inglês):
 o humanizer como skill separada (faria o mesmo trabalho do `/escritor-br`, em inglês,
 brigando com ele).
 
+## Atualização (2026-06-14, pós-revisão) — esteira final e gate
+
+Após uma rodada de geração externa (Claude web) que entregou os turbinados de `/copy`
+e `/escritor-br` (aceitos) mais uma skill nova `/auditor-copy` (rejeitada), a esteira
+ficou assim:
+
+```
+/copy (afia: vende?) → /escritor-br (humaniza: parece IA?) → /revisar (gate frio, JÁ EXISTE)
+```
+
+- **`/auditor-copy` descartada.** Duplica o `/revisar`, que já é o gate final obrigatório
+  antes de publicar venda/ads. Pior: o auditor roda no MESMO contexto que escreveu a
+  copy — exatamente o viés que o `/revisar` (agente em contexto limpo) existe pra matar.
+- **O checklist de página do auditor é enxertado no `/revisar`** (registro escrito,
+  concreto nomeado, restrições duras, prova autorizada). Enriquece o gate que já existe,
+  não cria um paralelo.
+- **Snippet de voz** (registro escrito + concreto nomeado) vai no `voz.md` do CLONE, não
+  no template. As guardas correspondentes já entraram nos turbinados (pecado #4 da
+  Camada 3 e restrições do `/escritor-br`).
+
 ## Arquitetura — 4 camadas, 2 skills
 
 Princípio central: **separar "forte" de "humano".** Conversão e naturalidade são dois
@@ -137,6 +157,14 @@ Acervo vivo de copy que converte, lido pela `/copy` na Camada 2. Padrão do
 - **Vivo:** cresce quando o usuário traz um exemplo forte, ou quando o `/desempenho`
   prova que uma copy converteu de verdade neste negócio (gancho futuro, fora do escopo
   desta entrega).
+
+### 4b. `.claude/skills/revisar/SKILL.md` (enxerto do auditor descartado)
+Adicionar ao gate frio um **checklist de copy de página** que o agente
+`revisor-marketing` aplica: registro escrito (sem contração falada se a voz pede por
+extenso), concreto nomeado (canal/produto/número específicos não viram categoria vaga),
+restrições duras (zero travessão/aspa curva/title-case/negrito mecânico/emoji), prova só
+autorizada. Não muda a natureza da skill (continua julgando, não reescrevendo) — só dá
+mais o que conferir.
 
 ### 4. `CLAUDE.md` + `README.md`
 - `CLAUDE.md`: citar `docs/swipe-copy.md` onde os docs de referência são listados

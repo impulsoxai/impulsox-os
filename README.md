@@ -84,7 +84,9 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 - **`/cliente`** pluga um cliente novo em modo agência, com núcleo e marca próprios.
 - **`/raio-x`** diagnostica qualquer presença digital só com a URL.
 - **`/pagina`** entrega a landing page padrão R$ 5.000.
-- **`/copy`** escreve a copy que converte da landing — roda antes do layout no `/pagina`.
+- **`/copy`** escreve a copy que converte da landing em 4 camadas (mira → rascunho →
+  afiação → humano), lendo o swipe file `docs/swipe-copy.md` — roda antes do layout no
+  `/pagina`.
 - **`/premium-design`** extrai o DNA visual de sites de referência e recombina numa
   identidade nova — o motor de design que abastece `/identidade` e `/pagina`.
 - **`/seo`** deixa a página achável no Google e citável pela IA — on-page, Schema e GEO.

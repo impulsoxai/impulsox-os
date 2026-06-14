@@ -26,6 +26,20 @@ E uma régua que decide cada linha (Julian Shapiro):
 Autoria: ImpulsoX AI. Embasada em `docs/persuasao.md` + frameworks consagrados de
 conversão (Schwartz, Shapiro, PAS/BAB, Cialdini).
 
+## Dois trabalhos diferentes, dois audits
+
+Esta skill entrega copy **FORTE** (que vende). A `/escritor-br` entrega copy **HUMANA**
+(sem cara de IA). São critérios diferentes, então são etapas diferentes:
+
+| | Aqui na `/copy` (Camada 3 · Afiação) | Na `/escritor-br` (Camada 4 · Humano) |
+|---|---|---|
+| Pergunta | *"isso VENDE ou só descreve?"* | *"isso ainda parece IA?"* |
+| Régua | Desejo − (Esforço + Confusão) | tabela de vícios + restrições duras |
+| Saída | copy forte (pode ter tom de IA ainda) | copy forte E humana |
+
+Não tente fazer os dois na mesma passada — é o que produz "copy correta, sem força e sem
+alma". Afia primeiro (vende?), humaniza depois (soa gente?). O handoff é o gate de entrega.
+
 ## Quando roda
 
 - Chamada pelo `/pagina` na etapa de COPY, **antes** de qualquer layout (copy primeiro,
@@ -43,10 +57,14 @@ conversão (Schwartz, Shapiro, PAS/BAB, Cialdini).
   mais que qualquer fórmula genérica.
 - `docs/persuasao.md` — **fonte única** de níveis de consciência, sofisticação e
   gatilhos. Não reescrever esse conteúdo aqui; ler de lá e aplicar.
+- `docs/swipe-copy.md` — **acervo de copy real que converte** (lido na Camada 2 pra
+  calibrar a força de cada bloco; molde transfere, frase não).
 
 Degrau mínimo: 2 (voz definida). Sem voz, escrever em tom neutro e marcar "confirmar voz".
 
-## Passo 0 — Mirar antes de escrever
+---
+
+## CAMADA 1 · MIRA — mirar antes de escrever
 
 Da `docs/persuasao.md`, fixar duas coisas (não reescrever a teoria, só aplicar):
 - **Nível de consciência** do tráfego que chega (inconsciente → pronto pra agir). Frio
@@ -60,7 +78,11 @@ Depois, travar em uma frase cada:
 - **Um leitor** (pra quem se fala) · **uma promessa** (o resultado central) ·
   **uma ação** (o que ele faz no fim). Página que mira três leitores não converte nenhum.
 
-## Passo 1 — Headline (vale 80% do esforço)
+---
+
+## CAMADA 2 · RASCUNHO
+
+### Passo 1 — Headline (vale 80% do esforço)
 
 5x mais gente lê o headline do que o corpo. Regras:
 - **Benefício/resultado no headline; o "o que é" vai no subtítulo** (qualifica e torna
@@ -79,7 +101,11 @@ Toolbox de fórmulas (esqueleto, não molde a copiar):
 | 4U | Útil · Urgente · Único · Ultra-específico (mirar 2-3 num headline) |
 | Mecanismo | nomear o "como" diferente quando o nicho está saturado |
 
-## Passo 2 — Estrutura que converte (ordem provada, não reinvente)
+> **Consultar o swipe file.** Antes de fechar o headline, abrir `docs/swipe-copy.md` e
+> puxar 1 molde análogo (ex.: "três usos em seis palavras", "produto como verbo") como
+> régua de força. É calibragem — pega a mecânica, nunca a frase nem a marca de origem.
+
+### Passo 2 — Estrutura que converte (ordem provada, não reinvente)
 
 ```
 HERO        benefício (headline) + qualifica (subtítulo) + 1 CTA + prova rápida/visual
@@ -95,43 +121,80 @@ CTA primário acima da dobra **e** repetido no fim. **Uma ação só** — cada 
 um motivo pra não decidir. Texto específico ("Falar no WhatsApp"), nunca "Clique aqui" /
 "Saiba mais". O CTA continua a narrativa do hero (continuidade), não muda de assunto.
 
+> **Consultar o swipe file por bloco.** Antes de escrever hero, oferta, quebra de objeção
+> e CTA, puxar 1 exemplo análogo do `docs/swipe-copy.md` (ex.: "objeção embutida no sub",
+> "CTA verbo específico", "show don't tell"). Calibra o nível; não copia a marca.
+
 Teste de cada bloco: ele **aumenta o desejo** ou **reduz esforço/confusão**? Se não faz
 nem um nem outro, corta.
 
-## Passo 3 — Ritmo (o que faz NÃO soar robótico)
+---
 
-Leitor não lê frase a frase, lê momento. Momento vem do ritmo:
-- **Varie o tamanho da frase.** Curta pra impacto. Média pra explicar. E, de vez em
-  quando, uma longa que ganha fôlego e constrói até o fim. Frases todas do mesmo tamanho
-  soam de máquina.
-- **Fragmentos valem.** "De propósito. Funcionam." Soam humanos.
-- **Bucket brigades:** a cada poucos blocos, uma frase curta que empurra ("E tem mais.",
-  "Repara nisso:") — sem virar bordão.
-- Frase acima de ~20 palavras → quebrar ou encurtar.
+## CAMADA 3 · AFIAÇÃO — loop de auto-crítica de CONVERSÃO (NOVO, obrigatório)
 
-## Passo 4 — Caça à repetição (GATE obrigatório — o erro mais comum)
+Rodar **antes** de mandar pro `/escritor-br`. Não é humanização — é checar se a copy
+**vende** ou só **descreve**. Uma passada de leitura inteira fazendo uma pergunta só:
 
-Antes de entregar, varrer a copy inteira:
-1. **Primeira palavra de cada bloco/parágrafo** — não pode repetir entre vizinhos.
-2. **Palavra-tema colada** — se "operar/operando", "presença", "negócio" (ou qualquer
-   termo) se repete em blocos vizinhos, trocar por sinônimo ou reescrever.
-3. **Estrutura de frase repetida** — "A IA faz X. A IA faz Y." → variar a forma.
-4. **Mesma ideia dita duas vezes** — headline e subtítulo (ou hero e CTA final) dizendo
-   o mesmo com outras palavras → cortar uma.
-5. **Truque:** ler de trás pra frente, bloco a bloco — o cérebro para de "consertar"
-   sozinho e a repetição salta.
+> *"Cada linha aumenta o desejo ou reduz esforço/confusão? A linha que não faz nenhum
+> dos dois descreve em vez de vender — corta ou reescreve."*
 
-> Exceção (estreita): anáfora deliberada de **3+ batidas no corpo** ("Você X. Você Y.
-> Você Z.") cria ritmo e é bem-vinda. MAS num **headline ou frase de duas partes**,
-> repetir o mesmo verbo/palavra ("A IA **cuida**… você **cuida**…") é repetição por
-> descuido, não anáfora — reescrever. Na dúvida, varia.
+### Os pecados da copy fraca (caçar e corrigir)
+1. **Descreve o produto** em vez do resultado. "Tem integração com WhatsApp" → "Seu
+   cliente te acha no WhatsApp e é respondido na hora, sem você parar o que faz."
+2. **Genérico** — serve pra qualquer concorrente. Teste do logo: troca o nome da marca
+   e a frase continua verdadeira pra um concorrente? Então não diz nada. Reescrever pra
+   só fazer sentido pra ESTE negócio.
+3. **Abstrato** — sem número, sem nome, sem cena concreta. "Aumente sua eficiência" →
+   "Responda 40 mensagens enquanto atende o caixa."
+4. **Diluição do concreto (o mais traiçoeiro)** — pegar algo específico que já estava na
+   copy e trocar por uma categoria vaga no meio do texto. É o pecado nº 2 e nº 3
+   acontecendo *na reescrita*, não no rascunho. Regra dura: **nome de canal, produto,
+   número ou horário, uma vez concreto, continua concreto até o fim. Nunca substituir por
+   genérico.** Casos reais que escaparam:
+   - "WhatsApp" não vira "por mensagem" nem "por lá" → escreve **WhatsApp**.
+   - um horário-cena ("22h47") não vira rótulo abstrato ("dessas 22h47") → continua cena.
+   - o nome do produto não vira "a solução" / "a ferramenta" → escreve **o nome**.
+   Varredura: achou categoria genérica onde existe o nome/número específico? Volta o específico.
 
-## Passo 5 — Clareza acima de esperteza
+### O que faz parte da Afiação (não some nada — só mudou de lugar)
+- **Gate de repetição** (era Passo 4) entra aqui. Varrer a copy inteira:
+  1. **Primeira palavra de cada bloco/parágrafo** — não pode repetir entre vizinhos.
+  2. **Palavra-tema colada** — termo repetido em blocos vizinhos → sinônimo ou reescrita.
+  3. **Estrutura de frase repetida** — "A IA faz X. A IA faz Y." → variar a forma.
+  4. **Mesma ideia dita duas vezes** — headline e subtítulo (ou hero e CTA) dizendo o
+     mesmo → cortar uma.
+  5. **Truque:** ler de trás pra frente, bloco a bloco — a repetição salta.
+  > Exceção (estreita): anáfora deliberada de **3+ batidas no corpo** ("Você X. Você Y.
+  > Você Z.") cria ritmo e é bem-vinda. MAS num **headline ou frase de duas partes**,
+  > repetir o mesmo verbo ("A IA **cuida**… você **cuida**…") é descuido, não anáfora →
+  > reescrever. Na dúvida, varia.
+- **Ritmo** (era Passo 3) entra aqui — parte de afiar pra impacto, não de humanizar:
+  - **Varie o tamanho da frase.** Curta pra impacto. Média pra explicar. De vez em
+    quando, uma longa que ganha fôlego e constrói até o fim.
+  - **Fragmentos valem.** "De propósito. Funcionam."
+  - **Bucket brigades:** a cada poucos blocos, uma frase curta que empurra ("E tem
+    mais.", "Repara nisso:") — sem virar bordão.
+  - Frase acima de ~20 palavras → quebrar ou encurtar.
+
+### Reescrever puxando força do swipe
+Nos pontos fracos achados acima, voltar ao `docs/swipe-copy.md` e usar o molde análogo
+pra reerguer a linha — sempre a mecânica, nunca a frase de origem.
+
+Saída desta camada: **copy forte**. Pode ainda ter tom de IA — isso é trabalho da
+Camada 4.
+
+---
+
+## CAMADA 4 · entrega pro /escritor-br (humano + voz)
+
+A copy forte passa pelo **`/escritor-br`** (naturalidade pt-BR, tira cara de IA, injeta
+a voz). É o último passo antes de salvar/voltar pro `/pagina`. Ver "Gate de entrega".
+
+## Passo de clareza (vale em todas as camadas)
 
 - **Benefício** (resultado pro cliente) antes de **recurso** (o que a coisa faz).
 - Zero jargão de marketing: cortar "alavancar", "potencializar", "transformar seu
-  negócio", "solução completa/inovadora", "levar a outro patamar". São muletas genéricas
-  — e a `voz.md` já bane várias.
+  negócio", "solução completa/inovadora", "levar a outro patamar". A `voz.md` já bane várias.
 - Linguagem simples (leitura de 6ª-7ª série). Palavra simples > palavra chique.
 - Falar com **"você"**. Foco no leitor, não na empresa.
 
@@ -140,10 +203,11 @@ Antes de entregar, varrer a copy inteira:
 - **A voz da marca dirige.** A copy soa como `nucleo/voz.md`, não como fórmula.
 - **Sem prova inventada.** Número, depoimento e caso só de `nucleo/provas.md` autorizado.
   Sem prova real → mudar o ângulo (demonstração, processo, garantia), nunca inventar.
+- **Swipe é molde, não cópia.** Nunca transplantar frase, tema ou marca do `swipe-copy.md`.
 - **Sem urgência/escassez falsa.** Só se for contável e real.
 - **Hook cumpre o que promete** — gancho que não entrega queima a marca.
 - **Uma ação só** por página.
-- A copy final passa pelo **`/escritor-br`** (naturalidade pt-BR) antes de ir pro `/pagina`.
+- A copy final passa pelo **`/escritor-br`** antes de ir pro `/pagina`.
 
 ## Saída
 
@@ -153,27 +217,32 @@ Antes de entregar, varrer a copy inteira:
 - Nota de quais blocos têm **prova real** vs **pendente** (pra `/provas` resolver).
 
 **Gate de entrega (obrigatório):** antes de salvar/entregar e antes de devolver pro
-`/pagina`, a copy completa passa pelo **`/escritor-br`** (naturalidade pt-BR, tira cara
-de IA). É o último passo — copy que não passou pelo `/escritor-br` não está pronta.
+`/pagina`, a copy completa (já afiada na Camada 3) passa pelo **`/escritor-br`** (Camada
+4 — humano + voz). A ordem é: **afia → humaniza**. Copy que não passou pelas duas não
+está pronta. O **gate frio final é o `/revisar`** (agente separado, olhos limpos) — roda
+quando a peça vai ao ar (obrigatório antes de publicar venda/ads, regra do próprio
+`/revisar`), não dentro desta skill.
 
 O `/pagina` consome este arquivo como fonte do texto (já revisado pelo `/escritor-br`).
 
 ## Checklist final (rodar antes de entregar)
 
-- [ ] Consciência + sofisticação definidas (de persuasao.md); um leitor, uma promessa, uma ação
-- [ ] Sprint de 10 headlines feito; 3 melhores apresentadas com recomendação
+- [ ] Camada 1: consciência + sofisticação definidas; um leitor, uma promessa, uma ação
+- [ ] Camada 2: sprint de 10 headlines; 3 melhores com recomendação; swipe consultado por bloco
 - [ ] Benefício no headline, "o que é" no subtítulo; message-match com a origem do tráfego
-- [ ] Cada bloco aumenta desejo OU reduz esforço/confusão
-- [ ] Uma ação só; CTA acima da dobra e no fim; texto específico
+- [ ] Camada 3 (Afiação): rodada — cada linha vende, não descreve; pecados caçados (inclui diluição do concreto)
 - [ ] Gate de repetição: 1ª palavra, palavra-tema, estrutura, ideia repetida
 - [ ] Ritmo: tamanhos de frase variados, sem monotonia
+- [ ] Uma ação só; CTA acima da dobra e no fim; texto específico
 - [ ] Zero jargão de marketing; benefício antes de recurso; "você"
 - [ ] Prova só real; pendências marcadas
-- [ ] Passou pelo /escritor-br
+- [ ] Camada 4: passou pelo /escritor-br (humano + voz). Gate frio `/revisar` fica pra antes de publicar
 
 ## Onde registrar
 
 `/copy` é **motor** (skill do sistema). Nasce no template ImpulsoX-OS e desce pros clones
 via `/atualizar-motor`. Registrada na lista de automações do `README.md` (seção Premium) e
 plugada na **Etapa 2 — Copy** do `/pagina` (a etapa de COPY roda esta skill) e na etapa
-de **mini-redesign** do `/raio-x` (copy da abertura do "antes → depois").
+de **mini-redesign** do `/raio-x` (copy da abertura do "antes → depois"). A Camada 2 lê
+`docs/swipe-copy.md`; a Camada 3 (Afiação) é o audit de conversão antes do handoff pro
+`/escritor-br`.

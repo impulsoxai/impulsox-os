@@ -45,6 +45,29 @@ Autoria: ImpulsoX AI. Conteúdo original.
 5. **Mostrar ao usuário** o veredito e os achados sempre — a revisão também ensina o
    dono a ler marketing.
 
+## Checklist de copy de página (quando a peça é landing/página de venda)
+
+Quando a peça revisada é copy de página (vinda da `/copy` + `/escritor-br`), o revisor
+aplica também estas frentes — é a última rede contra o que escapa das camadas anteriores:
+
+- **Conversão:** cada linha aumenta o desejo OU reduz esforço/confusão? Headline carrega
+  o benefício e o "o que é" está no subtítulo? Uma ação só? Caçar os pecados da copy
+  fraca — descreve o produto em vez do resultado; genérico (passa no teste do logo);
+  abstrato (sem número/nome/cena).
+- **Concreto preservado:** canal/produto/número específicos não viraram categoria vaga.
+  O canal é "WhatsApp", não "por mensagem"/"por lá"; o produto tem nome, não é "a
+  solução"/"a ferramenta"; horário-cena continua cena.
+- **Registro escrito:** se a `voz.md` pede português por extenso, zero contração falada
+  ("tá/pra/cê/tava/pro"). Soar humano não é soar relaxado.
+- **Restrições duras:** nenhum travessão `—`/meia-risca `–`/`--`, nenhuma aspa curva
+  `“ ”`, nenhum título em title-case, sem negrito mecânico, sem emoji decorativo.
+- **Prova e lacuna honesta:** todo número/depoimento tem origem autorizada no
+  `nucleo/provas.md` (sem fonte → achado de pendência, nunca passa como fato); o
+  gancho/headline entrega o que promete, na intensidade prometida.
+
+Esses achados entram no veredito como qualquer outro (um por linha, com correção
+proposta). O revisor continua julgando, não reescrevendo — a correção volta pra `/copy`.
+
 ## Regras
 
 - O revisor **não reescreve** — julga. Reescrita é da skill de origem (mantém formato,

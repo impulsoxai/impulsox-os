@@ -69,7 +69,8 @@ O contexto entra no trabalho em silêncio — o usuário vê o resultado calibra
 relatório de leitura. Para qualquer peça visual (post, anúncio, página), ler também
 `marca/design-guide.md`. Para qualquer peça que precisa convencer (post, anúncio,
 página, e-mail), ler `docs/persuasao.md` — gatilhos, storytelling e as regras
-inegociáveis de persuasão honesta.
+inegociáveis de persuasão honesta. Para copy de página, ler também `docs/swipe-copy.md`
+— acervo de copy real que converte (molde transfere, frase não).
 
 Quanto melhor o núcleo, melhor a entrega. Núcleo vazio não impede o sistema de
 trabalhar — só o faz operar em degrau mais baixo, com mais suposições marcadas.
@@ -165,4 +166,4 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 
 ---
 
-*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.1*
+*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.2*
