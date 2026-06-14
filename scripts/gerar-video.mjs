@@ -26,12 +26,15 @@ const flag = (n) => { const i = args.indexOf(n); return i !== -1 ? args[i + 1] :
 export function argsFfmpeg({ clipes, legendas, trilha, saida, largura, altura, fonte, cor }) {
   const inputs = clipes.flatMap((c) => ["-i", c]);
   if (trilha) inputs.push("-i", trilha);
+  // escape do caminho da fonte pro filtro do ffmpeg: no Windows, "\" quebra o filtro
+  // e o ":" do drive precisa virar "\:". Trocar "\" por "/" é o jeito mais robusto.
+  const fonteEsc = fonte.replace(/\\/g, "/").replace(/:/g, "\\:");
   // escala+pad cada clipe pra 9:16 e queima a legenda da cena
   const filtros = clipes.map((_, i) => {
     const txt = (legendas[i] || "").replace(/:/g, "\\:").replace(/'/g, "\\'");
     return `[${i}:v]scale=${largura}:${altura}:force_original_aspect_ratio=increase,` +
       `crop=${largura}:${altura},` +
-      `drawtext=fontfile='${fonte}':text='${txt}':fontcolor=${cor}:fontsize=54:` +
+      `drawtext=fontfile='${fonteEsc}':text='${txt}':fontcolor=${cor}:fontsize=54:` +
       `box=1:boxcolor=black@0.45:boxborderw=18:x=(w-text_w)/2:y=h-h/4[v${i}]`;
   });
   const concatIns = clipes.map((_, i) => `[v${i}]`).join("");
@@ -109,6 +112,7 @@ if (import.meta.main) {
       const sj = await st.json();
       if (sj.status === "COMPLETED") break;
       if (sj.status === "FAILED") falhar("geração de vídeo falhou na Fal.");
+      if (t === 119) falhar("Fal: vídeo não ficou pronto em 6 minutos (timeout).");
     }
     const res = await fetch(`${BASE}/${MODELO_EP}/requests/${request_id}`, { headers: { Authorization: `Key ${FAL_KEY}` } });
     const rj = await res.json();
@@ -126,7 +130,7 @@ if (import.meta.main) {
     // still on-brand (schnell pra iterar barato); --ref opcional
     const imgArgs = ["--prompt", c.visual, "--saida", still, "--modelo", "schnell", "--largura", String(LARGURA), "--altura", String(ALTURA)];
     if (ref) imgArgs.push("--ref", ref);
-    execFileSync("node", [GERAR_IMG, ...imgArgs], { stdio: "inherit", env: process.env });
+    execFileSync("node", [GERAR_IMG, ...imgArgs], { stdio: "inherit", env: { ...process.env, FAL_KEY, FAL_BASE_URL: process.env.FAL_BASE_URL } });
     clipes.push(await falVideo(still, segundos));
     legendas.push(c.texto);
   }

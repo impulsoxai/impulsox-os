@@ -54,3 +54,16 @@ test("argsFfmpeg: gera args com escala vertical e legenda drawtext", () => {
   assert.match(s, /\/t\/reel\.mp4/);      // saída
   assert.match(s, /\/t\/m\.mp3/);         // trilha
 });
+
+test("argsFfmpeg: escapa caminho de fonte do Windows (barra invertida quebra o filtro)", () => {
+  const a = argsFfmpeg({
+    clipes: ["/t/c0.mp4"],
+    legendas: ["x"],
+    trilha: undefined,
+    saida: "/t/reel.mp4",
+    largura: 1080, altura: 1920, fonte: "C:\\Windows\\Fonts\\arialbd.ttf", cor: "#d4af37",
+  });
+  const s = a.join(" ");
+  assert.doesNotMatch(s, /C:\\Windows/);   // nada de barra invertida crua (era o bug)
+  assert.match(s, /C\\:\/Windows\/Fonts/); // drive escapado + barras normais
+});
