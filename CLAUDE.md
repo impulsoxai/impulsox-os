@@ -160,6 +160,11 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 - Dados concretos acima de afirmações vagas.
 - Conteúdo real, nunca placeholder. Dado indisponível → instrução explícita de
   substituição, nunca texto inventado como se fosse fato.
+- **Peça pública só vende oferta ATIVA.** Página, post, anúncio, e-mail e proposta falam
+  apenas das ofertas à venda agora (ATIVAS no `nucleo/ofertas.md`). Produto em construção,
+  piloto ou roadmap (seção FUTURAS / "não gerar conteúdo") fica fora de qualquer peça —
+  nem como "em breve". Roadmap é conhecimento interno, não argumento de venda. Vender o
+  que não existe expõe o cliente quando o comprador cobra a entrega.
 - Nunca arriscar a conta de um cliente por automação fora dos termos da plataforma.
   Onde a API oficial permite, automatizar; onde é área cinza, entregar pronto para
   publicação em um clique.

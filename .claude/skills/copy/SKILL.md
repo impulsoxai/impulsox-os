@@ -51,7 +51,10 @@ alma". Afia primeiro (vende?), humaniza depois (soa gente?). O handoff é o gate
 
 - `nucleo/voz.md` — **a voz é o motorista** (tom, palavras banidas, exemplos "BOM").
 - `nucleo/negocio.md` — posicionamento (o que de fato se vende) e diferencial.
-- `nucleo/ofertas.md` — benefício, objeções e público de cada oferta (matéria-prima).
+- `nucleo/ofertas.md` (ou `nucleo/ofertas/`) — benefício, objeções e público de cada
+  oferta (matéria-prima). **Ler a separação ATIVAS × FUTURAS:** a página só fala das
+  ofertas ATIVAS. Oferta marcada como FUTURA / roadmap / "não gerar conteúdo" **nunca**
+  entra na copy (ver Regras inegociáveis).
 - `nucleo/provas.md` — **só prova autorizada** entra; banco vazio → marcar pendente.
 - `nucleo/aprendizados.md` — o que a medição real já provou que converte aqui; pesa
   mais que qualquer fórmula genérica.
@@ -203,6 +206,10 @@ a voz). É o último passo antes de salvar/voltar pro `/pagina`. Ver "Gate de en
 - **A voz da marca dirige.** A copy soa como `nucleo/voz.md`, não como fórmula.
 - **Sem prova inventada.** Número, depoimento e caso só de `nucleo/provas.md` autorizado.
   Sem prova real → mudar o ângulo (demonstração, processo, garantia), nunca inventar.
+- **Só oferta ATIVA na página.** A copy vende exclusivamente o que está à venda agora
+  (ofertas ATIVAS do `ofertas.md`). Produto em construção, piloto ou roadmap (seção
+  FUTURAS / "não gerar conteúdo") **não aparece** — nem como "em breve". Vender o que
+  não existe quebra a confiança e expõe o cliente quando o comprador cobra a entrega.
 - **Swipe é molde, não cópia.** Nunca transplantar frase, tema ou marca do `swipe-copy.md`.
 - **Sem urgência/escassez falsa.** Só se for contável e real.
 - **Hook cumpre o que promete** — gancho que não entrega queima a marca.
