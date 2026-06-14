@@ -6,6 +6,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { argsFfmpeg } from "./gerar-video.mjs";
 
 const SCRIPT = fileURLToPath(new URL("./gerar-video.mjs", import.meta.url));
 const tmp = mkdtempSync(join(tmpdir(), "vid-test-"));
@@ -37,4 +38,19 @@ test("dry-run: plano com 2 cenas, vertical 1080x1920, soma a duração", () => {
   assert.equal(plano.altura, 1920);
   assert.equal(plano.duracao_total, 11);
   assert.equal(plano.modelo_video, "wan");
+});
+
+test("argsFfmpeg: gera args com escala vertical e legenda drawtext", () => {
+  const a = argsFfmpeg({
+    clipes: ["/t/c0.mp4", "/t/c1.mp4"],
+    legendas: ["primeira", "segunda"],
+    trilha: "/t/m.mp3",
+    saida: "/t/reel.mp4",
+    largura: 1080, altura: 1920, fonte: "/t/fonte.ttf", cor: "#d4af37",
+  });
+  const s = a.join(" ");
+  assert.match(s, /1080:1920/);          // escala vertical
+  assert.match(s, /drawtext/);            // legenda queimada
+  assert.match(s, /\/t\/reel\.mp4/);      // saída
+  assert.match(s, /\/t\/m\.mp3/);         // trilha
 });
