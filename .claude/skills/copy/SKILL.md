@@ -63,6 +63,8 @@ gate de entrega.
   gatilhos. Não reescrever esse conteúdo aqui; ler de lá e aplicar.
 - `docs/swipe-copy.md` — **acervo de copy real que converte** (lido na Camada 2 pra
   calibrar a força de cada bloco; molde transfere, frase não).
+- `docs/frase-que-pega.md` — **a craft da frase criativa e autêntica** (lido na Camada 4:
+  Made to Stick, devices, Big Idea, autenticidade).
 
 Degrau mínimo: 2 (voz definida). Sem voz, escrever em tom neutro e marcar "confirmar voz".
 
@@ -192,38 +194,27 @@ tom de IA. Fazer pegar é a Camada 4; soar humano é a Camada 5.
 ## CAMADA 4 · IDEIA — caçar a frase que pega (NOVO)
 
 Copy clara que ninguém lembra não vendeu. Depois de afiar (vende?), uma passada pra fazer
-os **momentos-chave grudarem**. Não a página toda: os pontos que carregam — **headline do
-hero, título de cada fold, CTA**. Brilho em tudo vira ruído; brilho nos picos puxa.
+os **momentos-chave grudarem** — hero, título de cada fold, CTA. Brilho nos picos, não na
+página toda (página inteira "esperta" cansa e soa publicitária).
 
-> **Pega dentro da calma.** Frase que gruda aqui é afiada, não gritada. Isso resolve o
-> "sem bordão" da `voz.md`: bordão é slogan repetido em tudo; isto é precisão memorável,
-> usada uma vez no ponto certo. Sem exclamação, sem caixa-alta, sem promessa inflada.
+**A craft mora em `docs/frase-que-pega.md`** — Made to Stick (Inesperado + Concreto +
+Crível), os devices retóricos, a Big Idea (Schwartz) e o gate de autenticidade. Não
+reescrever a teoria aqui; ler de lá e aplicar. Régua final: as frases marcadas **BOM** no
+`nucleo/voz.md` (o nível a bater e o jeito da casa).
 
-**A régua é a própria marca.** Antes de inventar, reler as frases marcadas como exemplo
-BOM no `voz.md` e no `swipe-copy.md` — é o nível a bater e o jeito da casa. (Exemplos de
-frase que pega, calma: "A venda das 22h você já perdeu." · "É a diferença entre perguntar
-e delegar." · "Sua empresa usa IA. Ou só usa o ChatGPT?")
+O essencial pra rodar aqui:
+1. Achar a **Big Idea** da página (o ângulo verdadeiro que surpreende) — a frase **destila**
+   ela, não enfeita. Decorar não cola; reenquadrar cola.
+2. Nos momentos que carregam, escrever **3 variações** com 1-2 devices (antítese, virada,
+   específico vívido, paralelismo…). A 1ª é a óbvia; a sacada vem na 2ª/3ª.
+3. Rodar os testes do doc: **grude** (lembra de olhos fechados?) · **motor** (surpreende +
+   concreto + verdade) · **slogan** (claro, com sentido, da marca) · **autenticidade**
+   (não mente; específico-verdadeiro > esperto-genérico) · **calma** (pegou sem gritar?).
+4. Apresentar os momentos-chave com a melhor + as alternativas; o usuário escolhe.
 
-### Os recursos (1-2 por frase, nunca empilhar)
-| Recurso | O que faz |
-|---|---|
-| **Antítese / contraste** | duas ideias em oposição ("perguntar vs delegar") |
-| **A virada / reframe** | dizer o óbvio de um ângulo que vira a cabeça ("usa IA, ou só o ChatGPT?") |
-| **Específico vívido** | número ou cena concreta no lugar do abstrato ("a venda das 22h") |
-| **Paralelismo / eco** | estrutura repetida que cria ritmo ("some da internet, some da cabeça do cliente") |
-| **Economia** | cortar até sobrar só o osso — a frase curta que fecha |
-
-### O método
-1. Listar os 3-5 momentos que carregam (hero, títulos de fold, CTA).
-2. Pra cada um, escrever **3 variações** aplicando 1-2 recursos. A 1ª é a óbvia; a sacada
-   vem na 2ª/3ª.
-3. **Teste do grude:** leu, fechou os olhos — lembra? Não lembra, não pegou. Reescreve.
-4. **Teste da calma:** pegou sem gritar? Senão, baixa o tom mantendo a sacada.
-5. **Teste da verdade:** a sacada continua honesta (não inventou prova nem promessa pra
-   soar esperta)? Senão, cai — esperteza que mente queima a marca.
-
-Apresentar ao usuário os momentos-chave com a frase que pega **+ as alternativas**, pra ele
-escolher. Os recursos valem nos picos; o corpo continua explicando calmo.
+> **Pega dentro da calma** e **autenticidade é gate.** Frase que gruda aqui é afiada, não
+> gritada — resolve o "sem bordão" da voz (bordão é slogan repetido; isto é precisão
+> memorável, usada uma vez no ponto certo). E esperteza que mente cai, por mais esperta.
 
 Saída desta camada: **copy forte E memorável**. Falta só virar humana — Camada 5.
 

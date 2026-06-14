@@ -36,6 +36,8 @@ autor, não genérico — e no LinkedIn voz genérica é morte na primeira linha
   teaser). Escassez quase nunca cabe — o público de lá fareja pressão de venda
 - `docs/formulas.md` — moldes testados; quando um serve ao tema, usar como esqueleto
   (priorizando os **validados aqui**) e registrar o nome da fórmula no arquivo da peça
+- `docs/frase-que-pega.md` — a craft da **primeira linha que segura** (Made to Stick,
+  devices, Big Idea, autenticidade); no LinkedIn voz genérica morre na 1ª linha
 - `producao/calendario/<mes>.md` — tema e intenção, se veio do calendário
 - Perguntar uma vez e registrar em `nucleo/voz.md`: o post sai no **perfil pessoal**
   (do dono/sócio) ou na **página da empresa**? Perfil pessoal alcança mais; página

@@ -35,6 +35,8 @@ Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degra
 - `docs/formulas.md` — moldes de estrutura testados; quando um serve ao tema, usar como
   esqueleto (priorizando os **validados aqui**) e registrar o nome da fórmula no
   `legenda.md` da peça — é o que permite ao `/desempenho` validar o molde depois
+- `docs/frase-que-pega.md` — a craft do **hook que gruda** (Made to Stick, devices, Big
+  Idea, autenticidade); usar na 1ª tela/linha e no fecho — no carrossel o hook é tudo
 - `nucleo/provas.md` — pros módulos FALA e HISTÓRIA: só prova com status autorizada;
   banco vazio → a `/provas` entra na fila como próximo passo
 - `producao/calendario/<mes>.md` — se a peça veio do calendário, tema e intenção já
