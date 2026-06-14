@@ -122,6 +122,10 @@ acerta vários "padrões" sem ser IA. **Não** reescrever só por causa de:
   explicar". IA tende ao take limpo; isso é sinal de gente.
 - **Gíria ou referência datada** — marca um ano/subcultura. Modelo atrasa; humano não.
 - **Variação de ritmo deliberada** — curta e longa de propósito é exatamente o alvo.
+- **Frase que pega (vinda da Camada 4 da `/copy`)** — antítese, paralelismo, reframe ou
+  específico vívido ("some da internet, some da cabeça do cliente") é **craft**, não tique
+  de IA. Não desmontar pra "deixar natural" — humanizar aqui é preservar a sacada e só
+  tirar o que a denuncia (travessão, aspa curva). Achatar a frase que pega mata o sangue.
 - **Aparte, parêntese, autocorreção** genuínos — "(quase escrevi 'sempre' aqui)".
 - **Pontuação/registro misto** de quem é da área técnica — não é robô, é pessoa real.
 

@@ -26,19 +26,20 @@ E uma régua que decide cada linha (Julian Shapiro):
 Autoria: ImpulsoX AI. Embasada em `docs/persuasao.md` + frameworks consagrados de
 conversão (Schwartz, Shapiro, PAS/BAB, Cialdini).
 
-## Dois trabalhos diferentes, dois audits
+## Três passadas, três perguntas
 
-Esta skill entrega copy **FORTE** (que vende). A `/escritor-br` entrega copy **HUMANA**
-(sem cara de IA). São critérios diferentes, então são etapas diferentes:
+Esta skill leva a copy de **clara → forte → memorável**; a `/escritor-br` fecha **humana**.
+São critérios diferentes, então são etapas diferentes — nunca na mesma passada (misturar é o
+que produz "copy correta, sem força e sem alma"):
 
-| | Aqui na `/copy` (Camada 3 · Afiação) | Na `/escritor-br` (Camada 4 · Humano) |
-|---|---|---|
-| Pergunta | *"isso VENDE ou só descreve?"* | *"isso ainda parece IA?"* |
-| Régua | Desejo − (Esforço + Confusão) | tabela de vícios + restrições duras |
-| Saída | copy forte (pode ter tom de IA ainda) | copy forte E humana |
+| Passada | Pergunta | Régua | Mora em |
+|---|---|---|---|
+| **Afiação** (Camada 3) | *"isso VENDE ou só descreve?"* | Desejo − (Esforço + Confusão) | `/copy` |
+| **Ideia** (Camada 4) | *"isso PEGA ou só informa?"* | as frases BOM do `voz.md` | `/copy` |
+| **Humano** (Camada 5) | *"isso ainda parece IA?"* | tabela de vícios + restrições duras | `/escritor-br` |
 
-Não tente fazer os dois na mesma passada — é o que produz "copy correta, sem força e sem
-alma". Afia primeiro (vende?), humaniza depois (soa gente?). O handoff é o gate de entrega.
+Afia (vende?), faz pegar (gruda?), humaniza (soa gente?). O handoff pro `/escritor-br` é o
+gate de entrega.
 
 ## Quando roda
 
@@ -183,12 +184,52 @@ Rodar **antes** de mandar pro `/escritor-br`. Não é humanização — é checa
 Nos pontos fracos achados acima, voltar ao `docs/swipe-copy.md` e usar o molde análogo
 pra reerguer a linha — sempre a mecânica, nunca a frase de origem.
 
-Saída desta camada: **copy forte**. Pode ainda ter tom de IA — isso é trabalho da
-Camada 4.
+Saída desta camada: **copy forte e clara**. Pode ser morna (informa mas não gruda) e ter
+tom de IA. Fazer pegar é a Camada 4; soar humano é a Camada 5.
 
 ---
 
-## CAMADA 4 · entrega pro /escritor-br (humano + voz)
+## CAMADA 4 · IDEIA — caçar a frase que pega (NOVO)
+
+Copy clara que ninguém lembra não vendeu. Depois de afiar (vende?), uma passada pra fazer
+os **momentos-chave grudarem**. Não a página toda: os pontos que carregam — **headline do
+hero, título de cada fold, CTA**. Brilho em tudo vira ruído; brilho nos picos puxa.
+
+> **Pega dentro da calma.** Frase que gruda aqui é afiada, não gritada. Isso resolve o
+> "sem bordão" da `voz.md`: bordão é slogan repetido em tudo; isto é precisão memorável,
+> usada uma vez no ponto certo. Sem exclamação, sem caixa-alta, sem promessa inflada.
+
+**A régua é a própria marca.** Antes de inventar, reler as frases marcadas como exemplo
+BOM no `voz.md` e no `swipe-copy.md` — é o nível a bater e o jeito da casa. (Exemplos de
+frase que pega, calma: "A venda das 22h você já perdeu." · "É a diferença entre perguntar
+e delegar." · "Sua empresa usa IA. Ou só usa o ChatGPT?")
+
+### Os recursos (1-2 por frase, nunca empilhar)
+| Recurso | O que faz |
+|---|---|
+| **Antítese / contraste** | duas ideias em oposição ("perguntar vs delegar") |
+| **A virada / reframe** | dizer o óbvio de um ângulo que vira a cabeça ("usa IA, ou só o ChatGPT?") |
+| **Específico vívido** | número ou cena concreta no lugar do abstrato ("a venda das 22h") |
+| **Paralelismo / eco** | estrutura repetida que cria ritmo ("some da internet, some da cabeça do cliente") |
+| **Economia** | cortar até sobrar só o osso — a frase curta que fecha |
+
+### O método
+1. Listar os 3-5 momentos que carregam (hero, títulos de fold, CTA).
+2. Pra cada um, escrever **3 variações** aplicando 1-2 recursos. A 1ª é a óbvia; a sacada
+   vem na 2ª/3ª.
+3. **Teste do grude:** leu, fechou os olhos — lembra? Não lembra, não pegou. Reescreve.
+4. **Teste da calma:** pegou sem gritar? Senão, baixa o tom mantendo a sacada.
+5. **Teste da verdade:** a sacada continua honesta (não inventou prova nem promessa pra
+   soar esperta)? Senão, cai — esperteza que mente queima a marca.
+
+Apresentar ao usuário os momentos-chave com a frase que pega **+ as alternativas**, pra ele
+escolher. Os recursos valem nos picos; o corpo continua explicando calmo.
+
+Saída desta camada: **copy forte E memorável**. Falta só virar humana — Camada 5.
+
+---
+
+## CAMADA 5 · entrega pro /escritor-br (humano + voz)
 
 A copy forte passa pelo **`/escritor-br`** (naturalidade pt-BR, tira cara de IA, injeta
 a voz). É o último passo antes de salvar/voltar pro `/pagina`. Ver "Gate de entrega".
@@ -224,9 +265,9 @@ a voz). É o último passo antes de salvar/voltar pro `/pagina`. Ver "Gate de en
 - Nota de quais blocos têm **prova real** vs **pendente** (pra `/provas` resolver).
 
 **Gate de entrega (obrigatório):** antes de salvar/entregar e antes de devolver pro
-`/pagina`, a copy completa (já afiada na Camada 3) passa pelo **`/escritor-br`** (Camada
-4 — humano + voz). A ordem é: **afia → humaniza**. Copy que não passou pelas duas não
-está pronta. O **gate frio final é o `/revisar`** (agente separado, olhos limpos) — roda
+`/pagina`, a copy completa (já afiada na Camada 3 e com a frase caçada na Camada 4) passa
+pelo **`/escritor-br`** (Camada 5 — humano + voz). A ordem é: **afia → faz pegar →
+humaniza**. Copy que não passou pelas três não está pronta. O **gate frio final é o `/revisar`** (agente separado, olhos limpos) — roda
 quando a peça vai ao ar (obrigatório antes de publicar venda/ads, regra do próprio
 `/revisar`), não dentro desta skill.
 
@@ -240,10 +281,11 @@ O `/pagina` consome este arquivo como fonte do texto (já revisado pelo `/escrit
 - [ ] Camada 3 (Afiação): rodada — cada linha vende, não descreve; pecados caçados (inclui diluição do concreto)
 - [ ] Gate de repetição: 1ª palavra, palavra-tema, estrutura, ideia repetida
 - [ ] Ritmo: tamanhos de frase variados, sem monotonia
+- [ ] Camada 4 (Ideia): hero, títulos de fold e CTA passam no teste do grude — frase que pega, calma e verdadeira (régua = frases BOM do voz.md)
 - [ ] Uma ação só; CTA acima da dobra e no fim; texto específico
 - [ ] Zero jargão de marketing; benefício antes de recurso; "você"
 - [ ] Prova só real; pendências marcadas
-- [ ] Camada 4: passou pelo /escritor-br (humano + voz). Gate frio `/revisar` fica pra antes de publicar
+- [ ] Camada 5: passou pelo /escritor-br (humano + voz). Gate frio `/revisar` fica pra antes de publicar
 
 ## Onde registrar
 
