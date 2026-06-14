@@ -86,3 +86,24 @@ test("dry-run: não chama a Fal e imprime o plano", () => {
   assert.match(r.stdout, /schnell/);
   assert.ok(!existsSync(out), "dry-run não escreve arquivo");
 });
+
+test("erro amigável quando a Fal recusa o prompt (sem images)", async () => {
+  const out = join(tmp, "rec.png");
+  const { srv, url } = await mockFal((req, payload, res) => {
+    res.writeHead(200, { "content-type": "application/json" });
+    res.end(JSON.stringify({ images: [] }));
+  });
+  const r = await runAsync(["--prompt", "x", "--saida", out], { FAL_KEY: "test", FAL_BASE_URL: url });
+  srv.close();
+  assert.equal(r.code, 1);
+  assert.match(r.stderr, /recusad|sem imagem/i);
+});
+
+test("a FAL_KEY nunca aparece no stderr", async () => {
+  const out = join(tmp, "k.png");
+  const { srv, url } = await mockFal((req, payload, res) => { res.writeHead(500); res.end("boom"); });
+  const r = await runAsync(["--prompt", "x", "--saida", out], { FAL_KEY: "super-secreta-123", FAL_BASE_URL: url });
+  srv.close();
+  assert.equal(r.code, 1);
+  assert.doesNotMatch(r.stderr, /super-secreta-123/);
+});
