@@ -49,7 +49,8 @@ body{
 .eyebrow{font-family:var(--font-mono); font-size:11px; letter-spacing:.32em; text-transform:uppercase;
   color:var(--muted); display:flex; align-items:center; gap:9px;}
 .eyebrow::before{content:"✕"; color:var(--gold)}
-h1{font-family:var(--font-display); font-weight:600; font-size:40px; line-height:1; letter-spacing:-.01em; margin-top:7px;}
+h1{font-family:var(--font-display); font-weight:600; font-size:40px; line-height:1; letter-spacing:-.01em; margin-top:7px;
+  color:var(--gold); text-shadow:0 0 24px color-mix(in oklab,var(--gold) 28%,transparent);}
 h1 em{font-style:italic; color:var(--gold)}
 .statusbar{display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:flex-end;}
 .pill{font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
