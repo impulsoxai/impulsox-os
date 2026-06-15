@@ -67,3 +67,16 @@ test("argsFfmpeg: escapa caminho de fonte do Windows (barra invertida quebra o f
   assert.doesNotMatch(s, /C:\\Windows/);   // nada de barra invertida crua (era o bug)
   assert.match(s, /C\\:\/Windows\/Fonts/); // drive escapado + barras normais
 });
+
+test("argsFfmpeg: corte rápido — trima cada clipe pra duração da cena", () => {
+  const a = argsFfmpeg({
+    clipes: ["/t/c0.mp4", "/t/c1.mp4"],
+    legendas: ["a", "b"],
+    duracoes: [3, 2],
+    saida: "/t/reel.mp4",
+    largura: 1080, altura: 1920, fonte: "/t/f.ttf", cor: "#d4af37",
+  });
+  const s = a.join(" ");
+  assert.match(s, /trim=duration=3/);  // clipe 0 cortado em 3s
+  assert.match(s, /trim=duration=2/);  // clipe 1 cortado em 2s
+});

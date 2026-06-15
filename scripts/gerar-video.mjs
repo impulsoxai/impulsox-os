@@ -26,7 +26,7 @@ const flag = (n) => { const i = args.indexOf(n); return i !== -1 ? args[i + 1] :
 
 // monta os argumentos do ffmpeg: concatena clipes, escala 9:16, queima legenda por
 // cena, mixa trilha. Função pura (testável sem rodar ffmpeg).
-export function argsFfmpeg({ clipes, legendas, trilha, saida, largura, altura, fonte, cor }) {
+export function argsFfmpeg({ clipes, legendas, duracoes = [], trilha, saida, largura, altura, fonte, cor }) {
   const inputs = clipes.flatMap((c) => ["-i", c]);
   if (trilha) inputs.push("-i", trilha);
   // escape do caminho da fonte pro filtro do ffmpeg: no Windows, "\" quebra o filtro
@@ -35,7 +35,10 @@ export function argsFfmpeg({ clipes, legendas, trilha, saida, largura, altura, f
   // escala+pad cada clipe pra 9:16 e queima a legenda da cena
   const filtros = clipes.map((_, i) => {
     const txt = (legendas[i] || "").replace(/:/g, "\\:").replace(/'/g, "\\'");
-    return `[${i}:v]scale=${largura}:${altura}:force_original_aspect_ratio=increase,` +
+    // corte rápido: trima o clipe pra duração da cena (ex. 2-3s) antes de montar
+    const dur = Number(duracoes[i]) || 0;
+    const trim = dur > 0 ? `trim=duration=${dur},setpts=PTS-STARTPTS,` : "";
+    return `[${i}:v]${trim}scale=${largura}:${altura}:force_original_aspect_ratio=increase,` +
       `crop=${largura}:${altura},` +
       `drawtext=fontfile='${fonteEsc}':text='${txt}':fontcolor=${cor}:fontsize=54:` +
       `box=1:boxcolor=black@0.45:boxborderw=18:x=(w-text_w)/2:y=h-h/4[v${i}]`;
@@ -95,7 +98,7 @@ if (import.meta.main) {
   catch { falhar("ffmpeg não encontrado. Instale (ex.: choco install ffmpeg / brew install ffmpeg)."); }
 
   const work = mkdtempSync(join(tmpdir(), "reel-"));
-  const clipes = [], legendas = [];
+  const clipes = [], legendas = [], duracoes = [];
   // VERIFICAR no painel da Fal os nomes de modelo de vídeo antes de subir.
   const MODELO_EP = modeloVideo === "kling" ? "fal-ai/kling-video/v2.5-turbo/pro/image-to-video" : "fal-ai/wan-i2v";
 
@@ -144,10 +147,11 @@ if (import.meta.main) {
     execFileSync("node", [GERAR_IMG, ...imgArgs], { stdio: "inherit", env: { ...process.env, FAL_KEY, FAL_BASE_URL: process.env.FAL_BASE_URL } });
     clipes.push(await falVideo(still, segundos, c.visual + ", slow subtle cinematic camera motion, smooth, photographic, no distortion"));
     legendas.push(c.texto);
+    duracoes.push(segundos);
   }
 
   const fonte = process.env.REEL_FONTE || "C:/Windows/Fonts/arialbd.ttf"; // a skill passa a fonte da marca
   const cor = process.env.REEL_COR || "#d4af37";
-  execFileSync("ffmpeg", argsFfmpeg({ clipes, legendas, trilha, saida, largura: LARGURA, altura: ALTURA, fonte, cor }), { stdio: "inherit" });
+  execFileSync("ffmpeg", argsFfmpeg({ clipes, legendas, duracoes, trilha, saida, largura: LARGURA, altura: ALTURA, fonte, cor }), { stdio: "inherit" });
   console.log(JSON.stringify({ ok: true, saida, cenas: cenas.length, duracao_total: duracaoTotal }, null, 2));
 }
