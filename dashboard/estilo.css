@@ -1,0 +1,115 @@
+@import url("/marca/tokens.css");
+
+/* Painel ImpulsoX-OS — usa as variáveis da marca quando existem (importadas acima),
+   com fallbacks neutros decentes pro template, que não tem marca/. */
+
+:root {
+  --p-fundo: var(--cor-fundo, #06060d);
+  --p-card: var(--cor-superficie, #12121d);
+  --p-borda: var(--cor-borda, #23233a);
+  --p-texto: var(--cor-texto, #e6e6f0);
+  --p-suave: var(--cor-texto-suave, #9a9ab0);
+  --p-primaria: var(--cor-primaria, #7c3aed);
+  --p-destaque: var(--cor-destaque, #d4af37);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--fonte-corpo, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
+  background: var(--p-fundo);
+  color: var(--p-texto);
+  line-height: 1.5;
+  padding: clamp(1rem, 3vw, 2.5rem);
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: clamp(1rem, 3vw, 2rem);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--p-borda);
+}
+
+h1 {
+  font-family: var(--fonte-titulo, inherit);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--p-texto);
+}
+
+#atualizado {
+  font-size: 0.85rem;
+  color: var(--p-suave);
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+section {
+  background: var(--p-card);
+  border: 1px solid var(--p-borda);
+  border-radius: 14px;
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+h2 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--p-destaque);
+  margin-bottom: 1rem;
+}
+
+p { margin-bottom: 0.5rem; }
+p:last-child { margin-bottom: 0; }
+
+ul { list-style: none; margin-top: 0.5rem; }
+li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--p-borda);
+  font-size: 0.92rem;
+}
+li:last-child { border-bottom: none; }
+
+#ciclo { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.etapa {
+  flex: 1 1 100px;
+  background: var(--p-fundo);
+  border: 1px solid var(--p-borda);
+  border-radius: 10px;
+  padding: 0.85rem 0.75rem;
+  text-align: center;
+}
+.etapa b {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--p-primaria);
+  margin-bottom: 0.25rem;
+}
+.etapa span {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--p-suave);
+}
+
+.peca {
+  font-size: 0.85rem;
+  color: var(--p-suave);
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--p-borda);
+}
+.peca:last-child { border-bottom: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  section { transition: border-color 0.2s ease; }
+  section:hover { border-color: var(--p-primaria); }
+}

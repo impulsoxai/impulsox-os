@@ -28,6 +28,19 @@ export function criarServidor(raiz) {
         return;
       }
 
+      // rota explícita e segura pro CSS da marca: um arquivo conhecido fora de dashboard/.
+      // Só este caminho exato é exposto (não abre a pasta marca/ inteira).
+      if (url.pathname === "/marca/tokens.css") {
+        const tk = join(raiz, "marca", "tokens.css");
+        if (existsSync(tk)) {
+          res.writeHead(200, { "Content-Type": "text/css; charset=utf-8" });
+          res.end(readFileSync(tk));
+        } else {
+          res.writeHead(404).end("sem marca");
+        }
+        return;
+      }
+
       // front-end estático — só nomes da whitelist, nunca caminho arbitrário.
       // Rejeita de cara qualquer tentativa de subir de pasta, separador suspeito ou NUL.
       if (pathname.includes("..") || pathname.includes("\0") || pathname.includes("\\")) {
