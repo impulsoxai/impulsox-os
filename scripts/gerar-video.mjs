@@ -96,28 +96,32 @@ if (import.meta.main) {
   // VERIFICAR no painel da Fal os nomes de modelo de vídeo antes de subir.
   const MODELO_EP = modeloVideo === "kling" ? "fal-ai/kling-video/v2/standard/image-to-video" : "fal-ai/wan-i2v";
 
-  async function falVideo(stillPath, segundos) {
-    const b64 = readFileSync(stillPath).toString("base64");
+  async function falVideo(stillPath, segundos, prompt) {
+    const imageUrl = `data:image/png;base64,${readFileSync(stillPath).toString("base64")}`;
+    // Wan i2v: prompt (obrigatório) + num_frames (81-100) @ frames_per_second; NÃO tem "duration".
+    // Kling: prompt + duration "5"|"10". aspect_ratio 9:16 pro vertical.
+    const payload = modeloVideo === "kling"
+      ? { prompt, image_url: imageUrl, duration: (Number(segundos) || 5) <= 5 ? "5" : "10", aspect_ratio: "9:16" }
+      : { prompt, image_url: imageUrl, num_frames: Math.min(100, Math.max(81, Math.round((Number(segundos) || 5) * 16))), frames_per_second: 16, resolution: "720p", aspect_ratio: "9:16" };
     const sub = await fetch(`${BASE}/${MODELO_EP}`, {
       method: "POST",
       headers: { Authorization: `Key ${FAL_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ image_url: `data:image/png;base64,${b64}`, duration: String(segundos) }),
+      body: JSON.stringify(payload),
     });
-    if (!sub.ok) falhar(`Fal vídeo HTTP ${sub.status}.`);
+    if (!sub.ok) falhar(`Fal vídeo HTTP ${sub.status}. ${(await sub.text()).slice(0, 200)}`);
     const { request_id } = await sub.json();
-    // polling do queue até completar
     for (let t = 0; t < 120; t++) {
       await new Promise((r) => setTimeout(r, 3000));
       const st = await fetch(`${BASE}/${MODELO_EP}/requests/${request_id}/status`, { headers: { Authorization: `Key ${FAL_KEY}` } });
       const sj = await st.json();
       if (sj.status === "COMPLETED") break;
-      if (sj.status === "FAILED") falhar("geração de vídeo falhou na Fal.");
+      if (sj.status === "FAILED" || sj.status === "ERROR") falhar(`geração de vídeo falhou na Fal (${sj.status}).`);
       if (t === 119) falhar("Fal: vídeo não ficou pronto em 6 minutos (timeout).");
     }
     const res = await fetch(`${BASE}/${MODELO_EP}/requests/${request_id}`, { headers: { Authorization: `Key ${FAL_KEY}` } });
     const rj = await res.json();
-    const vurl = rj?.video?.url || rj?.output?.video?.url;
-    if (!vurl) falhar("resposta da Fal sem vídeo.");
+    const vurl = rj?.video?.url || rj?.output?.video?.url || rj?.videos?.[0]?.url;
+    if (!vurl) falhar("resposta da Fal sem vídeo. " + JSON.stringify(rj).slice(0, 200));
     const buf = Buffer.from(await (await fetch(vurl)).arrayBuffer());
     const out = join(work, `c${clipes.length}.mp4`);
     writeFileSync(out, buf);
@@ -131,7 +135,7 @@ if (import.meta.main) {
     const imgArgs = ["--prompt", c.visual, "--saida", still, "--modelo", "schnell", "--largura", String(LARGURA), "--altura", String(ALTURA)];
     if (ref) imgArgs.push("--ref", ref);
     execFileSync("node", [GERAR_IMG, ...imgArgs], { stdio: "inherit", env: { ...process.env, FAL_KEY, FAL_BASE_URL: process.env.FAL_BASE_URL } });
-    clipes.push(await falVideo(still, segundos));
+    clipes.push(await falVideo(still, segundos, c.visual));
     legendas.push(c.texto);
   }
 
