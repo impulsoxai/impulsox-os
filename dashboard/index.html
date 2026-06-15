@@ -7,13 +7,39 @@
   <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
-  <header><h1 id="negocio">ImpulsoX-OS</h1><span id="atualizado"></span></header>
-  <main>
-    <section id="bloco-ciclo"><h2>O ciclo</h2><div id="ciclo"></div></section>
-    <section id="bloco-producao"><h2>Produção &amp; publicado</h2><div id="producao"></div></section>
-    <section id="bloco-contexto"><h2>Contexto</h2><div id="contexto"></div></section>
-    <section id="bloco-saude"><h2>Custos &amp; saúde</h2><div id="saude"></div></section>
-  </main>
+  <div class="grao" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="topo">
+      <div class="marca">
+        <span class="kicker">Sistema Operacional de Marketing</span>
+        <h1 id="negocio">ImpulsoX-OS</h1>
+      </div>
+      <div class="status">
+        <span class="degrau" id="degrau">Degrau —</span>
+        <span class="live" id="atualizado"><i></i> —</span>
+      </div>
+    </header>
+
+    <section class="bloco ciclo-bloco">
+      <span class="kicker">O ciclo rodando</span>
+      <div id="ciclo" class="ciclo"></div>
+    </section>
+
+    <div class="grade">
+      <section class="bloco">
+        <span class="kicker">Produção &amp; publicado</span>
+        <div id="producao"></div>
+      </section>
+      <section class="bloco">
+        <span class="kicker">Contexto</span>
+        <div id="contexto"></div>
+      </section>
+      <section class="bloco">
+        <span class="kicker">Custos &amp; saúde</span>
+        <div id="saude"></div>
+      </section>
+    </div>
+  </div>
   <script src="painel.js"></script>
 </body>
 </html>
