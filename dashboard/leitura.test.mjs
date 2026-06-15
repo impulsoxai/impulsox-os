@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseEscada, parseFoco, parseOfertas } from "./leitura.mjs";
+import { parseEscada, parseFoco, parseOfertas, parseAprendizados, parseProvas } from "./leitura.mjs";
 
 const ESCADA = `# Escada de Contexto — ImpulsoX AI
 
@@ -98,4 +98,60 @@ test("parseOfertas nunca vaza FUTURAS mesmo sem o cabeçalho ATIVAS", () => {
 ## Oferta: Futura Vazada
 `;
   assert.deepEqual(parseOfertas(md), ["Solta Sem Header"]);
+});
+
+const APREND_VAZIO = `# Aprendizados
+
+## Conteúdo orgânico
+_(vazio — preenchido pelo /desempenho após o primeiro ciclo)_
+
+## Tráfego pago
+_(vazio — preenchido pela /analisar-ads)_
+
+## Formato de cada entrada
+- **[AAAA-MM-DD]** [padrão observado em uma frase] — _evidência: [de onde veio]_
+`;
+
+const APREND_CHEIO = `# Aprendizados
+
+## Conteúdo orgânico
+- **[2026-06-20]** Carrossel de erro salva mais — _evidência: /desempenho_
+
+## Tráfego pago
+_(vazio)_
+`;
+
+test("parseAprendizados detecta vazio vs preenchido e ignora o exemplo [AAAA-MM-DD]", () => {
+  const v = parseAprendizados(APREND_VAZIO);
+  assert.equal(v.organico_preenchido, false);
+  assert.equal(v.pago_preenchido, false);
+  assert.equal(v.entradas.length, 0);
+
+  const c = parseAprendizados(APREND_CHEIO);
+  assert.equal(c.organico_preenchido, true);
+  assert.equal(c.entradas.length, 1);
+  assert.match(c.entradas[0], /Carrossel de erro/);
+});
+
+test("parseProvas detecta banco vazio e ignora o exemplo dentro de ## Formato / code fence", () => {
+  const md = `# Banco de Provas
+
+_(vazio — rode /provas)_
+
+## Formato de cada prova
+
+\`\`\`markdown
+### [identificador curto]
+- Tipo: caso
+\`\`\`
+`;
+  const r = parseProvas(md);
+  assert.equal(r.preenchido, false);
+  assert.equal(r.n, 0);
+});
+
+test("parseProvas conta entradas ### reais", () => {
+  const r = parseProvas("# Banco\n\n### caso-acme\n- Tipo: caso\n\n### dep-joao\n- Tipo: depoimento\n");
+  assert.equal(r.preenchido, true);
+  assert.equal(r.n, 2);
 });

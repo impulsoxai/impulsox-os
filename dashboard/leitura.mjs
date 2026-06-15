@@ -72,3 +72,39 @@ export function parseOfertas(md = "") {
   }
   return nomes;
 }
+
+// uma entrada de aprendizado é uma linha "- **[DATA]** ..." com DATA real (não o
+// placeholder [AAAA-MM-DD] da seção "Formato de cada entrada").
+const RE_ENTRADA_APREND = /^\s*-\s+\*\*\[\d{4}-\d{2}-\d{2}\]/;
+
+function secaoTemEntrada(md, tituloRegex) {
+  let dentro = false;
+  for (const l of md.split(/\r?\n/)) {
+    const h = l.match(/^##\s+(.*\S)\s*$/);
+    if (h) { dentro = new RegExp(tituloRegex, "i").test(h[1]); continue; }
+    if (dentro && RE_ENTRADA_APREND.test(l)) return true;
+  }
+  return false;
+}
+
+export function parseAprendizados(md = "") {
+  const entradas = [];
+  for (const l of md.split(/\r?\n/)) {
+    if (RE_ENTRADA_APREND.test(l)) entradas.push(l.replace(/^\s*-\s+/, "").trim());
+  }
+  return {
+    organico_preenchido: secaoTemEntrada(md, "Conteúdo orgânico"),
+    pago_preenchido: secaoTemEntrada(md, "Tráfego pago"),
+    entradas,
+  };
+}
+
+export function parseProvas(md = "") {
+  // provas reais ficam ANTES da seção "## Formato de cada prova"; o exemplo de formato
+  // mora dentro de um code fence ```...```. Cortar os dois pra não contar exemplo.
+  const fimFormato = md.search(/##\s*Formato/i);
+  const corpo = fimFormato === -1 ? md : md.slice(0, fimFormato);
+  const semCodigo = corpo.replace(/```[\s\S]*?```/g, "");
+  const n = (semCodigo.match(/^###\s+/gm) || []).length;
+  return { preenchido: n > 0, n };
+}
