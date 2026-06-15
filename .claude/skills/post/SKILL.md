@@ -3,8 +3,9 @@ name: post
 description: >
   Use para criar peça visual de Instagram — "cria um carrossel", "faz um post",
   "/post", "conteúdo pro Instagram", "post educativo sobre X", ou ao executar uma linha
-  do calendário marcada como IG. Produz carrossel, post único ou roteiro de reel com a
-  identidade da marca: HTML estilizado renderizado em PNG 1080x1350 + legenda pronta.
+  do calendário marcada como IG. Produz carrossel, post único ou **reel (foto + vídeo)**
+  com a identidade da marca: carrossel/post em PNG 1080x1350; reel em vídeo vertical
+  1080x1920 (foto realista por IA, animada e legendada) + legenda pronta.
 ---
 
 # /post — Peça visual de Instagram

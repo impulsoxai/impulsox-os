@@ -68,7 +68,8 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 ### Conteúdo — acaba o branco na tela
 - **`/radar`** pesquisa o nicho e devolve 15-20 ideias de pauta pontuadas, com demanda real.
 - **`/calendario`** decide o que postar e quando, por você.
-- **`/post`** e **`/linkedin`** entregam a peça pronta, com a sua cara.
+- **`/post`** e **`/linkedin`** entregam a peça pronta, com a sua cara — carrossel, post
+  e **reel (foto realista + vídeo animado e legendado)**, além do texto de LinkedIn.
 - **`/conteudo`** pega um tema e estica em artigo, Instagram e LinkedIn.
 - **`/publicar`** leva ao ar — Instagram no automático, LinkedIn pessoal num clique.
 - **`/formulas`** desmonta um post que funcionou e guarda o molde.
