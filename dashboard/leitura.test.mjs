@@ -90,3 +90,12 @@ test("parseOfertas pega só as ATIVAS e ignora as FUTURAS", () => {
   const r = parseOfertas(OFERTAS);
   assert.deepEqual(r, ["Landing Pages Premium", "Conteúdo para Instagram e LinkedIn"]);
 });
+
+test("parseOfertas nunca vaza FUTURAS mesmo sem o cabeçalho ATIVAS", () => {
+  const md = `## Oferta: Solta Sem Header
+
+## Ofertas FUTURAS — NÃO gerar conteúdo ainda
+## Oferta: Futura Vazada
+`;
+  assert.deepEqual(parseOfertas(md), ["Solta Sem Header"]);
+});

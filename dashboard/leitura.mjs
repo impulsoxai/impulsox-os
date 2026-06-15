@@ -61,7 +61,10 @@ export function parseOfertas(md = "") {
   // só o trecho entre "Ofertas ATIVAS" e "Ofertas FUTURAS"
   const ini = md.search(/##\s*Ofertas ATIVAS/i);
   const fim = md.search(/##\s*Ofertas FUTURAS/i);
-  const trecho = ini === -1 ? md : md.slice(ini, fim === -1 ? undefined : fim);
+  // fail-safe: sem cabeçalho ATIVAS, começa do início — mas SEMPRE corta em FUTURAS,
+  // pra nunca vazar oferta de roadmap (regra: peça pública só vende oferta ATIVA).
+  const inicio = ini === -1 ? 0 : ini;
+  const trecho = md.slice(inicio, fim === -1 ? undefined : fim);
   const nomes = [];
   for (const l of trecho.split(/\r?\n/)) {
     const m = l.match(/^##\s*Oferta:\s*(.*\S)\s*$/i);
