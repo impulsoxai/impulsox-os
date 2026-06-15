@@ -22,3 +22,8 @@ eskina*
 .DS_Store
 Thumbs.db
 .firecrawl/
+
+# dados/ — uploads, exports, custos e atividade (local, nunca no git)
+dados/**
+!dados/**/
+!**/.gitkeep

@@ -22,6 +22,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
+import { registrarCusto } from "./registrar-custo.mjs";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 const args = process.argv.slice(2);
@@ -176,5 +177,6 @@ if (import.meta.main) {
   const fonte = process.env.REEL_FONTE || "C:/Windows/Fonts/arialbd.ttf"; // a skill passa a fonte da marca
   const cor = process.env.REEL_COR || "#d4af37";
   execFileSync("ffmpeg", argsFfmpeg({ clipes, legendas, duracoes, trilha, saida, largura: LARGURA, altura: ALTURA, fonte, cor }), { stdio: "inherit" });
+  registrarCusto({ script: "gerar-video", modelo: modeloVideo, custo: 0 });
   console.log(JSON.stringify({ ok: true, saida, cenas: cenas.length, duracao_total: duracaoTotal }, null, 2));
 }

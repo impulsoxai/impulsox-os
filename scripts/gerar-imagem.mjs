@@ -12,6 +12,7 @@
  * Regra de segurança: nunca gerar rosto identificável (pessoa real só com foto autorizada).
  */
 import { writeFileSync, readFileSync, existsSync } from "node:fs";
+import { registrarCusto } from "./registrar-custo.mjs";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 const args = process.argv.slice(2);
@@ -89,6 +90,8 @@ try {
   const img = data?.images?.[0]?.url;
   if (!img) falhar("resposta da Fal sem imagem (prompt pode ter sido recusado).");
   writeFileSync(saida, await baixar(img));
+  const CUSTO_IMG = { minimax: 0.01, schnell: 0.003, dev: 0.025 };
+  registrarCusto({ script: "gerar-imagem", modelo, custo: CUSTO_IMG[modelo] ?? 0 });
   console.log(JSON.stringify({ ok: true, saida, modelo }, null, 2));
 } catch (e) {
   if (e?.code === "ENOTFOUND" || e?.cause) falhar("falha de rede ao chamar a Fal.");
