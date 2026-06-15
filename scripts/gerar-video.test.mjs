@@ -37,7 +37,7 @@ test("dry-run: plano com 2 cenas, vertical 1080x1920, soma a duração", () => {
   assert.equal(plano.largura, 1080);
   assert.equal(plano.altura, 1920);
   assert.equal(plano.duracao_total, 11);
-  assert.equal(plano.modelo_video, "wan");
+  assert.equal(plano.modelo_video, "kling");
 });
 
 test("argsFfmpeg: gera args com escala vertical e legenda drawtext", () => {

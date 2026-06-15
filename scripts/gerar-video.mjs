@@ -5,7 +5,10 @@
  *
  * Uso:
  *   FAL_KEY=... node scripts/gerar-video.mjs roteiro.json --saida reel.mp4 \
- *     [--modelo wan|kling] [--ref marca.png] [--trilha musica.mp3] [--dry-run]
+ *     [--modelo kling|wan] [--ref marca.png] [--trilha musica.mp3] [--dry-run]
+ *
+ * --modelo kling (default): Kling 2.5 Turbo Pro (cinematográfico, ~$0,35/5s). wan: mais barato/fraco.
+ * Vídeo de IA fica bom com SUJEITO REAL (produto, cena); gráfico abstrato deforma.
  *
  * Pipeline: still on-brand por cena -> anima (Fal) -> costura (ffmpeg) -> legenda
  *   -> trilha -> 1080x1920. NADA gera antes do roteiro aprovado; final passa por /revisar.
@@ -54,7 +57,7 @@ if (import.meta.main) {
   const roteiroPath = posic[0];
   if (!roteiroPath) falhar("informe o roteiro (.json com {slug, cenas:[{texto,visual,segundos}]}).");
   if (!existsSync(roteiroPath)) falhar(`roteiro não encontrado: ${roteiroPath}`);
-  const modeloVideo = flag("--modelo") || "wan";
+  const modeloVideo = flag("--modelo") || "kling";
   const dryRun = has("--dry-run");
   const LARGURA = 1080, ALTURA = 1920;
 
@@ -94,32 +97,36 @@ if (import.meta.main) {
   const work = mkdtempSync(join(tmpdir(), "reel-"));
   const clipes = [], legendas = [];
   // VERIFICAR no painel da Fal os nomes de modelo de vídeo antes de subir.
-  const MODELO_EP = modeloVideo === "kling" ? "fal-ai/kling-video/v2/standard/image-to-video" : "fal-ai/wan-i2v";
+  const MODELO_EP = modeloVideo === "kling" ? "fal-ai/kling-video/v2.5-turbo/pro/image-to-video" : "fal-ai/wan-i2v";
 
   async function falVideo(stillPath, segundos, prompt) {
     const imageUrl = `data:image/png;base64,${readFileSync(stillPath).toString("base64")}`;
     // Wan i2v: prompt (obrigatório) + num_frames (81-100) @ frames_per_second; NÃO tem "duration".
     // Kling: prompt + duration "5"|"10". aspect_ratio 9:16 pro vertical.
     const payload = modeloVideo === "kling"
-      ? { prompt, image_url: imageUrl, duration: (Number(segundos) || 5) <= 5 ? "5" : "10", aspect_ratio: "9:16" }
+      ? { prompt, image_url: imageUrl, duration: (Number(segundos) || 5) <= 5 ? "5" : "10", negative_prompt: "blur, distortion, warping, morphing, deformed, artifacts, jitter" }
       : { prompt, image_url: imageUrl, num_frames: Math.min(100, Math.max(81, Math.round((Number(segundos) || 5) * 16))), frames_per_second: 16, resolution: "720p", aspect_ratio: "9:16" };
     const sub = await fetch(`${BASE}/${MODELO_EP}`, {
       method: "POST",
       headers: { Authorization: `Key ${FAL_KEY}`, "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    if (!sub.ok) falhar(`Fal vídeo HTTP ${sub.status}. ${(await sub.text()).slice(0, 200)}`);
-    const { request_id } = await sub.json();
+    const subTxt = await sub.text();
+    if (!sub.ok) falhar(`Fal vídeo HTTP ${sub.status}. ${subTxt.slice(0, 200)}`);
+    let subJson; try { subJson = JSON.parse(subTxt); } catch { falhar(`Fal vídeo: submit devolveu corpo inválido. ${subTxt.slice(0, 200)}`); }
+    // A Fal devolve as URLs certas de status/resultado — usar elas (robusto pra modelos
+    // com path multi-segmento, ex. Kling). Fallback monta na mão (modelos de path simples).
+    const statusUrl = subJson.status_url || `${BASE}/${MODELO_EP}/requests/${subJson.request_id}/status`;
+    const responseUrl = subJson.response_url || `${BASE}/${MODELO_EP}/requests/${subJson.request_id}`;
+    const auth = { headers: { Authorization: `Key ${FAL_KEY}` } };
     for (let t = 0; t < 120; t++) {
       await new Promise((r) => setTimeout(r, 3000));
-      const st = await fetch(`${BASE}/${MODELO_EP}/requests/${request_id}/status`, { headers: { Authorization: `Key ${FAL_KEY}` } });
-      const sj = await st.json();
+      let sj; try { sj = JSON.parse(await (await fetch(statusUrl, auth)).text()); } catch { continue; }
       if (sj.status === "COMPLETED") break;
       if (sj.status === "FAILED" || sj.status === "ERROR") falhar(`geração de vídeo falhou na Fal (${sj.status}).`);
       if (t === 119) falhar("Fal: vídeo não ficou pronto em 6 minutos (timeout).");
     }
-    const res = await fetch(`${BASE}/${MODELO_EP}/requests/${request_id}`, { headers: { Authorization: `Key ${FAL_KEY}` } });
-    const rj = await res.json();
+    const rj = await (await fetch(responseUrl, auth)).json();
     const vurl = rj?.video?.url || rj?.output?.video?.url || rj?.videos?.[0]?.url;
     if (!vurl) falhar("resposta da Fal sem vídeo. " + JSON.stringify(rj).slice(0, 200));
     const buf = Buffer.from(await (await fetch(vurl)).arrayBuffer());
@@ -132,10 +139,10 @@ if (import.meta.main) {
     const segundos = Number(c.segundos) || 5;
     const still = join(work, `s${i}.png`);
     // still on-brand (schnell pra iterar barato); --ref opcional
-    const imgArgs = ["--prompt", c.visual, "--saida", still, "--modelo", "schnell", "--largura", String(LARGURA), "--altura", String(ALTURA)];
+    const imgArgs = ["--prompt", c.visual, "--saida", still, "--modelo", "minimax", "--largura", String(LARGURA), "--altura", String(ALTURA)];
     if (ref) imgArgs.push("--ref", ref);
     execFileSync("node", [GERAR_IMG, ...imgArgs], { stdio: "inherit", env: { ...process.env, FAL_KEY, FAL_BASE_URL: process.env.FAL_BASE_URL } });
-    clipes.push(await falVideo(still, segundos, c.visual));
+    clipes.push(await falVideo(still, segundos, c.visual + ", slow subtle cinematic camera motion, smooth, photographic, no distortion"));
     legendas.push(c.texto);
   }
 

@@ -134,9 +134,16 @@ Regras gerais que valem pra toda ferramenta:
 
 ### Fal.ai — geração de vídeo (reel)
 - **Resolve:** anima uma still on-brand em clipe (5-15s). Base do reel do `/post`.
-- **Conta:** mesma `FAL_KEY`. **Modelos:** Wan 2.5 (~$0,05/s, default) ou Kling (~$0,07/s).
-- **Script:** `scripts/gerar-video.mjs` (orquestra still→anima→ffmpeg). Fila assíncrona (submit + polling).
-- **Quem usa:** `/post` (modo reel). Custo de um reel 20s ≈ $1-1,50.
+- **Conta:** mesma `FAL_KEY`. **Modelos:** `kling` (default, Kling 2.5 Turbo Pro — cinematográfico,
+  ~$0,35/5s) · `wan` (mais barato, qualidade menor). A still do reel sai do **minimax** (foto realista).
+- **Script:** `scripts/gerar-video.mjs` (orquestra still→anima→ffmpeg). Fila assíncrona: usa o
+  `status_url`/`response_url` que a Fal devolve no submit (robusto pra path multi-segmento do Kling).
+- **Regra de ouro (aprendida testando):** vídeo de IA fica bom com **sujeito real** (produto, cena,
+  pessoa) e movimento sutil — **gráfico abstrato/gradiente DEFORMA** (vira "zoado"). Vídeo é cereja;
+  o **carrossel** (HTML→PNG, grátis e nítido) carrega o feed. Gerar reel só quando o caso pede.
+- **Pegadinha de custo:** todo clipe submetido **cobra** mesmo se você não baixar (a geração roda no
+  servidor). O script agora busca e entrega o resultado; não desperdiça por crash.
+- **Quem usa:** `/post` (modo reel). Custo de um reel ≈ $0,35/cena de 5s no Kling.
 
 ### ffmpeg — montagem de vídeo
 - **Resolve:** costura clipes, queima legenda, mixa trilha, exporta vertical 1080x1920.
