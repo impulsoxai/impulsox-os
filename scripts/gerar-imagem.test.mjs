@@ -83,8 +83,27 @@ test("dry-run: não chama a Fal e imprime o plano", () => {
   const out = join(tmp, "dry.png");
   const r = run(["--prompt", "x", "--saida", out, "--dry-run"], { FAL_KEY: "" });
   assert.equal(r.code, 0, r.stderr);
-  assert.match(r.stdout, /schnell/);
+  assert.match(r.stdout, /minimax/);
   assert.ok(!existsSync(out), "dry-run não escreve arquivo");
+});
+
+test("minimax (default) manda aspect_ratio; flux manda image_size", async () => {
+  const recebido = {};
+  const { srv, url } = await mockFal((req, payload, res) => {
+    recebido[req.url] = payload;
+    res.writeHead(200, { "content-type": "application/json" });
+    res.end(JSON.stringify({ images: [{ url: `data:image/png;base64,${PNG_1x1_B64}` }] }));
+  });
+  const rm = await runAsync(["--prompt", "x", "--saida", join(tmp, "m.png")], { FAL_KEY: "t", FAL_BASE_URL: url });
+  const rf = await runAsync(["--prompt", "x", "--saida", join(tmp, "f.png"), "--modelo", "schnell"], { FAL_KEY: "t", FAL_BASE_URL: url });
+  srv.close();
+  assert.equal(rm.code, 0, rm.stderr);
+  assert.equal(rf.code, 0, rf.stderr);
+  const minimaxReq = recebido["/fal-ai/minimax/image-01"];
+  const fluxReq = recebido["/fal-ai/flux/schnell"];
+  assert.ok(minimaxReq?.aspect_ratio, "minimax manda aspect_ratio");
+  assert.ok(!minimaxReq?.image_size, "minimax não manda image_size");
+  assert.ok(fluxReq?.image_size, "flux manda image_size");
 });
 
 test("erro amigável quando a Fal recusa o prompt (sem images)", async () => {

@@ -85,8 +85,11 @@ uma linha e cair no Modo 2 (o usuário gera a foto onde quiser e solta em `dados
 nunca travar a peça por causa disso.
 1. Usuário descreve a imagem desejada.
 2. Montar o prompt **em inglês** (a API rende melhor) a partir da descrição + a paleta/mood do
-   `marca/design-guide.md` — é o que mantém a imagem dentro da marca. Quando houver uma
-   imagem-referência da marca, passá-la via `--ref` pro script (image-to-image fica on-brand).
+   `marca/design-guide.md` — é o que mantém a imagem dentro da marca (a paleta vai pelo prompt
+   em qualquer modelo). Quando houver imagem-referência da marca, passá-la via `--ref`.
+   - **Escolha do modelo (`--modelo`):** `minimax` (default) pra **foto realista** (~1¢);
+     `schnell`/`dev` (FLUX) pra **estilizado/abstrato** ou pra iterar barato. Trocar é só a flag
+     — sem lock-in. No `minimax`, `--ref` mantém o mesmo sujeito/produto; no FLUX, puxa o look.
 3. Mostrar o prompt e gerar via script.
 4. **Mostrar a imagem e pedir aprovação ANTES de usar.** Não aprovou → ajustar prompt e regerar.
 5. Aprovada → mesmo fluxo de encaixe do Modo 2.

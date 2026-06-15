@@ -121,10 +121,13 @@ Regras gerais que valem pra toda ferramenta:
 
 ## Gerar imagem por IA
 
-### Fal.ai — geração de imagem (FLUX)
+### Fal.ai — geração de imagem (MiniMax / FLUX)
 - **Resolve:** gera imagem pro carrossel/reel do `/post` (Modo 3) e stills do pipeline de vídeo.
 - **Conta:** sim — Fal.ai com crédito pré-pago. **`.env`:** `FAL_KEY`.
-- **Script:** `scripts/gerar-imagem.mjs` — `--prompt` (inglês), `--saida`, `--modelo schnell|dev`, `--ref` (imagem-referência da marca). schnell (~$0,003) pra iterar, dev (~$0,025) pro final.
+- **Script:** `scripts/gerar-imagem.mjs` — `--prompt` (inglês), `--saida`, `--modelo`, `--ref`.
+  - **`minimax` (default):** `fal-ai/minimax/image-01` — **foto realista, ~1¢**. Usa `aspect_ratio` (mapeado de largura/altura). `--ref` = *subject reference* (mantém o mesmo sujeito/produto), não transfere paleta.
+  - **`schnell` (~$0,003) / `dev` (~$0,025):** FLUX — estilizado/abstrato, iterar barato. `--ref` = image-to-image (puxa o look).
+  - **Trocar é só a flag `--modelo`** — zero lock-in; todos respondem em `images[0].url`. A paleta da marca vai sempre pelo **prompt** (o `/post` injeta), em qualquer modelo.
 - **Pegadinha:** prompt em inglês rende melhor; nomes de modelo podem mudar (reconferir painel da Fal). Resposta vem como URL ou data-URI — o script trata os dois.
 - **Segurança:** nunca rosto identificável sem foto real autorizada. Chave nunca em log.
 - **Quem usa:** `/post`, `/identidade`, `/criar-ebook`, `/relatorio`, `/perfil-ig`.
