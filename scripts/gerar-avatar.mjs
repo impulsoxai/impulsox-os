@@ -23,6 +23,7 @@
 import { readFileSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { dirname } from "node:path";
+import { registrarCusto } from "./registrar-custo.mjs";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 const args = process.argv.slice(2);
@@ -190,6 +191,8 @@ console.log("Baixando vídeo...");
 const vid = await fetch(vurl);
 if (!vid.ok) falhar(`Download falhou HTTP ${vid.status}`);
 writeFileSync(saida, Buffer.from(await vid.arrayBuffer()));
+
+registrarCusto({ script: "gerar-avatar", modelo, custo: Number.isFinite(custoEst) ? Number(custoEst.toFixed(2)) : Number((durSeg * PRECO_SEG).toFixed(2)) });
 
 const custo = typeof duracao === "number" ? `$${(duracao * PRECO_SEG).toFixed(2)}` : "(calcular: duracao × $" + PRECO_SEG + ")";
 console.log(JSON.stringify({ ok: true, saida, duracao_seg: duracao, custo, resolucao }, null, 2));
