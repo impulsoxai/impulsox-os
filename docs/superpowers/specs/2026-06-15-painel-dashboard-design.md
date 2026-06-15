@@ -50,19 +50,23 @@ Consequências de design:
 5. **Fase 1 = um negócio** (o diretório atual). A generalização pra `clientes/<nome>/`
    (modo agência) é evolução da mesma base.
 
-## Arquitetura — 1 servidor + front-end estático
+## Arquitetura — pasta `dashboard/` auto-contida (servidor + front-end)
 
-### 1. `scripts/dashboard.mjs` (novo — servidor local, zero deps)
+Todo o painel vive numa pasta própria `dashboard/` na raiz do ImpulsoX-OS — unidade
+fechada, fácil de manter, que viaja pros clones pelo `/atualizar-motor` junto com o resto
+do motor. Servidor e front-end juntos; o lançador e a skill só apontam pra ela.
+
+### 1. `dashboard/servidor.mjs` (novo — servidor local, zero deps)
 - **O que faz:** sobe um servidor `http` preso a `127.0.0.1` que (a) serve o front-end
-  estático de `dashboard/` e (b) expõe `GET /api/estado` — lê os arquivos do negócio e
-  devolve um JSON com o estado atual.
+  estático da própria pasta `dashboard/` e (b) expõe `GET /api/estado` — lê os arquivos do
+  negócio (na raiz do clone, um nível acima) e devolve um JSON com o estado atual.
 - **Porta:** `DASHBOARD_PORT` (default 5173); imprime a URL ao subir.
 - **Só `GET`. Nenhum endpoint de escrita.** Preso a localhost (nunca `0.0.0.0`).
 - **Whitelist de leitura** (caminhos permitidos): `nucleo/`, `producao/`, `marca/`,
   `dados/custos.jsonl`. Tudo fora disso é negado. **Nunca** lê `.env`, `.git`, `scripts/`
   nem qualquer chave. `FAL_KEY`/tokens jamais chegam ao `/api/estado` nem ao navegador.
 
-### 2. `dashboard/` (novo — front-end vanilla)
+### 2. `dashboard/` front-end (novo — vanilla, na mesma pasta)
 - `index.html` — estrutura dos 4 blocos.
 - `estilo.css` — importa `marca/tokens.css` (cores, fontes) → painel **on-brand**. Sem
   marca, cai nos defaults premium do sistema.
@@ -99,7 +103,7 @@ gitignored (fica local). Sem o ledger, o bloco 4 mostra só saúde do núcleo + 
 
 ### 6. Wiring (lançador, skill e docs)
 - **Lançador de um clique `painel.cmd`** (raiz do clone, Windows) — o cliente dá dois
-  cliques: o script roda `node scripts/dashboard.mjs` e abre o navegador na URL sozinho.
+  cliques: o script roda `node dashboard/servidor.mjs` e abre o navegador na URL sozinho.
   Sem terminal, sem comando digitado. É o caminho principal pro cliente final.
 - **Skill `/painel`** — mesmo efeito pra quem está no Claude Code (a ImpulsoX, na operação).
   Sobe o servidor e abre o navegador. Mensagem clara se a porta estiver ocupada.
