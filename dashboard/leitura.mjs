@@ -1,7 +1,7 @@
 // dashboard/leitura.mjs
 
 import { readdirSync, statSync, existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, basename } from "node:path";
 
 // Extrai o conteúdo de uma seção marcada por "**Título:**" até a próxima linha "**...**"
 // ou linha em branco. Cobre dois formatos: bullets ("- item") e prosa inline/contínua
@@ -184,4 +184,61 @@ export function saudeNucleo(raiz) {
     out.push({ arquivo, preenchido });
   }
   return out;
+}
+
+function lerArquivo(caminho) {
+  try { return readFileSync(caminho, "utf8"); } catch { return null; }
+}
+function lerDir(caminho) {
+  try { return readdirSync(caminho); } catch { return []; }
+}
+
+export function lerEstado(raiz) {
+  const escadaMd = lerArquivo(join(raiz, "nucleo", "escada.md")) || "";
+  const focoMd = lerArquivo(join(raiz, "nucleo", "foco.md")) || "";
+
+  // ofertas pode ser uma PASTA (nucleo/ofertas/*.md, no clone) ou um ARQUIVO
+  // (nucleo/ofertas.md, no template). Cobrir os dois.
+  let ofertasMd = "";
+  const ofertasDir = join(raiz, "nucleo", "ofertas");
+  if (existsSync(ofertasDir) && statSync(ofertasDir).isDirectory()) {
+    for (const f of lerDir(ofertasDir)) {
+      if (f.endsWith(".md")) ofertasMd += "\n" + (lerArquivo(join(ofertasDir, f)) || "");
+    }
+  } else {
+    ofertasMd = lerArquivo(join(raiz, "nucleo", "ofertas.md")) || "";
+  }
+
+  const aprendMd = lerArquivo(join(raiz, "nucleo", "aprendizados.md")) || "";
+  const provasMd = lerArquivo(join(raiz, "nucleo", "provas.md")) || "";
+  const pubMd = lerArquivo(join(raiz, "producao", "publicacoes.md"));
+  const custosJsonl = lerArquivo(join(raiz, "dados", "custos.jsonl"));
+
+  const escada = parseEscada(escadaMd);
+  const producao = listarProducao(raiz);
+  const publicado = parsePublicacoes(pubMd);
+  const aprendizados = parseAprendizados(aprendMd);
+  const saude = saudeNucleo(raiz);
+
+  const calendarioN = lerDir(join(raiz, "producao", "calendario")).filter((f) => f.endsWith(".md")).length;
+
+  return {
+    negocio: basename(raiz) || "negócio",
+    atualizado_em: new Date().toISOString(),
+    escada,
+    foco: parseFoco(focoMd),
+    ofertas: parseOfertas(ofertasMd),
+    aprendizados,
+    provas: parseProvas(provasMd),
+    producao,
+    publicado,
+    custos: parseCustos(custosJsonl),
+    saude: { nucleo: saude, pendencias_total: escada.pendencias.length },
+    ciclo: {
+      decide: calendarioN,
+      produz: producao.length,
+      publica: publicado.length,
+      mede: aprendizados.entradas.length,
+    },
+  };
 }

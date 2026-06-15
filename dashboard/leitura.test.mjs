@@ -247,3 +247,20 @@ test("saudeNucleo NÃO dá falso-positivo no boilerplate de aprendizados/provas"
   assert.equal(r.find((a) => a.arquivo === "aprendizados.md").preenchido, false);
   assert.equal(r.find((a) => a.arquivo === "provas.md").preenchido, false);
 });
+
+import { lerEstado } from "./leitura.mjs";
+
+test("lerEstado monta o estado e deriva o ciclo de um repo-fixture", () => {
+  const raiz = mkdtempSync(join(tmpdir(), "est-"));
+  mkdirSync(join(raiz, "nucleo"), { recursive: true });
+  mkdirSync(join(raiz, "producao", "posts", "2026-06-13-erro-comum"), { recursive: true });
+  writeFileSync(join(raiz, "nucleo", "escada.md"), "**Degrau atual:** 3 — feito.\n");
+  writeFileSync(join(raiz, "nucleo", "negocio.md"), "# Negócio\n" + "x".repeat(60));
+
+  const e = lerEstado(raiz);
+  assert.equal(e.escada.degrau, 3);
+  assert.equal(e.ciclo.produz, 1);          // 1 peça em producao/
+  assert.equal(e.ciclo.publica, 0);         // sem publicacoes.md
+  assert.ok(typeof e.atualizado_em === "string");
+  assert.ok(Array.isArray(e.ofertas));
+});
