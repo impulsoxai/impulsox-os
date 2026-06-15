@@ -205,3 +205,45 @@ test("parsePublicacoes lê linhas de tabela", () => {
   assert.equal(r[0].canal, "instagram");
   assert.match(r[0].link, /instagram\.com/);
 });
+
+import { parseCustos, saudeNucleo } from "./leitura.mjs";
+
+test("parseCustos soma o jsonl por modelo", () => {
+  const jsonl =
+    '{"data":"2026-06-15","script":"gerar-avatar","modelo":"kling","custo":1.75}\n' +
+    '{"data":"2026-06-15","script":"gerar-avatar","modelo":"heygen","custo":1.5}\n' +
+    'linha quebrada que deve ser ignorada\n' +
+    '{"data":"2026-06-15","script":"gerar-avatar","modelo":"kling","custo":0.25}\n';
+  const r = parseCustos(jsonl);
+  assert.equal(r.n, 3);
+  assert.equal(Number(r.total.toFixed(2)), 3.5);
+  assert.equal(Number(r.por_modelo.kling.toFixed(2)), 2.0);
+});
+
+test("parseCustos tolera null", () => {
+  assert.deepEqual(parseCustos(null), { total: 0, por_modelo: {}, n: 0 });
+});
+
+test("saudeNucleo marca preenchido vs vazio (heurística nos 5 + parsers nos 2)", () => {
+  const raiz = mkdtempSync(join(tmpdir(), "nuc-"));
+  mkdirSync(join(raiz, "nucleo"), { recursive: true });
+  writeFileSync(join(raiz, "nucleo", "negocio.md"), "# Negócio\nConteúdo real aqui, bastante texto pra passar do limite.");
+  writeFileSync(join(raiz, "nucleo", "provas.md"), "# Provas\n_(vazio — rode /provas)_");
+  const r = saudeNucleo(raiz);
+  assert.equal(r.find((a) => a.arquivo === "negocio.md").preenchido, true);
+  assert.equal(r.find((a) => a.arquivo === "provas.md").preenchido, false);
+});
+
+test("saudeNucleo NÃO dá falso-positivo no boilerplate de aprendizados/provas", () => {
+  const raiz = mkdtempSync(join(tmpdir(), "nuc2-"));
+  mkdirSync(join(raiz, "nucleo"), { recursive: true });
+  // aprendizados só com a seção "Formato" (placeholder) = vazio de verdade
+  writeFileSync(join(raiz, "nucleo", "aprendizados.md"),
+    "# Aprendizados\n\n## Conteúdo orgânico\n_(vazio)_\n\n## Formato de cada entrada\n- **[AAAA-MM-DD]** [padrão] — _evidência: x_\n");
+  // provas só com a seção "Formato" + code fence = vazio de verdade
+  writeFileSync(join(raiz, "nucleo", "provas.md"),
+    "# Banco\n\n_(vazio)_\n\n## Formato de cada prova\n\n```markdown\n### [identificador curto]\n- Tipo: caso\n```\n");
+  const r = saudeNucleo(raiz);
+  assert.equal(r.find((a) => a.arquivo === "aprendizados.md").preenchido, false);
+  assert.equal(r.find((a) => a.arquivo === "provas.md").preenchido, false);
+});

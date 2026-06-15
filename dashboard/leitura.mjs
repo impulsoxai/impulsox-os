@@ -1,6 +1,6 @@
 // dashboard/leitura.mjs
 
-import { readdirSync, statSync, existsSync } from "node:fs";
+import { readdirSync, statSync, existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 // Extrai o conteúdo de uma seção marcada por "**Título:**" até a próxima linha "**...**"
@@ -139,6 +139,49 @@ export function parsePublicacoes(md) {
     if (cols.length >= 3 && /^\d{4}-\d{2}-\d{2}$/.test(cols[0])) {
       out.push({ data: cols[0], canal: cols[1], link: cols[2] });
     }
+  }
+  return out;
+}
+
+export function parseCustos(jsonl) {
+  const r = { total: 0, por_modelo: {}, n: 0 };
+  if (!jsonl) return r;
+  for (const l of jsonl.split(/\r?\n/)) {
+    const t = l.trim();
+    if (!t) continue;
+    let o; try { o = JSON.parse(t); } catch { continue; }
+    const c = Number(o.custo);
+    if (!Number.isFinite(c)) continue;
+    r.total += c;
+    r.n += 1;
+    const m = o.modelo || "?";
+    r.por_modelo[m] = (r.por_modelo[m] || 0) + c;
+  }
+  return r;
+}
+
+const NUCLEO_ARQUIVOS = ["negocio.md", "voz.md", "foco.md", "perfil.md",
+  "escada.md", "aprendizados.md", "provas.md"];
+
+export function saudeNucleo(raiz) {
+  const out = [];
+  for (const arquivo of NUCLEO_ARQUIVOS) {
+    const caminho = join(raiz, "nucleo", arquivo);
+    let preenchido = false;
+    if (existsSync(caminho)) {
+      const txt = readFileSync(caminho, "utf8");
+      if (arquivo === "aprendizados.md") {
+        const a = parseAprendizados(txt);
+        preenchido = a.organico_preenchido || a.pago_preenchido;
+      } else if (arquivo === "provas.md") {
+        preenchido = parseProvas(txt).preenchido;
+      } else {
+        // "preenchido" = tem conteúdo real além do scaffolding do template
+        const semVazio = txt.replace(/_\(vazio[^)]*\)_/gi, "").replace(/^#.*$/gm, "").trim();
+        preenchido = semVazio.length > 40;
+      }
+    }
+    out.push({ arquivo, preenchido });
   }
   return out;
 }
