@@ -1,22 +1,36 @@
 // dashboard/leitura.mjs
 
-// Extrai os itens (linhas "- ...") de uma seção marcada por "**Título:**" até o próximo
-// "**" de início de linha ou o fim do texto. Tolerante: seção ausente → [].
+// Extrai o conteúdo de uma seção marcada por "**Título:**" até a próxima linha "**...**"
+// ou linha em branco. Cobre dois formatos: bullets ("- item") e prosa inline/contínua
+// (texto após o "**Título:**", podendo quebrar em mais linhas). Marcadores "_(vazio)_"
+// e seção ausente → []. Tolerante a entrada vazia.
 function itensDaSecao(md, tituloRegex) {
   const linhas = md.split(/\r?\n/);
-  const out = [];
+  const itens = [];
   let dentro = false;
+  let prosa = null; // buffer de prosa corrida (inline + continuação de linha)
+  const ehMarcadorVazio = (s) => /^_\(.*\)_$/.test(s.trim());
+  const flush = () => { if (prosa && prosa.trim()) itens.push(prosa.trim()); prosa = null; };
+
   for (const l of linhas) {
-    if (/^\*\*/.test(l)) {                     // começo de uma seção "**...**"
-      dentro = tituloRegex.test(l);
+    const cab = l.match(/^\*\*(.+?):\*\*\s*(.*)$/); // linha "**Título:** [resto]"
+    if (cab) {
+      flush();
+      dentro = tituloRegex.test(cab[1]);
+      if (dentro && cab[2] && !ehMarcadorVazio(cab[2])) prosa = cab[2]; // inline após o título
       continue;
     }
-    if (dentro) {
-      const m = l.match(/^\s*-\s+(.*\S)\s*$/);
-      if (m) out.push(m[1]);
-    }
+    if (/^\*\*/.test(l)) { flush(); dentro = false; continue; } // outra seção "**...**"
+    if (!dentro) continue;
+    const bullet = l.match(/^\s*-\s+(.*\S)\s*$/);
+    if (bullet) { flush(); itens.push(bullet[1]); continue; }
+    const txt = l.trim();
+    if (!txt) { flush(); continue; }        // linha em branco encerra a prosa
+    if (ehMarcadorVazio(txt)) continue;     // marcador _(...)_ ignorado
+    prosa = prosa ? prosa + " " + txt : txt; // continuação da prosa corrida
   }
-  return out;
+  flush();
+  return itens;
 }
 
 export function parseEscada(md = "") {
