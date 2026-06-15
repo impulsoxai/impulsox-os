@@ -51,12 +51,25 @@ avisar que o resultado melhora depois do `/identidade`.
 1. **Carrossel (5-9 telas)** — padrão para ensinar, provar e posicionar. Formato
    1080x1350 (4:5), o de maior alcance orgânico.
 2. **Post único** — um dado forte, uma frase de posição, um bastidor.
-3. **Reel** — quando o tema pede movimento: roteiro cena a cena (gancho nos primeiros 2s,
-   desenvolvimento, fecho), texto de tela e instrução de gravação. A skill entrega o roteiro
-   pra aprovação e, aprovado, **gera o reel** via `scripts/gerar-video.mjs` (still on-brand →
-   anima → legenda → trilha → 1080x1920). Vídeo é a parte cara: só gera depois do roteiro
-   aprovado; o final passa por `/revisar` antes de publicar. (Alternativa sempre válida: o
-   usuário grava ele mesmo a partir do roteiro.)
+3. **Reel** — quando o tema pede movimento. Dois tipos, escolhidos pelo tema (não se
+   misturam num mesmo arquivo):
+
+   **3a. Reel b-roll (foto + vídeo) — pronto, é o reel padrão.** Roteiro cena a cena
+   (gancho nos primeiros 2s, desenvolvimento, fecho) + texto de tela. Aprovado o roteiro,
+   a skill **gera o reel** via `scripts/gerar-video.mjs`: still on-brand por cena → anima
+   (Kling/Seedance) → corte rápido por cena → legenda → trilha → 1080x1920. Cada cena pode
+   gerar a still por IA **ou** animar uma foto pronta (campo `"imagem"` no roteiro). É o
+   reel de cenas/produto/ilustrativo — ninguém aparece falando.
+
+   **3b. Reel avatar (você falando) — capacidade à parte.** Pessoa real falando com
+   lip-sync, via `scripts/gerar-avatar.mjs` (foto + áudio → vídeo). É outro produto:
+   precisa de foto do rosto + áudio de voz real, tem guarda de custo (`--confirmar`) e
+   cobra por segundo. **Status: em validação** — avatar a partir de foto parada ainda sai
+   artificial; o caminho de qualidade é vídeo seu + lip-sync (LatentSync/HeyGen v3). Não
+   usar em peça pública até validar. Não é o reel b-roll do 3a — é o talking-head.
+
+   Vídeo é a parte cara: só gera depois do roteiro/áudio aprovado; o final passa por
+   `/revisar` antes de publicar. (Alternativa sempre válida: o usuário grava ele mesmo.)
 
 Formato não especificado → escolher pelo tema e intenção, dizendo o porquê em uma linha.
 
