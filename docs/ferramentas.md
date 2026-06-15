@@ -134,8 +134,13 @@ Regras gerais que valem pra toda ferramenta:
 
 ### Fal.ai — geração de vídeo (reel)
 - **Resolve:** anima uma still on-brand em clipe (5-15s). Base do reel do `/post`.
-- **Conta:** mesma `FAL_KEY`. **Modelos:** `kling` (default, Kling 2.5 Turbo Pro — cinematográfico,
-  ~$0,35/5s) · `wan` (mais barato, qualidade menor). A still do reel sai do **minimax** (foto realista).
+- **Conta:** mesma `FAL_KEY`. **Modelos (flag `--modelo`, zero lock-in, todos em `video.url`):**
+  `kling` (default, Kling 2.5 Turbo Pro — cinematográfico, ~$0,07/s) · `seedance` (movimento
+  controlado, `camera_fixed`, **2-12s nativo** — melhor pra corte rápido) · `ltx` (rascunho
+  **baratíssimo**, ~centésimos — testa antes de gastar no final) · `wan` (budget). A still do
+  reel sai do **minimax** (foto realista).
+- **Animar imagem pronta:** cada cena do roteiro pode ter `"imagem": "caminho.png"` no lugar
+  do `"visual"` (prompt) — aí o pipeline **anima a foto que já existe**, sem gerar.
 - **Script:** `scripts/gerar-video.mjs` (orquestra still→anima→ffmpeg). Fila assíncrona: usa o
   `status_url`/`response_url` que a Fal devolve no submit (robusto pra path multi-segmento do Kling).
 - **Regra de ouro (aprendida testando):** vídeo de IA fica bom com **sujeito real** (produto, cena,

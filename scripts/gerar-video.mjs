@@ -5,10 +5,14 @@
  *
  * Uso:
  *   FAL_KEY=... node scripts/gerar-video.mjs roteiro.json --saida reel.mp4 \
- *     [--modelo kling|wan] [--ref marca.png] [--trilha musica.mp3] [--dry-run]
+ *     [--modelo kling|seedance|ltx|wan] [--ref marca.png] [--trilha musica.mp3] [--dry-run]
  *
- * --modelo kling (default): Kling 2.5 Turbo Pro (cinematográfico, ~$0,35/5s). wan: mais barato/fraco.
- * Vídeo de IA fica bom com SUJEITO REAL (produto, cena); gráfico abstrato deforma.
+ * --modelo: kling (default, cinematográfico) · seedance (movimento controlado, camera_fixed,
+ *   2-12s nativo — bom pra corte rápido) · ltx (rascunho baratíssimo) · wan (budget).
+ *   Troca por flag, zero lock-in. Todos respondem em video.url.
+ * Roteiro: cada cena tem "texto" (legenda) + "visual" (prompt da still) OU "imagem"
+ *   (caminho de uma foto PRONTA, pra animar ela direto, sem gerar). Vídeo de IA fica bom
+ *   com SUJEITO REAL; gráfico abstrato deforma.
  *
  * Pipeline: still on-brand por cena -> anima (Fal) -> costura (ffmpeg) -> legenda
  *   -> trilha -> 1080x1920. NADA gera antes do roteiro aprovado; final passa por /revisar.
@@ -69,9 +73,10 @@ if (import.meta.main) {
   catch { falhar("roteiro não é um JSON válido."); }
   const cenas = roteiro?.cenas;
   if (!Array.isArray(cenas) || cenas.length === 0) falhar("roteiro sem cenas (precisa de pelo menos uma).");
+  if (!["kling", "wan", "seedance", "ltx"].includes(modeloVideo)) falhar(`--modelo inválido: ${modeloVideo} (use kling, seedance, ltx ou wan).`);
   for (const [i, c] of cenas.entries()) {
     if (!c.texto) falhar(`cena ${i + 1} sem "texto" (a legenda).`);
-    if (!c.visual) falhar(`cena ${i + 1} sem "visual" (o prompt da still).`);
+    if (!c.visual && !c.imagem) falhar(`cena ${i + 1} precisa de "visual" (prompt da still) OU "imagem" (caminho de uma foto pronta).`);
   }
   const duracaoTotal = cenas.reduce((s, c) => s + (Number(c.segundos) || 5), 0);
 
@@ -100,15 +105,25 @@ if (import.meta.main) {
   const work = mkdtempSync(join(tmpdir(), "reel-"));
   const clipes = [], legendas = [], duracoes = [];
   // VERIFICAR no painel da Fal os nomes de modelo de vídeo antes de subir.
-  const MODELO_EP = modeloVideo === "kling" ? "fal-ai/kling-video/v2.5-turbo/pro/image-to-video" : "fal-ai/wan-i2v";
+  const EP_VIDEO = {
+    kling: "fal-ai/kling-video/v2.5-turbo/pro/image-to-video",
+    wan: "fal-ai/wan-i2v",
+    seedance: "fal-ai/bytedance/seedance/v1/pro/image-to-video",
+    ltx: "fal-ai/ltx-video-13b-distilled/image-to-video",
+  };
+  const MODELO_EP = EP_VIDEO[modeloVideo] || EP_VIDEO.kling;
 
   async function falVideo(stillPath, segundos, prompt) {
     const imageUrl = `data:image/png;base64,${readFileSync(stillPath).toString("base64")}`;
-    // Wan i2v: prompt (obrigatório) + num_frames (81-100) @ frames_per_second; NÃO tem "duration".
-    // Kling: prompt + duration "5"|"10". aspect_ratio 9:16 pro vertical.
-    const payload = modeloVideo === "kling"
-      ? { prompt, image_url: imageUrl, duration: (Number(segundos) || 5) <= 5 ? "5" : "10", negative_prompt: "blur, distortion, warping, morphing, deformed, artifacts, jitter" }
-      : { prompt, image_url: imageUrl, num_frames: Math.min(100, Math.max(81, Math.round((Number(segundos) || 5) * 16))), frames_per_second: 16, resolution: "720p", aspect_ratio: "9:16" };
+    // payload por modelo (cada um tem campos diferentes; todos respondem em video.url):
+    // wan: num_frames @ fps (sem "duration"). kling: duration "5"|"10". seedance: duration
+    // 2-12s nativo + camera_fixed (movimento limpo). ltx: só resolution. 9:16 = vertical.
+    const seg = Number(segundos) || 5;
+    const payload =
+      modeloVideo === "wan" ? { prompt, image_url: imageUrl, num_frames: Math.min(100, Math.max(81, Math.round(seg * 16))), frames_per_second: 16, resolution: "720p", aspect_ratio: "9:16" }
+      : modeloVideo === "seedance" ? { prompt, image_url: imageUrl, duration: String(Math.min(12, Math.max(2, seg))), resolution: "1080p", aspect_ratio: "9:16", camera_fixed: true }
+      : modeloVideo === "ltx" ? { prompt, image_url: imageUrl, resolution: "720p", aspect_ratio: "9:16" }
+      : { prompt, image_url: imageUrl, duration: seg <= 5 ? "5" : "10", negative_prompt: "blur, distortion, warping, morphing, deformed, artifacts, jitter" };
     const sub = await fetch(`${BASE}/${MODELO_EP}`, {
       method: "POST",
       headers: { Authorization: `Key ${FAL_KEY}`, "Content-Type": "application/json" },
@@ -140,12 +155,20 @@ if (import.meta.main) {
 
   for (const [i, c] of cenas.entries()) {
     const segundos = Number(c.segundos) || 5;
-    const still = join(work, `s${i}.png`);
-    // still on-brand (schnell pra iterar barato); --ref opcional
-    const imgArgs = ["--prompt", c.visual, "--saida", still, "--modelo", "minimax", "--largura", String(LARGURA), "--altura", String(ALTURA)];
-    if (ref) imgArgs.push("--ref", ref);
-    execFileSync("node", [GERAR_IMG, ...imgArgs], { stdio: "inherit", env: { ...process.env, FAL_KEY, FAL_BASE_URL: process.env.FAL_BASE_URL } });
-    clipes.push(await falVideo(still, segundos, c.visual + ", slow subtle cinematic camera motion, smooth, photographic, no distortion"));
+    let still;
+    if (c.imagem) {
+      // anima uma imagem PRONTA (pula a geração)
+      if (!existsSync(c.imagem)) falhar(`cena ${i + 1}: imagem não encontrada: ${c.imagem}`);
+      still = c.imagem;
+    } else {
+      // gera a still on-brand (minimax, foto realista); --ref opcional
+      still = join(work, `s${i}.png`);
+      const imgArgs = ["--prompt", c.visual, "--saida", still, "--modelo", "minimax", "--largura", String(LARGURA), "--altura", String(ALTURA)];
+      if (ref) imgArgs.push("--ref", ref);
+      execFileSync("node", [GERAR_IMG, ...imgArgs], { stdio: "inherit", env: { ...process.env, FAL_KEY, FAL_BASE_URL: process.env.FAL_BASE_URL } });
+    }
+    const motion = (c.visual || "the scene") + ", slow subtle cinematic camera motion, smooth, photographic, no distortion";
+    clipes.push(await falVideo(still, segundos, motion));
     legendas.push(c.texto);
     duracoes.push(segundos);
   }

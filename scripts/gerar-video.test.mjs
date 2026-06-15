@@ -40,6 +40,17 @@ test("dry-run: plano com 2 cenas, vertical 1080x1920, soma a duração", () => {
   assert.equal(plano.modelo_video, "kling");
 });
 
+test("dry-run: cena com imagem pronta (sem visual) vale, e --modelo seedance é aceito", () => {
+  const r = run([roteiro({ slug: "x", cenas: [{ texto: "a", imagem: "/t/foto.png", segundos: 3 }] }), "--modelo", "seedance", "--dry-run"]);
+  assert.equal(r.code, 0, r.stderr);
+  assert.equal(JSON.parse(r.stdout).modelo_video, "seedance");
+});
+
+test("erro: --modelo inválido", () => {
+  const r = run([roteiro({ slug: "x", cenas: [{ texto: "a", visual: "v", segundos: 3 }] }), "--modelo", "xpto", "--dry-run"]);
+  assert.equal(r.code, 1); assert.match(r.stderr, /modelo/i);
+});
+
 test("argsFfmpeg: gera args com escala vertical e legenda drawtext", () => {
   const a = argsFfmpeg({
     clipes: ["/t/c0.mp4", "/t/c1.mp4"],
