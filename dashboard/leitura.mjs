@@ -193,6 +193,21 @@ function lerDir(caminho) {
   try { return readdirSync(caminho); } catch { return []; }
 }
 
+// feed "Ao vivo": lê dados/atividade.jsonl e devolve os últimos marcos, do mais novo
+// pro mais antigo. Tolerante a null/linha quebrada. Cada marco: {ts, skill, etapa, status}.
+export function parseAtividade(jsonl, limite = 30) {
+  if (!jsonl) return [];
+  const out = [];
+  for (const l of jsonl.split(/\r?\n/)) {
+    const t = l.trim();
+    if (!t) continue;
+    let o; try { o = JSON.parse(t); } catch { continue; }
+    if (!o || !o.etapa) continue;
+    out.push({ ts: o.ts || "", skill: o.skill || "sistema", etapa: o.etapa, status: o.status || "ok" });
+  }
+  return out.reverse().slice(0, limite);
+}
+
 export function lerEstado(raiz) {
   const escadaMd = lerArquivo(join(raiz, "nucleo", "escada.md")) || "";
   const focoMd = lerArquivo(join(raiz, "nucleo", "foco.md")) || "";
@@ -213,6 +228,7 @@ export function lerEstado(raiz) {
   const provasMd = lerArquivo(join(raiz, "nucleo", "provas.md")) || "";
   const pubMd = lerArquivo(join(raiz, "producao", "publicacoes.md"));
   const custosJsonl = lerArquivo(join(raiz, "dados", "custos.jsonl"));
+  const atividadeJsonl = lerArquivo(join(raiz, "dados", "atividade.jsonl"));
 
   const escada = parseEscada(escadaMd);
   const producao = listarProducao(raiz);
@@ -233,6 +249,7 @@ export function lerEstado(raiz) {
     producao,
     publicado,
     custos: parseCustos(custosJsonl),
+    atividade: parseAtividade(atividadeJsonl),
     saude: { nucleo: saude, pendencias_total: escada.pendencias.length },
     ciclo: {
       decide: calendarioN,

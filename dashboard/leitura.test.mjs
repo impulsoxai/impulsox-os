@@ -264,3 +264,22 @@ test("lerEstado monta o estado e deriva o ciclo de um repo-fixture", () => {
   assert.ok(typeof e.atualizado_em === "string");
   assert.ok(Array.isArray(e.ofertas));
 });
+
+import { parseAtividade } from "./leitura.mjs";
+
+test("parseAtividade devolve marcos do mais novo pro mais antigo, tolera lixo", () => {
+  const jsonl =
+    '{"ts":"2026-06-15T19:52:03Z","skill":"/post","etapa":"pesquisando","status":"inicio"}\n' +
+    'linha quebrada\n' +
+    '{"ts":"2026-06-15T19:52:40Z","skill":"/post","etapa":"post pronto","status":"ok"}\n';
+  const r = parseAtividade(jsonl);
+  assert.equal(r.length, 2);
+  assert.equal(r[0].etapa, "post pronto");   // mais novo primeiro
+  assert.equal(r[1].etapa, "pesquisando");
+});
+
+test("parseAtividade tolera null e respeita o limite", () => {
+  assert.deepEqual(parseAtividade(null), []);
+  const muitas = Array.from({ length: 50 }, (_, i) => `{"etapa":"p${i}"}`).join("\n");
+  assert.equal(parseAtividade(muitas, 10).length, 10);
+});

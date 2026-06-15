@@ -23,6 +23,17 @@ async function atualizar() {
   $("degrau").textContent = "Degrau " + (e.escada.degrau ?? "—");
   $("atualizado").innerHTML = "<i></i> " + new Date(e.atualizado_em).toLocaleTimeString("pt-BR");
 
+  // ── ao vivo (passo a passo do sistema) ────────────────
+  const hora = (ts) => { const d = new Date(ts); return isNaN(d) ? "--:--:--" : d.toLocaleTimeString("pt-BR"); };
+  const atv = e.atividade || [];
+  $("atividade").innerHTML = atv.length
+    ? atv.map((p, i) => `<div class="passo ${i === 0 ? "novo" : ""}">` +
+        `<span class="hora">${hora(p.ts)}</span>` +
+        `<span class="st st-${esc(p.status)}" aria-hidden="true"></span>` +
+        `<span class="sk">${esc(p.skill)}</span>` +
+        `<span class="et">${esc(p.etapa)}</span></div>`).join("")
+    : `<div class="ocioso">sistema ocioso — rode uma skill (ex.: /post) pra ver o passo a passo aqui</div>`;
+
   // ── ciclo (protagonista) ──────────────────────────────
   $("ciclo").innerHTML = ETAPAS.map(([k, label, sub], i) =>
     `<div class="etapa"><span class="num">${e.ciclo[k]}</span>` +
@@ -59,4 +70,4 @@ async function atualizar() {
 }
 
 atualizar();
-setInterval(atualizar, 5000);
+setInterval(atualizar, 2000);

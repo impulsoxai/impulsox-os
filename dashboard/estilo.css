@@ -87,6 +87,32 @@ body.offline .live i { background: var(--p-erro); box-shadow: none; animation: n
 }
 .bloco > .kicker { margin-bottom: 1.15rem; }
 
+/* ── ao vivo (feed protagonista) ────────────────────── */
+.aovivo-bloco { margin-bottom: 1.25rem; border-color: var(--p-borda-forte); }
+.batida {
+  display: inline-block; width: 7px; height: 7px; margin-left: 0.4rem; border-radius: 999px;
+  background: var(--p-verde); box-shadow: 0 0 8px var(--p-verde); animation: pulso 1.6s infinite; vertical-align: middle;
+}
+.feed { display: flex; flex-direction: column; max-height: 320px; overflow-y: auto; }
+.passo {
+  display: grid; grid-template-columns: auto auto auto 1fr; align-items: center; gap: 0.7rem;
+  padding: 0.55rem 0; border-top: 1px solid var(--p-borda); font-size: 13px;
+}
+.passo:first-child { border-top: none; }
+.passo .hora { color: var(--p-mudo); font-variant-numeric: tabular-nums; font-size: 12px; }
+.passo .st { width: 7px; height: 7px; border-radius: 999px; background: var(--p-roxo-claro); }
+.passo .st-ok { background: var(--p-verde); }
+.passo .st-inicio { background: var(--p-roxo-claro); }
+.passo .st-erro { background: var(--p-erro); }
+.passo .st-aviso { background: var(--cor-aviso, #e8a44a); }
+.passo .sk { color: var(--p-ouro); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+.passo .et { color: var(--p-texto); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ocioso { color: var(--p-mudo); font-size: 13px; padding: 0.5rem 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .passo.novo { animation: surge 0.5s var(--p-ease); }
+  @keyframes surge { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+}
+
 /* ── ciclo (protagonista) ───────────────────────────── */
 .ciclo-bloco { margin-bottom: 1.25rem; }
 .ciclo { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(0.5rem, 2vw, 1.4rem); }
