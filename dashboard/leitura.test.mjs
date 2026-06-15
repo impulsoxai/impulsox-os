@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parseEscada, parseFoco, parseOfertas, parseAprendizados, parseProvas } from "./leitura.mjs";
 import { listarProducao, parsePublicacoes } from "./leitura.mjs";
-import { mkdtempSync, mkdirSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -169,6 +169,19 @@ test("listarProducao lê data+slug das pastas de cada tipo", () => {
   assert.equal(post.data, "2026-06-13");
   assert.equal(post.slug, "5-erros-instagram-amador");
   assert.ok(r.find((p) => p.tipo === "linkedin"));
+});
+
+test("listarProducao pega tanto pastas datadas quanto arquivos .md (linkedin/copy)", () => {
+  const raiz = mkdtempSync(join(tmpdir(), "prod2-"));
+  mkdirSync(join(raiz, "producao", "posts", "2026-06-13-erro-comum"), { recursive: true });
+  mkdirSync(join(raiz, "producao", "linkedin"), { recursive: true });
+  writeFileSync(join(raiz, "producao", "linkedin", "2026-06-12-ia-funcionario.md"), "x");
+  mkdirSync(join(raiz, "producao", "copy"), { recursive: true });
+  writeFileSync(join(raiz, "producao", "copy", "landing-v2.md"), "x");
+  const r = listarProducao(raiz);
+  assert.ok(r.find((p) => p.tipo === "linkedin" && p.slug === "ia-funcionario" && p.data === "2026-06-12"));
+  assert.ok(r.find((p) => p.tipo === "copy" && p.slug === "landing-v2" && p.data === ""));
+  assert.ok(r.find((p) => p.tipo === "posts" && p.slug === "erro-comum"));
 });
 
 test("listarProducao tolera producao/ ausente", () => {

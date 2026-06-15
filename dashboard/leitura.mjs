@@ -120,9 +120,11 @@ export function listarProducao(raiz) {
     const dir = join(raiz, "producao", tipo);
     if (!existsSync(dir)) continue;
     for (const nome of readdirSync(dir)) {
-      if (!statSync(join(dir, nome)).isDirectory()) continue;
-      const m = nome.match(/^(\d{4}-\d{2}-\d{2})-(.+)$/);
-      out.push({ tipo, data: m ? m[1] : "", slug: m ? m[2] : nome });
+      const ehDir = statSync(join(dir, nome)).isDirectory();
+      if (!ehDir && !nome.endsWith(".md")) continue;       // só pastas ou arquivos .md
+      const base = ehDir ? nome : nome.replace(/\.md$/, ""); // tira a extensão do arquivo
+      const m = base.match(/^(\d{4}-\d{2}-\d{2})-(.+)$/);
+      out.push({ tipo, data: m ? m[1] : "", slug: m ? m[2] : base });
     }
   }
   return out;
