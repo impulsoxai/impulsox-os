@@ -155,6 +155,25 @@ Regras gerais que valem pra toda ferramenta:
 - **Conta:** não — binário local. **Instalar:** `choco install ffmpeg` (Win) / `brew install ffmpeg` (Mac).
 - **Quem usa:** `scripts/gerar-video.mjs`. Trilha: arquivo royalty-free em `dados/audio/` do clone.
 
+## Painel ao vivo (status board local)
+
+### dashboard/ — painel do sistema operacional
+- **Resolve:** mostra o ImpulsoX-OS rodando — feed **Ao vivo** (passo a passo em tempo
+  real), ciclo (Decide→Produz→Publica→Mede), produção, contexto, custos de IA e saúde do
+  núcleo. Servidor local só-leitura (`127.0.0.1:5173`), on-brand (lê `marca/tokens.css`),
+  atualiza sozinho. Design do Open Design, ligado nos dados reais.
+- **Conta:** não — Node puro, zero dependência. **Porta:** `DASHBOARD_PORT` (default 5173).
+- **Como abrir:** cliente final → dois cliques no `painel.cmd` (raiz). Na operação → `/painel`.
+- **Feed ao vivo:** `scripts/registrar-passo.mjs` emite marcos legíveis em
+  `dados/atividade.jsonl`; o hook `.claude/hooks/atividade-passo.mjs` (PostToolUse) captura
+  automático em workspace ImpulsoX (gated por `nucleo/`) — só marco legível, nunca comando
+  cru. Wiring do hook: bloco `hooks.PostToolUse` no `.claude/settings.json` do clone.
+- **Custos:** os `gerar-imagem/video/avatar` anexam cada cobrança em `dados/custos.jsonl`
+  via `scripts/registrar-custo.mjs`; o painel soma e mostra por modelo.
+- **Segurança:** só `GET`, só localhost, whitelist de leitura (`nucleo/`, `producao/`,
+  `marca/tokens.css`, `dados/custos.jsonl`, `dados/atividade.jsonl`). `.env` e chaves nunca
+  são servidos. Não expor em rede. `dados/` é gitignored (fica local na máquina do cliente).
+
 ---
 
 ## Registrar ferramenta nova
