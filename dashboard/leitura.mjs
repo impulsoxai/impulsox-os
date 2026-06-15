@@ -41,3 +41,31 @@ export function parseEscada(md = "") {
     proximo: itensDaSecao(md, /Próximo degrau/i),
   };
 }
+
+export function parseFoco(md = "") {
+  const secoes = [];
+  let atual = null;
+  for (const l of md.split(/\r?\n/)) {
+    const h = l.match(/^##\s+(.*\S)\s*$/);
+    if (h) { atual = { titulo: h[1], itens: [] }; secoes.push(atual); continue; }
+    if (!atual) continue;
+    const item = l.match(/^\s*-\s+(.*\S)\s*$/);
+    if (item) { atual.itens.push(item[1]); continue; }
+    const txt = l.trim();
+    if (txt && !txt.startsWith(">")) atual.itens.push(txt);
+  }
+  return { secoes };
+}
+
+export function parseOfertas(md = "") {
+  // só o trecho entre "Ofertas ATIVAS" e "Ofertas FUTURAS"
+  const ini = md.search(/##\s*Ofertas ATIVAS/i);
+  const fim = md.search(/##\s*Ofertas FUTURAS/i);
+  const trecho = ini === -1 ? md : md.slice(ini, fim === -1 ? undefined : fim);
+  const nomes = [];
+  for (const l of trecho.split(/\r?\n/)) {
+    const m = l.match(/^##\s*Oferta:\s*(.*\S)\s*$/i);
+    if (m) nomes.push(m[1]);
+  }
+  return nomes;
+}

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseEscada } from "./leitura.mjs";
+import { parseEscada, parseFoco, parseOfertas } from "./leitura.mjs";
 
 const ESCADA = `# Escada de Contexto — ImpulsoX AI
 
@@ -53,4 +53,40 @@ uma URL de site para subir ao degrau 1 (extração automática).
   assert.equal(r.proximo.length, 1);
   assert.match(r.proximo[0], /rode .*plugar/);
   assert.match(r.proximo[0], /extração automática/); // juntou a linha de continuação
+});
+
+const FOCO = `# Foco — ImpulsoX AI
+
+## Momento
+Operação solo. Ambição grande.
+
+## Prioridades
+- Crescer o negócio; vender pros Estados Unidos.
+- Fechar os primeiros pilotos.
+`;
+
+test("parseFoco devolve seções com seus itens/linhas", () => {
+  const r = parseFoco(FOCO);
+  const prior = r.secoes.find((s) => s.titulo === "Prioridades");
+  assert.ok(prior);
+  assert.equal(prior.itens.length, 2);
+  assert.match(prior.itens[0], /Crescer/);
+});
+
+const OFERTAS = `## Ofertas ATIVAS (sistema pode gerar conteúdo)
+
+## Oferta: Landing Pages Premium
+- **O que é:** site premium.
+
+## Oferta: Conteúdo para Instagram e LinkedIn
+- **O que é:** reels.
+
+## Ofertas FUTURAS — NÃO gerar conteúdo ainda
+
+- **KnowledgeX** — assistente. (?)
+`;
+
+test("parseOfertas pega só as ATIVAS e ignora as FUTURAS", () => {
+  const r = parseOfertas(OFERTAS);
+  assert.deepEqual(r, ["Landing Pages Premium", "Conteúdo para Instagram e LinkedIn"]);
 });
