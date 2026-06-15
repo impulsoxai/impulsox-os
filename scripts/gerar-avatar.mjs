@@ -10,8 +10,9 @@
  *     --saida dados/imagens/avatar.mp4 \
  *     [--resolucao 1080p|720p] [--dry-run]
  *
- * Custo: $0.16/seg (1080p) · $0.10/seg (720p).
- *   15s em 1080p = ~$2.40 · 10s em 720p = ~$1.00 (teste)
+ * GUARDA DE CUSTO: o vídeo dura o tempo do áudio e cobra POR SEGUNDO. Sem --confirmar,
+ * o script só ESTIMA o custo e para. Cobra de verdade só com --confirmar. A Fal cobra
+ * quando a geração completa, mesmo que o download falhe — por isso a estimativa vem antes.
  *
  * Regras:
  *   - Foto: rosto visível, boa iluminação, fundo neutro ajuda
@@ -20,6 +21,7 @@
  *   - FAL_KEY nunca aparece em log ou erro
  */
 import { readFileSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { dirname } from "node:path";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
@@ -33,13 +35,15 @@ const saida = flag("--saida") || "avatar.mp4";
 const resolucao = flag("--resolucao") || "1080p";
 const modelo = flag("--modelo") || "omnihuman";
 const dryRun = has("--dry-run");
+const confirmar = has("--confirmar");
 
 // catálogo de modelos de avatar (foto + áudio -> pessoa falando). Troca por flag.
+// preço REAL/seg conferido no painel da Fal (jun/2026) — NÃO chutar, é dinheiro de verdade.
 // kling-avatar: lip sync mais preciso (benchmark 2026). omnihuman: full-body, film-grade.
 const MODELOS = {
   "omnihuman": { ep: "fal-ai/bytedance/omnihuman/v1.5", preco: resolucao === "1080p" ? 0.16 : 0.10 },
   "kling-avatar": { ep: "fal-ai/kling-video/ai-avatar/v2/pro", preco: 0.115 },
-  "heygen": { ep: "fal-ai/heygen/avatar4/image-to-video", preco: 0.05 },
+  "heygen": { ep: "fal-ai/heygen/avatar4/image-to-video", preco: 0.10 },
 };
 
 if (!foto) falhar("informe --foto (ex.: dados/imagens/eu.jpg).");
@@ -52,11 +56,38 @@ if (!MODELOS[modelo]) falhar(`--modelo inválido: ${modelo} (use omnihuman, klin
 const MODELO = MODELOS[modelo].ep;
 const PRECO_SEG = MODELOS[modelo].preco;
 
+// mede a duração do áudio (ffprobe) — o vídeo dura isso, e é isso que define o custo.
+function duracaoAudio(caminho) {
+  try {
+    const out = execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration",
+      "-of", "default=noprint_wrappers=1:nokey=1", caminho], { encoding: "utf8" });
+    return Number(out.trim());
+  } catch { return NaN; }
+}
+const durSeg = duracaoAudio(audio);
+const custoEst = Number.isFinite(durSeg) ? durSeg * PRECO_SEG : NaN;
+const custoStr = Number.isFinite(custoEst) ? `$${custoEst.toFixed(2)}` : `~? (ffprobe ausente — ${PRECO_SEG}/seg)`;
+
 if (dryRun) {
   console.log(JSON.stringify({
     dry_run: true, foto, audio, saida, resolucao, modelo, endpoint: MODELO,
-    nota: "duração do vídeo = duração do áudio. Custo por segundo: $" + PRECO_SEG,
+    duracao_audio_seg: Number.isFinite(durSeg) ? Number(durSeg.toFixed(1)) : "?",
+    preco_seg: PRECO_SEG, custo_estimado: custoStr,
   }, null, 2));
+  process.exit(0);
+}
+
+// GUARDA DE CUSTO: sem --confirmar, mostra a conta e para. Cobra só com o ok explícito.
+if (!confirmar) {
+  console.log("");
+  console.log(`  Modelo:   ${modelo} (${MODELO})`);
+  console.log(`  Áudio:    ${Number.isFinite(durSeg) ? durSeg.toFixed(1) + "s" : "duração desconhecida"}`);
+  console.log(`  Preço:    $${PRECO_SEG}/seg`);
+  console.log(`  CUSTO ESTIMADO: ${custoStr}`);
+  console.log("");
+  console.log("  A Fal cobra quando a geração completa (mesmo se o download falhar).");
+  console.log("  Para gerar de verdade, rode de novo com --confirmar no fim do comando.");
+  console.log("");
   process.exit(0);
 }
 
