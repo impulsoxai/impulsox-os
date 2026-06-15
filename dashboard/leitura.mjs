@@ -1,5 +1,8 @@
 // dashboard/leitura.mjs
 
+import { readdirSync, statSync, existsSync } from "node:fs";
+import { join } from "node:path";
+
 // Extrai o conteúdo de uma seção marcada por "**Título:**" até a próxima linha "**...**"
 // ou linha em branco. Cobre dois formatos: bullets ("- item") e prosa inline/contínua
 // (texto após o "**Título:**", podendo quebrar em mais linhas). Marcadores "_(vazio)_"
@@ -107,4 +110,33 @@ export function parseProvas(md = "") {
   const semCodigo = corpo.replace(/```[\s\S]*?```/g, "");
   const n = (semCodigo.match(/^###\s+/gm) || []).length;
   return { preenchido: n > 0, n };
+}
+
+const TIPOS_PRODUCAO = ["posts", "linkedin", "paginas", "copy"];
+
+export function listarProducao(raiz) {
+  const out = [];
+  for (const tipo of TIPOS_PRODUCAO) {
+    const dir = join(raiz, "producao", tipo);
+    if (!existsSync(dir)) continue;
+    for (const nome of readdirSync(dir)) {
+      if (!statSync(join(dir, nome)).isDirectory()) continue;
+      const m = nome.match(/^(\d{4}-\d{2}-\d{2})-(.+)$/);
+      out.push({ tipo, data: m ? m[1] : "", slug: m ? m[2] : nome });
+    }
+  }
+  return out;
+}
+
+// md pode ser null (arquivo ausente). Lê linhas de tabela "| data | canal | link |".
+export function parsePublicacoes(md) {
+  if (!md) return [];
+  const out = [];
+  for (const l of md.split(/\r?\n/)) {
+    const cols = l.split("|").map((c) => c.trim()).filter(Boolean);
+    if (cols.length >= 3 && /^\d{4}-\d{2}-\d{2}$/.test(cols[0])) {
+      out.push({ data: cols[0], canal: cols[1], link: cols[2] });
+    }
+  }
+  return out;
 }

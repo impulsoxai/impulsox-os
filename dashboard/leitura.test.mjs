@@ -1,6 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parseEscada, parseFoco, parseOfertas, parseAprendizados, parseProvas } from "./leitura.mjs";
+import { listarProducao, parsePublicacoes } from "./leitura.mjs";
+import { mkdtempSync, mkdirSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 const ESCADA = `# Escada de Contexto — ImpulsoX AI
 
@@ -154,4 +158,37 @@ test("parseProvas conta entradas ### reais", () => {
   const r = parseProvas("# Banco\n\n### caso-acme\n- Tipo: caso\n\n### dep-joao\n- Tipo: depoimento\n");
   assert.equal(r.preenchido, true);
   assert.equal(r.n, 2);
+});
+
+test("listarProducao lê data+slug das pastas de cada tipo", () => {
+  const raiz = mkdtempSync(join(tmpdir(), "prod-"));
+  mkdirSync(join(raiz, "producao", "posts", "2026-06-13-5-erros-instagram-amador"), { recursive: true });
+  mkdirSync(join(raiz, "producao", "linkedin", "2026-06-12-ia-funcionario"), { recursive: true });
+  const r = listarProducao(raiz);
+  const post = r.find((p) => p.tipo === "posts");
+  assert.equal(post.data, "2026-06-13");
+  assert.equal(post.slug, "5-erros-instagram-amador");
+  assert.ok(r.find((p) => p.tipo === "linkedin"));
+});
+
+test("listarProducao tolera producao/ ausente", () => {
+  const raiz = mkdtempSync(join(tmpdir(), "prod-"));
+  assert.deepEqual(listarProducao(raiz), []);
+});
+
+test("parsePublicacoes tolera arquivo ausente", () => {
+  assert.deepEqual(parsePublicacoes(null), []);
+});
+
+test("parsePublicacoes lê linhas de tabela", () => {
+  const md = `# Publicações
+
+| Data | Canal | Link |
+|---|---|---|
+| 2026-06-11 | instagram | https://instagram.com/p/abc |
+`;
+  const r = parsePublicacoes(md);
+  assert.equal(r.length, 1);
+  assert.equal(r[0].canal, "instagram");
+  assert.match(r[0].link, /instagram\.com/);
 });
