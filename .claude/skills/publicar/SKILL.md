@@ -78,11 +78,15 @@ existir. Não travar o resto: o que não tem credencial sai em modo assistido.
 
 ## Scripts
 
-As chamadas de API vivem em `scripts/publicar-instagram.mjs`, `scripts/publicar-facebook.mjs`
-e `scripts/publicar-linkedin-org.mjs` (Node, sem dependência além de `fetch`). Se ainda
-não existem, criar na primeira configuração — pedindo aprovação do código ao usuário.
-Erro de API: reportar a resposta exata, não mascarar; token expirado é a causa mais
-comum (renovar pelo guia).
+`scripts/publicar-instagram.mjs` publica no Instagram (Graph API) a partir de uma peça do
+`/post`: `node scripts/publicar-instagram.mjs --peca producao/posts/<slug> --tipo
+carrossel|post|reel`. **Sem `--confirmar` é dry-run** (valida e mostra o plano, não posta);
+**com `--confirmar` publica de verdade**. A mídia sobe pro Fal CDN (URL pública) antes de
+publicar; o resultado vai pra `producao/publicacoes.md` (permalink) e pro feed do painel.
+Requer `IG_USUARIO_ID` + `META_TOKEN_PAGINA` no `.env` (conta Professional + página FB + app
+Meta com `instagram_business_content_publish`). Limite: 25 posts/24h. `META_TOKEN_PAGINA`
+nunca aparece em log/erro (redigido). Facebook e LinkedIn seguem o mesmo padrão (conectores
+irmãos, a criar). Erro de API: reportar a resposta exata (sem o token).
 
 ## Regras
 

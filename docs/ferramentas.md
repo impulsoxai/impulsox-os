@@ -59,10 +59,20 @@ Regras gerais que valem pra toda ferramenta:
 - **Conta:** sim — conta IG Professional vinculada a página FB, app na Meta for Developers,
   token de longa duração da página.
 - **`.env`:** `IG_USUARIO_ID`, `META_PAGINA_ID`, `META_TOKEN_PAGINA` (nomes do `/publicar`).
-- **Scripts:** `scripts/publicar-instagram.mjs`, `scripts/publicar-facebook.mjs`.
+- **Scripts:** `scripts/publicar-instagram.mjs` (construído), `scripts/publicar-facebook.mjs` (a criar).
 - **Pegadinha:** a Meta busca a imagem por **URL pública** — a peça precisa estar acessível na
   web antes de publicar. Token de longa duração expira; renovar é a causa #1 de erro.
 - **Quem usa:** `/publicar`, `/desempenho` (mesmas credenciais pra ler métricas via Graph API).
+
+### Instagram — conector de publicação (`scripts/publicar-instagram.mjs`)
+- **Resolve:** publica carrossel, post e reel a partir de uma peça do `/post`. Sobe a mídia
+  pro **Fal CDN** (resolve a URL pública exigida pela Meta), monta o container e publica.
+  **Dry-run por padrão; `--confirmar` publica.** Registra em `producao/publicacoes.md`
+  (permalink) e no feed do painel.
+- **Uso:** `node scripts/publicar-instagram.mjs --peca producao/posts/<slug> --tipo carrossel|post|reel [--confirmar]`.
+- **`.env`:** `IG_USUARIO_ID` + `META_TOKEN_PAGINA` (+ `FAL_KEY` pro upload).
+- **Pegadinhas:** limite 25 posts/24h; `VIDEO` morreu pra post único (reel usa `REELS`);
+  `META_TOKEN_PAGINA`/`FAL_KEY` **nunca** em log/erro (redigidos).
 
 ### LinkedIn — API de página de empresa
 - **Resolve:** publicar na página de empresa (não no perfil pessoal).
