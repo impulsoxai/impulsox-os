@@ -94,15 +94,19 @@ Regras gerais que valem pra toda ferramenta:
   publicação assistida (entrega pronta, usuário cola). `LINKEDIN_TOKEN` nunca em log/erro.
 - **Quem usa:** `/publicar`, `/linkedin`.
 
-### Google Business Profile API (Perfil de Empresa)
-- **Resolve:** atualizar informações, criar posts e responder avaliações no Google Maps via API.
-- **Conta:** sim — projeto no Google Cloud + Business Profile APIs ativadas + solicitação de
-  acesso aprovada pelo Google (voltada a agências; pode levar dias/semanas) + OAuth do dono.
-- **`.env`:** `GBP_CLIENT_ID`, `GBP_CLIENT_SECRET`, `GBP_REFRESH_TOKEN`, `GBP_LOCATION_ID`.
-- **Script:** `scripts/gbp.mjs`.
-- **Limite:** resposta a avaliação negativa **nunca** sai automática — usuário lê antes. Modo
-  assistido funciona desde o dia 1; o conector é upgrade, não pré-requisito.
-- **Quem usa:** `/local`.
+### Google Business Profile — conector (`scripts/gbp.mjs`)
+- **Resolve:** cria **post local** (texto + CTA + imagem opcional via Fal CDN) e **responde
+  avaliação** no Google Maps, via API oficial (Business Profile + OAuth2). Dry-run por padrão;
+  `--confirmar` publica. `--acao post|responder`.
+- **Auth:** OAuth2 — `GBP_REFRESH_TOKEN` vira access token em `oauth2.googleapis.com/token`.
+  Segredos (access_token/client_secret/refresh_token) **nunca** em log/erro (redigidos).
+- **Conta:** projeto no Google Cloud + Business Profile APIs ativadas + **solicitação de acesso
+  aprovada pelo Google** (voltada a agências; dias/semanas) + OAuth do dono.
+- **`.env`:** `GBP_CLIENT_ID`, `GBP_CLIENT_SECRET`, `GBP_REFRESH_TOKEN`, `GBP_LOCATION_ID`
+  (`accounts/A/locations/L`).
+- **Limite:** resposta a avaliação negativa **nunca** sai automática — usuário lê antes (o
+  `/local` garante). Modo assistido funciona desde o dia 1; o conector é upgrade, não pré-requisito.
+- **Quem usa:** `/local`. Registra post em `producao/publicacoes.md` + feed do painel.
 
 ## Ler métricas (medição)
 

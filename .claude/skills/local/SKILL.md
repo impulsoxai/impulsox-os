@@ -107,10 +107,10 @@ Cloud + OAuth), voltada a agências que gerenciam perfis de clientes.
 **Configurar (uma vez):** guiar o usuário — projeto no Google Cloud → ativar as
 Business Profile APIs → solicitar acesso no formulário oficial do Google → OAuth da
 conta dona do perfil. Credenciais no `.env` (`GBP_CLIENT_ID`, `GBP_CLIENT_SECRET`,
-`GBP_REFRESH_TOKEN`, `GBP_LOCATION_ID`), chamadas em `scripts/gbp.mjs` (Node, só
-`fetch`; criar na primeira configuração com aprovação do código). Aprovação do Google
-pode levar dias ou semanas — **o modo assistido funciona desde o dia 1**, o conector é
-upgrade, nunca pré-requisito.
+`GBP_REFRESH_TOKEN`, `GBP_LOCATION_ID`). O conector **já existe**: `scripts/gbp.mjs`
+(`--acao post` cria post local; `--acao responder` responde avaliação; dry-run por padrão,
+`--confirmar` publica; segredos nunca em log). Aprovação do Google pode levar dias ou
+semanas — **o modo assistido funciona desde o dia 1**, o conector é upgrade, nunca pré-requisito.
 
 Resposta a avaliação negativa **nunca** sai automática sem o usuário ler — é a resposta
 mais sensível do marketing local.
