@@ -8,9 +8,9 @@
  *        [--tela tela.mp4 --voz voz.wav] [--sem-intro] [--confirmar]
  */
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm } from "./lib-edicao.mjs";
+import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm, lerGlossario, corrigirTermos } from "./lib-edicao.mjs";
 import { transcrever } from "./transcrever-local.mjs";
 import { registrarPasso } from "./registrar-passo.mjs";
 
@@ -90,7 +90,10 @@ if (import.meta.main) {
       registrarPasso({ skill: "/editar-video", etapa: "transcrevendo (whisper local)", status: "inicio" });
       let temLegenda = false;
       try {
-        const palavras = transcrever(voz || cortado);
+        let palavras = transcrever(voz || cortado);
+        // glossário da marca: conserta termos que o whisper foneticiza (reel, ImpulsoX...).
+        const glossPath = join("canal-youtube", "glossario.md");
+        if (existsSync(glossPath)) palavras = corrigirTermos(palavras, lerGlossario(readFileSync(glossPath, "utf8")));
         if (palavras.length) {
           writeFileSync(tmpSrt, montarSRT(palavras));   // .srt pro YouTube CC (acessibilidade/SEO)
           writeFileSync(tmpAss, montarASS(palavras));   // .ass karaokê pra queimar (retenção)

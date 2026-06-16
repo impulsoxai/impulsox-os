@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {
   parseSilencedetect, segmentosManter, filtroCorteConcat, planoCorte,
   montarSRT, montarASS, filtroLegenda, filtroLegendaAss, filtroLoudnorm,
-  argsThumbnailFrameTexto,
+  argsThumbnailFrameTexto, lerGlossario, corrigirTermos,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -85,6 +85,53 @@ test("montarSRT quebra grupo quando passa de maxDur", () => {
   ];
   const srt = montarSRT(palavras, { maxPalavras: 7, maxDur: 3 });
   assert.match(srt, /^1\n00:00:00,000 --> 00:00:00,500\na\n\n2\n/);
+});
+
+// --- Melhoria: glossário de transcrição ---
+
+const GLOSSARIO_MD = `# comentário ignorado
+real => reel
+impulso x => ImpulsoX
+`;
+
+test("lerGlossario lê pares errado=>certo e ignora comentário/linha vazia", () => {
+  assert.deepEqual(lerGlossario(GLOSSARIO_MD), [
+    { errado: "real", certo: "reel" },
+    { errado: "impulso x", certo: "ImpulsoX" },
+  ]);
+});
+
+test("corrigirTermos troca palavra inteira case-insensitive preservando timestamp", () => {
+  const palavras = [
+    { inicio: 0.0, fim: 0.3, texto: "aquele" },
+    { inicio: 0.3, fim: 0.7, texto: "Real" },
+    { inicio: 0.7, fim: 1.0, texto: "legal" },
+  ];
+  const regras = [{ errado: "real", certo: "reel" }];
+  assert.deepEqual(corrigirTermos(palavras, regras), [
+    { inicio: 0.0, fim: 0.3, texto: "aquele" },
+    { inicio: 0.3, fim: 0.7, texto: "reel" },
+    { inicio: 0.7, fim: 1.0, texto: "legal" },
+  ]);
+});
+
+test("corrigirTermos colapsa sequência de N palavras num termo só (timestamp herda o fim)", () => {
+  const palavras = [
+    { inicio: 0.0, fim: 0.4, texto: "impulso" },
+    { inicio: 0.4, fim: 0.9, texto: "X" },
+    { inicio: 0.9, fim: 1.2, texto: "rocks" },
+  ];
+  const regras = [{ errado: "impulso x", certo: "ImpulsoX" }];
+  assert.deepEqual(corrigirTermos(palavras, regras), [
+    { inicio: 0.0, fim: 0.9, texto: "ImpulsoX" },
+    { inicio: 0.9, fim: 1.2, texto: "rocks" },
+  ]);
+});
+
+test("corrigirTermos não pega substring (palavra inteira só)", () => {
+  const palavras = [{ inicio: 0, fim: 0.5, texto: "realmente" }];
+  const regras = [{ errado: "real", certo: "reel" }];
+  assert.deepEqual(corrigirTermos(palavras, regras), [{ inicio: 0, fim: 0.5, texto: "realmente" }]);
 });
 
 // --- Melhoria: karaokê .ass + loudnorm ---

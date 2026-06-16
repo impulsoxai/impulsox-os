@@ -85,6 +85,44 @@ export function montarSRT(palavras, { maxPalavras = 7, maxDur = 3 } = {}) {
     .join("\n");
 }
 
+// Lê o glossário da marca (linhas "errado => certo") em pares pra correção de transcrição.
+export function lerGlossario(md) {
+  return String(md).split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l && !l.startsWith("#") && l.includes("=>"))
+    .map((l) => {
+      const [errado, certo] = l.split("=>").map((p) => p.trim());
+      return { errado, certo };
+    })
+    .filter((r) => r.errado && r.certo);
+}
+
+function escaparRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// Aplica o glossário nas palavras transcritas (case-insensitive, palavra inteira). Regra de
+// N palavras ("impulso x") casa a sequência: o "certo" entra na 1ª palavra, as outras da
+// sequência viram "". Preserva os timestamps (a 1ª palavra herda o fim da última casada).
+export function corrigirTermos(palavras, regras) {
+  // ordena por nº de palavras do "errado" (mais longas primeiro) pra "impulso x" ganhar de "x".
+  const ordenadas = [...regras].sort((a, b) => b.errado.split(/\s+/).length - a.errado.split(/\s+/).length);
+  const out = palavras.map((p) => ({ ...p }));
+  for (const regra of ordenadas) {
+    const termos = regra.errado.split(/\s+/);
+    for (let i = 0; i + termos.length <= out.length; i++) {
+      const janela = out.slice(i, i + termos.length);
+      if (janela.some((w) => w.texto === "")) continue;
+      const casa = janela.every((w, k) => new RegExp(`^${escaparRegex(termos[k])}$`, "i").test(w.texto));
+      if (casa) {
+        out[i] = { inicio: out[i].inicio, fim: janela[janela.length - 1].fim, texto: regra.certo };
+        for (let k = 1; k < termos.length; k++) out[i + k] = { ...out[i + k], texto: "" };
+      }
+    }
+  }
+  return out.filter((w) => w.texto !== "");
+}
+
 // Agrupa palavras em legendas como o montarSRT (mesma regra), pra reuso.
 function agruparPalavras(palavras, maxPalavras, maxDur) {
   const grupos = [];
