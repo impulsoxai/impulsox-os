@@ -200,6 +200,25 @@ Regras gerais que valem pra toda ferramenta:
   `marca/tokens.css`, `dados/custos.jsonl`, `dados/atividade.jsonl`). `.env` e chaves nunca
   são servidos. Não expor em rede. `dados/` é gitignored (fica local na máquina do cliente).
 
+### edição de vídeo do canal YouTube (Fase 2)
+- **Resolve:** transforma a gravação de tela narrada crua em long-form publicável — corte
+  de silêncio, legenda (queimada + `.srt`), intro/outro da marca, render 16:9 — mais a
+  thumbnail. Tira o gargalo da edição manual. Trabalha sobre a gravação real, não sobre os
+  timestamps do roteiro.
+- **Scripts:** `editar-video.mjs` (orquestrador, dry-run/`--confirmar`), `lib-edicao.mjs`
+  (funções puras: silêncio, concat, SRT, legenda, thumb), `transcrever-local.mjs` (whisper
+  local), `gerar-thumbnail.mjs` (frame+texto sempre; Fal sob preview/`--confirmar`).
+- **Conta:** não. **Precisa de binários:** **ffmpeg** (render) e **whisper** local
+  (legenda — ex: `pip install -U openai-whisper`). Faltando, o `/editar-video` guia a
+  instalação; sem whisper o vídeo sai sem legenda, com aviso.
+- **Variáveis de `.env` (opcionais):** `WHISPER_BIN`, `WHISPER_MODEL`, `WHISPER_IDIOMA`,
+  `FFMPEG_BIN` — todas têm default (`whisper`/`small`/`pt`/`ffmpeg`).
+- **Qual skill consome:** `/editar-video`. Entra depois do `/roteiro-yt` → gravar → editar.
+- **Custo:** zero (transcrição local). Único custo é a thumbnail por IA (Fal), e só quando
+  confirmada explicitamente — a versão frame+texto é grátis.
+- **Saídas:** `canal-youtube/edicao/<slug>/` (`final.mp4`, `legenda.srt`, `thumb-frame.png`,
+  opcional `thumb-fal.png`). Templates de marca em `canal-youtube/edicao/templates/`.
+
 ---
 
 ## Registrar ferramenta nova
