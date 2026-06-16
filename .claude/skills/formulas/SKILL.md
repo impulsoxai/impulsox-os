@@ -43,12 +43,28 @@ Destilar no molde e gravar em `docs/formulas.md`. **A fórmula é o esqueleto ab
 — qualquer negócio consegue vesti-la com o próprio conteúdo. Jamais copiar frase,
 tema ou identidade da peça original.
 
+**Vídeo do YouTube** entra como quarta forma de peça (link). Antes de dissecar:
+1. `node scripts/transcript-youtube.mjs <link>` — puxa a transcrição pública (legenda
+   manual ou automática, o que existir). Sem legenda disponível: avisar e dissecar só por
+   título/descrição/visual, sem inventar fala que não foi dita.
+2. Disseca gancho/estrutura/gatilhos pelos 5 passos acima, **mais** estes campos
+   exclusivos de vídeo (só quando Rede=YouTube):
+   - **Hook (tipo + texto literal dos 3-15s):** transcrito da fala real, não resumo.
+   - **Ritmo de corte:** rápido/médio/lento — pela frequência de troca de assunto na
+     transcrição.
+   - **Estrutura de retenção:** que loop de curiosidade abre e quando fecha.
+   - **Composição da fala:** frase curta vs longa, repetição proposital, pergunta
+     retórica, jargão vs linguagem simples.
+
 ## Modo 2 — Pesquisar (web aberta)
 
 Quando o usuário pede "atualiza as fórmulas" ou não tem peça pra trazer:
 
 1. Buscar (via skill de scraping/busca) análises públicas recentes: breakdowns de
    posts que performaram, estudos de hooks, relatórios de formato por rede.
+   Pro nicho de IA/Claude Code, canais americanos de referência (sementes, não lista
+   fechada — `canal-youtube/criadores-monitorados.md` tem a lista viva): Sabrina Ramonov,
+   Luuk Alleman, Matt Ganzak, Jonathan Acuña "Doctor AI", Duncan Rogoff, Chase AI, Yury AI.
 2. Filtrar: só fórmula com **explicação plausível** entra; "use emoji no título" sem
    porquê, não. Anotar a fonte de cada uma.
 3. Gravar as aprovadas pelo usuário em `docs/formulas.md` com origem `mercado`.
@@ -65,6 +81,26 @@ O melhor filtro é a própria conta. Quando `producao/relatorios/` tem relatóri
 2. Promover ou rebaixar: fórmula que performa na conta ganha marca **validada aqui**
    (e o padrão vai pro `nucleo/aprendizados.md`); fórmula de mercado que flopou duas
    vezes ganha **não funciona neste nicho** — economiza as próximas tentativas.
+
+## Modo 4 — Monitorar canais (cron)
+
+Acionado pelo agendamento automático (ver `CronCreate` no setup do canal) ou por pedido
+("checa os criadores", "tem vídeo novo relevante?"):
+
+1. Rodar `node scripts/checar-criadores-yt.mjs` — devolve a lista de vídeos relevantes
+   (já filtrados pelos 3 pilares do canal, transcript já anexado quando disponível) e já
+   grava a entrada em `canal-youtube/pesquisa/fila.md` com status **a dissecar**.
+2. Pra cada vídeo relevante retornado: aplicar o Modo 1 (Dissecar) usando o transcript já
+   capturado — não buscar de novo. Gravar o molde em `docs/formulas.md` com origem
+   `mercado (<canal>, <data>)` e status **a testar**.
+3. Atualizar a entrada correspondente em `fila.md` de **a dissecar** pra **dissecado —
+   ver docs/formulas.md**.
+4. Notificar (push notification) **só** os vídeos que passaram pelo filtro de
+   relevância — resumo de uma linha do que é o vídeo, canal de origem e o pilar batido.
+   Desempenho do vídeo de origem (visualizações, se disponível) entra como contexto na
+   notificação, nunca como filtro — tema bom com desempenho fraco ainda notifica.
+5. Vídeo que `checar-criadores-yt.mjs` não classificou como relevante não aparece em
+   `fila.md` nem gera notificação — fica só no `.ultimo-visto.json`, sem ruído.
 
 ## O arquivo `docs/formulas.md`
 

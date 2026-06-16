@@ -33,7 +33,10 @@ depois. Nunca trava exigindo a entrevista inteira de uma vez.
 ## Fase 0 — Pré-checagem
 
 1. **De quem é a voz?** Negócio próprio → escreve em `nucleo/voz.md`. Cliente (modo
-   agência) → confirmar o nome e escrever em `clientes/<nome>/voz.md`.
+   agência) → confirmar o nome e escrever em `clientes/<nome>/voz.md`. Canal do YouTube
+   (`/voz --canal` ou pedido "voz do canal/de narração") → escreve em
+   `canal-youtube/voz-canal.md` — é voz de **fala/narração**, distinta da voz de copy
+   escrita em `nucleo/voz.md`; não confundir as duas nem misturar arquivo.
 2. **Já existe voz?** Se o arquivo tem conteúdo real, perguntar se é pra refinar em cima
    do que existe ou refazer do zero a partir da nova entrevista.
 3. **Já tem transcrição na mão?** Se o usuário já chega com a entrevista pronta — caso
@@ -70,6 +73,14 @@ sai do **jeito** que ele responde; o núcleo sai do **conteúdo**.
 São abertas de propósito: a pergunta 1 sozinha já puxa origem, visão e a mensagem da
 marca. Se o dono engrenar e falar muito além delas, ótimo — deixar correr. Quanto mais
 fala solta, mais voz.
+
+### Quando a voz é do canal (`--canal`)
+
+As mesmas seis perguntas valem — a voz ainda sai de como a pessoa fala do negócio, não de
+autoanálise. Atenção extra na escuta: ritmo de fala (pausas, frase curta vs longa),
+gírias/expressões que usa falando e não escrevendo, como abre e fecha uma ideia ao vivo.
+Essa voz pode ser igual à de `nucleo/voz.md` ou diferente — a entrevista descobre, nunca
+assume a partir da voz escrita já existente.
 
 ## Fase 2 — Receber a transcrição
 
@@ -146,9 +157,11 @@ contamina toda peça futura; vale o minuto a mais.
 
 ## Fase 5 — Registrar a escada
 
-Atualizar `nucleo/escada.md` (ou o do cliente): degrau 3 alcançado (voz + núcleo
-enriquecido pela entrevista), blocos do roteiro confirmados vs faltantes, e o que falta
-pra completar (ex: "dono pulou o bloco 3 — refazer quando tiver tempo").
+Atualizar `nucleo/escada.md` (ou o do cliente, ou `canal-youtube/escada.md` quando for
+`--canal`): degrau 3 alcançado (voz + núcleo enriquecido pela entrevista), blocos do
+roteiro confirmados vs faltantes, e o que falta pra completar (ex: "dono pulou o bloco 3 —
+refazer quando tiver tempo"). Voz de canal não enriquece núcleo de negócio (Fase 3B não
+se aplica) — fala de narração não é fala de venda.
 
 ## Regras
 
