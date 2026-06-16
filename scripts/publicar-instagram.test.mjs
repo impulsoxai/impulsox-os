@@ -4,7 +4,11 @@ import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createServer } from "node:http";
+import { execFileSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { detectarMidia, lerLegenda, payloadContainer, publicarNoInstagram } from "./publicar-instagram.mjs";
+
+const SCRIPT = fileURLToPath(new URL("./publicar-instagram.mjs", import.meta.url));
 
 function mockGraph() {
   let containerN = 0;
@@ -123,4 +127,19 @@ test("erro da Graph não vaza o token", async () => {
     (e) => !/TOK-SECRETO/.test(e.message)
   );
   srv.close();
+});
+
+test("CLI dry-run: valida e mostra o plano, sem publicar", () => {
+  const dir = peca(["slide-01.png", "slide-02.png"], "Legenda do carrossel.");
+  const out = execFileSync("node", [SCRIPT, "--peca", dir, "--tipo", "carrossel"], {
+    encoding: "utf8", env: { ...process.env, IG_USUARIO_ID: "IGID", META_TOKEN_PAGINA: "T" },
+  });
+  assert.match(out, /dry.?run/i);
+  assert.match(out, /carrossel/);
+  assert.match(out, /"midias": 2/);
+});
+
+test("CLI: sem env obrigatória, erro claro", () => {
+  const dir = peca(["imagem.png"]);
+  assert.throws(() => execFileSync("node", [SCRIPT, "--peca", dir, "--tipo", "post"], { encoding: "utf8", env: { ...process.env, IG_USUARIO_ID: "", META_TOKEN_PAGINA: "" } }));
 });

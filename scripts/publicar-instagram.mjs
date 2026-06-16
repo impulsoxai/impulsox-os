@@ -4,8 +4,9 @@
  * ImpulsoX AI. Mídia hospedada no Fal CDN. Dry-run por padrão; --confirmar publica.
  * Tokens (META_TOKEN_PAGINA, FAL_KEY) NUNCA em log ou erro.
  */
-import { readdirSync, readFileSync, existsSync, statSync } from "node:fs";
-import { join } from "node:path";
+import { readdirSync, readFileSync, existsSync, statSync, appendFileSync, mkdirSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { registrarPasso } from "./registrar-passo.mjs";
 
 // Detecta a mídia da peça por tipo. Lança Error (chamador trata).
 export function detectarMidia(dir, tipo) {
@@ -91,4 +92,58 @@ export async function publicarNoInstagram({ ig, token, tipo, urls, caption, grap
   const pub = await graphPost(graphBase, `${ig}/media_publish`, { creation_id: creationId }, token);
   const info = await graphGet(graphBase, pub.id, { fields: "permalink" }, token);
   return { id: pub.id, permalink: info.permalink, tipo };
+}
+
+function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
+
+if (import.meta.main) {
+  const args = process.argv.slice(2);
+  const flag = (n) => { const i = args.indexOf(n); return i !== -1 ? args[i + 1] : undefined; };
+  const has = (n) => args.includes(n);
+
+  const pecaDir = flag("--peca");
+  const tipo = flag("--tipo");
+  const confirmar = has("--confirmar");
+
+  if (!pecaDir) falhar("informe --peca <pasta da peça>.");
+  if (!["carrossel", "post", "reel"].includes(tipo)) falhar("--tipo inválido (use carrossel, post ou reel).");
+
+  let midia, caption;
+  try { midia = detectarMidia(pecaDir, tipo); caption = lerLegenda(pecaDir); }
+  catch (e) { falhar(e.message); }
+
+  const ig = process.env.IG_USUARIO_ID;
+  const token = process.env.META_TOKEN_PAGINA;
+  if (!ig || !token) falhar("defina IG_USUARIO_ID e META_TOKEN_PAGINA no .env.");
+
+  if (!confirmar) {
+    console.log(JSON.stringify({
+      dry_run: true, tipo, conta: ig, midias: midia.length,
+      arquivos: midia.map((m) => m.split(/[\\/]/).pop()),
+      legenda_preview: caption.slice(0, 80), nota: "rode de novo com --confirmar pra publicar de verdade.",
+    }, null, 2));
+    process.exit(0);
+  }
+
+  (async () => {
+    try {
+      registrarPasso({ skill: "/publicar", etapa: `publicando no Instagram (${tipo})`, status: "inicio" });
+      console.log("Subindo mídia pro Fal CDN...");
+      const { uploadParaFalCDN } = await import("./lib-fal-upload.mjs");
+      const urls = [];
+      for (const m of midia) urls.push(await uploadParaFalCDN(m));
+      console.log("Publicando no Instagram...");
+      const r = await publicarNoInstagram({ ig, token, tipo, urls, caption });
+      const raiz = process.cwd();
+      const pub = join(raiz, "producao", "publicacoes.md");
+      mkdirSync(dirname(pub), { recursive: true });
+      if (!existsSync(pub)) appendFileSync(pub, "# Publicações\n\n| Data | Canal | Link |\n|---|---|---|\n");
+      appendFileSync(pub, `| ${new Date().toISOString().slice(0, 10)} | instagram | ${r.permalink} |\n`);
+      registrarPasso({ skill: "/publicar", etapa: `publicado no Instagram: ${r.permalink}`, status: "ok" });
+      console.log(JSON.stringify({ ok: true, ...r }, null, 2));
+    } catch (e) {
+      registrarPasso({ skill: "/publicar", etapa: "falha ao publicar no Instagram", status: "erro" });
+      falhar(e.message);
+    }
+  })();
 }
