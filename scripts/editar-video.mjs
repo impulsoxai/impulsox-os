@@ -7,7 +7,7 @@
  * Uso: node scripts/editar-video.mjs --video bruto.mp4 --slug demo [--min-silencio 0.8]
  *        [--tela tela.mp4 --voz voz.wav] [--sem-intro] [--confirmar]
  */
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, filtroLegenda } from "./lib-edicao.mjs";
@@ -24,11 +24,13 @@ export function montarPlanoDryRun({ saidaSilencedetect, duracaoTotal, slug, minS
   return { dry_run: true, slug, ...p, segmentos: seg.length, saidas: [`${base}/final.mp4`, `${base}/legenda.srt`] };
 }
 
-// Roda silencedetect e devolve {saida, duracaoTotal}. Isola a chamada de rede/disco.
+// Roda silencedetect e devolve {saida, duracaoTotal}. O ffmpeg escreve o relatório
+// (Duration + linhas silence_*) no STDERR, não no stdout — por isso lemos r.stderr.
 function detectarSilencio(video, minSilencio) {
-  const saida = execFileSync(FFMPEG, [
+  const r = spawnSync(FFMPEG, [
     "-i", video, "-af", `silencedetect=noise=-30dB:d=${minSilencio}`, "-f", "null", "-",
-  ], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+  ], { encoding: "utf8" });
+  const saida = r.stderr || "";
   const md = saida.match(/Duration:\s*(\d+):(\d+):([\d.]+)/);
   const duracaoTotal = md ? Number(md[1]) * 3600 + Number(md[2]) * 60 + Number(md[3]) : 0;
   return { saida, duracaoTotal };
