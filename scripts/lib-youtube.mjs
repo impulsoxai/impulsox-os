@@ -74,7 +74,7 @@ export function lerCriadores(md) {
 
 // Lê os pilares (## título + linha "Palavras-chave: a, b, c") de canal-youtube/pilares.md.
 export function lerPilares(md) {
-  const blocos = md.split(/\n##\s+/).slice(1);
+  const blocos = md.split(/(?:^|\n)##\s+/).slice(1);
   return blocos.map((bloco) => {
     const linhas = bloco.split("\n");
     const nome = linhas[0].trim();
