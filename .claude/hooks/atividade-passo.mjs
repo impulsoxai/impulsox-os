@@ -36,15 +36,11 @@ function marco(ev) {
     if (nome === "legenda.md") return { skill: "produção", etapa: "legenda salva" };
     return { skill: "produção", etapa: "peça atualizada: " + nome };
   }
-  if (tool === "Bash") {
-    const c = inp.command || "";
-    // só conta EXECUÇÃO (node ... script), não cópia/diff/git-add do arquivo.
-    const rodou = (nome) => new RegExp(`\\bnode\\b[^&|;]*${nome}`).test(c);
-    if (rodou("gerar-video")) return { skill: "/post", etapa: "gerando vídeo do reel" };
-    if (rodou("gerar-avatar")) return { skill: "/post", etapa: "gerando avatar (lip-sync)" };
-    if (rodou("gerar-imagem")) return { skill: "/post", etapa: "gerando imagem" };
-    if (rodou("publicar-")) return { skill: "/publicar", etapa: "publicando peça" };
-    if (/\bgit\s+commit\b/.test(c)) return { skill: "git", etapa: "salvo no histórico" };
+  // Geração (imagem/vídeo/avatar/publicar) NÃO é sniffada do comando bash — isso dava
+  // falso positivo (node --test, node --check, cp do arquivo). Os próprios scripts
+  // emitem o marco via registrar-passo só quando rodam de verdade.
+  if (tool === "Bash" && /\bgit\s+commit\b/.test(inp.command || "")) {
+    return { skill: "git", etapa: "salvo no histórico" };
   }
   return null;
 }

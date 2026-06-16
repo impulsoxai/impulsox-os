@@ -24,6 +24,7 @@ import { readFileSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { dirname } from "node:path";
 import { registrarCusto } from "./registrar-custo.mjs";
+import { registrarPasso } from "./registrar-passo.mjs";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 const args = process.argv.slice(2);
@@ -95,6 +96,7 @@ if (!confirmar) {
 const FAL_KEY = process.env.FAL_KEY;
 if (!FAL_KEY) falhar("FAL_KEY não definida no ambiente (.env).");
 const BASE = process.env.FAL_BASE_URL || "https://queue.fal.run";
+registrarPasso({ skill: "/post", etapa: `gerando avatar (${modelo}) · ${resolucao}`, status: "inicio" });
 
 // Imagem: base64 data URI (OmniHuman aceita pra image_url)
 function imagemParaDataUri(caminho) {

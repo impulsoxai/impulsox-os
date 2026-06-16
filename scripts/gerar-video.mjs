@@ -23,6 +23,7 @@ import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { registrarCusto } from "./registrar-custo.mjs";
+import { registrarPasso } from "./registrar-passo.mjs";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 const args = process.argv.slice(2);
@@ -121,6 +122,7 @@ if (import.meta.main) {
   const work = mkdtempSync(join(tmpdir(), "reel-"));
   const clipes = [], legendas = [], duracoes = [];
   let custoVideo = 0; // soma do custo dos clipes (stills são contadas pelo gerar-imagem)
+  registrarPasso({ skill: "/post", etapa: `gerando reel · ${cenas.length} cena(s) · ${modeloVideo}`, status: "inicio" });
   // VERIFICAR no painel da Fal os nomes de modelo de vídeo antes de subir.
   const EP_VIDEO = {
     kling: "fal-ai/kling-video/v2.5-turbo/pro/image-to-video",
