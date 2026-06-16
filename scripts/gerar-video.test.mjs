@@ -91,3 +91,15 @@ test("argsFfmpeg: corte rápido — trima cada clipe pra duração da cena", () 
   assert.match(s, /trim=duration=3/);  // clipe 0 cortado em 3s
   assert.match(s, /trim=duration=2/);  // clipe 1 cortado em 2s
 });
+
+import { custoClipe } from "./gerar-video.mjs";
+
+test("custoClipe: preço por modelo/segundos (preços reais Fal)", () => {
+  assert.equal(custoClipe("kling", 5), 0.35);
+  assert.equal(custoClipe("kling", 10), 0.70);
+  assert.equal(Number(custoClipe("seedance", 5).toFixed(2)), 0.74);   // 5 * 0.148
+  assert.equal(Number(custoClipe("seedance", 1).toFixed(3)), 0.296);  // clamp min 2s
+  assert.equal(custoClipe("ltx", 8), 0.04);                            // flat
+  assert.equal(custoClipe("wan", 5), 0.40);                            // 81 frames = base
+  assert.equal(custoClipe("wan", 6), 0.50);                            // >81 frames = x1.25
+});

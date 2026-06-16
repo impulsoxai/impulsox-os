@@ -58,6 +58,21 @@ export function argsFfmpeg({ clipes, legendas, duracoes = [], trilha, saida, lar
   ];
 }
 
+// custo estimado de UM clipe, por modelo, derivado dos preços publicados da Fal (jun/2026):
+// kling 2.5 turbo pro $0.35/5s +$0.07/s · seedance v1 pro ~$0.148/s @1080p · ltx flat
+// $0.04/clipe · wan-i2v 720p $0.40 (×1.25 acima de 81 frames). Função pura (testável).
+export function custoClipe(modelo, seg) {
+  const s = Number(seg) || 5;
+  if (modelo === "seedance") return Math.min(12, Math.max(2, s)) * 0.148;
+  if (modelo === "ltx") return 0.04;
+  if (modelo === "wan") {
+    const frames = Math.min(100, Math.max(81, Math.round(s * 16)));
+    return frames > 81 ? 0.40 * 1.25 : 0.40;
+  }
+  // kling (default): payload usa duration "5" (≤5s) ou "10" (>5s)
+  return s <= 5 ? 0.35 : 0.70;
+}
+
 // só roda a CLI quando invocado direto (não quando importado por um teste).
 if (import.meta.main) {
   const posic = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--saida" && args[i - 1] !== "--modelo" && args[i - 1] !== "--ref" && args[i - 1] !== "--trilha");
@@ -105,6 +120,7 @@ if (import.meta.main) {
 
   const work = mkdtempSync(join(tmpdir(), "reel-"));
   const clipes = [], legendas = [], duracoes = [];
+  let custoVideo = 0; // soma do custo dos clipes (stills são contadas pelo gerar-imagem)
   // VERIFICAR no painel da Fal os nomes de modelo de vídeo antes de subir.
   const EP_VIDEO = {
     kling: "fal-ai/kling-video/v2.5-turbo/pro/image-to-video",
@@ -170,6 +186,7 @@ if (import.meta.main) {
     }
     const motion = (c.visual || "the scene") + ", slow subtle cinematic camera motion, smooth, photographic, no distortion";
     clipes.push(await falVideo(still, segundos, motion));
+    custoVideo += custoClipe(modeloVideo, segundos);
     legendas.push(c.texto);
     duracoes.push(segundos);
   }
@@ -177,6 +194,6 @@ if (import.meta.main) {
   const fonte = process.env.REEL_FONTE || "C:/Windows/Fonts/arialbd.ttf"; // a skill passa a fonte da marca
   const cor = process.env.REEL_COR || "#d4af37";
   execFileSync("ffmpeg", argsFfmpeg({ clipes, legendas, duracoes, trilha, saida, largura: LARGURA, altura: ALTURA, fonte, cor }), { stdio: "inherit" });
-  registrarCusto({ script: "gerar-video", modelo: modeloVideo, custo: 0 });
+  registrarCusto({ script: "gerar-video", modelo: modeloVideo, custo: Number(custoVideo.toFixed(2)) });
   console.log(JSON.stringify({ ok: true, saida, cenas: cenas.length, duracao_total: duracaoTotal }, null, 2));
 }
