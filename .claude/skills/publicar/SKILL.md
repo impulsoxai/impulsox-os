@@ -85,8 +85,13 @@ carrossel|post|reel`. **Sem `--confirmar` é dry-run** (valida e mostra o plano,
 publicar; o resultado vai pra `producao/publicacoes.md` (permalink) e pro feed do painel.
 Requer `IG_USUARIO_ID` + `META_TOKEN_PAGINA` no `.env` (conta Professional + página FB + app
 Meta com `instagram_business_content_publish`). Limite: 25 posts/24h. `META_TOKEN_PAGINA`
-nunca aparece em log/erro (redigido). Facebook e LinkedIn seguem o mesmo padrão (conectores
-irmãos, a criar). Erro de API: reportar a resposta exata (sem o token).
+nunca aparece em log/erro (redigido).
+
+`scripts/publicar-facebook.mjs` publica na **página do Facebook** com a mesma peça e o mesmo
+padrão (dry-run / `--confirmar`): `--tipo post` (foto), `carrossel` (álbum multi-foto via
+`/feed` + `attached_media`), `reel` (vídeo). Requer `META_PAGINA_ID` + `META_TOKEN_PAGINA`.
+Compartilha os helpers `lib-peca`, `lib-graph` e `lib-fal-upload` com o Instagram. LinkedIn
+segue o mesmo molde (a criar). Erro de API: reportar a resposta exata (sem o token).
 
 ## Regras
 
