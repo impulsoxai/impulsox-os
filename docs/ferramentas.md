@@ -83,12 +83,15 @@ Regras gerais que valem pra toda ferramenta:
   `lib-fal-upload` (URL pública) — os mesmos do conector do Instagram.
 - **Quem usa:** `/publicar`. Registra em `producao/publicacoes.md` + feed do painel.
 
-### LinkedIn — API de página de empresa
-- **Resolve:** publicar na página de empresa (não no perfil pessoal).
-- **Conta:** sim — app aprovado pela LinkedIn com permissão organizacional (aprovação demora).
-- **`.env`:** `LINKEDIN_ORG_ID`, `LINKEDIN_TOKEN`.
-- **Limite:** **perfil pessoal não tem automação** — automação de perfil viola os termos e
-  arrisca a conta. Perfil pessoal é sempre publicação assistida (entrega pronta, usuário cola).
+### LinkedIn — conector de publicação (`scripts/publicar-linkedin.mjs`)
+- **Resolve:** publica na **página de empresa** (Posts API): `post` (imagem) ou `carrossel`
+  (multi-imagem). Diferente da Meta: sobe o binário **direto** (initializeUpload → PUT → URN),
+  **sem Fal CDN**. Dry-run por padrão; `--confirmar` publica. Vídeo e documento PDF = v2.
+- **Conta:** app aprovado pela LinkedIn com escopo `w_organization_social` (aprovação demora).
+- **`.env`:** `LINKEDIN_ORG_ID`, `LINKEDIN_TOKEN`. Header `LinkedIn-Version` (`LINKEDIN_VERSION`).
+- **Compartilha:** `lib-peca` (lê a peça) e `semToken` do `lib-graph` (redige o token).
+- **Limite:** **perfil pessoal não tem automação** — viola os termos; perfil pessoal é sempre
+  publicação assistida (entrega pronta, usuário cola). `LINKEDIN_TOKEN` nunca em log/erro.
 - **Quem usa:** `/publicar`, `/linkedin`.
 
 ### Google Business Profile API (Perfil de Empresa)
