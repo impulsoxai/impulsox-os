@@ -90,8 +90,13 @@ nunca aparece em log/erro (redigido).
 `scripts/publicar-facebook.mjs` publica na **página do Facebook** com a mesma peça e o mesmo
 padrão (dry-run / `--confirmar`): `--tipo post` (foto), `carrossel` (álbum multi-foto via
 `/feed` + `attached_media`), `reel` (vídeo). Requer `META_PAGINA_ID` + `META_TOKEN_PAGINA`.
-Compartilha os helpers `lib-peca`, `lib-graph` e `lib-fal-upload` com o Instagram. LinkedIn
-segue o mesmo molde (a criar). Erro de API: reportar a resposta exata (sem o token).
+Compartilha os helpers `lib-peca`, `lib-graph` e `lib-fal-upload` com o Instagram.
+
+`scripts/publicar-linkedin.mjs` publica na **página de empresa do LinkedIn** (Posts API):
+`--tipo post` (imagem) ou `carrossel` (multi-imagem). Mesmo padrão (dry-run / `--confirmar`).
+LinkedIn é diferente: sobe o binário direto (sem Fal CDN) e exige `LINKEDIN_ORG_ID` +
+`LINKEDIN_TOKEN` (escopo `w_organization_social`). Vídeo e documento PDF ficam pro v2.
+Erro de API: reportar a resposta exata (sem o token).
 
 ## Regras
 
