@@ -10,7 +10,7 @@
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, filtroLegenda } from "./lib-edicao.mjs";
+import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm } from "./lib-edicao.mjs";
 import { transcrever } from "./transcrever-local.mjs";
 import { registrarPasso } from "./registrar-passo.mjs";
 
@@ -31,9 +31,10 @@ export function montarPlanoDryRun({ saidaSilencedetect, duracaoTotal, slug, minS
 
 // Roda silencedetect e devolve {saida, duracaoTotal}. O ffmpeg escreve o relatório
 // (Duration + linhas silence_*) no STDERR, não no stdout — por isso lemos r.stderr.
-function detectarSilencio(video, minSilencio) {
+// limiarDb: sensibilidade do silêncio (mais negativo = mais permissivo p/ ruído de fundo).
+function detectarSilencio(video, minSilencio, limiarDb = -30) {
   const r = spawnSync(FFMPEG, [
-    "-i", video, "-af", `silencedetect=noise=-30dB:d=${minSilencio}`, "-f", "null", "-",
+    "-i", video, "-af", `silencedetect=noise=${limiarDb}dB:d=${minSilencio}`, "-f", "null", "-",
   ], { encoding: "utf8" });
   const saida = r.stderr || "";
   const md = saida.match(/Duration:\s*(\d+):(\d+):([\d.]+)/);
@@ -52,6 +53,7 @@ if (import.meta.main) {
   const video = flag("--video") || flag("--tela");
   const voz = flag("--voz");
   const minSilencio = Number(flag("--min-silencio")) || 0.8;
+  const limiarDb = flag("--limiar-db") !== undefined ? Number(flag("--limiar-db")) : -30;
   const confirmar = has("--confirmar");
   const semIntro = has("--sem-intro");
 
@@ -61,7 +63,7 @@ if (import.meta.main) {
   try { execFileSync(FFMPEG, ["-version"], { stdio: "ignore" }); }
   catch { falhar("ffmpeg não encontrado no PATH. Instale o ffmpeg pra editar vídeo."); }
 
-  const { saida, duracaoTotal } = detectarSilencio(video, minSilencio);
+  const { saida, duracaoTotal } = detectarSilencio(video, minSilencio, limiarDb);
   if (duracaoTotal < 10) falhar(`gravação curta demais (${duracaoTotal.toFixed(1)}s) — confira o arquivo.`);
 
   if (!confirmar) {
@@ -75,23 +77,31 @@ if (import.meta.main) {
     mkdirSync(base, { recursive: true });
     const cortado = join(base, "_cortado.mp4");
     const tmpSrt = join(base, "legenda.srt");
+    const tmpAss = join(base, "_karaoke.ass");
     const final = join(base, "final.mp4");
     try {
-      registrarPasso({ skill: "/editar-video", etapa: "cortando silêncio", status: "inicio" });
+      registrarPasso({ skill: "/editar-video", etapa: "cortando silêncio + normalizando áudio", status: "inicio" });
       const seg = segmentosManter(saida, { minSilencio, duracaoTotal });
-      execFileSync(FFMPEG, ["-y", "-i", video, "-filter_complex", filtroCorteConcat(seg),
+      // corta o silêncio E normaliza o áudio pro padrão YouTube (-14 LUFS) no mesmo passo —
+      // loudnorm vai DENTRO do filtergraph (ffmpeg não deixa -af junto de -filter_complex).
+      execFileSync(FFMPEG, ["-y", "-i", video, "-filter_complex", filtroCorteConcat(seg, { loudnorm: filtroLoudnorm() }),
         "-map", "[vout]", "-map", "[aout]", cortado], { stdio: "inherit" });
 
       registrarPasso({ skill: "/editar-video", etapa: "transcrevendo (whisper local)", status: "inicio" });
       let temLegenda = false;
       try {
         const palavras = transcrever(voz || cortado);
-        if (palavras.length) { writeFileSync(tmpSrt, montarSRT(palavras)); temLegenda = true; }
+        if (palavras.length) {
+          writeFileSync(tmpSrt, montarSRT(palavras));   // .srt pro YouTube CC (acessibilidade/SEO)
+          writeFileSync(tmpAss, montarASS(palavras));   // .ass karaokê pra queimar (retenção)
+          temLegenda = true;
+        }
       } catch (e) { console.error("AVISO: legenda pulada — " + e.message); }
 
       const corpo = temLegenda ? join(base, "_legendado.mp4") : cortado;
       if (temLegenda) {
-        execFileSync(FFMPEG, ["-y", "-i", cortado, "-vf", filtroLegenda({ srtCaminho: tmpSrt }),
+        // queima a karaokê (destaque palavra-a-palavra); áudio já normalizado, só copia.
+        execFileSync(FFMPEG, ["-y", "-i", cortado, "-vf", filtroLegendaAss({ assCaminho: tmpAss }),
           "-c:a", "copy", corpo], { stdio: "inherit" });
       }
 

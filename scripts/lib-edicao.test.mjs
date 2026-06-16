@@ -2,7 +2,8 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   parseSilencedetect, segmentosManter, filtroCorteConcat, planoCorte,
-  montarSRT, filtroLegenda, argsThumbnailFrameTexto,
+  montarSRT, montarASS, filtroLegenda, filtroLegendaAss, filtroLoudnorm,
+  argsThumbnailFrameTexto,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -49,6 +50,11 @@ test("filtroCorteConcat monta trim+atrim+concat pra N segmentos", () => {
   );
 });
 
+test("filtroCorteConcat embute loudnorm dentro do filtergraph quando pedido", () => {
+  const f = filtroCorteConcat([{ inicio: 0, fim: 2 }], { loudnorm: "loudnorm=I=-14:TP=-1.5:LRA=11" });
+  assert.match(f, /concat=n=1:v=1:a=1\[vout\]\[acat\];\[acat\]loudnorm=I=-14:TP=-1\.5:LRA=11\[aout\]$/);
+});
+
 test("planoCorte resume duração depois e quanto foi removido", () => {
   const p = planoCorte([{ inicio: 0, fim: 2.65 }, { inicio: 3.85, fim: 12 }], 12);
   assert.equal(p.cortes, 1);
@@ -79,6 +85,29 @@ test("montarSRT quebra grupo quando passa de maxDur", () => {
   ];
   const srt = montarSRT(palavras, { maxPalavras: 7, maxDur: 3 });
   assert.match(srt, /^1\n00:00:00,000 --> 00:00:00,500\na\n\n2\n/);
+});
+
+// --- Melhoria: karaokê .ass + loudnorm ---
+
+test("montarASS gera cabeçalho + Dialogue com tags \\k por palavra (centésimos)", () => {
+  const palavras = [
+    { inicio: 0.0, fim: 0.4, texto: "oi" },
+    { inicio: 0.4, fim: 0.9, texto: "pessoal" },
+  ];
+  const ass = montarASS(palavras, { maxPalavras: 7, maxDur: 3 });
+  assert.match(ass, /\[Script Info\]/);
+  assert.match(ass, /\[V4\+ Styles\]/);
+  // grupo único 0.00 -> 0.90; \k40 (0.4s) em "oi", \k50 (0.5s) em "pessoal"
+  assert.match(ass, /Dialogue: 0,0:00:00\.00,0:00:00\.90,Default,\{\\k40\}oi \{\\k50\}pessoal/);
+});
+
+test("filtroLegendaAss escapa o caminho .ass no padrão Windows", () => {
+  assert.equal(filtroLegendaAss({ assCaminho: "C:\\v\\leg.ass" }), "subtitles='C\\:/v/leg.ass'");
+});
+
+test("filtroLoudnorm aplica o alvo do YouTube (-14 LUFS) por padrão", () => {
+  assert.equal(filtroLoudnorm(), "loudnorm=I=-14:TP=-1.5:LRA=11");
+  assert.equal(filtroLoudnorm({ alvoLufs: -16 }), "loudnorm=I=-16:TP=-1.5:LRA=11");
 });
 
 // --- Task 5 ---
