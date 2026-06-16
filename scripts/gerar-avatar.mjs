@@ -25,6 +25,7 @@ import { execFileSync } from "node:child_process";
 import { dirname } from "node:path";
 import { registrarCusto } from "./registrar-custo.mjs";
 import { registrarPasso } from "./registrar-passo.mjs";
+import { uploadParaFalCDN } from "./lib-fal-upload.mjs";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 const args = process.argv.slice(2);
@@ -105,38 +106,6 @@ function imagemParaDataUri(caminho) {
   return `data:${mime};base64,${readFileSync(caminho).toString("base64")}`;
 }
 
-// Upload de arquivo para Fal CDN (modelos exigem URL real, não base64, no audio_url).
-// Fluxo: obter token temporário via rest.alpha.fal.ai → upload via base_url retornado.
-async function uploadArquivo(caminho) {
-  const ext = caminho.split(".").pop().toLowerCase();
-  const mimeMap = { mp3: "audio/mpeg", wav: "audio/wav", m4a: "audio/mp4", mp4: "audio/mp4", ogg: "audio/ogg", aac: "audio/aac",
-                    jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp" };
-  const mime = mimeMap[ext] || "application/octet-stream";
-  const nome = caminho.split(/[\\/]/).pop();
-  // passo 1: token temporário de upload
-  const tr = await fetch("https://rest.alpha.fal.ai/storage/auth/token?storage_type=fal-cdn-v3", {
-    method: "POST",
-    headers: { Authorization: `Key ${FAL_KEY}`, "Content-Type": "application/json" },
-    body: "{}",
-  });
-  const tTxt = await tr.text();
-  if (!tr.ok) falhar(`Fal auth HTTP ${tr.status}: ${tTxt.slice(0, 200)}`);
-  let tj; try { tj = JSON.parse(tTxt); } catch { falhar(`Fal auth: resposta inválida. ${tTxt.slice(0, 200)}`); }
-  // passo 2: upload do arquivo
-  const form = new FormData();
-  form.append("file", new Blob([readFileSync(caminho)], { type: mime }), nome);
-  const ur = await fetch(`${tj.base_url}/files/upload`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${tj.token}` },
-    body: form,
-  });
-  const uTxt = await ur.text();
-  if (!ur.ok) falhar(`Fal upload HTTP ${ur.status}: ${uTxt.slice(0, 200)}`);
-  let uj; try { uj = JSON.parse(uTxt); } catch { falhar(`Fal upload: resposta inválida. ${uTxt.slice(0, 200)}`); }
-  if (!uj.access_url) falhar(`Fal upload: URL não retornada. ${JSON.stringify(uj).slice(0, 200)}`);
-  return uj.access_url;
-}
-
 // Polling de status (igual ao gerar-video.mjs — padrão da casa)
 async function aguardarPronto(statusUrl, responseUrl) {
   const auth = { headers: { Authorization: `Key ${FAL_KEY}` } };
@@ -160,9 +129,13 @@ console.log("Enviando arquivos para Fal...");
 const imageUrl = imagemParaDataUri(foto);
 const audioExt = audio.split(".").pop().toLowerCase();
 const audioMime = audioExt === "wav" ? "audio/wav" : "audio/mpeg";
-const audioUrl = modelo === "omnihuman"
-  ? await uploadArquivo(audio)
-  : `data:${audioMime};base64,${readFileSync(audio).toString("base64")}`;
+let audioUrl;
+if (modelo === "omnihuman") {
+  try { audioUrl = await uploadParaFalCDN(audio); }
+  catch (e) { falhar(e.message); }
+} else {
+  audioUrl = `data:${audioMime};base64,${readFileSync(audio).toString("base64")}`;
+}
 
 // payload por modelo: omnihuman tem resolution; kling usa prompt placeholder; heygen aceita só image+audio.
 const payload =
