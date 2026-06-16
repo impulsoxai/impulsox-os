@@ -1317,35 +1317,20 @@ git commit -m "feat(roteiro-yt): skill nova — escreve roteiro long-form e shor
 
 ---
 
-## Task 15: Agendar o radar via `CronCreate`
+## Task 15: Agendar o radar — ADIADO (decisão do dono, 2026-06-16)
 
-**Files:** nenhum arquivo de código — configuração de agendamento via tool do harness.
+**Decisão:** deixar o radar **manual** por enquanto. `CronCreate` é só-sessão (morre quando
+o Claude fecha, expira em 7 dias) — não serve pra produção. Agendamento cloud de verdade
+(`/schedule`) começa a rodar/faturar já, e o canal ainda não existe. Quando o canal entrar
+no ar, montar a rotina cloud recorrente via `/schedule` apontando pro Modo 4 do `/formulas`.
 
-- [ ] **Step 1: Carregar o schema do `CronCreate`**
+Até lá, o radar dispara sob demanda:
 
-Usar `ToolSearch` com query `"select:CronCreate"` pra carregar o schema antes de chamar.
-
-- [ ] **Step 2: Criar o agendamento diário**
-
-Chamar `CronCreate` com um prompt que reproduz o Modo 4 do `/formulas`:
-
-```
-Roda o Modo 4 (Monitorar canais) do /formulas: executa
-node scripts/checar-criadores-yt.mjs, e pra cada vídeo relevante retornado, aplica o
-Modo 1 (Dissecar) com o transcript já anexado, grava o molde em docs/formulas.md,
-atualiza canal-youtube/pesquisa/fila.md de "a dissecar" pra "dissecado", e manda push
-notification com resumo do vídeo, canal de origem e pilar batido.
+```bash
+node scripts/checar-criadores-yt.mjs
 ```
 
-Frequência: diária (cobre o atraso típico do refresh do RSS, que é de minutos a 1h).
-
-- [ ] **Step 3: Confirmar o agendamento criado**
-
-```
-CronList
-```
-
-Confirmar que o job aparece com a frequência diária configurada.
+ou por pedido ("checa os criadores") → Modo 4 do `/formulas`.
 
 ---
 

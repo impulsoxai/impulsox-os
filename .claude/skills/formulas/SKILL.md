@@ -45,8 +45,12 @@ tema ou identidade da peça original.
 
 **Vídeo do YouTube** entra como quarta forma de peça (link). Antes de dissecar:
 1. `node scripts/transcript-youtube.mjs <link>` — puxa a transcrição pública (legenda
-   manual ou automática, o que existir). Sem legenda disponível: avisar e dissecar só por
-   título/descrição/visual, sem inventar fala que não foi dita.
+   manual ou automática, o que existir). **O YouTube bloqueia download automático de
+   legenda com frequência** (rate-limit/anti-bot — devolve erro "indisponível"); é o ponto
+   frágil do fluxo, não bug do script. Sem transcrição: avisar e dissecar só por
+   título/descrição/visual, sem inventar fala que não foi dita. Pra um vídeo específico em
+   que a legenda importa muito, a alternativa manual é abrir "Mostrar transcrição" no
+   próprio player e colar o texto aqui.
 2. Disseca gancho/estrutura/gatilhos pelos 5 passos acima, **mais** estes campos
    exclusivos de vídeo (só quando Rede=YouTube):
    - **Hook (tipo + texto literal dos 3-15s):** transcrito da fala real, não resumo.

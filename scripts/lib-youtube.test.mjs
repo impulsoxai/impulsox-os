@@ -221,3 +221,21 @@ test("buscarTranscript lança erro claro quando o vídeo não tem legenda", asyn
   await assert.rejects(() => buscarTranscript("zzz", { baseUrl: base }), /sem legenda/);
   srv.close();
 });
+
+test("buscarTranscript lança erro quando o YouTube bloqueia (200 com página, zero blocos)", async () => {
+  const srv = createServer((req, res) => {
+    if (req.url.startsWith("/watch")) {
+      const porta = req.socket.localPort;
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.end(`<html><script>var x = {"captionTracks":[{"baseUrl":"http://127.0.0.1:${porta}/timedtext","languageCode":"pt"}]};</script></html>`);
+    } else if (req.url.startsWith("/timedtext")) {
+      // Simula a página "Sorry..." que o YouTube devolve sob rate-limit (200, sem legenda).
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.end("<html><head><title>Sorry...</title></head><body>bloqueado</body></html>");
+    } else { res.writeHead(404).end(); }
+  });
+  await new Promise((r) => srv.listen(0, "127.0.0.1", r));
+  const base = `http://127.0.0.1:${srv.address().port}`;
+  await assert.rejects(() => buscarTranscript("blk", { baseUrl: base }), /indisponível/);
+  srv.close();
+});

@@ -2,6 +2,12 @@
 // YouTube. Tudo aqui acessa só dado PÚBLICO (RSS do canal, página do vídeo, endpoint de
 // legenda) — nunca atrás de login, mesma régua do /formulas. ImpulsoX AI. ZERO deps.
 
+// User-Agent de navegador: sem ele o YouTube trata o fetch como bot e serve página
+// degradada (na prática: 1 trilha de legenda em vez de todas, ou nenhuma). Não burla
+// login nem termos — é o mesmo request que um navegador faz numa página pública.
+const UA_NAVEGADOR =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36";
+
 // Extrai videoId/título/descrição/data/canal de cada <entry> do feed Atom público do
 // YouTube (https://www.youtube.com/feeds/videos.xml?channel_id=...).
 export function parseFeedRSS(xml) {
@@ -127,11 +133,20 @@ export async function buscarFeedRSS(channelId, { baseUrl = "https://www.youtube.
 // Busca a transcrição pública de um vídeo: abre a página, acha a melhor trilha de
 // legenda disponível e baixa o timedtext. Sem API key, sem login.
 export async function buscarTranscript(videoId, { baseUrl = "https://www.youtube.com" } = {}) {
-  const r = await fetch(`${baseUrl}/watch?v=${videoId}`);
+  const headers = { "User-Agent": UA_NAVEGADOR, "Accept-Language": "pt-BR,pt,en;q=0.8" };
+  const r = await fetch(`${baseUrl}/watch?v=${videoId}`, { headers });
   if (!r.ok) throw new Error(`não consegui abrir o vídeo ${videoId} (HTTP ${r.status}).`);
   const html = await r.text();
   const trilha = escolherTrilha(extrairTrilhasLegenda(html));
-  const rt = await fetch(trilha.url);
+  const rt = await fetch(trilha.url, { headers });
   if (!rt.ok) throw new Error(`download da legenda de ${videoId} falhou (HTTP ${rt.status}).`);
-  return parseTimedText(await rt.text());
+  const corpo = await rt.text();
+  const blocos = parseTimedText(corpo);
+  // O YouTube às vezes responde 200 com uma página de bloqueio ("Sorry...") em vez da
+  // legenda — rate-limit/anti-bot. Sem nenhum bloco parseado, é falha, não vídeo "mudo":
+  // lançar pra o chamador (radar) registrar como indisponível em vez de fingir sucesso.
+  if (blocos.length === 0) {
+    throw new Error(`legenda de ${videoId} indisponível (YouTube bloqueou ou não há transcrição pública).`);
+  }
+  return blocos;
 }
