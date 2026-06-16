@@ -146,7 +146,8 @@ test("classificarRelevancia devolve relevante:false quando nenhuma palavra-chave
 function mockCanalHtml(channelId) {
   return createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/html" });
-    res.end(`<html><script>var x = {"channelId":"${channelId}"};</script></html>`);
+    // Formato real da página pública do YouTube: o Channel ID vem em "externalId".
+    res.end(`<html><script>var x = {"externalId":"${channelId}"};</script></html>`);
   });
 }
 

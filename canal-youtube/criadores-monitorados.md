@@ -11,6 +11,6 @@
 | Luuk Alleman | — | UCJ2PJj3yRgUvzHb4XCCCLEw |
 | Jonathan Acuña "Doctor AI" | @jonathanacuna | UCOJp1lsu9vCF-TllwMzcCLg |
 | Duncan Rogoff | — | UC37JpWP5PxLSma2lh79HU9A |
-| Chase AI | @Chase-H-AI | (resolver) |
-| Matt Ganzak | @mattganzak | (resolver) |
-| Yury AI | @Yury_AI | (resolver) |
+| Chase AI | @Chase-H-AI | UCoy6cTJ7Tg0dqS-DI-_REsA |
+| Matt Ganzak | @mattganzak | UCxVw-kQBKQH3RN0-gHnXOCQ |
+| Yury AI | @Yury_AI | UCA3jxglvqFf1BSuwSFKLOMw |

@@ -104,7 +104,10 @@ export async function resolverChannelId(handle, { baseUrl = "https://www.youtube
   const r = await fetch(`${baseUrl}/${h}`);
   if (!r.ok) throw new Error(`não consegui abrir a página do canal ${h} (HTTP ${r.status}).`);
   const html = await r.text();
-  const m = html.match(/"channelId":"(UC[\w-]{22})"/);
+  // A página pública expõe o Channel ID em vários campos — "externalId" e "browseId" são
+  // os estáveis hoje; "channel/UC..." é o fallback. Tenta na ordem e pega o primeiro.
+  const m = html.match(/(?:"externalId"|"browseId"|"channelId"):"(UC[\w-]{22})"/)
+    || html.match(/channel\/(UC[\w-]{22})/);
   if (!m) throw new Error(`não achei o channelId na página de ${h} — confirma o handle.`);
   return m[1];
 }
