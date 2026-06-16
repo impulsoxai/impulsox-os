@@ -14,6 +14,11 @@ import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, filtroLegend
 import { transcrever } from "./transcrever-local.mjs";
 import { registrarPasso } from "./registrar-passo.mjs";
 
+// Carrega o .env da raiz quando rodado direto (não em teste). WHISPER_BIN/FFMPEG_BIN etc.
+if (import.meta.main) {
+  try { process.loadEnvFile(); } catch { /* sem .env: usa defaults/PATH */ }
+}
+
 const FFMPEG = process.env.FFMPEG_BIN || "ffmpeg";
 
 // Resumo do dry-run a partir da saída do silencedetect — função pura, testável.

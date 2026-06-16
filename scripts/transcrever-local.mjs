@@ -53,6 +53,7 @@ export function transcrever(audio, { bin, modelo, idioma, exec = execFileSync } 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 
 if (import.meta.main) {
+  try { process.loadEnvFile(); } catch { /* sem .env: usa defaults/PATH */ }
   const audio = process.argv[2];
   const i = process.argv.indexOf("--json");
   if (!audio) falhar("informe o arquivo de áudio.");
