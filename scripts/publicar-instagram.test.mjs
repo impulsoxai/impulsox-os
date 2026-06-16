@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { detectarMidia, lerLegenda } from "./publicar-instagram.mjs";
+import { detectarMidia, lerLegenda, payloadContainer } from "./publicar-instagram.mjs";
 
 function peca(arquivos, legenda = "Legenda real do post.") {
   const dir = mkdtempSync(join(tmpdir(), "peca-"));
@@ -42,4 +42,24 @@ test("lerLegenda lê legenda.md; vazia lança", () => {
   assert.equal(lerLegenda(dir), "Minha legenda.");
   const vazio = peca(["imagem.png"], "   ");
   assert.throws(() => lerLegenda(vazio), /legenda/i);
+});
+
+test("payloadContainer: post = image_url + caption", () => {
+  const p = payloadContainer("post", { url: "u1", caption: "leg" });
+  assert.deepEqual(p, { image_url: "u1", caption: "leg" });
+});
+
+test("payloadContainer: filho de carrossel = image_url + is_carousel_item", () => {
+  const p = payloadContainer("carrossel", { url: "u1", filho: true });
+  assert.deepEqual(p, { image_url: "u1", is_carousel_item: "true" });
+});
+
+test("payloadContainer: pai do carrossel = CAROUSEL + children + caption", () => {
+  const p = payloadContainer("carrossel", { urls: ["a", "b"], caption: "leg" });
+  assert.deepEqual(p, { media_type: "CAROUSEL", children: "a,b", caption: "leg" });
+});
+
+test("payloadContainer: reel = REELS + video_url + caption", () => {
+  const p = payloadContainer("reel", { url: "v1", caption: "leg" });
+  assert.deepEqual(p, { media_type: "REELS", video_url: "v1", caption: "leg" });
 });

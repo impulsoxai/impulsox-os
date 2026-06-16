@@ -32,3 +32,12 @@ export function lerLegenda(dir) {
   if (!txt) throw new Error("legenda vazia ou legenda.md ausente na pasta da peça.");
   return txt;
 }
+
+// Monta o corpo do POST /{ig}/media por tipo. Graph API quer strings nos params.
+// carrossel: chamar com {url, filho:true} pra cada filho; depois {urls:[ids], caption} pro pai.
+export function payloadContainer(tipo, { url, urls, caption, filho } = {}) {
+  if (tipo === "reel") return { media_type: "REELS", video_url: url, caption };
+  if (tipo === "post") return { image_url: url, caption };
+  if (filho) return { image_url: url, is_carousel_item: "true" };
+  return { media_type: "CAROUSEL", children: urls.join(","), caption };
+}
