@@ -30,7 +30,7 @@ async function atualizar() {
 
   // ── Ao vivo ───────────────────────────────────────────
   const atv = e.atividade || [];
-  $("feed-count").textContent = atv.length ? atv.length + " marcos" : "ocioso";
+  $("feed-count").textContent = atv.length ? atv.length + " passos" : "ocioso";
   $("feed").innerHTML = atv.length
     ? atv.map((p) => `<li><time>${horaDe(p.ts)}</time>` +
         `<span class="tag ${TAG[p.status] || "get"}">${esc(p.skill)}</span>` +
