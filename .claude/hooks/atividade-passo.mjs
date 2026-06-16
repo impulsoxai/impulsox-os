@@ -38,11 +38,13 @@ function marco(ev) {
   }
   if (tool === "Bash") {
     const c = inp.command || "";
-    if (/gerar-video/.test(c)) return { skill: "/post", etapa: "gerando vídeo do reel" };
-    if (/gerar-avatar/.test(c)) return { skill: "/post", etapa: "gerando avatar (lip-sync)" };
-    if (/gerar-imagem/.test(c)) return { skill: "/post", etapa: "gerando imagem" };
-    if (/publicar-/.test(c)) return { skill: "/publicar", etapa: "publicando peça" };
-    if (/git commit/.test(c)) return { skill: "git", etapa: "salvo no histórico" };
+    // só conta EXECUÇÃO (node ... script), não cópia/diff/git-add do arquivo.
+    const rodou = (nome) => new RegExp(`\\bnode\\b[^&|;]*${nome}`).test(c);
+    if (rodou("gerar-video")) return { skill: "/post", etapa: "gerando vídeo do reel" };
+    if (rodou("gerar-avatar")) return { skill: "/post", etapa: "gerando avatar (lip-sync)" };
+    if (rodou("gerar-imagem")) return { skill: "/post", etapa: "gerando imagem" };
+    if (rodou("publicar-")) return { skill: "/publicar", etapa: "publicando peça" };
+    if (/\bgit\s+commit\b/.test(c)) return { skill: "git", etapa: "salvo no histórico" };
   }
   return null;
 }
