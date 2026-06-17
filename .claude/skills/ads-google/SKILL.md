@@ -71,12 +71,21 @@ Padrão para serviço local / PME (ajustar ao caso):
 
 Salvar em `producao/ads/google-<slug>-<YYYY-MM-DD>.csv` no formato de colunas do Google
 Ads Editor (Campaign, Ad Group, Keyword, Match Type, Headline 1-15, Description 1-4,
-Final URL, etc.). Junto, gerar `producao/ads/google-<slug>-guia.md`:
-- Passo a passo de importação no Editor (5 passos, sem jargão)
+Final URL, etc.). Junto, gerar o **guia visual de leigo** (`producao/ads/google-<slug>-guia.html`
++ PDF, na marca de quem assina) — pra quem nunca abriu o Ads Editor:
+- **Passo a passo de importação no Editor (5 passos, sem jargão)**, cada passo com:
+  - **Diagrama/mockup desenhado** do que a tela mostra e onde clicar (HTML/CSS — NÃO
+    screenshot real; o sistema não tem a ferramenta e não inventa print). Rotular como
+    ilustração do fluxo, não captura de tela.
+  - **Link do tutorial OFICIAL do Google** pra aquele passo (eles têm vídeo de tudo e nunca
+    desatualiza) — ex.: baixar o Editor, importar CSV, configurar conversão.
 - Configurações que o CSV não carrega (região, orçamento diário = mensal/30,4, lance
-  inicial: CPC manual ou Maximizar cliques com teto no primeiro mês)
+  inicial: CPC manual ou Maximizar cliques com teto no primeiro mês).
 - O que esperar: primeiras 2 semanas são aprendizado; julgamento sério só com ~100
-  cliques por grupo
+  cliques por grupo.
+- **Quem executa:** deixar explícito no topo — ou o dono faz os 5 passos com este guia, ou
+  a agência faz pelo cliente (com acesso à conta de ads dele). O sistema entrega pronto; o
+  clique final é humano (automação de conta de ads viola termos e arrisca suspensão).
 
 > Cabeçalho do CSV avisa: "confira as colunas contra o template atual do Google Ads
 > Editor antes de importar" — o formato muda de versão pra versão.

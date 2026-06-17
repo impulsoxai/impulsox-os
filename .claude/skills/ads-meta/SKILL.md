@@ -80,12 +80,18 @@ Regras de criativo que evitam reprovação e fadiga:
 
 ## Passo 4 — Plano de configuração
 
-Meta Ads não tem importação tipo Editor pra PME — entregar
-`producao/ads/meta-<slug>-<YYYY-MM-DD>.md` com:
+Meta Ads não tem importação tipo Editor pra PME — entregar o **guia visual de leigo**
+(`producao/ads/meta-<slug>-<YYYY-MM-DD>.html` + PDF, na marca de quem assina) com:
 - Tabela campanha → conjuntos → anúncios (nomes padronizados: `[objetivo]-[publico]-[data]`)
-- Passo a passo no Gerenciador (em ordem de tela, sem jargão)
+- **Passo a passo no Gerenciador, em ordem de tela e sem jargão**, cada passo com:
+  - **Diagrama/mockup desenhado** da tela e do que clicar (HTML/CSS — NÃO screenshot real;
+    rotular como ilustração do fluxo, não captura).
+  - **Link do tutorial OFICIAL da Meta** (Central de Ajuda / Meta Blueprint) pra aquele
+    passo — sempre atualizado, nunca desatualiza.
 - Pixel/API de conversões como pré-requisito quando o destino é site
 - Arquivos dos criativos prontos na pasta
+- **Quem executa:** o dono faz com o guia, ou a agência faz pelo cliente (acesso ao
+  Gerenciador dele). Automação de conta de ads viola termos — o clique final é humano.
 - Janela de aprendizado: não mexer por 7 dias ou ~50 conversões por conjunto; primeira
   leitura séria em 30 dias com `/analisar-ads`
 
