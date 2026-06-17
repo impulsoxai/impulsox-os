@@ -8,7 +8,9 @@ description: >
   de sites de referência premiados, extrai design systems completos (cores, tipografia,
   animações, layouts) e recombina numa identidade nova. Também ELEVA um design já pronto
   (ex: o que o Open Design criou) aplicando a camada premium — animações, efeitos e micro-
-  interações capturados de sites premiados reais. Alimenta a biblioteca em marca/design-systems/.
+  interações capturados de sites premiados reais. E RE-ESTILIZA o design do cliente no jeito
+  de um site premiado específico (estrutura, ritmo, animação) com a identidade do cliente
+  cravada — nível do premiado, cara do cliente. Alimenta a biblioteca em marca/design-systems/.
 ---
 
 # /premium-design — Motor de identidade visual por código-fonte
@@ -122,6 +124,35 @@ Régua: o efeito vem de **referência real testada**, nunca inventado — é o q
 animação premium de animação genérica. Movimento com propósito (guia o olho, dá vida), não
 enfeite. Página carregada de efeito sem função cansa e derruba performance (Core Web Vitals).
 
+## Uso 3 — Re-estilizar no estilo de um premiado, com a marca do cliente CRAVADA ⭐⭐
+
+O caso mais forte: pegar o **jeito** de um site premiado específico (estrutura, ritmo,
+sofisticação, técnica de animação) e **refazer o design do cliente naquele nível — mas com a
+identidade dele cravada e inegociável.** Resultado: um site tão bom quanto o premiado, que é
+**inconfundivelmente o cliente**. Ninguém reconhece o site de origem.
+
+Três ingredientes, com hierarquia clara de quem manda:
+
+1. **Identidade do cliente (LEI — vence sempre)** — cor, fonte, logo, clima do
+   `marca/design-guide.md` + `tokens.css` (já destilados, ex: do Open Design). É a âncora
+   inegociável. Nada do site premiado sobrepõe isso.
+2. **Estilo do site premiado (o "jeito" — empresta, não impõe)** — capturar e extrair só o
+   que NÃO é identidade: estrutura de layout, ritmo/hierarquia, técnica de animação, easing,
+   densidade, sofisticação de composição. NUNCA a cor, a fonte nem a marca do premiado.
+3. **O design base do cliente** (Open Design) — o ponto de partida que será re-estilizado.
+
+**Regra do conflito (decidida, não negociável):** quando o estilo do premiado brigar com a
+marca do cliente (premiado é preto agressivo, cliente é bege calmo), **a marca vence e o
+estilo se adapta**. Traduzir a TÉCNICA do premiado pro clima do cliente — o ritmo de
+animação do site agressivo aplicado com a suavidade do bege, não o preto. Pegar o *como*, não
+o *quê*. (Bate com o CLAUDE.md: a marca é sempre a do cliente; a referência ajusta dentro
+dela, nunca troca paleta/fonte/identidade.)
+
+Fluxo: capturar o premiado (Fase 1+2) → extrair só o estilo/movimento (não a identidade dele)
+→ aplicar sobre o design do cliente mantendo `tokens.css` como lei → verificação visual
+(antes × depois) → aprovação. Gate de originalidade vale dobrado aqui: o produto final não
+pode deixar reconhecer o site de origem — se reconhece, copiou demais, recombina mais.
+
 ## Gates de qualidade
 
 1. **Fidelidade:** valores exatos (hex, ms, cubic-bezier) — `[não especificado]` quando
@@ -129,7 +160,9 @@ enfeite. Página carregada de efeito sem função cansa e derruba performance (C
 2. **Anti-genérico:** resultado com cards 3-em-linha óbvios, degradê roxo padrão ou
    tipografia default → voltar com correção explícita (mesma régua do `/identidade`).
 3. **Originalidade:** ninguém que conheça os sites de origem pode reconhecê-los no
-   produto final.
+   produto final. **No Uso 3 isso é crítico:** do premiado vem só o *jeito* (estrutura,
+   ritmo, técnica de animação), nunca a cor/fonte/marca dele — a identidade é 100% do
+   cliente. Reconheceu o site de origem? Copiou o "quê" em vez do "como"; recombinar mais.
 4. **Verificação visual** (quando gera tela): mesmo padrão do `/pagina` — Playwright,
    390/768/1440px, aprovação vendo.
 
