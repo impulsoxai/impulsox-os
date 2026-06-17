@@ -5,9 +5,9 @@ description: >
   consistentes — quando o usuário disser "/identidade", "criar a marca", "identidade
   visual", "definir cores e fontes", "fazer um logo", ou logo após o `/plugar`. Funciona
   com marca existente (extrai e documenta) ou sem marca nenhuma (cria do zero, inclusive
-  o logo). Aceita prints de referência; quando o cliente não tem nenhuma, MOSTRA um mood
-  board de sites premiados do nicho e pede pra escolher 3 — direção sai da escolha, não da
-  imaginação da IA.
+  o logo). Já tem marca → extrai + propõe evolução no Open Design (mantém ou moderniza). Não
+  tem → entrevista + referência ou mood board de escolha → cria do zero. Ambos terminam
+  destilando em design-guide.md + tokens.css, que toda skill lê pra produzir na marca.
 ---
 
 # /identidade — Marca da empresa para o sistema inteiro
@@ -22,15 +22,34 @@ Autoria: ImpulsoX AI. Conteúdo original.
 Roda do **degrau 0** — é a skill que CRIA o contexto visual (leva a marca ao degrau 2).
 Não espera nada pronto; quanto mais referência o usuário der, melhor calibra.
 
-## Dois caminhos
+## Árvore de decisão (a skill guia — o usuário só responde)
 
-Decidir cedo qual se aplica (a `/plugar` já pode ter indicado):
+Primeira pergunta sempre: **"O negócio já tem logo ou site, ou vamos criar do zero?"**
 
-- **A marca já existe** (site no ar, identidade definida) → **Caminho EXTRAIR**.
-- **Não existe, ou só existe o logo / um começo** → **Caminho CRIAR**.
+```
+JÁ TEM logo/site  ───→ Caminho EXTRAIR + EVOLUÇÃO
+                       1. firecrawl no site → documenta a marca ATUAL (cor, fonte, logo)
+                       2. Open Design propõe uma EVOLUÇÃO (versão premium da MESMA marca)
+                       3. mostra atual × evolução lado a lado → cliente escolhe
+                          (mantém a atual documentada, ou adota a evoluída)
 
-Em qualquer caso, o resultado mora em `marca/design-guide.md`, `marca/tokens.css` e
-`marca/logo/`. Para clientes (modo agência), em `clientes/<nome>/marca/`.
+NÃO TEM nada      ───→ Caminho CRIAR
+                       1. lê núcleo (negocio/voz/perfil) + mini-entrevista de gosto
+                       2. tem site/marca que admira?
+                            SIM → usa de REFERÊNCIA (Caminho A do passo 1)
+                            NÃO → MOOD BOARD de escolha (Caminho B — mostra, ele escolhe 3)
+                       3. cria do zero (Open Design quando ligado; specimen quando não)
+
+AMBOS os caminhos terminam igual:
+   → DESTILAR pros 2 arquivos: design-guide.md + tokens.css (a fonte de verdade)
+   → atualizar a escada
+```
+
+**O premium-design NÃO entra aqui** — ele refina depois, dentro do `/pagina`, só quando a
+marca vai virar página/site. A `/identidade` fecha na marca documentada (guia + tokens).
+
+O resultado mora em `marca/design-guide.md`, `marca/tokens.css` e `marca/logo/`. Para
+clientes (modo agência), em `clientes/<nome>/marca/`.
 
 ---
 
@@ -49,9 +68,18 @@ Escrever `marca/design-guide.md` com o que o site realmente usa:
 - Logo: salvar o arquivo em `marca/logo/`; anotar variações que existem
 - Tom visual observado e o que manter por consistência
 
-### 3. Confirmar
-Mostrar o guia ao usuário. Perguntar se algo deve mudar agora que está documentado
-(muita gente aproveita pra corrigir o que nunca gostou). Ajustes pontuais entram aqui.
+### 3. Propor a EVOLUÇÃO (atual × evoluída, lado a lado)
+Documentar o que existe não basta — site simples pede um upgrade. Com o **Open Design**
+ligado, gerar uma **versão evoluída da MESMA marca**: mantém a essência (cor base, nome,
+espírito) e eleva o acabamento — tipografia melhor, hierarquia, espaço, um sistema coeso.
+Não é marca nova; é a marca dele em alta resolução. Renderizar **atual × evoluída lado a
+lado** (specimen comparativo) e perguntar:
+> "Esta é a sua marca hoje, e esta é uma versão mais premium dela — mesma cara, mais
+> acabamento. Quer **manter** a sua como está, ou **adotar** a evoluída?"
+
+A escolha do cliente é a marca final. Mantém → documenta a atual. Adota → a evoluída vira a
+marca. Ajustes pontuais entram aqui (muita gente aproveita pra corrigir o que nunca gostou).
+Sem Open Design, propor a evolução em specimen estático (HTML→imagem) — mesmo princípio.
 
 ---
 
@@ -142,10 +170,27 @@ guia — bom pra começar e usar já, mas pra marca que é o ativo central do ne
 designer refinar (a execução técnica é onde o humano ainda ganha da IA). Não vender o logo
 gerado como "logo premium definitivo".
 
-### 4. Escrever o guia e os tokens
-Gerar `marca/design-guide.md` completo (estrutura na seção abaixo) e `marca/tokens.css`
-com as variáveis CSS (cores, fontes, raios, espaçamentos) que as skills de página vão
-consumir.
+### 4. DESTILAR — o passo final de TODOS os caminhos (a parte que faz o sistema funcionar)
+O specimen do Open Design (ou o resultado do mood board) é bonito mas **solto** — as outras
+skills não sabem lê-lo. Destilar = transformar a marca escolhida nos **2 arquivos que TODA
+skill de produção lê** antes de criar qualquer peça:
+- `marca/design-guide.md` — a marca em texto (conceito, cores com regra de uso, tipografia,
+  logo, tom). Estrutura na seção abaixo.
+- `marca/tokens.css` — a marca em código: variáveis CSS (`--cor-*`, `--fonte-*`, `--raio-*`,
+  `--espaco-*`) extraídas do specimen. É o **contrato** que `/pagina`, `/post`, `/anuncio`,
+  `/email` consomem pra sair na marca sozinhas.
+
+Pegar os valores REAIS do specimen (os hex exatos, os nomes de fonte, os espaçamentos), não
+aproximar. Sem destilar, a marca fica num canto e nenhuma skill a usa — destilar é o que
+liga a identidade ao resto do sistema. **A fonte de verdade são estes 2 arquivos, não o
+projeto do Open Design** (se o daemon sumir, a marca continua viva aqui).
+
+### 5. Onde a marca é REFINADA depois (não aqui)
+A `/identidade` fecha na marca documentada (guia + tokens). O **refino premium acontece no
+`/pagina`**: quando a marca vai virar landing/site, o `/pagina` chama o `/premium-design` pra
+elevar o visual da PÁGINA dentro dessa marca. Aqui a skill não roda o premium-design — ela
+entrega a base (a marca), e a base já basta pra `/post`, `/anuncio`, `/email` saírem certos.
+Página é o único caso que pede o passo extra de refino, e é o `/pagina` que o dispara.
 
 ---
 
