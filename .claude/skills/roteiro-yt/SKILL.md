@@ -27,8 +27,10 @@ Autoria: ImpulsoX AI. Conteúdo original.
 1. **`canal-youtube/voz-canal.md` existe e está preenchido?** Se não, parar e orientar
    `/voz --canal` primeiro — roteiro sem voz capturada sai genérico, igual copy sem
    `nucleo/voz.md`.
-2. **Tema e pilar definidos?** Vem do pedido direto do dono, ou de um item de
-   `canal-youtube/pesquisa/fila.md` que ele aprovou pra adaptar. Sem os dois, perguntar.
+2. **Tema e pilar definidos?** Vem do pedido direto do dono, de um tema escolhido em
+   `canal-youtube/temas/<mês>.md` (radar do `/tema-yt`), ou de um item de
+   `canal-youtube/pesquisa/fila.md`. **Sem tema, rodar `/tema-yt` primeiro** — tema bom vem
+   de demanda real, não se inventa. O tema do radar já vem com a fórmula sugerida pro Passo 1.
 3. **Long-form ou short?** Se não foi dito, perguntar — muda a estrutura inteira (ver
    abaixo).
 
