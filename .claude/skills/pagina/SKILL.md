@@ -108,12 +108,14 @@ entra no **Uso 2 (elevar)**: pega a página pronta e aplica a camada de moviment
 agência — animações de entrada no scroll, hover/micro-interações, easing de **referência
 premiada real** (não o `ease` default), reveal/profundidade onde o layout pede.
 
-- Rodar `/premium-design` apontando a página construída como o "design base a elevar".
-- O movimento vem de **DNA de sites premiados** (Awwwards/Godly), nunca inventado — é o que
-  separa animação premium de genérica.
-- **Se o cliente aponta um site premiado específico que admira** → `/premium-design` Uso 3:
-  re-estilizar a página no JEITO daquele site (estrutura, ritmo, animação), com a marca do
-  cliente CRAVADA (a marca vence sempre; do premiado vem só o "como", nunca a cor/fonte dele).
+- **Padrão (nível agência) → `/premium-design` Uso 3:** re-estilizar a página no JEITO de um
+  site premiado (estrutura, ritmo, animação), com a marca do cliente CRAVADA (a marca vence
+  sempre; do premiado vem só o "como", nunca a cor/fonte dele). O Uso 3 já traz a animação
+  junto. Se o cliente aponta um premiado que admira, usa esse; senão, o acervo de
+  `marca/design-systems/`.
+- **Atalho → `/premium-design` Uso 2:** quando a página já ficou ótima na estrutura e só
+  falta vida, animar sem reformar. Caso mais raro.
+- Em ambos: movimento de **referência real** (Awwwards/Godly), nunca inventado; a marca é lei.
 - Movimento serve a marca e tem propósito (guia o olho, dá vida); nunca atropela a
   identidade nem afoga a página em efeito. `prefers-reduced-motion` sempre respeitado.
 - Pular esta etapa quando a página é simples/institucional e o cliente não quer movimento —

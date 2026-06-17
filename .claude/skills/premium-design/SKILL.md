@@ -131,6 +131,12 @@ sofisticação, técnica de animação) e **refazer o design do cliente naquele 
 identidade dele cravada e inegociável.** Resultado: um site tão bom quanto o premiado, que é
 **inconfundivelmente o cliente**. Ninguém reconhece o site de origem.
 
+> **O Uso 3 já inclui o Uso 2.** Re-estilizar traz a camada de animação/efeitos junto — é o
+> pacote premium completo (forma nova + movimento). Por isso o **Uso 3 é o padrão** quando o
+> cliente quer "nível agência". O **Uso 2 sozinho** é o atalho do caso mais raro: o design do
+> Open Design já ficou ótimo na estrutura e só falta vida — aí anima sem reformar. Na dúvida,
+> e quando o cliente aponta um premiado que admira, é Uso 3.
+
 Três ingredientes, com hierarquia clara de quem manda:
 
 1. **Identidade do cliente (LEI — vence sempre)** — cor, fonte, logo, clima do
