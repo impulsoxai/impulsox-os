@@ -1,0 +1,65 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import {
+  parseTempo, acharCortesPorMarcador, limitar30s, recortarPalavras,
+  filtroReenquadreCrop, filtroReenquadreSplit,
+} from "./lib-shorts.mjs";
+
+// --- Task 2 ---
+
+test("parseTempo aceita m:ss e h:mm:ss", () => {
+  assert.equal(parseTempo("0:15"), 15);
+  assert.equal(parseTempo("4:12"), 252);
+  assert.equal(parseTempo("1:02:03"), 3723);
+});
+
+test("acharCortesPorMarcador extrai inicio/fim/razao das linhas [CORTE-SHORT]", () => {
+  const roteiro = `texto
+[CORTE-SHORT: 04:12-04:48 — a frase mais forte]
+mais texto
+[CORTE-SHORT: 10:00-10:25 — o número que choca]`;
+  assert.deepEqual(acharCortesPorMarcador(roteiro), [
+    { inicio: 252, fim: 288, razao: "a frase mais forte" },
+    { inicio: 600, fim: 625, razao: "o número que choca" },
+  ]);
+});
+
+test("acharCortesPorMarcador devolve [] sem marcador", () => {
+  assert.deepEqual(acharCortesPorMarcador("roteiro sem corte"), []);
+});
+
+// --- Task 3 ---
+
+test("limitar30s corta trecho acima de 30s e mantém os curtos", () => {
+  assert.deepEqual(limitar30s({ inicio: 10, fim: 50 }), { inicio: 10, fim: 40 });
+  assert.deepEqual(limitar30s({ inicio: 10, fim: 25 }), { inicio: 10, fim: 25 });
+});
+
+test("recortarPalavras filtra a janela e rebaseia o timestamp pra zero", () => {
+  const palavras = [
+    { inicio: 0, fim: 1, texto: "fora" },
+    { inicio: 10.0, fim: 10.4, texto: "ola" },
+    { inicio: 10.4, fim: 10.9, texto: "mundo" },
+    { inicio: 40, fim: 41, texto: "depois" },
+  ];
+  assert.deepEqual(recortarPalavras(palavras, 10, 11), [
+    { inicio: 0, fim: 0.4, texto: "ola" },
+    { inicio: 0.4, fim: 0.9, texto: "mundo" },
+  ]);
+});
+
+// --- Task 4 ---
+
+test("filtroReenquadreCrop escala cobrindo a altura e corta o centro 9:16", () => {
+  assert.equal(
+    filtroReenquadreCrop({ alvoLargura: 1080, alvoAltura: 1920 }),
+    "scale=-2:1920,crop=1080:1920"
+  );
+});
+
+test("filtroReenquadreSplit põe o vídeo no topo sobre fundo da marca 9:16", () => {
+  assert.equal(
+    filtroReenquadreSplit({ alvoLargura: 1080, alvoAltura: 1920, fundoCor: "0x06060D" }),
+    "scale=1080:-2[vid];color=c=0x06060D:s=1080x1920[bg];[bg][vid]overlay=0:0"
+  );
+});
