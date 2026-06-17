@@ -1,24 +1,24 @@
-# Pilares de conteúdo — canal
+# Pilares de conteúdo — canal (EXEMPLO/TEMPLATE)
 
-> Mix decidido por dado real (`/desempenho` do canal, Fase 3) quando houver histórico. Até
-> lá, o dono escolhe o pilar por vídeo. Cada pilar carrega palavras-chave usadas pelo
-> `checar-criadores-yt.mjs` pra classificar relevância de vídeo de criador monitorado —
-> formato: linha `Palavras-chave:` com termos separados por vírgula, em qualquer caixa.
+> **Template.** Substitua pelos pilares do SEU canal. Mix decidido por dado real
+> (`/desempenho` do canal, Fase 3) quando houver histórico; até lá, você escolhe o pilar por
+> vídeo. Cada pilar carrega palavras-chave usadas pelo `checar-criadores-yt.mjs` pra
+> classificar relevância de vídeo de criador monitorado — formato: linha `Palavras-chave:`
+> com termos separados por vírgula, em qualquer caixa.
+>
+> Os pilares abaixo são EXEMPLOS pra ilustrar o formato. Apague e escreva os seus.
 
-## Ensinar Claude Code do zero
-Quem nunca usou Claude Code aprendendo na prática — comandos, skills, fluxo de trabalho,
-"o que dá pra fazer aqui dentro" que ninguém explica em lugar nenhum.
+## Ensinar do zero (exemplo)
+O que ninguém explica pra quem está começando no seu nicho — o passo a passo prático.
 
-Palavras-chave: claude code, anthropic, ai coding, vibe coding, agente de codigo, terminal ai, coding agent
+Palavras-chave: tutorial, iniciante, passo a passo, como fazer, do zero
 
-## Mostrar produtos e funcionalidades construídos
-Prova em ação — o que já foi construído com o sistema (landing pages, automações,
-conectores) e como.
+## Mostrar resultado/prova (exemplo)
+O que você ou seus clientes já construíram — prova em ação.
 
-Palavras-chave: landing page, automação, build in public, case real, projeto, mvp, ship
+Palavras-chave: case, resultado, antes e depois, prova, projeto
 
-## Mostrar o ImpulsoX-OS rodando
-O próprio sistema operacional de marketing em uso — bastidores de como ele decide,
-produz e mede.
+## Posicionamento/opinião (exemplo)
+Seu ponto de vista sobre o nicho — a opinião que diferencia o canal.
 
-Palavras-chave: impulsox, sistema operacional de marketing, agencia de ia, marketing automatizado, agente de marketing
+Palavras-chave: opinião, tendência, futuro, erro comum, mito

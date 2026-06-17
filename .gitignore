@@ -27,3 +27,8 @@ Thumbs.db
 dados/**
 !dados/**/
 !**/.gitkeep
+
+# canal-youtube/edicao/<slug>/ — saídas de edição (vídeo é dado real, nunca no git).
+# Mantém só os templates de marca e o README.
+canal-youtube/edicao/*/
+!canal-youtube/edicao/templates/

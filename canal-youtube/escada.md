@@ -1,20 +1,16 @@
-# Escada de Contexto — Canal YouTube
+# Escada de Contexto — Canal YouTube (TEMPLATE)
 
 > Registra o degrau de contexto do canal. Ver o princípio "Escada de Contexto" no CLAUDE.md.
+> **Template em degrau 0** — vai subindo conforme você preenche voz, pilares e grava.
 
-**Degrau atual:** 2 — formato e pilares decididos, voz de narração ainda não capturada
+**Degrau atual:** 0 — só a intenção de ter um canal
 
 **Fatos confirmados:**
-- Formato: screen recording narrado, voz real do dono (sem TTS/clone de voz).
-- Duração long-form: 8-15min. Shorts: cortados do longo (`[CORTE-SHORT: ...]` no roteiro)
-  + standalone quando não houver vídeo longo pra cortar.
-- 3 pilares definidos em `pilares.md`. Mix decidido por dado real (`/desempenho` do canal,
-  Fase 3) quando houver histórico — por ora o dono escolhe o pilar por vídeo.
-- Entidade separada do resto do ImpulsoX-OS — isolamento total pra extrair como produto
-  vendável (`ImpulsoX-YT-OS`) só depois de validar com vídeos reais.
+- (nada ainda — preencha conforme decidir)
 
 **Suposições a confirmar:**
-- Voz de narração ainda não capturada por entrevista — rodar `/voz --canal` antes do
-  primeiro roteiro real.
+- Formato dos vídeos (talking head / screen recording / faceless)
+- Voz de narração — rodar `/voz --canal` pra capturar
+- Pilares de conteúdo — editar `pilares.md`
 
-**Próximo degrau:** rode `/voz --canal` pra subir ao degrau 3 (voz capturada).
+**Próximo degrau:** defina o formato e rode `/voz --canal` pra subir ao degrau 3.
