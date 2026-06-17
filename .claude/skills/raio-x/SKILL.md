@@ -25,6 +25,14 @@ virar cliente, o `/cliente` aproveita a extração inteira.
 vende marketing como serviço e diagnostica um prospect. Negócio próprio dos outros perfis
 não costuma rodar `/raio-x` em si mesmo — usa `/desempenho` pra olhar pra dentro.
 
+## Regra de ouro — verificar antes de dar nota
+
+**Nenhuma nota sai de suposição.** Cada nota e cada vazamento precisa de uma coleta real
+antes — buscar, abrir, conferir. O que não deu pra verificar de fora **não vira nota**: vira
+linha "a confirmar". Misturar palpite com fato num documento de venda queima a credibilidade
+da agência na primeira vez que o cliente conferir (ex.: dizer "redes fracas" e o dono abrir o
+Instagram com 50 mil seguidores). Coleta primeiro, nota depois.
+
 ## O que auditar (com a URL na mão)
 
 ### 1. Site — fundação
@@ -43,19 +51,36 @@ Scraping (firecrawl) + verificação direta:
   volume de avaliações vs concorrentes próximos (WebSearch)
 - Consistência: nome, endereço e telefone iguais no site e no perfil?
 
-### 3. Redes sociais
-- Quais existem (links no site / busca)? Frequência das últimas publicações? A bio diz
-  o que a empresa faz e pra onde mandar o interessado?
+### 3. Redes sociais — medir, não chutar
+- Quais existem (links no site / busca)?
+- **Tamanho e atividade reais via WebSearch** — buscar o @perfil: seguidores, nº de posts.
+  (Instagram/TikTok vivem atrás de login; firecrawl recusa e raspar login é proibido — o
+  caminho legal é a WebSearch do perfil, que devolve seguidores/posts de fontes públicas.)
+  Sem esse número, a nota de Redes não sai como fato — vira "a confirmar".
+- A bio diz o que a empresa faz e pra onde mandar o interessado?
 
-### 4. Concorrência (rápida)
-- 2-3 buscas pelo serviço + cidade: quem aparece na frente? O que eles têm que o
-  auditado não tem? (uma linha por concorrente, sem dossiê)
+### 4. Busca por intenção — o teste que prova o vazamento de descoberta (OBRIGATÓRIO)
+Fazer 2-3 buscas reais "serviço + cidade" como um cliente faria ("feijoada Orlando",
+"dentista Pinheiros", "rodízio I-Drive"): **o auditado aparece? Quem aparece no lugar dele?**
+É essa busca que transforma "acho que ele não rankeia" em fato. Uma linha por concorrente
+que apareceu na frente — sem dossiê.
 
 ## Notas
 
 Por área (Site · Conversão · Conteúdo · Local · Redes): **nota 0-10 + uma frase de
-justificativa cada**. Critério: o que custa dinheiro pesa mais — site sem WhatsApp
-visível derruba Conversão inteira; blog inexistente pesa menos que oferta confusa.
+justificativa cada, com a EVIDÊNCIA coletada** (o que foi visto/buscado, não o que se
+imagina). Critério: o que custa dinheiro pesa mais — site sem WhatsApp visível derruba
+Conversão inteira; blog inexistente pesa menos que oferta confusa.
+
+Âncora das notas (pra não ser arbitrário):
+- **9-10** = forte de verdade, pouco a melhorar. **7-8** = bom, com lacuna pontual.
+- **5-6** = mediano, dá pra dobrar. **3-4** = furo claro que custa dinheiro. **0-2** = ausente.
+
+**Anti-viés (inegociável):** o objetivo é a verdade, não "ter o que vender". Site forte
+recebe nota alta — inventar vazamento onde não há queima a credibilidade e o cliente percebe.
+Se o negócio já está bem, o valor da agência aparece no que falta de IA/conversão, não em
+problema fabricado. Um raio-x honesto que diz "seu site é ótimo, o vazamento é no atendimento"
+vende mais que um que ataca tudo.
 
 ## Saída
 
@@ -65,22 +90,27 @@ visível derruba Conversão inteira; blog inexistente pesa menos que oferta conf
 # Raio-X — [empresa] · [data]
 
 ## A leitura em uma frase
-[o diagnóstico que dói e que é verdade]
+[o diagnóstico que dói e que é verdade — só com base no que foi verificado]
 
 ## Notas
-| Área | Nota | Por quê |
+| Área | Nota | Por quê (com a evidência coletada) |
 |------|:---:|---------|
 ...
+> Cada "por quê" cita o que foi VISTO/BUSCADO. O que não deu pra medir de fora não vira
+> nota — entra como "a confirmar" na justificativa ou na seção final.
 
 ## Os 3 vazamentos mais caros
-1. [problema → o que custa → conserto]
+1. [problema → o que custa → conserto] — marcar **[verificado]** (com a evidência) ou
+   **[a confirmar]** (hipótese plausível que precisa de acesso interno pra fechar)
 ...
 
 ## Plano dos primeiros 30 dias
 [3-5 ações em ordem, cada uma ligada a uma skill do sistema que a executa]
 
-## O que este raio-x não vê
+## O que este raio-x não vê (e o que ficou a confirmar)
 [dados internos: analytics, custo real de ads, taxa de conversão — vem depois]
+[+ tudo que foi marcado "a confirmar" acima: a lista honesta do que assumimos e ainda
+ não medimos. Vira a pauta da reunião — gancho, não fraqueza.]
 ```
 
 Quando for material de reunião, gerar também a versão apresentável (PDF via skill de
@@ -116,8 +146,13 @@ Nada de prova inventada na copy — sem depoimento real, a abertura não exibe n
 
 ## Regras
 
-- Cada problema apontado tem evidência (o que foi visto, onde). Nada de crítica vaga.
+- Cada problema apontado tem evidência REAL e coletada (o que foi visto/buscado, onde).
+  Nada de crítica vaga, nada de nota por palpite.
+- **Fato vs suposição, sempre marcado.** Verificado = afirma; não-verificado = "a confirmar".
+  Nunca apresentar hipótese como medição — é a régua da Escada de Contexto.
 - Tom: direto sem humilhar — o dono vai ler; o objetivo é ele contratar, não se ofender.
+- **Anti-viés:** não fabricar problema pra ter o que vender. Negócio bom recebe nota boa; o
+  valor da agência aparece no que de fato falta (IA, conversão, descoberta).
 - Não inventar dado de tráfego/posição que não dá pra ver de fora — a seção "o que este
   raio-x não vê" existe pra isso (e é gancho honesto pra próxima conversa).
 - Auditar só o que é público. Nunca tentar acesso a área logada.
