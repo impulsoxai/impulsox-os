@@ -31,11 +31,17 @@ Esta skill não se aplica — dizer isso com clareza e apontar o caminho: `/ads-
 ## Passo 1 — Receber os exports
 
 Pedir os arquivos em `dados/ads/`:
-> "Me passa os exports: no **Google Ads**, relatório de campanhas com as colunas custo,
-> cliques, impressões e conversões, no período que você quer analisar (CSV). No
-> **Meta Ads Manager**, exportar 'Desempenho da campanha' do mesmo período (CSV).
-> Salva os dois em `dados/ads/` que eu cuido do resto. Tem só uma das plataformas?
-> Manda a que tiver."
+> "Me passa os exports: no **Google Ads**, relatório com custo, cliques, impressões e
+> conversões no período (CSV). No **Meta Ads Manager**, 'Desempenho' do mesmo período (CSV).
+> Salva em `dados/ads/` que eu cuido do resto. Tem só uma das plataformas? Manda a que tiver."
+
+**Pedir no nível mais GRANULAR que a conta exporta** — é o que responde "qual ANÚNCIO/palavra
+converteu", não só "qual campanha":
+- **Google Ads:** relatório por **Anúncio** (e por **Termo de pesquisa**/palavra-chave quando
+  der) — não só por campanha. Cada nível vira uma aba de análise.
+- **Meta:** desagregar por **Anúncio** (e por **Criativo**), não parar no conjunto.
+- Se o dono só conseguir o nível de campanha, analisar nesse nível e avisar que o "qual
+  anúncio especificamente" fica pendente até o export granular.
 
 Período recomendado: 90 dias (estabiliza sinal sem misturar época demais).
 
@@ -60,8 +66,9 @@ consolidar.
 
 Com os números do script na mão:
 
-1. **Ranking por eficiência.** Campanhas com conversão ordenadas por CPA (ou ROAS, se há
-   valor). Nomear vencedoras e sangrias.
+1. **Ranking por eficiência, no nível exportado.** Se veio por anúncio/palavra, ranquear
+   ANÚNCIO a anúncio (qual criativo/título converteu mais barato) — não só campanha.
+   Ordenar por CPA (ou ROAS, se há valor). Nomear vencedoras e sangrias em cada nível.
 2. **Onde o dinheiro vaza.** Campanhas com gasto relevante (>10% do total) e zero
    conversão — candidatas a pausa ou reforma.
 3. **Sinal fino.** Dado insuficiente (< ~100 cliques na campanha) = "sem veredito ainda",
