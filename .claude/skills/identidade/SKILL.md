@@ -117,14 +117,30 @@ Pedir ao usuário que escolha uma (ou misture pontos de duas). Se possível, ren
 mini-specimen de cada (ver Validação) para a escolha ser visual, não abstrata.
 
 ### 3. Logo (só se a empresa não tem)
-Se já existe logo, usar o existente e pular esta etapa. Se não existe, gerar o logo em
-**SVG** na direção escolhida:
-- Versão principal (símbolo + nome)
-- Versão horizontal
-- Só o símbolo / ícone (para avatar, favicon)
-- Versão monocromática (uma cor) para fundos difíceis
-Salvar todas em `marca/logo/`. Manter o logo simples e escalável — funciona a 16px e a
-1000px. Sem efeito 3D, sem degradê arco-íris, sem clipart.
+Se já existe logo, usar o existente e pular esta etapa. Se não existe, gerar em **SVG**.
+
+**Logo por IA quebra o galho — mas faça o que a IA faz BEM (pesquisa de logo 2026):**
+> Logo profissional = conceito + estética + execução técnica. A IA acerta estética e
+> conceito, mas FALHA na execução técnica (grid, espessura, kerning, ancoragem). Então jogar
+> pros pontos fortes dela e ser honesto sobre o limite.
+
+1. **Priorizar WORDMARK** (o nome em tipografia forte) sobre símbolo elaborado. É o conselho
+   nº1 de 2026 ("wordmarks get louder: bold type + confident spacing wins on mobile") E é o
+   que a IA executa melhor. Símbolo desenhado por IA quase sempre sai "quase certo" —
+   wordmark bem espaçado sai limpo. Default: wordmark + um acento gráfico simples (um ponto,
+   um corte, uma forma única), não um ícone ilustrativo complexo.
+2. **Construir por GRID geométrico** — ataca onde a IA falha. Formas em proporção declarada
+   (círculo/quadrado/proporção áurea), **espessura de traço única** em todo o logo, alinhamento
+   ao baseline da tipografia. Sem espessura variando, sem curva torta. Simplicidade extrema
+   esconde a falha técnica da IA; detalhe elaborado expõe.
+3. As variações (sempre): principal (wordmark + acento) · horizontal · só o acento/ícone
+   (avatar, favicon) · monocromática (fundos difíceis). Salvar em `marca/logo/`. Funciona a
+   16px e a 1000px. Sem 3D, degradê arco-íris, clipart, nem o "too-perfect AI look".
+
+**Honestidade obrigatória:** marcar o logo gerado como **"ponto de partida funcional"** no
+guia — bom pra começar e usar já, mas pra marca que é o ativo central do negócio, vale um
+designer refinar (a execução técnica é onde o humano ainda ganha da IA). Não vender o logo
+gerado como "logo premium definitivo".
 
 ### 4. Escrever o guia e os tokens
 Gerar `marca/design-guide.md` completo (estrutura na seção abaixo) e `marca/tokens.css`
@@ -172,3 +188,5 @@ confirmado**, subir o degrau se aplicável, e registrar arquivos gerados.
 - No caminho EXTRAIR, documentar o que **é**, não o que você acha que deveria ser —
   sugestões de melhoria vêm depois, separadas, e só se o usuário quiser.
 - Logo gerado é sempre vetor (SVG), nunca rasterizado.
+- Logo por IA: priorizar wordmark, construir por grid (espessura única), e marcar como
+  "ponto de partida funcional" — execução técnica é onde o designer humano ainda ganha.
