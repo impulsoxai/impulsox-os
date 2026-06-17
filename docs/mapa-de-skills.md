@@ -125,6 +125,41 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
 
 ---
 
+## Tabela de fluxo guiado (o sistema usa pra apontar o próximo passo)
+
+> Cada skill, ao terminar, sugere o **próximo** daqui e pergunta se quer seguir (regra no
+> CLAUDE.md). O **pré-requisito** é o que ela precisa; se faltar, o sistema se acha e
+> reorienta. Não é trilho fixo — o dono pode pular, e o sistema se reposiciona.
+
+| Terminou | Próximo passo natural | Pré-requisito (se falta, reorienta) |
+|---|---|---|
+| /raio-x | /proposta | — (só a URL) |
+| /proposta | /cliente (se fechou) ou /email (follow-up) | nucleo/provas, ofertas |
+| /cliente | /identidade | — |
+| /identidade | /voz (se voz rasa) → depois /calendario ou /pagina | núcleo lido |
+| /voz | /calendario ou produção | — |
+| /calendario | /post · /linkedin · /conteudo (peça a peça) | radar do mês, núcleo |
+| /radar | /calendario | núcleo |
+| /post · /linkedin · /conteudo | /revisar | marca/, voz, provas |
+| /revisar | /publicar (se aprovada) | a peça pronta |
+| /publicar | /desempenho (no fim do mês) | publicacoes.md |
+| /desempenho | /calendario (próximo ciclo) | métricas |
+| /pagina | /seo → /publicar | **marca/ (senão: rodar /identidade antes)** |
+| /copy | /escritor-br → volta pro /pagina | voz |
+| /seo | /publicar | a página pronta |
+| /tema-yt | /roteiro-yt | criadores-monitorados, pilares |
+| /roteiro-yt | (gravar) → /editar-video | **voz-canal.md, fórmula** |
+| /editar-video | /shorts → /publicar | final.mp4, whisper |
+| /shorts | /publicar | palavras.json |
+| /desempenho-yt | /tema-yt (próximo vídeo) | métricas/publicação |
+| /ads-google · /ads-meta | (humano sobe) → /analisar-ads em 30d | **marca/, página de destino** |
+| /analisar-ads | /ads-* (nova campanha) | exports CSV |
+| /criar-ebook | /email (sequência) ou /pagina (captura) | núcleo, marca |
+| /lancar-produto | /pagina · /email · /ads-* (orquestra) | oferta, marca |
+
+Pré-requisito em **negrito** = o que mais trava na prática; quando falta, o sistema oferece
+fazer o que falta primeiro OU seguir com defaults marcados "a confirmar".
+
 ## A regra que amarra tudo
 
 Cada skill **lê o núcleo + a marca antes de produzir**, e marca **fato vs suposição**

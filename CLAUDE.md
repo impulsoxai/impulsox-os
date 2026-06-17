@@ -117,6 +117,25 @@ Ordem quando o pedido é amplo ("cuida do meu Instagram este mês"): primeiro a 
 estratégia/calendário decide **o quê** e **quando**, depois as skills de produção
 executam cada peça.
 
+## Guiar pela esteira (o sistema conduz, não prende)
+
+O dono não precisa decorar qual skill chamar nem em que ordem — **o sistema guia**. Três
+regras, todas valendo pra qualquer skill:
+
+1. **Ao terminar uma skill, apontar o próximo passo.** Fechar com "✓ pronto: [o que foi
+   feito] · → próximo passo natural: `/<skill>` — [por quê]". A ordem das esteiras está em
+   `docs/mapa-de-skills.md` (venda, identidade, página premium, conteúdo, YouTube, ads) — é a
+   fonte da sequência; consultar ali qual vem depois.
+2. **Sempre perguntar antes de seguir.** Sugerir o próximo e **esperar o "sim"** — nunca
+   encadear pra próxima skill sozinho. O dono está no controle de cada passo. (Dentro de uma
+   mesma skill, executar as etapas dela; o gate de confirmação é na PASSAGEM entre skills.)
+3. **Se o dono pular etapa, o sistema se acha — não trava nem obriga a ordem.** Cada skill
+   tem um degrau mínimo (pré-requisito). Se falta — ex.: `/pagina` sem `marca/` ainda —
+   perceber e **reorientar**: "isto precisa de X que ainda não existe; quer que eu faça X
+   primeiro, ou seguir com defaults marcados pra confirmar?". É a Escada de Contexto: nunca
+   travar, trabalhar com o que tem, marcar o que falta. Guiar é oferecer o caminho, não
+   forçar o trilho — o dono pode pular, e o sistema se reposiciona.
+
 ---
 
 ## Aprender com o uso
