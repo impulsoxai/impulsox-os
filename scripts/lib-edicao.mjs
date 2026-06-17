@@ -146,15 +146,33 @@ function fmtTempoASS(seg) {
   return `${h}:${m}:${s}.${String(cs).padStart(2, "0")}`;
 }
 
+// Converte cor #RRGGBB pro formato ASS &HAABBGGRR (alpha 00 = opaco; ordem BGR).
+function hexParaASS(hex) {
+  const h = hex.replace("#", "");
+  const r = h.slice(0, 2), g = h.slice(2, 4), b = h.slice(4, 6);
+  return `&H00${b}${g}${r}`.toUpperCase();
+}
+
 // Monta legenda karaokê .ass: cada palavra ganha uma tag {\k<dur>} (centésimos), então o
-// libass destaca palavra a palavra em sync com a fala — mais retenção que bloco estático.
-// Usa os timestamps por palavra que o whisper já entrega (montarSRT joga isso fora).
-export function montarASS(palavras, { maxPalavras = 7, maxDur = 3, fonte = "Arial", tamanho = 48 } = {}) {
+// libass enche palavra a palavra em sync com a fala — a palavra falada AGORA acende na cor
+// de destaque (dourado da marca), o resto fica na cor base (branco). Estilo dos shorts que
+// retêm (Chase/Matt/Yury). Usa os timestamps por palavra que o whisper já entrega.
+export function montarASS(palavras, {
+  maxPalavras = 4, maxDur = 2.2, fonte = "Space Grotesk", tamanho = 64,
+  resX = 1080, resY = 1920,    // padrão short vertical 9:16 (libass escala a fonte por isso)
+  margemV = 520,               // distância da base: terço inferior central, longe do rodapé
+  corBase = "#FFFFFF",         // palavra ainda não falada (branco)
+  corDestaque = "#E2C97E",     // palavra sendo falada acende em dourado da marca
+  corContorno = "#06060D",     // contorno = preto da marca, legível sobre qualquer fundo
+} = {}) {
+  // No ASS com \k: SecondaryColour = antes de "cantar", PrimaryColour = depois. Base branca
+  // que enche de dourado conforme fala => Secondary=base, Primary=destaque. Alignment 2 =
+  // base-centro; Outline 4 + Shadow 2 pra legibilidade grande sobre qualquer fundo.
   const cabecalho =
-    "[Script Info]\nScriptType: v4.00+\nPlayResX: 1920\nPlayResY: 1080\n\n" +
+    `[Script Info]\nScriptType: v4.00+\nPlayResX: ${resX}\nPlayResY: ${resY}\n\n` +
     "[V4+ Styles]\n" +
     "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Outline, Shadow, Alignment, MarginV\n" +
-    `Style: Default,${fonte},${tamanho},&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,3,1,2,80\n\n` +
+    `Style: Default,${fonte},${tamanho},${hexParaASS(corDestaque)},${hexParaASS(corBase)},${hexParaASS(corContorno)},&H64000000,1,4,2,2,${margemV}\n\n` +
     "[Events]\nFormat: Layer, Start, End, Style, Text\n";
   const linhas = agruparPalavras(palavras, maxPalavras, maxDur).map((grp) => {
     const inicio = fmtTempoASS(grp[0].inicio);

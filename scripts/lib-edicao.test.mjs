@@ -148,6 +148,13 @@ test("montarASS gera cabeçalho + Dialogue com tags \\k por palavra (centésimos
   assert.match(ass, /Dialogue: 0,0:00:00\.00,0:00:00\.90,Default,\{\\k40\}oi \{\\k50\}pessoal/);
 });
 
+test("montarASS: palavra ativa em dourado (Primary), base branca (Secondary)", () => {
+  const ass = montarASS([{ inicio: 0, fim: 0.5, texto: "x" }]);
+  // Primary = destaque dourado #E2C97E -> &H007EC9E2 ; Secondary = branco -> &H00FFFFFF
+  assert.match(ass, /Style: Default,Space Grotesk,64,&H007EC9E2,&H00FFFFFF,&H000D0606,&H64000000,1,4,2,2,520/);
+  assert.match(ass, /PlayResX: 1080\nPlayResY: 1920/);
+});
+
 test("filtroLegendaAss escapa o caminho .ass no padrão Windows", () => {
   assert.equal(filtroLegendaAss({ assCaminho: "C:\\v\\leg.ass" }), "subtitles='C\\:/v/leg.ass'");
 });
