@@ -30,6 +30,8 @@ Autoria: ImpulsoX AI. Conteúdo original.
 | Facebook (página) | **Automático** — Graph API | API oficial de páginas |
 | LinkedIn — página de empresa | **Automático** — API oficial (exige app aprovado pela LinkedIn) | Permissões organizacionais oficiais |
 | LinkedIn — perfil pessoal | **Assistido** — texto final + imagem prontos, usuário cola e publica | Automação de perfil viola os termos; risco de restrição da conta |
+| YouTube — short e longo | **Automático** — Data API v3 (exige OAuth do canal) | API oficial de upload |
+| YouTube — sem credencial | **Assistido** — vídeo + metadados.txt prontos pro Studio | OAuth não configurado |
 | Site/blog | **Automático** — commit + push (deploy do site cuida do resto) | Repositório é do usuário |
 
 ## Configuração (uma vez por conta)
@@ -97,6 +99,19 @@ Compartilha os helpers `lib-peca`, `lib-graph` e `lib-fal-upload` com o Instagra
 LinkedIn é diferente: sobe o binário direto (sem Fal CDN) e exige `LINKEDIN_ORG_ID` +
 `LINKEDIN_TOKEN` (escopo `w_organization_social`). Vídeo e documento PDF ficam pro v2.
 Erro de API: reportar a resposta exata (sem o token).
+
+`scripts/publicar-youtube.mjs` sobe `final.mp4` (short ou longo) pro YouTube como **privado**
+(Data API v3): `node scripts/publicar-youtube.mjs --slug <nome> --titulo "..." --descricao
+"..." --tags "a,b" [--thumb capa.png]`. Dry-run por padrão; `--confirmar` sobe. Short é
+detectado (vertical + ≤180s) e ganha `#Shorts`. Metadados vêm do roteiro — **sempre confirmar
+antes**. Com OAuth (`YT_CLIENT_ID`/`YT_CLIENT_SECRET`/`YT_REFRESH_TOKEN` no `.env`) sobe
+sozinho; sem credencial, gera `metadados.txt` pro Studio (assistido). Sobe **privado** — a
+publicação final é decisão do dono no Studio. Tokens nunca aparecem em log.
+
+**Guia OAuth (1ª vez):** criar `producao/guia-youtube-oauth.md` com: projeto no Google Cloud
+→ ativar *YouTube Data API v3* → tela de consentimento (modo Testing serve) → criar credencial
+*OAuth client ID* tipo Desktop → autorizar o escopo `https://www.googleapis.com/auth/youtube.upload`
+→ trocar o code pelo refresh_token → preencher o `.env`.
 
 ## Regras
 
