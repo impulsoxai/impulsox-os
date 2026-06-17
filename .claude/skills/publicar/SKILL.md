@@ -110,7 +110,9 @@ publicação final é decisão do dono no Studio. Tokens nunca aparecem em log.
 
 **Guia OAuth (1ª vez):** criar `producao/guia-youtube-oauth.md` com: projeto no Google Cloud
 → ativar *YouTube Data API v3* → tela de consentimento (modo Testing serve) → criar credencial
-*OAuth client ID* tipo Desktop → autorizar o escopo `https://www.googleapis.com/auth/youtube.upload`
+*OAuth client ID* tipo Desktop → autorizar os escopos
+`https://www.googleapis.com/auth/youtube.upload` (subir vídeo, Fase 3) e
+`https://www.googleapis.com/auth/yt-analytics.readonly` (ler métricas, Fase 3.5)
 → trocar o code pelo refresh_token → preencher o `.env`.
 
 ## Regras
