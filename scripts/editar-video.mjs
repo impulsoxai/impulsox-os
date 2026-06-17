@@ -78,6 +78,7 @@ if (import.meta.main) {
     const cortado = join(base, "_cortado.mp4");
     const tmpSrt = join(base, "legenda.srt");
     const tmpAss = join(base, "_karaoke.ass");
+    const tmpPalavras = join(base, "palavras.json");
     const final = join(base, "final.mp4");
     try {
       registrarPasso({ skill: "/editar-video", etapa: "cortando silêncio + normalizando áudio", status: "inicio" });
@@ -97,6 +98,7 @@ if (import.meta.main) {
         if (palavras.length) {
           writeFileSync(tmpSrt, montarSRT(palavras));   // .srt pro YouTube CC (acessibilidade/SEO)
           writeFileSync(tmpAss, montarASS(palavras));   // .ass karaokê pra queimar (retenção)
+          writeFileSync(tmpPalavras, JSON.stringify(palavras, null, 2)); // pra Fase 2.5 (shorts) reusar
           temLegenda = true;
         }
       } catch (e) { console.error("AVISO: legenda pulada — " + e.message); }
