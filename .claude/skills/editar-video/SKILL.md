@@ -17,6 +17,15 @@ timestamps do roteiro (o corte muda os tempos).
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Princípio — copiar a fórmula de quem já faz sucesso
+
+Não inventar estilo de edição/legenda do zero. Canais que já bombam no nicho **já têm a
+fórmula testada** — copiar o MOLDE (tamanho/posição/cor de legenda, ritmo de corte, padrão
+de capa), nunca o conteúdo. As referências vivem em `canal-youtube/criadores-monitorados.md`;
+puxe um short recente de um deles e replique a mecânica. Ex.: a legenda karaokê com palavra
+ativa em cor (dourado da marca) saiu direto do padrão de Chase/Matt/Yury (eles usam vermelho/
+branco). Molde transfere; tema e identidade são sempre da marca do dono.
+
 ## Pré-checagem
 
 1. **A gravação existe?** Pedir o caminho do arquivo (um .mp4 com tela+voz, ou tela + voz
@@ -38,10 +47,16 @@ Autoria: ImpulsoX AI. Conteúdo original.
    cortado, **áudio normalizado a -14 LUFS** — padrão do YouTube, tira o som amador —
    **legenda karaokê queimada** palavra-a-palavra) + `legenda.srt` (pro YouTube CC), em
    `canal-youtube/edicao/<slug>/`.
-3. **Thumbnail.** Rodar `node scripts/gerar-thumbnail.mjs --slug <slug> --texto "<=5
-   palavras>" --video <arq> --frame <tempo>` → `thumb-frame.png`. Oferecer a alternativa
-   por IA (`--fal --conceito "<conceito do /roteiro-yt>"`) — **avisar do custo** e só rodar
-   `--confirmar` com o aval do dono.
+3. **Capa — depende do FORMATO (não confundir):**
+   - **Short / reel (vertical 9:16):** NÃO tem capa separada. A "thumbnail" é o próprio
+     frame do vídeo com a legenda karaokê queimada (o que o passo 2 já entrega). É o que
+     Chase/Matt/Yury e os shorts que retêm fazem. Só ajudar o dono a escolher um bom frame
+     (rosto enquadrado, olhar na câmera) — não gerar capa composta nenhuma.
+   - **Vídeo longo (horizontal 16:9):** aí sim tem capa 16:9 separada. Rodar
+     `node scripts/gerar-thumbnail.mjs --slug <slug> --texto "<=5 palavras>" --video <arq>
+     --frame <tempo>` → `thumb-frame.png` (layout composto, fundo escuro + texto à esquerda
+     na marca + frame à direita). Alternativa por IA (`--fal --conceito "..."`) — **avisar
+     do custo** e só rodar `--confirmar` com o aval do dono.
 4. **Revisar antes de declarar pronto.** Rodar `/revisar` no vídeo (crivo do revisor
    sênior) — é peça que vai pro ar. Só depois apontar os arquivos finais como prontos pro
    upload (Fase 3).

@@ -169,6 +169,12 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 - Nunca arriscar a conta de um cliente por automação fora dos termos da plataforma.
   Onde a API oficial permite, automatizar; onde é área cinza, entregar pronto para
   publicação em um clique.
+- **Copiar a fórmula de quem já faz sucesso, não inventar.** Para qualquer peça (roteiro,
+  legenda, thumbnail, post, anúncio), o ponto de partida é o MOLDE testado de canais/contas
+  que já performam no nicho — eles já pagaram o custo de descobrir o que funciona. Copiar a
+  mecânica (estrutura, hook, tamanho/cor de legenda, padrão de capa), nunca o conteúdo, o
+  tema ou a identidade. Molde transfere; frase, estética e marca são sempre do dono. É o que
+  o `/formulas` faz para post e o que a edição faz olhando os criadores monitorados.
 
 ---
 
