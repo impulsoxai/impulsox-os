@@ -6,8 +6,9 @@ description: >
   "referências premium pra marca", "recombina essas identidades", ou chamada pelo
   /identidade (caminho CRIAR) e pelo /pagina (antes da construção). Captura o código-fonte
   de sites de referência premiados, extrai design systems completos (cores, tipografia,
-  animações, layouts) e recombina numa identidade nova pro negócio. Alimenta a biblioteca
-  em marca/design-systems/.
+  animações, layouts) e recombina numa identidade nova. Também ELEVA um design já pronto
+  (ex: o que o Open Design criou) aplicando a camada premium — animações, efeitos e micro-
+  interações capturados de sites premiados reais. Alimenta a biblioteca em marca/design-systems/.
 ---
 
 # /premium-design — Motor de identidade visual por código-fonte
@@ -22,16 +23,28 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 ## Papel dentro do sistema (roteamento)
 
-Esta skill é **motor, não entrega final**:
+Esta skill é **motor, não entrega final**. Tem dois usos:
 
-- `/identidade` (caminho CRIAR) chama esta skill pra gerar as direções a partir de
-  referências reais, em vez de propor da imaginação. O output preenche
-  `marca/design-guide.md` + `marca/tokens.css`.
+**Uso 1 — EXTRAIR DNA de referências (extrair + recombinar identidade nova).**
+- `/identidade` (caminho CRIAR) chama pra gerar direções a partir de referências reais
+  (incluindo as 3 que o cliente escolheu no **mood board de escolha** da `/identidade`),
+  em vez de propor da imaginação. Output → `marca/design-guide.md` + `marca/tokens.css`.
+
+**Uso 2 — ELEVAR um design já pronto (a camada premium por cima do Open Design).** ⭐
+- O **Open Design** cria a base — identidade e estrutura bonitas, mas estáticas (sem
+  animação, sem micro-interação). Esta skill **pega esse design pronto e o eleva ao nível
+  agência**: captura efeitos, animações, easing e micro-interações de **sites premiados
+  reais** (Awwwards/Godly) e os APLICA sobre o design do Open Design. O design base ganha
+  vida — é o que separa "bonito e normal" de "site de agência".
+- Esse upgrade entra no **`/pagina`** (onde animação faz diferença; post/e-mail não animam).
+  Sequência: Open Design faz a base → `/pagina` constrói a página → `/premium-design` põe a
+  camada de efeitos por cima, com DNA de movimento de referências reais.
+
+**Comum aos dois usos:**
 - `/pagina` consome um design system de `marca/design-systems/` na Etapa 3 (construção).
   O processo, a copy e a conversão continuam sendo donos do `/pagina`.
-- A biblioteca da agência vive em `marca/design-systems/` (no clone do cliente) e os
-  design systems genéricos reutilizáveis no template, em `marca/design-systems/` do
-  ImpulsoX-OS — cada projeto enriquece o acervo.
+- A biblioteca da agência vive em `marca/design-systems/` (no clone) e os DS genéricos
+  reutilizáveis no template — cada projeto enriquece o acervo.
 
 ## Degrau mínimo (Escada de Contexto)
 
@@ -83,6 +96,31 @@ usuário). Degradar calado é proibido: o usuário tem que saber que entrou no c
   entram em `marca/tokens.css` (formato do `/identidade` é a autoridade).
 - Handoff pro `/pagina`: anexar o DS via `prompts/site-builder.md` — o DS é lei
   absoluta de cor, tipo, espaçamento, animação e interação.
+
+## Uso 2 — Elevar o design do Open Design (camada premium) ⭐
+
+Quando o Open Design já entregou o design base (estático), esta skill aplica a camada de
+movimento por cima. Fluxo:
+
+1. **Receber o design base** — o HTML/specimen que o Open Design gerou (ou a página que o
+   `/pagina` construiu na marca). Esse design é a estrutura a respeitar: cor, tipo, layout e
+   hierarquia já estão certos e **não mudam** — a marca é lei.
+2. **Capturar o DNA de MOVIMENTO de referências premiadas** (Awwwards/Godly) — Fase 1+2 acima,
+   mas extraindo o que importa aqui: **animações de entrada, scroll-triggered, hover/micro-
+   interações, easing (cubic-bezier), parallax, reveal, transições de estado.** O acervo de
+   movimento entra em `marca/design-systems/` como qualquer DS.
+3. **Aplicar sobre o design base** — adicionar as animações/efeitos SEM alterar a identidade:
+   - entrada suave dos elementos no scroll (IntersectionObserver)
+   - hover states e micro-interações nos botões/cards
+   - easing de referência real (não o `ease` default)
+   - efeitos de profundidade/reveal onde o design pede
+   - **respeitar `prefers-reduced-motion`** sempre (acessibilidade, regra do CLAUDE.md)
+4. **Verificação visual** (Playwright 390/768/1440px) + aprovação do usuário vendo o antes
+   (Open Design estático) × depois (elevado). O movimento serve a marca; nunca a atropela.
+
+Régua: o efeito vem de **referência real testada**, nunca inventado — é o que separa
+animação premium de animação genérica. Movimento com propósito (guia o olho, dá vida), não
+enfeite. Página carregada de efeito sem função cansa e derruba performance (Core Web Vitals).
 
 ## Gates de qualidade
 

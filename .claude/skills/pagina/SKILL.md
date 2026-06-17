@@ -100,6 +100,22 @@ em quadradinho sobre cada título, sem Inter/Roboto como escolha nova. A página
 ter UM elemento memorável — um detalhe tipográfico, uma cor usada com coragem, um
 layout de abertura que não está em todo template.
 
+## Etapa 3.5 — Camada premium (efeitos e animação) ⭐
+
+A página construída está na marca, bonita, mas pode estar **estática** — especialmente se a
+base veio do Open Design (ótimo em compor, fraco em movimento). Aqui o `/premium-design`
+entra no **Uso 2 (elevar)**: pega a página pronta e aplica a camada de movimento nível
+agência — animações de entrada no scroll, hover/micro-interações, easing de **referência
+premiada real** (não o `ease` default), reveal/profundidade onde o layout pede.
+
+- Rodar `/premium-design` apontando a página construída como o "design base a elevar".
+- O movimento vem de **DNA de sites premiados** (Awwwards/Godly), nunca inventado — é o que
+  separa animação premium de genérica.
+- Movimento serve a marca e tem propósito (guia o olho, dá vida); nunca atropela a
+  identidade nem afoga a página em efeito. `prefers-reduced-motion` sempre respeitado.
+- Pular esta etapa quando a página é simples/institucional e o cliente não quer movimento —
+  é refino, não obrigação. Mas pro produto de R$ 5.000, é o que justifica o preço.
+
 ## Etapa 4 — Verificação visual (obrigatória)
 
 Abrir a página real (Playwright) e capturar screenshot em **390px, 768px e 1440px**.
