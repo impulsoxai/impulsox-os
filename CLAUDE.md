@@ -123,9 +123,14 @@ O dono não precisa decorar qual skill chamar nem em que ordem — **o sistema g
 regras, todas valendo pra qualquer skill:
 
 1. **Ao terminar uma skill, apontar o próximo passo.** Fechar com "✓ pronto: [o que foi
-   feito] · → próximo passo natural: `/<skill>` — [por quê]". A ordem das esteiras está em
-   `docs/mapa-de-skills.md` (venda, identidade, página premium, conteúdo, YouTube, ads) — é a
-   fonte da sequência; consultar ali qual vem depois.
+   feito] · → próximo passo natural: `/<skill>` — [por quê]". A ordem está em
+   `docs/mapa-de-skills.md`. **Há um FLUXO PRINCIPAL e os OPCIONAIS** (ver o mapa):
+   - **Principal** (todo cliente): DESIGN/identidade → página → CONTEÚDO automático (radar →
+     calendário → post/linkedin → revisar → publicar → desempenho). O guia conduz por aqui.
+   - **Opcionais** (só quando o dono pede): YouTube (⚠️ em teste — não oferecer a cliente como
+     pronto até validar), Google Ads, Meta Ads, ChatGPT Ads, produto/lançamento. O guia
+     menciona uma vez ("se quiser ads/YouTube, é só pedir") mas **NUNCA empurra** como próximo
+     passo automático — o opcional entra quando há contrato pra aquilo.
 2. **Sempre perguntar antes de seguir.** Sugerir o próximo e **esperar o "sim"** — nunca
    encadear pra próxima skill sozinho. O dono está no controle de cada passo. (Dentro de uma
    mesma skill, executar as etapas dela; o gate de confirmação é na PASSAGEM entre skills.)

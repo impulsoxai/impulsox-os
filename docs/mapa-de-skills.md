@@ -125,6 +125,31 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
 
 ---
 
+## Fluxo PRINCIPAL × OPCIONAIS (o que o sistema guia por padrão)
+
+Nem toda esteira entra no fluxo padrão. O sistema guia **todo cliente** pelo essencial e só
+oferece os add-ons quando o dono pede.
+
+```
+FLUXO PRINCIPAL (o guia conduz por aqui, em ordem):
+   1. DESIGN/IDENTIDADE → identidade (marca) → página premium    [a base de tudo]
+   2. CONTEÚDO AUTOMÁTICO → radar → calendário → post · linkedin → revisar → publicar → desempenho
+      (Instagram, Facebook, LinkedIn — a presença que roda sempre)
+
+OPCIONAIS (o guia NÃO empurra; só entram quando o dono pede explicitamente):
+   • YouTube  ⚠️ EM TESTE/BETA — funciona, mas não oferecer a cliente como serviço pronto
+              até a Vivian validar (tema-yt → roteiro → editar → shorts → upload → desempenho-yt)
+   • Google Ads     (ads-google → analisar-ads)
+   • Meta/FB Ads    (ads-meta → analisar-ads)
+   • ChatGPT Ads    (impulsox-chatgpt-ads)
+   • Produto/lançamento (criar-ebook, lancar-produto, email)
+```
+
+Regra do guia: ao terminar uma skill do **fluxo principal**, apontar o próximo passo
+principal. Os **opcionais** o guia menciona uma vez ("se o cliente quiser ads/YouTube, é só
+pedir") mas nunca empurra como próximo passo automático. O dono ativa o opcional quando há
+contrato pra aquilo.
+
 ## Tabela de fluxo guiado (o sistema usa pra apontar o próximo passo)
 
 > Cada skill, ao terminar, sugere o **próximo** daqui e pergunta se quer seguir (regra no
