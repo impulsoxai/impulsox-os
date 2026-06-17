@@ -422,11 +422,11 @@ function videosDoCanal(channelId, limite = 8) {
   } catch { console.error(`AVISO: não consegui os vídeos do canal ${channelId}.`); return []; }
 }
 
-// Busca no YouTube por termo: N vídeos recentes de qualquer canal (ytsearchdate).
+// Busca no YouTube por termo: N vídeos de qualquer canal (ytsearch — relevância do YouTube).
 function buscarPorTermo(termo, limite = 8) {
   try {
     const out = execFileSync(YTDLP, ["--flat-playlist", "--no-warnings",
-      "--print", "%(id)s|%(title)s|%(view_count)s", `ytsearchdate${limite}:${termo}`], { encoding: "utf8" });
+      "--print", "%(id)s|%(title)s|%(view_count)s", `ytsearch${limite}:${termo}`], { encoding: "utf8" });
     return out.trim().split("\n").filter(Boolean).map((l) => {
       const [id, titulo, views] = l.split("|");
       return { id, titulo, views: Number(views) || 0 };
