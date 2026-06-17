@@ -44,8 +44,16 @@ Padrão para serviço local / PME (ajustar ao caso):
 - **1 campanha de Pesquisa** por linha de oferta (não misturar serviços distintos)
 - **2-4 grupos de anúncio** por campanha, um por intenção de busca (ex: "preço/orçamento",
   "urgência", "comparação", "marca")
-- **Palavras-chave:** 8-20 por grupo, correspondência de frase como base; exata para os
-  termos de maior intenção. Sem ampla solta no início.
+- **Palavras-chave e lance — em duas fases (honesto pra conta nova):**
+  - **Fase 1 (sem histórico de conversão):** frase como base + exata nos termos de maior
+    intenção. Lance: Maximizar cliques com teto de CPC. Sem ampla solta ainda — o Smart
+    Bidding precisa de dados pra funcionar, e conta nova não tem.
+  - **Fase 2 (após ~15-30 conversões rastreadas):** migrar pra **ampla (broad match) +
+    Smart Bidding** (Maximizar conversões / Target CPA). Pesquisa 2026: ampla + Smart
+    Bidding é hoje o setup mais escalável da Pesquisa (+~10% vs frase), porque captura
+    intenção que não casa literal com a palavra. Exige conversão rastreada de qualidade.
+  - Deixar isso explícito no plano: a conta começa controlada e migra pro automático
+    quando tem dado — não jogar broad+Smart Bidding numa conta cega.
 - **Negativas desde o dia 1:** lista por padrão (grátis, vaga, emprego, curso, "como
   fazer sozinho", concorrentes que não interessam) + as do nicho.
 - **Anúncios:** 2 por grupo, responsivos — 10+ títulos (30 chars) e 4 descrições

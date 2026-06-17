@@ -5,7 +5,7 @@ description: >
   IA — "/seo", "otimiza essa página", "por que não apareço no Google?", "deixa o site
   achável", "Schema da página", "SEO da landing", ou logo depois do /pagina antes de
   publicar. Faz auditoria on-page + os blocos GEO da página (Schema JSON-LD, answer-first,
-  FAQ, robots pra GPTBot/CCBot) e entrega o relatório com nota mais os blocos prontos pra
+  FAQ, robots pra GPTBot/ClaudeBot/CCBot, llms.txt) e entrega o relatório com nota mais os blocos prontos pra
   colar. Serve pra página do /pagina, site externo por URL, ou artigo do /conteudo.
   (Medir se as IAs CITAM a empresa de verdade e o monitoramento mensal é o `/geo`.)
 ---
@@ -89,8 +89,10 @@ no nicho e o loop mensal é o `/geo`; aqui é a execução estrutural numa pági
   refletindo o conteúdo real.
 - **Dado citável.** Número, prazo e fato específico (com fonte) são o que a IA prefere
   citar — vago não vira citação. Puxar do `nucleo/provas.md` quando houver prova autorizada.
-- **Acesso pra crawler de IA.** `robots.txt` liberando `GPTBot`, `CCBot`, `Google-Extended`,
-  `PerplexityBot`. Opcional: `llms.txt` na raiz resumindo o que o site oferece pra LLM.
+- **Acesso pra crawler de IA.** `robots.txt` liberando `GPTBot` (OpenAI), `ClaudeBot`
+  (Anthropic), `CCBot` (Common Crawl), `Google-Extended` (Gemini) e `PerplexityBot`.
+  Recomendado: `llms.txt` na raiz — índice curado do conteúdo mais importante pra LLM
+  (prática crescente 2026; LLM em RAG puxa daí pra citar).
 - **Meta description como resposta.** Reforço da Fase 2: escrita pra ser lida em voz alta
   como a resposta à pergunta da página.
 

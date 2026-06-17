@@ -56,9 +56,23 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
 5. **Investimento** — 2-3 opções nomeadas pelo resultado, não por "bronze/prata/ouro".
    A do meio é a recomendada (ancoragem: a de cima dá referência, a de baixo dá porta
    de entrada). Preço por extenso, sem asterisco escondido.
-6. **Próximo passo único** — uma ação, clara: "responde este e-mail / chama no WhatsApp
+6. **Plano de ação mútuo** — não só o que a agência faz; o que o CLIENTE faz e quando
+   (material, aprovação, acesso) numa pequena tabela de datas/responsáveis. Pesquisa B2B
+   2026: as propostas que mais fecham trazem plano de ação mútuo, não só preço — ele
+   constrói consenso e tira o "vou pensar". Cada linha: o quê · quem · quando.
+7. **Próximo passo único** — uma ação, clara: "responde este e-mail / chama no WhatsApp
    até [validade] que agendamos o início". Validade real, destacada uma vez, sem
    contagem regressiva teatral.
+
+### Blindar contra as 5 razões de perda (pesquisa de 23 mil propostas)
+
+Estruturar a proposta já antecipando por que deals morrem — e desarmando os 3 maiores:
+- **Orçamento/timing (31%)** → ter sempre uma **opção de entrada** acessível (a de baixo da
+  ancoragem) e um começo rápido possível "este mês".
+- **Escolheu concorrente (28%)** → o bloco "por que a gente" + o mecanismo único (o *como*
+  que o concorrente não tem), não disputa de preço.
+- **Sem decisão (22%)** → o plano de ação mútuo + próximo passo com data combatem a inércia;
+  é a maior causa silenciosa. Tornar o "sim" o caminho mais fácil que o "deixa pra depois".
 
 ## Produção
 
