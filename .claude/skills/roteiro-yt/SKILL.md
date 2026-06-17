@@ -89,13 +89,21 @@ Nesta ordem — **o corpo vem antes do hook**:
    - **Open loops no meio (não só no hook):** abrir um loop ("daqui a pouco mostro o erro
      que quase derrubou tudo") e fechá-lo blocos depois. Tease um passo, entrega adiante —
      o efeito Zeigarnik segura quem ia sair. Marcar `[LOOP-ABRE: ...]` e `[LOOP-FECHA: ...]`.
+   - **Reforço no ponto médio (~50%):** o SEGUNDO maior drop de audiência é no meio do
+     vídeo, não só nos 30s. No ~50% marcar uma virada deliberada — mudar de narração pra
+     demonstração, entrar um exemplo/caso, ou uma pergunta direta ao espectador. Anotar
+     `[MEIO-50%: o que muda]`. É onde o vídeo perde quem estava "quase saindo".
+   - **CTA de engajamento no meio (não só no fim):** um pedido leve ou retention-hook no
+     miolo ("daqui a pouco o número que muda tudo" / "comenta aí qual você usaria"). Marcar
+     `[CTA-MEIO: ...]`. Mantém o engajamento sem soar forçado.
 3. **Payoff:** a entrega da promessa do pacote (Passo 2). O que o título prometeu, aqui
    se cumpre — explicitamente.
-4. **CTA:** um pedido só (inscrever, comentar, ou próximo vídeo da série) — nunca
-   acumular CTA.
+4. **CTA final + end screen:** um pedido principal só (inscrever / próximo vídeo da série) —
+   nunca acumular. Nos **últimos ~20s**, marcar `[END-SCREEN: próximo vídeo + inscrever]` —
+   é onde o YouTube encaixa os cards de fim que puxam pra mais um vídeo (segura a sessão).
 
 Timestamp sugerido em cada bloco (ex: `[02:30]`), calculado pelo tamanho do texto a ~150
-palavras/minuto de fala.
+palavras/minuto de fala. Esses timestamps viram os **Chapters** da descrição (ver Saída).
 
 ## Passo 5 — Escrever a abertura (por último): hook + commitment hook
 
@@ -124,8 +132,16 @@ obrigatório.
 ## Passo 7 — Short standalone (quando não há long-form pra cortar)
 
 Estrutura invertida: começa pelo **payoff/lição** no segundo 0-1 (não pela configuração).
-Uma promessa só. 30-60s. Sem "e aí galera", sem slow build. Termina com a mesma lição
-reforçada ou um gancho pro canal (loop de re-watch quando couber).
+Uma promessa só. 15-30s (curto retém mais; máx 60s). Sem "e aí galera", sem slow build.
+
+Regras de short que a pesquisa 2026 prova decisivas:
+- **Primeiros 1-3s decidem tudo** (swipe ou fica). Abrir com MOVIMENTO/mudança visual, não
+  tela estática — e **texto grande no 1º frame** (`[1º-FRAME: <≤4 palavras de impacto>]`),
+  pra prender quem assiste sem som.
+- **Loop:** o fim conecta de volta no começo (a última frase puxa a primeira), pra o short
+  reiniciar sem corte perceptível — replay aumenta a distribuição. Marcar `[LOOP-RE-WATCH:
+  como o fim emenda no início]`.
+- Uma lacuna de curiosidade aberta no 1º segundo, fechada no fim.
 
 ## Passo 8 — Refinar o pacote (título + thumbnail) com o corpo pronto
 
@@ -187,22 +203,39 @@ Salvar em `canal-youtube/roteiros/longa/<slug>.md` (ou `.../shorts/<slug>.md`):
 [CORTE-SHORT: 04:12-04:48 — a frase mais forte]
 [LOOP-FECHA: aqui está o erro]
 ...
+[MEIO-50%: vira pra demonstração]
+[CTA-MEIO: comenta qual você usaria]
 [payoff — cumpre a promessa do pacote]
 [CTA — um só]
+[END-SCREEN: próximo vídeo + inscrever]
 
-## Descrição (SEO YouTube)
-<descrição otimizada, primeiras 2 linhas valem mais — aparecem antes do "mostrar mais">
+## Descrição (SEO YouTube) — 3 blocos, ~250 palavras
+<Bloco 1 — gancho nos primeiros ~150 caracteres (aparece antes do "mostrar mais"):
+ reescreve a promessa do vídeo com a palavra-chave principal logo no começo.>
+
+<Bloco 2 — Chapters (capítulos). Vira "Key Moments" na busca do Google e +~11% de retenção.
+ Regras: 1º timestamp É 00:00, mínimo 3 capítulos, em ordem. Derivados dos timestamps do roteiro:>
+00:00 <gancho/intro>
+00:30 <primeiro ponto>
+0X:XX <...>
+
+<Bloco 3 — links + hashtags: link do canal/oferta + 3 a 5 hashtags relevantes (mais que isso
+ o YouTube classifica como spam).>
+#claudecode #ia #<terceira>
 
 ## Tags
-tag1, tag2, tag3...
+8 a 12 tags relevantes (mistura de amplas e de nicho). YouTube hoje pune tag que não bate com
+o conteúdo — nada de encher com termo irrelevante.
+tag1, tag2, ... (8-12)
 ```
 
-## Iteração de pacote (amarra na Fase 3 — /desempenho)
+## Iteração de pacote (amarra no /desempenho-yt)
 
 Quando o canal tiver dados: CTR abaixo de ~4% nas primeiras 48h = o público não respondeu
 ao pacote — repacote (novo título e/ou thumbnail), não mexer no vídeo. Os 3 títulos servem
-pra teste A/B. Padrão de pacote que funcionou vai pro `nucleo/aprendizados.md` e pesa no
-próximo roteiro. (Enquanto a Fase 3 não existe, registrar o palpite; medir depois.)
+pra teste A/B. O `/desempenho-yt` mede a RETENÇÃO (sinal #1) contra o benchmark da faixa e
+marca a fórmula como validada/não funciona no `formulas-video.md`; padrão que funcionou vai
+pro `nucleo/aprendizados.md` e ganha prioridade no próximo roteiro.
 
 ## Regras
 
@@ -218,3 +251,9 @@ próximo roteiro. (Enquanto a Fase 3 não existe, registrar o palpite; medir dep
   escrita, registros diferentes.
 - Sem long-form pra cortar, short standalone segue a estrutura invertida (Passo 7) — não
   é "long-form encurtado".
+- **Retenção tem dois pontos críticos:** os 30s iniciais E o meio (~50%). Marcar reforço nos
+  dois, não só na abertura.
+- **SEO não é opcional:** todo long-form sai com Chapters (00:00, mín 3 — viram Key Moments no
+  Google), descrição em 3 blocos, 3-5 hashtags e 8-12 tags relevantes. É distribuição grátis.
+- Short vive ou morre nos **primeiros 1-3s** + **loop** — texto no 1º frame, fim que emenda no
+  início.

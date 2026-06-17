@@ -104,9 +104,12 @@ Erro de API: reportar a resposta exata (sem o token).
 (Data API v3): `node scripts/publicar-youtube.mjs --slug <nome> --titulo "..." --descricao
 "..." --tags "a,b" [--thumb capa.png]`. Dry-run por padrão; `--confirmar` sobe. Short é
 detectado (vertical + ≤180s) e ganha `#Shorts`. Metadados vêm do roteiro — **sempre confirmar
-antes**. Com OAuth (`YT_CLIENT_ID`/`YT_CLIENT_SECRET`/`YT_REFRESH_TOKEN` no `.env`) sobe
-sozinho; sem credencial, gera `metadados.txt` pro Studio (assistido). Sobe **privado** — a
-publicação final é decisão do dono no Studio. Tokens nunca aparecem em log.
+antes**. A `--descricao` deve carregar a descrição completa do roteiro: gancho nos primeiros
+~150 caracteres + **Chapters** (00:00 + mín 3 — viram Key Moments na busca do Google, +retenção)
++ 3-5 hashtags; `--tags` com 8-12 tags relevantes. Não subir vídeo >5min sem chapters — é
+ranking grátis jogado fora. Com OAuth (`YT_CLIENT_ID`/`YT_CLIENT_SECRET`/`YT_REFRESH_TOKEN` no
+`.env`) sobe sozinho; sem credencial, gera `metadados.txt` pro Studio (assistido). Sobe
+**privado** — a publicação final é decisão do dono no Studio. Tokens nunca aparecem em log.
 
 **Guia OAuth (1ª vez):** criar `producao/guia-youtube-oauth.md` com: projeto no Google Cloud
 → ativar *YouTube Data API v3* → tela de consentimento (modo Testing serve) → criar credencial

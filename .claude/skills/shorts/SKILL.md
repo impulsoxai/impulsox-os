@@ -29,16 +29,23 @@ Autoria: ImpulsoX AI. Conteúdo original.
    - Sem marcador? → **ler `palavras.json`**, identificar os trechos fortes (hook/punch/
      número, fórmula em `canal-youtube/formulas-video.md`), propor ao dono pra aprovar, e
      montar o `--cortes "ini-fim,..."`.
-2. **Escolher o reenquadre** conforme o conteúdo: `--reenquadre crop` (talking-head/tela
+2. **Escolher o trecho certo (pesquisa 2026):** o short decide nos **primeiros 1-3s**.
+   Priorizar cortes cujo começo já tem MOVIMENTO/punch (não fala morna de transição) —
+   começar na frase de impacto, não na preparação. Cada short = uma lacuna só, ≤30s.
+3. **Escolher o reenquadre** conforme o conteúdo: `--reenquadre crop` (talking-head/tela
    centralizada, default) ou `split` (screen-recording, vídeo no topo + legenda embaixo).
-3. **Dry-run primeiro** — mostrar quantos shorts, tempos e duração. Com OK, `--confirmar`.
-4. **Apontar os shorts** em `canal-youtube/edicao/<slug>/shorts/` e sugerir `/publicar`
-   (que já detecta short e sobe privado).
+4. **Dry-run primeiro** — mostrar quantos shorts, tempos e duração. Com OK, `--confirmar`.
+5. **Apontar os shorts** em `canal-youtube/edicao/<slug>/shorts/` e sugerir `/publicar`
+   (que já detecta short e sobe privado). Na publicação, o short ganha 3-5 hashtags + `#Shorts`
+   (o `/publicar` já põe `#Shorts`).
 
 ## Regras
 
 - Cada short ≤30s (curto força clareza — padrão dos canais que retêm).
+- O corte tem que **prender nos primeiros 1-3s** — começar no punch, não na preparação.
 - Legenda reusa a transcrição do longo (não transcreve de novo).
 - Modo análise (sem marcador): a IA propõe, o dono aprova — nunca corta sem aval.
 - Short é o próprio frame com legenda — sem capa composta (isso é vídeo longo).
 - Falha de um short não derruba os outros.
+- Cadência que escala (pesquisa + Sabrina/Jonathan): 3-5 shorts/semana. Cortar vários de um
+  longo de uma vez alimenta essa cadência.
