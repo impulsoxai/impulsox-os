@@ -92,8 +92,18 @@ e composição renderizam em tempo real e o usuário ajusta conversando — bem 
 estático. Esta é a **exceção criadora** à regra "nunca impor marca": aqui não existe marca
 ainda, então o Open Design ajuda a CRIAR junto com o usuário. O resultado é sempre destilado
 pra `marca/design-guide.md` + `marca/tokens.css` + `marca/logo/` — a fonte de verdade é o
-núcleo da marca, não o projeto do Open Design. Daemon desligado ou indisponível → seguir com
-as 3 direções + specimen abaixo, sem travar.
+núcleo da marca, não o projeto do Open Design.
+
+**Garantir o daemon antes de usar (a skill cuida, o usuário não pensa nisso):** antes do
+primeiro comando ao Open Design, testar se ele responde (`list_projects`). Se cair com
+"cannot reach the daemon at :7456", subir o daemon e esperar ~20s:
+```
+cd C:/Users/ACER/tools/open-design && pnpm tools-dev restart --daemon-port 7456 --web-port 5174
+```
+(Gotcha do Windows: `tools-dev` sozinho usa porta dinâmica; SEMPRE forçar `--daemon-port 7456`,
+que é onde o MCP procura. O caminho do install pode variar por máquina — confirmar com `list_projects`
+de novo após subir.) Daemon não subiu ou indisponível → seguir com as 3 direções + specimen
+estático abaixo, sem travar. O Open Design é o canvas ideal, não um pré-requisito.
 
 ### 1. Coletar contexto e referências
 Ler `nucleo/negocio.md`, `nucleo/voz.md` e `nucleo/perfil.md` (quem é, como fala, que tipo
