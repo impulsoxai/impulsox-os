@@ -32,11 +32,18 @@ Autoria: ImpulsoX AI. Conteúdo original.
 3. **Long-form ou short?** Se não foi dito, perguntar — muda a estrutura inteira (ver
    abaixo).
 
-## Passo 1 — Ler os moldes
+## Passo 1 — Ler os moldes (fórmula de quem já faz sucesso vem primeiro)
 
-Ler `docs/formulas.md` filtrando entradas com Rede=YouTube. Priorizar **validada aqui**;
-sem nenhuma validada, usar **a testar**. Não pesquisar de novo — se não houver molde
-nenhum de YouTube, avisar e sugerir rodar `/formulas` (Modo 2) antes.
+Ordem de leitura:
+1. **`canal-youtube/formulas-video.md`** (se existir no clone) — fórmulas dissecadas de
+   vídeos REAIS de maior view no nicho (ex.: Sabrina Ramonov, 1.4M seguidores). É a régua:
+   copiar o MOLDE (hook, estrutura, título), nunca o conteúdo. A própria Sabrina ensina:
+   "replique os primeiros 15s de um vídeo do nicho com +1M views — esse é seu hook."
+2. `docs/formulas.md` filtrando Rede=YouTube — moldes gerais. Priorizar **validada aqui**;
+   sem validada, usar **a testar**.
+
+Não inventar estilo do zero (conduta do CLAUDE.md). Sem nenhum molde de vídeo, avisar e
+sugerir rodar `/formulas` (Modo 2) ou dissecar um canal de sucesso antes.
 
 ## Passo 2 — Pacote primeiro-rascunho (a PROMESSA antes do roteiro)
 
