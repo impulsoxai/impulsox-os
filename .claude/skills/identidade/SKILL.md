@@ -5,7 +5,9 @@ description: >
   consistentes — quando o usuário disser "/identidade", "criar a marca", "identidade
   visual", "definir cores e fontes", "fazer um logo", ou logo após o `/plugar`. Funciona
   com marca existente (extrai e documenta) ou sem marca nenhuma (cria do zero, inclusive
-  o logo). Aceita prints de sites de referência quando a empresa só tem o logo ou nada.
+  o logo). Aceita prints de referência; quando o cliente não tem nenhuma, MOSTRA um mood
+  board de sites premiados do nicho e pede pra escolher 3 — direção sai da escolha, não da
+  imaginação da IA.
 ---
 
 # /identidade — Marca da empresa para o sistema inteiro
@@ -69,15 +71,25 @@ as 3 direções + specimen abaixo, sem travar.
 Ler `nucleo/negocio.md`, `nucleo/voz.md` e `nucleo/perfil.md` (quem é, como fala, que tipo
 de negócio). O perfil orienta o clima visual: criador pede personalidade e cara própria;
 profissional liberal pede sobriedade que passa confiança; PME local pede clareza e calor.
-Depois pedir referências — **é o que mais eleva a qualidade**:
+Depois, conseguir direção visual — **é o que mais eleva a qualidade**. Dois caminhos, nesta
+ordem (o cliente quase nunca sabe verbalizar "que cor/fonte" — a pesquisa de branding é
+clara: escolha de imagem dá direção muito mais acionável que descrição abstrata):
 
-> "Pra eu criar algo com a sua cara e não genérico: me manda prints de **2 ou 3 sites ou
-> marcas que você admira**. Pra cada um, me diz em uma frase o que te agrada — é a cor? a
-> tipografia? o clima? Se você já tem um logo, manda ele também."
+**Caminho A — o cliente JÁ tem referência:**
+> "Me manda prints de **2 ou 3 sites/marcas que você admira**. Pra cada um, uma frase do que
+> te agrada — a cor? a tipografia? o clima? Tem logo? manda também."
 
-Ler as imagens enviadas (prints e logo são lidos diretamente). Extrair padrões: paletas
-recorrentes, contraste, peso tipográfico, densidade, clima. Anotar o que o usuário disse
-gostar em cada referência — isso direciona, não copiar as referências.
+**Caminho B — o cliente NÃO sabe / não tem referência (o caso mais comum) → MOOD BOARD DE ESCOLHA:**
+Não pedir que ele traga nada. **O sistema mostra, ele escolhe.** A `/premium-design` captura
+6-9 aberturas de sites premiados relevantes ao nicho/perfil (Awwwards, Godly, Landbook);
+montar uma **grade visual** (HTML→imagem, ou os prints lado a lado) e pedir:
+> "Não precisa saber de design. Olha estas referências e me diz: **quais 3 parecem a SUA
+> marca?** E tem alguma que é a cara do que você NÃO quer? É só apontar — eu cuido do resto."
+
+A escolha (e a rejeição) é a direção: as 3 escolhidas viram o briefing visual que a
+`/premium-design` recombina nas 3 direções. Anotar o porquê de cada escolha quando o cliente
+disser — mas a escolha sozinha já dirige. Ler as imagens enviadas/escolhidas diretamente;
+extrair paletas, contraste, peso tipográfico, densidade, clima. Direciona, não copia.
 
 ### 2. Propor 3 direções
 **As direções nascem de DNA real, não da imaginação da IA.** Se o usuário topar trazer
@@ -88,9 +100,11 @@ o que o usuário disse gostar em cada referência). As **três direções** vira
 recombinações distintas do mesmo acervo — cada uma herda peso diferente das referências.
 O passo a passo é dela; aqui só se consome o resultado, que já chega pronto pra virar guia.
 
-Fallback (só se o usuário não quiser trazer referência): propor as três direções da
-imaginação, como abaixo — e **marcar no resultado** que a marca saiu "sem DNA real",
-sugerindo rodar a `/premium-design` depois pra elevar a partir de referências de verdade.
+Fallback (raro — só se o cliente não trouxer referência E não escolher nada do mood board):
+propor as três direções da imaginação, como abaixo — e **marcar no resultado** que a marca
+saiu "sem DNA real", sugerindo o mood board de escolha ou `/premium-design` depois pra elevar
+a partir de referência de verdade. Esse é o pior caminho (genérico mora aqui) — usar o mood
+board de escolha primeiro evita cair nele.
 
 Apresentar **três** direções de marca distintas, cada uma com:
 - Um conceito em uma frase (o sentimento que ela passa)
