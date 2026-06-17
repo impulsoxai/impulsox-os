@@ -11,7 +11,7 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
-import { argsThumbnailFrameTexto } from "./lib-edicao.mjs";
+import { argsThumbnailFrameTexto, argsThumbnailComposta } from "./lib-edicao.mjs";
 
 const FFMPEG = process.env.FFMPEG_BIN || "ffmpeg";
 
@@ -39,13 +39,19 @@ if (import.meta.main) {
 
   const slug = flag("--slug");
   const texto = flag("--texto");
-  const fonte = flag("--fonte") || join("marca", "fontes", "display.ttf");
+  // impact.ttf é a fonte clássica de thumbnail (alto impacto). Marca pode sobrescrever.
+  const fonte = flag("--fonte") || "C:/Windows/Fonts/impact.ttf";
+  const faixaCor = flag("--faixa-cor") || "0xE10600";
+  const simples = has("--simples"); // layout antigo (texto sobre frame inteiro)
   if (!slug) falhar("informe --slug <nome>.");
 
   const base = join("canal-youtube", "edicao", slug);
   mkdirSync(base, { recursive: true });
 
-  // 1) versão frame+texto (sempre), se houver texto e um frame/vídeo de origem
+  // 1) versão frame+texto (sempre), se houver texto e um frame/vídeo de origem.
+  // Default: layout COMPOSTO 16:9 (faixa de cor + texto à esquerda, frame à direita) —
+  // resolve vídeo vertical 9:16 que não vira capa horizontal por crop cego. `--simples`
+  // usa o layout antigo (texto sobre o frame inteiro).
   const frameArg = flag("--frame");
   const video = flag("--video");
   if (texto && (frameArg || video)) {
@@ -56,8 +62,11 @@ if (import.meta.main) {
       execFileSync(FFMPEG, argsExtrairFrame(video, seg, frame), { stdio: "ignore" });
     }
     const saidaFrame = join(base, "thumb-frame.png");
-    execFileSync(FFMPEG, argsThumbnailFrameTexto({ frame, texto, fonte, saida: saidaFrame }), { stdio: "ignore" });
-    console.log(`thumb frame+texto: ${saidaFrame}`);
+    const argsThumb = simples
+      ? argsThumbnailFrameTexto({ frame, texto, fonte, saida: saidaFrame })
+      : argsThumbnailComposta({ frame, texto, fonte, faixaCor, saida: saidaFrame });
+    execFileSync(FFMPEG, argsThumb, { stdio: "ignore" });
+    console.log(`thumb gerada: ${saidaFrame}`);
   }
 
   // 2) alternativa Fal (preview por padrão; gera só com --confirmar)

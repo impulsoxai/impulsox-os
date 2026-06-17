@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {
   parseSilencedetect, segmentosManter, filtroCorteConcat, planoCorte,
   montarSRT, montarASS, filtroLegenda, filtroLegendaAss, filtroLoudnorm,
-  argsThumbnailFrameTexto, lerGlossario, corrigirTermos,
+  argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -162,6 +162,21 @@ test("filtroLoudnorm aplica o alvo do YouTube (-14 LUFS) por padrão", () => {
 test("filtroLegenda escapa o caminho do .srt no padrão Windows e aplica estilo", () => {
   const f = filtroLegenda({ srtCaminho: "C:\\v\\legenda.srt", tamanho: 48, contorno: 3 });
   assert.equal(f, "subtitles='C\\:/v/legenda.srt':force_style='Fontsize=48,Outline=3'");
+});
+
+test("argsThumbnailComposta gera fundo lavfi + faixa de cor + frame na metade direita", () => {
+  const a = argsThumbnailComposta({
+    frame: "f.png", texto: "REEL EM 15 SEGUNDOS", fonte: "C:\\f\\impact.ttf",
+    faixaCor: "0xE10600", largura: 1280, altura: 720, saida: "t.png",
+  });
+  assert.equal(a[0], "-y");
+  assert.deepEqual(a.slice(1, 5), ["-f", "lavfi", "-i", "color=c=black:s=1280x720"]);
+  assert.deepEqual(a.slice(5, 7), ["-i", "f.png"]);
+  const vf = a[a.indexOf("-filter_complex") + 1];
+  assert.match(vf, /drawbox=x=0:y=0:w=1280:h=720:color=0xE10600:t=fill/);
+  assert.match(vf, /\[1:v\]scale=640:720:force_original_aspect_ratio=decrease\[dir\]/);
+  assert.match(vf, /\[bg\]\[dir\]overlay=640\+\(640-overlay_w\)\/2:\(720-overlay_h\)\/2$/);
+  assert.deepEqual(a.slice(-3), ["-frames:v", "1", "t.png"]);
 });
 
 test("argsThumbnailFrameTexto monta drawtext com contorno e escapa fonte/texto", () => {

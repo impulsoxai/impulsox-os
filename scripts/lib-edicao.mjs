@@ -189,6 +189,35 @@ export function filtroLoudnorm({ alvoLufs = -14, truePeak = -1.5, lra = 11 } = {
   return `loudnorm=I=${alvoLufs}:TP=${truePeak}:LRA=${lra}`;
 }
 
+// Args do ffmpeg pra thumbnail COMPOSTA 16:9 (1280x720): frame (vertical ou não) ocupa a
+// metade direita sem distorcer (scale+crop na coluna), faixa de cor da marca cobre a
+// esquerda, texto grande quebrado em linhas na faixa. Resolve vídeo 9:16 que não vira capa
+// horizontal por crop cego. `texto` com "\n" já quebrado, ou quebra automática por palavra.
+export function argsThumbnailComposta({ frame, texto, fonte, cor = "white", contorno = "black", faixaCor = "0xE10600", largura = 1280, altura = 720, saida }) {
+  const metade = Math.round(largura / 2);
+  // texto: até 3 palavras por linha pra caber na faixa
+  const palavras = texto.split(/\s+/);
+  const linhas = [];
+  for (let i = 0; i < palavras.length; i += 2) linhas.push(palavras.slice(i, i + 2).join(" "));
+  const desenhos = linhas.map((linha, i) => {
+    const txt = linha.replace(/:/g, "\\:").replace(/'/g, "\\'");
+    const y = `(h-text_h)/2 + ${(i - (linhas.length - 1) / 2)}*120`;
+    return `drawtext=fontfile='${escFiltro(fonte)}':text='${txt}':fontcolor=${cor}:` +
+      `fontsize=92:borderw=7:bordercolor=${contorno}:x=(${metade}-text_w)/2:y=${y}`;
+  }).join(",");
+  // o frame entra INTEIRO (sem cortar o rosto): escala pra caber na coluna direita
+  // mantendo proporção (decrease), centralizado. O fundo do canvas todo é a faixa de cor,
+  // então as sobras ao redor do frame ficam na cor da marca, não pretas.
+  const vf =
+    `[0:v]scale=${largura}:${altura},drawbox=x=0:y=0:w=${largura}:h=${altura}:color=${faixaCor}:t=fill,` +
+    `${desenhos}[bg];` +
+    `[1:v]scale=${metade}:${altura}:force_original_aspect_ratio=decrease[dir];` +
+    `[bg][dir]overlay=${metade}+(${metade}-overlay_w)/2:(${altura}-overlay_h)/2`;
+  // 1º input = fundo (cor sólida gerada), 2º = o frame. Gera o fundo via lavfi.
+  return ["-y", "-f", "lavfi", "-i", `color=c=black:s=${largura}x${altura}`, "-i", frame,
+    "-filter_complex", vf, "-frames:v", "1", saida];
+}
+
 // Args do ffmpeg pra queimar ≤5 palavras sobre um frame (capa 1280x720), legível no mobile.
 export function argsThumbnailFrameTexto({ frame, texto, fonte, cor = "white", contorno = "black", largura = 1280, altura = 720, saida }) {
   const txt = texto.replace(/:/g, "\\:").replace(/'/g, "\\'");
