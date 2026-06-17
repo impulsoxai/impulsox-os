@@ -9,7 +9,7 @@
  *        [--fal --conceito "..." [--confirmar]]
  */
 import { execFileSync } from "node:child_process";
-import { mkdirSync } from "node:fs";
+import { mkdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { argsThumbnailFrameTexto, argsThumbnailComposta } from "./lib-edicao.mjs";
 
@@ -39,9 +39,13 @@ if (import.meta.main) {
 
   const slug = flag("--slug");
   const texto = flag("--texto");
-  // impact.ttf é a fonte clássica de thumbnail (alto impacto). Marca pode sobrescrever.
-  const fonte = flag("--fonte") || "C:/Windows/Fonts/impact.ttf";
-  const faixaCor = flag("--faixa-cor") || "0xE10600";
+  // fonte display da marca (Space Grotesk). Default procura no clone; --fonte sobrescreve.
+  // Sem ela, cai pro Bahnschrift (geométrica, fallback Windows mais próximo).
+  const fonteMarca = "marca/fontes/SpaceGrotesk.ttf";
+  const fonte = flag("--fonte") || (existsSync(fonteMarca) ? fonteMarca : "C:/Windows/Fonts/bahnschrift.ttf");
+  // cores da marca (sobrescrevíveis); defaults vivem na própria argsThumbnailComposta.
+  const fundoCor = flag("--fundo-cor");
+  const destaqueCor = flag("--destaque-cor");
   const simples = has("--simples"); // layout antigo (texto sobre frame inteiro)
   if (!slug) falhar("informe --slug <nome>.");
 
@@ -62,9 +66,12 @@ if (import.meta.main) {
       execFileSync(FFMPEG, argsExtrairFrame(video, seg, frame), { stdio: "ignore" });
     }
     const saidaFrame = join(base, "thumb-frame.png");
+    const opcoesComposta = { frame, texto, fonte, saida: saidaFrame };
+    if (fundoCor) opcoesComposta.fundoCor = fundoCor;
+    if (destaqueCor) opcoesComposta.destaqueCor = destaqueCor;
     const argsThumb = simples
       ? argsThumbnailFrameTexto({ frame, texto, fonte, saida: saidaFrame })
-      : argsThumbnailComposta({ frame, texto, fonte, faixaCor, saida: saidaFrame });
+      : argsThumbnailComposta(opcoesComposta);
     execFileSync(FFMPEG, argsThumb, { stdio: "ignore" });
     console.log(`thumb gerada: ${saidaFrame}`);
   }

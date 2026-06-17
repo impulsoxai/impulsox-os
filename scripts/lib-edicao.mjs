@@ -189,31 +189,43 @@ export function filtroLoudnorm({ alvoLufs = -14, truePeak = -1.5, lra = 11 } = {
   return `loudnorm=I=${alvoLufs}:TP=${truePeak}:LRA=${lra}`;
 }
 
-// Args do ffmpeg pra thumbnail COMPOSTA 16:9 (1280x720): frame (vertical ou não) ocupa a
-// metade direita sem distorcer (scale+crop na coluna), faixa de cor da marca cobre a
-// esquerda, texto grande quebrado em linhas na faixa. Resolve vídeo 9:16 que não vira capa
-// horizontal por crop cego. `texto` com "\n" já quebrado, ou quebra automática por palavra.
-export function argsThumbnailComposta({ frame, texto, fonte, cor = "white", contorno = "black", faixaCor = "0xE10600", largura = 1280, altura = 720, saida }) {
+// Args do ffmpeg pra thumbnail COMPOSTA 16:9 (1280x720), calibrada pela pesquisa de CTR +
+// identidade da marca: fundo ESCURO chapado (contraste alto no feed branco/mobile), frame
+// inteiro à direita (sem cortar o rosto), texto no TOPO-ESQUERDA (longe do timestamp do
+// canto inferior-direito) com a ÚLTIMA linha em cor de destaque (palavra-chave). Cores em
+// 0xRRGGBB; defaults = marca ImpulsoX (preto/off-white/dourado). `texto` quebra por palavra.
+export function argsThumbnailComposta({
+  frame, texto, fonte, saida, largura = 1280, altura = 720,
+  fundoCor = "0x06060D",      // preto da marca
+  textoCor = "0xF0EBE0",      // off-white quente
+  destaqueCor = "0xE2C97E",   // dourado claro — última linha (palavra-chave)
+  contorno = "0x06060D",      // contorno = fundo, pra legibilidade sem caixa
+  glowCor = "0x7C3AED",       // roxo da marca — faixa-glow sutil atrás do texto
+} = {}) {
   const metade = Math.round(largura / 2);
-  // texto: até 3 palavras por linha pra caber na faixa
   const palavras = texto.split(/\s+/);
   const linhas = [];
   for (let i = 0; i < palavras.length; i += 2) linhas.push(palavras.slice(i, i + 2).join(" "));
+  const margemX = Math.round(largura * 0.05);
+  const margemTopo = Math.round(altura * 0.18);
+  const passoLinha = 110;
   const desenhos = linhas.map((linha, i) => {
     const txt = linha.replace(/:/g, "\\:").replace(/'/g, "\\'");
-    const y = `(h-text_h)/2 + ${(i - (linhas.length - 1) / 2)}*120`;
-    return `drawtext=fontfile='${escFiltro(fonte)}':text='${txt}':fontcolor=${cor}:` +
-      `fontsize=92:borderw=7:bordercolor=${contorno}:x=(${metade}-text_w)/2:y=${y}`;
+    const ehDestaque = i === linhas.length - 1; // última linha = palavra-chave em dourado
+    const y = margemTopo + i * passoLinha;
+    return `drawtext=fontfile='${escFiltro(fonte)}':text='${txt}':` +
+      `fontcolor=${ehDestaque ? destaqueCor : textoCor}:fontsize=88:` +
+      `borderw=6:bordercolor=${contorno}:x=${margemX}:y=${y}`;
   }).join(",");
-  // o frame entra INTEIRO (sem cortar o rosto): escala pra caber na coluna direita
-  // mantendo proporção (decrease), centralizado. O fundo do canvas todo é a faixa de cor,
-  // então as sobras ao redor do frame ficam na cor da marca, não pretas.
+  // fundo escuro chapado + barra-glow roxa fininha na base do bloco de texto (acento de
+  // marca, 10% da composição) + texto topo-esquerda. Frame inteiro à direita, centralizado.
+  const yBarra = margemTopo + linhas.length * passoLinha + 10;
   const vf =
-    `[0:v]scale=${largura}:${altura},drawbox=x=0:y=0:w=${largura}:h=${altura}:color=${faixaCor}:t=fill,` +
+    `[0:v]scale=${largura}:${altura},drawbox=x=0:y=0:w=${largura}:h=${altura}:color=${fundoCor}:t=fill,` +
+    `drawbox=x=${margemX}:y=${yBarra}:w=${Math.round(largura * 0.22)}:h=10:color=${glowCor}:t=fill,` +
     `${desenhos}[bg];` +
     `[1:v]scale=${metade}:${altura}:force_original_aspect_ratio=decrease[dir];` +
     `[bg][dir]overlay=${metade}+(${metade}-overlay_w)/2:(${altura}-overlay_h)/2`;
-  // 1º input = fundo (cor sólida gerada), 2º = o frame. Gera o fundo via lavfi.
   return ["-y", "-f", "lavfi", "-i", `color=c=black:s=${largura}x${altura}`, "-i", frame,
     "-filter_complex", vf, "-frames:v", "1", saida];
 }

@@ -164,16 +164,23 @@ test("filtroLegenda escapa o caminho do .srt no padrão Windows e aplica estilo"
   assert.equal(f, "subtitles='C\\:/v/legenda.srt':force_style='Fontsize=48,Outline=3'");
 });
 
-test("argsThumbnailComposta gera fundo lavfi + faixa de cor + frame na metade direita", () => {
+test("argsThumbnailComposta: fundo escuro da marca, texto topo-esquerda, última linha dourada, frame inteiro à direita", () => {
   const a = argsThumbnailComposta({
-    frame: "f.png", texto: "REEL EM 15 SEGUNDOS", fonte: "C:\\f\\impact.ttf",
-    faixaCor: "0xE10600", largura: 1280, altura: 720, saida: "t.png",
+    frame: "f.png", texto: "REEL EM 15 SEGUNDOS", fonte: "C:\\f\\sg.ttf", saida: "t.png",
   });
   assert.equal(a[0], "-y");
   assert.deepEqual(a.slice(1, 5), ["-f", "lavfi", "-i", "color=c=black:s=1280x720"]);
   assert.deepEqual(a.slice(5, 7), ["-i", "f.png"]);
   const vf = a[a.indexOf("-filter_complex") + 1];
-  assert.match(vf, /drawbox=x=0:y=0:w=1280:h=720:color=0xE10600:t=fill/);
+  // fundo preto da marca chapado
+  assert.match(vf, /drawbox=x=0:y=0:w=1280:h=720:color=0x06060D:t=fill/);
+  // barra-glow roxa de acento
+  assert.match(vf, /color=0x7C3AED:t=fill/);
+  // texto começa na margem esquerda (x=64 = 5% de 1280), não centralizado
+  assert.match(vf, /text='REEL EM':fontcolor=0xF0EBE0:fontsize=88:borderw=6:bordercolor=0x06060D:x=64:y=130/);
+  // última linha em dourado
+  assert.match(vf, /text='15 SEGUNDOS':fontcolor=0xE2C97E/);
+  // frame inteiro à direita, centralizado
   assert.match(vf, /\[1:v\]scale=640:720:force_original_aspect_ratio=decrease\[dir\]/);
   assert.match(vf, /\[bg\]\[dir\]overlay=640\+\(640-overlay_w\)\/2:\(720-overlay_h\)\/2$/);
   assert.deepEqual(a.slice(-3), ["-frames:v", "1", "t.png"]);
