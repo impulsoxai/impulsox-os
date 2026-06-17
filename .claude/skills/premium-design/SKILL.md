@@ -8,9 +8,10 @@ description: >
   de sites de referência premiados, extrai design systems completos (cores, tipografia,
   animações, layouts) e recombina numa identidade nova. Também ELEVA um design já pronto
   (ex: o que o Open Design criou) aplicando a camada premium — animações, efeitos e micro-
-  interações capturados de sites premiados reais. E RE-ESTILIZA o design do cliente no jeito
-  de um site premiado específico (estrutura, ritmo, animação) com a identidade do cliente
-  cravada — nível do premiado, cara do cliente. Alimenta a biblioteca em marca/design-systems/.
+  interações capturados de sites premiados reais. E RE-ESTILIZA o design do cliente no nível
+  dos 3 melhores sites do NICHO dele (cliente escolhe o estilo), com a identidade cravada —
+  nível dos melhores do mercado, cara do cliente. É o produto de posicionamento (10k+).
+  Acervo curado por nicho em references/referencias-por-nicho.md; biblioteca em marca/design-systems/.
 ---
 
 # /premium-design — Motor de identidade visual por código-fonte
@@ -124,18 +125,30 @@ Régua: o efeito vem de **referência real testada**, nunca inventado — é o q
 animação premium de animação genérica. Movimento com propósito (guia o olho, dá vida), não
 enfeite. Página carregada de efeito sem função cansa e derruba performance (Core Web Vitals).
 
-## Uso 3 — Re-estilizar no estilo de um premiado, com a marca do cliente CRAVADA ⭐⭐
+## Uso 3 — Re-estilizar no nível dos melhores do nicho, com a marca CRAVADA ⭐⭐ (O PADRÃO PREMIUM)
 
-O caso mais forte: pegar o **jeito** de um site premiado específico (estrutura, ritmo,
-sofisticação, técnica de animação) e **refazer o design do cliente naquele nível — mas com a
-identidade dele cravada e inegociável.** Resultado: um site tão bom quanto o premiado, que é
-**inconfundivelmente o cliente**. Ninguém reconhece o site de origem.
+**Este é o caminho premium padrão — o produto de posicionamento que justifica R$ 10k+, não
+de "site bonito" (5k).** A diferença que o cliente vê e paga: você não faz "um site"; você o
+coloca **no nível dos 3 melhores sites do mercado DELE**, com a marca dele cravada.
 
-> **O Uso 3 já inclui o Uso 2.** Re-estilizar traz a camada de animação/efeitos junto — é o
-> pacote premium completo (forma nova + movimento). Por isso o **Uso 3 é o padrão** quando o
-> cliente quer "nível agência". O **Uso 2 sozinho** é o atalho do caso mais raro: o design do
-> Open Design já ficou ótimo na estrutura e só falta vida — aí anima sem reformar. Na dúvida,
-> e quando o cliente aponta um premiado que admira, é Uso 3.
+O fluxo que vira diferencial:
+1. **3 referências premiadas DO NICHO do cliente.** Da biblioteca curada em
+   `references/referencias-por-nicho.md` — os 3 melhores sites do mundo daquele mercado
+   (restaurante, wellness, jurídico...). Nicho não está lá → pesquisar (Awwwards/Godly/
+   Landbook por nicho) e GRAVAR no acervo (cada cliente enriquece o ativo da agência).
+2. **O cliente escolhe o ESTILO, vendo** (simetria com o mood board de cor da `/identidade`):
+   > "Estes são os 3 melhores sites de [nicho] do mundo. Qual desse estilo você quer pro seu?
+   > Eu faço no mesmo nível — mas com a SUA cara, não a deles."
+   O cliente leigo escolhe entre os melhores do mercado dele, sem saber nada de design.
+3. **Re-estilizar o design do cliente no jeito escolhido**, com a identidade CRAVADA (abaixo).
+   Resultado: tão bom quanto o premiado, **inconfundivelmente o cliente**. Ninguém reconhece
+   o site de origem.
+
+> **O Uso 3 já inclui o Uso 2** (re-estilizar traz a animação/efeitos junto) — é o pacote
+> completo. Por isso é o padrão de premium e o que o cliente escolhe. O **Uso 2 sozinho** não
+> é opção de venda; é só um detalhe técnico interno pra quando uma página simples já ficou
+> boa e só falta animar, sem reformar. Cliente que paga premium quer o nível dos melhores do
+> nicho dele — isso é sempre Uso 3.
 
 Três ingredientes, com hierarquia clara de quem manda:
 
