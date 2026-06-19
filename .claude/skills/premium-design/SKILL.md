@@ -172,6 +172,27 @@ Fluxo: capturar o premiado (Fase 1+2) → extrair só o estilo/movimento (não a
 (antes × depois) → aprovação. Gate de originalidade vale dobrado aqui: o produto final não
 pode deixar reconhecer o site de origem — se reconhece, copiou demais, recombina mais.
 
+## Imagem da página premium — Nano Banana (obrigatório) ⭐
+
+Página premium não usa foto genérica nem placeholder na entrega final. As imagens (hero,
+pratos/produtos, ambiente, retratos sem rosto identificável) são geradas com **Nano Banana**
+(Gemini Image, via Fal) — o gerador que acerta luz, textura e composição de foto real. É o que
+separa "site bonito com banco de imagem" de "site que parece fotografado pro cliente".
+
+- Script: `scripts/gerar-imagem.mjs --modelo nano-pro` (Gemini 3 Pro Image, ~15¢/imagem,
+  qualidade estúdio) — **padrão da página premium**. `--modelo nano` (Nano Banana 2, ~8¢) é a
+  alternativa de custo quando o volume é grande. `--resolucao 2K` (default) ou `4K` no hero.
+- O `--modelo minimax` (~1¢) fica para post/redes (volume), **não** para página premium.
+- Prompt em inglês, com a paleta e o clima do design system injetados (mesma lógica do `/post`).
+- **Regra de segurança (CLAUDE.md):** nunca gerar rosto identificável — retrato vira mão, nuca,
+  silhueta ou pessoa de costas. Pessoa real só com foto autorizada.
+- Fluxo: construir a página com blocos de foto marcados → gerar as imagens com `nano-pro` no
+  clima do DS → trocar os placeholders → verificação visual. Imagem ruim derruba página premium
+  inteira; é onde o "nível agência" se ganha ou se perde.
+
+> **Nota de motor:** Nano Banana foi adicionado ao `gerar-imagem.mjs` (modelos `nano`,
+> `nano-pro`) — melhoria de motor a propagar ao template via `/atualizar-motor`.
+
 ## Gates de qualidade
 
 1. **Fidelidade:** valores exatos (hex, ms, cubic-bezier) — `[não especificado]` quando
