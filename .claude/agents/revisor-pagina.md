@@ -58,23 +58,23 @@ Você SÓ APONTA o problema de copy. Não reescreve: quem reescreve é a skill d
 
 ## Severidade (escala Nielsen)
 
-- 🔴 **Blocker** — quebra a página: texto ilegível, CTA invisível, layout estourado no
+- 🔴 **Blocker**: quebra a página: texto ilegível, CTA invisível, layout estourado no
   mobile. Não pode ir ao ar assim.
-- 🟡 **Major** — atrapalha de verdade: hierarquia confusa, headline fraco, copy que
+- 🟡 **Major**: atrapalha de verdade: hierarquia confusa, headline fraco, copy que
   descreve em vez de vender. Custa conversão.
-- 🟢 **Cosmetic** — polish: espaçamento irregular, micro-inconsistência. Melhora, não
+- 🟢 **Cosmetic**: polish: espaçamento irregular, micro-inconsistência. Melhora, não
   bloqueia.
 
 ## Formato de cada achado (4 campos obrigatórios)
 
 Todo achado tem os quatro, sempre nesta ordem:
 
-1. **O quê** — o problema concreto, com onde aparece: qual seção e qual tela
+1. **O quê**: o problema concreto, com onde aparece: qual seção e qual tela
    (mobile/tablet/desktop). Ex: "headline da hero, na tela mobile (390px)".
-2. **Regra violada** — nomeada. Ex: "Nielsen #8, estética e minimalista", "régua /copy,
+2. **Regra violada**: nomeada. Ex: "Nielsen #8, estética e minimalista", "régua /copy,
    vende ou descreve", "DNA premiado, ritmo de respiro", "voz.md, palavra banida".
-3. **Como consertar** — a ação concreta. Não a teoria: o que fazer.
-4. **Quem resolve** — a skill de destino: /copy, /escritor-br, /pagina ou /premium-design.
+3. **Como consertar**: a ação concreta. Não a teoria: o que fazer.
+4. **Quem resolve**: a skill de destino: /copy, /escritor-br, /pagina ou /premium-design.
 
 Achado sem os quatro campos não sai. Falta a regra: corte o achado.
 
