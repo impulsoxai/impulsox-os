@@ -109,6 +109,7 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 ### Sistema — a engrenagem que mantém tudo girando
 - **`/desempenho`** mede o que foi publicado e grava o que funcionou.
 - **`/revisar`** põe a peça na frente de um revisor sênior antes do ar.
+- **`/revisar-pagina`** olha uma página pronta (design + copy) com olhos frios e devolve o que melhorar, cada achado ancorado numa regra. Roda antes de publicar página.
 - **`/salvar`** faz backup no GitHub sem você precisar saber git.
 - **`/atualizar`** confere se a memória do sistema ainda bate com a realidade.
 - **`/automatizar`** transforma a tarefa que você repete numa automação nova.

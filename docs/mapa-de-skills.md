@@ -112,6 +112,7 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
 |---|---|---|
 | **/escritor-br** | humaniza todo texto | post, linkedin, email, copy, ads, conteudo |
 | **/revisar** | crivo sênior antes do ar | obrigatório em venda/ads pago |
+| **/revisar-pagina** | olhos frios em design + copy de página pronta (régua nomeada) | publicar (gate pré-deploy de página), sob demanda |
 | **/provas** | banco de prova real | copy, post, pagina, proposta, ads, relatorio |
 | **/formulas** | moldes de post que funcionam | post, linkedin |
 | **/premium-design** | DNA visual + nível agência | identidade, pagina |
