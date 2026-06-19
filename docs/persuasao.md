@@ -129,7 +129,7 @@ o conserto é baixar o gancho, nunca inflar o texto.
 > inconsciente/consciente-do-problema; Posicionar, consciente-da-solução; Vender,
 > consciente-do-produto/mais-consciente.
 
-## Marketing do fundador — o porquê + o showcase (Matt Ganzak)
+## Marketing do fundador: o porquê + o showcase (Matt Ganzak)
 
 O caminho mais barato e mais crível de distribuição não é anúncio: é o fundador aparecendo.
 Matt Ganzak resume a mecânica: entra no Instagram, TikTok e YouTube Shorts, conta **por que
