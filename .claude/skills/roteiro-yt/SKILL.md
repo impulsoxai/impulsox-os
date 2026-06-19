@@ -30,7 +30,9 @@ Autoria: ImpulsoX AI. Conteúdo original.
 2. **Tema e pilar definidos?** Vem do pedido direto do dono, de um tema escolhido em
    `canal-youtube/temas/<mês>.md` (radar do `/tema-yt`), ou de um item de
    `canal-youtube/pesquisa/fila.md`. **Sem tema, rodar `/tema-yt` primeiro** — tema bom vem
-   de demanda real, não se inventa. O tema do radar já vem com a fórmula sugerida pro Passo 1.
+   de demanda real, não se inventa. O tema do radar já vem com a fórmula sugerida E o **ângulo
+   escolhido** (contraste A→B + método de prova + padrão de hook) — se veio do `/tema-yt`, usar
+   esse ângulo como espinha do Passo 2 e do hook (Passo 5). Sem ângulo definido, seguir normal.
 3. **Long-form ou short?** Se não foi dito, perguntar — muda a estrutura inteira (ver
    abaixo).
 
@@ -113,6 +115,10 @@ movimentos:
 1. **Hook (0-15s):** frase de abertura ≤10 palavras, sem credencial, sem "e aí galera".
    Confirma que o vídeo é sobre o que a pessoa clicou (honra o pacote do Passo 2) e abre
    a tensão. Hooks que prendem em 15s retêm ~65% até os 3min; sem isso, cai pra ~45%.
+   Partir do **padrão de hook** que veio no ângulo do `/tema-yt` (um dos 6 de
+   `docs/frase-que-pega.md` §2.5: Contradição, Especificidade, Tensão de tempo, POV-conselho,
+   Confissão vulnerável, Pattern interrupt). Sem ângulo definido, escolher o padrão que melhor
+   abre o contraste do vídeo.
 2. **Commitment hook (15-30s):** dá o motivo de ficar até o fim — escolher um: lacuna de
    informação ("o passo 3 é o que ninguém faz"), prova de resultado (mostrar o fim antes),
    gancho narrativo, ou gancho de tutorial ("no final você sai com X rodando"). Até o

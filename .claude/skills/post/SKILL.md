@@ -154,7 +154,38 @@ Módulos de composição (vocabulário próprio do ImpulsoX-OS):
   que a pergunta aberta foi respondida de verdade
 
 **Texto por tela:** título até ~8 palavras; apoio até ~25. Carrossel não é slide de
-palestra — quem quer texto longo vai pra legenda.
+palestra — quem quer texto longo vai pra legenda. Limite preciso na seção abaixo.
+
+## Orçamento de caracteres por slide (trava antes do render)
+
+As caixas de cada layout são dimensionadas pra um comprimento. Texto que estoura **reflui**:
+a linha quebra, o slide para de bater com a régua tipográfica e o carrossel **perde a unidade
+visual** — é o que separa um deck premium de um amador. Por isso o comprimento é checado por
+**caractere** (não por palavra, que varia muito) e a checagem acontece **no rascunho do
+texto, ANTES de montar o HTML e gerar qualquer PNG**. Texto fora do orçamento nunca chega ao
+render.
+
+| Elemento | Mín–máx (caracteres) | Observação |
+|---|---|---|
+| Título da capa | 14–32 | line-height 1.0; cabe em até 3 linhas no tamanho 88–110px |
+| Título de tela interna | 24–52 | uma linha forte; máx 2 linhas |
+| Texto de apoio | 40–120 | line-height 1.4; o que passa disso vira legenda |
+| Etiqueta/kicker (CAIXA ALTA) | 6–22 | uma ou duas palavras |
+| Linha do FECHO (chamada) | 18–48 | uma chamada só, verbo + objeto |
+| Numeral do módulo DADO | 1–6 | é elemento gráfico (ex: "31%", "R$5k", "x7") |
+
+Régua: quando `marca/design-guide.md` define caixas próprias, os limites **dele** mandam — e
+o orçamento se recalcula a partir do tamanho real das caixas da marca. Estes valores são o
+default quando a marca não especifica.
+
+**Como aplicar (gate determinístico):**
+1. Depois do rascunho do texto de cada slide (e depois do `/escritor-br`), contar os
+   caracteres de cada campo e comparar com o orçamento.
+2. Campo fora da faixa → **reescrever antes de montar o HTML**, nunca encolher fonte pra caber
+   (encolher quebra a régua tipográfica). Abaixo do mínimo soa raso; acima reflui.
+3. Só depois que **todos** os campos passam é que a produção técnica começa (HTML → render).
+   Render é o passo caro; não se gasta nele com texto que vai ser refeito.
+4. Registrar no `legenda.md` da peça que o orçamento foi conferido (uma linha).
 
 ## Layouts nomeados (como a tela aparece)
 
@@ -252,16 +283,19 @@ web (sem hover, foco, responsividade ou animação):
 
 ## Produção técnica
 
-Ordem: montar HTML das telas → `/escritor-br` (texto) → **crivo de design** (impeccable,
-no visual) → render Playwright → aprovação.
+Ordem: rascunho do texto → `/escritor-br` → **orçamento de caracteres (gate)** → montar
+HTML das telas → **crivo de design** (impeccable, no visual) → render Playwright → aprovação.
 
-1. Gerar um HTML por tela (1080x1350) usando **exclusivamente** as variáveis de
+1. **Conferir o orçamento de caracteres** (seção acima) em cada campo de cada slide. Campo
+   fora da faixa volta pra reescrita — não passa pro HTML. Render só começa com tudo no
+   orçamento (é o passo caro).
+2. Gerar um HTML por tela (1080x1350) usando **exclusivamente** as variáveis de
    `marca/tokens.css` — nada de cor ou fonte fora da marca.
-2. **Crivo de design** (seção acima): passar cada tela pela impeccable, salvo se o usuário
+3. **Crivo de design** (seção acima): passar cada tela pela impeccable, salvo se o usuário
    pediu pra pular. Visual só — texto e gatilhos ficam intocados.
-3. Renderizar cada HTML em PNG via Playwright (screenshot da viewport exata).
-4. Salvar em `producao/posts/<YYYY-MM-DD>-<slug-do-tema>/` (HTMLs + PNGs + `legenda.md`).
-5. Mostrar as imagens ao usuário pra aprovação antes de dar por pronto.
+4. Renderizar cada HTML em PNG via Playwright (screenshot da viewport exata).
+5. Salvar em `producao/posts/<YYYY-MM-DD>-<slug-do-tema>/` (HTMLs + PNGs + `legenda.md`).
+6. Mostrar as imagens ao usuário pra aprovação antes de dar por pronto.
 
 ## Legenda
 
@@ -299,3 +333,6 @@ aplicada à risca. Marcar a peça como "feita com defaults — rodar /identidade
 2. Usuário diz "pula o polimento" → a peça sai direto, sem o crivo, com aviso em uma linha.
 3. impeccable não instalada nesta máquina → avisa e gera sem o crivo; nunca trava.
 4. Em todos os casos: o crivo nunca mexeu no texto (é do `/escritor-br`) nem na marca.
+5. Texto de um slide estoura o orçamento de caracteres → é reescrito ANTES do HTML/render;
+   nenhum PNG é gerado com texto que vai refluir. Marca define caixa própria → o orçamento
+   se recalcula pelas caixas dela.

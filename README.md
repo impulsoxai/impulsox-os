@@ -29,7 +29,7 @@ passam por um revisor sênior antes de ir ao ar. Os números do mês alimentam o
 do mês seguinte — a cada volta, o sistema conhece melhor quem compra de você.
 
 Você não precisa saber marketing. Responde algumas perguntas sobre o seu negócio,
-aprova o que faz sentido, e deixa o resto com as 38 automações que já vêm prontas.
+aprova o que faz sentido, e deixa o resto com as 39 automações que já vêm prontas.
 
 ---
 
@@ -56,7 +56,7 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 
 ---
 
-## As 38 automações
+## As 39 automações
 
 ### Fundação — o sistema aprende quem você é
 - **`/plugar`** liga o sistema: negócio, oferta e foco, em poucos minutos.
@@ -100,6 +100,9 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 - **`/lancar-produto`** monta o lançamento inteiro — quando há audiência e produto de verdade.
 
 ### Venda e retenção
+- **`/oferta`** constrói ou conserta a oferta antes de qualquer peça — Equação de Valor e
+  anatomia de 6 partes (entrega, bônus, garantia, escassez real, nome, preço). Roda antes
+  de `/proposta` e `/pagina`: oferta forte com copy média vende; o contrário não.
 - **`/provas`** monta o banco de provas sociais: pedir, lapidar, autorizar.
 - **`/local`** coloca o negócio no Google Maps e responde avaliações na sua voz.
 - **`/proposta`** transforma o raio-x numa proposta fechável.

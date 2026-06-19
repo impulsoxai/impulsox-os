@@ -29,6 +29,8 @@ primeira linha. Sem `nucleo/voz.md` rico, avisar que o resultado melhora muito d
 - `nucleo/ofertas.md` — a oferta que a sequência empurra, com benefício e objeções
 - `nucleo/provas.md` — só prova com status **autorizada** entra no corpo
 - `docs/persuasao.md` — gatilhos honestos; o contrato do assunto (entrega o que promete)
+- `docs/entregabilidade-email.md` — a régua de palavras/formatação que tiram o e-mail da
+  caixa de entrada; é o **gate** antes de fechar qualquer assunto, preview ou corpo
 
 ## Três modos
 
@@ -62,6 +64,14 @@ cobrança:
    seguir, ou o momento não é agora?"), nunca "e aí, decidiu?".
 Sugerir intervalos (ex.: dia 2, 5, 9 após o envio da proposta).
 
+## Gate de entregabilidade (antes de fechar cada e-mail)
+
+Depois de escrever assunto + preview + corpo, e **antes** do `/escritor-br`, varrer cada peça
+contra `docs/entregabilidade-email.md`: palavra de promessa/pressão/phishing, CAIXA ALTA,
+`!!!`, excesso de link, urgência falsa. Sinalizou → reescrever a linha (padrões seguros do
+doc) e revarrer. O assunto é o campo mais sensível — varrer com mais rigor. E-mail bem escrito
+que cai no spam não vende; este gate é tão obrigatório quanto o `/escritor-br`.
+
 ## Saída
 
 `producao/emails/<tipo>-<slug>/` (ex.: `boas-vindas-ebook-trafego/`):
@@ -78,6 +88,8 @@ Sugerir intervalos (ex.: dia 2, 5, 9 após o envio da proposta).
   forma clara. Não construir lista comprada nem fazer disparo a frio.
 - Assunto cumpre o que promete (contrato do hook) — clickbait queima a lista e a reputação
   de envio.
+- **Gate de entregabilidade obrigatório** (`docs/entregabilidade-email.md`): varrer assunto e
+  corpo por palavra/formatação de spam antes de fechar. Reescrever hype em linguagem plana.
 - **Métrica de e-mail** (abertura, clique) só entra em relatório se vier de **export real**
   da ferramenta de envio; nunca estimar taxa de e-mail de cabeça.
 - Uma CTA por e-mail. E-mail que pede três coisas não consegue nenhuma.
@@ -89,3 +101,5 @@ Sugerir intervalos (ex.: dia 2, 5, 9 após o envio da proposta).
 2. Newsletter → puxa material real de `producao/`, 1 ideia central + notas + 1 CTA.
 3. Follow-up de proposta → 3 toques sem tom de cobrança; o último é pergunta aberta.
 4. Lista sem origem voluntária declarada → a skill recusa o disparo a frio e explica a LGPD.
+5. Assunto com palavra de spam ("oferta imperdível", CAIXA ALTA, "!!!") → o gate sinaliza e
+   reescreve em linguagem plana antes de fechar; revarre limpo.

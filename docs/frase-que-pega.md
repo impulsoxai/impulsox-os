@@ -59,6 +59,38 @@ ourives; o normal é escolher poucos.
 | **Específico vívido** | número/cena concreta no lugar do abstrato | "A venda das 22h você já perdeu" |
 | **Economia** | corta até sobrar o osso | a frase curta que fecha o parágrafo |
 
+Device é a **música** (o ritmo da frase). A próxima seção é o **molde do hook** (a forma de
+abertura). São coisas diferentes: o padrão decide o ângulo da abertura, o device dá o ritmo
+dentro dele. Um hook bom usa um padrão + um ou dois devices.
+
+---
+
+## 2.5. Os 6 padrões de hook — moldes de abertura
+
+> Vocabulário de abertura reutilizável por `/post`, `/linkedin`, `/roteiro-yt`, `/ads-*` e
+> `/email`. Quando precisar de um hook e a página em branco trava, escolher um padrão e
+> preencher. Variar o padrão entre peças evita o canal/feed ficar monótono. Cada um é
+> esqueleto — a frase final ainda passa pelo motor (inesperado · concreto · crível) e pelo
+> gate de autenticidade.
+
+| # | Padrão | A forma | Exemplo PT-BR | Quando usar |
+|---|---|---|---|---|
+| 1 | **Contradição** | "Todo mundo diz {crença}, mas {verdade surpreendente}" | "Todo mundo manda postar todo dia. Os perfis que mais crescem postam menos." | tema com senso comum forte a derrubar |
+| 2 | **Especificidade** | "Eu {resultado específico} em {prazo/número específico}" | "Respondi 412 clientes essa semana sem digitar uma mensagem." | quando há número/caso real (proibido inventar) |
+| 3 | **Tensão de tempo** | "Em {tempo surpreendentemente curto}, {resultado de impacto}" | "Em uma tarde montei o sistema que posta sozinho." | promessa de velocidade que o conteúdo cumpre |
+| 4 | **POV como conselho** | "Pare de {prática comum}. {alternativa melhor}." | "Pare de responder cliente na unha. Deixa a IA filtrar antes." | público que já faz a prática errada |
+| 5 | **Confissão vulnerável** | "Eu estava errado sobre {crença}. {o que mudou}." | "Achei que IA pra PME era hype. Um cliente me provou o contrário." | autoridade por humildade; abre história |
+| 6 | **Pattern interrupt** | abertura inesperada que quebra o scroll (cena, número solto, pergunta torta) | "R$ 4.200. Foi o que uma só venda perdida às 22h custou." | feed saturado; quando o tema é morno e precisa de choque |
+
+**Força do padrão = tamanho da lacuna.** Contradição e Confissão vivem do gap entre A
+(crença) e B (verdade): quanto maior o gap honesto, mais forte. Especificidade e Tensão de
+tempo vivem do número concreto — sem dado real, não usar (cai na regra: nunca inventar).
+
+**Regra anti-monotonia:** num carrossel ou numa semana de posts, não abrir tudo no mesmo
+padrão. Misturar — uma Contradição, uma Especificidade, um Pattern interrupt. O `/post` e o
+`/linkedin` registram o padrão usado no `legenda.md` pra o rastreio do `/desempenho` validar
+qual padrão a conta responde melhor (vira aprendizado, igual fórmula).
+
 ---
 
 ## 3. A frase nasce da Big Idea, não do enfeite (Schwartz)

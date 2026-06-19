@@ -9,16 +9,19 @@
 ## A esteira de VENDA (do prospect ao contrato)
 
 ```
-/raio-x ──→ /proposta ──→ /cliente ──→ (produção)
-diagnóstico   fecha o      pluga o
-da URL        negócio      cliente
-   │             │
-   │             └─→ /email (follow-up da proposta)
-   └─→ /copy (mini-redesign da abertura, no raio-x)
+/oferta ──→ /raio-x ──→ /proposta ──→ /cliente ──→ (produção)
+constrói a   diagnóstico   fecha o      pluga o
+oferta forte da URL        negócio      cliente
+   │             │             │
+   │             │             └─→ /email (follow-up da proposta)
+   └→ /pagina    └─→ /copy (mini-redesign da abertura, no raio-x)
 ```
 
+- **/oferta** constrói/diagnostica a oferta (Equação de Valor + anatomia de 6 partes) →
+  grava em `nucleo/ofertas.md` → vira a base de tudo que vende. Roda ANTES da /proposta
+  e da /pagina: oferta fraca com copy boa converte devagar
 - **/raio-x** diagnostica a URL → vira a matéria-prima da **/proposta**
-- **/proposta** lê o raio-x + `nucleo/provas.md` → proposta fechável → **/email** faz follow-up
+- **/proposta** lê o raio-x + `nucleo/provas.md` + a oferta → proposta fechável → **/email**
 - **/cliente** cria a pasta do cliente → tudo passa a rodar lá dentro
 
 ---
@@ -101,6 +104,9 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
    └────────────── nucleo/aprendizados.md (Tráfego pago) ←───────────────┘
 ```
 
+- **/ads-meta** abre com **swipe file** (Passo 0): pesquisa anúncios vencedores no Meta Ad
+  Library (winners 2+ meses ativos), disseca e grava molde em `producao/ads/swipe-meta.md` —
+  é o `/formulas` dos anúncios (copiar mecânica de quem performa, nunca conteúdo)
 - **/ads-*** monta a campanha + guia visual de leigo → humano sobe → **/analisar-ads** mede
   (cálculo só por script) → padrão volta pro próximo **/ads-***
 
@@ -114,6 +120,7 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
 | **/revisar** | crivo sênior antes do ar | obrigatório em venda/ads pago |
 | **/revisar-pagina** | olhos frios em design + copy de página pronta (régua nomeada) | publicar (gate pré-deploy de página), sob demanda |
 | **/provas** | banco de prova real | copy, post, pagina, proposta, ads, relatorio |
+| **/oferta** | constrói/diagnostica a oferta (Equação de Valor) | antes de proposta, pagina, lancar-produto |
 | **/formulas** | moldes de post que funcionam | post, linkedin |
 | **/premium-design** | DNA visual + nível agência | identidade, pagina |
 
@@ -159,6 +166,7 @@ contrato pra aquilo.
 
 | Terminou | Próximo passo natural | Pré-requisito (se falta, reorienta) |
 |---|---|---|
+| /oferta | /proposta (serviço/B2B) ou /copy → /pagina (vender em página) | negocio, ofertas |
 | /raio-x | /proposta | — (só a URL) |
 | /proposta | /cliente (se fechou) ou /email (follow-up) | nucleo/provas, ofertas |
 | /cliente | /identidade | — |

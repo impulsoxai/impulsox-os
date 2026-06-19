@@ -72,6 +72,9 @@ página, e-mail), ler `docs/persuasao.md` — gatilhos, storytelling e as regras
 inegociáveis de persuasão honesta, e `docs/frase-que-pega.md` — a craft do hook/headline
 que gruda (Made to Stick, devices, Big Idea, autenticidade). Para copy de página, ler
 também `docs/swipe-copy.md` — acervo de copy real que converte (molde transfere, frase não).
+Para qualquer DECISÃO de estratégia (calendário, raio-x, proposta, oferta, análise de ads),
+ler `docs/modelos-mentais.md` — Jobs to Be Done, Teoria das Restrições, psicologia de preço,
+loops de crescimento; o andar de cima da persuasão (pensar o problema certo antes da peça).
 
 Quanto melhor o núcleo, melhor a entrega. Núcleo vazio não impede o sistema de
 trabalhar — só o faz operar em degrau mais baixo, com mais suposições marcadas.
@@ -202,4 +205,4 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 
 ---
 
-*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.3*
+*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.4*

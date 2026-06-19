@@ -1,6 +1,8 @@
 # Ofertas — catálogo de produtos e serviços
 
 > Preenchido pelo `/plugar` (bloco de ofertas da entrevista) e mantido pelo `/atualizar`.
+> Para CONSTRUIR ou DIAGNOSTICAR uma oferta (Equação de Valor, anatomia de 6 partes,
+> garantia, escassez real), usar `/oferta` — ela reescreve o bloco da oferta aqui.
 > Cada oferta abaixo alimenta: mix do `/calendario`, ângulos do `/post` e `/linkedin`,
 > grupos de anúncio do `/ads-google`, `/ads-meta` e `impulsox-chatgpt-ads`, e a
 > estrutura do `/proposta`. Fato confirmado sem marcação; suposição marcada com `(?)`.
