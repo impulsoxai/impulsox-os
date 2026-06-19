@@ -129,6 +129,33 @@ o conserto é baixar o gancho, nunca inflar o texto.
 > inconsciente/consciente-do-problema; Posicionar, consciente-da-solução; Vender,
 > consciente-do-produto/mais-consciente.
 
+## Marketing do fundador — o porquê + o showcase (Matt Ganzak)
+
+O caminho mais barato e mais crível de distribuição não é anúncio: é o fundador aparecendo.
+Matt Ganzak resume a mecânica: entra no Instagram, TikTok e YouTube Shorts, conta **por que
+construiu o produto**, e **mostra por que ele é bom**. Dois movimentos, um vídeo curto vertical.
+
+Por que funciona, na régua deste playbook:
+- **O "por que construí" é storytelling de origem.** É a tensão real (o problema que te
+  incomodou a ponto de construir a solução) virando história. Liga em *autoridade* (você viveu
+  o problema) e *coerência* (constrói confiança antes de pedir nada). Não é pitch: é motivo.
+- **O "mostrar por que é bom" é prova, não adjetivo.** Demonstração na tela vence descrição.
+  Mostrar o produto resolvendo o problema é *prova social* e *transformação* em ação, do jeito
+  que a seção de Storytelling pede: o desfecho que se vê, não o que se promete.
+- **Vídeo curto vertical é o formato porque o rosto do fundador carrega o que anúncio não
+  carrega:** crença genuína. Quem construiu fala com uma convicção que ator nenhum imita.
+
+Como aplicar (vale pra `/shorts`, `/roteiro-yt`, `/post`):
+1. Abrir pelo porquê, não pelo produto. A primeira linha é a dor que te fez construir, não o
+   nome da ferramenta.
+2. Mostrar funcionando: o produto resolvendo aquela dor específica, em cena concreta.
+3. Uma convicção honesta por vídeo. Sem hype: o entusiasmo real do fundador é o gatilho, hype
+   fabricado é o anti-gatilho (ver Regras: persuasão honesta).
+
+Cabe a qualquer negócio com um dono que acredita no que faz, não só a SaaS. Restaurante,
+clínica, construtora: o dono contando por que abriu e mostrando o resultado vende melhor que
+qualquer locução publicitária.
+
 ## Regras inegociáveis
 
 1. **Diagnosticar antes de persuadir.** Definir o nível de consciência do público e a
