@@ -19,7 +19,7 @@ Salvar como `captura-screens.js` e rodar pela toolchain do projeto, que garante 
 resolvido.
 
 ```javascript
-// captura-screens.js — screenshots 390/768/1440 + texto da página (local ou URL)
+// captura-screens.js: screenshots 390/768/1440 + texto da pagina (local ou URL)
 let chromium;
 try { ({ chromium } = require('playwright')); }
 catch (e) {
@@ -76,7 +76,7 @@ O que ele gera na pasta de saída:
 
 Quando a captura automática falhar, a skill **anuncia explicitamente** antes de continuar:
 
-> ⚠️ **Playwright indisponível / captura falhou** — instale com
+> ⚠️ **Playwright indisponível / captura falhou.** Instale com
 > `npm i -D playwright && npx playwright install chromium` para captura automática.
 
 Dois casos:
