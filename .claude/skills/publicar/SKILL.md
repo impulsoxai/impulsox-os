@@ -61,8 +61,13 @@ existir. Não travar o resto: o que não tem credencial sai em modo assistido.
    Em dúvida, perguntar — publicar errado custa caro.
 3. **Pré-voo.** Imagens no tamanho certo (1080x1350), legenda final pós-`/escritor-br`,
    link funcionando, alt text disponível. Peça de intenção "vender": passou pelo
-   `/revisar` (crivo do revisor sênior)? Se não, rodar antes — pra anúncio pago é
+   `/revisar` (crivo do revisor sênior)? Se não, rodar antes. Pra anúncio pago é
    obrigatório, pra orgânico de venda é o padrão.
+   - **Se a peça é uma PÁGINA (landing/site):** rodar `/revisar-pagina` nela antes do
+     deploy. Mostrar o relatório priorizado (design + copy, olhos frios) ao dono e
+     ESPERAR o OK antes de publicar. O dono decide publicar mesmo com achados: o gate
+     informa, não trava no escuro (regra do CLAUDE.md: sempre perguntar antes de seguir).
+     Achado crítico de copy ou design: oferecer rodar `/copy` ou `/pagina` antes de subir.
 4. **Publicar por destino:**
    - **Instagram carrossel:** subir cada imagem como container filho → criar container
      `CAROUSEL` com a legenda → publicar. Imagem única e reel seguem o fluxo equivalente
