@@ -179,10 +179,21 @@ pratos/produtos, ambiente, retratos sem rosto identificável) são geradas com *
 (Gemini Image, via Fal) — o gerador que acerta luz, textura e composição de foto real. É o que
 separa "site bonito com banco de imagem" de "site que parece fotografado pro cliente".
 
-- Script: `scripts/gerar-imagem.mjs --modelo nano-pro` (Gemini 3 Pro Image, ~15¢/imagem,
-  qualidade estúdio) — **padrão da página premium**. `--modelo nano` (Nano Banana 2, ~8¢) é a
-  alternativa de custo quando o volume é grande. `--resolucao 2K` (default) ou `4K` no hero.
-- O `--modelo minimax` (~1¢) fica para post/redes (volume), **não** para página premium.
+- Script: `scripts/gerar-imagem.mjs`. **Antes de uma sessão de geração, rodar `--precos`** para
+  ver a tabela atual e escolher modelo × resolução (a Fal cobra por resolução; 4K dobra). Tabela
+  (Fal, jun/2026 — reconferir):
+
+  | Modelo | 0.5K | 1K | 2K | 4K | Uso |
+  |---|---|---|---|---|---|
+  | `nano-pro` | — | $0.15 | **$0.15** | $0.30 | **padrão página premium** (Gemini 3 Pro, estúdio) |
+  | `nano` | $0.06 | $0.08 | $0.12 | $0.16 | ótimo custo×qualidade (Banana 2) |
+  | `minimax` | — | $0.01 | $0.01 | $0.01 | post/redes (volume), **não** página premium |
+  | `schnell`/`dev` | — | $0.003 / $0.025 | | | FLUX estilizado/iterar barato |
+
+  Padrão premium: `--modelo nano-pro --resolucao 2K` ($0.15/img). `4K` **dobra** pra $0.30 — só
+  no hero quando vale. Refação custa de novo: ajustar o prompt antes vale mais que regerar.
+  `--dry-run` mostra o `custo_estimado_usd` antes de gastar. Cada geração registra o custo REAL
+  (por resolução) em `dados/custos.jsonl` → painel.
 - Prompt em inglês, com a paleta e o clima do design system injetados (mesma lógica do `/post`).
 - **Regra de segurança (CLAUDE.md):** nunca gerar rosto identificável — retrato vira mão, nuca,
   silhueta ou pessoa de costas. Pessoa real só com foto autorizada.

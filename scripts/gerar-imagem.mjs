@@ -33,6 +33,38 @@ const altura = Number(flag("--altura") || 1350);
 const resolucao = flag("--resolucao") || "2K"; // só Nano Banana usa; default premium 2K
 const dryRun = has("--dry-run");
 
+// --- preços REAIS por modelo × resolução (confirmados em fal.ai, jun/2026) --
+// Fonte: páginas dos modelos na Fal. Reconferir antes de mudar — Fal ajusta preço.
+// nano (Banana 2): base 1K=$0.08; 0.5K×0.75, 2K×1.5, 4K×2. nano-pro: 1K/2K=$0.15, 4K=$0.30.
+// minimax fixo $0.01. FLUX schnell $0.003 / dev $0.025 (não usam --resolucao).
+const PRECOS = {
+  nano:        { "0.5K": 0.06, "1K": 0.08, "2K": 0.12, "4K": 0.16 },
+  "nano-pro":  { "0.5K": 0.15, "1K": 0.15, "2K": 0.15, "4K": 0.30 },
+  minimax:     { fixo: 0.01 },
+  schnell:     { fixo: 0.003 },
+  dev:         { fixo: 0.025 },
+};
+function precoImagem(mod, res) {
+  const t = PRECOS[mod]; if (!t) return 0;
+  if (t.fixo != null) return t.fixo;
+  return t[res] ?? t["2K"] ?? 0;
+}
+// --precos: imprime a tabela de modelos × resolução × preço e sai (sem gerar)
+if (has("--precos")) {
+  const usd = (n) => "$" + n.toFixed(3).replace(/0$/, "");
+  console.log("\nGerador de imagem — modelos e preços (Fal, jun/2026):\n");
+  console.log("  MODELO     QUALIDADE / USO                 0.5K    1K     2K     4K");
+  console.log("  ─────────────────────────────────────────────────────────────────");
+  console.log("  nano-pro   estúdio (Gemini 3 Pro)          —      $.15   $.15   $.30   ← padrão premium");
+  console.log("  nano       foto realista forte (Banana 2)  $.06   $.08   $.12   $.16   ← ótimo custo×qualidade");
+  console.log("  minimax    foto realista barata (volume)   —      $.01   $.01   $.01   ← redes/post");
+  console.log("  schnell    FLUX estilizado/abstrato        —      $.003 (iterar barato)");
+  console.log("  dev        FLUX qualidade                  —      $.025");
+  console.log("\n  Uso:  --modelo nano-pro --resolucao 2K   (4K dobra o preço)");
+  console.log("  Estimar sem gerar:  adicione --dry-run\n");
+  process.exit(0);
+}
+
 if (!prompt) falhar("informe o --prompt (em inglês rende melhor).");
 if (!saida) falhar("informe o --saida (caminho do .png).");
 const FAL_KEY = process.env.FAL_KEY;
@@ -80,7 +112,7 @@ const payload = ehNano
     : { prompt, num_images: 1, image_size: { width: largura, height: altura }, ...(ref ? { image_url: refDataUri(ref), strength: 0.85 } : {}) };
 
 if (dryRun) {
-  console.log(JSON.stringify({ dry_run: true, modelo, endpoint: ENDPOINT, largura, altura, resolucao: ehNano ? resolucao : undefined, aspect_ratio: aspectRatio(largura, altura), ref: !!ref }, null, 2));
+  console.log(JSON.stringify({ dry_run: true, modelo, endpoint: ENDPOINT, largura, altura, resolucao: ehNano ? resolucao : undefined, aspect_ratio: aspectRatio(largura, altura), ref: !!ref, custo_estimado_usd: precoImagem(modelo, resolucao) }, null, 2));
   process.exit(0);
 }
 
@@ -105,9 +137,9 @@ try {
   const img = data?.images?.[0]?.url;
   if (!img) falhar("resposta da Fal sem imagem (prompt pode ter sido recusado).");
   writeFileSync(saida, await baixar(img));
-  const CUSTO_IMG = { nano: 0.08, "nano-pro": 0.15, minimax: 0.01, schnell: 0.003, dev: 0.025 };
-  registrarCusto({ script: "gerar-imagem", modelo, custo: CUSTO_IMG[modelo] ?? 0 });
-  console.log(JSON.stringify({ ok: true, saida, modelo }, null, 2));
+  const custoReal = precoImagem(modelo, resolucao);
+  registrarCusto({ script: "gerar-imagem", modelo, custo: custoReal });
+  console.log(JSON.stringify({ ok: true, saida, modelo, resolucao: ehNano ? resolucao : undefined, custo_usd: custoReal }, null, 2));
 } catch (e) {
   if (e?.code === "ENOTFOUND" || e?.cause) falhar("falha de rede ao chamar a Fal.");
   falhar(String(e?.message || e).replace(FAL_KEY || "", "***"));
