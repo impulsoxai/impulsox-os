@@ -132,25 +132,41 @@ o conserto é baixar o gancho, nunca inflar o texto.
 ## Marketing do fundador: o porquê + o showcase (Matt Ganzak)
 
 O caminho mais barato e mais crível de distribuição não é anúncio: é o fundador aparecendo.
-Matt Ganzak resume a mecânica: entra no Instagram, TikTok e YouTube Shorts, conta **por que
-construiu o produto**, e **mostra por que ele é bom**. Dois movimentos, um vídeo curto vertical.
+A mecânica, na palavra do próprio Matt Ganzak:
 
-Por que funciona, na régua deste playbook:
-- **O "por que construí" é storytelling de origem.** É a tensão real (o problema que te
-  incomodou a ponto de construir a solução) virando história. Liga em *autoridade* (você viveu
-  o problema) e *coerência* (constrói confiança antes de pedir nada). Não é pitch: é motivo.
-- **O "mostrar por que é bom" é prova, não adjetivo.** Demonstração na tela vence descrição.
-  Mostrar o produto resolvendo o problema é *prova social* e *transformação* em ação, do jeito
-  que a seção de Storytelling pede: o desfecho que se vê, não o que se promete.
-- **Vídeo curto vertical é o formato porque o rosto do fundador carrega o que anúncio não
-  carrega:** crença genuína. Quem construiu fala com uma convicção que ator nenhum imita.
+> Marketing is easy, all you have to do is get into Instagram/TikTok/Youtube Shorts and talk
+> about why you build the product, and showcase why the product is great! Be sure to have a
+> good offer and a good reason why you made this product and then take the posts that did well
+> and turn them into ads.
 
-Como aplicar (vale pra `/shorts`, `/roteiro-yt`, `/post`):
+São quatro movimentos, e cada um bate numa régua deste playbook:
+
+1. **Talk about why you build the product** (conta por que construiu). É storytelling de
+   origem: a tensão real (o problema que te incomodou a ponto de construir a solução) virando
+   história. Liga em *autoridade* (você viveu o problema) e *coerência* (confiança antes de
+   pedir nada). Não é pitch, é motivo.
+2. **Showcase why the product is great** (mostra por que é bom). Prova, não adjetivo.
+   Demonstração na tela vence descrição: o produto resolvendo o problema é *prova social* e
+   *transformação* em ação, o desfecho que se vê, não o que se promete.
+3. **Have a good offer and a good reason why you made this product** (uma oferta boa + um
+   bom motivo). O vídeo só converte se houver uma oferta clara no fim (a ação, ver Storytelling:
+   a ponte) e se o "porquê" for verdadeiro. Reason genuíno é o que separa founder content de
+   propaganda: a *coerência* e a *autoridade* caem por terra se o motivo for inventado.
+4. **Take the posts that did well and turn them into ads** (o que performou orgânico vira
+   anúncio). O orgânico é o laboratório barato: testa o gancho com público real sem gastar em
+   mídia. O que provou tração (salvou, comentou, compartilhou) é o criativo que merece verba.
+   É o ciclo do sistema (`/desempenho` mede o que funcionou → vira insumo de `/ads-meta`,
+   `/ads-google`): não adivinhar o anúncio, promover o que o público já validou.
+
+O formato é vídeo curto vertical porque o rosto do fundador carrega o que anúncio frio não
+carrega: crença genuína. Quem construiu fala com uma convicção que ator nenhum imita.
+
+Como aplicar (vale pra `/shorts`, `/roteiro-yt`, `/post`, e alimenta `/ads-meta`/`/ads-google`):
 1. Abrir pelo porquê, não pelo produto. A primeira linha é a dor que te fez construir, não o
    nome da ferramenta.
 2. Mostrar funcionando: o produto resolvendo aquela dor específica, em cena concreta.
-3. Uma convicção honesta por vídeo. Sem hype: o entusiasmo real do fundador é o gatilho, hype
-   fabricado é o anti-gatilho (ver Regras: persuasão honesta).
+3. Fechar com a oferta clara (a ponte: o que o espectador faz agora) e um motivo verdadeiro.
+4. Medir com `/desempenho`: o post que performou vira criativo de anúncio, não um novo chute.
 
 Cabe a qualquer negócio com um dono que acredita no que faz, não só a SaaS. Restaurante,
 clínica, construtora: o dono contando por que abriu e mostrando o resultado vende melhor que
