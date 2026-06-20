@@ -5,6 +5,7 @@ import {
   montarSRT, montarASS, filtroLegenda, filtroLegendaAss, filtroLoudnorm,
   argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
+  cadeiaAtempo, filtroVelocidadeConcat,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -312,4 +313,37 @@ test("planoVelocidade não emite NaN se acelerar vier sem fator válido", () => 
   const p = planoVelocidade([{ inicio: 0, fim: 60, acao: "acelerar", audio: "voz" }], 60);
   assert.ok(Number.isFinite(p.duracaoFinal), "duracaoFinal deve ser finito");
   assert.equal(p.duracaoFinal, 60); // fator inválido -> conta como duração cheia
+});
+
+test("cadeiaAtempo encadeia atempo pra fator > 2", () => {
+  assert.equal(cadeiaAtempo(2),   "atempo=2");
+  assert.equal(cadeiaAtempo(4),   "atempo=2,atempo=2");
+  assert.equal(cadeiaAtempo(1.5), "atempo=1.5");
+});
+
+test("filtroVelocidadeConcat: manter + acelerar mudo, pula cortar", () => {
+  const trechos = [
+    { inicio: 0,   fim: 100, acao: "cortar" },
+    { inicio: 100, fim: 160, acao: "manter" },
+    { inicio: 160, fim: 220, acao: "acelerar", fator: 2, audio: "mudo" },
+  ];
+  const f = filtroVelocidadeConcat(trechos);
+  assert.match(f, /concat=n=2:v=1:a=1\[vout\]\[aout\]/);
+  assert.match(f, /trim=start=100:end=160,setpts=PTS-STARTPTS\[v0\]/);
+  assert.match(f, /trim=start=160:end=220,setpts=PTS\/2,setpts=PTS-STARTPTS\[v1\]/);
+  assert.match(f, /volume=0/);
+});
+
+test("filtroVelocidadeConcat: acelerar voz usa atempo", () => {
+  const trechos = [{ inicio: 0, fim: 60, acao: "acelerar", fator: 2, audio: "voz" }];
+  const f = filtroVelocidadeConcat(trechos);
+  assert.match(f, /atempo=2/);
+});
+
+test("filtroVelocidadeConcat com loudnorm encadeia no áudio final", () => {
+  const trechos = [{ inicio: 0, fim: 60, acao: "manter" }];
+  const f = filtroVelocidadeConcat(trechos, { loudnorm: "loudnorm=I=-14:TP=-1.5:LRA=11" });
+  assert.match(f, /\[acat\]/);
+  assert.match(f, /loudnorm=I=-14/);
+  assert.match(f, /\[aout\]/);
 });

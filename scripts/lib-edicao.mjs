@@ -346,3 +346,37 @@ export function planoVelocidade(trechos, duracaoTotal) {
     percentReduzido: duracaoTotal > 0 ? ((duracaoTotal - duracaoFinal) / duracaoTotal) * 100 : 0,
   };
 }
+
+// Encadeia atempo (cada filtro vale até 2x; >2 multiplica em série mantendo o pitch).
+export function cadeiaAtempo(fator) {
+  const fatores = [];
+  let restante = fator;
+  while (restante > 2) { fatores.push(2); restante /= 2; }
+  fatores.push(Number(restante.toFixed(6)));
+  return fatores.map((f) => `atempo=${f}`).join(",");
+}
+
+// Filtergraph do ffmpeg pra edição por trechos: pula "cortar", acelera/mantém o resto e
+// concatena. Vídeo via setpts; áudio via atempo (voz, pitch-safe) ou volume=0 (mudo).
+// Espelha filtroCorteConcat: cada segmento mantido vira [vN]/[aN], depois concat.
+export function filtroVelocidadeConcat(trechos, { loudnorm } = {}) {
+  const mantidos = trechos.filter((t) => t.acao !== "cortar");
+  const partes = [];
+  mantidos.forEach((t, i) => {
+    const acel = t.acao === "acelerar";
+    const setptsV = acel ? `setpts=PTS/${t.fator},setpts=PTS-STARTPTS` : "setpts=PTS-STARTPTS";
+    partes.push(`[0:v]trim=start=${t.inicio}:end=${t.fim},${setptsV}[v${i}]`);
+    if (acel && t.audio === "mudo") {
+      partes.push(`[0:a]atrim=start=${t.inicio}:end=${t.fim},asetpts=PTS-STARTPTS,volume=0[a${i}]`);
+    } else if (acel) {
+      partes.push(`[0:a]atrim=start=${t.inicio}:end=${t.fim},asetpts=PTS-STARTPTS,${cadeiaAtempo(t.fator)}[a${i}]`);
+    } else {
+      partes.push(`[0:a]atrim=start=${t.inicio}:end=${t.fim},asetpts=PTS-STARTPTS[a${i}]`);
+    }
+  });
+  const labels = mantidos.map((_, i) => `[v${i}][a${i}]`).join("");
+  const saidaAudio = loudnorm ? "[acat]" : "[aout]";
+  const concat = `${labels}concat=n=${mantidos.length}:v=1:a=1[vout]${saidaAudio}`;
+  const norm = loudnorm ? `;[acat]${loudnorm}[aout]` : "";
+  return `${partes.join(";")};${concat}${norm}`;
+}
