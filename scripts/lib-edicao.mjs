@@ -318,3 +318,28 @@ export function normalizarTrechos(trechos, duracaoTotal) {
   if (cursor < duracaoTotal) out.push({ inicio: cursor, fim: duracaoTotal, acao: "manter" });
   return out;
 }
+
+// Resumo pro dry-run da velocidade: duração final, contagem por ação, avisos (>2x com voz).
+export function planoVelocidade(trechos, duracaoTotal) {
+  const contagem = { manter: 0, acelerar: 0, cortar: 0 };
+  const avisos = [];
+  let duracaoFinal = 0;
+  for (const t of trechos) {
+    contagem[t.acao] = (contagem[t.acao] || 0) + 1;
+    const dur = t.fim - t.inicio;
+    if (t.acao === "manter") duracaoFinal += dur;
+    else if (t.acao === "acelerar") {
+      duracaoFinal += dur / t.fator;
+      if (t.audio === "voz" && t.fator > 2) {
+        avisos.push(`trecho ${t.inicio}-${t.fim}s a ${t.fator}x com voz: pode ficar difícil de entender.`);
+      }
+    }
+  }
+  return {
+    duracaoFinal,
+    duracaoTotal,
+    contagem,
+    avisos,
+    percentReduzido: duracaoTotal > 0 ? ((duracaoTotal - duracaoFinal) / duracaoTotal) * 100 : 0,
+  };
+}

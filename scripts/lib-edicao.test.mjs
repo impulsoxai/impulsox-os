@@ -4,7 +4,7 @@ import {
   parseSilencedetect, segmentosManter, filtroCorteConcat, planoCorte,
   montarSRT, montarASS, filtroLegenda, filtroLegendaAss, filtroLoudnorm,
   argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
-  parseTrechosTabela, normalizarTrechos,
+  parseTrechosTabela, normalizarTrechos, planoVelocidade,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -285,4 +285,25 @@ test("normalizarTrechos sem trechos = tudo manter", () => {
   assert.deepEqual(normalizarTrechos([], 300), [
     { inicio: 0, fim: 300, acao: "manter" },
   ]);
+});
+
+test("planoVelocidade soma a duração final por ação", () => {
+  const trechos = [
+    { inicio: 0,   fim: 120, acao: "cortar" },                                  // -120s
+    { inicio: 120, fim: 480, acao: "manter" },                                  // +360s
+    { inicio: 480, fim: 600, acao: "acelerar", fator: 2, audio: "mudo" },       // +60s
+  ];
+  const p = planoVelocidade(trechos, 600);
+  assert.equal(p.duracaoFinal, 420);          // 360 + 60
+  assert.equal(p.contagem.cortar, 1);
+  assert.equal(p.contagem.manter, 1);
+  assert.equal(p.contagem.acelerar, 1);
+  assert.deepEqual(p.avisos, []);
+});
+
+test("planoVelocidade avisa quando acelera >2x com voz", () => {
+  const trechos = [{ inicio: 0, fim: 60, acao: "acelerar", fator: 3, audio: "voz" }];
+  const p = planoVelocidade(trechos, 60);
+  assert.equal(p.avisos.length, 1);
+  assert.match(p.avisos[0], /entender|2x|voz/i);
 });
