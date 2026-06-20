@@ -32,3 +32,6 @@ dados/**
 # Mantém só os templates de marca e o README.
 canal-youtube/edicao/*/
 !canal-youtube/edicao/templates/
+
+# gravações de tela (arquivos grandes)
+canal-youtube/gravacoes/
