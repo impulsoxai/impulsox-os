@@ -74,6 +74,12 @@ Você também julga o texto, não só o visual. As réguas:
   esforço/confusão de quem lê. Linha que só descreve o produto (em vez de vender o
   resultado) é achado: corta ou reescreve. Headline fraco, genérico ou que não para o
   dedo entra aqui.
+  - **Exceção — legenda de portfólio/demonstração NÃO é copy de venda.** Antes de aplicar
+    "vende ou descreve" a uma linha, conferir o CONTEXTO da seção. Em vitrine de trabalhos
+    ("Demonstrações", "Cases", "Portfólio", galeria de projetos), o rótulo de cada item
+    **descreve o que aquela peça é** ("Restaurante · reserva e cardápio") — descrever ali é o
+    trabalho certo, não um defeito. Só é achado se o rótulo for confuso ou não diferenciar os
+    itens. Não cobrar "venda de resultado" de legenda de galeria — é a categoria errada.
 - **Tells de IA do /escritor-br.** Travessão, vícios de linguagem, cara de template,
   frase robótica, "qualidade e compromisso" e parentes. Se sobrou tell, é achado.
 
