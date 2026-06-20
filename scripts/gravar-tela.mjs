@@ -110,7 +110,7 @@ function parar() {
 }
 
 if (import.meta.main) {
-  if (cmd === "iniciar") iniciar();
+  if (cmd === "iniciar") iniciar().catch((e) => falhar(e.message));
   else if (cmd === "parar") parar();
   else falhar("uso: node scripts/gravar-tela.mjs iniciar|parar [--slug <nome>] [--reconfigurar]");
 }
