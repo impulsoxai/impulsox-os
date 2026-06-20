@@ -347,3 +347,18 @@ test("filtroVelocidadeConcat com loudnorm encadeia no áudio final", () => {
   assert.match(f, /loudnorm=I=-14/);
   assert.match(f, /\[aout\]/);
 });
+
+test("cadeiaAtempo guarda contra fator inválido (sem loop infinito)", () => {
+  assert.equal(cadeiaAtempo(0), "atempo=1");
+  assert.equal(cadeiaAtempo(-3), "atempo=1");
+  assert.equal(cadeiaAtempo(Number.POSITIVE_INFINITY), "atempo=1");
+});
+
+test("filtroVelocidadeConcat: acelerar mudo comprime o áudio (a/v casam) antes de mutar", () => {
+  const trechos = [{ inicio: 0, fim: 60, acao: "acelerar", fator: 2, audio: "mudo" }];
+  const f = filtroVelocidadeConcat(trechos);
+  // áudio do trecho mudo passa pelo atempo (mesma compressão do vídeo) E zera o volume
+  assert.match(f, /atempo=2/);
+  assert.match(f, /volume=0/);
+  assert.match(f, /setpts=PTS\/2/);
+});

@@ -349,6 +349,7 @@ export function planoVelocidade(trechos, duracaoTotal) {
 
 // Encadeia atempo (cada filtro vale até 2x; >2 multiplica em série mantendo o pitch).
 export function cadeiaAtempo(fator) {
+  if (!Number.isFinite(fator) || fator <= 0) return "atempo=1";
   const fatores = [];
   let restante = fator;
   while (restante > 2) { fatores.push(2); restante /= 2; }
@@ -357,7 +358,9 @@ export function cadeiaAtempo(fator) {
 }
 
 // Filtergraph do ffmpeg pra edição por trechos: pula "cortar", acelera/mantém o resto e
-// concatena. Vídeo via setpts; áudio via atempo (voz, pitch-safe) ou volume=0 (mudo).
+// concatena. Vídeo via setpts; áudio via atempo (voz, pitch-safe). Trecho mudo TAMBÉM
+// comprime o áudio com atempo antes do volume=0 — senão o áudio fica do tamanho original
+// enquanto o vídeo encurta (setpts), e o concat dessincroniza a/v.
 // Espelha filtroCorteConcat: cada segmento mantido vira [vN]/[aN], depois concat.
 export function filtroVelocidadeConcat(trechos, { loudnorm } = {}) {
   const mantidos = trechos.filter((t) => t.acao !== "cortar");
@@ -367,7 +370,7 @@ export function filtroVelocidadeConcat(trechos, { loudnorm } = {}) {
     const setptsV = acel ? `setpts=PTS/${t.fator},setpts=PTS-STARTPTS` : "setpts=PTS-STARTPTS";
     partes.push(`[0:v]trim=start=${t.inicio}:end=${t.fim},${setptsV}[v${i}]`);
     if (acel && t.audio === "mudo") {
-      partes.push(`[0:a]atrim=start=${t.inicio}:end=${t.fim},asetpts=PTS-STARTPTS,volume=0[a${i}]`);
+      partes.push(`[0:a]atrim=start=${t.inicio}:end=${t.fim},asetpts=PTS-STARTPTS,${cadeiaAtempo(t.fator)},volume=0[a${i}]`);
     } else if (acel) {
       partes.push(`[0:a]atrim=start=${t.inicio}:end=${t.fim},asetpts=PTS-STARTPTS,${cadeiaAtempo(t.fator)}[a${i}]`);
     } else {
