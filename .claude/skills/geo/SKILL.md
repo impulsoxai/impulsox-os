@@ -43,6 +43,10 @@ mais afiada a lista de perguntas que o público faria a uma IA. Abaixo de 1, ped
 - `nucleo/provas.md` — números e fatos verificáveis são o que as IAs citam; sem eles a peça
   fica genérica e a IA descarta
 - `producao/raio-x/` — se houver diagnóstico, a seção de presença digital alimenta aqui
+- `referencias/citabilidade.md` — **o grounding da skill**: por que GEO importa, como a IA
+  escolhe o que citar (RAG, query fan-out), as regras de citabilidade do estudo de Princeton
+  (KDD 2024), o decaimento que justifica o retainer, e o Share of Model. Cada número marcado
+  FATO / FATO-CONFIRMADO / VOZ. Ler antes de afirmar qualquer dado em material de cliente.
 - `nucleo/aprendizados.md` — o que ciclos anteriores de GEO já mostraram (não redescobrir)
 
 ## Princípio honesto do GEO
@@ -96,6 +100,24 @@ Entregar ações concretas, cada uma apontando a skill que a executa:
 4. **Prova verificável** — o que falta de número/fato no `nucleo/provas.md` pra o conteúdo
    parar de ser genérico.
 
+### Gate de citabilidade (validador determinístico)
+
+Todo bloco de conteúdo citável que o plano gera (resposta de FAQ, parágrafo answer-first,
+trecho pra Schema) passa pelo **`scripts/validate-geo.mjs`** antes de virar entrega. É o piso
+objetivo, ancorado no estudo de Princeton (mesma régua de ouro da `/revisar-pagina`: nada
+sem regra). O validador checa, sem LLM e falha-fecha:
+
+- **front-load** (a resposta na primeira sentença, porque RAG cita o trecho, não a página),
+- **estatística com fonte** (Princeton: +32%), **citação autoritativa** (+30 a +41%),
+- **limites de caractere** por tipo (trecho auto-contido e remontável),
+- **anti-hype** e **anti-keyword-stuffing** (stuffing REDUZ visibilidade no estudo),
+- **número sem fonte = reprovado**, **Schema JSON-LD** válido (FAQPage/Article/QAPage).
+
+Uso: `node scripts/validate-geo.mjs bloco.json` ou `--texto "..." --tipo faq --fonte "X"`.
+Bloco reprovado volta pra `/conteudo`/`/seo` com o código do erro, não vai pro cliente. O
+"teste do assistente" (o bloco lê natural dentro de uma resposta de IA) é gate manual, em
+cima do automático.
+
 ## Passo 4 — Saída
 
 Salvar em `producao/geo/auditoria-<YYYY-MM-DD>.md`:
@@ -133,6 +155,18 @@ duradouro (não o resultado cru de uma sessão) vai pra `nucleo/aprendizados.md`
 evidência — é o que o `/conteudo` e o `/calendario` leem pra priorizar pauta que rende citação.
 Primeira auditoria real → atualizar `nucleo/escada.md` (presença em IA passa a ser um eixo
 medido).
+
+**A métrica do loop é o Share of Model (SoM):** o % de respostas, num conjunto fixo de
+perguntas, em que a marca aparece, comparado aos concorrentes. É o número que o relatório
+mensal acompanha (subiu? caiu? quem ganhou espaço?). Por que mensal e não uma vez: o
+`citabilidade.md` documenta que ~50% do conteúdo citado tem menos de 13 semanas e 40-60% das
+fontes mudam de um mês pro outro — a base é volátil por natureza, então GEO é disciplina
+recorrente, não conserto único. É o que sustenta o retainer com honestidade, sem a promessa
+falsa de "conserte uma vez e domine por anos".
+
+**Hedge obrigatório no relatório (régua da casa):** o SoM é uma amostra de um conjunto de
+prompts, em motores que personalizam resposta. Não é "a verdade absoluta sobre o que a IA diz
+da marca". O relatório declara isso explícito. Honestidade no diagnóstico é inegociável.
 
 Oferecer agendar o monitoramento junto com o ciclo mensal de `/desempenho`.
 
