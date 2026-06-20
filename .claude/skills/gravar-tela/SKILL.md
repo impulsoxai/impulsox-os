@@ -23,20 +23,22 @@ você dispara o início e o fim por comando. O script faz o resto (ffmpeg + disp
 
 ## Como usar
 
-**Começar a gravar:**
+**É um comando só, que fica aberto enquanto você grava:**
 ```
 node scripts/gravar-tela.mjs iniciar --slug minha-aula
 ```
 - **Primeira vez:** lista as webcams e os microfones conectados; você escolhe pelo número.
   A escolha fica salva no `.env` — nas próximas vezes ele grava direto, sem perguntar.
-- Aparece `🔴 gravando`. Agora é só apresentar/falar/mostrar a tela.
-
-**Parar:**
-```
-node scripts/gravar-tela.mjs parar --slug minha-aula
-```
-- Encerra a gravação e fecha os arquivos. Sai:
+- Aparece `🔴 gravando em 'minha-aula'. Aperte ENTER pra parar.` Agora é só apresentar/falar/
+  mostrar a tela.
+- **Pra parar:** volte nesse terminal e **aperte ENTER**. Ele finaliza os arquivos
+  (fecha o vídeo direitinho) e sai:
   `canal-youtube/gravacoes/minha-aula/tela.mp4` + `webcam.mp4`.
+
+> Por que ENTER no mesmo terminal, e não um comando "parar" separado? No Windows, só dá pra
+> fechar um vídeo do ffmpeg sem corromper o arquivo mandando o sinal de parada pelo mesmo
+> processo que está gravando. Por isso o comando fica aberto: quem grava é quem para. Não
+> feche o terminal no X (isso trunca o arquivo) — use o ENTER.
 
 ## O microfone (interno OU separado)
 
