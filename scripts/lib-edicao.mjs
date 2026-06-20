@@ -277,12 +277,18 @@ export function parseTrechosTabela(texto) {
     if (!m) continue;
     const inicio = tempoParaSeg(m[1]);
     const fim = tempoParaSeg(m[2]);
+    // Pula linha com tempo malformado (sem NaN).
+    if (Number.isNaN(inicio) || Number.isNaN(fim)) continue;
     const resto = m[3].trim().toLowerCase();
     if (resto === "cortar") { trechos.push({ inicio, fim, acao: "cortar" }); continue; }
     if (resto === "manter") { trechos.push({ inicio, fim, acao: "manter" }); continue; }
     const mv = resto.match(/^([\d.]+)x(?:\s+(voz|mudo))?$/);
     if (mv) {
-      trechos.push({ inicio, fim, acao: "acelerar", fator: Number(mv[1]), audio: mv[2] || "voz" });
+      const fator = Number(mv[1]);
+      // Só pusha se fator for um número finito positivo.
+      if (Number.isFinite(fator) && fator > 0) {
+        trechos.push({ inicio, fim, acao: "acelerar", fator, audio: mv[2] || "voz" });
+      }
     }
   }
   return trechos;

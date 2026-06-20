@@ -239,3 +239,18 @@ test("parseTrechosTabela: acelerar sem áudio explícito assume voz", () => {
     { inicio: 0, fim: 30, acao: "acelerar", fator: 2, audio: "voz" },
   ]);
 });
+
+test("parseTrechosTabela pula linha com tempo malformado (sem NaN)", () => {
+  assert.deepEqual(parseTrechosTabela("00:xx-00:30 cortar"), []);
+});
+
+test("parseTrechosTabela pula fator malformado (sem NaN)", () => {
+  assert.deepEqual(parseTrechosTabela("00:00-00:30 1.2.3x"), []);
+});
+
+test("parseTrechosTabela ignora prosa solta sem quebrar as linhas válidas", () => {
+  const txt = `isso é um comentário do dono\n00:00-00:30 cortar`;
+  assert.deepEqual(parseTrechosTabela(txt), [
+    { inicio: 0, fim: 30, acao: "cortar" },
+  ]);
+});
