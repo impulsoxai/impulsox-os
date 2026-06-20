@@ -5,14 +5,15 @@
  *
  * Uso:
  *   node scripts/gravar-tela.mjs iniciar [--slug demo] [--reconfigurar] [--fps 30]
- *   node scripts/gravar-tela.mjs parar   [--slug demo]
  *
- * iniciar: resolve dispositivos (.env ou lista+escolha+salva), dispara 2 ffmpeg
- *   (tela.mp4 + webcam.mp4 com mic) em background, grava os PIDs em .gravando.json.
- * parar: encerra cada ffmpeg de forma graciosa (mp4 com moov atom válido) e limpa o estado.
+ * UM comando só, que fica aberto: resolve dispositivos (.env ou lista+escolha+salva),
+ * dispara 2 ffmpeg (tela.mp4 + webcam.mp4 com mic) em foreground e grava até o dono
+ * apertar ENTER — aí manda 'q' no stdin de cada um pra fechar o mp4 com moov atom válido.
+ * Quem grava é quem para: no Windows, taskkill não finaliza um console ffmpeg sem janela
+ * (trunca o arquivo), então 'q' no stdin é a única parada limpa.
  */
 import { spawnSync, spawn } from "node:child_process";
-import { existsSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createInterface } from "node:readline";
 import { parseDispositivosDshow, argsCapturaTela, argsCapturaWebcam, resolverDispositivos } from "./lib-gravacao.mjs";
@@ -65,8 +66,6 @@ async function iniciar() {
   const slug = flag("--slug") || "gravacao";
   const fps = Number(flag("--fps")) || 30;
   const base = join("canal-youtube", "gravacoes", slug);
-  const estado = join(base, ".gravando.json");
-  if (existsSync(estado)) falhar(`já existe gravação em '${slug}'. Rode 'parar' antes.`);
 
   const disp = listarDispositivos();
   let r = resolverDispositivos({ webcam: process.env.GRAVAR_WEBCAM, mic: process.env.GRAVAR_MIC }, disp);
@@ -82,35 +81,35 @@ async function iniciar() {
   mkdirSync(base, { recursive: true });
   const telaMp4 = join(base, "tela.mp4");
   const webcamMp4 = join(base, "webcam.mp4");
-  const pTela = spawn(FFMPEG, argsCapturaTela({ fps, saida: telaMp4 }), { stdio: ["pipe", "ignore", "ignore"], detached: true });
-  const pWeb = spawn(FFMPEG, argsCapturaWebcam({ webcam: r.webcam, mic: r.mic, fps, saida: webcamMp4 }), { stdio: ["pipe", "ignore", "ignore"], detached: true });
-  writeFileSync(estado, JSON.stringify({
-    slug, pids: { tela: pTela.pid, webcam: pWeb.pid },
-    arquivos: { tela: telaMp4, webcam: webcamMp4 }, inicio: new Date().toISOString(),
-  }, null, 2));
-  pTela.unref(); pWeb.unref();
-  console.log(`\n🔴 gravando em '${slug}'. Quando terminar: node scripts/gravar-tela.mjs parar --slug ${slug}`);
+  // Foreground: ESTE processo segura os dois ffmpeg. O stdin de cada um fica aberto ("pipe")
+  // pra receber 'q' — a ÚNICA forma de o ffmpeg fechar o mp4 com moov atom válido no Windows
+  // (taskkill, mesmo sem /F, não entrega o sinal a um console app sem janela e trunca o
+  // arquivo). Por isso quem grava é quem para — não dá pra separar em 'iniciar'/'parar'.
+  const pTela = spawn(FFMPEG, argsCapturaTela({ fps, saida: telaMp4 }), { stdio: ["pipe", "ignore", "ignore"] });
+  const pWeb = spawn(FFMPEG, argsCapturaWebcam({ webcam: r.webcam, mic: r.mic, fps, saida: webcamMp4 }), { stdio: ["pipe", "ignore", "ignore"] });
+
+  console.log(`\n🔴 gravando em '${slug}'. Aperte ENTER pra parar.`);
+
+  // espera o ENTER do dono.
+  await new Promise((res) => {
+    const rl = createInterface({ input: process.stdin, output: process.stdout });
+    rl.question("", () => { rl.close(); res(); });
+  });
+
+  // manda 'q' nos dois ffmpeg e espera cada um finalizar o mp4 (fecha o stdin pra garantir).
+  console.log("• finalizando os arquivos…");
+  const fechar = (p) => new Promise((res) => {
+    if (p.exitCode !== null) return res();
+    p.on("close", () => res());
+    try { p.stdin.write("q"); p.stdin.end(); } catch { res(); }
+  });
+  await Promise.all([fechar(pTela), fechar(pWeb)]);
+
+  console.log(`✓ pronto: ${telaMp4} + ${webcamMp4}\n→ próximo: /editar-video pra cortar/acelerar/legendar.`);
   process.exit(0);
 }
 
-function parar() {
-  const slug = flag("--slug") || "gravacao";
-  const estado = join("canal-youtube", "gravacoes", slug, ".gravando.json");
-  if (!existsSync(estado)) falhar(`nada gravando em '${slug}'.`);
-  const st = JSON.parse(readFileSync(estado, "utf8"));
-  for (const [nome, pid] of Object.entries(st.pids)) {
-    try {
-      // taskkill SEM /F: pede encerramento gracioso (WM_CLOSE), o ffmpeg finaliza o moov atom.
-      // /F mataria na hora e truncaria o mp4. /T pega a árvore de processos.
-      spawnSync("taskkill", ["/PID", String(pid), "/T"], { stdio: "ignore" });
-    } catch (e) { console.error(`aviso: não consegui parar ${nome} (pid ${pid}): ${e.message}`); }
-  }
-  rmSync(estado, { force: true });
-  console.log(`✓ pronto: ${st.arquivos.tela} + ${st.arquivos.webcam}\n→ próximo: /editar-video pra cortar/acelerar/legendar.`);
-}
-
 if (import.meta.main) {
-  if (cmd === "iniciar") iniciar().catch((e) => falhar(e.message));
-  else if (cmd === "parar") parar();
-  else falhar("uso: node scripts/gravar-tela.mjs iniciar|parar [--slug <nome>] [--reconfigurar]");
+  if (cmd === "iniciar" || cmd === "gravar") iniciar().catch((e) => falhar(e.message));
+  else falhar("uso: node scripts/gravar-tela.mjs iniciar [--slug <nome>] [--reconfigurar] [--fps 30]  (grava até você apertar ENTER)");
 }
