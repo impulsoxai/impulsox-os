@@ -4,6 +4,7 @@ import {
   parseSilencedetect, segmentosManter, filtroCorteConcat, planoCorte,
   montarSRT, montarASS, filtroLegenda, filtroLegendaAss, filtroLoudnorm,
   argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
+  parseTrechosTabela,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -205,5 +206,36 @@ test("argsThumbnailFrameTexto monta drawtext com contorno e escapa fonte/texto",
     "drawtext=fontfile='C\\:/fonts/b.ttf':text='POSTA SOZINHO':fontcolor=white:" +
     "fontsize=96:borderw=8:bordercolor=black:x=(w-text_w)/2:y=h-h/3",
     "-frames:v", "1", "t.png",
+  ]);
+});
+
+// --- Fase 1: velocidade ---
+
+test("parseTrechosTabela lê cortar, acelerar (com áudio) e manter", () => {
+  const txt = `
+00:00-02:00 cortar
+02:00-08:00 manter
+08:00-35:00 2x mudo
+35:00-40:00 1.5x voz
+`;
+  assert.deepEqual(parseTrechosTabela(txt), [
+    { inicio: 0,    fim: 120,  acao: "cortar" },
+    { inicio: 120,  fim: 480,  acao: "manter" },
+    { inicio: 480,  fim: 2100, acao: "acelerar", fator: 2,   audio: "mudo" },
+    { inicio: 2100, fim: 2400, acao: "acelerar", fator: 1.5, audio: "voz" },
+  ]);
+});
+
+test("parseTrechosTabela aceita – e 'a' como separador e hh:mm:ss", () => {
+  const txt = `1:00:00 a 1:05:00 manter\n00:10–00:20 cortar`;
+  assert.deepEqual(parseTrechosTabela(txt), [
+    { inicio: 3600, fim: 3900, acao: "manter" },
+    { inicio: 10,   fim: 20,   acao: "cortar" },
+  ]);
+});
+
+test("parseTrechosTabela: acelerar sem áudio explícito assume voz", () => {
+  assert.deepEqual(parseTrechosTabela("00:00-00:30 2x"), [
+    { inicio: 0, fim: 30, acao: "acelerar", fator: 2, audio: "voz" },
   ]);
 });

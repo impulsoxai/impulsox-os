@@ -257,3 +257,33 @@ export function argsThumbnailFrameTexto({ frame, texto, fonte, cor = "white", co
     `fontsize=96:borderw=8:bordercolor=${contorno}:x=(w-text_w)/2:y=h-h/3`;
   return ["-y", "-i", frame, "-vf", vf, "-frames:v", "1", saida];
 }
+
+// --- Fase 1: velocidade (edição por trechos) ---
+
+// "mm:ss" ou "hh:mm:ss" -> segundos.
+function tempoParaSeg(t) {
+  const partes = t.split(":").map(Number);
+  return partes.reduce((acc, n) => acc * 60 + n, 0);
+}
+
+// Parseia a tabela de tempos digitada pelo dono em trechos.
+// Linha: "<inicio><sep><fim> <acao>" onde sep ∈ {-, –, a}, acao ∈ {cortar, manter, <N>x [voz|mudo]}.
+export function parseTrechosTabela(texto) {
+  const trechos = [];
+  for (const linhaRaw of String(texto).split("\n")) {
+    const linha = linhaRaw.trim();
+    if (!linha) continue;
+    const m = linha.match(/^([\d:]+)\s*(?:-|–|a)\s*([\d:]+)\s+(.+)$/i);
+    if (!m) continue;
+    const inicio = tempoParaSeg(m[1]);
+    const fim = tempoParaSeg(m[2]);
+    const resto = m[3].trim().toLowerCase();
+    if (resto === "cortar") { trechos.push({ inicio, fim, acao: "cortar" }); continue; }
+    if (resto === "manter") { trechos.push({ inicio, fim, acao: "manter" }); continue; }
+    const mv = resto.match(/^([\d.]+)x(?:\s+(voz|mudo))?$/);
+    if (mv) {
+      trechos.push({ inicio, fim, acao: "acelerar", fator: Number(mv[1]), audio: mv[2] || "voz" });
+    }
+  }
+  return trechos;
+}
