@@ -24,3 +24,13 @@ export function parseDispositivosDshow(saida) {
   }
   return { video, audio };
 }
+
+// Args do ffmpeg pra capturar a TELA inteira (gdigrab, Windows) -> mp4 sem áudio.
+// faststart deixa o moov atom utilizável; libx264 veryfast pra não pesar a CPU na captura.
+export function argsCapturaTela({ fps = 30, saida }) {
+  return [
+    "-y", "-f", "gdigrab", "-framerate", String(fps), "-i", "desktop",
+    "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
+    "-movflags", "+faststart", saida,
+  ];
+}
