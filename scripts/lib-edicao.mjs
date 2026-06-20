@@ -320,6 +320,7 @@ export function normalizarTrechos(trechos, duracaoTotal) {
 }
 
 // Resumo pro dry-run da velocidade: duração final, contagem por ação, avisos (>2x com voz).
+// Trata fator inválido (não-finito ou <=0) como duração cheia: nunca emite NaN.
 export function planoVelocidade(trechos, duracaoTotal) {
   const contagem = { manter: 0, acelerar: 0, cortar: 0 };
   const avisos = [];
@@ -329,8 +330,10 @@ export function planoVelocidade(trechos, duracaoTotal) {
     const dur = t.fim - t.inicio;
     if (t.acao === "manter") duracaoFinal += dur;
     else if (t.acao === "acelerar") {
-      duracaoFinal += dur / t.fator;
-      if (t.audio === "voz" && t.fator > 2) {
+      // Valida fator: se não-finito ou <=0, trata como duração cheia (sem acelerar).
+      const fatorValido = Number.isFinite(t.fator) && t.fator > 0;
+      duracaoFinal += fatorValido ? dur / t.fator : dur;
+      if (fatorValido && t.audio === "voz" && t.fator > 2) {
         avisos.push(`trecho ${t.inicio}-${t.fim}s a ${t.fator}x com voz: pode ficar difícil de entender.`);
       }
     }

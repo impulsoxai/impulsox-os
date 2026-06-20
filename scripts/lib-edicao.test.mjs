@@ -307,3 +307,9 @@ test("planoVelocidade avisa quando acelera >2x com voz", () => {
   assert.equal(p.avisos.length, 1);
   assert.match(p.avisos[0], /entender|2x|voz/i);
 });
+
+test("planoVelocidade não emite NaN se acelerar vier sem fator válido", () => {
+  const p = planoVelocidade([{ inicio: 0, fim: 60, acao: "acelerar", audio: "voz" }], 60);
+  assert.ok(Number.isFinite(p.duracaoFinal), "duracaoFinal deve ser finito");
+  assert.equal(p.duracaoFinal, 60); // fator inválido -> conta como duração cheia
+});
