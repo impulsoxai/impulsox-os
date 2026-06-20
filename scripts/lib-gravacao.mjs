@@ -34,3 +34,14 @@ export function argsCapturaTela({ fps = 30, saida }) {
     "-movflags", "+faststart", saida,
   ];
 }
+
+// Args do ffmpeg pra capturar WEBCAM (vídeo) + MIC (áudio) via dshow -> um mp4.
+// O dshow recebe os dois dispositivos no mesmo -i "video=...:audio=...".
+export function argsCapturaWebcam({ webcam, mic, fps = 30, saida }) {
+  return [
+    "-y", "-f", "dshow", "-framerate", String(fps),
+    "-i", `video=${webcam}:audio=${mic}`,
+    "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
+    "-c:a", "aac", "-movflags", "+faststart", saida,
+  ];
+}

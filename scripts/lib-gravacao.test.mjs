@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseDispositivosDshow, argsCapturaTela } from "./lib-gravacao.mjs";
+import { parseDispositivosDshow, argsCapturaTela, argsCapturaWebcam } from "./lib-gravacao.mjs";
 
 const SAIDA = `[in#0 @ 0x1] "HD User Facing" (video)
 [in#0 @ 0x1]   Alternative name "@device_pnp_\\\\?\\usb#vid_0408&pid_a061"
@@ -41,4 +41,17 @@ test("argsCapturaTela monta gdigrab desktop -> mp4", () => {
 test("argsCapturaTela usa fps default 30 quando não informado", () => {
   const a = argsCapturaTela({ saida: "x.mp4" });
   assert.ok(a.includes("30"));
+});
+
+test("argsCapturaWebcam monta dshow webcam+mic -> mp4", () => {
+  const a = argsCapturaWebcam({
+    webcam: "HD User Facing", mic: "Grupo de microfones (Realtek(R) Audio)",
+    fps: 30, saida: "out/webcam.mp4",
+  });
+  assert.deepEqual(a, [
+    "-y", "-f", "dshow", "-framerate", "30",
+    "-i", "video=HD User Facing:audio=Grupo de microfones (Realtek(R) Audio)",
+    "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
+    "-c:a", "aac", "-movflags", "+faststart", "out/webcam.mp4",
+  ]);
 });
