@@ -92,6 +92,9 @@ tema real   a fórmula        narrada       +karaokê          N shorts    (priv
 
 - **/tema-yt** (demanda real) → **/roteiro-yt** (copia fórmula de quem performa) → editar →
   shorts → publicar → **/desempenho-yt** (retenção valida a fórmula) → realimenta
+- **/thumbnail** (consultor de CTR: Four C's + crivo de nota) é chamada pela **/editar-video**
+  (capa do vídeo longo) e roda **avulsa** (capa pra vídeo de fora; repacote quando o CTR cai).
+  O **/roteiro-yt** projeta o conceito; a **/thumbnail** gera e pontua. Capa decide o clique
 
 ---
 

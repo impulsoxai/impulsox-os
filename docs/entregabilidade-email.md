@@ -1,19 +1,52 @@
 # Entregabilidade de e-mail — o que tira o e-mail da caixa de entrada
 
-> Lido pelo `/email` como **gate** antes de fechar qualquer assunto, preview ou corpo.
-> E-mail bem escrito que cai no spam não vende. Filtro de spam reage a palavra, pontuação,
-> formatação e promessa exagerada — independente de a lista ser opt-in. Esta lista é a régua.
+> Lido pelo `/email` como **gate** antes de fechar qualquer e-mail. A ordem importa: o filtro
+> decide **quem você é antes de ler o que você escreveu**. Autenticação, reputação de domínio
+> e engajamento pesam MUITO mais que palavra-gatilho. Por isso este doc abre pela infra e só
+> depois trata a régua de palavras — que é higiene de margem, não o gate principal.
 >
-> Adaptado de patterns de entregabilidade (GrowthEngineX, +1000 campanhas) para o
-> português-BR e o contexto da casa: e-mail marketing para base **opt-in própria** (não cold).
-> A lógica transfere; as palavras foram traduzidas pros equivalentes que o público BR vê.
+> Contexto da casa: e-mail marketing para base **opt-in própria** (não cold). A régua de
+> palavras foi adaptada de acervo de cold outbound (GrowthEngineX) — onde ela pesa mais por
+> falta de reputação/relação. Em base opt-in com domínio reputado, **o peso dela é menor**;
+> não tratar como "a régua".
 
-## A lógica (antes da lista)
+## Camada 0 — Infra e autenticação (o gate de verdade, antes de qualquer palavra)
 
-Filtro de spam soma sinais. Cada gatilho isolado é leve; **acumulados** derrubam o e-mail.
-Princípio: **e-mail tem que soar como pessoa real falando claro, não como anúncio, cupom,
-golpe ou alerta de banco.** Na dúvida entre duas frases, escolher a de menos hype. Bate com a
-voz da casa: "ambição grande, entrega calma" — calma também entrega melhor.
+Sem isto, o conteúdo nem é avaliado — o e-mail não entra no jogo. **Pré-requisito antes de
+declarar qualquer sequência "pronta pra disparar":**
+
+- **SPF + DKIM + DMARC** no domínio de envio. Desde 01/04/2024, Gmail e Yahoo **exigem os três**
+  de quem envia em volume; sem eles, vai pra spam ou é bloqueado antes do conteúdo. DMARC no
+  mínimo `p=none`. Conferir com o dono se o domínio dele já tem (a ferramenta de envio costuma
+  configurar; não assumir que está feito).
+- **Domínio de envio próprio e aquecido** — não disparar volume de um domínio novo/frio.
+  Reputação se constrói com consistência de envio.
+- **One-click unsubscribe** (RFC 8058 / header `List-Unsubscribe` + `List-Unsubscribe-Post`) —
+  exigência de Gmail/Yahoo desde 2024 **e** boa prática LGPD. Descadastro cumprido em **até 48h**.
+  Não basta link no rodapé: tem que estar no header. Verificar se a ferramenta de envio injeta.
+- **Taxa de reclamação de spam < 0,3%** (ideal < 0,1%). É um dos sinais que mais movem
+  reputação. Acima disso, todo o domínio sofre.
+- **Higiene de lista** — remover inativos, fazer *sunset* de quem não abre há meses. Lista que
+  só engaja sobe reputação; lista cheia de morto derruba. Conectar com o `/desempenho`.
+
+> Pré-requisito de infra ≠ degrau de voz. A skill `/email` precisa do degrau 2 (voz) pra
+> ESCREVER bem, mas pra DISPARAR de verdade o pré-requisito real é esta Camada 0. Declarar os
+> dois separados; uma sequência só está "pronta pra ar" quando a Camada 0 está resolvida.
+
+## Camada 1 — Engajamento e relevância
+
+Depois da infra, o que mais decide inbox é o comportamento do destinatário: aberturas,
+cliques, respostas, "não é spam". E-mail relevante pra quem pediu engaja; engajamento sobe
+reputação. Por isso a régua nº1 de conteúdo não é "evitar palavra", é **mandar coisa que a
+pessoa quer abrir** — segmentar, respeitar a cadência, não cansar a lista.
+
+## Camada 2 — A lógica do conteúdo (higiene de margem)
+
+Resolvidas a infra e o engajamento, aí sim o conteúdo importa **na margem**. Filtro soma
+sinais; cada gatilho isolado é leve, **acumulados** pesam — mas num domínio reputado, palavra
+solta quase não move a agulha. Princípio: **e-mail tem que soar como pessoa real falando claro,
+não como anúncio, cupom, golpe ou alerta de banco.** Na dúvida, menos hype. Bate com a voz da
+casa: "ambição grande, entrega calma" — calma também entrega melhor.
 
 ## Palavras e expressões de risco (evitar, sobretudo no ASSUNTO)
 
@@ -64,6 +97,22 @@ farmácia online, sem receita, antienvelhecimento.
 Regra de reescrita: troca **pressão por permissão**, **hype por observação**, **promessa
 vaga por número/cena concreta**. Frase que soa anúncio → reescreve até soar gente falando.
 (É o mesmo princípio do `docs/frase-que-pega.md`: específico-verdadeiro > esperto-genérico.)
+
+**Cuidado: não troque hype por vago.** Reescrita segura ≠ assunto evasivo. Assunto com
+**número, pergunta ou clareza direta** AUMENTA abertura — "uma coisa que pode te interessar"
+entrega pouco e baixa a taxa de abertura sem ganho real de entrega. O que queima é **hype +
+formatação agressiva combinados** (CAIXA ALTA + "!!!" + "GRÁTIS"), não a assertividade. Assunto
+pode ser direto e específico; só não pode gritar nem prometer o que o corpo não cumpre.
+
+## Assunto e preview (o que mais move abertura)
+
+- **Assunto curto:** < ~40 caracteres (mobile corta o resto). Os de maior abertura têm 2-4
+  palavras. Direto vence enrolado.
+- **Preview / preheader:** a linha de prévia que aparece depois do assunto na caixa de entrada
+  — é a segunda chance de fisgar. Não repetir o assunto: **complementar** (o assunto abre, o
+  preview adianta o valor). Preview vazio ou repetido desperdiça espaço de abertura.
+- Contrato do assunto: cumpre o que promete (mesma régra do `docs/persuasao.md`). Clickbait no
+  assunto queima a lista e a reputação de envio.
 
 ## Nome de empresa com palavra banida
 

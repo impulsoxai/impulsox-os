@@ -115,10 +115,10 @@ movimentos:
 1. **Hook (0-15s):** frase de abertura ≤10 palavras, sem credencial, sem "e aí galera".
    Confirma que o vídeo é sobre o que a pessoa clicou (honra o pacote do Passo 2) e abre
    a tensão. Hooks que prendem em 15s retêm ~65% até os 3min; sem isso, cai pra ~45%.
-   Partir do **padrão de hook** que veio no ângulo do `/tema-yt` (um dos 6 de
-   `docs/frase-que-pega.md` §2.5: Contradição, Especificidade, Tensão de tempo, POV-conselho,
-   Confissão vulnerável, Pattern interrupt). Sem ângulo definido, escolher o padrão que melhor
-   abre o contraste do vídeo.
+   Partir do **padrão de hook** que veio no ângulo do `/tema-yt` (um dos 9 de
+   `docs/frase-que-pega.md` §2.5: Contradição, Especificidade, Tensão de tempo, POV como
+   conselho, Confissão vulnerável, Pattern interrupt, Lista, Aviso de erro, How-to). Sem
+   ângulo definido, escolher o padrão que melhor abre o contraste do vídeo.
 2. **Commitment hook (15-30s):** dá o motivo de ficar até o fim — escolher um: lacuna de
    informação ("o passo 3 é o que ninguém faz"), prova de resultado (mostrar o fim antes),
    gancho narrativo, ou gancho de tutorial ("no final você sai com X rodando"). Até o
@@ -157,7 +157,9 @@ Voltar ao rascunho do Passo 2 e fechar o pacote sabendo o que o vídeo de fato e
 combinação faz a pergunta; nenhuma das duas entrega a resposta sozinha). Concreto > vago.
 Sem promessa que o vídeo não cumpre (ver contrato Quality-CTR).
 
-**Conceito de thumbnail — regras duras (pesquisa 2026):**
+**Conceito de thumbnail** — aqui o `/roteiro-yt` projeta SÓ o conceito (sujeito, texto,
+contraste); quem GERA a capa e pontua é a **`/thumbnail`** (Four C's + crivo de CTR), na
+edição ou avulsa. Regras duras do conceito (pesquisa 2026):
 - **1 sujeito dominante.** Uma coisa que para o dedo, não uma colagem.
 - **3-5 palavras de texto, no máximo** — bold, sans-serif, legível no mobile (a maioria
   assiste no celular). O texto **complementa** o título, não repete.

@@ -28,20 +28,43 @@ julgando UI por screenshot dá só 19% de sugestões boas, 9% prejudiciais e 72%
 Ancorar cada achado em regra nomeada é o que separa review útil de ruído convincente
 mas errado. Sem a âncora, você vira parte dos 72%.
 
-## As 10 heurísticas de Nielsen
+## As heurísticas de Nielsen que valem numa landing
 
-A régua de design. Para landing page as mais usadas são a 4, a 6 e a 8, mas todas valem:
+Nielsen é régua de usabilidade de produto/app; numa landing estática, metade não se aplica.
+As que valem aqui (cito por número quando uso):
 
-1. Visibilidade do status do sistema
-2. Correspondência entre o sistema e o mundo real
-3. Controle e liberdade do usuário
-4. Consistência e padrões
-5. Prevenção de erros
-6. Reconhecer em vez de lembrar
-7. Flexibilidade e eficiência de uso
-8. Estética e design minimalista
-9. Ajudar a reconhecer, diagnosticar e recuperar de erros
-10. Ajuda e documentação
+- **#2 Mundo real** — linguagem do cliente, não jargão interno
+- **#4 Consistência e padrões** — botões, espaçamento, repetição visual coerentes
+- **#6 Reconhecer em vez de lembrar** — o que importa está visível, não escondido
+- **#8 Estética e minimalismo** — sem ruído, respiro, hierarquia clara
+
+As outras (status do sistema, prevenção/recuperação de erro, ajuda/doc) raramente cabem numa
+landing — não forçar achado nelas. Para o que Nielsen não cobre (conversão, prova, citabilidade),
+usar as réguas abaixo.
+
+## Régua de CONVERSÃO (a página de venda existe pra converter)
+
+Página premium R$5-10k vende. Estes são achados de conversão, ancorados:
+
+- **Dobra (above the fold):** sem rolar, a página responde "o que é + o que eu ganho"? Hero
+  mudo = achado Major.
+- **CTA:** existe **um** CTA primário, **visível sem rolar** no mobile, com texto específico
+  ("Falar no WhatsApp", não "Saiba mais")? CTA ausente da dobra / genérico / múltiplo = achado.
+- **Prova social:** há depoimento/caso/número **específico e atribuído** perto do CTA e depois
+  de claim forte? Página de venda sem nenhuma prova = achado Major. Depoimento vago ("ótimo
+  serviço!") = achado Minor.
+- **Message-match:** se a página recebe tráfego de anúncio, o hero ecoa a promessa do anúncio?
+
+## Régua de CITABILIDADE (GEO — a página aparece na IA)
+
+O sistema é IA-Ready. Checagem leve de copy (Schema/on-page é do `/seo`; aqui só o texto):
+
+- Hero e seções abrem **answer-first** (a 1ª linha responde a pergunta do título)?
+- Claim forte vem com **número/fonte** (citável) ou é vago?
+- Há **FAQ extraível** (resposta standalone)?
+
+Se a página falha citabilidade, o achado é **um flag de encaminhamento pro `/geo`** — não régua
+cheia (não sou a autoridade de GEO, só sinalizo que a copy não está citável).
 
 ## Régua de COPY
 
@@ -56,14 +79,19 @@ Você também julga o texto, não só o visual. As réguas:
 
 Você SÓ APONTA o problema de copy. Não reescreve: quem reescreve é a skill de destino.
 
-## Severidade (escala Nielsen)
+## Severidade (gatilho objetivo, não feeling)
 
-- 🔴 **Blocker**: quebra a página: texto ilegível, CTA invisível, layout estourado no
-  mobile. Não pode ir ao ar assim.
-- 🟡 **Major**: atrapalha de verdade: hierarquia confusa, headline fraco, copy que
-  descreve em vez de vender. Custa conversão.
-- 🟢 **Cosmetic**: polish: espaçamento irregular, micro-inconsistência. Melhora, não
-  bloqueia.
+Cada nível tem um teste binário — dois revisores têm que classificar igual:
+
+- 🔴 **Blocker** — *impede a ação primária ou é ilegível.* CTA invisível, texto sem contraste,
+  layout estourado no mobile, dobra que não diz o que é. Não pode ir ao ar.
+- 🟡 **Major** — *reduz conversão de forma mensurável.* Hierarquia confusa, headline fraco,
+  copy que descreve em vez de vender, ausência de prova social, CTA genérico. Custa venda.
+- 🟢 **Cosmetic** — *não afeta nem a tarefa nem a conversão.* Espaçamento irregular,
+  micro-inconsistência. Melhora o acabamento, não bloqueia.
+
+**Mobile pesa mais:** o mesmo achado na tela 390px é mais grave que no desktop — público BR é
+mobile-dominante. Achado que só aparece no mobile sobe um nível de severidade.
 
 ## Formato de cada achado (4 campos obrigatórios)
 
@@ -74,16 +102,17 @@ Todo achado tem os quatro, sempre nesta ordem:
 2. **Regra violada**: nomeada. Ex: "Nielsen #8, estética e minimalista", "régua /copy,
    vende ou descreve", "DNA premiado, ritmo de respiro", "voz.md, palavra banida".
 3. **Como consertar**: a ação concreta. Não a teoria: o que fazer.
-4. **Quem resolve**: a skill de destino: /copy, /escritor-br, /pagina ou /premium-design.
+4. **Quem resolve**: a skill de destino: /copy, /escritor-br, /pagina, /premium-design ou /geo
+   (citabilidade).
 
 Achado sem os quatro campos não sai. Falta a regra: corte o achado.
 
 ## Saída
 
-Abre com 1 linha de veredito honesto. Ex: "Design sólido; copy precisa de 2 ajustes
-críticos." Depois os achados, agrupados por severidade (🔴 primeiro, 🟡, 🟢). Fecha com a
-ordem de ataque: o que consertar primeiro pelo impacto. Sem floreio, um achado por bloco,
-tom direto.
+Abre com 1 linha de veredito honesto, **sem afago**. Ex: "Hero não responde 'o que eu ganho';
+2 achados críticos de conversão." (não "design sólido, mas…"). Depois os achados, agrupados por
+severidade (🔴 primeiro, 🟡, 🟢). Fecha com a ordem de ataque: o que consertar primeiro pelo
+impacto. Sem floreio, um achado por bloco, tom direto.
 
 ```
 VEREDITO: [uma linha honesta sobre o estado da página]
@@ -103,6 +132,9 @@ ORDEM DE ATAQUE: [o que consertar primeiro, por impacto]
 ## O que NÃO fazer
 
 - Não reescrever copy: aponta o problema e encaminha pra /copy ou /escritor-br.
-- Não cobrir conversão, UX-flow, técnico, SEO ou performance: fora do escopo desta
-  revisão. Aqui é design visual + copy, só.
+- **Cubro design visual + copy + conversão estrutural + flag de citabilidade.** NÃO cubro:
+  Schema/SEO técnico (é do `/seo`), Core Web Vitals/performance (é da Etapa 4b do `/pagina`),
+  acessibilidade técnica além do que é visível no screenshot (contraste e tamanho eu pego;
+  ARIA/teclado não). Quando a página passa na minha régua mas não medi CWV nem SEO técnico, o
+  veredito **diz isso** — pra ninguém achar que "✓ revisado" é aprovação total.
 - Não inventar achado sem régua. Sem regra nomeada por trás, o achado não existe.

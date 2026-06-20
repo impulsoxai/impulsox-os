@@ -130,12 +130,50 @@ Regra honesta: **prova forte + garantia fraca > garantia forte + prova fraca.** 
 prova primeiro, depois a garantia em cima. E nunca prometer mais do que a entrega
 sustenta — teste de estresse: o que acontece se 10% dos compradores acionarem a garantia?
 
+## Gate zero — é problema de OFERTA mesmo? (antes de tudo)
+
+Nem todo "não converte" é problema de oferta. Antes de mexer numa alavanca, descartar dois
+diagnósticos que oferta nenhuma resolve:
+
+- **Problema de DEMANDA / fit de mercado** — o público não compra porque o problema **não é
+  caro nem urgente o bastante** pra ele. Sintoma: ninguém reclama do problema, ninguém já
+  pagou por solução parecida. Aqui, bônus e garantia não salvam — o que falta é mercado, não
+  oferta. (Hormozi é explícito: às vezes não compram porque o problema não dói o suficiente.)
+- **Problema de TRÁFEGO** — a oferta é boa mas pouca gente certa vê. Sintoma: quem chega na
+  oferta fecha bem, mas chega pouca gente. Aqui o gargalo é alcance (ver `/ads-*`, `/calendario`),
+  não a oferta.
+
+Só seguir pro loop de oferta quando o sinal for: **gente certa chega, entende, e mesmo assim
+não compra**. Aí sim é a oferta. (Conecta com `docs/modelos-mentais.md` — Teoria das
+Restrições: achar o gargalo certo antes de otimizar o resto.)
+
+## Posicionamento proprietário — a alavanca nº1 no B2B/serviço (antes da Equação de Valor)
+
+Pra serviço/agência/B2B, o que mais separa oferta de R$ 5k de oferta comoditizada **não** é
+bônus nem garantia — é **só você resolver assim**. Oferta sem diferenciação proprietária é
+comparada por preço por definição, e nenhuma alavanca salva. Antes de pontuar a Equação de
+Valor, responder:
+
+- **O problema é PURE?** — **P**enoso (dói de verdade), **U**rgente (não dá pra empurrar),
+  **R**econhecido (o comprador já sabe que tem), **C**aro (custa dinheiro/tempo não resolver).
+  Problema que falha em qualquer um vira "seria bom ter" — e "seria bom" não fecha venda.
+- **Qual o seu mecanismo proprietário?** — o "como" que é só seu (método nomeado, processo,
+  ângulo). Não é slogan: é a razão concreta de comprar de você e não da categoria. (Liga com a
+  alavanca "probabilidade percebida" e com o `/premium-design`/`/proposta`.)
+
+Sem posicionamento, a oferta entra numa guerra de preço que ela perde. Esta é a primeira
+pergunta no B2B — antes do tipo de negócio, antes da Equação.
+
 ## O loop de diagnóstico (quando dizem "minha oferta não converte")
 
+0. **Passar pelo gate zero e pelo posicionamento** (seções acima) — é oferta mesmo? o problema
+   é PURE? há mecanismo proprietário? Se trava aqui, o conserto não é alavanca de oferta
 1. **Identificar o tipo de negócio** — o molde certo é específico do tipo (tabela acima)
 2. **Escrever a oferta atual em linguagem simples** — nome, preço, o que entra, garantia,
    prazo. Por escrito, mesmo que hoje esteja espalhado
-3. **Rodar a Equação de Valor** — pontuar cada alavanca 1-10. A mais baixa prende
+3. **Rodar a Equação de Valor** — pontuar cada alavanca 1-10. A mais baixa prende. Quando o
+   degrau 4 existe (dados reais — taxa de fechamento por etapa, motivo de objeção registrado),
+   pontuar com o dado, não no chute
 4. **Auditar a anatomia** — qual das 6 partes está faltando ou fraca?
 5. **Escolher UMA alavanca pra mexer nesta rodada** — não reconstruir tudo; a maior
    alavanca costuma ser a que pontuou mais baixo
@@ -144,6 +182,29 @@ sustenta — teste de estresse: o que acontece se 10% dos compradores acionarem 
 7. **Projetar o ganho com honestidade** — mudança de um componente costuma render 10-40%
    de ganho em conversão. Quem promete 5x está vendendo alguma coisa. Duas rodadas em
    alavancas diferentes podem empilhar pra 2-3x
+
+## Modelo de dinheiro — a oferta vive numa escada, não sozinha
+
+Uma oferta isolada otimiza conversão de um item e deixa caixa na mesa. O estado-da-arte
+(Hormozi, *Money Models*) pensa a **sequência** de ofertas, não uma só — é o que dá fôlego pra
+escalar:
+
+- **Oferta de entrada** — baixa fricção, fácil de dizer sim (diagnóstico pago, piloto, projeto
+  pequeno). Traz o cliente pra dentro e gera caixa rápido.
+- **Oferta principal** — o serviço/produto central (o de R$ 5k+).
+- **Continuidade** — receita recorrente (retainer, manutenção, acompanhamento). É o que
+  transforma projeto em previsibilidade.
+
+Princípio de caixa: o ideal é o cliente **pagar de volta o custo de adquiri-lo cedo** (o ganho
+dos primeiros ~30 dias cobrindo o custo de aquisição) — é o que libera reinvestir em mais
+clientes sem quebrar o caixa. O primeiro ganho rápido (alavanca "tempo até o resultado") tem
+papel duplo aqui: além de satisfazer, é o **gatilho natural do upsell** pra próxima oferta da
+escada.
+
+Quando usar: se o negócio só tem **uma** oferta e vive de fechar projeto avulso, sugerir
+montar a escada (entrada → principal → continuidade) costuma render mais que otimizar a
+conversão da oferta única. *(Os números de payback são de resumos de Money Models — usar como
+princípio, verificar antes de cravar regra numérica.)*
 
 ## O que NUNCA fazer (régua da casa, inegociável)
 

@@ -6,7 +6,12 @@
  *
  * Uso: node scripts/gerar-thumbnail.mjs --slug demo --texto "POSTA SOZINHO" \
  *        [--frame 3 | --frame capa.png] [--video bruto.mp4] [--fonte caminho.ttf]
- *        [--fal --conceito "..." [--confirmar]]
+ *        [--fal --conceito "..." [--modelo nano|nano-pro|minimax|schnell|dev] \
+ *         [--resolucao 1K|2K|4K] [--ref foto.png] [--confirmar]]
+ *
+ * Modelo da geração por IA (--modelo, default nano): nano=Banana 2 (texto+luz certos,
+ * ~8-12¢) · nano-pro=estúdio (~15¢) · minimax=barato (~1¢) · schnell/dev=FLUX. --resolucao
+ * só pesa em nano/nano-pro. --ref = foto-referência (mantém o sujeito; só foto autorizada).
  */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, existsSync } from "node:fs";
@@ -21,12 +26,13 @@ export function argsExtrairFrame(video, seg, saida) {
 }
 
 // Preview do plano da thumbnail por IA — NÃO chama a Fal (isso é só com --confirmar).
-export function planoFal({ conceito, slug }) {
+export function planoFal({ conceito, slug, modelo = "nano" }) {
   return {
     dry_run: true,
-    prompt: `Thumbnail de YouTube, alto contraste, 1 sujeito dominante: ${conceito}. Sem texto na imagem.`,
+    prompt: `YouTube thumbnail, 16:9, high contrast, one dominant subject, dramatic lighting, clear facial emotion if the subject is a person (surprise/focus/relief): ${conceito}. No text in the image.`,
     saida: `canal-youtube/edicao/${slug}/thumb-fal.png`,
-    nota: "rode com --confirmar pra gerar via Fal (tem custo).",
+    modelo,
+    nota: `rode com --confirmar pra gerar via Fal (modelo ${modelo}, 16:9). Modelos: nano (Banana 2, texto+luz certos, ~8-12¢) · nano-pro (estúdio, ~15¢) · minimax (barato ~1¢) · schnell/dev (FLUX). Sem texto na imagem — o texto entra on-brand no layout composto.`,
   };
 }
 
@@ -77,13 +83,21 @@ if (import.meta.main) {
   }
 
   // 2) alternativa Fal (preview por padrão; gera só com --confirmar)
+  // Modelo escolhível (--modelo, default nano/Banana 2 — texto+luz certos pra capa).
+  // --resolucao só pesa em nano/nano-pro. --ref mantém o sujeito (foto real autorizada).
   if (has("--fal")) {
     const conceito = flag("--conceito") || texto || "";
-    const plano = planoFal({ conceito, slug });
+    const modelo = flag("--modelo") || "nano";
+    const resolucao = flag("--resolucao") || "1K";
+    const refImg = flag("--ref");
+    const plano = planoFal({ conceito, slug, modelo });
     if (!has("--confirmar")) { console.log(JSON.stringify(plano, null, 2)); process.exit(0); }
     const saidaFal = join(base, "thumb-fal.png");
+    const argsImg = [join("scripts", "gerar-imagem.mjs"), "--prompt", plano.prompt,
+      "--saida", saidaFal, "--modelo", modelo, "--largura", "1280", "--altura", "720", "--resolucao", resolucao];
+    if (refImg) argsImg.push("--ref", refImg);
     try {
-      execFileSync("node", [join("scripts", "gerar-imagem.mjs"), plano.prompt, "--saida", saidaFal], { stdio: "inherit" });
+      execFileSync("node", argsImg, { stdio: "inherit" });
       console.log(`thumb Fal: ${saidaFal}`);
     } catch (e) { falhar("geração Fal falhou: " + e.message); }
   }

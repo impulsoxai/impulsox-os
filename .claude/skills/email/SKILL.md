@@ -23,6 +23,12 @@ Precisa do **degrau 2** (voz definida) — e-mail genérico na caixa de entrada 
 primeira linha. Sem `nucleo/voz.md` rico, avisar que o resultado melhora muito depois do
 `/voz` e seguir com o tom provisório.
 
+**Pré-requisito de infra (separado do degrau de voz):** ESCREVER bem pede o degrau 2;
+**DISPARAR** de verdade pede a Camada 0 do `docs/entregabilidade-email.md` — domínio com
+SPF/DKIM/DMARC, one-click unsubscribe, reputação. Pode escrever a sequência sem isso, mas só
+declarar "pronta pra ar" quando a infra estiver resolvida. Conferir com o dono qual ferramenta
+de envio ele usa (ela costuma resolver a autenticação) — não assumir que está feito.
+
 ## O que ler antes
 
 - `nucleo/voz.md` — a voz manda em assunto, abertura e fecho de cada e-mail
@@ -84,8 +90,13 @@ que cai no spam não vende; este gate é tão obrigatório quanto o `/escritor-b
 - Prova só **autorizada** (`nucleo/provas.md`); sem prova real, a peça troca de ângulo ou
   espera — nunca inventa caso ou número.
 - **LGPD inegociável:** só escrever para quem deu contato **voluntariamente** (baixou isca,
-  pediu proposta, assinou a lista). Todo e-mail de sequência menciona o **descadastro** de
-  forma clara. Não construir lista comprada nem fazer disparo a frio.
+  pediu proposta, assinou a lista). Não construir lista comprada nem fazer disparo a frio.
+  - **Base legal explícita:** registrar QUAL base sustenta cada lista — consentimento (art. 7
+    LGPD: quem baixou isca/assinou) ou legítimo interesse/soft opt-in (cliente que já comprou).
+    É o que a ANPD cobra; lista sem base identificável não dispara.
+  - **One-click unsubscribe, não só link no rodapé:** descadastro no header (RFC 8058) +
+    cumprido em **até 48h** — exigência de Gmail/Yahoo desde 2024 e da LGPD. Ver Camada 0 do
+    `docs/entregabilidade-email.md`. Verificar se a ferramenta de envio injeta o header.
 - Assunto cumpre o que promete (contrato do hook) — clickbait queima a lista e a reputação
   de envio.
 - **Gate de entregabilidade obrigatório** (`docs/entregabilidade-email.md`): varrer assunto e

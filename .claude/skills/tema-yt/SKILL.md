@@ -49,7 +49,7 @@ Pra cada um dos 5 ângulos, definir — **cada um diferente dos outros**:
 - **Método de prova:** como o vídeo sustenta o B — escolher um diferente por ângulo:
   **demo** (mostrar na tela funcionando) · **dado** (número/resultado) · **antes/depois** ·
   **caso real** (cliente/projeto) · **opinião fundamentada** (autoridade demonstrada)
-- **Padrão de hook sugerido:** um dos 6 de `docs/frase-que-pega.md` (§2.5) que melhor abre aquele contraste
+- **Padrão de hook sugerido:** um dos 9 de `docs/frase-que-pega.md` (§2.5) que melhor abre aquele contraste
 - **Título-rascunho:** a promessa (não o tema) — a lacuna que título+thumb vão abrir
 
 Régua: o contraste tem que ser **honesto** (a crença A é real, o B se prova com material

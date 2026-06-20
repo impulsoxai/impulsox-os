@@ -52,11 +52,10 @@ branco). Molde transfere; tema e identidade são sempre da marca do dono.
      frame do vídeo com a legenda karaokê queimada (o que o passo 2 já entrega). É o que
      Chase/Matt/Yury e os shorts que retêm fazem. Só ajudar o dono a escolher um bom frame
      (rosto enquadrado, olhar na câmera) — não gerar capa composta nenhuma.
-   - **Vídeo longo (horizontal 16:9):** aí sim tem capa 16:9 separada. Rodar
-     `node scripts/gerar-thumbnail.mjs --slug <slug> --texto "<=5 palavras>" --video <arq>
-     --frame <tempo>` → `thumb-frame.png` (layout composto, fundo escuro + texto à esquerda
-     na marca + frame à direita). Alternativa por IA (`--fal --conceito "..."`) — **avisar
-     do custo** e só rodar `--confirmar` com o aval do dono.
+   - **Vídeo longo (horizontal 16:9):** aí sim tem capa 16:9 separada — **chamar a
+     `/thumbnail`** (consultor de CTR: 3 conceitos capa+título, Four C's, crivo de nota,
+     gera on-brand ou por IA). É ela que orquestra o `gerar-thumbnail.mjs` e pontua a capa.
+     A capa decide o clique; não tratar como rabicho da edição.
 4. **Revisar antes de declarar pronto.** Rodar `/revisar` no vídeo (crivo do revisor
    sênior) — é peça que vai pro ar. Só depois apontar os arquivos finais como prontos pro
    upload (Fase 3).

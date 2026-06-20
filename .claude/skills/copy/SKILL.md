@@ -98,6 +98,10 @@ Depois, travar em uma frase cada:
 - **Sprint obrigatório:** escrever **10 versões** antes de escolher. As 3 primeiras são
   óbvias; as boas vêm depois. Forçar variedade — direto, curiosidade, benefício, dor,
   mecanismo. Apresentar as **3 melhores** ao usuário com a recomendação.
+- **Gate de especificidade no headline:** headline sem **número, nome próprio ou recorte
+  concreto** é candidato a refazer — é aqui que a abstração mais custa (5x mais leitores que o
+  corpo). "Aumente sua eficiência" não passa; "Recupere a venda das 22h" passa. A Camada 3 caça
+  abstração no corpo; este gate a caça antes, no lugar que mais importa.
 
 Toolbox de fórmulas (esqueleto, não molde a copiar):
 | Fórmula | Forma |
@@ -216,7 +220,31 @@ O essencial pra rodar aqui:
 > gritada — resolve o "sem bordão" da voz (bordão é slogan repetido; isto é precisão
 > memorável, usada uma vez no ponto certo). E esperteza que mente cai, por mais esperta.
 
-Saída desta camada: **copy forte E memorável**. Falta só virar humana — Camada 5.
+Saída desta camada: **copy forte E memorável**. Falta a citabilidade (4.5) e virar humana (5).
+
+---
+
+## CAMADA 4.5 · CITABILIDADE (GEO — a página aparece na IA)
+
+A página premium do sistema é IA-Ready: tem que **converter humano E ser citável por
+ChatGPT/Gemini/Perplexity**. Esses motores extraem **sentenças standalone com dado e fonte**,
+não prosa fluida. Há uma **tensão real** com a Camada 4 — a frase que gruda é fluida e
+sugestiva; a frase citável é factual e auto-contida. Resolver assim: a **frase memorável vive
+nos picos** (hero, título de fold); a **frase citável vive nos blocos de resposta** (abertura
+de seção, FAQ). Não competem — ocupam lugares diferentes.
+
+Checar (cruza com `/seo` e `/geo`, que são a autoridade de Schema/on-page — aqui é só a copy):
+1. **Answer-first** — a 1ª linha do hero e de cada seção principal **responde a pergunta** que
+   o título abre, em uma frase que faz sentido fora de contexto. Não enrolar antes de responder.
+2. **Claim com dado + fonte** — afirmação forte vem com **número e de onde veio** (Princeton
+   KDD: citação por IA sobe +41% com quote, +30% com fonte, +32% com estatística). Dado real,
+   nunca inventado — vazio = pendente, como toda prova.
+3. **FAQ extraível** — prever bloco de FAQ onde cada pergunta é a que o público realmente
+   digita e a resposta é **standalone** (a IA cita a resposta sozinha, sem o resto da página).
+4. Sem virar robótico: a citabilidade mora nos blocos de resposta/FAQ; o resto da copy mantém
+   ritmo e voz. Citável **e** humana, em camadas — não a página inteira em tom de verbete.
+
+Saída: **copy forte, memorável E citável**. Falta só virar humana — Camada 5.
 
 ---
 
@@ -273,6 +301,7 @@ O `/pagina` consome este arquivo como fonte do texto (já revisado pelo `/escrit
 - [ ] Gate de repetição: 1ª palavra, palavra-tema, estrutura, ideia repetida
 - [ ] Ritmo: tamanhos de frase variados, sem monotonia
 - [ ] Camada 4 (Ideia): hero, títulos de fold e CTA passam no teste do grude — frase que pega, calma e verdadeira (régua = frases BOM do voz.md)
+- [ ] Camada 4.5 (GEO): hero e seções abrem answer-first; claim forte com dado+fonte; FAQ extraível standalone (citável por IA)
 - [ ] Uma ação só; CTA acima da dobra e no fim; texto específico
 - [ ] Zero jargão de marketing; benefício antes de recurso; "você"
 - [ ] Prova só real; pendências marcadas

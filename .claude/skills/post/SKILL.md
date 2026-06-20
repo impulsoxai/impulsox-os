@@ -153,7 +153,8 @@ Módulos de composição (vocabulário próprio do ImpulsoX-OS):
   bio) sobre fundo na cor de destaque. É aqui que o loop da tela 1 **fecha** — conferir
   que a pergunta aberta foi respondida de verdade
 
-**Texto por tela:** título até ~8 palavras; apoio até ~25. Carrossel não é slide de
+**Texto por tela:** título até ~8 palavras; apoio até ~18-20 (o limite preciso é por
+caractere — ver "Orçamento de caracteres por slide"). Carrossel não é slide de
 palestra — quem quer texto longo vai pra legenda. Limite preciso na seção abaixo.
 
 ## Orçamento de caracteres por slide (trava antes do render)
@@ -168,8 +169,8 @@ render.
 | Elemento | Mín–máx (caracteres) | Observação |
 |---|---|---|
 | Título da capa | 14–32 | line-height 1.0; cabe em até 3 linhas no tamanho 88–110px |
-| Título de tela interna | 24–52 | uma linha forte; máx 2 linhas |
-| Texto de apoio | 40–120 | line-height 1.4; o que passa disso vira legenda |
+| Título de tela interna | 24–48 | uma linha forte; máx 2 linhas |
+| Texto de apoio | 40–120 | line-height 1.4; o que passa disso vira legenda (≈18–20 palavras) |
 | Etiqueta/kicker (CAIXA ALTA) | 6–22 | uma ou duas palavras |
 | Linha do FECHO (chamada) | 18–48 | uma chamada só, verbo + objeto |
 | Numeral do módulo DADO | 1–6 | é elemento gráfico (ex: "31%", "R$5k", "x7") |
@@ -178,14 +179,23 @@ Régua: quando `marca/design-guide.md` define caixas próprias, os limites **del
 o orçamento se recalcula a partir do tamanho real das caixas da marca. Estes valores são o
 default quando a marca não especifica.
 
-**Como aplicar (gate determinístico):**
-1. Depois do rascunho do texto de cada slide (e depois do `/escritor-br`), contar os
-   caracteres de cada campo e comparar com o orçamento.
+**Aviso do português:** a contagem é por caractere, mas o reflow real é **largura em pixels**.
+Em PT, palavra longa ("desenvolvimento", "automatização") em peso 700–800 ocupa muito espaço e
+pode refluir **antes** de estourar a contagem. Por isso o teto interno é conservador (48, não
+52): com palavra larga, conferir a largura renderizada, não só o número de caracteres.
+
+**Como aplicar (gate):**
+1. Depois do rascunho do texto de cada slide (e depois do `/escritor-br`), **contar os
+   caracteres por campo** — a contagem é determinística (`.length` da string, não estimativa
+   no olho) e comparar com o orçamento.
 2. Campo fora da faixa → **reescrever antes de montar o HTML**, nunca encolher fonte pra caber
    (encolher quebra a régua tipográfica). Abaixo do mínimo soa raso; acima reflui.
-3. Só depois que **todos** os campos passam é que a produção técnica começa (HTML → render).
-   Render é o passo caro; não se gasta nele com texto que vai ser refeito.
-4. Registrar no `legenda.md` da peça que o orçamento foi conferido (uma linha).
+3. **Conferência final no HTML:** depois de montar o slide, olhar se alguma linha refluiu (o
+   pior caso de PT só aparece renderizado) e se sobrou **viúva/órfã** (uma palavra sozinha na
+   última linha) — as duas quebram o acabamento premium mesmo dentro da contagem.
+4. Só depois que tudo passa, a produção técnica segue (render). Render é o passo caro; não se
+   gasta nele com texto que vai ser refeito.
+5. Registrar no `legenda.md` da peça que o orçamento foi conferido (uma linha).
 
 ## Layouts nomeados (como a tela aparece)
 
@@ -220,7 +230,7 @@ definir valores próprios — e quando definir, os dele mandam.
 |---|---|---|---|---|
 | Título da capa | 88–110px | 800–900 | -0.03em | line-height 1.0–1.05; máx 3 linhas |
 | Título de tela interna | 58–72px | 700–800 | -0.02em | um por tela |
-| Texto de apoio | 30–36px | 400–500 | normal | line-height 1.4; máx ~25 palavras |
+| Texto de apoio | 30–36px | 400–500 | normal | line-height 1.4; máx ~18-20 palavras (≤120 car.) |
 | Etiqueta/categoria | 22–26px | 700 | +0.2em | CAIXA ALTA; uma palavra ou duas |
 | Numerador de tela (02/07) | 22–24px | 500–600 | +0.1em | canto superior, todas as telas |
 | Numeral do módulo DADO | 220–320px | 800 | -0.02em | é o elemento gráfico da tela |

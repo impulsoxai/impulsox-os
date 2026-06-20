@@ -40,6 +40,13 @@
 - Limpo e mensurável → performance, comparação ou resultado-ou-extensão
 - Difuso/subjetivo → família reembolso com porteira condicional (você fez o trabalho)
 
+**Ressalva Brasil/PME (garantia por performance):** só prometer performance/êxito quando a
+métrica é **medida por você e controlada por você**. Atrelar pagamento a resultado que depende
+do cliente (vendas dele, conversão da operação dele) gera disputa de atribuição ("foi o seu
+trabalho ou o meu time?") e risco contratual/fiscal de contrato de êxito. Se a atribuição é
+frágil, não usar performance — usar SLA (entrega que VOCÊ controla) ou reembolso condicional.
+Marcar "verificar atribuição" na lista de confirmação antes de prometer.
+
 ## Exemplos por tipo de negócio
 
 - **Curso/turma** — Forte: "Conclua os 6 módulos em 60 dias, entregue o exercício final, e

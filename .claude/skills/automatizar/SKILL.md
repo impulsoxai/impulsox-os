@@ -53,30 +53,45 @@ Três perguntas, uma por vez:
 
 Entrada e saída definem a skill; o miolo é trabalho do sistema.
 
-## Triagem de viabilidade (3 perguntas — antes de prometer automação)
+## Triagem de viabilidade (antes de prometer automação)
 
 Nem toda tarefa repetida deve virar automação. Antes de propor uma skill, passar a rotina
-por três perguntas — elas separam o que automatiza de verdade do que só *parece*
-automatizável (e classificam o tipo certo):
+pela triagem. As 3 primeiras perguntas decidem se **dá** pra automatizar (viabilidade
+técnica) e de que tipo; a 4ª decide se **vale** (viabilidade econômica) — tarefa pode passar
+nas três técnicas e ainda assim não dever virar skill por não se pagar.
 
 1. **Gatilho determinístico?** — dá pra dizer com precisão *quando* a tarefa começa (um
    evento claro: chegou uma planilha, virou o mês, cliente mandou um pedido), ou o começo
-   depende de alguém decidir na hora que é hora?
+   depende de alguém decidir na hora que é hora? (Sem gatilho automático **não** veta: a
+   maioria das nossas skills o dono dispara na mão — isso é "skill sob demanda", não "não
+   automatizável". O ❌ é pra quando nem sob demanda faz sentido.)
 2. **Entrada e saída conhecidas?** — o que entra e o que sai são sempre os mesmos campos/
    formato, ou variam a cada vez de um jeito que ninguém consegue descrever antes?
 3. **Precisa de julgamento?** — o miolo exige decisão criativa/contextual humana (gosto,
    estratégia, sensibilidade de marca), ou é mecânico o bastante pra uma regra/IA executar?
+   (Julgamento *parcial* — IA decide dentro de guardas + humano aprova — **não** veta: é o caso
+   "IA no loop", o mais comum nas nossas skills.)
+4. **Vale a pena? (ROI)** — frequência × tempo manual por vez justifica **criar e MANTER** a
+   skill? Piso simples: repete **≥ 1×/mês** OU economiza **≥ ~15 min/semana**. Abaixo disso,
+   o esforço de construir e manter costuma superar o que o dono gastaria fazendo na mão.
+   Lembrar: skill com bordas variáveis exige revisão humana recorrente (tratar exceção) — ✅
+   não significa "zero toque". Orçar ~15-25% do esforço de criação por ano em manutenção.
 
 | Gatilho determinístico | Entrada/saída conhecida | Precisa julgamento | Veredito |
 |---|---|---|---|
 | Sim | Sim | Não | ✅ **Skill determinística** — script/regra resolve (ex: calcular métrica, montar CSV de ads) |
 | Sim | Sim | Sim | ✅ **Skill com IA no loop** — IA decide dentro de guardas (ex: escrever post na voz, propor calendário). A maioria das nossas é esta |
 | Sim | Não | — | 🟡 **Mapear entrada/saída primeiro** — definir os campos antes de criar; sem isso a skill sai instável |
-| Não | — | — | ❌ **Fica manual** — sem gatilho claro, não é automação; é decisão pontual. Executar, não automatizar |
+| Não (nem sob demanda) | — | — | ❌ **Fica manual** — decisão pontual, executar e morrer ali |
+| (passou no técnico) | mas ROI não fecha | — | 🟡 **Esperar** — viável mas não se paga ainda; refazer a conta quando a frequência subir |
+
+**Risco/reversibilidade:** automação que **toca conta de cliente, publica ou gasta dinheiro**
+tem a barra mais alta — vale a regra do `CLAUDE.md` ("nunca arriscar a conta de um cliente").
+Aí, mesmo viável e com ROI, manter o humano no clique final (entregar pronto, não disparar).
 
 Veredito ❌ ou 🟡 → dizer ao dono em uma linha por que ainda não vira skill (e o que faltaria
-pra virar), em vez de criar uma automação que vai falhar. Veredito ✅ → seguir pro "Antes de
-criar". O tipo (determinística vs IA no loop) já orienta como a skill é escrita.
+pra virar), em vez de criar uma automação que vai falhar ou não se pagar. Veredito ✅ → seguir
+pro "Antes de criar". O tipo (determinística vs IA no loop) já orienta como a skill é escrita.
 
 ## Antes de criar: o que já existe?
 
@@ -134,9 +149,10 @@ atualizando a contagem do título) e sugerir `/salvar`.
 
 - Só automatizar o que se repete. Tarefa que aconteceu uma vez se executa, não se
   automatiza.
-- Passar toda rotina pela **triagem de viabilidade** (3 perguntas) antes de prometer skill.
-  Sem gatilho claro → fica manual; entrada/saída indefinida → mapear primeiro. Não criar
-  automação que vai falhar só pra dizer "automatizei".
+- Passar toda rotina pela **triagem de viabilidade** (técnica + ROI) antes de prometer skill.
+  Sem gatilho nem sob demanda → fica manual; entrada/saída indefinida → mapear primeiro; ROI
+  que não fecha → esperar. Não criar automação que vai falhar nem que não se paga só pra dizer
+  "automatizei".
 - Máximo 3 skills novas por rodada — qualidade de gatilho e calibração vêm antes de
   volume; rodadas seguintes existem.
 - Skill que depende de ferramenta não configurada (API, MCP, credencial) → avisar antes

@@ -120,12 +120,24 @@ premiada real** (não o `ease` default), reveal/profundidade onde o layout pede.
 - Pular esta etapa quando a página é simples/institucional e o cliente não quer movimento —
   é refino, não obrigação. Mas pro produto de R$ 5.000, é o que justifica o preço.
 
-## Etapa 4 — Verificação visual (obrigatória)
+## Etapa 4 — Verificação visual + performance (obrigatória)
 
-Abrir a página real (Playwright) e capturar screenshot em **390px, 768px e 1440px**.
-Olhar as imagens de verdade: texto vazando? hierarquia funciona no celular? botão da
-conversão visível sem rolar no mobile? Corrigir e re-capturar até as três larguras
-estarem certas. Mostrar as capturas ao usuário pra aprovação — ele aprova vendo.
+**4a. Visual.** Abrir a página real (Playwright) e capturar screenshot em **390px, 768px e
+1440px**. Olhar as imagens de verdade: texto vazando? hierarquia funciona no celular? botão da
+conversão visível sem rolar no mobile? Corrigir e re-capturar até as três larguras estarem
+certas. Mostrar as capturas ao usuário pra aprovação — ele aprova vendo.
+
+**4b. Core Web Vitals (medir, não prometer).** Performance é requisito do produto R$ 5.000 —
+não declarar "carrega rápido" sem medir. Rodar Lighthouse (ou medição equivalente via
+Playwright) na página e conferir os limiares de 2026:
+- **LCP ≤ 2,5s** · **INP ≤ 200ms** · **CLS ≤ 0,1** (INP substituiu o FID em 2024 — FID é
+  métrica morta, não usar)
+- Reprovou algum → consertar a causa antes de declarar pronto: LCP alto = imagem/hero pesado
+  ou fonte bloqueando; INP alto = JS de animação (Etapa 3.5) travando a thread; CLS alto =
+  imagem/fonte sem dimensão reservada. A camada de movimento (3.5) é o suspeito nº1 de INP —
+  medir DEPOIS de aplicá-la, não antes.
+- Registrar os três números no `publicacao.md`. Página não é declarada pronta com CWV
+  reprovado, do mesmo jeito que não é declarada pronta com texto vazando.
 
 ## Etapa 5 — Entrega
 

@@ -24,6 +24,8 @@ ajuda quem publica; achado concreto ajuda.
 - `nucleo/negocio.md` — o que o negócio realmente entrega (pra pegar promessa que
   o negócio não sustenta)
 - `nucleo/provas.md` — se a peça cita prova, conferir que existe e está autorizada
+- `nucleo/ofertas.md` — quais ofertas estão **ATIVAS**; peça pública que vende oferta FUTURA/
+  em construção viola regra dura do CLAUDE.md (expõe o cliente quando o comprador cobra)
 
 ## Checklist de revisão (passar em todos)
 
@@ -43,14 +45,24 @@ ajuda quem publica; achado concreto ajuda.
    cobrar? Promessa de resultado garantido?
 7. **Voz** — soa como a marca (`nucleo/voz.md`) ou como template? Sobrou vício de IA
    da tabela do `/escritor-br`?
-8. **Uma chamada** — a peça pede UMA ação clara? Mais de uma = ajustar.
+8. **Uma chamada (CTA)** — a peça pede UMA ação clara? Mais de uma = ajustar. E a ação é
+   **específica e de baixo atrito**, com motivo pra agir ("Falar no WhatsApp agora", não
+   "Saiba mais")? CTA vago ou sem razão pra agir = achado.
 9. **Específico vs vago** — tem número, nome, prazo onde deveria? "Qualidade e
    compromisso" = lixo, apontar.
-10. **Política de plataforma** — algo que Meta/Google/LinkedIn reprovaria ou puniria
+10. **Oferta ATIVA** — a peça vende só oferta ATIVA no `nucleo/ofertas.md`? Vender produto
+    FUTURO/em construção (nem como "em breve") = reprovada (regra dura do CLAUDE.md).
+11. **Política de plataforma** — algo que Meta/Google/LinkedIn reprovaria ou puniria
     (resultado garantido, antes/depois enganoso, atributo pessoal acusatório, isca de
     engajamento)? Em anúncio pago, este item sozinho reprova.
-11. **Português** — erro de ortografia/concordância (em peça pública, um erro já
+12. **Português** — erro de ortografia/concordância (em peça pública, um erro já
     queima a marca).
+
+**Fora do meu escopo (declarar no veredito quando for página):** design visual, Core Web
+Vitals e acessibilidade são do `/revisar-pagina`; Schema/SEO técnico é do `/seo`; citabilidade
+por IA (GEO) eu só **sinalizo** ("a copy não está answer-first/citável → ver `/geo`"), não é
+minha régua cheia. Quem me chama numa página recebe revisão de copy/persuasão/verdade — não de
+design nem performance.
 
 ## Formato de saída (sempre este)
 
@@ -70,6 +82,10 @@ Achados:
 - Achado sempre com correção proposta — apontar sem caminho é inútil.
 - Não reescrever a peça inteira: quem corrige é a skill de origem; você julga.
 - Severidade honesta: erro de vírgula não reprova; promessa falsa reprova sempre.
+- **Fronteira AJUSTAR × REPROVADA (regra única):** qualquer falha em **Verdade (6)**,
+  **Oferta ativa (10)** ou **Política (11)** = **REPROVADA** (são riscos pro cliente/conta, não
+  se ajustam por cima). Todo o resto (gancho, voz, CTA, vago, loop) = **AJUSTAR**. Nível de
+  consciência errado = reescrever (a skill de origem refaz), reportar como AJUSTAR com essa nota.
 - Máximo 10 achados — acima disso, REPROVADA com os 5 mais graves e "refazer pela
   skill de origem".
 - Em dúvida entre aprovar e ajustar com dinheiro envolvido (anúncio pago): ajustar.

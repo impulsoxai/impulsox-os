@@ -65,7 +65,7 @@ dentro dele. Um hook bom usa um padrão + um ou dois devices.
 
 ---
 
-## 2.5. Os 6 padrões de hook — moldes de abertura
+## 2.5. Os 9 padrões de hook — moldes de abertura
 
 > Vocabulário de abertura reutilizável por `/post`, `/linkedin`, `/roteiro-yt`, `/ads-*` e
 > `/email`. Quando precisar de um hook e a página em branco trava, escolher um padrão e
@@ -81,10 +81,27 @@ dentro dele. Um hook bom usa um padrão + um ou dois devices.
 | 4 | **POV como conselho** | "Pare de {prática comum}. {alternativa melhor}." | "Pare de responder cliente na unha. Deixa a IA filtrar antes." | público que já faz a prática errada |
 | 5 | **Confissão vulnerável** | "Eu estava errado sobre {crença}. {o que mudou}." | "Achei que IA pra PME era hype. Um cliente me provou o contrário." | autoridade por humildade; abre história |
 | 6 | **Pattern interrupt** | abertura inesperada que quebra o scroll (cena, número solto, pergunta torta) | "R$ 4.200. Foi o que uma só venda perdida às 22h custou." | feed saturado; quando o tema é morno e precisa de choque |
+| 7 | **Lista (enumeração)** | "{N} {coisas} que {público/resultado} — {a virada do último}" | "3 erros de atendimento que custam venda. O 3º quase ninguém vê." | tema que se reparte em itens; promete payoff enumerável, fecha item a item |
+| 8 | **Aviso de erro (perda)** | "{erro comum} está te custando {perda concreta}" — constatação, não alarme | "Responder cliente só de manhã te custa a venda da noite." | público que comete o erro sem saber o preço; FOMO honesto |
+| 9 | **How-to (capacitação)** | "Como {resultado desejado} sem {dor/obstáculo}" | "Como o WhatsApp responder cliente sozinho sem parecer robô." | público que BUSCA tutorial (nicho técnico/IA); promessa de capacitação direta |
 
-**Força do padrão = tamanho da lacuna.** Contradição e Confissão vivem do gap entre A
-(crença) e B (verdade): quanto maior o gap honesto, mais forte. Especificidade e Tensão de
-tempo vivem do número concreto — sem dado real, não usar (cai na regra: nunca inventar).
+**Cada padrão tem o seu motor — não existe uma lei única.** Confundir os motores enfraquece o
+hook:
+- **Contradição, Confissão, Aviso de erro** vivem da **lacuna** (gap A→B, ou o custo escondido).
+  Régua fina (achado de pesquisa): lacuna **média** converte mais que máxima — gancho que
+  *abre a pergunta* prende; gancho que já *entrega a resposta* mata a curiosidade cedo. Não é
+  "quanto maior o gap, melhor"; é "grande o bastante pra intrigar, sem estourar o payoff".
+- **Especificidade, Tensão de tempo, Lista** vivem do **número concreto** (resultado, prazo,
+  N de itens) — sem dado real, não usar (regra: nunca inventar).
+- **How-to** vive da **clareza da capacitação** — o público tem que ver na hora o que vai
+  saber fazer. Vago não capacita.
+- **Pattern interrupt** é **meta-padrão**: um princípio (quebrar o scroll) que pode reforçar
+  qualquer um dos outros, não um par deles.
+
+**Guarda da voz (calma, nunca berro):** Aviso de erro e Lista performam, mas puxam pro
+alarme/grito. Na voz da casa eles entram como **constatação fria**, não como susto — "te
+custa a venda da noite" (fato), nunca "VOCÊ ESTÁ PERDENDO DINHEIRO AGORA!!!". Se o padrão só
+funciona gritando, é o padrão errado pra esta marca.
 
 **Regra anti-monotonia:** num carrossel ou numa semana de posts, não abrir tudo no mesmo
 padrão. Misturar — uma Contradição, uma Especificidade, um Pattern interrupt. O `/post` e o

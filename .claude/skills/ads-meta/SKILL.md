@@ -45,22 +45,40 @@ a página de resultados do nicho/concorrente.
 
 1. **Termo de busca:** o nicho do negócio (ou um concorrente nomeado pelo dono). Perguntar se
    não estiver claro. País = Brasil (`countries=BR`); `active_status=active`.
-2. **Filtro de winner (a sacada):** ficar só com anúncio que **começou há 2+ meses E continua
-   ativo**. Começou cedo + ainda no ar = rodou pelo menos esse tempo e o anunciante segue
-   pagando. Anúncio que começou há 90 dias mas morreu no dia 10 é perdedor — o status "ativo"
-   filtra ele. Anúncio recente (semanas) ainda não provou nada; descartar do swipe.
+2. **Filtro de winner (a sacada — com a ressalva honesta):** ficar com anúncio que **começou
+   há 60+ dias E ainda aparece ativo**. Começou cedo + ainda no ar = **forte candidato** a
+   winner (o anunciante segue pagando), **não garantia**. Dado de mercado: só ~11% dos
+   anúncios passam de 60 dias — quem sobrevive a isso já se separou da maioria. Anúncio recente
+   (semanas) ainda não provou nada; descartar.
+   - **O que a biblioteca NÃO comprova:** a Ad Library mostra a **data de início**, mas não a
+     duração contínua — o anúncio pode ter sido **pausado e religado** (a biblioteca não
+     distingue), e "data de início" é a de criação, não de veiculação ininterrupta. Logo:
+     tratar como sinal forte, nunca como "rodou X dias sem parar". Registrar no swipe a **data
+     da observação** (o que é winner hoje pode ser campanha velha religada) pra reavaliar depois.
+   **Cegueira da biblioteca (avisar o dono):** pra anúncio comercial BR, a Ad Library **não
+   mostra gasto, alcance, impressões, CTR nem segmentação** (esses campos só aparecem em
+   anúncio político/social). O swipe lê **estrutura, não resultado numérico** — "está há muito
+   tempo no ar" é o único proxy de performance disponível. Não prometer ao dono métrica que a
+   biblioteca não dá.
 3. **Teardown de cada winner** (3-6 melhores), o que dá pra ver na biblioteca:
    - **Hook** — os primeiros 3 segundos / a primeira linha do texto primário (onde a
      persuasão vive). Em vídeo, a cena de abertura; em estático, a manchete.
    - **Estrutura** — PAS? história? demonstração? lista? antes/depois?
    - **Oferta + CTA** — o que promete e qual a chamada única.
    - **Ângulo de gatilho** — qual gatilho domina (prova, aversão à perda, curiosidade…).
-   - Vídeo: ler a sequência de cenas pela pré-visualização; sem acesso ao MP4, descrever o
-     que a biblioteca mostra (não baixar criativo de terceiro — é teardown, não cópia).
-4. **Gravar o banco** em `producao/ads/swipe-meta.md`: tabela dos winners (anunciante · há
-   quanto roda · hook · estrutura · oferta/CTA · ângulo) + os 2-3 **padrões recorrentes** que
-   aparecem em vários (ex: "todos abrem com pergunta de dor", "vídeo de 15s com legenda
-   grande"). Esses padrões viram os **moldes** dos criativos do Passo 3.
+   - Vídeo: descrever o **hook/abertura** + o que a thumbnail e a legenda revelam. A
+     pré-visualização nem sempre dá os frames internos do MP4 sem reproduzir — não prometer
+     leitura cena a cena. Não baixar criativo de terceiro: é teardown, não cópia.
+4. **Gravar o banco** em `producao/ads/swipe-meta.md`: tabela dos winners (anunciante · data da
+   observação · há quanto aparece ativo · hook · estrutura · oferta/CTA · ângulo) + os 2-3
+   **padrões recorrentes**. Só chamar de "padrão do nicho" o que aparece em **anunciantes
+   distintos** (≥3) — 2 anúncios do mesmo concorrente é estilo dele, não padrão do nicho. Os
+   padrões viram os **moldes** dos criativos do Passo 3.
+
+**Se o scrape voltar vazio:** a Ad Library carrega por scroll infinito/JS — um `firecrawl-scrape`
+simples pode não pegar os resultados. Nesse caso, tentar `firecrawl-interact` (rolar a página) ou
+cair pra leitura manual guiada (o dono abre a biblioteca e cola o que vê). Não tratar "scrape
+vazio" como "nicho sem winners" — pode ser falha técnica do scrape, não ausência de anúncio.
 
 Régua: o swipe é **mecânica, nunca conteúdo**. Copiar a estrutura/hook-pattern/formato —
 jamais a frase, a arte, a marca ou a oferta do concorrente. Frase e identidade são sempre do

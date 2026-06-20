@@ -145,6 +145,13 @@ renomeia.
 
 O preço é a parte óbvia. A estrutura é a subestimada.
 
+**Precifique pelo VALOR, não pelo esforço de entrega.** O erro de margem mais comum da
+agência/serviço brasileira é cobrar por hora ou por entregável ("são 5 páginas, tantas
+horas"). O preço certo ancora no **custo de NÃO resolver** — a receita que o cliente perde,
+o tempo do dono, o cliente que escapa às 22h — não na lista do que você faz. Regra curta:
+**você cobra pelo que muda, não pelo que faz.** Derivar o número do tamanho do problema
+(quanto custa pro cliente conviver com ele) e checar contra a margem, não somar horas.
+
 **Preço não é um número, é uma comparação.** O comprador compara com: o resultado dos
 sonhos; a melhor alternativa; o custo de não fazer nada; outros itens do seu catálogo
 (ancoragem). Dá pra mover a percepção do preço *sem mudar o número*: mostrando o custo de
