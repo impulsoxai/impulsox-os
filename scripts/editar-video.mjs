@@ -6,6 +6,7 @@
  *
  * Uso: node scripts/editar-video.mjs --video bruto.mp4 --slug demo [--min-silencio 0.8]
  *        [--tela tela.mp4 --voz voz.wav] [--sem-intro] [--confirmar]
+ *        [--plano plano-edicao.json] [--sem-corte-silencio]
  */
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
@@ -75,8 +76,11 @@ if (import.meta.main) {
   let trechos = null;
   if (planoArq) {
     if (!existsSync(planoArq)) falhar(`plano não encontrado: ${planoArq}`);
-    const raw = JSON.parse(readFileSync(planoArq, "utf8"));
-    trechos = normalizarTrechos(raw.trechos || [], duracaoTotal);
+    let raw;
+    try { raw = JSON.parse(readFileSync(planoArq, "utf8")); }
+    catch (e) { falhar(`plano-edicao.json inválido (${planoArq}): ${e.message}`); }
+    try { trechos = normalizarTrechos(raw.trechos || [], duracaoTotal); }
+    catch (e) { falhar(`plano-edicao.json: ${e.message}`); }
   }
 
   if (!confirmar) {
