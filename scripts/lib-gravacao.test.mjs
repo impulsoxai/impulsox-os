@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseDispositivosDshow, argsCapturaTela, argsCapturaWebcam } from "./lib-gravacao.mjs";
+import { parseDispositivosDshow, argsCapturaTela, argsCapturaWebcam, resolverDispositivos } from "./lib-gravacao.mjs";
 
 const SAIDA = `[in#0 @ 0x1] "HD User Facing" (video)
 [in#0 @ 0x1]   Alternative name "@device_pnp_\\\\?\\usb#vid_0408&pid_a061"
@@ -54,4 +54,25 @@ test("argsCapturaWebcam monta dshow webcam+mic -> mp4", () => {
     "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
     "-c:a", "aac", "-movflags", "+faststart", "out/webcam.mp4",
   ]);
+});
+
+const DISP = {
+  video: [{ nome: "HD User Facing", alt: null }],
+  audio: [{ nome: "Mic Realtek", alt: null }, { nome: "Mic USB", alt: null }],
+};
+
+test("resolverDispositivos: env válido e conectado -> usa, sem perguntar", () => {
+  const r = resolverDispositivos({ webcam: "HD User Facing", mic: "Mic USB" }, DISP);
+  assert.deepEqual(r, { precisaEscolher: false, webcam: "HD User Facing", mic: "Mic USB" });
+});
+
+test("resolverDispositivos: env vazio -> precisa escolher", () => {
+  const r = resolverDispositivos({}, DISP);
+  assert.equal(r.precisaEscolher, true);
+});
+
+test("resolverDispositivos: mic salvo desconectado -> precisa escolher + motivo", () => {
+  const r = resolverDispositivos({ webcam: "HD User Facing", mic: "Mic USB Sumido" }, DISP);
+  assert.equal(r.precisaEscolher, true);
+  assert.match(r.motivo, /Mic USB Sumido|não.*conect/i);
 });

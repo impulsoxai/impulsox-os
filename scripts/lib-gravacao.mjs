@@ -45,3 +45,15 @@ export function argsCapturaWebcam({ webcam, mic, fps = 30, saida }) {
     "-c:a", "aac", "-movflags", "+faststart", saida,
   ];
 }
+
+// Casa o que está salvo no .env com o que está conectado agora. Se ambos existem e estão
+// na lista, grava direto. Se falta algum OU o salvo sumiu (USB desplugado), pede escolha.
+export function resolverDispositivos(envCfg, disponiveis) {
+  const temVideo = (n) => disponiveis.video.some((d) => d.nome === n);
+  const temAudio = (n) => disponiveis.audio.some((d) => d.nome === n);
+  const { webcam, mic } = envCfg || {};
+  if (!webcam || !mic) return { precisaEscolher: true, motivo: "nenhum dispositivo salvo ainda." };
+  if (!temVideo(webcam)) return { precisaEscolher: true, motivo: `a webcam salva ("${webcam}") não está conectada.` };
+  if (!temAudio(mic)) return { precisaEscolher: true, motivo: `o mic salvo ("${mic}") não está conectado.` };
+  return { precisaEscolher: false, webcam, mic };
+}
