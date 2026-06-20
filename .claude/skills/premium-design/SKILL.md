@@ -219,7 +219,8 @@ separa "site bonito com banco de imagem" de "site que parece fotografado pro cli
 5. **Performance (Core Web Vitals) — medir, não confiar no olho:** a camada de movimento
    (Uso 2/3) é o maior suspeito de estourar **INP** (JS de scroll/parallax/reveal travando a
    thread) e **CLS** (reveal sem dimensão reservada). Depois de aplicar o movimento, medir:
-   **LCP ≤ 2,5s · INP ≤ 200ms · CLS ≤ 0,1** (INP substituiu o FID em 2024). Reprovou → enxugar
+   **LCP ≤ 2,5s · INP ≤ 200ms · CLS ≤ 0,1** (INP substituiu o FID em 2024; medir 2-3x e usar a
+   mediana, descartando o 1º run — cold start do browser infla o LCP). Reprovou → enxugar
    o efeito (menos observers, animar `transform`/`opacity` em vez de layout, respeitar
    `prefers-reduced-motion`). Efeito premiado que derruba CWV não é premium — é peso. Quando
    eleva uma página do `/pagina`, esse gate é o mesmo da Etapa 4b de lá.

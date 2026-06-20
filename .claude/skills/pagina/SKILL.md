@@ -136,8 +136,12 @@ Playwright) na página e conferir os limiares de 2026:
   ou fonte bloqueando; INP alto = JS de animação (Etapa 3.5) travando a thread; CLS alto =
   imagem/fonte sem dimensão reservada. A camada de movimento (3.5) é o suspeito nº1 de INP —
   medir DEPOIS de aplicá-la, não antes.
-- Registrar os três números no `publicacao.md`. Página não é declarada pronta com CWV
-  reprovado, do mesmo jeito que não é declarada pronta com texto vazando.
+- **Medir 2-3 vezes e usar a mediana, descartando o 1º run.** A primeira navegação de um
+  processo de browser carrega o engine (cold start) e infla o LCP — um run isolado pode dar
+  3s "falso" numa página que entrega 0,6s. Não condenar a página por uma medição só: rodar de
+  novo, olhar a mediana. Se TODOS os runs (fora o 1º) reprovam, aí é problema real.
+- Registrar os três números (a mediana) no `publicacao.md`. Página não é declarada pronta com
+  CWV reprovado, do mesmo jeito que não é declarada pronta com texto vazando.
 
 ## Etapa 5 — Entrega
 
