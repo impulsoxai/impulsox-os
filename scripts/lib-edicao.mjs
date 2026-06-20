@@ -293,3 +293,28 @@ export function parseTrechosTabela(texto) {
   }
   return trechos;
 }
+
+// Ordena, valida sobreposição, clampa em [0, total] e preenche buracos com "manter".
+// Garante cobertura contínua de 0 a duracaoTotal — nada some sem regra explícita.
+export function normalizarTrechos(trechos, duracaoTotal) {
+  const ordenados = [...trechos]
+    .map((t) => ({ ...t, inicio: Math.max(0, t.inicio), fim: Math.min(duracaoTotal, t.fim) }))
+    .filter((t) => t.fim > t.inicio)
+    .sort((a, b) => a.inicio - b.inicio);
+
+  for (let i = 1; i < ordenados.length; i++) {
+    if (ordenados[i].inicio < ordenados[i - 1].fim) {
+      throw new Error(`trechos se sobrepõem: ${ordenados[i - 1].fim} > ${ordenados[i].inicio}`);
+    }
+  }
+
+  const out = [];
+  let cursor = 0;
+  for (const t of ordenados) {
+    if (t.inicio > cursor) out.push({ inicio: cursor, fim: t.inicio, acao: "manter" });
+    out.push(t);
+    cursor = t.fim;
+  }
+  if (cursor < duracaoTotal) out.push({ inicio: cursor, fim: duracaoTotal, acao: "manter" });
+  return out;
+}

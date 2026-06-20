@@ -4,7 +4,7 @@ import {
   parseSilencedetect, segmentosManter, filtroCorteConcat, planoCorte,
   montarSRT, montarASS, filtroLegenda, filtroLegendaAss, filtroLoudnorm,
   argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
-  parseTrechosTabela,
+  parseTrechosTabela, normalizarTrechos,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -252,5 +252,37 @@ test("parseTrechosTabela ignora prosa solta sem quebrar as linhas válidas", () 
   const txt = `isso é um comentário do dono\n00:00-00:30 cortar`;
   assert.deepEqual(parseTrechosTabela(txt), [
     { inicio: 0, fim: 30, acao: "cortar" },
+  ]);
+});
+
+test("normalizarTrechos preenche buracos com manter e ordena", () => {
+  const trechos = [
+    { inicio: 480, fim: 600, acao: "acelerar", fator: 2, audio: "mudo" },
+    { inicio: 0,   fim: 120, acao: "cortar" },
+  ];
+  assert.deepEqual(normalizarTrechos(trechos, 720), [
+    { inicio: 0,   fim: 120, acao: "cortar" },
+    { inicio: 120, fim: 480, acao: "manter" },
+    { inicio: 480, fim: 600, acao: "acelerar", fator: 2, audio: "mudo" },
+    { inicio: 600, fim: 720, acao: "manter" },
+  ]);
+});
+
+test("normalizarTrechos clampa o fim na duração total", () => {
+  const out = normalizarTrechos([{ inicio: 0, fim: 999, acao: "manter" }], 300);
+  assert.deepEqual(out, [{ inicio: 0, fim: 300, acao: "manter" }]);
+});
+
+test("normalizarTrechos rejeita sobreposição", () => {
+  const trechos = [
+    { inicio: 0,  fim: 100, acao: "manter" },
+    { inicio: 50, fim: 150, acao: "cortar" },
+  ];
+  assert.throws(() => normalizarTrechos(trechos, 200), /sobrep/i);
+});
+
+test("normalizarTrechos sem trechos = tudo manter", () => {
+  assert.deepEqual(normalizarTrechos([], 300), [
+    { inicio: 0, fim: 300, acao: "manter" },
   ]);
 });
