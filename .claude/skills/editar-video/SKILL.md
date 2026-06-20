@@ -60,6 +60,49 @@ branco). Molde transfere; tema e identidade são sempre da marca do dono.
    sênior) — é peça que vai pro ar. Só depois apontar os arquivos finais como prontos pro
    upload (Fase 3).
 
+## Edição por trechos — acelerar, cortar, manter (call longa → highlight)
+
+Além do corte de silêncio, o vídeo pode ser editado **por trechos**: cada pedaço ganha
+**uma ação** — *acelerar* (1,5x/2x/4x), *cortar fora* (remove de vez), ou *manter 1x*. É o
+que transforma uma call de 1h num conteúdo postável de ~11min: corta a intro, acelera a
+enrolação, mantém em 1x só o que importa.
+
+**Como o dono informa os trechos** — dois jeitos, os dois valem:
+- **Linguagem natural** ("corta os 2 primeiros minutos, acelera de 8 a 35 em 2x, deixa o
+  resto normal"). O assistente traduz pro plano e mostra no dry-run pra confirmar.
+- **Tabela de tempos** (cada linha `<início>-<fim> <ação>`):
+  ```
+  00:00-02:00 cortar
+  02:00-08:00 manter
+  08:00-35:00 2x mudo
+  35:00-40:00 1.5x voz
+  ```
+  Separador `-`, `–` ou `a`; tempo `mm:ss` ou `hh:mm:ss`; áudio `voz` (preserva o tom, sem
+  voz de esquilo) ou `mudo` (trecho acelerado sem som — bom pra espera/digitação). Sem
+  áudio especificado = `voz`.
+
+O plano vira um `plano-edicao.json` (`{ "trechos": [...] }`) passado com `--plano <arquivo>`.
+
+**Fluxo:** o dono fala → **dry-run** mostra o plano em número (`velocidade.duracaoFinal`,
+quanto reduziu, avisos) → o dono aprova ou ajusta → render com `--confirmar`. O dry-run
+**avisa** quando um trecho acelera acima de 2x **com voz** ("pode ficar difícil de
+entender"), mas obedece — a decisão é do dono.
+
+**Velocidade sem trava.** Qualquer fator. Acima de 2x com voz, só o aviso.
+
+**Gravação ≠ edição.** O render **sempre gera um `final.mp4` novo** — o arquivo cru NUNCA é
+sobrescrito. Errou o plano? Roda de novo com outro; o original está sempre lá. Reeditável
+quantas vezes quiser.
+
+**Corte de silêncio é opcional.** Pra **live de ensino** (onde a pausa do professor é
+proposital), usar `--sem-corte-silencio` — o silêncio fica intacto e só a velocidade/cortes
+do `--plano` rodam. (Default segue cortando silêncio, caso comum.)
+
+> Ordem do pipeline: corte de silêncio **primeiro**, velocidade **depois**. Detalhe técnico
+> conhecido: os tempos dos trechos batem com o vídeo cru quando o silêncio NÃO é cortado
+> (`--sem-corte-silencio`); com o corte ligado, a linha do tempo encurta antes da
+> velocidade. Pra precisão cirúrgica de tempo numa call, usar `--sem-corte-silencio`.
+
 ## Templates de marca
 
 `canal-youtube/edicao/templates/intro.mp4` e `outro.mp4` (opcionais) entram em todo vídeo.
