@@ -89,11 +89,13 @@ if (import.meta.main) {
     let zoomLista = [];
     const _regioesPath = join("canal-youtube", "gravacoes", slug, "regioes-zoom.json");
     if (modoZoom === "auto" && existsSync(_regioesPath)) {
-      const { regioes } = JSON.parse(readFileSync(_regioesPath, "utf8"));
-      zoomLista = regioes.map((r) => ({
-        em: `${Math.floor(r.inicio / 60)}:${String(Math.round(r.inicio % 60)).padStart(2, "0")}`,
-        nivel: r.nivel, dur: Number((r.fim - r.inicio).toFixed(1)),
-      }));
+      try {
+        const { regioes } = JSON.parse(readFileSync(_regioesPath, "utf8"));
+        zoomLista = (regioes || []).map((r) => ({
+          em: `${Math.floor(r.inicio / 60)}:${String(Math.round(r.inicio % 60)).padStart(2, "0")}`,
+          nivel: r.nivel, dur: Number((r.fim - r.inicio).toFixed(1)),
+        }));
+      } catch (e) { console.error(`AVISO: regioes-zoom.json inválido, ignorando zoom no dry-run — ${e.message}`); }
     }
     console.log(JSON.stringify({ ...montarPlanoDryRun({ saidaSilencedetect: saida, duracaoTotal, slug, minSilencio, trechos }),
       zooms: zoomLista,
