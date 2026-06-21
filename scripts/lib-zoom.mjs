@@ -40,3 +40,47 @@ export function nivelPorForca(cluster, { tabela = TABELA_FORCA } = {}) {
   }
   return nivel;
 }
+
+// Funde regiões cujos intervalos se sobrepõem ou se tocam. A fundida vai do menor início ao
+// maior fim; foco e nível vêm da região de MAIOR nível (clique mais forte manda).
+function fundirSobreposicao(regioes) {
+  if (regioes.length === 0) return [];
+  const ord = [...regioes].sort((a, b) => a.inicio - b.inicio);
+  const out = [ord[0]];
+  for (let i = 1; i < ord.length; i++) {
+    const ult = out[out.length - 1];
+    const r = ord[i];
+    if (r.inicio <= ult.fim) {
+      const forte = r.nivel > ult.nivel ? r : ult;
+      out[out.length - 1] = {
+        inicio: ult.inicio,
+        fim: Math.max(ult.fim, r.fim),
+        foco: forte.foco,
+        nivel: forte.nivel,
+      };
+    } else {
+      out.push(r);
+    }
+  }
+  return out;
+}
+
+// Telemetria -> regiões de zoom. Cada cluster vira uma região: foco=centroide, nível=força,
+// [inicio,fim] em SEGUNDOS com padding (início clampado em 0). Sobreposições são fundidas.
+export function montarRegioesZoom(telemetria, {
+  gapMs = GAP_MS, padInicioS = PAD_INICIO_S, padFimS = PAD_FIM_S, tabela = TABELA_FORCA,
+} = {}) {
+  const cliques = telemetria?.cliques || [];
+  const clusters = agruparClusters(cliques, { gapMs });
+  const regioes = clusters.map((cluster) => {
+    const primeiro = cluster[0].t / 1000;
+    const ultimo = cluster[cluster.length - 1].t / 1000;
+    return {
+      inicio: Math.max(0, primeiro - padInicioS),
+      fim: ultimo + padFimS,
+      foco: focoCentroide(cluster),
+      nivel: nivelPorForca(cluster, { tabela }),
+    };
+  });
+  return { regioes: fundirSobreposicao(regioes) };
+}
