@@ -17,6 +17,8 @@ import { existsSync, mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createInterface } from "node:readline";
 import { parseDispositivosDshow, argsCapturaTela, argsCapturaWebcam, resolverDispositivos } from "./lib-gravacao.mjs";
+import { uIOhook } from "uiohook-napi";
+import { montarTelemetria } from "./lib-telemetria.mjs";
 
 if (import.meta.main) { try { process.loadEnvFile(); } catch { /* sem .env: 1ª vez */ } }
 const FFMPEG = process.env.FFMPEG_BIN || "ffmpeg";
@@ -61,6 +63,18 @@ function listarDispositivos() {
   return parseDispositivosDshow(r.stderr || ""); // a lista vai pro STDERR
 }
 
+// resolução da tela (px) pra normalizar os cliques. PowerShell sem dep nova; fallback 1080p.
+function resolucaoTela() {
+  try {
+    const r = spawnSync("powershell", ["-NoProfile", "-Command",
+      "Add-Type -AssemblyName System.Windows.Forms; $b=[System.Windows.Forms.SystemInformation]::VirtualScreen; Write-Output \"$($b.Width)x$($b.Height)\""],
+      { encoding: "utf8" });
+    const m = String(r.stdout || "").match(/(\d+)x(\d+)/);
+    if (m) return { largura: Number(m[1]), altura: Number(m[2]), fonte: "powershell" };
+  } catch { /* cai no fallback */ }
+  return { largura: 1920, altura: 1080, fonte: "fallback" };
+}
+
 async function iniciar() {
   try { spawnSync(FFMPEG, ["-version"], { stdio: "ignore" }); } catch { falhar("ffmpeg não encontrado no PATH."); }
   const slug = flag("--slug") || "gravacao";
@@ -85,6 +99,15 @@ async function iniciar() {
   // pra receber 'q' — a ÚNICA forma de o ffmpeg fechar o mp4 com moov atom válido no Windows
   // (taskkill, mesmo sem /F, não entrega o sinal a um console app sem janela e trunca o
   // arquivo). Por isso quem grava é quem para — não dá pra separar em 'iniciar'/'parar'.
+  // telemetria: liga o uiohook no MESMO instante dos ffmpeg (mesmo t-zero) e coleta os cliques.
+  const tela = resolucaoTela();
+  const t0Iso = new Date().toISOString();
+  const t0 = Date.now();
+  const eventos = [];
+  uIOhook.on("click", (e) => {
+    eventos.push({ tMs: Date.now() - t0, x: e.x, y: e.y, button: e.button, clicks: e.clicks });
+  });
+  uIOhook.start();
   const pTela = spawn(FFMPEG, argsCapturaTela({ fps, saida: telaMp4 }), { stdio: ["pipe", "ignore", "ignore"] });
   const pWeb = spawn(FFMPEG, argsCapturaWebcam({ webcam: r.webcam, mic: r.mic, fps, saida: webcamMp4 }), { stdio: ["pipe", "ignore", "ignore"] });
 
@@ -98,6 +121,10 @@ async function iniciar() {
 
   // manda 'q' nos dois ffmpeg e espera cada um finalizar o mp4 (fecha o stdin pra garantir).
   console.log("• finalizando os arquivos…");
+  // para a captura de cliques e grava a telemetria sincronizada com o vídeo.
+  try { uIOhook.stop(); } catch { /* já parado */ }
+  writeFileSync(join(base, "telemetria.json"),
+    JSON.stringify(montarTelemetria({ t0: t0Iso, tela, eventos }), null, 2));
   const fechar = (p) => new Promise((res) => {
     if (p.exitCode !== null) return res();
     p.on("close", () => res());
@@ -105,7 +132,7 @@ async function iniciar() {
   });
   await Promise.all([fechar(pTela), fechar(pWeb)]);
 
-  console.log(`✓ pronto: ${telaMp4} + ${webcamMp4}\n→ próximo: /editar-video pra cortar/acelerar/legendar.`);
+  console.log(`✓ pronto: ${telaMp4} + ${webcamMp4} + telemetria.json\n→ próximo: /editar-video pra cortar/acelerar/legendar.`);
   process.exit(0);
 }
 
