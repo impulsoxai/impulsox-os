@@ -5,7 +5,7 @@ import {
   montarSRT, montarASS, filtroLegenda, filtroLegendaAss, filtroLoudnorm,
   argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
-  cadeiaAtempo, filtroVelocidadeConcat,
+  cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -361,4 +361,20 @@ test("filtroVelocidadeConcat: acelerar mudo comprime o áudio (a/v casam) antes 
   assert.match(f, /atempo=2/);
   assert.match(f, /volume=0/);
   assert.match(f, /setpts=PTS\/2/);
+});
+
+// --- Escala 1080p (padrão YouTube long-form) ---
+
+test("filtroEscala1080p escala pra 1920x1080 mantendo aspect, com pad e sar", () => {
+  const f = filtroEscala1080p();
+  // escala cabendo dentro de 1920x1080 sem distorcer, depois pad pro frame cheio centralizado
+  assert.match(f, /scale=1920:1080:force_original_aspect_ratio=decrease/);
+  assert.match(f, /pad=1920:1080:\(ow-iw\)\/2:\(oh-ih\)\/2/);
+  assert.match(f, /setsar=1/);
+});
+
+test("filtroEscala1080p aceita dimensões custom (ex: short vertical)", () => {
+  const f = filtroEscala1080p({ largura: 1080, altura: 1920 });
+  assert.match(f, /scale=1080:1920:force_original_aspect_ratio=decrease/);
+  assert.match(f, /pad=1080:1920/);
 });

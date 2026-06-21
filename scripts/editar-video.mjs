@@ -11,7 +11,7 @@
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm, lerGlossario, corrigirTermos, parseTrechosTabela, normalizarTrechos, planoVelocidade, filtroVelocidadeConcat } from "./lib-edicao.mjs";
+import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm, lerGlossario, corrigirTermos, parseTrechosTabela, normalizarTrechos, planoVelocidade, filtroVelocidadeConcat, filtroEscala1080p } from "./lib-edicao.mjs";
 import { transcrever } from "./transcrever-local.mjs";
 import { registrarPasso } from "./registrar-passo.mjs";
 
@@ -139,12 +139,15 @@ if (import.meta.main) {
         }
       } catch (e) { console.error("AVISO: legenda pulada — " + e.message); }
 
-      const corpo = temLegenda ? join(base, "_legendado.mp4") : baseVideo;
-      if (temLegenda) {
-        // queima a karaokê (destaque palavra-a-palavra); áudio já normalizado, só copia.
-        execFileSync(FFMPEG, ["-y", "-i", baseVideo, "-vf", filtroLegendaAss({ assCaminho: tmpAss }),
-          "-c:a", "copy", corpo], { stdio: "inherit" });
-      }
+      // o corpo SEMPRE é reescalado pro padrão de entrega do YouTube (1920x1080 16:9). A tela
+      // gravada costuma ser menor que 1080p; sem isso o long-form sairia sub-1080p. setsar=1
+      // garante pixel quadrado. Quando há legenda, escala ANTES de queimar (um filtergraph só).
+      const corpo = join(base, temLegenda ? "_legendado.mp4" : "_1080p.mp4");
+      const vfCorpo = temLegenda
+        ? `${filtroEscala1080p()},${filtroLegendaAss({ assCaminho: tmpAss })}`
+        : filtroEscala1080p();
+      execFileSync(FFMPEG, ["-y", "-i", baseVideo, "-vf", vfCorpo,
+        "-c:a", "copy", corpo], { stdio: "inherit" });
 
       const intro = join("canal-youtube", "edicao", "templates", "intro.mp4");
       const outro = join("canal-youtube", "edicao", "templates", "outro.mp4");

@@ -207,6 +207,15 @@ export function filtroLoudnorm({ alvoLufs = -14, truePeak = -1.5, lra = 11 } = {
   return `loudnorm=I=${alvoLufs}:TP=${truePeak}:LRA=${lra}`;
 }
 
+// Escala o vídeo pro padrão de entrega (default 1920x1080, long-form YouTube) SEM distorcer:
+// scale cabe a imagem dentro do alvo mantendo o aspect, pad completa o frame centralizando, e
+// setsar=1 fixa o pixel quadrado. Tela 16:9 (ex. 1536x864) sobe limpa pra 1080p, sem barras.
+// Custom (largura/altura) cobre o short vertical 1080x1920.
+export function filtroEscala1080p({ largura = 1920, altura = 1080 } = {}) {
+  return `scale=${largura}:${altura}:force_original_aspect_ratio=decrease,` +
+    `pad=${largura}:${altura}:(ow-iw)/2:(oh-ih)/2,setsar=1`;
+}
+
 // Args do ffmpeg pra thumbnail COMPOSTA 16:9 (1280x720), calibrada pela pesquisa de CTR +
 // identidade da marca: fundo ESCURO chapado (contraste alto no feed branco/mobile), frame
 // inteiro à direita (sem cortar o rosto), texto no TOPO-ESQUERDA (longe do timestamp do
