@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { normalizarClique, classificarTipo } from "./lib-telemetria.mjs";
+import { normalizarClique, classificarTipo, montarTelemetria } from "./lib-telemetria.mjs";
 
 test("normalizarClique: centro da tela = 0.5/0.5", () => {
   assert.deepEqual(
@@ -32,4 +32,27 @@ test("classificarTipo: button 2 ou 3 -> right", () => {
 test("classificarTipo: default -> left", () => {
   assert.equal(classificarTipo({ button: 1, clicks: 1 }), "left");
   assert.equal(classificarTipo({}), "left");
+});
+
+test("montarTelemetria monta JSON normalizado e classificado, em ordem", () => {
+  const tela = { largura: 1000, altura: 500, fonte: "powershell" };
+  const t = montarTelemetria({
+    t0: "2026-06-20T23:00:00.000Z",
+    tela,
+    eventos: [
+      { tMs: 2300, x: 450, y: 250, button: 1, clicks: 1 },
+      { tMs: 5800, x: 800, y: 100, button: 1, clicks: 2 },
+    ],
+  });
+  assert.equal(t.t0, "2026-06-20T23:00:00.000Z");
+  assert.deepEqual(t.tela, tela);
+  assert.deepEqual(t.cliques, [
+    { t: 2300, x: 0.45, y: 0.5, tipo: "left" },
+    { t: 5800, x: 0.8,  y: 0.2, tipo: "double" },
+  ]);
+});
+
+test("montarTelemetria sem eventos -> cliques vazio", () => {
+  const t = montarTelemetria({ t0: "x", tela: { largura: 100, altura: 100 }, eventos: [] });
+  assert.deepEqual(t.cliques, []);
 });

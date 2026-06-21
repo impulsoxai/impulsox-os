@@ -21,3 +21,16 @@ export function classificarTipo({ button, clicks } = {}) {
   if (button === 2 || button === 3) return "right";
   return "left";
 }
+
+// Monta o telemetria.json canônico: para cada evento cru, normaliza a posição e classifica
+// o tipo, preservando a ordem. t0/tela passam direto.
+export function montarTelemetria({ t0, tela, eventos = [] }) {
+  return {
+    t0,
+    tela,
+    cliques: eventos.map((e) => {
+      const pos = normalizarClique({ x: e.x, y: e.y, tela });
+      return { t: e.tMs, x: pos.x, y: pos.y, tipo: classificarTipo(e) };
+    }),
+  };
+}
