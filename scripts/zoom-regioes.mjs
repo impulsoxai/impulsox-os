@@ -8,7 +8,7 @@
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { montarRegioesZoom } from "./lib-zoom.mjs";
+import { montarRegioesZoom, aplicarLimitesAuto } from "./lib-zoom.mjs";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 
@@ -29,7 +29,10 @@ if (import.meta.main) {
   if (flag("--pad-fim") !== undefined) opts.padFimS = Number(flag("--pad-fim"));
 
   const regioes = montarRegioesZoom(telemetria, opts);
+  // anti-tontura: tira zoom curto/colado e usa nível suave 1.4 (close discreto).
+  const limitadas = aplicarLimitesAuto(regioes.regioes, {}).map((r) => ({ ...r, nivel: 1.4 }));
+  const saidaObj = { regioes: limitadas };
   const saida = join(base, "regioes-zoom.json");
-  writeFileSync(saida, JSON.stringify(regioes, null, 2));
-  console.log(JSON.stringify({ ok: true, slug, regioes: regioes.regioes.length, saida }, null, 2));
+  writeFileSync(saida, JSON.stringify(saidaObj, null, 2));
+  console.log(JSON.stringify({ ok: true, slug, regioes: limitadas.length, saida }, null, 2));
 }
