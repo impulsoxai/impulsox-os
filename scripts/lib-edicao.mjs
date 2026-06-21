@@ -392,3 +392,28 @@ export function filtroVelocidadeConcat(trechos, { loudnorm } = {}) {
   const norm = loudnorm ? `;[acat]${loudnorm}[aout]` : "";
   return `${partes.join(";")};${concat}${norm}`;
 }
+
+// Filtro ffmpeg zoompan pra zoom SECO nas regiões: z vira o nível na janela de frames da
+// região (between(in, inicio*fps, fim*fps)), senão 1. x/y centram o foco. Provado: zoompan é
+// timeline-aware (crop+enable não é). Sem regiões -> null. Várias regiões = if aninhado.
+export function filtroZoompan(regioes, { fps = 30, largura = 1920, altura = 1080 } = {}) {
+  if (!regioes || regioes.length === 0) return null;
+  let zExpr = "1";
+  for (let i = regioes.length - 1; i >= 0; i--) {
+    const r = regioes[i];
+    const f0 = Math.round(r.inicio * fps);
+    const f1 = Math.round(r.fim * fps);
+    zExpr = `if(between(in,${f0},${f1}),${r.nivel},${zExpr})`;
+  }
+  const focoExpr = (campo, dim) => {
+    let e = "0.5";
+    for (let i = regioes.length - 1; i >= 0; i--) {
+      const r = regioes[i];
+      const f0 = Math.round(r.inicio * fps);
+      const f1 = Math.round(r.fim * fps);
+      e = `if(between(in,${f0},${f1}),${r.foco[campo]},${e})`;
+    }
+    return `${dim}*(${e})-(${dim}/zoom/2)`;
+  };
+  return `zoompan=z='${zExpr}':x='${focoExpr("x", "iw")}':y='${focoExpr("y", "ih")}':d=1:s=${largura}x${altura}:fps=${fps}`;
+}

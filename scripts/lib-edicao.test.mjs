@@ -5,7 +5,7 @@ import {
   montarSRT, montarASS, filtroLegenda, filtroLegendaAss, filtroLoudnorm,
   argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
-  cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p,
+  cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -377,4 +377,28 @@ test("filtroEscala1080p aceita dimensões custom (ex: short vertical)", () => {
   const f = filtroEscala1080p({ largura: 1080, altura: 1920 });
   assert.match(f, /scale=1080:1920:force_original_aspect_ratio=decrease/);
   assert.match(f, /pad=1080:1920/);
+});
+
+// --- Zoom (Fase 3c) ---
+
+test("filtroZoompan: 1 região vira zoompan condicional no tempo", () => {
+  const regioes = [{ inicio: 2, fim: 4, foco: { x: 0.45, y: 0.30 }, nivel: 1.5 }];
+  const f = filtroZoompan(regioes, { fps: 30, largura: 1920, altura: 1080 });
+  assert.match(f, /zoompan=z='if\(between\(in,60,120\),1\.5,/);
+  assert.match(f, /iw\*\(.*0\.45.*\)-\(iw\/zoom\/2\)/);
+  assert.match(f, /s=1920x1080:fps=30/);
+});
+
+test("filtroZoompan: várias regiões encadeiam if aninhado", () => {
+  const regioes = [
+    { inicio: 1, fim: 2, foco: { x: 0.5, y: 0.5 }, nivel: 1.4 },
+    { inicio: 5, fim: 6, foco: { x: 0.2, y: 0.2 }, nivel: 2.0 },
+  ];
+  const f = filtroZoompan(regioes, { fps: 30, largura: 1920, altura: 1080 });
+  assert.match(f, /between\(in,30,60\)/);
+  assert.match(f, /between\(in,150,180\)/);
+});
+
+test("filtroZoompan: sem regiões -> null", () => {
+  assert.equal(filtroZoompan([], { fps: 30, largura: 1920, altura: 1080 }), null);
 });
