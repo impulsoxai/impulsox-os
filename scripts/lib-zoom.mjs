@@ -21,3 +21,11 @@ export function agruparClusters(cliques, { gapMs = GAP_MS } = {}) {
   }
   return clusters;
 }
+
+// Foco do zoom = centroide (média x,y) dos cliques do cluster.
+export function focoCentroide(cluster) {
+  const n = cluster.length || 1;
+  const somaX = cluster.reduce((s, c) => s + c.x, 0);
+  const somaY = cluster.reduce((s, c) => s + c.y, 0);
+  return { x: somaX / n, y: somaY / n };
+}
