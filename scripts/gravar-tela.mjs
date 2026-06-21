@@ -111,6 +111,16 @@ async function iniciar() {
   const pTela = spawn(FFMPEG, argsCapturaTela({ fps, saida: telaMp4 }), { stdio: ["pipe", "ignore", "ignore"] });
   const pWeb = spawn(FFMPEG, argsCapturaWebcam({ webcam: r.webcam, mic: r.mic, fps, saida: webcamMp4 }), { stdio: ["pipe", "ignore", "ignore"] });
 
+  // Ctrl+C no meio da gravação: desliga o hook do mouse (senão fica pendurado) e fecha os
+  // ffmpeg com 'q' (senão o mp4 fica truncado), salvando o que deu — em vez de morrer sujo.
+  process.on("SIGINT", () => {
+    try { uIOhook.stop(); } catch { /* já parado */ }
+    try { writeFileSync(join(base, "telemetria.json"), JSON.stringify(montarTelemetria({ t0: t0Iso, tela, eventos }), null, 2)); } catch { /* segue */ }
+    for (const p of [pTela, pWeb]) { try { p.stdin.write("q"); p.stdin.end(); } catch { /* já fechou */ } }
+    console.log("\n• gravação interrompida — arquivos finalizados.");
+    setTimeout(() => process.exit(0), 1500);
+  });
+
   console.log(`\n🔴 gravando em '${slug}'. Aperte ENTER pra parar.`);
 
   // espera o ENTER do dono.
