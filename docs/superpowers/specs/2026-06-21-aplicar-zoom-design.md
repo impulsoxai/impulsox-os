@@ -40,8 +40,14 @@ encadeiam num `z='if(between(in,a,b),n1, if(between(in,c,d),n2, 1))'`.
 
 O modo filtra **quais cliques contam** ANTES de o cérebro (3b) montar as regiões.
 
-- **`--manual`** (default) — **só double-click vira zoom.** Clique simples (trabalho na tela)
-  não gera zoom. O dono comanda: double = "aqui eu quero zoom". Zero zoom acidental.
+- **`--manual`** (default) — **double-click é um TOGGLE liga/desliga.** O dono controla a
+  duração: o 1º double-click LIGA o zoom (entra no foco daquele clique), o 2º DESLIGA (volta ao
+  normal). A região de zoom é `[t do double que ligou, t do double que desligou]` — fica no
+  zoom o tempo que o dono quiser (2s ou 30s). Clique simples (trabalho na tela) não faz nada =
+  zero zoom acidental. **Foco** = posição do double que ligou. **Nível** = 2.0x (gesto
+  intencional). **Esqueceu de desligar** (nº ímpar de doubles): o último zoom vai até o fim do
+  vídeo OU um **teto de segurança de 20s** (ajustável), o que vier primeiro — pra não travar o
+  vídeo inteiro em zoom por engano.
 - **`--auto`** — todo cluster vira zoom, **com limites anti-tontura conservadores**:
   - cluster precisa de **≥2 cliques** e durar **≥1.5s** (cluster curto/raso é ignorado)
   - **intervalo mínimo 4s** entre zooms (zooms muito juntos: descarta o segundo)
@@ -59,8 +65,8 @@ limites ficam no topo do `lib-zoom.mjs`, ajustáveis.
 
 | Função | Faz |
 |---|---|
-| `filtrarPorModo(cliques, modo)` | `manual` → só `tipo==="double"`; `auto` → todos. Devolve a lista filtrada |
-| `aplicarLimitesAuto(regioes, opts)` | remove região mais curta que `minDurS` (1.5s); força intervalo mínimo `intervaloMinS` (4s) descartando a região seguinte que viola; (nível 1.4 é setado na montagem) |
+| `regioesToggle(cliques, { nivel = 2.0, tetoS = 20, fimVideoS })` | **modo manual.** Pega os `tipo==="double"` em ordem e pareia: 1º liga / 2º desliga → região `[tLiga, tDesliga]` (ms→s). Double ímpar sobrando → `[tLiga, min(tLiga+tetoS, fimVideoS)]`. Cada região: foco = posição do double que ligou, nível fixo. Ignora clique simples |
+| `aplicarLimitesAuto(regioes, opts)` | **modo auto.** remove região mais curta que `minDurS` (1.5s); força intervalo mínimo `intervaloMinS` (4s) descartando a região seguinte que viola; (nível 1.4 é setado na montagem) |
 
 ### 4.2 `scripts/lib-edicao.mjs` — função PURA nova
 
@@ -70,8 +76,10 @@ limites ficam no topo do `lib-zoom.mjs`, ajustáveis.
 
 ### 4.3 `scripts/zoom-regioes.mjs` — modificar
 
-Aceita `--modo auto|manual` (default manual): aplica `filtrarPorModo` nos cliques e, no auto,
-`aplicarLimitesAuto` nas regiões + nível 1.4. Grava `regioes-zoom.json`.
+Aceita `--modo auto|manual` (default manual).
+- **manual:** `regioesToggle(cliques, { fimVideoS })` (pares de double-click → janelas de zoom).
+- **auto:** o cérebro existente (`montarRegioesZoom`) + `aplicarLimitesAuto` + nível 1.4.
+Grava `regioes-zoom.json` (mesmo formato nos dois modos).
 
 ### 4.4 `scripts/editar-video.mjs` — passo novo de zoom
 
@@ -103,9 +111,9 @@ limitação honesta da Fase 1 §6). O dry-run mostra os tempos pro dono conferir
 
 ## 7. Casos de aceite
 
-1. **Manual filtra:** `filtrarPorModo([left,double,left], "manual")` → só o double.
-2. **Auto não filtra:** `filtrarPorModo([...], "auto")` → todos.
-3. **Limite duração:** região de 0.8s com `minDurS=1.5` → removida por `aplicarLimitesAuto`.
+1. **Toggle pareia:** `regioesToggle` com doubles em t=2s e t=10s → 1 região [2,10] (ligou/desligou); clique simples no meio é ignorado.
+2. **Toggle ímpar (teto):** 1 double em t=5s, sem desligar, `tetoS=20`, fimVideo=60 → região [5,25].
+3. **Limite duração (auto):** região de 0.8s com `minDurS=1.5` → removida por `aplicarLimitesAuto`.
 4. **Intervalo mínimo:** duas regiões a 2s de distância com `intervaloMinS=4` → a segunda descartada.
 5. **Filtro zoompan:** 1 região [2,4] nivel 1.5 foco 0.45/0.30 @ 30fps → string com `between(in,60,120)` e `1.5` e o x/y do foco.
 6. **Sem regiões:** `filtroZoompan([], ...)` → `null`.
