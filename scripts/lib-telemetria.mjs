@@ -13,3 +13,11 @@ export function normalizarClique({ x, y, tela }) {
     y: altura ? clamp01(y / altura) : 0,
   };
 }
+
+// Evento de clique do uiohook -> tipo simples pro cérebro do zoom. double tem prioridade
+// (gesto mais forte); button 2/3 = direito; o resto = esquerdo.
+export function classificarTipo({ button, clicks } = {}) {
+  if (clicks >= 2) return "double";
+  if (button === 2 || button === 3) return "right";
+  return "left";
+}
