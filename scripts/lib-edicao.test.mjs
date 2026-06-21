@@ -6,7 +6,7 @@ import {
   argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
   cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan,
-  posicaoOverlay,
+  posicaoOverlay, filtroBolhaWebcam,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -414,4 +414,24 @@ test("posicaoOverlay: cantos viram expressão x:y do overlay", () => {
 });
 test("posicaoOverlay: canto desconhecido cai no inferior-direito", () => {
   assert.equal(posicaoOverlay("xx", 40), "W-w-40:H-h-40");
+});
+
+test("filtroBolhaWebcam: monta máscara circular + sombra + 2 overlays", () => {
+  const { filtro, mapV } = filtroBolhaWebcam({
+    corpoFiltros: "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,setsar=1",
+    ladoBolha: 384, canto: "ir", margem: 40, sombra: true,
+  });
+  assert.equal(mapV, "[vbolha]");
+  assert.match(filtro, /\[0:v\]scale=1920:1080.*\[vcorpo\]/);
+  assert.match(filtro, /\[1:v\]scale=384:384:force_original_aspect_ratio=increase,crop=384:384/);
+  assert.match(filtro, /geq=.*a='if\(lte\(pow\(X-192,2\)\+pow\(Y-192,2\),pow\(192,2\)\),255,0\)'/);
+  assert.match(filtro, /gblur=/);
+  assert.match(filtro, /overlay=W-w-\d+:H-h-\d+/);
+  assert.match(filtro, /\[vbolha\]$/);
+});
+test("filtroBolhaWebcam: sem sombra pula o gblur", () => {
+  const { filtro } = filtroBolhaWebcam({
+    corpoFiltros: "scale=1920:1080", ladoBolha: 384, canto: "ir", margem: 40, sombra: false,
+  });
+  assert.doesNotMatch(filtro, /gblur=/);
 });

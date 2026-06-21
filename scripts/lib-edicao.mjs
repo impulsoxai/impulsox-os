@@ -425,3 +425,32 @@ export function posicaoOverlay(canto, margem = 40) {
   const y = canto === "sr" || canto === "sl" ? `${margem}` : `H-h-${margem}`;
   return `${x}:${y}`;
 }
+
+// Filtergraph completo (-filter_complex) pra bolha de webcam REDONDA com sombra no canto.
+// corpoFiltros = a cadeia do corpo (escala[,legenda][,zoom]) aplicada no [0:v]. A webcam é
+// [1:v]: escala+crop quadrado, máscara circular via geq no alpha. A sombra é um círculo preto
+// borrado (gblur) overlaid antes da bolha. Provado no ffmpeg. Devolve { filtro, mapV }.
+export function filtroBolhaWebcam({ corpoFiltros, ladoBolha, canto = "ir", margem = 40, sombra = true }) {
+  const r = Math.round(ladoBolha / 2);
+  const pos = posicaoOverlay(canto, margem);
+  const partes = [];
+  partes.push(`[0:v]${corpoFiltros}[vcorpo]`);
+  partes.push(
+    `[1:v]scale=${ladoBolha}:${ladoBolha}:force_original_aspect_ratio=increase,crop=${ladoBolha}:${ladoBolha},` +
+    `format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='if(lte(pow(X-${r},2)+pow(Y-${r},2),pow(${r},2)),255,0)'[cam]`,
+  );
+  let ultimo = "[vcorpo]";
+  if (sombra) {
+    const ladoS = ladoBolha + 36;
+    const rS = Math.round(ladoS / 2);
+    const margemS = Math.max(0, margem - 18);
+    partes.push(
+      `color=c=black@0:s=${ladoS}x${ladoS},format=rgba,` +
+      `geq=r=0:g=0:b=0:a='if(lte(pow(X-${rS},2)+pow(Y-${rS},2),pow(${rS},2)),160,0)',gblur=sigma=12[sombra]`,
+    );
+    partes.push(`${ultimo}[sombra]overlay=${posicaoOverlay(canto, margemS)}[vsombra]`);
+    ultimo = "[vsombra]";
+  }
+  partes.push(`${ultimo}[cam]overlay=${pos}[vbolha]`);
+  return { filtro: partes.join(";"), mapV: "[vbolha]" };
+}
