@@ -29,3 +29,14 @@ export function focoCentroide(cluster) {
   const somaY = cluster.reduce((s, c) => s + c.y, 0);
   return { x: somaX / n, y: somaY / n };
 }
+
+// Nível de zoom = força do clique mais forte do cluster (double > right > left).
+// Tipo desconhecido cai no nível de left (mínimo).
+export function nivelPorForca(cluster, { tabela = TABELA_FORCA } = {}) {
+  let nivel = tabela.left;
+  for (const c of cluster) {
+    const n = tabela[c.tipo];
+    if (typeof n === "number" && n > nivel) nivel = n;
+  }
+  return nivel;
+}
