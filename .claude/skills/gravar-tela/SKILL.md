@@ -57,6 +57,14 @@ lista; escolha ele.
 tamanho, redondo, sombra) é montada depois, na edição, onde você pode mudar de ideia sem
 regravar. Grava cru → decide na revisão. (A composição da bolha é a Fase 4.)
 
+## Cliques capturados pro auto-zoom (automático)
+
+Durante a gravação, cada clique do mouse é registrado num `telemetria.json` (ao lado dos
+mp4), com a posição e o tempo. Você não faz nada — acontece sozinho. É a matéria-prima do
+**auto-zoom** (Fase 3): com os cliques, a edição vai saber **onde** dar zoom na hora certa,
+sem você marcar nada. Captura via `uiohook-napi` (vem pré-compilado, sem precisar instalar
+ferramenta de build).
+
 ## Próximo passo
 
 Gravou? → **`/editar-video`** pega o `tela.mp4` (e o `webcam.mp4`) e faz o resto: corta
