@@ -173,17 +173,34 @@ if (import.meta.main) {
       const corpo = join(base, temLegenda ? "_legendado.mp4" : "_1080p.mp4");
       const corpoFiltros = filtrosCorpo.join(",");
 
+      // áudio externo: quando --voz aponta pra um arquivo diferente de --video (caso /gravar-tela,
+      // onde tela.mp4 não tem som e a voz vem do webcam.mp4), o corpo precisa MUXAR esse áudio —
+      // sem isso o vídeo final sai mudo (baseVideo nunca carrega som nesse fluxo).
+      // Limite conhecido (igual ao zoom): só bate em tempo sem --plano/corte; com corte, os
+      // tempos do vídeo mudam mas o áudio externo segue cru (mesmo limite documentado no zoom).
+      const audioExterno = voz && voz !== video && existsSync(voz) ? voz : null;
+
       if (webcamArq && existsSync(webcamArq)) {
-        // bolha de webcam: dois inputs, -filter_complex; áudio vem do corpo ([0:a]), não da webcam.
+        // bolha de webcam: -filter_complex já usa 2 inputs (corpo + webcam); áudio externo
+        // entra como 3º input quando houver, senão cai pro 0:a? (compatibilidade antiga).
         const ladoBolha = Math.round(1920 * bolhaTamanho);
         const { filtro, mapV } = filtroBolhaWebcam({
           corpoFiltros, ladoBolha, canto: cantoBolha, margem: margemBolha, sombra: true,
         });
-        execFileSync(FFMPEG, ["-y", "-i", baseVideo, "-i", webcamArq,
-          "-filter_complex", filtro, "-map", mapV, "-map", "0:a?",
-          "-c:a", "copy", corpo], { stdio: "inherit" });
+        const inputs = audioExterno
+          ? ["-i", baseVideo, "-i", webcamArq, "-i", audioExterno]
+          : ["-i", baseVideo, "-i", webcamArq];
+        const mapA = audioExterno ? "2:a" : "0:a?";
+        execFileSync(FFMPEG, ["-y", ...inputs,
+          "-filter_complex", filtro, "-map", mapV, "-map", mapA,
+          "-c:a", "aac", "-shortest", corpo], { stdio: "inherit" });
+      } else if (audioExterno) {
+        // sem webcam, com áudio externo: 2 inputs, vídeo filtrado + áudio do arquivo de voz.
+        execFileSync(FFMPEG, ["-y", "-i", baseVideo, "-i", audioExterno,
+          "-vf", corpoFiltros, "-map", "0:v", "-map", "1:a",
+          "-c:a", "aac", "-shortest", corpo], { stdio: "inherit" });
       } else {
-        // sem webcam: caminho atual (-vf simples), zero regressão.
+        // sem webcam, sem áudio externo: caminho atual (-vf simples), zero regressão.
         execFileSync(FFMPEG, ["-y", "-i", baseVideo, "-vf", corpoFiltros,
           "-c:a", "copy", corpo], { stdio: "inherit" });
       }

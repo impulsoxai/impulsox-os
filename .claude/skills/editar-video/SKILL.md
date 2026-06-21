@@ -29,7 +29,9 @@ branco). Molde transfere; tema e identidade são sempre da marca do dono.
 ## Pré-checagem
 
 1. **A gravação existe?** Pedir o caminho do arquivo (um .mp4 com tela+voz, ou tela + voz
-   separados). Sem arquivo, não há o que editar.
+   separados). Sem arquivo, não há o que editar. **Gravação feita com `/gravar-tela`:**
+   `tela.mp4` NÃO tem áudio (a voz fica só no `webcam.mp4`) — sempre passar `--voz
+   <webcam.mp4>` junto, senão o vídeo final sai mudo (legenda funciona sem isso, mas o som não).
 2. **ffmpeg e whisper instalados?** Na primeira falha, guiar a instalação (ffmpeg pro
    render; whisper local pra legenda). Sem whisper, o vídeo sai sem legenda queimada — avisar.
    `WHISPER_BIN` no `.env` aponta o exe quando o `whisper` não está no PATH.
@@ -102,6 +104,12 @@ do `--plano` rodam. (Default segue cortando silêncio, caso comum.)
 > conhecido: os tempos dos trechos batem com o vídeo cru quando o silêncio NÃO é cortado
 > (`--sem-corte-silencio`); com o corte ligado, a linha do tempo encurta antes da
 > velocidade. Pra precisão cirúrgica de tempo numa call, usar `--sem-corte-silencio`.
+
+> **Limite conhecido — gravação do `/gravar-tela` (tela + voz separados):** o corte de
+> silêncio analisa o `--video` (a tela, sem áudio), não o `--voz` — nesse fluxo ele nunca
+> encontra silêncio pra cortar (`cortos: 0` sempre). Pra esse caso, usar
+> `--sem-corte-silencio` (o áudio externo ainda entra certo no final, só não corta pausas).
+> Corrigir isso de vez (detectar+cortar pela trilha de voz, sincronizado) é melhoria futura.
 
 ## Auto-zoom (zoom automático nos cliques)
 
