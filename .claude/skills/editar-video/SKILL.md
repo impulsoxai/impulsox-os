@@ -103,6 +103,29 @@ do `--plano` rodam. (Default segue cortando silêncio, caso comum.)
 > (`--sem-corte-silencio`); com o corte ligado, a linha do tempo encurta antes da
 > velocidade. Pra precisão cirúrgica de tempo numa call, usar `--sem-corte-silencio`.
 
+## Auto-zoom (zoom automático nos cliques)
+
+Se a gravação foi feita com o `/gravar-tela` (que registra os cliques no `telemetria.json`),
+o vídeo pode ganhar **zoom automático** nos pontos onde você clicou — sem você marcar nada.
+
+**Como:** depois de gravar, rode `node scripts/zoom-regioes.mjs --slug <nome>` (gera o
+`regioes-zoom.json` — o cérebro decide onde dar zoom). Depois o `/editar-video` aplica:
+- `--zoom auto` (default) — aplica o zoom seco nos cliques, com **limites anti-tontura**
+  (zoom só em cluster de cliques que dura ≥1.5s, espaçados ≥4s, nível discreto 1.4x).
+- `--zoom nao` — desliga o auto-zoom.
+
+**O dry-run lista os zooms** ("zoom em 1:30, 3:00…") ANTES de renderizar — você confere e
+**poda** os que não quer (editando o `regioes-zoom.json` à mão, ou pedindo pra tirar).
+
+**Controle manual ao vivo (mirar o zoom enquanto grava) não existe aqui** — isso precisa de
+preview em tempo real, fora do pipeline headless. Pra zoom manual ao vivo, use o **Recordly**
+direto e jogue o `.mp4` no `/editar-video`. O auto cobre o caso comum sem você precisar ver
+nada durante a gravação.
+
+> Limite conhecido: o auto-zoom usa os tempos da telemetria (do vídeo cru). Se você também
+> cortar silêncio/acelerar trechos, os tempos podem deslocar — pra auto-zoom preciso, edite
+> sem `--plano`/corte, ou confira os tempos no dry-run.
+
 ## Templates de marca
 
 `canal-youtube/edicao/templates/intro.mp4` e `outro.mp4` (opcionais) entram em todo vídeo.

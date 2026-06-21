@@ -67,8 +67,10 @@ ferramenta de build).
 
 ## Próximo passo
 
-Gravou? → **`/editar-video`** pega o `tela.mp4` (e o `webcam.mp4`) e faz o resto: corta
-silêncio, acelera os trechos chatos, legenda. A gravação é só a matéria-prima.
+Gravou? → (auto-zoom, opcional) `node scripts/zoom-regioes.mjs --slug <nome>` gera as regiões
+de zoom a partir dos seus cliques → depois **`/editar-video`** pega o `tela.mp4` (e o
+`webcam.mp4`) e faz o resto: corta silêncio, acelera os trechos chatos, legenda, e aplica o
+**zoom automático nos cliques** (`--zoom auto`, padrão). A gravação é só a matéria-prima.
 
 ## Regras
 
