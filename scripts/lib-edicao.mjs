@@ -417,3 +417,11 @@ export function filtroZoompan(regioes, { fps = 30, largura = 1920, altura = 1080
   };
   return `zoompan=z='${zExpr}':x='${focoExpr("x", "iw")}':y='${focoExpr("y", "ih")}':d=1:s=${largura}x${altura}:fps=${fps}`;
 }
+
+// Canto da bolha -> expressão x:y do overlay do ffmpeg (com margem da borda).
+// i/s = inferior/superior; r/l = direito/esquerdo. Default: inferior-direito.
+export function posicaoOverlay(canto, margem = 40) {
+  const x = canto === "il" || canto === "sl" ? `${margem}` : `W-w-${margem}`;
+  const y = canto === "sr" || canto === "sl" ? `${margem}` : `H-h-${margem}`;
+  return `${x}:${y}`;
+}

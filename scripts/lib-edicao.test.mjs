@@ -6,6 +6,7 @@ import {
   argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
   cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan,
+  posicaoOverlay,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -401,4 +402,16 @@ test("filtroZoompan: várias regiões encadeiam if aninhado", () => {
 
 test("filtroZoompan: sem regiões -> null", () => {
   assert.equal(filtroZoompan([], { fps: 30, largura: 1920, altura: 1080 }), null);
+});
+
+// --- Bolha de webcam (Fase 4) ---
+
+test("posicaoOverlay: cantos viram expressão x:y do overlay", () => {
+  assert.equal(posicaoOverlay("ir", 40), "W-w-40:H-h-40");
+  assert.equal(posicaoOverlay("il", 40), "40:H-h-40");
+  assert.equal(posicaoOverlay("sr", 40), "W-w-40:40");
+  assert.equal(posicaoOverlay("sl", 40), "40:40");
+});
+test("posicaoOverlay: canto desconhecido cai no inferior-direito", () => {
+  assert.equal(posicaoOverlay("xx", 40), "W-w-40:H-h-40");
 });
