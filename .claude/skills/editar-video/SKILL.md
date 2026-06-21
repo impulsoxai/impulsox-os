@@ -126,6 +126,23 @@ nada durante a gravação.
 > cortar silêncio/acelerar trechos, os tempos podem deslocar — pra auto-zoom preciso, edite
 > sem `--plano`/corte, ou confira os tempos no dry-run.
 
+## Bolha de webcam (rosto + tela)
+
+Se você gravou com o `/gravar-tela` (que salva `tela.mp4` e `webcam.mp4` separados), dá pra
+sobrepor a webcam como **bolha redonda no canto**, com sombra suave — o formato "rosto + tela".
+
+**Como:** passe `--webcam <caminho do webcam.mp4>` no `/editar-video`. Sem essa flag, nenhuma
+bolha (vídeo normal).
+
+**Ajustes (todos opcionais, com bom default):**
+- `--canto ir` (default) — onde fica: `ir` inferior-direito · `il` inferior-esquerdo ·
+  `sr` superior-direito · `sl` superior-esquerdo.
+- `--bolha-tamanho 0.2` — fração da largura (0.2 = 20% da tela). Maior = bolha maior.
+- `--margem 40` — distância da borda, em pixels.
+
+**O áudio é o da TELA (sua narração), não o da webcam** — evita áudio duplicado/eco. A bolha
+fica fixa no canto o vídeo todo (não dá zoom junto com o auto-zoom — é uma camada por cima).
+
 ## Templates de marca
 
 `canal-youtube/edicao/templates/intro.mp4` e `outro.mp4` (opcionais) entram em todo vídeo.
