@@ -11,7 +11,7 @@
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm, lerGlossario, corrigirTermos, parseTrechosTabela, normalizarTrechos, planoVelocidade, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan } from "./lib-edicao.mjs";
+import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm, lerGlossario, corrigirTermos, parseTrechosTabela, normalizarTrechos, planoVelocidade, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan, posicaoOverlay, filtroBolhaWebcam } from "./lib-edicao.mjs";
 import { transcrever } from "./transcrever-local.mjs";
 import { registrarPasso } from "./registrar-passo.mjs";
 
@@ -63,6 +63,10 @@ if (import.meta.main) {
   const planoArq = flag("--plano");
   const semCorteSilencio = has("--sem-corte-silencio");
   const modoZoom = flag("--zoom") || "auto"; // auto | nao
+  const webcamArq = flag("--webcam");
+  const cantoBolha = flag("--canto") || "ir";
+  const bolhaTamanho = Number(flag("--bolha-tamanho")) || 0.2;
+  const margemBolha = Number(flag("--margem")) || 40;
 
   if (!slug) falhar("informe --slug <nome>.");
   if (!video) falhar("informe --video <arquivo> (ou --tela + --voz).");
@@ -167,9 +171,22 @@ if (import.meta.main) {
       if (temLegenda) filtrosCorpo.push(filtroLegendaAss({ assCaminho: tmpAss }));
       if (zoomFiltro) filtrosCorpo.push(zoomFiltro);
       const corpo = join(base, temLegenda ? "_legendado.mp4" : "_1080p.mp4");
-      const vfCorpo = filtrosCorpo.join(",");
-      execFileSync(FFMPEG, ["-y", "-i", baseVideo, "-vf", vfCorpo,
-        "-c:a", "copy", corpo], { stdio: "inherit" });
+      const corpoFiltros = filtrosCorpo.join(",");
+
+      if (webcamArq && existsSync(webcamArq)) {
+        // bolha de webcam: dois inputs, -filter_complex; áudio vem do corpo ([0:a]), não da webcam.
+        const ladoBolha = Math.round(1920 * bolhaTamanho);
+        const { filtro, mapV } = filtroBolhaWebcam({
+          corpoFiltros, ladoBolha, canto: cantoBolha, margem: margemBolha, sombra: true,
+        });
+        execFileSync(FFMPEG, ["-y", "-i", baseVideo, "-i", webcamArq,
+          "-filter_complex", filtro, "-map", mapV, "-map", "0:a?",
+          "-c:a", "copy", corpo], { stdio: "inherit" });
+      } else {
+        // sem webcam: caminho atual (-vf simples), zero regressão.
+        execFileSync(FFMPEG, ["-y", "-i", baseVideo, "-vf", corpoFiltros,
+          "-c:a", "copy", corpo], { stdio: "inherit" });
+      }
 
       const intro = join("canal-youtube", "edicao", "templates", "intro.mp4");
       const outro = join("canal-youtube", "edicao", "templates", "outro.mp4");
