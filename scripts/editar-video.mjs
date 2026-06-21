@@ -11,7 +11,7 @@
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm, lerGlossario, corrigirTermos, parseTrechosTabela, normalizarTrechos, planoVelocidade, filtroVelocidadeConcat, filtroEscala1080p } from "./lib-edicao.mjs";
+import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm, lerGlossario, corrigirTermos, parseTrechosTabela, normalizarTrechos, planoVelocidade, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan } from "./lib-edicao.mjs";
 import { transcrever } from "./transcrever-local.mjs";
 import { registrarPasso } from "./registrar-passo.mjs";
 
@@ -62,6 +62,7 @@ if (import.meta.main) {
   const semIntro = has("--sem-intro");
   const planoArq = flag("--plano");
   const semCorteSilencio = has("--sem-corte-silencio");
+  const modoZoom = flag("--zoom") || "auto"; // auto | nao
 
   if (!slug) falhar("informe --slug <nome>.");
   if (!video) falhar("informe --video <arquivo> (ou --tela + --voz).");
@@ -84,7 +85,18 @@ if (import.meta.main) {
   }
 
   if (!confirmar) {
+    // lista de zooms pro dono conferir/podar antes de renderizar
+    let zoomLista = [];
+    const _regioesPath = join("canal-youtube", "gravacoes", slug, "regioes-zoom.json");
+    if (modoZoom === "auto" && existsSync(_regioesPath)) {
+      const { regioes } = JSON.parse(readFileSync(_regioesPath, "utf8"));
+      zoomLista = regioes.map((r) => ({
+        em: `${Math.floor(r.inicio / 60)}:${String(Math.round(r.inicio % 60)).padStart(2, "0")}`,
+        nivel: r.nivel, dur: Number((r.fim - r.inicio).toFixed(1)),
+      }));
+    }
     console.log(JSON.stringify({ ...montarPlanoDryRun({ saidaSilencedetect: saida, duracaoTotal, slug, minSilencio, trechos }),
+      zooms: zoomLista,
       nota: "rode de novo com --confirmar pra renderizar de verdade." }, null, 2));
     process.exit(0);
   }
@@ -142,10 +154,18 @@ if (import.meta.main) {
       // o corpo SEMPRE é reescalado pro padrão de entrega do YouTube (1920x1080 16:9). A tela
       // gravada costuma ser menor que 1080p; sem isso o long-form sairia sub-1080p. setsar=1
       // garante pixel quadrado. Quando há legenda, escala ANTES de queimar (um filtergraph só).
+      // zoom automático: lê as regiões (se houver) pra encadear no render do corpo.
+      let zoomFiltro = null;
+      const regioesPath = join("canal-youtube", "gravacoes", slug, "regioes-zoom.json");
+      if (modoZoom === "auto" && existsSync(regioesPath)) {
+        const { regioes } = JSON.parse(readFileSync(regioesPath, "utf8"));
+        zoomFiltro = filtroZoompan(regioes, { fps: 30, largura: 1920, altura: 1080 });
+      }
+      const filtrosCorpo = [filtroEscala1080p()];
+      if (temLegenda) filtrosCorpo.push(filtroLegendaAss({ assCaminho: tmpAss }));
+      if (zoomFiltro) filtrosCorpo.push(zoomFiltro);
       const corpo = join(base, temLegenda ? "_legendado.mp4" : "_1080p.mp4");
-      const vfCorpo = temLegenda
-        ? `${filtroEscala1080p()},${filtroLegendaAss({ assCaminho: tmpAss })}`
-        : filtroEscala1080p();
+      const vfCorpo = filtrosCorpo.join(",");
       execFileSync(FFMPEG, ["-y", "-i", baseVideo, "-vf", vfCorpo,
         "-c:a", "copy", corpo], { stdio: "inherit" });
 
