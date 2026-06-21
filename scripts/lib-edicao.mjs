@@ -448,9 +448,11 @@ export function filtroBolhaWebcam({ corpoFiltros, ladoBolha, canto = "ir", marge
       `color=c=black@0:s=${ladoS}x${ladoS},format=rgba,` +
       `geq=r=0:g=0:b=0:a='if(lte(pow(X-${rS},2)+pow(Y-${rS},2),pow(${rS},2)),160,0)',gblur=sigma=12[sombra]`,
     );
-    partes.push(`${ultimo}[sombra]overlay=${posicaoOverlay(canto, margemS)}[vsombra]`);
+    // shortest=1: a saída do overlay termina quando o input mais curto (o vídeo, finito)
+    // acaba — senão a fonte `color` infinita da sombra faria o render rodar pra sempre.
+    partes.push(`${ultimo}[sombra]overlay=${posicaoOverlay(canto, margemS)}:shortest=1[vsombra]`);
     ultimo = "[vsombra]";
   }
-  partes.push(`${ultimo}[cam]overlay=${pos}[vbolha]`);
+  partes.push(`${ultimo}[cam]overlay=${pos}:shortest=1[vbolha]`);
   return { filtro: partes.join(";"), mapV: "[vbolha]" };
 }

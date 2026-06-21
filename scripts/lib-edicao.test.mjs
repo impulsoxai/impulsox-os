@@ -427,6 +427,8 @@ test("filtroBolhaWebcam: monta máscara circular + sombra + 2 overlays", () => {
   assert.match(filtro, /geq=.*a='if\(lte\(pow\(X-192,2\)\+pow\(Y-192,2\),pow\(192,2\)\),255,0\)'/);
   assert.match(filtro, /gblur=/);
   assert.match(filtro, /overlay=W-w-\d+:H-h-\d+/);
+  // shortest=1 evita render infinito por causa da fonte color infinita da sombra
+  assert.match(filtro, /overlay=[^;]*:shortest=1\[vbolha\]/);
   assert.match(filtro, /\[vbolha\]$/);
 });
 test("filtroBolhaWebcam: sem sombra pula o gblur", () => {
