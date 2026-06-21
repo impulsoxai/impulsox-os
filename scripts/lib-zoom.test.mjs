@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { agruparClusters, focoCentroide, nivelPorForca, montarRegioesZoom } from "./lib-zoom.mjs";
+import { agruparClusters, focoCentroide, nivelPorForca, montarRegioesZoom, aplicarLimitesAuto } from "./lib-zoom.mjs";
 
 // ============ TASK 1: agruparClusters ============
 test("agruparClusters: cliques com gap <= 2.5s = 1 cluster", () => {
@@ -91,4 +91,30 @@ test("montarRegioesZoom: regiões sobrepostas são fundidas", () => {
 
 test("montarRegioesZoom: sem cliques -> regioes vazio", () => {
   assert.deepEqual(montarRegioesZoom({ cliques: [] }, {}).regioes, []);
+});
+
+// ============ TASK 5: aplicarLimitesAuto ============
+test("aplicarLimitesAuto: remove região mais curta que minDurS", () => {
+  const regioes = [
+    { inicio: 1, fim: 1.5, foco: { x: 0.5, y: 0.5 }, nivel: 1.4 },
+    { inicio: 10, fim: 13, foco: { x: 0.5, y: 0.5 }, nivel: 1.4 },
+  ];
+  const r = aplicarLimitesAuto(regioes, { minDurS: 1.5, intervaloMinS: 4 });
+  assert.equal(r.length, 1);
+  assert.equal(r[0].inicio, 10);
+});
+
+test("aplicarLimitesAuto: descarta região muito perto da anterior", () => {
+  const regioes = [
+    { inicio: 1, fim: 4, foco: { x: 0.5, y: 0.5 }, nivel: 1.4 },
+    { inicio: 6, fim: 9, foco: { x: 0.5, y: 0.5 }, nivel: 1.4 },
+    { inicio: 15, fim: 18, foco: { x: 0.5, y: 0.5 }, nivel: 1.4 },
+  ];
+  const r = aplicarLimitesAuto(regioes, { minDurS: 1.5, intervaloMinS: 4 });
+  assert.equal(r.length, 2);
+  assert.deepEqual(r.map((x) => x.inicio), [1, 15]);
+});
+
+test("aplicarLimitesAuto: lista vazia -> vazia", () => {
+  assert.deepEqual(aplicarLimitesAuto([], {}), []);
 });

@@ -84,3 +84,20 @@ export function montarRegioesZoom(telemetria, {
   });
   return { regioes: fundirSobreposicao(regioes) };
 }
+
+export const MIN_DUR_S = 1.5;
+export const INTERVALO_MIN_S = 4;
+
+// Anti-tontura: tira zoom curto demais (< minDurS) e espaça os zooms (descarta a região que
+// começa menos de intervaloMinS depois do fim da última região mantida).
+export function aplicarLimitesAuto(regioes, { minDurS = MIN_DUR_S, intervaloMinS = INTERVALO_MIN_S } = {}) {
+  const out = [];
+  let fimAnterior = -Infinity;
+  for (const r of regioes) {
+    if (r.fim - r.inicio < minDurS) continue;
+    if (r.inicio - fimAnterior < intervaloMinS) continue;
+    out.push(r);
+    fimAnterior = r.fim;
+  }
+  return out;
+}
