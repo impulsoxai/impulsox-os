@@ -36,26 +36,27 @@ encadeiam num `z='if(between(in,a,b),n1, if(between(in,c,d),n2, 1))'`.
 
 ---
 
-## 3. Controle — dois modos (decisão travada)
+## 3. Controle — só AUTOMÁTICO (decisão travada)
 
-O modo filtra **quais cliques contam** ANTES de o cérebro (3b) montar as regiões.
+**Por que só auto:** o modo manual (toggle por double-click) exigiria que o dono VISSE o zoom
+ao vivo enquanto grava — pra mirar o foco e saber se está ligado. Isso só existe com um
+**preview ao vivo** (janela GPU/PixiJS em tempo real), que é justamente o que o PRD §4.2 cortou
+por ser GUI/headless-incompatível. "Dar zoom no escuro" não funciona. Então o manual sai do
+escopo: **se o dono precisar de controle manual ao vivo, usa o Recordly direto** (foi feito pra
+isso) e joga o `.mp4` no `/editar-video`. Não vale reconstruir a GUI/GPU do Recordly aqui.
 
-- **`--manual`** (default) — **double-click é um TOGGLE liga/desliga.** O dono controla a
-  duração: o 1º double-click LIGA o zoom (entra no foco daquele clique), o 2º DESLIGA (volta ao
-  normal). A região de zoom é `[t do double que ligou, t do double que desligou]` — fica no
-  zoom o tempo que o dono quiser (2s ou 30s). Clique simples (trabalho na tela) não faz nada =
-  zero zoom acidental. **Foco** = posição do double que ligou. **Nível** = 2.0x (gesto
-  intencional). **Esqueceu de desligar** (nº ímpar de doubles): o último zoom vai até o fim do
-  vídeo OU um **teto de segurança de 20s** (ajustável), o que vier primeiro — pra não travar o
-  vídeo inteiro em zoom por engano.
-- **`--auto`** — todo cluster vira zoom, **com limites anti-tontura conservadores**:
+O **auto não tem esse problema:** o dono não mira nada — trabalha normal (clica nas coisas), e o
+sistema decide os zooms pelos cliques naturais, DEPOIS. O dry-run + os limites protegem.
+
+- **`--zoom auto`** (default) — cada cluster de clique vira zoom, **com limites anti-tontura
+  conservadores**:
   - cluster precisa de **≥2 cliques** e durar **≥1.5s** (cluster curto/raso é ignorado)
   - **intervalo mínimo 4s** entre zooms (zooms muito juntos: descarta o segundo)
   - **nível 1.4x** (close discreto, não agressivo)
 - **`--zoom nao`** — desliga o zoom (render sem auto-zoom).
 
-Motivo dos dois modos: o dono testa o `--auto`; se enjoar, fica só no `--manual`. Todos os
-limites ficam no topo do `lib-zoom.mjs`, ajustáveis.
+O dono testa o auto; se não gostar do resultado, usa `--zoom nao` (sem zoom) ou o Recordly. Os
+limites ficam no topo do `lib-zoom.mjs`, ajustáveis quando ver o resultado real.
 
 ---
 
@@ -65,8 +66,7 @@ limites ficam no topo do `lib-zoom.mjs`, ajustáveis.
 
 | Função | Faz |
 |---|---|
-| `regioesToggle(cliques, { nivel = 2.0, tetoS = 20, fimVideoS })` | **modo manual.** Pega os `tipo==="double"` em ordem e pareia: 1º liga / 2º desliga → região `[tLiga, tDesliga]` (ms→s). Double ímpar sobrando → `[tLiga, min(tLiga+tetoS, fimVideoS)]`. Cada região: foco = posição do double que ligou, nível fixo. Ignora clique simples |
-| `aplicarLimitesAuto(regioes, opts)` | **modo auto.** remove região mais curta que `minDurS` (1.5s); força intervalo mínimo `intervaloMinS` (4s) descartando a região seguinte que viola; (nível 1.4 é setado na montagem) |
+| `aplicarLimitesAuto(regioes, { minDurS = 1.5, intervaloMinS = 4 })` | remove região mais curta que `minDurS`; força intervalo mínimo `intervaloMinS` entre zooms (descarta a região seguinte que viola). Anti-tontura |
 
 ### 4.2 `scripts/lib-edicao.mjs` — função PURA nova
 
@@ -76,15 +76,13 @@ limites ficam no topo do `lib-zoom.mjs`, ajustáveis.
 
 ### 4.3 `scripts/zoom-regioes.mjs` — modificar
 
-Aceita `--modo auto|manual` (default manual).
-- **manual:** `regioesToggle(cliques, { fimVideoS })` (pares de double-click → janelas de zoom).
-- **auto:** o cérebro existente (`montarRegioesZoom`) + `aplicarLimitesAuto` + nível 1.4.
-Grava `regioes-zoom.json` (mesmo formato nos dois modos).
+Gera as regiões pelo cérebro existente (`montarRegioesZoom`) + `aplicarLimitesAuto` + nível 1.4.
+Grava `regioes-zoom.json`. (Sem modo manual — ver §3.)
 
 ### 4.4 `scripts/editar-video.mjs` — passo novo de zoom
 
-- Flag `--zoom auto|manual|nao` (default `manual`).
-- Se `≠ nao` e existe `regioes-zoom.json` no slug: aplica o `filtroZoompan` **por último**
+- Flag `--zoom auto|nao` (default `auto`).
+- Se `= auto` e existe `regioes-zoom.json` no slug: aplica o `filtroZoompan` **por último**
   no render (sobre os tempos do vídeo já cortado/acelerado — ver §6), antes do concat intro/outro.
 - **Dry-run lista os zooms**: "vou dar N zooms: 1:30 (1.4x), 3:00 (2.0x)…" — o dono vê e poda
   (editando o `regioes-zoom.json` ou pedindo pra tirar) antes de `--confirmar`.
@@ -111,10 +109,8 @@ limitação honesta da Fase 1 §6). O dry-run mostra os tempos pro dono conferir
 
 ## 7. Casos de aceite
 
-1. **Toggle pareia:** `regioesToggle` com doubles em t=2s e t=10s → 1 região [2,10] (ligou/desligou); clique simples no meio é ignorado.
-2. **Toggle ímpar (teto):** 1 double em t=5s, sem desligar, `tetoS=20`, fimVideo=60 → região [5,25].
-3. **Limite duração (auto):** região de 0.8s com `minDurS=1.5` → removida por `aplicarLimitesAuto`.
-4. **Intervalo mínimo:** duas regiões a 2s de distância com `intervaloMinS=4` → a segunda descartada.
+1. **Limite duração:** região de 0.8s com `minDurS=1.5` → removida por `aplicarLimitesAuto`.
+2. **Intervalo mínimo:** duas regiões a 2s de distância com `intervaloMinS=4` → a segunda descartada.
 5. **Filtro zoompan:** 1 região [2,4] nivel 1.5 foco 0.45/0.30 @ 30fps → string com `between(in,60,120)` e `1.5` e o x/y do foco.
 6. **Sem regiões:** `filtroZoompan([], ...)` → `null`.
 7. **Smoke real (PC do dono):** vídeo 1080p + `regioes-zoom.json` de 1 região → render mostra o close na janela certa (frame dentro ≠ frame fora).
@@ -124,9 +120,9 @@ limitação honesta da Fase 1 §6). O dry-run mostra os tempos pro dono conferir
 
 ## 8. Testes (TestPilot)
 
-- Unit puro: `filtrarPorModo`, `aplicarLimitesAuto` (duração, intervalo), `filtroZoompan`
+- Unit puro: `aplicarLimitesAuto` (duração, intervalo), `filtroZoompan`
   (janela de frames, x/y, várias regiões, vazio→null).
-- Smoke real: gravar clicando (double) → `zoom-regioes --modo manual` → `editar-video --zoom manual` → conferir o close no vídeo. (Hardware do dono.)
+- Smoke real: gravar clicando → `zoom-regioes` → `editar-video --zoom auto` → conferir o close no vídeo. (Hardware do dono.)
 - Regressão: edição sem zoom (`--zoom nao` e default em vídeo sem regioes-zoom.json) continua igual.
 
 ---
