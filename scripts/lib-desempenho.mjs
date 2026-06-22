@@ -20,3 +20,29 @@ export function taxasInstagram({ reach = 0, saved = 0, shares = 0, seguidores = 
     reachRate: taxa(reach, seguidores),
   };
 }
+
+// pisoAVD — % de retenção considerado "bom" pela duração (pesquisa 2026). Devolve o piso da faixa.
+function pisoAVD({ duracaoSeg, ehShort }) {
+  if (ehShort) return 0.70;            // Shorts: 70%+
+  if (duracaoSeg < 300) return 0.50;   // <5min: 50-70%
+  if (duracaoSeg < 900) return 0.40;   // 5-15min: 40-55%
+  if (duracaoSeg < 1800) return 0.30;  // 15-30min: 30-45%
+  return 0.25;                          // >30min
+}
+
+// taxasYouTube — classifica as métricas YT 2026: AVD vs faixa de duração, CTR vs a MÉDIA do próprio
+// canal (benchmark fixo engana — CTR cai com impressões), retenção do 1º minuto, watch time. Pura.
+export function taxasYouTube({ avdPercent = 0, duracaoSeg = 0, ehShort = false, ctr = null, mediaCanalCtr = null, retencao1min = null, watchTimeMin = null } = {}) {
+  const piso = pisoAVD({ duracaoSeg, ehShort });
+  return {
+    ehShort,
+    avdPercent,
+    avdBom: avdPercent >= piso,
+    pisoAVD: piso,
+    ctr,
+    ctrVsCanal: (ctr != null && mediaCanalCtr != null) ? (ctr >= mediaCanalCtr ? "acima" : "abaixo") : null,
+    primeiroMinBom: retencao1min != null ? retencao1min >= BENCH.yt.primeiroMinAlvo : null,
+    retencao1min,
+    watchTimeMin,
+  };
+}
