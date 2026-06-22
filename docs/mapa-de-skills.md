@@ -75,6 +75,11 @@ embasadas  e quando         (leem marca + voz + provas)       sênior           
   `marca/`, `nucleo/voz.md`, `nucleo/provas.md`) → **/revisar** (olhos frios) → **/publicar**
 - **/desempenho** mede → destila em `aprendizados.md` → alimenta o próximo **/calendario**
 - Todo texto passa pelo **/escritor-br** (humaniza); toda peça de venda pelo **/revisar**
+- **Reel: dois caminhos distintos.** **/post** faz reel com rosto/cena REAL por IA (Fal).
+  **/reel-marca** faz reel de MOTION GRAPHICS por código (Remotion): texto animado + produto/
+  serviço real do cliente em mockup (carrossel, página, antes/depois, depoimento), na marca e
+  voz dele, com estrutura de retenção comprovada. Opcional — oferecido quando o dono quer vídeo
+  de marca; serve qualquer nicho. Lê o núcleo do cliente; o motor desce do template.
 
 ---
 
