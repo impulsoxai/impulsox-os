@@ -40,6 +40,13 @@ Por isso: **núcleo comum** (ingestão, ranking, relatório, loop) + **2 módulo
 ## Os números reais (da pesquisa) — viram constantes/benchmarks
 
 ### YouTube (`lib-desempenho.mjs`, régua YT)
+
+> **Upgrade explícito:** o `metricas-youtube.mjs` atual só lê AVD (retenção média) e dá veredito
+> por 1 número — fraco. A régua nova SOBE pra: **CTR + retenção do 1º minuto + watch time + curva
+> (dip/cliff/spike) + diagnóstico CRUZADO** (CTR×AVD). É o conjunto que a pesquisa provou ser o
+> que separa diagnóstico genérico de acionável. O script atual vira matéria-prima (reusar o OAuth
+> e o `buscarMetricas`, ampliando as métricas puxadas/coladas).
+
 - **CTR:** comparar com a média rolling-28d do PRÓPRIO canal (cai com impressões — benchmark fixo
   engana). Faixa de referência: <3% fraco · 4-6% bom · >7% excepcional. Search > Browse.
 - **AVD (averageViewPercentage) por duração:** <5min 50-70% · 5-15min 40-55% · 15-30min 30-45% ·
