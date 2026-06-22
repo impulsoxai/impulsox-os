@@ -102,12 +102,17 @@ staticFile() dá 404 silencioso (lição custou render perdido).
 
 1. `public/` na RAIZ do cwd (404 silencioso senão).
 2. Fundo SÓLIDO escuro + glow LINEAR do topo; NUNCA orb radial (vira "bola" feia). Grade
-   técnica fina com máscara linear. Vinheta leve só nas pontas. Sem grão pesado.
-3. ThreeCanvas (3D) não coexiste com CameraMotionBlur global → blur local nas cenas 2D.
-4. Auditar frames antes do full render.
-5. Duração da Composition = soma das Sequences − soma das Transitions (TransitionSeries).
-6. Three.js exige `--gl=angle` no render.
-7. Página dark (fundo preto) faz money shot ruim no scroll (preto vazio) → preferir página com
+   técnica fina com máscara linear. Vinheta leve só nas pontas. Sem grão pesado. O glow do topo
+   é halo discreto (`linear 180deg, transparent 0%, cor 22%, transparent 50%`, opacidade
+   0.05-0.11) — cor cheia colada no topo mancha.
+3. **CameraMotionBlur envolve SÓ o conteúdo que se move, NUNCA o fundo.** Blur no fundo borra a
+   grade/glow e deixa rastro sujo. Padrão por cena: `<FundoTech/>` direto → `<Movimento><Camera>
+   conteúdo </Camera></Movimento>` → overlays (legenda/brackets). Nunca envolver a cena inteira.
+4. ThreeCanvas (3D) não coexiste com CameraMotionBlur → blur local nas cenas 2D, 3D sem blur.
+5. Auditar frames antes do full render.
+6. Duração da Composition = soma das Sequences − soma das Transitions (TransitionSeries).
+7. Three.js exige `--gl=angle` no render.
+8. Página dark (fundo preto) faz money shot ruim no scroll (preto vazio) → preferir página com
    imagem cheia (foto), ou ajustar `maxScroll` pra parar antes do rodapé vazio.
 
 ## O que NÃO está no escopo (YAGNI / rodada futura)
