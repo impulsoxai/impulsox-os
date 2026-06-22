@@ -35,3 +35,10 @@ canal-youtube/edicao/*/
 
 # gravações de tela (arquivos grandes)
 canal-youtube/gravacoes/
+
+# Remotion: assets de produto capturados (carrosséis, screenshots de página) e trilhas.
+# Dados pesados/regeneráveis — não versionar. A skill recaptura de producao/ quando precisa.
+public/carrosseis/
+public/paginas/
+public/trilhas/
+public/specimen.png

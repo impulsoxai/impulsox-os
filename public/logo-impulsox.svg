@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="400" viewBox="0 0 680 400" role="img">
+<title>ImpulsoX AI — Logo Premium (Minimal)</title>
+<desc>Logo da agencia ImpulsoX AI, versao premium minimalista, roxo e dourado</desc>
+
+<defs>
+  <linearGradient id="gold2" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%"  stop-color="#fbeec0"/>
+    <stop offset="40%" stop-color="#e9cd6a"/>
+    <stop offset="70%" stop-color="#c89e30"/>
+    <stop offset="100%" stop-color="#9c7415"/>
+  </linearGradient>
+  <linearGradient id="goldBright2" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#fff6d6"/>
+    <stop offset="100%" stop-color="#dcb651"/>
+  </linearGradient>
+  <linearGradient id="purple2" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#a974ff"/>
+    <stop offset="100%" stop-color="#6d28d9"/>
+  </linearGradient>
+  <linearGradient id="bar2" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%"  stop-color="#8a6418" stop-opacity="0.55"/>
+    <stop offset="100%" stop-color="#e9cd6a"/>
+  </linearGradient>
+  <radialGradient id="bg2" cx="28%" cy="30%" r="95%">
+    <stop offset="0%" stop-color="#150d28"/>
+    <stop offset="55%" stop-color="#0b0815"/>
+    <stop offset="100%" stop-color="#060409"/>
+  </radialGradient>
+  <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.22"/>
+    <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+
+<rect width="680" height="400" fill="url(#bg2)" rx="20"/>
+<circle cx="120" cy="200" r="140" fill="url(#halo)"/>
+
+<!-- Bloco do gráfico, mais aéreo. Barras finas estilo "spark" -->
+<g>
+  <rect x="48"  y="244" width="13" height="28"  rx="6.5" fill="url(#bar2)"/>
+  <rect x="70"  y="222" width="13" height="50"  rx="6.5" fill="url(#bar2)"/>
+  <rect x="92"  y="198" width="13" height="74"  rx="6.5" fill="url(#bar2)"/>
+  <rect x="114" y="168" width="13" height="104" rx="6.5" fill="url(#bar2)"/>
+</g>
+
+<!-- Seta dourada cruzando o gráfico -->
+<path d="M 50 262 C 70 244 88 224 108 198 C 118 184 126 168 134 148"
+      fill="none" stroke="url(#goldBright2)" stroke-width="5" stroke-linecap="round"/>
+<polygon points="134,134 119,152 141,156" fill="url(#goldBright2)"/>
+
+<!-- pontinho de origem -->
+<circle cx="50" cy="262" r="3.5" fill="url(#goldBright2)"/>
+
+<!-- Wordmark -->
+<text x="180" y="214"
+      font-family="'Arial Black', Arial, sans-serif"
+      font-weight="900" font-size="66" letter-spacing="-1.5"
+      fill="url(#purple2)">Impulso<tspan fill="url(#gold2)">X</tspan></text>
+
+<!-- AI em caixa de contorno -->
+<rect x="181" y="228" width="44" height="23" rx="11.5"
+      fill="none" stroke="url(#gold2)" stroke-width="1.5"/>
+<text x="203" y="244"
+      font-family="'Arial Black', Arial, sans-serif"
+      font-weight="900" font-size="13" letter-spacing="1.5"
+      fill="url(#gold2)" text-anchor="middle">AI</text>
+
+<!-- Tagline com bullets dourados nas pontas -->
+<text x="234" y="244"
+      font-family="Arial, sans-serif" font-size="12" font-weight="600"
+      fill="#d8b658" letter-spacing="4">INTELIGÊNCIA ARTIFICIAL PARA NEGÓCIOS</text>
+
+<!-- url discreto, alinhado -->
+<text x="181" y="284"
+      font-family="Arial, sans-serif" font-size="12" font-weight="500"
+      fill="#9485bd" letter-spacing="3">impulsox.ai</text>
+</svg>
