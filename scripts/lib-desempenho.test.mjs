@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { taxasInstagram, taxasYouTube, detectarCurva, diagnosticarYouTube } from "./lib-desempenho.mjs";
+import { taxasInstagram, taxasYouTube, detectarCurva, diagnosticarYouTube, diagnosticarInstagram } from "./lib-desempenho.mjs";
 
 test("taxasInstagram calcula save/send/reach rate", () => {
   const t = taxasInstagram({ reach: 1000, saved: 50, shares: 30, seguidores: 5000, formato: "carrossel" });
@@ -67,4 +67,21 @@ test("diagnosticarYouTube: cliff -> /editar-video", () => {
 test("diagnosticarYouTube tudo bom -> sem conserto", () => {
   const d = diagnosticarYouTube({ taxas: { avdBom: true, ctrVsCanal: "acima" }, curva: { introDip: false, cliffs: [] } });
   assert.equal(d.filter((x) => x.skill).length, 0);
+});
+
+test("diagnosticarInstagram: save baixo -> /post slide-resumo", () => {
+  const d = diagnosticarInstagram({ saveRate: 0.01, sendRate: 0.02, reachRate: 0.2 });
+  assert.ok(d.find((x) => x.skill === "/post" && /salv|guard/i.test(x.motivo)));
+});
+test("diagnosticarInstagram: send ~0 -> gancho de envio", () => {
+  const d = diagnosticarInstagram({ saveRate: 0.05, sendRate: 0.0, reachRate: 0.2 });
+  assert.ok(d.find((x) => /envi/i.test(x.motivo)));
+});
+test("diagnosticarInstagram: reach baixo -> testar reel + hook", () => {
+  const d = diagnosticarInstagram({ saveRate: 0.05, sendRate: 0.03, reachRate: 0.05 });
+  assert.ok(d.find((x) => /reach|alcance|reel/i.test(x.motivo)));
+});
+test("diagnosticarInstagram tudo bom -> sem conserto", () => {
+  const d = diagnosticarInstagram({ saveRate: 0.07, sendRate: 0.04, reachRate: 0.25 });
+  assert.equal(d.length, 0);
 });

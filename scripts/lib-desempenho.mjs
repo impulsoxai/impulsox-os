@@ -80,3 +80,12 @@ export function diagnosticarYouTube({ taxas = {}, curva = null } = {}) {
   if (curva?.cliffs?.length) out.push({ skill: "/editar-video", motivo: `queda abrupta em ${curva.cliffs.map((c) => c.tSeg + "s").join(", ")}: corte/tangente — apertar ou cortar esse trecho.` });
   return out;
 }
+
+// diagnosticarInstagram — régua IG 2026 (save/send/reach) → consertos apontando a skill. Pura.
+export function diagnosticarInstagram({ saveRate = 0, sendRate = 0, reachRate = 0 } = {}) {
+  const out = [];
+  if (saveRate < BENCH.ig.saveRateFraco) out.push({ skill: "/post", motivo: "save rate baixo: a peça não deu nada pra guardar — incluir um slide-resumo guardável (\"salva isto\")." });
+  if (sendRate < 0.005) out.push({ skill: "/post", motivo: "quase ninguém enviou: o conteúdo não ficou relatável — adicionar um gancho de envio (\"manda pra quem precisa ver\")." });
+  if (reachRate < BENCH.ig.reachFraco) out.push({ skill: "/reel-marca", motivo: "alcance baixo: testar reel (mais alcance que carrossel) e refazer o hook dos 3s." });
+  return out;
+}
