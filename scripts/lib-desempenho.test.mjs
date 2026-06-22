@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { taxasInstagram, taxasYouTube, detectarCurva, diagnosticarYouTube, diagnosticarInstagram } from "./lib-desempenho.mjs";
+import { taxasInstagram, taxasYouTube, detectarCurva, diagnosticarYouTube, diagnosticarInstagram, parsearCsv } from "./lib-desempenho.mjs";
 
 test("taxasInstagram calcula save/send/reach rate", () => {
   const t = taxasInstagram({ reach: 1000, saved: 50, shares: 30, seguidores: 5000, formato: "carrossel" });
@@ -84,4 +84,22 @@ test("diagnosticarInstagram: reach baixo -> testar reel + hook", () => {
 test("diagnosticarInstagram tudo bom -> sem conserto", () => {
   const d = diagnosticarInstagram({ saveRate: 0.07, sendRate: 0.04, reachRate: 0.25 });
   assert.equal(d.length, 0);
+});
+
+test("parsearCsv (Instagram Business Suite) mapeia Saves/Shares/Reach e ignora Impressions", () => {
+  const csv = "Post Date,Reach,Impressions,Likes,Shares,Saves\n2026-06-01,1000,1300,80,30,50";
+  const linhas = parsearCsv(csv);
+  assert.equal(linhas[0].reach, 1000);
+  assert.equal(linhas[0].saved, 50);
+  assert.equal(linhas[0].shares, 30);
+  assert.equal(linhas[0].impressions, undefined);
+});
+test("parsearCsv (YouTube Studio) mapeia Average percentage viewed e CTR", () => {
+  const csv = "Views,Average percentage viewed (%),Impressions click-through rate (%)\n1200,42,5.0";
+  const linhas = parsearCsv(csv);
+  assert.equal(linhas[0].avdPercent, 0.42);
+  assert.equal(linhas[0].ctr, 0.05);
+});
+test("parsearCsv vazio devolve []", () => {
+  assert.deepEqual(parsearCsv(""), []);
 });

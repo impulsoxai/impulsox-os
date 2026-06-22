@@ -89,3 +89,41 @@ export function diagnosticarInstagram({ saveRate = 0, sendRate = 0, reachRate = 
   if (reachRate < BENCH.ig.reachFraco) out.push({ skill: "/reel-marca", motivo: "alcance baixo: testar reel (mais alcance que carrossel) e refazer o hook dos 3s." });
   return out;
 }
+
+// Mapa de aliases: nome de coluna (CSV do Studio/Business Suite, minúsculo) -> campo canônico.
+// Impressions NÃO está no mapa de propósito (morto em 2026 — usar reach/views).
+const ALIAS = {
+  "reach": "reach", "accounts reached": "reach",
+  "saves": "saved", "saved": "saved",
+  "shares": "shares", "sends": "shares",
+  "likes": "likes", "likes & reactions": "likes", "likes and reactions": "likes",
+  "comments": "comments",
+  "views": "views", "plays": "views",
+  "average percentage viewed (%)": "avdPercent", "average percentage viewed": "avdPercent",
+  "impressions click-through rate (%)": "ctr", "ctr (%)": "ctr",
+  "watch time (hours)": "watchTimeHoras",
+  "subscribers": "subscribersGained",
+};
+// campos que vêm em % e viram fração 0-1:
+const PERCENTUAIS = new Set(["avdPercent", "ctr"]);
+
+// parsearCsv — lê um CSV (cabeçalho + linhas) do Studio ou Business Suite e devolve linhas
+// normalizadas pelos aliases. Impressions é ignorado. % vira fração. Pura.
+export function parsearCsv(texto) {
+  const linhas = String(texto).trim().split(/\r?\n/).filter(Boolean);
+  if (linhas.length < 2) return [];
+  const cab = linhas[0].split(",").map((h) => h.trim().toLowerCase());
+  return linhas.slice(1).map((l) => {
+    const cels = l.split(",");
+    const obj = {};
+    cab.forEach((h, i) => {
+      const campo = ALIAS[h];
+      if (!campo) return;
+      let v = Number(cels[i]);
+      if (Number.isNaN(v)) { obj[campo] = cels[i]?.trim(); return; }
+      if (PERCENTUAIS.has(campo)) v = v / 100;
+      obj[campo] = v;
+    });
+    return obj;
+  });
+}
