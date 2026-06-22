@@ -10,7 +10,7 @@ import {
   staticFile,
   Img,
 } from "remotion";
-import { C } from "./premium";
+import { C } from "./tema";
 
 // lista de slides de um carrossel (caminhos staticFile)
 export function slidesDe(post: string, n: number): string[] {

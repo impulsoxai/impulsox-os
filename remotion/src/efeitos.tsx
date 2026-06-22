@@ -8,7 +8,7 @@ import {
   interpolate,
   spring,
 } from "remotion";
-import { C } from "./premium";
+import { C } from "./tema";
 
 // ─── Câmera 2D: dolly-in (scale) + pan (translate) com transformOrigin no detalhe ───
 export const Camera: React.FC<{

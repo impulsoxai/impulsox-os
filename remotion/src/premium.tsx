@@ -13,17 +13,8 @@ import {
 import { evolvePath } from "@remotion/paths";
 import { makeTransform, scale, translateY, rotate } from "@remotion/animation-utils";
 
-export const C = {
-  fundo: "#06060d",
-  roxo: "#7c3aed",
-  roxoProf: "#4c1d95",
-  roxoSuave: "#a78bfa",
-  dourado: "#d4af37",
-  douradoClaro: "#e2c97e",
-  texto: "#f0ebe0",
-  textoSuave: "#8a8070",
-  textoMudo: "#4a4540",
-};
+import { C } from "./tema";
+export { C }; // re-export pra não quebrar quem importa C de premium
 
 // ─── Fundo: gradiente radial respirando + noise + vinheta ───
 export const FundoTech: React.FC<{ cor?: string }> = ({ cor = C.roxoProf }) => {

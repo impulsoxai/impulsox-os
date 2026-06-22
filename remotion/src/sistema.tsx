@@ -11,7 +11,7 @@ import {
   staticFile,
   Img,
 } from "remotion";
-import { C } from "./premium";
+import { C } from "./tema";
 
 // ─── Terminal mac: digita um comando char-a-char + mostra saída em linhas ───
 export const Terminal: React.FC<{
