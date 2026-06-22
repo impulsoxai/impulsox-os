@@ -46,3 +46,23 @@ export function taxasYouTube({ avdPercent = 0, duracaoSeg = 0, ehShort = false, 
     watchTimeMin,
   };
 }
+
+// detectarCurva — analisa a série de retenção (% por momento) e acha: intro dip (perda >40% nos
+// primeiros 30s = hook fraco), cliffs (queda >15% entre dois pontos = corte/tangente), spikes
+// (subida = re-watch). Série = [{tSeg, retencao}] ordenada. null quando não há série (modo colar
+// sem curva). Pura. Thresholds da pesquisa 2026.
+export function detectarCurva(serie, { duracaoSeg = 0 } = {}) {
+  if (!serie || serie.length < 2) return null;
+  const s = [...serie].sort((a, b) => a.tSeg - b.tSeg);
+  const ini = s[0].retencao;
+  const aos30 = (s.find((p) => p.tSeg >= 30) || s[s.length - 1]).retencao;
+  const introDip = ini > 0 && (ini - aos30) / ini > 0.40;
+  const cliffs = [];
+  const spikes = [];
+  for (let i = 1; i < s.length; i++) {
+    const delta = s[i].retencao - s[i - 1].retencao;
+    if (delta < -0.15) cliffs.push({ tSeg: s[i].tSeg, queda: Math.round(-delta * 100) / 100 });
+    if (delta > 0.02) spikes.push({ tSeg: s[i].tSeg, subida: Math.round(delta * 100) / 100 });
+  }
+  return { introDip, cliffs, spikes };
+}
