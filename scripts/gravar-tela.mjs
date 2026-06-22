@@ -16,9 +16,9 @@ import { spawnSync, spawn } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createInterface } from "node:readline";
-import { parseDispositivosDshow, argsCapturaTela, argsCapturaWebcam, resolverDispositivos } from "./lib-gravacao.mjs";
+import { parseDispositivosDshow, argsCapturaTela, argsCapturaWebcam, resolverDispositivos, acharLoopback, argsCapturaSistema } from "./lib-gravacao.mjs";
 import { uIOhook } from "uiohook-napi";
-import { montarTelemetria } from "./lib-telemetria.mjs";
+import { montarTelemetria, amostrarMovimento } from "./lib-telemetria.mjs";
 
 if (import.meta.main) { try { process.loadEnvFile(); } catch { /* sem .env: 1ª vez */ } }
 const FFMPEG = process.env.FFMPEG_BIN || "ffmpeg";
@@ -79,6 +79,7 @@ async function iniciar() {
   try { spawnSync(FFMPEG, ["-version"], { stdio: "ignore" }); } catch { falhar("ffmpeg não encontrado no PATH."); }
   const slug = flag("--slug") || "gravacao";
   const fps = Number(flag("--fps")) || 30;
+  const audioSistema = has("--audio-sistema");
   const base = join("canal-youtube", "gravacoes", slug);
 
   const disp = listarDispositivos();
@@ -107,7 +108,26 @@ async function iniciar() {
   uIOhook.on("click", (e) => {
     eventos.push({ tMs: Date.now() - t0, x: e.x, y: e.y, button: e.button, clicks: e.clicks });
   });
+  const movimentos = [];
+  let ultimoMovTMs = null;
+  uIOhook.on("mousemove", (e) => {
+    const tMs = Date.now() - t0;
+    if (amostrarMovimento(ultimoMovTMs, tMs, { minIntervalo: 16 })) {
+      movimentos.push({ tMs, x: e.x, y: e.y });
+      ultimoMovTMs = tMs;
+    }
+  });
   uIOhook.start();
+  let pSistema = null;
+  if (audioSistema) {
+    const loop = acharLoopback(disp);
+    if (loop) {
+      pSistema = spawn(FFMPEG, argsCapturaSistema({ device: loop, saida: join(base, "sistema.m4a") }), { stdio: ["pipe", "ignore", "ignore"] });
+      console.log(`• áudio do sistema: gravando de "${loop}"`);
+    } else {
+      console.log("• aviso: seu PC não tem Stereo Mix/loopback habilitado — gravando só o microfone. (Pra habilitar: painel de Som do Windows → Gravação → habilitar 'Mixagem estéreo'.)");
+    }
+  }
   const pTela = spawn(FFMPEG, argsCapturaTela({ fps, saida: telaMp4 }), { stdio: ["pipe", "ignore", "ignore"] });
   const pWeb = spawn(FFMPEG, argsCapturaWebcam({ webcam: r.webcam, mic: r.mic, fps, saida: webcamMp4 }), { stdio: ["pipe", "ignore", "ignore"] });
 
@@ -115,8 +135,8 @@ async function iniciar() {
   // ffmpeg com 'q' (senão o mp4 fica truncado), salvando o que deu — em vez de morrer sujo.
   process.on("SIGINT", () => {
     try { uIOhook.stop(); } catch { /* já parado */ }
-    try { writeFileSync(join(base, "telemetria.json"), JSON.stringify(montarTelemetria({ t0: t0Iso, tela, eventos }), null, 2)); } catch { /* segue */ }
-    for (const p of [pTela, pWeb]) { try { p.stdin.write("q"); p.stdin.end(); } catch { /* já fechou */ } }
+    try { writeFileSync(join(base, "telemetria.json"), JSON.stringify(montarTelemetria({ t0: t0Iso, tela, eventos, movimentos }), null, 2)); } catch { /* segue */ }
+    for (const p of [pTela, pWeb, pSistema].filter(Boolean)) { try { p.stdin.write("q"); p.stdin.end(); } catch { /* já fechou */ } }
     console.log("\n• gravação interrompida — arquivos finalizados.");
     setTimeout(() => process.exit(0), 1500);
   });
@@ -134,13 +154,13 @@ async function iniciar() {
   // para a captura de cliques e grava a telemetria sincronizada com o vídeo.
   try { uIOhook.stop(); } catch { /* já parado */ }
   writeFileSync(join(base, "telemetria.json"),
-    JSON.stringify(montarTelemetria({ t0: t0Iso, tela, eventos }), null, 2));
+    JSON.stringify(montarTelemetria({ t0: t0Iso, tela, eventos, movimentos }), null, 2));
   const fechar = (p) => new Promise((res) => {
     if (p.exitCode !== null) return res();
     p.on("close", () => res());
     try { p.stdin.write("q"); p.stdin.end(); } catch { res(); }
   });
-  await Promise.all([fechar(pTela), fechar(pWeb)]);
+  await Promise.all([fechar(pTela), fechar(pWeb), ...(pSistema ? [fechar(pSistema)] : [])]);
 
   console.log(`✓ pronto: ${telaMp4} + ${webcamMp4} + telemetria.json\n→ próximo: /editar-video pra cortar/acelerar/legendar.`);
   process.exit(0);
