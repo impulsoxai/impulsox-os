@@ -65,6 +65,18 @@ mp4), com a posição e o tempo. Você não faz nada — acontece sozinho. É a 
 sem você marcar nada. Captura via `uiohook-napi` (vem pré-compilado, sem precisar instalar
 ferramenta de build).
 
+## Trilha do cursor, qualidade e áudio do sistema
+
+- **Movimento do cursor:** além dos cliques, a gravação registra a trilha contínua do mouse
+  (~60 pontos/s) no `telemetria.json` (campo `movimentos`). É a matéria-prima pro cursor suave /
+  de alta resolução na edição — por isso é capturado SEMPRE: sem o dado gravado na hora, a
+  edição não recupera depois.
+- **Qualidade fixa:** a tela é capturada a 30fps, libx264 `preset fast` + `crf 18` (texto/UI
+  nítidos). 30fps é o equilíbrio — 60 pesa demais no `gdigrab` e perde frames.
+- **Áudio do sistema (opcional):** `--audio-sistema` grava também o som que SAI do PC (vídeo,
+  call, notificação) num `sistema.m4a` separado, se a máquina tiver loopback ("Mixagem estéreo" /
+  "Stereo Mix"). Sem loopback, avisa e segue só com o microfone. O `/editar-video` mixa depois.
+
 ## Próximo passo
 
 Gravou? → (auto-zoom, opcional) `node scripts/zoom-regioes.mjs --slug <nome>` gera as regiões
@@ -79,7 +91,8 @@ de zoom a partir dos seus cliques → depois **`/editar-video`** pega o `tela.mp
 - **Nada é decidido na gravação** além de qual dispositivo. Velocidade, corte, bolha — tudo
   na edição. A gravação só captura o cru, intacto.
 - **Áudio do sistema** (o som que sai do PC — vídeo tocando, a outra pessoa numa call pelo
-  computador) ainda **não** entra; é a Fase 2.1. Por ora, grava tela + sua voz + sua webcam.
+  computador) entra com `--audio-sistema` (precisa de loopback no Windows; sem ele, avisa e
+  segue só com o mic). Sem a flag, grava tela + sua voz + sua webcam.
 - **Telemetria do cursor** (pro auto-zoom automático nos cliques) entra na Fase 3. As
   gravações de agora não têm esse dado; quando o auto-zoom existir, grava-se de novo com ele.
 - Os arquivos de gravação **não sobem pro GitHub** (são grandes — ficam só na máquina).
