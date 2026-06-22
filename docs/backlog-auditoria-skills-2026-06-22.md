@@ -39,7 +39,7 @@ O ImpulsoX-OS **produz com acabamento premium, mas não desenha pro sinal que di
 | editar-video | **`--vertical` auto-reframe 9:16** (crop centralizado + bolha webcam = rosto) | Destrava o SHORT, formato que a skill diz priorizar mas força 16:9. ffmpeg crop/pad puro | OpusClip AI Reframe #46 |
 | editar-video | **Punch-in automático em fala longa** (zoom suave a cada ~8-12s quando não há clique) | Reaproveita filtroZoompan; reseta atenção em talking-head estático | OpusClip #20 |
 | editar-video | **Corte de hook / intro morta** (avisar no dry-run "primeiros Ns sem fala = cortar?") | Intro branded = "watch-time poison" | OpusClip #1-7 |
-| reel-marca | **Multi-formato** (9:16+1:1+4:5) + **cutdowns 15/5s** do mesmo .tsx | Entregável-padrão de agência paga; multiplica valor percebido do mesmo render | Superside, Jungle Films |
+| reel-marca | **Multi-formato** (9:16+1:1+4:5) + **cutdowns 15/5s** do mesmo .tsx — ⏸️ ADIADO (2026-06-22): exige layout responsivo (cenas em px fixos pro 9:16) + peça dedicada; vira lote próprio | Entregável-padrão de agência paga; multiplica valor percebido do mesmo render | Superside, Jungle Films |
 | reel-marca | **Gerar capa/cover** (still) junto do .mp4 (remotion still já existe) + variante pro GBP | Cover é entregável pago; vídeo no Google Business Profile = human proof que converte | Jungle Films, agentr.ee |
 | roteiro-yt | **Cardápio de 6 moldes short-form** (HVC/AIDA/PAS/PSP/PASTOR/BAB) escolhidos por job | Dá ao roteirista escolha guiada por objetivo, com dados | Virvid |
 | roteiro-yt | **Passo "skeleton + foreshadowing plantado"** antes do corpo | Galloway monta one-pager skeleton e planta foreshadowing nos 2 primeiros min; separa top de genérico | Colin&Samir × Galloway |
