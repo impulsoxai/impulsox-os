@@ -11,7 +11,7 @@
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm, lerGlossario, corrigirTermos, parseTrechosTabela, normalizarTrechos, planoVelocidade, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan, posicaoOverlay, filtroBolhaWebcam } from "./lib-edicao.mjs";
+import { segmentosManter, filtroCorteConcat, planoCorte, montarSRT, montarASS, filtroLegendaAss, filtroLoudnorm, lerGlossario, corrigirTermos, parseTrechosTabela, normalizarTrechos, planoVelocidade, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan, posicaoOverlay, filtroBolhaWebcam, spansFiller, mesclarCortes, filtroEscala9x16, punchInRegioes, cortarIntroMorta } from "./lib-edicao.mjs";
 import { transcrever } from "./transcrever-local.mjs";
 import { registrarPasso } from "./registrar-passo.mjs";
 
@@ -62,6 +62,7 @@ if (import.meta.main) {
   const semIntro = has("--sem-intro");
   const planoArq = flag("--plano");
   const semCorteSilencio = has("--sem-corte-silencio");
+  const vertical = has("--vertical");
   const modoZoom = flag("--zoom") || "auto"; // auto | nao
   const webcamArq = flag("--webcam");
   const cantoBolha = flag("--canto") || "ir";
@@ -121,11 +122,27 @@ if (import.meta.main) {
       // baseVideo é o vídeo de trabalho corrente: começa cru, vira _cortado, depois _velocidade.
       let baseVideo = video;
       let cortouSilencio = false;
+      // transcreve o cru cedo (pra cortar vícios de fala e intro morta na timeline original).
+      // Se a transcrição falhar, segue sem cortar nada (não quebra a edição).
+      let palavrasCru = [];
+      try { palavrasCru = transcrever(voz || video) || []; } catch { palavrasCru = []; }
+      const fillerSpans = palavrasCru.length ? spansFiller(palavrasCru) : [];
+      const primeiraFala = palavrasCru.length ? palavrasCru[0].inicio : null;
       if (!semCorteSilencio) {
         registrarPasso({ skill: "/editar-video", etapa: "cortando silêncio + normalizando áudio", status: "inicio" });
         const seg = segmentosManter(saida, { minSilencio, duracaoTotal });
+        let segFinal = cortarIntroMorta(mesclarCortes(seg, fillerSpans), primeiraFala);
+        if (fillerSpans.length) console.error(`• ${fillerSpans.length} vício(s) de fala removido(s).`);
         // corta o silêncio E normaliza o áudio pro padrão YouTube (-14 LUFS) no mesmo passo —
         // loudnorm vai DENTRO do filtergraph (ffmpeg não deixa -af junto de -filter_complex).
+        execFileSync(FFMPEG, ["-y", "-i", video, "-filter_complex", filtroCorteConcat(segFinal, { loudnorm: filtroLoudnorm() }),
+          "-map", "[vout]", "-map", "[aout]", cortado], { stdio: "inherit" });
+        baseVideo = cortado;
+        cortouSilencio = true;
+      }
+      else if (primeiraFala != null && primeiraFala > 0.3) {
+        // live de ensino (--sem-corte-silencio): mantém pausas do meio, mas corta a intro morta.
+        const seg = cortarIntroMorta([{ inicio: 0, fim: duracaoTotal }], primeiraFala);
         execFileSync(FFMPEG, ["-y", "-i", video, "-filter_complex", filtroCorteConcat(seg, { loudnorm: filtroLoudnorm() }),
           "-map", "[vout]", "-map", "[aout]", cortado], { stdio: "inherit" });
         baseVideo = cortado;
@@ -165,9 +182,10 @@ if (import.meta.main) {
       const regioesPath = join("canal-youtube", "gravacoes", slug, "regioes-zoom.json");
       if (modoZoom === "auto" && existsSync(regioesPath)) {
         const { regioes } = JSON.parse(readFileSync(regioesPath, "utf8"));
-        zoomFiltro = filtroZoompan(regioes, { fps: 30, largura: 1920, altura: 1080 });
+        const regioesComPunch = punchInRegioes(duracaoTotal, regioes || []);
+        zoomFiltro = filtroZoompan(regioesComPunch, { fps: 30, largura: vertical ? 1080 : 1920, altura: vertical ? 1920 : 1080 });
       }
-      const filtrosCorpo = [filtroEscala1080p()];
+      const filtrosCorpo = [vertical ? filtroEscala9x16() : filtroEscala1080p()];
       if (temLegenda) filtrosCorpo.push(filtroLegendaAss({ assCaminho: tmpAss }));
       if (zoomFiltro) filtrosCorpo.push(zoomFiltro);
       const corpo = join(base, temLegenda ? "_legendado.mp4" : "_1080p.mp4");
