@@ -14,6 +14,13 @@ export function normalizarClique({ x, y, tela }) {
   };
 }
 
+// amostrarMovimento — throttle puro do mousemove (dispara centenas de vezes/s). Devolve true se
+// deve registrar este ponto (passou >= minIntervalo ms desde o último, ou é o primeiro). 60Hz = 16ms.
+export function amostrarMovimento(ultimoTMs, tMs, { minIntervalo = 16 } = {}) {
+  if (ultimoTMs === null || ultimoTMs === undefined) return true;
+  return (tMs - ultimoTMs) >= minIntervalo;
+}
+
 // Evento de clique do uiohook -> tipo simples pro cérebro do zoom. double tem prioridade
 // (gesto mais forte); button 2/3 = direito; o resto = esquerdo.
 export function classificarTipo({ button, clicks } = {}) {

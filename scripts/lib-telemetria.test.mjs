@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { normalizarClique, classificarTipo, montarTelemetria } from "./lib-telemetria.mjs";
+import { normalizarClique, classificarTipo, montarTelemetria, amostrarMovimento } from "./lib-telemetria.mjs";
 
 test("normalizarClique: centro da tela = 0.5/0.5", () => {
   assert.deepEqual(
@@ -55,4 +55,17 @@ test("montarTelemetria monta JSON normalizado e classificado, em ordem", () => {
 test("montarTelemetria sem eventos -> cliques vazio", () => {
   const t = montarTelemetria({ t0: "x", tela: { largura: 100, altura: 100 }, eventos: [] });
   assert.deepEqual(t.cliques, []);
+});
+
+test("amostrarMovimento registra quando passou o intervalo mínimo", () => {
+  assert.equal(amostrarMovimento(0, 16, { minIntervalo: 16 }), true);
+  assert.equal(amostrarMovimento(0, 20, { minIntervalo: 16 }), true);
+});
+
+test("amostrarMovimento pula quando ainda não passou o intervalo", () => {
+  assert.equal(amostrarMovimento(100, 110, { minIntervalo: 16 }), false);
+});
+
+test("amostrarMovimento sempre registra o primeiro ponto (ultimo = null)", () => {
+  assert.equal(amostrarMovimento(null, 0, { minIntervalo: 16 }), true);
 });
