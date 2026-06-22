@@ -5,7 +5,8 @@ description: >
   roteiro desse vídeo", "roteiriza esse tema pro YouTube", "transforma isso num short",
   ou ao processar um item aprovado da fila em canal-youtube/pesquisa/fila.md. Escreve
   roteiro long-form (8-15min) e short (30-60s), com o pacote (título+thumbnail) que faz
-  clicar, na voz própria do canal, a partir dos moldes que o /formulas já mantém.
+  clicar, na voz própria do canal, a partir dos moldes que o /formulas já mantém. Classifica
+  o vídeo por estágio de funil (topo/meio/fundo) e calibra hook, CTA e prova por estágio.
 ---
 
 # /roteiro-yt — Escrever o roteiro e o pacote do vídeo

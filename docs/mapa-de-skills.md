@@ -95,7 +95,8 @@ tema real   a fórmula        narrada       +karaokê          N shorts    (priv
    └───────────────── formulas-video.md ←─── fórmula validada ganha prioridade ───────────┘
 ```
 
-- **/tema-yt** (demanda real) → **/roteiro-yt** (copia fórmula de quem performa) → editar →
+- **/tema-yt** (demanda real) → **/roteiro-yt** (copia fórmula de quem performa + classifica o
+  vídeo por funil topo/meio/fundo e ajusta hook/CTA/prova) → editar →
   shorts → publicar → **/desempenho-yt** (retenção valida a fórmula) → realimenta
 - **/thumbnail** (consultor de CTR: Four C's + crivo de nota) é chamada pela **/editar-video**
   (capa do vídeo longo) e roda **avulsa** (capa pra vídeo de fora; repacote quando o CTR cai).
