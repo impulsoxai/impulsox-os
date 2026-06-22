@@ -1,6 +1,10 @@
 // lib-gravacao.mjs — funções puras pra gravação de tela (Fase 2). ZERO deps, sem rede,
 // sem disco: só parseiam/montam o que o orquestrador passa pro ffmpeg. ImpulsoX AI.
 
+// fps da captura de tela. 30 é o equilíbrio: gdigrab a 60 pesa demais na CPU durante a captura
+// (perde frames / esquenta), 30 dá movimento fluido o bastante pro cursor smoothing posterior.
+export const FPS_TELA = 30;
+
 // Parseia a saída de `ffmpeg -list_devices true -f dshow -i dummy` (vai pro STDERR).
 // Cada device é `"Nome" (video|audio|none)`, seguido opcionalmente de uma linha
 // `Alternative name "@device_..."`. A última linha "Error opening ... dummy" é esperada.
@@ -28,7 +32,7 @@ export function parseDispositivosDshow(saida) {
 // Args do ffmpeg pra capturar a TELA inteira (gdigrab, Windows) -> mp4 sem áudio.
 // faststart deixa o moov atom utilizável. CRF 18 (quase sem perda) + preset fast: texto/UI
 // nítido na gravação de tela — CRF 23 (default) borra letra pequena e ícones.
-export function argsCapturaTela({ fps = 30, saida }) {
+export function argsCapturaTela({ fps = FPS_TELA, saida }) {
   return [
     "-y", "-f", "gdigrab", "-framerate", String(fps), "-i", "desktop",
     "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p",
