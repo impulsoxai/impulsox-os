@@ -69,3 +69,18 @@ test("amostrarMovimento pula quando ainda não passou o intervalo", () => {
 test("amostrarMovimento sempre registra o primeiro ponto (ultimo = null)", () => {
   assert.equal(amostrarMovimento(null, 0, { minIntervalo: 16 }), true);
 });
+
+test("montarTelemetria inclui movimentos normalizados em ordem", () => {
+  const t = montarTelemetria({
+    t0: "x", tela: { largura: 100, altura: 200 },
+    eventos: [], movimentos: [{ tMs: 16, x: 50, y: 100 }, { tMs: 32, x: 100, y: 200 }],
+  });
+  assert.equal(t.movimentos.length, 2);
+  assert.deepEqual(t.movimentos[0], { t: 16, x: 0.5, y: 0.5 });
+  assert.deepEqual(t.movimentos[1], { t: 32, x: 1, y: 1 });
+});
+
+test("montarTelemetria sem movimentos -> movimentos vazio", () => {
+  const t = montarTelemetria({ t0: "x", tela: { largura: 100, altura: 100 }, eventos: [] });
+  assert.deepEqual(t.movimentos, []);
+});

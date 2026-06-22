@@ -29,15 +29,20 @@ export function classificarTipo({ button, clicks } = {}) {
   return "left";
 }
 
-// Monta o telemetria.json canônico: para cada evento cru, normaliza a posição e classifica
-// o tipo, preservando a ordem. t0/tela passam direto.
-export function montarTelemetria({ t0, tela, eventos = [] }) {
+// Monta o telemetria.json canônico: cliques (normalizados + classificados) e movimentos do
+// cursor (normalizados). t0/tela passam direto. movimentos default [] = compatível com quem só
+// passa cliques (auto-zoom atual ignora o resto).
+export function montarTelemetria({ t0, tela, eventos = [], movimentos = [] }) {
   return {
     t0,
     tela,
     cliques: eventos.map((e) => {
       const pos = normalizarClique({ x: e.x, y: e.y, tela });
       return { t: e.tMs, x: pos.x, y: pos.y, tipo: classificarTipo(e) };
+    }),
+    movimentos: movimentos.map((m) => {
+      const pos = normalizarClique({ x: m.x, y: m.y, tela });
+      return { t: m.tMs, x: pos.x, y: pos.y };
     }),
   };
 }
