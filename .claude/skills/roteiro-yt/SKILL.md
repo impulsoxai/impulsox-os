@@ -95,6 +95,10 @@ O clique vem antes de tudo: se ninguém clica, retenção, watch time e lead nã
 Antes de escrever uma linha do corpo, definir a **promessa do vídeo** — o que título e
 thumbnail prometem juntos. Essa promessa é o contrato que o hook (Passo 5) vai honrar.
 
+> Calibrar pela lente do Passo 0: no **topo**, o pacote promete descoberta/curiosidade (sem
+> oferta); no **meio**, promete aprendizado concreto; no **fundo**, promete prova/resultado e
+> pode nomear a oferta.
+
 1. **Ângulo do título (rascunho):** a transformação ou descoberta que o vídeo entrega.
    Não é o tema ("Claude Code skills") — é a promessa ("Construí um sistema que posta
    sozinho — em uma tarde").
@@ -151,6 +155,9 @@ palavras/minuto de fala. Esses timestamps viram os **Chapters** da descrição (
 
 Com o corpo pronto, escrever os primeiros 30s — o trecho mais decisivo do vídeo. Dois
 movimentos:
+
+> O TIPO de hook vem do estágio (Passo 0): topo = dor relatável / curiosidade / opinião forte;
+> meio = promessa de aprender; fundo = prova ou oferta. Não usar hook de venda em vídeo de topo.
 
 1. **Hook (0-15s):** frase de abertura ≤10 palavras, sem credencial, sem "e aí galera".
    Confirma que o vídeo é sobre o que a pessoa clicou (honra o pacote do Passo 2) e abre
