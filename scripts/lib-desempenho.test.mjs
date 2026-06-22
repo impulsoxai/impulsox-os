@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { taxasInstagram, taxasYouTube, detectarCurva } from "./lib-desempenho.mjs";
+import { taxasInstagram, taxasYouTube, detectarCurva, diagnosticarYouTube } from "./lib-desempenho.mjs";
 
 test("taxasInstagram calcula save/send/reach rate", () => {
   const t = taxasInstagram({ reach: 1000, saved: 50, shares: 30, seguidores: 5000, formato: "carrossel" });
@@ -49,4 +49,22 @@ test("detectarCurva curva saudável (queda gradual) não marca cliff", () => {
 test("detectarCurva sem série devolve null (modo colar sem curva)", () => {
   assert.equal(detectarCurva(null), null);
   assert.equal(detectarCurva([]), null);
+});
+
+test("diagnosticarYouTube: AVD baixo + intro dip -> hook fraco -> /roteiro-yt", () => {
+  const d = diagnosticarYouTube({ taxas: { avdBom: false, ctrVsCanal: "acima" }, curva: { introDip: true, cliffs: [] } });
+  const hookFraco = d.find((x) => x.skill === "/roteiro-yt" && /hook/i.test(x.motivo));
+  assert.ok(hookFraco);
+});
+test("diagnosticarYouTube: CTR abaixo + AVD bom -> thumbnail -> /thumbnail", () => {
+  const d = diagnosticarYouTube({ taxas: { avdBom: true, ctrVsCanal: "abaixo" }, curva: null });
+  assert.ok(d.find((x) => x.skill === "/thumbnail"));
+});
+test("diagnosticarYouTube: cliff -> /editar-video", () => {
+  const d = diagnosticarYouTube({ taxas: { avdBom: true }, curva: { introDip: false, cliffs: [{ tSeg: 90, queda: 0.2 }] } });
+  assert.ok(d.find((x) => x.skill === "/editar-video"));
+});
+test("diagnosticarYouTube tudo bom -> sem conserto", () => {
+  const d = diagnosticarYouTube({ taxas: { avdBom: true, ctrVsCanal: "acima" }, curva: { introDip: false, cliffs: [] } });
+  assert.equal(d.filter((x) => x.skill).length, 0);
 });

@@ -68,3 +68,15 @@ export function detectarCurva(serie, { duracaoSeg = 0 } = {}) {
   }
   return { introDip, cliffs, spikes };
 }
+
+// diagnosticarYouTube — cruza taxas + curva e devolve a lista de consertos, cada um apontando a
+// SKILL que resolve. Pura. (regras da pesquisa: AVD+intro dip=hook; CTR abaixo+AVD bom=thumb; cliff=edição.)
+export function diagnosticarYouTube({ taxas = {}, curva = null } = {}) {
+  const out = [];
+  const introDip = curva?.introDip;
+  if (taxas.avdBom === false && introDip) out.push({ skill: "/roteiro-yt", motivo: "hook fraco: retenção despenca nos primeiros 30s — reescrever a abertura (hook + intro=thumbnail)." });
+  else if (taxas.avdBom === false) out.push({ skill: "/editar-video", motivo: "retenção média baixa sem queda única: pacing lento — apertar a edição (cortar trechos chatos)." });
+  if (taxas.ctrVsCanal === "abaixo" && taxas.avdBom === true) out.push({ skill: "/thumbnail", motivo: "CTR abaixo da média do canal, mas quem assiste fica: o problema é a capa/título — testar 15-20 títulos e nova thumbnail." });
+  if (curva?.cliffs?.length) out.push({ skill: "/editar-video", motivo: `queda abrupta em ${curva.cliffs.map((c) => c.tSeg + "s").join(", ")}: corte/tangente — apertar ou cortar esse trecho.` });
+  return out;
+}
