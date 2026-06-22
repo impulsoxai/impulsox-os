@@ -61,6 +61,21 @@ avisar que o resultado melhora depois do `/identidade`.
    gerar a still por IA **ou** animar uma foto pronta (campo `"imagem"` no roteiro). É o
    reel de cenas/produto/ilustrativo — ninguém aparece falando.
 
+   **3a-voz. Reel b-roll NARRADO (voz por cima do b-roll, zero-filmagem).** O mesmo reel do
+   3a, mas com uma VOZ narrando as cenas — o dono não filma nada. Cada cena ganha um campo
+   `"narracao"` (o que a voz fala). A voz vem de dois jeitos (Escada de Contexto):
+   - **Voz real:** o dono grava cada fala (`cena-01.mp3`, `cena-02.mp3`…) numa pasta e passa
+     `--voz <pasta>`. Grátis, autêntico.
+   - **Voz por IA (TTS):** `--tts <voiceId>` gera a locução (ElevenLabs). Guarda de custo
+     (`--confirmar`), `ELEVENLABS_KEY` no `.env`. Clonar a própria voz = ok; voz de terceiro
+     sem permissão = não.
+
+   A fala manda a duração: cada clipe dura o tempo da narração da cena (nunca corta a voz). A
+   legenda vira karaokê sincronizado (Whisper transcreve a voz). Música opcional entra abaixada
+   por baixo da voz (`--trilha`). Comando: `node scripts/gerar-video.mjs <roteiro.json> --voz
+   <pasta>` (real) ou `--tts <voiceId> --confirmar` (IA). Cena sem campo `narracao` cai pro
+   `texto` da cena. Sempre `--dry-run` antes; peça vai ao ar → `/revisar`.
+
    **3b. Reel avatar (você falando) — capacidade à parte.** Pessoa real falando com
    lip-sync, via `scripts/gerar-avatar.mjs` (foto + áudio → vídeo). É outro produto:
    precisa de foto do rosto + áudio de voz real, tem guarda de custo (`--confirmar`) e
