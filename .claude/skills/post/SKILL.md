@@ -48,8 +48,10 @@ avisar que o resultado melhora depois do `/identidade`.
 
 ## Formatos
 
-1. **Carrossel (5-9 telas)** — padrão para ensinar, provar e posicionar. Formato
-   1080x1350 (4:5), o de maior alcance orgânico.
+1. **Carrossel (7-10 telas)** — padrão para ensinar, provar e posicionar. Formato
+   1080x1350 (4:5), o de maior alcance orgânico. **Sweet-spot 2026: 7-10 slides** (10
+   maximiza o dwell-time SE a completion passar de 60% — só vale a pena ser longo se prende
+   até o fim; ver swipe-retention na Anatomia).
 2. **Post único** — um dado forte, uma frase de posição, um bastidor.
 3. **Reel** — quando o tema pede movimento. Dois tipos, escolhidos pelo tema (não se
    misturam num mesmo arquivo):
@@ -60,6 +62,12 @@ avisar que o resultado melhora depois do `/identidade`.
    (Kling/Seedance) → corte rápido por cena → legenda → trilha → 1080x1920. Cada cena pode
    gerar a still por IA **ou** animar uma foto pronta (campo `"imagem"` no roteiro). É o
    reel de cenas/produto/ilustrativo — ninguém aparece falando.
+
+   > **Régua técnica do reel (não negociável):** 50% saem nos 3 primeiros segundos, então
+   > pensar **muted-first** (sem som). Hook VISUAL no frame 1 (texto na tela + movimento);
+   > **2-3 cortes nos primeiros 3s** (reseta a atenção); legenda **42-60pt animada** que muda
+   > de cor na palavra ativa (karaokê) — é o que segura quem assiste sem som. A marca/logo
+   > NÃO abre o reel (logo no começo = cara de anúncio, derruba alcance) — vai no fim.
 
    **3a-voz. Reel b-roll NARRADO (voz por cima do b-roll, zero-filmagem).** O mesmo reel do
    3a, mas com uma VOZ narrando as cenas — o dono não filma nada. Cada cena ganha um campo
@@ -86,7 +94,14 @@ avisar que o resultado melhora depois do `/identidade`.
    Vídeo é a parte cara: só gera depois do roteiro/áudio aprovado; o final passa por
    `/revisar` antes de publicar. (Alternativa sempre válida: o usuário grava ele mesmo.)
 
-Formato não especificado → escolher pelo tema e intenção, dizendo o porquê em uma linha.
+Formato não especificado → escolher pelo **objetivo**, não pelo gosto, dizendo o porquê em uma
+linha. Roteia assim:
+
+| Objetivo | Formato | Por quê |
+|---|---|---|
+| **Alcance / novos seguidores** | **Reel** | Entrega ~1.36x mais alcance que carrossel; é a peça de descoberta (chega a quem não te segue) |
+| **Save / engajamento do público atual** | **Carrossel** | É o formato que mais salva (referência guardável); aprofunda e posiciona com quem já te acompanha |
+| **Recado pontual / um dado forte** | **Post único** | Uma frase de posição, um bastidor, um anúncio — sem precisar de jornada de slides |
 
 ## Três modos de imagem (texto é o padrão)
 
@@ -143,6 +158,21 @@ slide de prova/contexto); o miolo educativo continua na tipografia forte que já
 - Contraste do texto sobre a foto: mínimo 4.5:1 (medir, não estimar). O overlay existe pra isso.
 - Modo 3 sempre pede aprovação visual antes de usar a imagem gerada.
 
+## Objetivo da peça: salvar ou enviar (decidir ANTES de desenhar)
+
+Em 2026 o sinal que mais distribui não é o like — é **save** (vale ~2-3x o like) e **send/DM**
+(vale ~3-5x; é o fator nº1 de alcance pra quem não te segue — Mosseri). Toda peça declara, antes
+de qualquer slide, **pra qual dos dois ela é desenhada**:
+
+- **Pra SALVAR** — a peça precisa de um slide-referência guardável: um checklist, um resumo, uma
+  tabela, o "print que vale guardar pra usar depois". Se a pessoa não pensa "isso eu salvo", a
+  peça não foi desenhada pra salvar. Costuma cair bem no penúltimo/último slide (o resumo).
+- **Pra ENVIAR** — a peça precisa de um gancho explícito de compartilhamento: algo que a pessoa
+  manda pra alguém específico ("manda isso pro sócio que cuida do financeiro", "marca quem vive
+  atrasado"). O conteúdo tem que ser relatável o bastante pra virar "isso é a sua cara".
+
+Não é decoração: é o 1º filtro do briefing. A peça que não mira save NEM send fica bonita e some.
+
 ## Anatomia do carrossel
 
 **Tela 1 — o gancho.** Decide se o dedo para. Promessa específica ou tensão real, sem
@@ -151,9 +181,13 @@ a tela 1 **abre um loop**: planta a pergunta que o resto do carrossel responde �
 lei da lacuna honesta vale (gancho de "segredo" que entrega obviedade mata a conta aos
 poucos; entrega modesta pede gancho menor, não texto inflado).
 
-**Telas internas — uma ideia por tela.** Quem lê uma tela isolada entende ela sozinha.
-Variar a composição entre os módulos abaixo pra criar ritmo; alternar fundos (claro ↔
-escuro ↔ cor da marca) — nunca duas telas seguidas iguais.
+**Telas internas — uma ideia por tela, com swipe-retention.** Quem lê uma tela isolada entende
+ela sozinha. Variar a composição entre os módulos abaixo pra criar ritmo; alternar fundos (claro
+↔ escuro ↔ cor da marca) — nunca duas telas seguidas iguais. **Cada slide interno abre um
+micro-loop pro próximo** — termina deixando uma pergunta/gancho que o slide seguinte responde
+("e o 3º erro é o pior →"). O algoritmo lê a **completion** (quem chega ao fim) como o sinal de
+qualidade do carrossel; o swipe contínuo é o que segura. Não basta o loop capa→fecho: cada
+passagem de slide tem que puxar o dedo.
 
 Módulos de composição (vocabulário próprio do ImpulsoX-OS):
 - **TESE** — afirmação central grande + uma linha de apoio
@@ -164,9 +198,12 @@ Módulos de composição (vocabulário próprio do ImpulsoX-OS):
 - **HISTÓRIA** — mini-narrativa em 2-3 telas na espinha do playbook: personagem que o
   público reconhece → tensão real → a virada (o "mas") → desfecho com prova. Pede
   material real; sem caso, trocar de módulo
-- **FECHO** — última tela: chamada única (seguir, salvar, chamar no WhatsApp, link na
-  bio) sobre fundo na cor de destaque. É aqui que o loop da tela 1 **fecha** — conferir
-  que a pergunta aberta foi respondida de verdade
+- **FECHO** — última tela: **guarda o dado/punchline mais valioso pro fim** (a melhor virada,
+  o número que mais surpreende, o resumo salvável) — NÃO entregue antes. É o que puxa a
+  completion >60% (quem chega ao fim) → mais Explore. A chamada única (seguir, salvar, chamar
+  no WhatsApp, link na bio) acompanha, mas o herói do último slide é a recompensa guardada, não
+  o CTA seco. É aqui que o loop da tela 1 **fecha** — conferir que a pergunta aberta foi
+  respondida de verdade.
 
 **Texto por tela:** título até ~8 palavras; apoio até ~18-20 (o limite preciso é por
 caractere — ver "Orçamento de caracteres por slide"). Carrossel não é slide de
