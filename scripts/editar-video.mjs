@@ -162,7 +162,9 @@ if (import.meta.main) {
       registrarPasso({ skill: "/editar-video", etapa: "transcrevendo (whisper local)", status: "inicio" });
       let temLegenda = false;
       try {
-        let palavras = transcrever(voz || baseVideo);
+        // reusa a transcrição do cru quando não houve corte (baseVideo === video): evita rodar
+        // o Whisper 2x. Se houve corte, os tempos mudaram — transcreve o vídeo cortado de novo.
+        let palavras = (baseVideo === video && palavrasCru.length) ? palavrasCru : transcrever(voz || baseVideo);
         // glossário da marca: conserta termos que o whisper foneticiza (reel, ImpulsoX...).
         const glossPath = join("canal-youtube", "glossario.md");
         if (existsSync(glossPath)) palavras = corrigirTermos(palavras, lerGlossario(readFileSync(glossPath, "utf8")));
