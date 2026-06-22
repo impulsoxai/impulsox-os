@@ -7,7 +7,7 @@ import {
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
   cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan,
   posicaoOverlay, filtroBolhaWebcam, spansFiller, LISTA_FILLER,
-  mesclarCortes, filtroEscala9x16, punchInRegioes,
+  mesclarCortes, filtroEscala9x16, punchInRegioes, cortarIntroMorta,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -511,4 +511,20 @@ test("punchInRegioes em vídeo sem regiões preenche os buracos", () => {
   const out = punchInRegioes(30, [], { gapMax: 12, dur: 2.5, nivel: 1.15 });
   assert.ok(out.length >= 1);
   assert.ok(out.every((r) => r.nivel === 1.15));
+});
+
+test("cortarIntroMorta avança o 1º keep até pouco antes da 1ª fala", () => {
+  const keeps = [{ inicio: 0, fim: 20 }];
+  const out = cortarIntroMorta(keeps, 4.0, { margem: 0.3 });
+  assert.equal(out[0].inicio, 3.7);
+  assert.equal(out[0].fim, 20);
+});
+test("cortarIntroMorta não mexe quando o vídeo já começa falando", () => {
+  const keeps = [{ inicio: 0, fim: 20 }];
+  const out = cortarIntroMorta(keeps, 0.2, { margem: 0.3 });
+  assert.equal(out[0].inicio, 0);
+});
+test("cortarIntroMorta sem fala (primeiraFalaSeg null) não mexe", () => {
+  const keeps = [{ inicio: 0, fim: 20 }];
+  assert.deepEqual(cortarIntroMorta(keeps, null), keeps);
 });

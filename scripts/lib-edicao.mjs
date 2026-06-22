@@ -523,3 +523,14 @@ export function punchInRegioes(duracaoTotal, existentes = [], { gapMax = 12, dur
   tentarBuraco(cursor, duracaoTotal);
   return [...existentes, ...novas].sort((a, b) => a.inicio - b.inicio);
 }
+
+// cortarIntroMorta — se o vídeo começa com silêncio antes da 1ª palavra falada, avança o início
+// do 1º segmento mantido pra pouco antes da fala (deixa `margem` de respiro). Roda SEMPRE — a
+// intro morta nunca deve ficar, nem em live de ensino. Pura. primeiraFalaSeg null/undefined = sem fala.
+export function cortarIntroMorta(keeps, primeiraFalaSeg, { margem = 0.3 } = {}) {
+  if (primeiraFalaSeg == null || keeps.length === 0) return keeps.map((k) => ({ ...k }));
+  const alvo = primeiraFalaSeg - margem;
+  const out = keeps.map((k) => ({ ...k }));
+  if (alvo > out[0].inicio && alvo < out[0].fim) out[0].inicio = alvo;
+  return out;
+}
