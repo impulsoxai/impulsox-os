@@ -151,6 +151,21 @@ bolha (vídeo normal).
 **O áudio é o da TELA (sua narração), não o da webcam** — evita áudio duplicado/eco. A bolha
 fica fixa no canto o vídeo todo (não dá zoom junto com o auto-zoom — é uma camada por cima).
 
+## Retenção: vícios de fala, vertical, punch-in, intro morta
+
+Quatro automações que separam edição amadora de profissional (pesquisa OpusClip, 13.5M clips):
+
+- **Vícios de fala removidos** — "é", "tipo", "né", "então" ditos ISOLADOS (entre pausas) são
+  cortados junto com o silêncio. Conservador: nunca corta um "tipo" no meio de frase. O dry-run
+  mostra quantos saíram.
+- **Vertical (`--vertical`)** — gera o short em 9:16 (1080x1920) com crop central (pega a faixa
+  do meio). Sem a flag, sai 16:9 como antes. (Reframe com rosto/webcam = refinamento futuro.)
+- **Punch-in automático** — em trechos longos sem clique (>12s parado), entra um zoom suave
+  (1.15x, ~2.5s) pra resetar a atenção. Só preenche os buracos; onde já há zoom de clique, mantém.
+- **Intro morta cortada sempre** — se o vídeo começa com silêncio antes da 1ª fala, esse pedaço
+  é removido mesmo com `--sem-corte-silencio` (a pausa do meio pode ser proposital; a intro morta
+  nunca). Hook colado no começo retém mais.
+
 ## Templates de marca
 
 `canal-youtube/edicao/templates/intro.mp4` e `outro.mp4` (opcionais) entram em todo vídeo.
