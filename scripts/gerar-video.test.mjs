@@ -6,7 +6,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { argsFfmpeg } from "./gerar-video.mjs";
+import { argsFfmpeg, duracaoAudio } from "./gerar-video.mjs";
 
 const SCRIPT = fileURLToPath(new URL("./gerar-video.mjs", import.meta.url));
 const tmp = mkdtempSync(join(tmpdir(), "vid-test-"));
@@ -102,4 +102,12 @@ test("custoClipe: preço por modelo/segundos (preços reais Fal)", () => {
   assert.equal(custoClipe("ltx", 8), 0.04);                            // flat
   assert.equal(custoClipe("wan", 5), 0.40);                            // 81 frames = base
   assert.equal(custoClipe("wan", 6), 0.50);                            // >81 frames = x1.25
+});
+
+test("duracaoAudio extrai segundos da saída do ffprobe", () => {
+  assert.equal(duracaoAudio("duration=3.456000\n"), 3.456);
+});
+
+test("duracaoAudio devolve 0 quando não acha duração", () => {
+  assert.equal(duracaoAudio("lixo sem duracao"), 0);
 });

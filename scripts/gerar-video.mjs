@@ -74,6 +74,13 @@ export function custoClipe(modelo, seg) {
   return s <= 5 ? 0.35 : 0.70;
 }
 
+// duracaoAudio — lê a duração (s) da saída de `ffprobe -show_entries format=duration`.
+// Função pura: recebe a STRING de saída, não roda ffprobe. Devolve 0 se não achar.
+export function duracaoAudio(saidaFfprobe) {
+  const m = String(saidaFfprobe).match(/duration=([\d.]+)/);
+  return m ? Number(m[1]) : 0;
+}
+
 // só roda a CLI quando invocado direto (não quando importado por um teste).
 if (import.meta.main) {
   const posic = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--saida" && args[i - 1] !== "--modelo" && args[i - 1] !== "--ref" && args[i - 1] !== "--trilha");
