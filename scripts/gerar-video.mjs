@@ -159,13 +159,13 @@ if (import.meta.main) {
     mkdirSync(baseFalas, { recursive: true });
     if (ttsVoz) {
       const { gerarTTS, estimarCustoTTS } = await import("./gerar-tts.mjs");
-      const textos = cenas.map((c) => c.narracao || "");
+      const textos = cenas.map((c) => c.narracao || c.texto || "");
       const custo = estimarCustoTTS(textos);
       console.log(`TTS: ${textos.length} falas, custo estimado $${custo.toFixed(2)}.`);
       if (!has("--confirmar")) { console.log("rode com --confirmar pra gerar o TTS (gasta crédito)."); process.exit(0); }
       for (let i = 0; i < cenas.length; i++) {
         const saidaFala = join(baseFalas, `cena-${String(i + 1).padStart(2, "0")}.mp3`);
-        await gerarTTS({ texto: cenas[i].narracao || "", voz: ttsVoz, saida: saidaFala });
+        await gerarTTS({ texto: cenas[i].narracao || cenas[i].texto || "", voz: ttsVoz, saida: saidaFala });
         falasAudio.push(saidaFala);
       }
     } else {
@@ -296,5 +296,6 @@ if (import.meta.main) {
     }
   }
   registrarCusto({ script: "gerar-video", modelo: modeloVideo, custo: Number(custoVideo.toFixed(2)) });
-  console.log(JSON.stringify({ ok: true, saida, cenas: cenas.length, duracao_total: duracaoTotal }, null, 2));
+  const duracaoFinal = cenas.reduce((s, c) => s + (Number(c.segundos) || 5), 0);
+  console.log(JSON.stringify({ ok: true, saida, cenas: cenas.length, duracao_total: duracaoFinal }, null, 2));
 }
