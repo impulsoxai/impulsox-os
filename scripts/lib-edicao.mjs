@@ -478,3 +478,20 @@ export function filtroBolhaWebcam({ corpoFiltros, ladoBolha, canto = "ir", marge
   partes.push(`${ultimo}[cam]overlay=${pos}:shortest=1[vbolha]`);
   return { filtro: partes.join(";"), mapV: "[vbolha]" };
 }
+
+// mesclarCortes — remove os intervalos `remover` de dentro dos segmentos `keeps` (mantidos),
+// devolvendo novos keeps (possivelmente divididos). Pura. Tudo em segundos.
+export function mesclarCortes(keeps, remover) {
+  if (!remover || remover.length === 0) return keeps.map((k) => ({ ...k }));
+  let atual = keeps.map((k) => ({ ...k }));
+  for (const r of remover) {
+    const prox = [];
+    for (const k of atual) {
+      if (r.fim <= k.inicio || r.inicio >= k.fim) { prox.push(k); continue; }
+      if (r.inicio > k.inicio) prox.push({ inicio: k.inicio, fim: r.inicio });
+      if (r.fim < k.fim) prox.push({ inicio: r.fim, fim: k.fim });
+    }
+    atual = prox;
+  }
+  return atual;
+}

@@ -7,6 +7,7 @@ import {
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
   cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan,
   posicaoOverlay, filtroBolhaWebcam, spansFiller, LISTA_FILLER,
+  mesclarCortes,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -469,4 +470,18 @@ test("LISTA_FILLER contém vícios PT-BR comuns", () => {
   assert.ok(LISTA_FILLER.includes("é"));
   assert.ok(LISTA_FILLER.includes("tipo"));
   assert.ok(LISTA_FILLER.includes("né"));
+});
+
+test("mesclarCortes corta um span no meio de um keep, dividindo em dois", () => {
+  const keeps = [{ inicio: 0, fim: 10 }];
+  const out = mesclarCortes(keeps, [{ inicio: 4, fim: 5 }]);
+  assert.deepEqual(out, [{ inicio: 0, fim: 4 }, { inicio: 5, fim: 10 }]);
+});
+test("mesclarCortes com span fora dos keeps não muda nada", () => {
+  const keeps = [{ inicio: 0, fim: 3 }];
+  assert.deepEqual(mesclarCortes(keeps, [{ inicio: 5, fim: 6 }]), [{ inicio: 0, fim: 3 }]);
+});
+test("mesclarCortes sem spans devolve os keeps iguais", () => {
+  const keeps = [{ inicio: 0, fim: 3 }, { inicio: 5, fim: 8 }];
+  assert.deepEqual(mesclarCortes(keeps, []), keeps);
 });
