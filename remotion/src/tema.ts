@@ -1,6 +1,4 @@
-// tema.ts — cores e fontes do reel, derivadas da marca do cliente.
-// Gerado/atualizado por gerar-tema.mjs a partir de marca/tokens.css.
-// Defaults abaixo = marca ImpulsoX (fallback quando não há tokens.css).
+// tema.ts — GERADO por gerar-tema.mjs a partir de marca/tokens.css. Não editar à mão.
 export const C = {
   fundo: "#06060d",
   roxo: "#7c3aed",
@@ -13,7 +11,6 @@ export const C = {
   textoMudo: "#4a4540",
 };
 
-// nomes de fonte (carregadas via @remotion/google-fonts no .tsx)
 export const FONTES = {
   display: "Space Grotesk",
   mono: "Space Mono",
