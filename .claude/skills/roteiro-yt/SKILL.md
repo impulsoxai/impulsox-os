@@ -121,7 +121,15 @@ gravar — nunca entra como fato sem checar.
 
 ## Passo 4 — Escrever o corpo (long-form)
 
-Nesta ordem — **o corpo vem antes do hook**:
+**Antes de escrever, montar o esqueleto (skeleton) + plantar o foreshadowing.** O método do
+Paddy Galloway: um "one-pager skeleton" — os beats do vídeo, um por linha (setup → ponto 1 →
+ponto 2 → … → payoff), pra ver o arco inteiro antes de escrever. Nesse esqueleto, **plantar
+foreshadowing** nos 2 primeiros minutos: insinuar/prometer o que vem mais pra frente ("daqui a
+pouco mostro o erro que custou X", "guarda esse número, ele volta no final"). Foreshadowing cria
+expectativa EXATA e é o que mais segura a curva — é o que separa roteirista top de genérico.
+Marcar no roteiro: `[FORESHADOW: o que é plantado aqui e onde paga]`.
+
+Com o esqueleto pronto, escrever o corpo nesta ordem — **o corpo vem antes do hook**:
 
 1. **Setup:** contexto mínimo pra entender o que vem (sem "e aí galera/bem-vindo de
    volta"). Curto — o drop mais íngreme da retenção é entre o segundo 10 e o 20.
@@ -163,6 +171,10 @@ movimentos:
 1. **Hook (0-15s):** frase de abertura ≤10 palavras, sem credencial, sem "e aí galera".
    Confirma que o vídeo é sobre o que a pessoa clicou (honra o pacote do Passo 2) e abre
    a tensão. Hooks que prendem em 15s retêm ~65% até os 3min; sem isso, cai pra ~45%.
+   **Intro = continuação literal do thumbnail:** o 1º frame/cena continua VISUALMENTE o que a
+   capa prometeu (o mesmo objeto, cena, resultado ou pergunta que está na thumbnail). Quem clicou
+   pela capa vê ela "ganhar vida" — fecha o gap clique→hook (é como o MrBeast mantém ~70% de
+   retenção). Nunca abrir com logo/intro animada (o algoritmo lê como anúncio e derruba).
    Partir do **padrão de hook** que veio no ângulo do `/tema-yt` (um dos 9 de
    `docs/frase-que-pega.md` §2.5: Contradição, Especificidade, Tensão de tempo, POV como
    conselho, Confissão vulnerável, Pattern interrupt, Lista, Aviso de erro, How-to). Sem
@@ -176,6 +188,11 @@ movimentos:
 entrega nos primeiros 30s. Clickbait-mismatch (prometer e não cumprir) destrói a confiança
 e o algoritmo demove o vídeo. Se o hook não consegue honrar o pacote, o errado é o pacote —
 voltar ao Passo 2 e ajustar a promessa, não inflar o hook.
+
+**Benchmarks numéricos (alvo mensurável, não "retém bem"):** ~71% dos espectadores decidem ficar
+ou sair nos **3 primeiros segundos** — o hook tem que firar aí. Retenção média (AVD) alvo: **≥70%
+nos primeiros 30s** e **≥50% no vídeo todo** (long-form). Short: sweet-spot **31-60s** (decisão em
+3s, payoff até o segundo 3). Esses números são a régua do `/desempenho-yt` na hora de validar.
 
 ## Passo 6 — Marcar cortes pra short
 
@@ -197,13 +214,28 @@ Regras de short que a pesquisa 2026 prova decisivas:
   como o fim emenda no início]`.
 - Uma lacuna de curiosidade aberta no 1º segundo, fechada no fim.
 
+**Cardápio de moldes — escolher pelo JOB do short** (cada um é uma espinha testada; cruzar com o
+estágio de funil do Passo 0):
+- **HVC** (Hook → Value → CTA) — dica rápida, "como fazer X". O mais simples. Topo/meio.
+- **PAS** (Problema → Agitação → Solução) — quando a dor do público é o gancho. Topo.
+- **AIDA** (Atenção → Interesse → Desejo → Ação) — quando há oferta/venda no fim. Fundo.
+- **PSP** (Problema → Solução → Prova) — quando você TEM prova autorizada. Fundo.
+- **BAB** (Before → After → Bridge) — transformação/antes-depois (a ponte = como chegar lá). Fundo.
+- **PASTOR** (Problema → Amplificação → Story → Transformação → Oferta → Resposta) — narrativa de
+  venda mais longa (curta-média), quando o caso vende sozinho. Fundo.
+Default: HVC pra ensinar, PAS pra atrair, BAB/PSP pra provar. O molde dá a espinha; a voz e o
+conteúdo são sempre do canal.
+
 ## Passo 8 — Refinar o pacote (título + thumbnail) com o corpo pronto
 
 Voltar ao rascunho do Passo 2 e fechar o pacote sabendo o que o vídeo de fato entrega.
 
-**Títulos — 3 opções:** cada uma cria uma lacuna de curiosidade junto com a thumbnail (a
-combinação faz a pergunta; nenhuma das duas entrega a resposta sozinha). Concreto > vago.
-Sem promessa que o vídeo não cumpre (ver contrato Quality-CTR).
+**Títulos — gerar 15-20, selecionar os 3 melhores.** O método nº1 do Paddy Galloway (estrategista
+de 50bi+ views): escrever MUITOS títulos e escolher, porque o clique é upstream de toda retenção —
+CTR é metade do jogo. Rascunhar 15-20 ângulos (curiosidade, número, contraste, dor, "como", erro,
+resultado), depois cravar os **3 melhores** pra A/B. Cada um cria uma lacuna de curiosidade junto
+com a thumbnail (a combinação faz a pergunta; nenhuma das duas entrega a resposta sozinha).
+Concreto > vago. Sem promessa que o vídeo não cumpre (ver contrato Quality-CTR).
 
 **Conceito de thumbnail** — aqui o `/roteiro-yt` projeta SÓ o conceito (sujeito, texto,
 contraste); quem GERA a capa e pontua é a **`/thumbnail`** (Four C's + crivo de CTR), na
@@ -292,6 +324,19 @@ ao pacote — repacote (novo título e/ou thumbnail), não mexer no vídeo. Os 3
 pra teste A/B. O `/desempenho-yt` mede a RETENÇÃO (sinal #1) contra o benchmark da faixa e
 marca a fórmula como validada/não funciona no `formulas-video.md`; padrão que funcionou vai
 pro `nucleo/aprendizados.md` e ganha prioridade no próximo roteiro.
+
+## Repurpose multiplataforma (create once, optimize 3x)
+
+O mesmo roteiro/short rende em várias plataformas — mas NÃO é o mesmo arquivo copiado. Adaptar o
+que cada algoritmo premia:
+- **TikTok:** caption mais longa (até ~2.200 chars) com palavras-chave (TikTok indexa a caption
+  pra busca); tom mais solto.
+- **Reels (Instagram):** caption curta + gancho; hashtags poucas e relevantes (ver `/post`).
+- **Shorts (YouTube):** keyword no INÍCIO do título e da descrição (o Shorts puxa por busca);
+  título ≤ ~40 chars.
+- **Sempre:** exportar SEM marca d'água de outra plataforma (TikTok/CapCut watermark derruba o
+  alcance pelo Originality Score). Reusar o mesmo corte de vídeo, trocar só caption/título/tags.
+Quando o roteiro vira short, gerar de uma vez as 3 versões de caption (TikTok/Reels/Shorts).
 
 ## Regras
 
