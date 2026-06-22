@@ -502,3 +502,24 @@ export function mesclarCortes(keeps, remover) {
   }
   return atual;
 }
+
+// punchInRegioes — preenche os "buracos" da timeline (trechos > gapMax sem nenhum zoom) com um
+// punch-in suave (zoom `nivel`, duração `dur`, foco central) no meio do buraco. Combina com as
+// regiões existentes (clique) sem sobrepor. Pura. Retorna a lista ordenada por inicio.
+export function punchInRegioes(duracaoTotal, existentes = [], { gapMax = 12, dur = 2.5, nivel = 1.15 } = {}) {
+  const ordenadas = [...existentes].sort((a, b) => a.inicio - b.inicio);
+  const novas = [];
+  let cursor = 0;
+  const tentarBuraco = (ini, fim) => {
+    if (fim - ini > gapMax) {
+      const meio = (ini + fim) / 2;
+      novas.push({ inicio: meio - dur / 2, fim: meio + dur / 2, foco: { x: 0.5, y: 0.5 }, nivel });
+    }
+  };
+  for (const r of ordenadas) {
+    tentarBuraco(cursor, r.inicio);
+    cursor = Math.max(cursor, r.fim);
+  }
+  tentarBuraco(cursor, duracaoTotal);
+  return [...existentes, ...novas].sort((a, b) => a.inicio - b.inicio);
+}

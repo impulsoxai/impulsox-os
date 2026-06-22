@@ -7,7 +7,7 @@ import {
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
   cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan,
   posicaoOverlay, filtroBolhaWebcam, spansFiller, LISTA_FILLER,
-  mesclarCortes, filtroEscala9x16,
+  mesclarCortes, filtroEscala9x16, punchInRegioes,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -492,4 +492,23 @@ test("filtroEscala9x16 monta scale-cover + crop central + setsar", () => {
 });
 test("filtroEscala9x16 usa default 1080x1920", () => {
   assert.ok(filtroEscala9x16().includes("1080:1920"));
+});
+
+test("punchInRegioes insere zoom no buraco maior que gapMax", () => {
+  const existentes = [{ inicio: 2, fim: 4, foco: { x: 0.3, y: 0.3 }, nivel: 1.4 }];
+  const out = punchInRegioes(30, existentes, { gapMax: 12, dur: 2.5, nivel: 1.15 });
+  assert.ok(out.length >= 2);
+  const punch = out.find((r) => r.nivel === 1.15);
+  assert.ok(punch);
+  assert.deepEqual(punch.foco, { x: 0.5, y: 0.5 });
+});
+test("punchInRegioes não insere quando não há buraco grande", () => {
+  const existentes = [{ inicio: 0, fim: 8, foco: { x: 0.5, y: 0.5 }, nivel: 1.4 }];
+  const out = punchInRegioes(8, existentes, { gapMax: 12 });
+  assert.equal(out.filter((r) => r.nivel === 1.15).length, 0);
+});
+test("punchInRegioes em vídeo sem regiões preenche os buracos", () => {
+  const out = punchInRegioes(30, [], { gapMax: 12, dur: 2.5, nivel: 1.15 });
+  assert.ok(out.length >= 1);
+  assert.ok(out.every((r) => r.nivel === 1.15));
 });
