@@ -2,99 +2,120 @@
 name: desempenho
 description: >
   Use quando é hora de medir o que foi publicado e aprender com isso — "/desempenho",
-  "como foram os posts?", "o que funcionou esse mês?", "fecha o ciclo", ou no fim de
-  cada mês antes do próximo /calendario. Puxa métricas reais do Instagram via Graph API
-  (ou recebe do usuário quando não há API), destila padrões duradouros em
-  nucleo/aprendizados.md e alimenta o próximo ciclo de planejamento. É o elo que fecha
-  o circuito: decide → produz → publica → mede → corrige.
+  "como foram os posts?", "como foi o vídeo?", "o que funcionou esse mês?", "mede a
+  retenção", "fecha o ciclo", ou no fim de cada mês antes do próximo /calendario. PORTA
+  ÚNICA pra YouTube E Instagram: detecta a plataforma, usa a régua certa de cada uma
+  (YouTube = retenção/curva/CTR · Instagram = save/send/reach), diagnostica o que
+  consertar APONTANDO a skill que resolve, destila padrões em nucleo/aprendizados.md e
+  alimenta o próximo ciclo. É o elo que fecha o circuito: decide → produz → publica →
+  mede → corrige.
 ---
 
-# /desempenho — Medir, aprender, realimentar
+# /desempenho — Medir, aprender, realimentar (YouTube + Instagram)
 
 Conteúdo sem medição é circuito aberto. Esta skill pega o que `/publicar` levou ao ar,
-busca os números reais, separa o que repetir do que abandonar, e grava as conclusões
-onde o `/calendario` vai ler no próximo ciclo. O sistema corrige a própria rota.
+busca os números reais, separa o que repetir do que abandonar, **diz qual skill conserta
+cada problema**, e grava as conclusões onde o `/calendario` vai ler no próximo ciclo.
 
-Autoria: ImpulsoX AI. Conteúdo original.
+**YouTube e Instagram medem coisas DIFERENTES** — a skill usa a régua certa de cada um:
+- **YouTube:** watch time + **curva de retenção** (onde o viewer abandona) + CTR. O sinal é
+  a curva.
+- **Instagram:** **sends/reach** (sinal nº1 da Meta) + **saves/reach**. Não tem curva; tem
+  save/send. (Impressions morreu em 2026 — usa-se Views/Reach.)
+
+Autoria: ImpulsoX AI.
+
+## Passo 0 — Detectar a plataforma
+
+Antes de tudo, saber se é YouTube ou Instagram: perguntar, OU inferir do dado colado/CSV —
+se tem coluna `Average percentage viewed` / fala de retenção → **YouTube**; se tem
+`Saves`/`Reach`/`Shares` → **Instagram**. A régua e o diagnóstico mudam conforme isso.
 
 ## Degrau mínimo (Escada de Contexto)
 
-Funciona em dois modos:
+Dois modos, qualquer plataforma:
 
-- **Automático (preferido):** existe `.env` com `IG_USUARIO_ID` e `META_TOKEN_PAGINA`
-  (as mesmas credenciais do `/publicar`) e `producao/publicacoes.md` tem ids
-  registrados → o sistema busca tudo sozinho.
-- **Manual (sem API):** o usuário cola os números do app do Instagram (alcance,
-  salvamentos, compartilhamentos, curtidas, comentários, novos seguidores por post) ou
-  manda prints. Registrar com a fonte anotada ("informado manualmente em [data]").
-  Nunca travar por falta de credencial.
+- **Colar / CSV (v1, sempre funciona):** o dono cola os números do app/Studio, ou aponta o
+  CSV exportado — **YouTube Studio:** Analytics → Advanced → Export current view (CSV);
+  **Instagram:** Business Suite → Insights → Content → Export Data. O parser
+  (`scripts/lib-desempenho.mjs`, `parsearCsv`) normaliza as colunas (mapa de aliases;
+  Impressions é ignorado de propósito).
+- **API (v2, quando conectada):** YouTube Analytics API (`scripts/metricas-youtube.mjs`,
+  OAuth `yt-analytics.readonly`) / Instagram Graph API (`instagram_manage_insights`). Avisar
+  que existe; o setup de OAuth fica pra quando o dono quiser automatizar.
 
-Quando dados reais entram pela primeira vez, atualizar `nucleo/escada.md`: o contexto
-subiu ao **degrau 4** no eixo de conteúdo orgânico.
+Nunca travar por falta de credencial — o colar resolve. Quando dados reais entram pela 1ª
+vez, atualizar `nucleo/escada.md` (degrau 4 no eixo de conteúdo).
 
 ## O que ler antes
 
-- `producao/publicacoes.md` — ids e datas do que foi publicado
-- `producao/calendario/<mes>.md` — intenção e tema planejados de cada peça
-- `nucleo/aprendizados.md` — o que já se sabe (pra confirmar ou revisar, não redescobrir)
+- `producao/publicacoes.md` — ids/datas do publicado · `producao/calendario/<mes>.md` —
+  tema/intenção planejados · `nucleo/aprendizados.md` — o que já se sabe (confirmar, não redescobrir).
 
-## Coleta (modo automático)
+## Cálculo — sempre no script, nunca de cabeça
 
-Cálculo de métrica é trabalho de script, nunca de cabeça — mesmo princípio do
-`/analisar-ads`. As chamadas vivem em `scripts/desempenho-instagram.mjs` (Node, só
-`fetch`, lê o `.env`). Se o script ainda não existe, criar na primeira execução pedindo
-aprovação do código ao usuário. O script deve:
+Todo número sai de `scripts/lib-desempenho.mjs` (funções puras, determinísticas — regra da
+casa). O modelo interpreta, o script calcula:
 
-1. Ler os ids de `producao/publicacoes.md`.
-2. Buscar por publicação: alcance, impressões, salvamentos, compartilhamentos,
-   curtidas, comentários, visitas ao perfil e cliques no link quando disponíveis.
-3. Calcular taxas (salvamento/alcance, compartilhamento/alcance, interação total/alcance)
-   e imprimir tabela ordenável em texto — números prontos, zero aritmética pro modelo.
-4. Erro de API: imprimir a resposta literal. Token expirado é a causa mais comum
-   (renovar pelo guia do `/publicar`).
+- **Instagram:** `taxasInstagram` → save_rate (saved/reach), send_rate (shares/reach),
+  reach_rate (reach/seguidores). `diagnosticarInstagram` → consertos.
+- **YouTube:** `taxasYouTube` → AVD vs faixa de duração, CTR vs a **média do próprio canal**
+  (benchmark fixo engana — CTR cai com impressões), retenção do 1º minuto, watch time.
+  `detectarCurva` (quando há a série ponto-a-ponto, colada ou da API) → intro dip / cliffs /
+  spikes. `diagnosticarYouTube` → consertos.
+
+## Régua / benchmarks (pesquisa 2026)
+
+- **Instagram:** save_rate <2% fraco · 3-6% sólido · 6%+ forte. reach_rate <10% fraco ·
+  10-20% médio · 20-30%+ bom. **Régua por formato:** reel = views/retenção/sends; carrossel =
+  saves/swipe-through (≥65%)/completion (≥55%). Vaidade (só medir): likes, seguidores.
+- **YouTube:** AVD bom por duração — <5min 50-70% · 5-15min 40-55% · 15-30min 30-45% · Shorts
+  70%+ (educacional/PME ~42% é normal). Retenção 1º minuto alvo ≥65-70%. Vaidade: views,
+  inscritos (Shorts views infláveis — usar Engaged Views).
+
+## Diagnóstico acionável — cada problema aponta a SKILL que conserta
+
+É o coração da skill: não basta dizer "caiu", tem que dizer **o que rodar pra consertar**.
+`diagnosticar*` devolve a lista; traduzir pro dono em linguagem simples:
+
+| Sintoma | Conserto → skill |
+|---|---|
+| YT: AVD baixo + retenção despenca nos 30s | hook fraco → **`/roteiro-yt`** (hook + intro=thumbnail) |
+| YT: CTR abaixo da média + quem assiste fica | capa/título → **`/roteiro-yt`** (15-20 títulos) + **`/thumbnail`** |
+| YT: queda abrupta no meio (cliff) | corte/tangente → **`/editar-video`** (filler/punch-in) |
+| YT: declínio gradual | pacing lento → **`/editar-video`** (apertar a edição) |
+| IG: save_rate baixo | sem valor guardável → **`/post`** (slide-resumo "salva isto") |
+| IG: send ~0 | não relatável → **`/post`** / **`/reel-marca`** (gancho de envio) |
+| IG: reach baixo | testar reel + refazer hook 3s → **`/reel-marca`** |
+| O que deu spike/forte | repetir → vai pro `aprendizados.md` com prioridade |
 
 ## Análise — separar sinal de ruído
 
-Cruzar número com o que o calendário diz sobre cada peça (tema, formato, intenção):
-
-- **Sinais fortes:** salvamentos e compartilhamentos (indicam valor real); novos
-  seguidores atribuíveis. Curtida é o sinal mais fraco — nunca ranquear só por ela.
-- Comparar **dentro do mesmo formato** (carrossel com carrossel) antes de comparar
-  formatos entre si.
-- Procurar padrão, não pico: um post viral isolado é anedota; três posts de "ensinar"
-  superando todos os de "vender" é padrão.
-- **Validar fórmulas:** quando a peça registrou a fórmula usada (de `docs/formulas.md`),
-  cruzar molde × resultado e atualizar o status da fórmula no arquivo — promover a
-  **validada aqui** ou rebaixar a **não funciona neste nicho** (duas tentativas fracas).
-- Menos de ~8 peças publicadas no período → relatório sai, mas conclusões marcadas
-  como **tendência fraca (amostra pequena)**, não como aprendizado consolidado.
+- Comparar **dentro do mesmo formato** antes de comparar formatos.
+- Procurar **padrão, não pico** — um viral isolado é anedota; três peças de "ensinar"
+  batendo as de "vender" é padrão.
+- **Validar fórmulas:** cruzar molde × resultado e atualizar o status em `docs/formulas.md` /
+  `canal-youtube/formulas-video.md` (validada / não funciona neste nicho).
+- <~8 peças (IG) ou vídeo com <7-14 dias (YT) → conclusões marcadas como **tendência fraca
+  (amostra pequena)**, não aprendizado consolidado.
 
 ## Saídas
 
-**1. Relatório do período** em `producao/relatorios/desempenho-<YYYY-MM>.md`:
-tabela completa por peça, top 3 / bottom 3 com hipótese do porquê em uma linha cada,
-e recomendação concreta pro mês seguinte (o que aumentar, o que cortar, o que testar).
-
-**2. Aprendizados duradouros** em `nucleo/aprendizados.md` — só o que sobrevive ao mês:
-padrões confirmados ("carrossel de erro comum salva 3x mais que dica solta"), não
-números crus nem casos isolados. Cada entrada com data e evidência em uma linha.
-Aprendizado novo que contradiz um antigo → revisar o antigo, não acumular contradição.
-
-**3. Status no calendário** — marcar as peças medidas.
+1. **Relatório do período** em `producao/relatorios/desempenho-<YYYY-MM>.md`: tabela por peça,
+   top/bottom 3 com hipótese, e **as recomendações apontando a skill** pro próximo ciclo.
+2. **Aprendizados duradouros** em `nucleo/aprendizados.md` — só o que sobrevive ao mês
+   (padrões confirmados, com data e evidência). Contradição → revisar o antigo, não acumular.
+3. **Status no calendário** — marcar as peças medidas.
 
 ## Fechar o ciclo
-
-Ao terminar, conectar com o planejamento:
 
 > "Esses aprendizados já ficam valendo: o próximo `/calendario` monta o mês lendo o que
 > funcionou aqui. Quer que eu já monte?"
 
 ## Regras
 
-- Número só de fonte real (API ou informado pelo usuário). Estimativa inventada não
-  entra em relatório nem em aprendizado — nunca.
-- Cálculo no script, interpretação no modelo. Nada de aritmética "de cabeça".
-- `nucleo/aprendizados.md` é destilado, não arquivo morto: máximo ~15 entradas vivas;
-  aprendizado superado é removido ou revisado.
-- Sem auto-elogio: se o mês foi fraco, o relatório diz que foi fraco e por quê.
-- Token e credencial jamais aparecem em log, relatório ou conversa.
+- Número só de fonte real (API ou colado). Estimativa inventada nunca entra.
+- Cálculo no script (`lib-desempenho.mjs`), interpretação no modelo. Nada de aritmética de cabeça.
+- `nucleo/aprendizados.md` é destilado (máx ~15 entradas vivas); superado é removido/revisado.
+- Sem auto-elogio: mês fraco, o relatório diz que foi fraco e por quê.
+- Token/credencial jamais em log, relatório ou conversa.
