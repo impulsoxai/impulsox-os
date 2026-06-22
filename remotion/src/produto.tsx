@@ -148,16 +148,32 @@ export const Browser: React.FC<{ url: string; children: React.ReactNode; largura
 };
 
 // ─── Scroll da página: a imagem full-page rola dentro do viewport ───
-export const ScrollPagina: React.FC<{ src: string; delay?: number; dur?: number; maxScroll?: number }> = ({
-  src, delay = 0, dur = 130, maxScroll = 45,
-}) => {
+// `ratio` (altura/largura do PNG) + `viewport` (px do Browser) → o componente calcula
+// SOZINHO o quanto pode rolar sem sobrar BRANCO no fim. translateY em % é da altura da
+// própria imagem; rolar além de (1 - viewport/imgH)*100 mostra o fundo vazio. Por isso
+// trava o scroll nesse limite. Sem `ratio`, cai pro maxScroll manual (compat. antigo).
+export const ScrollPagina: React.FC<{
+  src: string; delay?: number; dur?: number; maxScroll?: number; ratio?: number; viewport?: number; largura?: number; tetoPct?: number;
+}> = ({ src, delay = 0, dur = 130, maxScroll = 45, ratio, viewport, largura, tetoPct }) => {
   const frame = useCurrentFrame();
   const f = Math.max(0, frame - delay);
-  // rola de 0% até -maxScroll% (hero → 1ª seção); maxScroll baixo evita parar no vazio
-  const y = interpolate(f, [0, dur], [0, -maxScroll], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  // limite seguro: rola até o RODAPÉ da página caber no viewport, nunca além (sem branco)
+  let limite = maxScroll;
+  if (ratio && viewport && largura) {
+    const imgH = largura * ratio;
+    limite = imgH > viewport ? (1 - viewport / imgH) * 100 : 0;
+  }
+  // tetoPct: trava o scroll mais curto ainda (parar ANTES de uma seção clara/vazia da página)
+  if (tetoPct != null) limite = Math.min(limite, tetoPct);
+  const y = interpolate(f, [0, dur], [0, -limite], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
     <Img src={src} style={{ width: "100%", position: "absolute", top: 0, left: 0, transform: `translateY(${y}%)` }} />
   );
+};
+
+// proporção (altura/largura) dos PNGs full-page reais, p/ o scroll calcular o limite seguro
+export const RATIO_PAGINA: Record<string, number> = {
+  restaurante: 4.88, tecnologia: 2.87, construtora: 4.52, impulsox: 4.43,
 };
 
 // ─── Leque de 3 páginas (browsers em profundidade) ───
