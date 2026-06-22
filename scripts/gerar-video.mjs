@@ -17,8 +17,8 @@
  * Pipeline: still on-brand por cena -> anima (Fal) -> costura (ffmpeg) -> legenda
  *   -> trilha -> 1080x1920. NADA gera antes do roteiro aprovado; final passa por /revisar.
  */
-import { readFileSync, existsSync, writeFileSync, mkdtempSync } from "node:fs";
-import { execFileSync } from "node:child_process";
+import { readFileSync, existsSync, writeFileSync, mkdtempSync, mkdirSync, renameSync } from "node:fs";
+import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
@@ -148,6 +148,42 @@ if (import.meta.main) {
   const saida = flag("--saida") || join(dirname(roteiroPath), `${roteiro.slug || "reel"}.mp4`);
   const ref = flag("--ref");
   const trilha = flag("--trilha");
+
+  // --- VOZ (opcional): cada clipe dura o tempo da fala que o narra -------------
+  const vozDir = flag("--voz");   // pasta com cena-01.mp3, cena-02.mp3... (voz real)
+  const ttsVoz = flag("--tts");   // voiceId do ElevenLabs (voz por IA)
+  const temVoz = Boolean(vozDir || ttsVoz);
+  let falasAudio = []; // caminho do mp3 de cada cena, na ordem
+  if (temVoz) {
+    const baseFalas = join("canal-youtube", "broll", roteiro.slug || "reel", "falas");
+    mkdirSync(baseFalas, { recursive: true });
+    if (ttsVoz) {
+      const { gerarTTS, estimarCustoTTS } = await import("./gerar-tts.mjs");
+      const textos = cenas.map((c) => c.narracao || "");
+      const custo = estimarCustoTTS(textos);
+      console.log(`TTS: ${textos.length} falas, custo estimado $${custo.toFixed(2)}.`);
+      if (!has("--confirmar")) { console.log("rode com --confirmar pra gerar o TTS (gasta crédito)."); process.exit(0); }
+      for (let i = 0; i < cenas.length; i++) {
+        const saidaFala = join(baseFalas, `cena-${String(i + 1).padStart(2, "0")}.mp3`);
+        await gerarTTS({ texto: cenas[i].narracao || "", voz: ttsVoz, saida: saidaFala });
+        falasAudio.push(saidaFala);
+      }
+    } else {
+      for (let i = 0; i < cenas.length; i++) {
+        const arq = join(vozDir, `cena-${String(i + 1).padStart(2, "0")}.mp3`);
+        if (!existsSync(arq)) falhar(`falta o áudio da cena ${i + 1}: ${arq}`);
+        falasAudio.push(arq);
+      }
+    }
+    // mede cada fala e casa a duração nas cenas (a fala manda)
+    const dur = falasAudio.map((a) => {
+      const r = spawnSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1", a], { encoding: "utf8" });
+      return duracaoAudio(r.stdout || "");
+    });
+    const casadas = casarDuracoes(cenas, dur);
+    for (let i = 0; i < cenas.length; i++) cenas[i].segundos = casadas[i].segundos;
+    console.log("durações casadas com a voz: " + cenas.map((c) => c.segundos + "s").join(", "));
+  }
   const GERAR_IMG = fileURLToPath(new URL("./gerar-imagem.mjs", import.meta.url));
 
   // ffmpeg presente?
@@ -231,6 +267,34 @@ if (import.meta.main) {
   const fonte = process.env.REEL_FONTE || "C:/Windows/Fonts/arialbd.ttf"; // a skill passa a fonte da marca
   const cor = process.env.REEL_COR || "#d4af37";
   execFileSync("ffmpeg", argsFfmpeg({ clipes, legendas, duracoes, trilha, saida, largura: LARGURA, altura: ALTURA, fonte, cor }), { stdio: "inherit" });
+  if (temVoz) {
+    const baseOut = join("canal-youtube", "broll", roteiro.slug || "reel");
+    mkdirSync(baseOut, { recursive: true });
+    // 1) junta as falas numa trilha de voz contínua
+    const vozUnica = join(baseOut, "_voz.mp3");
+    const listaVoz = join(baseOut, "_voz.txt");
+    writeFileSync(listaVoz, falasAudio.map((a) => `file '${a.replace(/\\/g, "/")}'`).join("\n"));
+    execFileSync("ffmpeg", ["-y", "-f", "concat", "-safe", "0", "-i", listaVoz, "-c", "copy", vozUnica], { stdio: "inherit" });
+    // 2) mixa voz (+trilha opcional abaixada) sobre o vídeo mudo
+    const comVoz = join(baseOut, "_comvoz.mp4");
+    execFileSync("ffmpeg", mixVozTrilha({ video: saida, voz: vozUnica, trilha, saida: comVoz }), { stdio: "inherit" });
+    // 3) karaokê: transcreve a voz e queima a legenda palavra-a-palavra (reusa o motor existente)
+    try {
+      const { transcrever } = await import("./transcrever-local.mjs");
+      const { montarASS, filtroLegendaAss } = await import("./lib-edicao.mjs");
+      const palavras = transcrever(vozUnica);
+      if (palavras.length) {
+        const ass = join(baseOut, "_karaoke.ass");
+        writeFileSync(ass, montarASS(palavras));
+        execFileSync("ffmpeg", ["-y", "-i", comVoz, "-vf", filtroLegendaAss({ assCaminho: ass }), "-c:a", "copy", saida], { stdio: "inherit" });
+      } else {
+        renameSync(comVoz, saida);
+      }
+    } catch (e) {
+      console.error("AVISO: karaokê pulado — " + e.message);
+      renameSync(comVoz, saida);
+    }
+  }
   registrarCusto({ script: "gerar-video", modelo: modeloVideo, custo: Number(custoVideo.toFixed(2)) });
   console.log(JSON.stringify({ ok: true, saida, cenas: cenas.length, duracao_total: duracaoTotal }, null, 2));
 }
