@@ -33,7 +33,7 @@ test("argsCapturaTela monta gdigrab desktop -> mp4", () => {
   const a = argsCapturaTela({ fps: 30, saida: "out/tela.mp4" });
   assert.deepEqual(a, [
     "-y", "-f", "gdigrab", "-framerate", "30", "-i", "desktop",
-    "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
+    "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p",
     "-movflags", "+faststart", "out/tela.mp4",
   ]);
 });
@@ -51,7 +51,7 @@ test("argsCapturaWebcam monta dshow webcam+mic -> mp4", () => {
   assert.deepEqual(a, [
     "-y", "-f", "dshow", "-framerate", "30",
     "-i", "video=HD User Facing:audio=Grupo de microfones (Realtek(R) Audio)",
-    "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
+    "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p",
     "-c:a", "aac", "-movflags", "+faststart", "out/webcam.mp4",
   ]);
 });

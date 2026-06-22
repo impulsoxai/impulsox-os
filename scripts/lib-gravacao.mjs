@@ -26,11 +26,12 @@ export function parseDispositivosDshow(saida) {
 }
 
 // Args do ffmpeg pra capturar a TELA inteira (gdigrab, Windows) -> mp4 sem áudio.
-// faststart deixa o moov atom utilizável; libx264 veryfast pra não pesar a CPU na captura.
+// faststart deixa o moov atom utilizável. CRF 18 (quase sem perda) + preset fast: texto/UI
+// nítido na gravação de tela — CRF 23 (default) borra letra pequena e ícones.
 export function argsCapturaTela({ fps = 30, saida }) {
   return [
     "-y", "-f", "gdigrab", "-framerate", String(fps), "-i", "desktop",
-    "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
+    "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p",
     "-movflags", "+faststart", saida,
   ];
 }
@@ -41,7 +42,7 @@ export function argsCapturaWebcam({ webcam, mic, fps = 30, saida }) {
   return [
     "-y", "-f", "dshow", "-framerate", String(fps),
     "-i", `video=${webcam}:audio=${mic}`,
-    "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
+    "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p",
     "-c:a", "aac", "-movflags", "+faststart", saida,
   ];
 }
