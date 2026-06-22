@@ -48,10 +48,26 @@ Baseado em dados (memória `reel-formula-viral`). Métrica a perseguir: **reten�
 - **RESULTADO primeiro** (Show End First): mostrar o payoff cedo (o antes/depois, o prato pronto,
   a página no ar), depois o "como". O cérebro se compromete a ver o resto.
 - **CTA só no FIM**, depois do payoff. Nunca no hook. Só ~15% promo.
+- **CTA de negócio local = ação + prova de local.** Pra PME local, o CTA que converte é o verbo
+  do negócio ("Agende", "Chame no WhatsApp", "Peça agora", "Reserve" — vem da oferta ATIVA) +
+  prova de local quando o nicho pede: a fachada, o ponto, "atende em [bairro/cidade]" (do
+  `nucleo/negocio.md`). É o que ancora o lead local e serve de capa no Google Business Profile.
 - **Marca/assinatura SÓ no FIM** — logo/intro animada no começo o algoritmo lê como ANÚNCIO e
   derruba o alcance. O reel NÃO abre com a marca.
 
 **Duração-alvo por tipo:** viral/showcase 7-15s · dica/produto 15-30s · educativo/tutorial 30-60s.
+
+## Objetivo do reel: salvar ou enviar (decidir ANTES do storyboard)
+
+Em 2026 o sinal que mais distribui não é o like — é **save** (~2-3x) e **send/DM** (~3-5x; fator
+nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual o reel é desenhado:
+
+- **Pra SALVAR** — precisa de um frame-resumo guardável (o "print que vale guardar": o antes/
+  depois, a tabela de preço, o checklist). Costuma ser a penúltima cena.
+- **Pra ENVIAR** — precisa de um gancho explícito no fim ("manda isso pro dono do [negócio]"). O
+  conteúdo tem que ser relatável o bastante pra virar "isso é a sua cara".
+
+É o 1º filtro do briefing. Reel que não mira save NEM send fica bonito e some.
 
 ## Pré-requisitos (Escada de Contexto)
 
@@ -88,8 +104,12 @@ Baseado em dados (memória `reel-formula-viral`). Métrica a perseguir: **reten�
 11. **Audita 1 frame por cena** (`npx remotion still ... --frame=N`) antes do full render.
 12. **Renderiza:** `npx remotion render remotion/src/index.ts <CompId>
     producao/reels/<slug>/reel.mp4` (`--gl=angle` se logo 3D). Guarda o `.tsx`.
+13. **Gera a capa (cover):** `npx remotion still remotion/src/index.ts <CompId>
+    producao/reels/<slug>/capa.png --frame=<N>`. Default `N` = um frame do MONEY SHOT (a cena do
+    produto/resultado real — melhor prova visual). A skill sugere o frame; ajustável vendo o
+    render. A capa serve de thumbnail/post estático e de vídeo-capa no Google Business Profile.
 
-Fechar com: "✓ reel pronto: `producao/reels/<slug>/reel.mp4` · → `/revisar` ou `/publicar`."
+Fechar com: "✓ reel pronto: `producao/reels/<slug>/reel.mp4` + `capa.png` · → `/revisar` ou `/publicar`."
 
 ## Cenas de PROVA (fortes em qualquer nicho)
 
@@ -130,9 +150,12 @@ conteúdo é o DELE.
 
 ## Saída
 
-`producao/reels/<slug>/reel.mp4` (9:16, 1080x1920, legenda queimada) + a composição `.tsx`. A
-produção fica no clone; o motor desce do template via `/atualizar-motor` e nunca é sobrescrito.
+`producao/reels/<slug>/reel.mp4` (9:16, 1080x1920, legenda queimada) + `capa.png` (cover pra
+thumbnail/GBP) + a composição `.tsx`. A produção fica no clone; o motor desce do template via
+`/atualizar-motor` e nunca é sobrescrito.
 
 ## Formato
 
-v1: só 9:16 vertical. Multi-formato (1:1, 16:9) é melhoria futura.
+v1: só 9:16 vertical + capa still. **Multi-formato (1:1, 4:5, 16:9)** e **cutdowns (15s/5s)** são
+lote futuro — exigem layout responsivo (as cenas hoje são calibradas em px fixos pro 9:16) e peça
+dedicada (cutdown bem-feito é hook+payoff com ritmo próprio, não corte cego do mp4).
