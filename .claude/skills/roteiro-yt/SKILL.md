@@ -296,6 +296,16 @@ pro `nucleo/aprendizados.md` e ganha prioridade no próximo roteiro.
 
 - Pacote (título+thumbnail) é decisão central, não rabicho — projetado cedo (Passo 2),
   fechado no fim (Passo 8). O clique é upstream de tudo.
+- **Fundo sem prova autorizada vira meio.** Vídeo de FUNDO precisa de prova real e AUTORIZADA
+  (`nucleo/provas.md`) e de oferta ATIVA (`nucleo/ofertas.md`). Sem prova autorizada, NÃO
+  inventar depoimento/número — avisar o dono e roteirizar como MEIO ("não há prova autorizada
+  pra sustentar um vídeo de fundo; vou como meio, que constrói confiança sem prometer caso que
+  não posso provar"). Peça pública só usa prova autorizada e só vende oferta ATIVA (CLAUDE.md).
+- **Mix de funil (orientação, não trava):** a régua de partida é **60% topo / 30% meio / 10%
+  fundo** (piso 40% topo, ao menos 1 fundo por ciclo). O erro comum do mercado é falta de fundo
+  (só ~14% dos criadores fazem fundo) — não excesso de venda. Lembrar isso ao dono quando ele
+  só pedir vídeos de topo. (O `/calendario` ainda não distribui o mix — por ora é só nota; é
+  suposição a calibrar com performance real.)
 - **Contrato Quality-CTR:** o hook entrega o que o pacote prometeu, nos primeiros 30s.
   Sem clickbait-mismatch — o algoritmo de 2026 pune clique alto com retenção baixa.
 - Corpo antes do hook, sempre — hook calibrado no que já foi escrito, nunca no vácuo.
