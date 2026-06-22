@@ -36,6 +36,46 @@ Autoria: ImpulsoX AI. Conteúdo original.
 3. **Long-form ou short?** Se não foi dito, perguntar — muda a estrutura inteira (ver
    abaixo).
 
+## Passo 0 — Estágio de funil (inferir e confirmar)
+
+Antes de escrever, definir em que momento da jornada o vídeo entra — topo, meio ou fundo de
+funil. Roteiro de topo e de fundo são DIFERENTES; sem isso, todo vídeo sai com o mesmo molde e
+ou só atrai sem vender, ou vende cedo e espanta. (Base de dados: pesquisa de funil de vídeo
+2026 — resumida abaixo.)
+
+**Inferir do tema, depois confirmar com o dono** (ele pode não conhecer o conceito — explicar
+em 1 linha):
+
+- **TOPO (descoberta)** — tema é dor ampla / curiosidade / "os erros que…", sem oferta nem
+  prova. Job: atrair quem nem sabe do problema. Ex.: "3 erros que travam seu resultado".
+- **MEIO (consideração)** — tema é "como funciona", "passo a passo", "X ou Y?", comparação,
+  bastidores. Job: construir confiança. Ex.: "Como funciona o atendimento, passo a passo".
+- **FUNDO (conversão)** — tema é prova / oferta / "antes e depois" / case com número /
+  depoimento. Job: converter. Ex.: "Cliente saiu de X e chegou em Y — veja como".
+
+Apresentar assim (exemplo): *"Esse tema parece **TOPO** — atrai quem nem sabe do problema,
+sem chamar pra comprar. Confirma, ou é meio/fundo?"*. O dono confirma ou corrige.
+
+> Escada de Contexto: se um dia o tema vier do `/tema-yt` já com o estágio marcado, usar a
+> marca. Por ora o `/tema-yt` não marca — então sempre inferir e confirmar aqui.
+
+### Como o estágio calibra o pacote e o roteiro
+
+Depois de definido o estágio, ele é a lente que ajusta os próximos passos (hook do Passo 5, CTA
+do Passo 4, prova, duração). A régua (pesquisa 2026):
+
+| | TOPO | MEIO | FUNDO |
+|---|---|---|---|
+| **Hook** | trend / dor relatável / opinião forte | promessa de aprender ("passo a passo", "como eu faço") | prova / oferta ("antes e depois", "ela usou e…") |
+| **CTA** | NENHUM ou só "salva/segue" — não pede compra | leve ("quer o guia?", link, e-mail) | DIRETO (agende, compre, link na bio, urgência real) |
+| **Tom** | não-promocional, entreter/educar | útil, sem empurrar | promocional assumido + reasseguramento |
+| **Duração** | curtíssimo (short 15-60s, foco nos 3 primeiros segundos) | mais longo (tutorial 3-15min) | médio (demo/case 30s-2min, ou walkthrough 10-15min) |
+| **Prova** | quase nenhuma | social proof leve, bastidores | PESADA (depoimento, antes/depois com número) |
+| **De onde vem o conteúdo** | dor do cliente: `nucleo/perfil.md`, `nucleo/voz.md`, dor em `nucleo/negocio.md` | expertise: diferenciais em `nucleo/negocio.md`, objeções em `nucleo/ofertas.md` | oferta ATIVA em `nucleo/ofertas.md` + prova em `nucleo/provas.md` |
+
+Regra-mãe: **topo = dor do cliente · meio = expertise do negócio · fundo = oferta + prova.**
+Aplicar essa lente quando montar o pacote (Passo 2), o hook (Passo 5) e o CTA (Passo 4).
+
 ## Passo 1 — Ler os moldes (fórmula de quem já faz sucesso vem primeiro)
 
 Ordem de leitura:
