@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseDispositivosDshow, argsCapturaTela, argsCapturaWebcam, resolverDispositivos } from "./lib-gravacao.mjs";
+import { parseDispositivosDshow, argsCapturaTela, argsCapturaWebcam, resolverDispositivos, acharLoopback, argsCapturaSistema } from "./lib-gravacao.mjs";
 
 const SAIDA = `[in#0 @ 0x1] "HD User Facing" (video)
 [in#0 @ 0x1]   Alternative name "@device_pnp_\\\\?\\usb#vid_0408&pid_a061"
@@ -75,4 +75,27 @@ test("resolverDispositivos: mic salvo desconectado -> precisa escolher + motivo"
   const r = resolverDispositivos({ webcam: "HD User Facing", mic: "Mic USB Sumido" }, DISP);
   assert.equal(r.precisaEscolher, true);
   assert.match(r.motivo, /Mic USB Sumido|não.*conect/i);
+});
+
+test("acharLoopback acha o device de loopback do Windows por nome", () => {
+  const disp = { video: [], audio: [{ nome: "Microfone (Realtek)" }, { nome: "Mixagem estéreo (Realtek)" }] };
+  assert.equal(acharLoopback(disp), "Mixagem estéreo (Realtek)");
+});
+
+test("acharLoopback acha 'Stereo Mix' em inglês", () => {
+  const disp = { video: [], audio: [{ nome: "Stereo Mix (Realtek)" }] };
+  assert.equal(acharLoopback(disp), "Stereo Mix (Realtek)");
+});
+
+test("acharLoopback devolve null quando não há loopback", () => {
+  const disp = { video: [], audio: [{ nome: "Microfone (Realtek)" }] };
+  assert.equal(acharLoopback(disp), null);
+});
+
+test("argsCapturaSistema monta dshow do loopback -> arquivo de áudio", () => {
+  const a = argsCapturaSistema({ device: "Stereo Mix (Realtek)", saida: "out/sistema.m4a" });
+  assert.deepEqual(a, [
+    "-y", "-f", "dshow", "-i", "audio=Stereo Mix (Realtek)",
+    "-c:a", "aac", "-movflags", "+faststart", "out/sistema.m4a",
+  ]);
 });

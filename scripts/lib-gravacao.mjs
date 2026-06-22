@@ -62,3 +62,22 @@ export function resolverDispositivos(envCfg, disponiveis) {
   if (!temAudio(mic)) return { precisaEscolher: true, motivo: `o mic salvo ("${mic}") não está conectado.` };
   return { precisaEscolher: false, webcam, mic };
 }
+
+// acharLoopback — procura, na lista de devices de áudio dshow, um de loopback do sistema
+// (capta o som que SAI do PC). Nomes comuns em PT/EN. Devolve o nome ou null (PC sem loopback).
+export function acharLoopback(disponiveis) {
+  const padroes = ["mixagem estéreo", "mixagem estereo", "stereo mix", "what u hear", "virtual-audio-capturer", "loopback"];
+  const achado = (disponiveis?.audio || []).find((d) =>
+    padroes.some((p) => d.nome.toLowerCase().includes(p)),
+  );
+  return achado ? achado.nome : null;
+}
+
+// argsCapturaSistema — args do ffmpeg pra gravar o áudio do sistema (loopback) num arquivo
+// separado (sistema.m4a). O /editar-video mixa depois. Pura.
+export function argsCapturaSistema({ device, saida }) {
+  return [
+    "-y", "-f", "dshow", "-i", `audio=${device}`,
+    "-c:a", "aac", "-movflags", "+faststart", saida,
+  ];
+}
