@@ -189,3 +189,62 @@ export const LequePaginas: React.FC<{ tops: string[]; urls: string[]; delay?: nu
     </div>
   );
 };
+
+// ═══ PROVA: antes/depois (slider) + depoimento (card) — fortes em qualquer nicho ═══
+
+export function fotoProva(nome: string): string { return staticFile(`provas/${nome}`); }
+
+// ─── Antes/Depois: a foto "depois" é revelada por um slider que desliza sobre a "antes" ───
+export const AntesDepois: React.FC<{
+  antes: string; depois: string; delay?: number; dur?: number; largura?: number; altura?: number;
+}> = ({ antes, depois, delay = 0, dur = 70, largura = 620, altura = 820 }) => {
+  const frame = useCurrentFrame();
+  const f = Math.max(0, frame - delay);
+  // a linha de revelação vai de 8% (mostra quase só "antes") a 92% (quase só "depois")
+  const pos = interpolate(f, [0, dur], [8, 92], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <div style={{ position: "relative", width: largura, height: altura, borderRadius: 16, overflow: "hidden", boxShadow: `0 30px 90px rgba(0,0,0,0.55)`, border: `1px solid ${C.dourado}22` }}>
+      {/* base = depois */}
+      <Img src={depois} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+      {/* antes por cima, cortado no slider */}
+      <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
+        <Img src={antes} style={{ width: largura, height: altura, objectFit: "cover" }} />
+      </div>
+      {/* linha + alça do slider */}
+      <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: 3, background: C.dourado, boxShadow: `0 0 16px ${C.dourado}` }}>
+        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 44, height: 44, borderRadius: "50%", background: C.dourado, display: "flex", alignItems: "center", justifyContent: "center", color: "#000", fontWeight: 700, fontSize: 22 }}>⟷</div>
+      </div>
+      {/* rótulos */}
+      <div style={{ position: "absolute", top: 18, left: 18, fontFamily: "monospace", fontSize: 18, letterSpacing: "0.12em", color: "#fff", background: "rgba(0,0,0,0.45)", padding: "4px 12px", borderRadius: 6 }}>ANTES</div>
+      <div style={{ position: "absolute", top: 18, right: 18, fontFamily: "monospace", fontSize: 18, letterSpacing: "0.12em", color: "#000", background: C.dourado, padding: "4px 12px", borderRadius: 6 }}>DEPOIS</div>
+    </div>
+  );
+};
+
+// ─── Depoimento: card glassmorphism com aspas, texto, autor e estrelas ───
+export const Depoimento: React.FC<{
+  texto: string; autor: string; estrelas?: number; foto?: string; delay?: number;
+}> = ({ texto, autor, estrelas = 5, foto, delay = 0 }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = spring({ frame: frame - delay, fps, config: { damping: 16 } });
+  const op = interpolate(s, [0, 1], [0, 1]);
+  const y = interpolate(s, [0, 1], [40, 0]);
+  return (
+    <div style={{
+      width: 760, padding: "44px 48px", borderRadius: 20, opacity: op, transform: `translateY(${y}px)`,
+      background: "rgba(124,58,237,0.08)", backdropFilter: "blur(18px)",
+      border: `1px solid ${C.dourado}44`, boxShadow: `inset 0 1px 0 rgba(255,255,255,0.1), 0 30px 90px rgba(0,0,0,0.5)`,
+    }}>
+      <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 90, lineHeight: 0.6, color: C.dourado, opacity: 0.5 }}>“</div>
+      <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 38, fontWeight: 600, color: C.texto, lineHeight: 1.3, marginTop: 6 }}>{texto}</div>
+      <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 28 }}>
+        {foto && <Img src={foto} style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: `2px solid ${C.dourado}` }} />}
+        <div>
+          <div style={{ color: C.dourado, fontSize: 22, letterSpacing: "0.04em" }}>{"★".repeat(estrelas)}</div>
+          <div style={{ fontFamily: "monospace", fontSize: 22, color: C.textoSuave, marginTop: 2 }}>{autor}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
