@@ -6,7 +6,7 @@ import {
   argsThumbnailFrameTexto, argsThumbnailComposta, lerGlossario, corrigirTermos,
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
   cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan,
-  posicaoOverlay, filtroBolhaWebcam,
+  posicaoOverlay, filtroBolhaWebcam, spansFiller, LISTA_FILLER,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -436,4 +436,37 @@ test("filtroBolhaWebcam: sem sombra pula o gblur", () => {
     corpoFiltros: "scale=1920:1080", ladoBolha: 384, canto: "ir", margem: 40, sombra: false,
   });
   assert.doesNotMatch(filtro, /gblur=/);
+});
+
+// --- Filler (vícios de fala isolados) ---
+
+test("spansFiller acha vício isolado entre pausas", () => {
+  const palavras = [
+    { texto: "vamos", inicio: 0.0, fim: 0.4 },
+    { texto: "é", inicio: 2.0, fim: 2.3 },
+    { texto: "falar", inicio: 4.0, fim: 4.5 },
+  ];
+  const spans = spansFiller(palavras, { gapMin: 0.3 });
+  assert.equal(spans.length, 1);
+  assert.deepEqual(spans[0], { inicio: 2.0, fim: 2.3 });
+});
+
+test("spansFiller ignora vício colado na fala (não isolado)", () => {
+  const palavras = [
+    { texto: "uma", inicio: 0.0, fim: 0.5 },
+    { texto: "tipo", inicio: 0.6, fim: 0.9 },
+    { texto: "de", inicio: 1.0, fim: 1.2 },
+  ];
+  assert.deepEqual(spansFiller(palavras, { gapMin: 0.3 }), []);
+});
+
+test("spansFiller sem vícios devolve vazio", () => {
+  const palavras = [{ texto: "olá", inicio: 0, fim: 0.5 }, { texto: "mundo", inicio: 0.6, fim: 1.0 }];
+  assert.deepEqual(spansFiller(palavras), []);
+});
+
+test("LISTA_FILLER contém vícios PT-BR comuns", () => {
+  assert.ok(LISTA_FILLER.includes("é"));
+  assert.ok(LISTA_FILLER.includes("tipo"));
+  assert.ok(LISTA_FILLER.includes("né"));
 });

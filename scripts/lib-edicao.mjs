@@ -418,6 +418,28 @@ export function filtroZoompan(regioes, { fps = 30, largura = 1920, altura = 1080
   return `zoompan=z='${zExpr}':x='${focoExpr("x", "iw")}':y='${focoExpr("y", "ih")}':d=1:s=${largura}x${altura}:fps=${fps}`;
 }
 
+// Vícios de fala PT-BR (hesitações). Lista curta e SEGURA — nada que seja palavra de conteúdo
+// frequente. A remoção só corta o vício quando ISOLADO (cercado de pausa), nunca no meio da frase.
+export const LISTA_FILLER = ["é", "éé", "ééé", "tipo", "né", "então", "ãã", "ããã", "hum", "ahn", "eh", "tá"];
+
+// normaliza pra comparar: minúsculo, sem pontuação nas bordas.
+function _norm(t) { return String(t).toLowerCase().replace(/^[^\wçáàâãéêíóôõúü]+|[^\wçáàâãéêíóôõúü]+$/gi, ""); }
+
+// spansFiller — acha as palavras-vício ISOLADAS (gap de silêncio >= gapMin antes E depois, ou
+// borda do vídeo). Só essas viram corte. Pura. palavras = [{texto, inicio, fim}].
+export function spansFiller(palavras, { lista = LISTA_FILLER, gapMin = 0.3 } = {}) {
+  const set = new Set(lista.map(_norm));
+  const out = [];
+  for (let i = 0; i < palavras.length; i++) {
+    const p = palavras[i];
+    if (!set.has(_norm(p.texto))) continue;
+    const gapAntes = i === 0 ? Infinity : p.inicio - palavras[i - 1].fim;
+    const gapDepois = i === palavras.length - 1 ? Infinity : palavras[i + 1].inicio - p.fim;
+    if (gapAntes >= gapMin && gapDepois >= gapMin) out.push({ inicio: p.inicio, fim: p.fim });
+  }
+  return out;
+}
+
 // Canto da bolha -> expressão x:y do overlay do ffmpeg (com margem da borda).
 // i/s = inferior/superior; r/l = direito/esquerdo. Default: inferior-direito.
 export function posicaoOverlay(canto, margem = 40) {
