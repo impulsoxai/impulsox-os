@@ -248,3 +248,28 @@ export const Depoimento: React.FC<{
     </div>
   );
 };
+
+// ─── GradeFeedReal: grade 3x3 de feed usando as CAPAS REAIS dos carrosséis (parece IG de
+// verdade, não bloco colorido). Recebe a lista de imagens (repete pra preencher 9). ───
+export const GradeFeedReal: React.FC<{ capas: string[]; delay?: number }> = ({ capas, delay = 0 }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const nove = Array.from({ length: 9 }, (_, i) => capas[i % capas.length]);
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 168px)", gap: 8 }}>
+      {nove.map((src, i) => {
+        const s = spring({ frame: frame - delay - i * 5, fps, config: { damping: 14, stiffness: 160 } });
+        const esc = interpolate(s, [0, 1], [0.4, 1]);
+        const op = interpolate(s, [0, 0.7], [0, 1], { extrapolateRight: "clamp" });
+        return (
+          <div key={i} style={{
+            width: 168, height: 210, borderRadius: 6, overflow: "hidden", opacity: op,
+            transform: `scale(${esc})`, boxShadow: `0 6px 18px rgba(0,0,0,0.4)`, border: `1px solid ${C.dourado}22`,
+          }}>
+            <Img src={src} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          </div>
+        );
+      })}
+    </div>
+  );
+};

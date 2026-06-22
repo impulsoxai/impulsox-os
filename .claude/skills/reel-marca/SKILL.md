@@ -91,8 +91,11 @@ nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual 
 5. **Checa o que há de real** pra mostrar (peça/ativo/foto). Não achou → Escada de Contexto.
 6. **Storyboard** seguindo a estrutura de retenção (hook empilhado → resultado cedo → como/prova
    → CTA no fim, marca só no fim). Conteúdo tirado do núcleo do cliente. Tabela. **GATE 1.**
-7. **Copy na voz do CLIENTE:** legendas curtas (≤8 palavras no hook, terço superior), karaokê,
-   chamando `/copy` ou `/escritor-br` na voz do cliente. Sem grito/caixa-alta/FOMO. **GATE 2.**
+7. **Escreve TODO o texto que vai na tela e MOSTRA pro dono — antes de codar nada.** Legendas
+   curtas (≤8 palavras no hook, terço superior), karaokê, na voz do cliente (`/copy` ou
+   `/escritor-br`). Sem grito/caixa-alta/FOMO. Apresentar **cena a cena, o texto exato de cada
+   uma** (hook, legendas, kicker save/send, CTA, assinatura) numa tabela. **GATE 2 — esperar o
+   "sim". Nunca renderizar com texto não aprovado.** (Render gasta tempo; texto errado = refazer.)
 8. **Auditoria da copy:** `/revisar`. Reprovou → ajustar.
 9. **Captura o real:** páginas → `node remotion/captura-produto.mjs <slug>=<caminho-html>`;
    posts → copiar `producao/posts/<post>/slide-*.png` pra `public/carrosseis/<post>/`; fotos de
@@ -102,7 +105,7 @@ nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual 
     `remotion/src/Root.tsx`. Trilha: `public/trilhas/*.mp3` (dono escolhe; fade-in 1s/out 2s/~40%
     vol). Sem trilha → mudo (legenda queimada cobre os ~60% sem som).
 11. **Audita 1 frame por cena** (`npx remotion still ... --frame=N`) antes do full render.
-12. **Renderiza:** `npx remotion render remotion/src/index.ts <CompId>
+12. **Renderiza (só com o texto do GATE 2 aprovado):** `npx remotion render remotion/src/index.ts <CompId>
     producao/reels/<slug>/reel.mp4` (`--gl=angle` se logo 3D). Guarda o `.tsx`.
 13. **Gera a capa (cover):** `npx remotion still remotion/src/index.ts <CompId>
     producao/reels/<slug>/capa.png --frame=<N>`. Default `N` = um frame do MONEY SHOT (a cena do
