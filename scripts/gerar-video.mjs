@@ -90,6 +90,25 @@ export function casarDuracoes(cenas, duracoesAudio, { folga = 0.4 } = {}) {
   });
 }
 
+// mixVozTrilha — monta os args do ffmpeg pra juntar o vídeo (mudo) com a VOZ no volume cheio e,
+// se houver, a TRILHA abaixada (duckDb dB) por baixo. Pura (só monta args, não roda ffmpeg).
+export function mixVozTrilha({ video, voz, trilha, saida, duckDb = 18 }) {
+  const inputs = ["-i", video, "-i", voz];
+  if (trilha) inputs.push("-i", trilha);
+  const args = ["-y", ...inputs];
+  if (trilha) {
+    args.push(
+      "-filter_complex",
+      `[2:a]volume=-${duckDb}dB[m];[1:a][m]amix=inputs=2:duration=first:dropout_transition=0[aout]`,
+      "-map", "0:v", "-map", "[aout]",
+    );
+  } else {
+    args.push("-map", "0:v", "-map", "1:a");
+  }
+  args.push("-c:v", "copy", "-c:a", "aac", "-shortest", saida);
+  return args;
+}
+
 // só roda a CLI quando invocado direto (não quando importado por um teste).
 if (import.meta.main) {
   const posic = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--saida" && args[i - 1] !== "--modelo" && args[i - 1] !== "--ref" && args[i - 1] !== "--trilha");

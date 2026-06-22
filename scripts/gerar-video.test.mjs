@@ -6,7 +6,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { argsFfmpeg, duracaoAudio, casarDuracoes } from "./gerar-video.mjs";
+import { argsFfmpeg, duracaoAudio, casarDuracoes, mixVozTrilha } from "./gerar-video.mjs";
 
 const SCRIPT = fileURLToPath(new URL("./gerar-video.mjs", import.meta.url));
 const tmp = mkdtempSync(join(tmpdir(), "vid-test-"));
@@ -124,4 +124,19 @@ test("casarDuracoes mantém segundos existente quando não há áudio pra cena",
   const cenas = [{ visual: "a", segundos: 5 }];
   const out = casarDuracoes(cenas, [0], { folga: 0.4 });
   assert.equal(out[0].segundos, 5);
+});
+
+test("mixVozTrilha mixa voz e música com a música mais baixa", () => {
+  const a = mixVozTrilha({ video: "v.mp4", voz: "voz.mp3", trilha: "m.mp3", saida: "out.mp4", duckDb: 18 });
+  assert.deepEqual(a.slice(0, 6), ["-y", "-i", "v.mp4", "-i", "voz.mp3", "-i"]);
+  assert.ok(a.join(" ").includes("volume=-18dB"));
+  assert.ok(a.join(" ").includes("amix=inputs=2"));
+  assert.ok(a.join(" ").includes("out.mp4"));
+});
+
+test("mixVozTrilha sem trilha usa só a voz", () => {
+  const a = mixVozTrilha({ video: "v.mp4", voz: "voz.mp3", saida: "out.mp4" });
+  assert.deepEqual(a.slice(0, 5), ["-y", "-i", "v.mp4", "-i", "voz.mp3"]);
+  assert.ok(!a.join(" ").includes("amix"));
+  assert.ok(a.join(" ").includes("1:a"));
 });
