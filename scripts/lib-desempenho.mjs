@@ -57,9 +57,11 @@ export function detectarCurva(serie, { duracaoSeg = 0 } = {}) {
   const ini = s[0].retencao;
   const aos30 = (s.find((p) => p.tSeg >= 30) || s[s.length - 1]).retencao;
   const introDip = ini > 0 && (ini - aos30) / ini > 0.40;
+  // cliffs/spikes a partir do 2º intervalo: a queda inicial (0→30s) é o intro dip, não um cliff
+  // do meio. Cliff = queda abrupta DEPOIS da abertura.
   const cliffs = [];
   const spikes = [];
-  for (let i = 1; i < s.length; i++) {
+  for (let i = 2; i < s.length; i++) {
     const delta = s[i].retencao - s[i - 1].retencao;
     if (delta < -0.15) cliffs.push({ tSeg: s[i].tSeg, queda: Math.round(-delta * 100) / 100 });
     if (delta > 0.02) spikes.push({ tSeg: s[i].tSeg, subida: Math.round(delta * 100) / 100 });
