@@ -52,12 +52,19 @@ O ImpulsoX-OS **produz com acabamento premium, mas não desenha pro sinal que di
 
 ---
 
-## TRANSVERSAL (vale pra todas) — o maior salto
+## TRANSVERSAL (vale pra todas) — o maior salto ✅ FEITO (2026-06-22)
 
 **Fechar o loop com `/desempenho`:** ler a curva de retenção + save + send do que foi publicado
 e realimentar a próxima peça. Diagnóstico automático: dip 0-2s = promessa fraca; cliff no meio =
 dead air; spike no fim = loop funcionou. Hoje cada skill produz mas não aprende com o resultado
 real. É o que materializa "decidir→produzir→medir→corrigir" do CLAUDE.md.
+
+**✅ IMPLEMENTADO:** `/desempenho` virou PORTA ÚNICA (YT+IG). Pesquisa real 2026 (métricas YT≠IG)
+→ núcleo comum `scripts/lib-desempenho.mjs` (6 funções puras, 20 testes): taxasYouTube/Instagram,
+detectarCurva (dip/cliff/spike), diagnosticarYouTube/Instagram (sintoma→skill que conserta),
+parsearCsv (Studio/Business Suite, impressions ignorado). Régua YT (AVD/curva/CTR-vs-canal/1ºmin)
++ régua IG (save/send/reach). v1 = colar/CSV; API v2. /desempenho-yt virou redirect. Spec/plano:
+docs/superpowers/{specs,plans}/2026-06-22-desempenho-unificado*.
 
 ---
 
