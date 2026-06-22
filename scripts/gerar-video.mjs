@@ -81,6 +81,15 @@ export function duracaoAudio(saidaFfprobe) {
   return m ? Number(m[1]) : 0;
 }
 
+// casarDuracoes — sobrescreve cada cena.segundos com a duração da fala (+folga), pra o clipe
+// B-roll nunca cortar a voz. Duração 0 (sem áudio) mantém o segundos existente. Pura.
+export function casarDuracoes(cenas, duracoesAudio, { folga = 0.4 } = {}) {
+  return cenas.map((c, i) => {
+    const d = Number(duracoesAudio[i]) || 0;
+    return d > 0 ? { ...c, segundos: Math.round((d + folga) * 100) / 100 } : { ...c };
+  });
+}
+
 // só roda a CLI quando invocado direto (não quando importado por um teste).
 if (import.meta.main) {
   const posic = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--saida" && args[i - 1] !== "--modelo" && args[i - 1] !== "--ref" && args[i - 1] !== "--trilha");

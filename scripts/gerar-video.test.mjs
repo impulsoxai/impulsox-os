@@ -6,7 +6,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { argsFfmpeg, duracaoAudio } from "./gerar-video.mjs";
+import { argsFfmpeg, duracaoAudio, casarDuracoes } from "./gerar-video.mjs";
 
 const SCRIPT = fileURLToPath(new URL("./gerar-video.mjs", import.meta.url));
 const tmp = mkdtempSync(join(tmpdir(), "vid-test-"));
@@ -110,4 +110,18 @@ test("duracaoAudio extrai segundos da saída do ffprobe", () => {
 
 test("duracaoAudio devolve 0 quando não acha duração", () => {
   assert.equal(duracaoAudio("lixo sem duracao"), 0);
+});
+
+test("casarDuracoes aplica a duração da fala (+folga) em cada cena", () => {
+  const cenas = [{ visual: "a" }, { visual: "b" }];
+  const out = casarDuracoes(cenas, [2.0, 3.5], { folga: 0.4 });
+  assert.equal(out[0].segundos, 2.4);
+  assert.equal(out[1].segundos, 3.9);
+  assert.equal(out[0].visual, "a");
+});
+
+test("casarDuracoes mantém segundos existente quando não há áudio pra cena", () => {
+  const cenas = [{ visual: "a", segundos: 5 }];
+  const out = casarDuracoes(cenas, [0], { folga: 0.4 });
+  assert.equal(out[0].segundos, 5);
 });
