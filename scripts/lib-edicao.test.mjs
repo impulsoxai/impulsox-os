@@ -7,7 +7,7 @@ import {
   parseTrechosTabela, normalizarTrechos, planoVelocidade,
   cadeiaAtempo, filtroVelocidadeConcat, filtroEscala1080p, filtroZoompan,
   posicaoOverlay, filtroBolhaWebcam, spansFiller, LISTA_FILLER,
-  mesclarCortes,
+  mesclarCortes, filtroEscala9x16,
 } from "./lib-edicao.mjs";
 
 const SAIDA = `
@@ -484,4 +484,12 @@ test("mesclarCortes com span fora dos keeps não muda nada", () => {
 test("mesclarCortes sem spans devolve os keeps iguais", () => {
   const keeps = [{ inicio: 0, fim: 3 }, { inicio: 5, fim: 8 }];
   assert.deepEqual(mesclarCortes(keeps, []), keeps);
+});
+
+test("filtroEscala9x16 monta scale-cover + crop central + setsar", () => {
+  const f = filtroEscala9x16({ largura: 1080, altura: 1920 });
+  assert.equal(f, "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1");
+});
+test("filtroEscala9x16 usa default 1080x1920", () => {
+  assert.ok(filtroEscala9x16().includes("1080:1920"));
 });

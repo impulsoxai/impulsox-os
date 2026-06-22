@@ -216,6 +216,13 @@ export function filtroEscala1080p({ largura = 1920, altura = 1080 } = {}) {
     `pad=${largura}:${altura}:(ow-iw)/2:(oh-ih)/2,setsar=1`;
 }
 
+// filtroEscala9x16 — reframe vertical 9:16: escala pra COBRIR e corta a faixa central (perde as
+// laterais do 16:9). Pro short. force_original_aspect_ratio=increase garante que cobre antes do crop.
+export function filtroEscala9x16({ largura = 1080, altura = 1920 } = {}) {
+  return `scale=${largura}:${altura}:force_original_aspect_ratio=increase,` +
+    `crop=${largura}:${altura},setsar=1`;
+}
+
 // Args do ffmpeg pra thumbnail COMPOSTA 16:9 (1280x720), calibrada pela pesquisa de CTR +
 // identidade da marca: fundo ESCURO chapado (contraste alto no feed branco/mobile), frame
 // inteiro à direita (sem cortar o rosto), texto no TOPO-ESQUERDA (longe do timestamp do
