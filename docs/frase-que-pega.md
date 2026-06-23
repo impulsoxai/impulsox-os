@@ -142,6 +142,18 @@ Regra de ouro do slogan: **clareza acima de fofura.** "Não sacrifique o sentido
 charme — tem que fazer sentido primeiro." Clássicos que passam nos 4: *Just do it ·
 Think different · A diamond is forever.*
 
+### 4.1. Testes rápidos do hook (operacionais — pra hook de feed/scroll)
+
+Os 4 testes acima são de tagline. Pra um hook que precisa parar o dedo no feed, somar estes:
+
+- **first-3-words test** — as 3 primeiras palavras sozinhas criam curiosidade, surpresa
+  ou pull emocional? "Aqui está o que eu" → falha; "Testei 47" → passa.
+- **Primeira palavra é a mais forte** — número, nome ou surpresa na frente; cortar
+  "então", "hoje", "bom", "olha".
+- **Passa como tweet sozinho?** Se o hook só faz sentido com o corpo, está fraco.
+- **Sem abertura genérica de IA** — nunca "em um mundo cada vez mais", "deixa eu te
+  contar", "imagina só".
+
 ---
 
 ## 5. Autenticidade — o gate que sustenta tudo
