@@ -154,11 +154,18 @@ Resposta (envelope success/fail): {
   (hash SHA-256, prefixo, revogável, scopes) com scope novo **`chat:public`** e prefixo
   **`ixs_pub_`** (distinto do `ixk_live_` secreto do service token). Vazou (e vai — está no
   front) → dano máximo = abusar do chat daquele tenant, contido por rate-limit.
-- **Persona guardada no CRM por tenant** — NÃO vai no body. O OS sobe a persona uma vez via
-  um endpoint de gestão (JWT-only, na aba Integrações). A chave resolve o tenant → o CRM
-  carrega a persona dele e chama a Claude (Haiku) com ela + `messages`.
-- Quando o agente fecha o lead, devolve `capture` → o CRM cria o `Contact` (channel=site,
-  + utm se 3.2-A) server-side.
+- **Persona guardada no CRM por tenant** — NÃO vai no body. Gestão (FECHADO com o dev):
+  `PUT /api/settings/persona` (JWT) `{systemPrompt ≤8000, enabled}` (upsert, 1 por tenant) +
+  `GET /api/settings/persona`. A chave resolve o tenant no `/api/chat` → o CRM carrega a
+  persona e chama Haiku com ela + `messages`.
+- **Captura por tool use:** a Claude chama `capturar_lead{name, contact, necessidade}` no
+  fechamento (a persona instrui quando). O CRM cria o `Contact` (channel=site) a partir da
+  tool. `capture.utm` = `null` no MVP até o UTM no Contact (3.2-A); o widget já manda utm no
+  `page_context`.
+- **Caps (CRM responde 422 acima):** histórico ≤ 20 mensagens, ≤ 4000 chars/mensagem — o
+  widget trunca antes de mandar.
+- **Erros (envelope `success:false`):** 401 (key inválida/revogada), 403 (sem scope/agente
+  off), 422 (caps/persona grande), 429 (rate-limit ~30/min por chave), 502 (Haiku falhou).
 - **Segurança:** key da Claude só no CRM; **rate-limit por tenant obrigatório** (teto
   agressivo — chat público é alvo de abuso/custo); validar tamanho de `messages`.
 - **Por que vale:** diferencial "IA-Ready" que o cliente vê e toca + canal de lead novo

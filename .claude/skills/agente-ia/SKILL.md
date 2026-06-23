@@ -88,10 +88,25 @@ Resposta (envelope success/fail do CRM): {
   nunca o `tenant_id` cru. Escopo `chat:public`. É pública por desenho; se vazar, o dano
   máximo é abusar do chat daquele tenant (contido por rate-limit). O service token secreto
   (`ixk_live_...`) NUNCA vai pro front.
-- **Persona guardada no CRM por tenant** — não vai no body. O OS sobe a persona uma vez via
-  o endpoint de gestão do CRM (JWT-only); a chave resolve o tenant → o CRM carrega a persona.
-- `capture` preenchido → o CRM cria o `Contact` (channel=site) server-side; o widget não
-  mexe em PII no front.
+- **Persona guardada no CRM por tenant** — não vai no body. O OS sobe a persona via:
+  ```
+  PUT /api/settings/persona   (JWT do dono — aba Integrações)
+  Body: { "systemPrompt": "<persona>", "enabled": true }   // ≤ 8000 chars (senão 422)
+  GET /api/settings/persona   → { systemPrompt, enabled, updatedAt }
+  ```
+  Idempotente (upsert: 1 persona por tenant; re-PUT atualiza). A chave `ixs_pub_` resolve o
+  tenant no `/api/chat` → o CRM carrega a persona dele.
+- **Captura por tool use.** A Claude tem a ferramenta `capturar_lead{name, contact,
+  necessidade}`; a persona instrui quando chamá-la (no fechamento, com nome+contato em mãos).
+  O CRM cria o `Contact` (channel=site) a partir dessa chamada — server-side; o widget nunca
+  mexe em PII no front. `capture.utm` fica `null` no MVP (depende do UTM no Contact — sub 1
+  da F-OS); o widget pode mandar utm no `page_context` desde já, sem bloquear.
+- **Caps que o widget respeita** (acima → CRM responde 422): histórico ≤ 20 mensagens
+  (trunca antes de mandar), ≤ 4000 chars por mensagem.
+- **Erros do CRM** (envelope `success:false`) que o widget trata: 401 (chave inválida/
+  revogada) e 403 (sem scope / agente desativado) → cai pro fallback WhatsApp; 422 (caps/
+  persona grande), 429 (rate-limit ~30/min por chave) e 502 (Haiku falhou) → aviso honesto
+  na conversa, sem fingir resposta.
 
 ## Regras (duras, herdadas)
 
@@ -106,12 +121,17 @@ Resposta (envelope success/fail do CRM): {
 ## Fluxo
 
 1. **Pré-requisito.** Página pronta + núcleo (ofertas ATIVAS, voz, provas). Se falta,
-   reorientar. Avisar que o chat só "liga" quando o `/api/chat` do CRM existir.
-2. **Gerar a persona** do núcleo (ofertas ATIVAS, voz, provas, regra de captura).
-3. **Gerar o widget** na marca, acessível, com estado desabilitado honesto.
-4. **Entregar** em `producao/paginas/<slug>/agente/` (widget + persona) + instrução de
-   instalação + o contrato de `/api/chat`.
-5. **Fechar** apontando o próximo passo.
+   reorientar. Avisar que o chat só "liga" depois de subir a persona e gerar a `ixs_pub_`.
+2. **Gerar a persona** do núcleo (ofertas ATIVAS, voz, provas, regra de captura via tool
+   `capturar_lead`). Manter ≤ 8000 chars.
+3. **Subir a persona** pro CRM: `PUT /api/settings/persona` (JWT do dono) com
+   `{systemPrompt, enabled:true}`. Idempotente — re-rodar a skill atualiza.
+4. **Gerar o widget** na marca, acessível, com estado desabilitado honesto. Setar
+   `data-endpoint` (URL do `/api/chat`) e `data-site-key` (a `ixs_pub_` do tenant, gerada na
+   aba Integrações do CRM).
+5. **Entregar** em `producao/paginas/<slug>/agente/` (widget + persona) + instrução de
+   instalação.
+6. **Fechar** apontando o próximo passo.
 
 ## Teste de aceitação (comportamental)
 

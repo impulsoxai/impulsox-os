@@ -67,29 +67,40 @@
     if(open){win.removeAttribute('hidden');bubble.setAttribute('aria-expanded','true');input.focus();}
     else{win.setAttribute('hidden','');bubble.setAttribute('aria-expanded','false');}
   });
+  var MAX_MSGS=20, MAX_CHARS=4000;             // caps do CRM (acima disso = 422)
   function add(role,text){var d=document.createElement('div');d.className=role==='user'?'u':'a';
     d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;}
   // estado desabilitado honesto: sem endpoint OU sem chave, não finge conversar
   if(!endpoint||!siteKey){form.setAttribute('hidden','');off.removeAttribute('hidden');return;}
-  function fail(){form.setAttribute('hidden','');off.removeAttribute('hidden');}
+  function offline(){form.setAttribute('hidden','');off.removeAttribute('hidden');}
+  function note(t){add('assistant',t);}        // aviso honesto na conversa, sem sumir o form
   form.addEventListener('submit',function(e){
     e.preventDefault();var t=input.value.trim();if(!t)return;
+    if(t.length>MAX_CHARS)t=t.slice(0,MAX_CHARS);          // cap por mensagem
     add('user',t);msgs.push({role:'user',content:t});input.value='';
+    if(msgs.length>MAX_MSGS)msgs=msgs.slice(-MAX_MSGS);    // trunca histórico antes de mandar
     // body sem system: a persona fica guardada no CRM, resolvida pela chave do tenant
     fetch(endpoint,{method:'POST',headers:{
         'Content-Type':'application/json',
         'x-impulsox-site':siteKey              // chave pública resolve o tenant no CRM
       },
       body:JSON.stringify({messages:msgs,page_context:{url:location.href}})})
-      .then(function(r){return r.json();})
-      .then(function(j){
-        var d=(j&&j.data)||j||{};
-        if(d.reply){add('assistant',d.reply);msgs.push({role:'assistant',content:d.reply});}
-        else{fail();}
-        // d.capture (lead fechado) é tratado pelo CRM — cria o Contact server-side;
-        // o widget não faz nada com PII no front.
+      .then(function(r){return r.json().then(function(j){return {status:r.status,j:j};});})
+      .then(function(res){
+        var s=res.status, j=res.j||{}, d=j.data||{};
+        if(s>=200&&s<300&&d.reply){
+          add('assistant',d.reply);msgs.push({role:'assistant',content:d.reply});
+          // d.capture (lead fechado) é tratado pelo CRM via tool use → cria o Contact
+          // server-side; o widget nunca mexe em PII no front.
+          return;
+        }
+        // erros do CRM (envelope success:false) — mensagem honesta, sem fingir resposta
+        if(s===429){note('Muitas mensagens agora. Espera um instante e tenta de novo.');}
+        else if(s===401||s===403){offline();}   // chave/agente fora → cai pro WhatsApp
+        else if(s===502){note('Tive um problema agora. Pode repetir?');}
+        else{note('Não consegui responder essa. Se preferir, fala no WhatsApp.');}
       })
-      .catch(fail);
+      .catch(function(){note('Sem conexão agora. Tenta de novo ou fala no WhatsApp.');});
   });
 })();
 </script>
