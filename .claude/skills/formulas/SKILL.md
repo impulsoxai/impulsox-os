@@ -33,7 +33,9 @@ Usuário traz uma peça: texto colado, print ou link público. Extrair, nesta or
    `/reel-marca`** (não inventar rótulo solto), em ordem de retenção:
    - **Specific Outcome ~45%** — número/resultado concreto ("12 manchas sumiram em 30 dias")
    - **POV Realism ~42%** — "POV: você achou o…"
-   - **Unpopular Opinion ~38%** — opinião contraintuitiva/posição firme
+   - **Unpopular Opinion ~38%** — opinião contraintuitiva/posição firme (puxar do
+     campo **Opinião contrária / Wedge** de `nucleo/negocio.md` quando existir — é
+     a opinião que divide a audiência do próprio negócio)
    - **Question ~28%** — pergunta direta
    - **Pain Point ~27%** — dor reconhecível
    - **Generic Reveal ~12% ("Oi pessoal")** — o pior; anotar como antipadrão

@@ -24,7 +24,8 @@ Com degrau 3+ (entrevista feita), o plano sai calibrado de verdade.
 
 ## O que ler antes
 
-- `nucleo/negocio.md` — o que vende, pra quem, diferencial
+- `nucleo/negocio.md` — o que vende, pra quem, diferencial e a **Opinião contrária /
+  Wedge** — os ângulos polarizadores do mês (post de posição, "todo mundo erra X") saem dela
 - `nucleo/perfil.md` — o TIPO de negócio; o **"Mix do /calendario"** de lá substitui a
   proporção padrão desta skill (criador 45/30/10/15, PME local 35/30/15/20 etc.). Perfil
   `agencia` não fixa mix: usar o `perfil.md` do cliente cuja sessão está aberta
