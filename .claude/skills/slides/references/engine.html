@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deck — ImpulsoX</title>
+<style>
+  :root{
+    /* TOKENS_DA_MARCA — substituídos pela skill a partir de marca/tokens.css.
+       Defaults premium escuros enquanto não há marca (Escada de Contexto). */
+    --bg:#080510; --fg:#f5f3ff; --muted:#a99fc4;
+    --accent:#a974ff; --accent-2:#e9cd6a;
+    --font-display:'Georgia',serif; --font-body:system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg);color:var(--fg);font-family:var(--font-body);
+    overflow:hidden;
+  }
+  /* glow linear discreto do topo — regra premium do reel (nunca orb radial) */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--accent) 14%,transparent) 20%,transparent 52%);
+  }
+  .deck{position:relative;z-index:1;height:100vh;width:100vw}
+  .slide{
+    position:absolute;inset:0;display:none;
+    padding:clamp(3rem,8vw,7rem);
+    flex-direction:column;justify-content:center;gap:1.5rem;
+  }
+  .slide.is-active{display:flex;animation:fade .5s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.slide.is-active{animation:none}}
+  h1,h2{font-family:var(--font-display);line-height:1.05;letter-spacing:-.02em}
+  h1{font-size:clamp(2.5rem,7vw,5.5rem)}
+  h2{font-size:clamp(2rem,5vw,4rem)}
+  p,li{font-size:clamp(1.1rem,2.2vw,1.6rem);color:var(--muted);max-width:60ch}
+  .accent{color:var(--accent)}
+  .kicker{text-transform:uppercase;letter-spacing:.18em;font-size:.85rem;color:var(--accent-2)}
+  /* progresso */
+  .progress{position:fixed;left:0;bottom:0;height:4px;background:var(--accent);z-index:5;transition:width .3s}
+  /* presenter view */
+  .presenter{
+    position:fixed;inset:0;z-index:10;background:#000;color:#fff;display:none;
+    grid-template-columns:1fr 1fr;gap:2rem;padding:2.5rem;font-family:var(--font-body);
+  }
+  .presenter.is-on{display:grid}
+  .presenter h3{font-size:1rem;color:var(--accent-2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
+  .presenter .notes{font-size:1.4rem;line-height:1.5;white-space:pre-wrap}
+  .presenter .next{opacity:.6;font-size:1.1rem}
+  .blackout{position:fixed;inset:0;background:#000;z-index:20;display:none}
+  .blackout.is-on{display:block}
+  .hint{position:fixed;right:1rem;top:1rem;z-index:6;font-size:.75rem;color:var(--muted);opacity:.5}
+</style>
+</head>
+<body>
+  <div class="deck" id="deck">
+    <!-- SLIDES — substituído pela skill. Cada slide:
+         <section class="slide" data-notes="nota do apresentador">…conteúdo…</section> -->
+    <section class="slide"><h1>Deck vazio</h1><p>Substitua pelos slides.</p></section>
+  </div>
+  <div class="progress" id="progress"></div>
+  <div class="hint">→ ← passar · F tela cheia · S notas · B preto</div>
+  <div class="presenter" id="presenter">
+    <div><h3>Notas do apresentador</h3><div class="notes" id="pNotes"></div></div>
+    <div><h3>Próximo slide</h3><div class="next" id="pNext"></div></div>
+  </div>
+  <div class="blackout" id="blackout"></div>
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0;
+  const progress=document.getElementById('progress');
+  const presenter=document.getElementById('presenter');
+  const pNotes=document.getElementById('pNotes');
+  const pNext=document.getElementById('pNext');
+  const blackout=document.getElementById('blackout');
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('is-active',k===i));
+    progress.style.width=((i+1)/slides.length*100)+'%';
+    pNotes.textContent=slides[i].dataset.notes||'(sem nota)';
+    pNext.textContent=slides[i+1]?(slides[i+1].textContent.trim().slice(0,120)):'— fim —';
+  }
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '){show(i+1);e.preventDefault();}
+    else if(e.key==='ArrowLeft'){show(i-1);}
+    else if(e.key==='Home'){show(0);}
+    else if(e.key==='End'){show(slides.length-1);}
+    else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+    else if(e.key==='s'||e.key==='S'){presenter.classList.toggle('is-on');}
+    else if(e.key==='b'||e.key==='B'){blackout.classList.toggle('is-on');}
+  });
+  show(0);
+</script>
+</body>
+</html>
