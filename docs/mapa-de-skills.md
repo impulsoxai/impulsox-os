@@ -118,6 +118,10 @@ tema real   a fórmula        +webcam         +karaokê          N shorts    (pr
 - **/thumbnail** (consultor de CTR: Four C's + crivo de nota) é chamada pela **/editar-video**
   (capa do vídeo longo) e roda **avulsa** (capa pra vídeo de fora; repacote quando o CTR cai).
   O **/roteiro-yt** projeta o conceito; a **/thumbnail** gera e pontua. Capa decide o clique
+- **/slides** (opcional, eixo vídeo) — deck de apresentação premium na marca pra rodar no PC
+  durante a gravação: slides em tela cheia, produto real em mockup, slides-ponte pra demo ao vivo
+  no Claude Code e notas do apresentador. Entra avulsa ou depois de `/roteiro-yt`·/tema-yt; sai
+  pro `/gravar-tela`. Distinta do `/reel-marca` (vídeo que toca sozinho) — aqui o dono navega ao vivo.
 
 ---
 
@@ -201,6 +205,7 @@ FLUXO PRINCIPAL (o guia conduz por aqui, em ordem):
 OPCIONAIS (o guia NÃO empurra; só entram quando o dono pede explicitamente):
    • YouTube  ⚠️ EM TESTE/BETA — funciona, mas não oferecer a cliente como serviço pronto
               até a Vivian validar (tema-yt → roteiro → editar → shorts → upload → desempenho-yt)
+   • Apresentação/slides  (/slides → /gravar-tela)  — deck premium pra gravar vídeo
    • Google Ads     (ads-google → analisar-ads)
    • Meta/FB Ads    (ads-meta → analisar-ads)
    • ChatGPT Ads    (impulsox-chatgpt-ads)
@@ -246,6 +251,7 @@ contrato pra aquilo.
 | /analisar-dados | conforme o dado pedir | CSV/XLSX/JSON do negócio |
 | /tema-yt | /roteiro-yt | criadores-monitorados, pilares |
 | /roteiro-yt | /gravar-tela → /editar-video | **voz-canal.md, fórmula** |
+| /slides | /gravar-tela | **marca/ (senão: rodar /identidade antes)** |
 | /gravar-tela | /editar-video | — (só a gravação crua) |
 | /editar-video | /shorts → /publicar | final.mp4, whisper |
 | /shorts | /publicar | palavras.json |
