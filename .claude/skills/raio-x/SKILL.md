@@ -156,3 +156,7 @@ Nada de prova inventada na copy — sem depoimento real, a abertura não exibe n
 - Não inventar dado de tráfego/posição que não dá pra ver de fora — a seção "o que este
   raio-x não vê" existe pra isso (e é gancho honesto pra próxima conversa).
 - Auditar só o que é público. Nunca tentar acesso a área logada.
+
+---
+
+**✓ Pronto:** diagnóstico da URL com notas, os vazamentos mais caros e o plano de 30 dias · **→ próximo passo:** `/proposta` — consome este raio-x e o transforma em proposta fechável no mesmo dia. Pré-requisito é só a URL, então segue direto.

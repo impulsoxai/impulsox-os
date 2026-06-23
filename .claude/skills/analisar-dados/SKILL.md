@@ -94,3 +94,7 @@ script anexado (rastreio). Se a análise vira relatório de cliente, encaminhar 
 2. XLSX → a skill pede o CSV (ou converte por skill nativa), nunca finge ler o binário.
 3. Série curta → a tendência sai marcada como suposição, não como fato.
 4. `node --test scripts/analisar-dados.test.mjs` passa antes de fechar.
+
+---
+
+**✓ Pronto:** resumo executivo (5 insights + 3 tendências + 3 recomendações) com a tabela que sustenta cada número (dinheiro calculado em código) · **→ próximo passo:** depende do achado — `/calendario` (ajustar o conteúdo do próximo ciclo), `/ads-*` (agir sobre o que vende) ou `/desempenho`; se virou entrega de cliente, `/relatorio`. Pré-requisito que costuma faltar: saber o que cada coluna significa — se faltar, o sistema reorienta (confirma o mapeamento antes de calcular).

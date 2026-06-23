@@ -120,3 +120,7 @@ o que ele apontar e salvar.
 - Plano é vivo: no fim do mês, rodar `/desempenho` antes do próximo `/calendario` — os
   aprendizados que ela grava em `nucleo/aprendizados.md` calibram o ciclo seguinte. Se o
   mês fechou sem medição, sugerir a medição antes de planejar de novo.
+
+---
+
+**✓ Pronto:** plano mensal em `producao/calendario/<mês>.md`, peça a peça executável · **→ próximo passo:** `/post`, `/linkedin` ou `/conteudo` — cada linha do calendário vira peça pronta. Pré-requisito: radar do mês e núcleo; se faltar o radar, o sistema oferece rodar `/radar` antes pra embasar as pautas.

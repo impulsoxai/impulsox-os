@@ -131,3 +131,7 @@ ranking grátis jogado fora. Com OAuth (`YT_CLIENT_ID`/`YT_CLIENT_SECRET`/`YT_RE
 - Nunca deletar publicação sem pedido explícito.
 - Horário: publicar na janela do calendário; pedido fora de janela, confirmar "agora
   mesmo?".
+
+---
+
+**✓ Pronto:** peça no ar (ou pronta pra um clique) + ids salvos em `producao/publicacoes.md` · **→ próximo passo:** `/desempenho` no fim do mês — mede o que funcionou e realimenta o ciclo. Pré-requisito: `publicacoes.md` com o publicado registrado.

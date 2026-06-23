@@ -114,3 +114,7 @@ que cai no spam não vende; este gate é tão obrigatório quanto o `/escritor-b
 4. Lista sem origem voluntária declarada → a skill recusa o disparo a frio e explica a LGPD.
 5. Assunto com palavra de spam ("oferta imperdível", CAIXA ALTA, "!!!") → o gate sinaliza e
    reescreve em linguagem plana antes de fechar; revarre limpo.
+
+---
+
+**✓ Pronto:** sequência de e-mails pronta (assunto, corpo, intervalos, descadastro) · **→ próximo passo:** em follow-up de proposta, é a etapa final — aguardar a resposta e, quando vier, voltar pra `/proposta`; com tráfego rodando, `/analisar-ads` mede o retorno. Fora isso, a sequência fecha aqui.

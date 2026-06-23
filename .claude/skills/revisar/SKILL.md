@@ -78,3 +78,7 @@ proposta). O revisor continua julgando, não reescrevendo — a correção volta
   publica e explica o risco (conta do cliente vale mais que o prazo).
 - Revisão não substitui o `/escritor-br` — são camadas diferentes (voz/humanização vs
   julgamento estratégico). A peça passa pelos dois.
+
+---
+
+**✓ Pronto:** veredito do revisor sênior (APROVADA / AJUSTAR / REPROVADA) + achados · **→ próximo passo:** `/publicar` se aprovada — leva a peça ao ar. Pré-requisito: a peça pronta; AJUSTAR/REPROVADA volta pra skill de origem antes de seguir.

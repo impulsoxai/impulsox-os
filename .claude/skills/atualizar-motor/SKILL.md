@@ -181,3 +181,7 @@ Depois de criar, registrar `/atualizar-motor` na lista de automações do `CLAUD
 Sistema), e — como ela faz parte do MOTOR — ela mesma se propaga pros próximos clones na
 próxima atualização. O primeiro clone (ImpulsoX-AI) recebe ela manualmente desta vez; os
 próximos já nascem com ela via template.
+
+---
+
+**✓ Pronto:** motor atualizado a partir do template (skills, `CLAUDE.md`, docs) com o núcleo deste negócio intacto · **→ próximo passo:** `/abrir` — reabrir a sessão confirma que a voz e o contexto seguem iguais depois da atualização; em seguida, retomar a produção de onde parou. (O backup no `origin` já sai pelo `/salvar` do Passo 4.)

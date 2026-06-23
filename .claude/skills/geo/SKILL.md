@@ -187,3 +187,7 @@ Oferecer agendar o monitoramento junto com o ciclo mensal de `/desempenho`.
 3. Saída traz a tabela "onde aparece hoje" com as fontes citadas preenchidas de busca real.
 4. Plano aponta skills concretas (`/conteudo`, `/seo`, `/local`, `/provas`), não ações soltas.
 5. Monitoramento agenda re-teste e grava só padrão duradouro em `aprendizados.md`.
+
+---
+
+**✓ Pronto:** auditoria de presença em IA + plano de citação · **→ próximo passo:** as skills que o plano apontou — `/conteudo` (responde as perguntas que a IA cita), `/seo` (Schema/estrutura) e `/provas` (autoridade). Sem `nucleo/` lido, o GEO sai genérico — o sistema reorienta.

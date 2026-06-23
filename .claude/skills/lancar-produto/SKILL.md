@@ -123,3 +123,7 @@ página em `producao/paginas/`, e o balanço pós-lançamento.
 - O pré-lançamento tem que ser bom SOZINHO — quem não comprar precisa sair melhor do
   que entrou (é isso que faz o próximo lançamento funcionar).
 - LGPD: lista com consentimento; descadastro em toda mensagem.
+
+---
+
+**✓ Pronto:** plano de lançamento orquestrado (oferta + atos + briefs das peças) · **→ próximo passo:** `/pagina` (página do lançamento), `/email` (sequência) e `/ads-*` (tráfego) — a skill orquestra cada frente. Se faltar oferta firmada ou `marca/`, o sistema reorienta antes de disparar as peças.

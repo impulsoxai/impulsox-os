@@ -103,3 +103,7 @@ A campanha não termina no lançamento — começa nele.
 - Conversão sem rastreamento = campanha cega: incluir no guia a configuração da tag de
   conversão (ou importação do GA4) como pré-requisito do lançamento.
 - Orçamento do cliente é do cliente: recomendar teto, nunca empurrar aumento sem dado.
+
+---
+
+**✓ Pronto:** campanha de Google Ads pronta pra importar + guia visual de leigo · **→ próximo passo:** o **humano sobe a campanha** no Ads Editor (guia visual; anúncio nunca sobe sozinho — viola termos), depois `/analisar-ads` em ~30 dias pra medir o que converteu. Ads é esteira opcional. Pré-requisito que costuma faltar: `marca/` e uma página de destino que sustente a oferta — se faltar, o sistema reorienta (rodar `/identidade`/`/pagina` antes de pagar clique).

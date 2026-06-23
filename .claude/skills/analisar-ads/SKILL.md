@@ -120,3 +120,7 @@ dados de campanha).
 - Comparar plataformas só no que é comparável (CPA sim; CTR entre Google Search e Meta
   feed, não — são leilões diferentes).
 - Análise recorrente: oferecer mensal, alimentando o `/calendario` e o ciclo seguinte.
+
+---
+
+**✓ Pronto:** ranking de campanhas por eficiência + ações + próximas campanhas sugeridas (cálculo só por script) · **→ próximo passo:** aprovou uma sugestão? `/ads-google` ou `/ads-meta` monta a nova campanha a partir do que converteu (humano sobe → mede de novo em ~30 dias). Ads é esteira opcional. Pré-requisito que costuma faltar: os exports CSV no nível granular (anúncio/palavra) — se faltar, o sistema reorienta (analisa no nível disponível e marca o que ficou pendente).

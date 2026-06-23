@@ -202,3 +202,7 @@ shape and quality reference for a real plan.
   throws away the prepare_pilot window.
 - Promising a Brazilian client a launch date — OpenAI controls pilot access.
 - Choosing CPM "by default" — CPC is the default for performance offers.
+
+---
+
+**✓ Pronto:** campaign-plan.json validado + PDF do cliente + CSV de upload + brief (ChatGPT Ads — esteira opcional) · **→ próximo passo:** o **humano sobe a campanha** no OpenAI Ads Manager (anúncio nunca sobe sozinho — viola termos), depois `/analisar-ads` pra medir o que converteu. Pré-requisito que costuma faltar: país elegível/piloto e Pixel + CAPI instalados na página — se faltar, a skill reorienta (`prepare_pilot`/medição primeiro, ou `do_not_launch`).

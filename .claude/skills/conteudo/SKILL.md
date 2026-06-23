@@ -109,3 +109,7 @@ Atualizar Status no calendário.
 - Um tema por pacote. Tema gordo demais → dividir em dois no calendário.
 - Site ainda não existe? Gerar o artigo mesmo assim (fica pronto) e avisar que a skill
   de página (Fase premium) resolve a casa dele.
+
+---
+
+**✓ Pronto:** pacote de conteúdo (artigo + Instagram + LinkedIn) amarrado num tema · **→ próximo passo:** `/revisar` — crivo sênior de olhos frios antes de qualquer peça ir ao ar. Pré-requisito: `marca/`, voz e provas; se faltar, o sistema reorienta.

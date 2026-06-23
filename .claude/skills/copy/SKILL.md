@@ -315,3 +315,7 @@ plugada na **Etapa 2 — Copy** do `/pagina` (a etapa de COPY roda esta skill) e
 de **mini-redesign** do `/raio-x` (copy da abertura do "antes → depois"). A Camada 2 lê
 `docs/swipe-copy.md`; a Camada 3 (Afiação) é o audit de conversão antes do handoff pro
 `/escritor-br`.
+
+---
+
+**✓ Pronto:** copy afiada, memorável e citável, com 3 opções de headline · **→ próximo passo:** `/escritor-br` (humaniza + injeta a voz) e depois volta pro `/pagina`, que consome a copy pronta. Se faltar `nucleo/voz.md`, o sistema escreve em tom neutro e marca "confirmar voz".

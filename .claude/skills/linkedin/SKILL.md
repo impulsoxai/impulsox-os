@@ -112,3 +112,7 @@ empresa pode ser automatizada via `/publicar` quando configurada.
 - Sem tagging de gente aleatória pra forçar alcance; sem pod de engajamento.
 - Um post por ideia. Sobrou ideia boa → vira a próxima linha do calendário.
 - Atualizar o Status no calendário quando aprovado.
+
+---
+
+**✓ Pronto:** post de LinkedIn (texto, imagem ou PDF) na voz do autor · **→ próximo passo:** `/revisar` — crivo sênior de olhos frios antes de publicar. Pré-requisito: `marca/`, voz e provas; se faltar, o sistema reorienta.

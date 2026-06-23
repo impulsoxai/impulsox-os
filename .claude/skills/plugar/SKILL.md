@@ -193,3 +193,7 @@ qualidade de tudo que o sistema escreve.
 - O roteiro é fechado: pergunta fora da lista só quando uma resposta abriu lacuna que
   impede o sistema de trabalhar.
 - Nunca bloquear por falta de informação — descer um degrau é sempre opção.
+
+---
+
+**✓ Pronto:** negócio plugado (núcleo, marca e degrau de contexto registrados) · **→ próximo passo:** `/identidade` — todo setup começa pela identidade visual, que vira a base de tudo que o sistema produz depois.

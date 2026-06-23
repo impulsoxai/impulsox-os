@@ -140,3 +140,7 @@ sugerida na linha do plano.
   informou o desempenho, a fórmula entra sem número.
 - Análise de peça de concorrente direto: dissecar pode, imitar tema na sequência não —
   apontar o conflito quando notar.
+
+---
+
+**✓ Pronto:** molde destilado e gravado em `docs/formulas.md` (esqueleto, não cópia) · **↩ esta é uma skill de apoio:** o arsenal de fórmulas é consumido por `/post` e `/linkedin` (e citado pelo `/calendario`) — não tem próximo passo próprio; o fluxo volta pra produção, que veste o molde com o conteúdo da marca.

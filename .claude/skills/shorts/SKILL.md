@@ -49,3 +49,7 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - Falha de um short não derruba os outros.
 - Cadência que escala (pesquisa + Sabrina/Jonathan): 3-5 shorts/semana. Cortar vários de um
   longo de uma vez alimenta essa cadência.
+
+---
+
+**✓ Pronto:** N shorts verticais (9:16, ≤30s) com legenda karaokê, cortados do longo · **→ próximo passo:** `/publicar` — leva os shorts pro YouTube (detecta short e já põe `#Shorts`). Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltar `palavras.json`, os shorts saem sem legenda e o sistema reorienta.

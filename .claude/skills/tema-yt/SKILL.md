@@ -70,3 +70,7 @@ fórmula sugerida do `formulas-video.md`.
   padrão de hook) pro `/roteiro-yt`.
 - Leque de ângulos: 5 contrastes genuinamente diferentes, método de prova diferente em cada,
   contraste sempre honesto (crença real → verdade com prova). Sem prova → fora do leque.
+
+---
+
+**✓ Pronto:** tema escolhido + ângulo (contraste, método de prova, padrão de hook) + fórmula sugerida · **→ próximo passo:** `/roteiro-yt` — vira o roteiro completo na fórmula que performa. Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir o canal, não é passo automático do fluxo principal. Se faltarem `criadores-monitorados`/pilares, o sistema cai pra busca + WebSearch e reorienta.

@@ -172,3 +172,7 @@ se aplica) — fala de narração não é fala de venda.
 - Transcrição crua é boa. Não pedir pra ele "limpar" antes de mandar.
 - Esta skill substitui a extração rasa de voz do `/plugar`. O `/plugar` faz o setup do
   negócio em minutos; a voz de verdade nasce aqui.
+
+---
+
+**✓ Pronto:** voz extraída e gravada em `nucleo/voz.md` (tom, estilo, palavras e clichês a evitar) · **→ próximo passo:** `/calendario` pra decidir o conteúdo do mês, ou direto pra produção (`/post`, `/linkedin`) agora que o sistema escreve na voz do dono.

@@ -27,3 +27,7 @@ Advanced → Export current view). O cálculo está em `scripts/lib-desempenho.m
 `taxasYouTube`, `detectarCurva`, `diagnosticarYouTube`) + `scripts/metricas-youtube.mjs`
 (OAuth/Analytics API, modo automático v2). O veredito de fórmula (validada / não funciona)
 continua indo pro `canal-youtube/formulas-video.md`, e o aprendizado pro `nucleo/aprendizados.md`.
+
+---
+
+**✓ Pronto:** retenção/curva/CTR medidos, fórmula validada ou descartada, aprendizado gravado · **→ próximo passo:** `/tema-yt` — escolhe o tema do próximo vídeo já com o que a medição provou (fecha o ciclo do canal). Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltarem métricas/publicação, o sistema reorienta.

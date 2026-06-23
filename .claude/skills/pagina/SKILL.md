@@ -157,3 +157,7 @@ depois da escolha.
   o material não existe — nunca texto fake que parece final.
 - Página com formulário → mencionar política de privacidade (LGPD).
 - Nunca declarar pronto sem a Etapa 4 executada com as três capturas conferidas.
+
+---
+
+**✓ Pronto:** landing page premium em `producao/paginas/<slug>/` (HTML/CSS/JS na marca, CWV medido) · **→ próximo passo:** `/seo` (Schema/GEO) e depois `/publicar` — página bonita que ninguém acha não vale. Pré-requisito que mais trava: **`marca/` precisa existir** — sem identidade não há página premium; se faltar, rodar `/identidade` antes (o sistema reorienta).

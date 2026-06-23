@@ -245,3 +245,7 @@ confirmado**, subir o degrau se aplicável, e registrar arquivos gerados.
 - Logo gerado é sempre vetor (SVG), nunca rasterizado.
 - Logo por IA: priorizar wordmark, construir por grid (espessura única), e marcar como
   "ponto de partida funcional" — execução técnica é onde o designer humano ainda ganha.
+
+---
+
+**✓ Pronto:** marca documentada em `marca/design-guide.md` + `marca/tokens.css` · **→ próximo passo:** `/voz` se a voz saiu rasa, depois `/calendario` (conteúdo) ou `/pagina` (site) — toda peça visual lê a marca que esta skill acabou de fechar. Pré-requisito do próximo: núcleo lido; se faltar, o sistema reorienta.

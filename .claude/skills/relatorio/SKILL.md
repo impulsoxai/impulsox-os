@@ -68,3 +68,7 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - Texto passa pelo `/escritor-br`.
 - Mensal por padrão; oferecer agendar a rotina (fim do mês: `/desempenho` →
   `/relatorio` → `/calendario` do mês seguinte — o ciclo completo).
+
+---
+
+**✓ Pronto:** relatório do período em linguagem de dono · **→ próximo passo:** `/calendario` do mês seguinte, fechando o ciclo `/desempenho` → `/relatorio` → `/calendario`. É entrega de leitura — não publica nada.

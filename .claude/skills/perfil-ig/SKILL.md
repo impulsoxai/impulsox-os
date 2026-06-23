@@ -85,3 +85,7 @@ API e automação de terceiros nesse ponto viola os termos.
   destoando do design-guide.
 - Re-rodar após mudança de foco (`nucleo/foco.md`) — perfil desatualizado anuncia
   prioridade antiga.
+
+---
+
+**✓ Pronto:** perfil do Instagram otimizado (nome pesquisável, bio, link, capas de destaque, fixados) · **→ próximo passo:** `/calendario` ou `/post` — com o perfil pronto pra converter, a produção de conteúdo já chega num perfil que segura a visita. Se faltar `marca/` (capas e fixados), o sistema reorienta pra rodar `/identidade` antes.

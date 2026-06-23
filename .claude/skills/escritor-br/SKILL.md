@@ -193,3 +193,7 @@ as restrições de pontuação, não as de voz.
 
 O gate frio final é o **`/revisar`** (olhos frios, agente separado), não esta skill — são
 camadas diferentes: aqui é voz/humanização, lá é julgamento estratégico em contexto limpo.
+
+---
+
+**✓ Pronto:** texto humanizado na voz da marca (loop rascunho → audit → final, restrições duras passadas) · **↩ esta é uma skill de apoio:** é chamada por `/post`, `/linkedin`, `/email`, `/copy`, `/conteudo` e `/ads-*` — não tem próximo passo próprio; o fluxo volta pra skill que a chamou (e o gate frio final é o `/revisar`).

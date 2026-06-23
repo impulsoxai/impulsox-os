@@ -128,3 +128,7 @@ Dois produtos:
 - Otimização nunca piora a leitura pra pessoa. Se um ajuste de SEO deixa o texto pior pro
   humano, o humano ganha.
 - Schema e FAQ saem de conteúdo real da página. Sem material → instrução de substituição.
+
+---
+
+**✓ Pronto:** auditoria on-page + GEO com nota e blocos prontos pra colar (Schema, FAQ, robots/llms.txt) · **→ próximo passo:** `/publicar` — sobe a página já achável no Google e citável por IA. Pré-requisito: a página pronta; se faltar, voltar pro `/pagina` antes.

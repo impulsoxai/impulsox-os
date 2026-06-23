@@ -160,3 +160,7 @@ atualizando a contagem do título) e sugerir `/salvar`.
 - Nome de skill: verbo ou substantivo curto em português, no padrão das existentes.
 - Testar o gatilho na hora: pedir pro usuário invocar a skill recém-criada uma vez; se
   não disparar, ajustar a description antes de encerrar.
+
+---
+
+**✓ Pronto:** rotina repetida virou skill nova, com gatilho testado · **→ próximo passo:** seguir usando a skill recém-criada no fluxo normal — a automação já está plugada e dispara sozinha quando o gatilho aparece.

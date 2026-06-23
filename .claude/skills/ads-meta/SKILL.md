@@ -165,3 +165,7 @@ Meta Ads não tem importação tipo Editor pra PME — entregar o **guia visual 
 - Conta de anúncio, página e pixel são do cliente — o sistema orienta, nunca pede senha.
 - Remarketing respeita a LGPD: avisar sobre política de privacidade na página quando
   houver pixel.
+
+---
+
+**✓ Pronto:** campanha de Meta Ads + criativos da marca + guia visual de leigo · **→ próximo passo:** o **humano sobe a campanha** no Gerenciador (guia visual; anúncio nunca sobe sozinho — viola termos), depois `/analisar-ads` em ~30 dias pra medir o que converteu. Ads é esteira opcional. Pré-requisito que costuma faltar: `marca/` e uma página/destino que funcione — se faltar, o sistema reorienta (rodar `/identidade`/`/pagina` antes).

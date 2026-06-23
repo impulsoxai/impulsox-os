@@ -398,3 +398,7 @@ aplicada à risca. Marcar a peça como "feita com defaults — rodar /identidade
 5. Texto de um slide estoura o orçamento de caracteres → é reescrito ANTES do HTML/render;
    nenhum PNG é gerado com texto que vai refluir. Marca define caixa própria → o orçamento
    se recalcula pelas caixas dela.
+
+---
+
+**✓ Pronto:** peça de Instagram (PNGs + legenda) na marca · **→ próximo passo:** `/revisar` — crivo sênior de olhos frios antes de ir ao ar. Pré-requisito: `marca/`, voz e provas; se faltar a marca, o sistema avisa que a peça saiu com defaults e reorienta pro `/identidade`.

@@ -236,3 +236,7 @@ separa "site bonito com banco de imagem" de "site que parece fotografado pro cli
   constituição: leem a marca do negócio, nunca impõem a própria.
 - Peça visual derivada continua passando pelos fluxos donos (`/pagina`, `/post`) —
   esta skill não publica nada.
+
+---
+
+**✓ Pronto:** DNA visual extraído/recombinado e nível agência aplicado (design system em `marca/design-systems/`) · **↩ esta é uma skill de apoio:** é chamada por `/identidade` (caminho CRIAR) e por `/pagina` (antes da construção e na camada premium) — não tem próximo passo próprio nem publica nada; o fluxo volta pra skill dona da entrega.

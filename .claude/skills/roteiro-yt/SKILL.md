@@ -368,3 +368,7 @@ Quando o roteiro vira short, gerar de uma vez as 3 versões de caption (TikTok/R
   Google), descrição em 3 blocos, 3-5 hashtags e 8-12 tags relevantes. É distribuição grátis.
 - Short vive ou morre nos **primeiros 1-3s** + **loop** — texto no 1º frame, fim que emenda no
   início.
+
+---
+
+**✓ Pronto:** roteiro (long-form ou short) + pacote (título+thumbnail) + SEO, na voz do canal · **→ próximo passo:** gravar e depois `/editar-video` — corta, normaliza o áudio e queima a legenda na gravação. Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltar `voz-canal.md` ou a fórmula (o que mais trava aqui), o sistema reorienta antes.

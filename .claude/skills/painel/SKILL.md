@@ -38,3 +38,7 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - Localhost sempre. Nunca expor em `0.0.0.0`.
 - Cliente final usa o `painel.cmd` (dois cliques); esta skill é o atalho de quem está no
   Claude Code.
+
+---
+
+**✓ Pronto:** dashboard ao vivo com o ciclo, produção, contexto, custos e saúde do núcleo · **→ próximo passo:** sem próximo obrigatório — o painel é só-leitura; use o que ele mostrar pra decidir onde agir.

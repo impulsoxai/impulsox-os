@@ -83,3 +83,7 @@ varredura.
   limpa também é resultado.
 - Sugerir esta skill quando o sistema notar contradição entre núcleo e realidade no
   meio de outra tarefa — não esperar o usuário descobrir sozinho.
+
+---
+
+**✓ Pronto:** núcleo conferido e batendo com a realidade (corrigido ou confirmado limpo) · **→ próximo passo:** retomar a produção que você estava tocando — agora com o contexto certo por baixo. Bom salvar na nuvem (`/salvar`) se algo mudou no núcleo.

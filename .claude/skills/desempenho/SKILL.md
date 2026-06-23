@@ -119,3 +119,7 @@ casa). O modelo interpreta, o script calcula:
 - `nucleo/aprendizados.md` é destilado (máx ~15 entradas vivas); superado é removido/revisado.
 - Sem auto-elogio: mês fraco, o relatório diz que foi fraco e por quê.
 - Token/credencial jamais em log, relatório ou conversa.
+
+---
+
+**✓ Pronto:** relatório do período + aprendizados destilados em `nucleo/aprendizados.md` · **→ próximo passo:** `/calendario` do próximo ciclo — ele lê o que funcionou aqui e monta o mês embasado. Pré-requisito: métricas (coladas ou da API); sem número real, a skill não fecha o ciclo.

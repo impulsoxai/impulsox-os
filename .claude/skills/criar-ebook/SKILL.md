@@ -87,3 +87,7 @@ Salvar em `producao/ebooks/<slug>/` (fonte + PDF final).
 - Promessa da capa = conteúdo interno. Sem títulos-isca que o miolo não paga.
 - Isca gratuita: pedir só os dados necessários (LGPD: minimização).
 - E-book pago tem que valer o preço sozinho, sem depender de "bônus".
+
+---
+
+**✓ Pronto:** e-book/isca pronto pra subir (conteúdo + capa + 3 argumentos + FAQ) · **→ próximo passo:** `/email` pra montar a sequência que entrega/vende o material, ou `/pagina` se for criar a página de captura/venda. Se faltar núcleo ou `marca/`, o sistema reorienta antes de gerar.

@@ -99,3 +99,7 @@ Estruturar a proposta já antecipando por que deals morrem — e desarmando os 3
   `docs/persuasao.md` (dentro do teto de gatilhos de lá: aqui, aversão à perda + prova).
 - Proposta perdida vira aprendizado: perguntar o motivo e registrar no
   `nucleo/aprendizados.md` quando o usuário souber.
+
+---
+
+**✓ Pronto:** proposta comercial fechável (HTML + PDF) com escopo, prova e investimento · **→ próximo passo:** `/cliente` se fechou (pluga o cliente e a produção começa) ou `/email` se ainda não respondeu (sequência de follow-up). Se faltar `nucleo/provas.md` ou `ofertas.md`, o sistema reorienta antes de montar.

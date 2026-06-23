@@ -186,3 +186,7 @@ Sem eles, o vídeo sai sem bumper — avisar uma vez e seguir.
   queimada, com aviso — não trava o render.
 - Peça vai pro ar → passa por `/revisar` antes de ser declarada pronta. Esta skill entrega
   o arquivo revisável, não publica.
+
+---
+
+**✓ Pronto:** vídeo longo editado (corte de silêncio, áudio -14 LUFS, legenda karaokê, capa) · **→ próximo passo:** `/shorts` → `/publicar` — corta o longo em N shorts verticais e leva tudo pro YouTube. Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltar `final.mp4` ou o whisper, o sistema reorienta.

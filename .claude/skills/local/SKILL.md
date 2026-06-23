@@ -123,3 +123,7 @@ mais sensível do marketing local.
   Cidade") viola as diretrizes e some com o perfil.
 - Negócio sem ponto físico (atende a domicílio): configurar como área de atendimento,
   sem endereço público.
+
+---
+
+**✓ Pronto:** Perfil de Empresa no Google otimizado (checklist, posts do mês, banco de respostas) · **→ próximo passo:** `/publicar` — sobe os posts do perfil e mantém a rotina viva; ou siga a produção de conteúdo com `/calendario`. Se faltar `nucleo/negocio.md` (região/serviços), o sistema reorienta pra preencher antes.

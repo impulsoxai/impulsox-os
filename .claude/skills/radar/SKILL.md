@@ -138,3 +138,7 @@ de WhatsApp este mês").
 5. Camada 2 → tema com upvotes/views altos aparece com o número anexado e demanda 4-5;
    tema só do WebSearch entra demanda 3 e marcado suposição. yt-dlp/Reddit falhando →
    fonte registrada como vazia, sem travar a camada.
+
+---
+
+**✓ Pronto:** temas pesquisados com demanda real (fontes citadas) · **→ próximo passo:** `/calendario` — transforma os temas em plano do mês (o quê e quando). Sem núcleo lido, o radar não calibra por foco/oferta — o sistema reorienta.

@@ -78,3 +78,7 @@ e seguir o fluxo de primeira vez abaixo, trocando o remote com
 - Erro de git: mostrar a mensagem literal junto da tradução em português simples.
 - Ao fim de sessões que mexeram no núcleo ou aprovaram peças, lembrar uma vez:
   "quer que eu salve isso na nuvem? (/salvar)". Não insistir.
+
+---
+
+**✓ Pronto:** trabalho salvo na nuvem (GitHub) com backup íntegro · **→ próximo passo:** seguir de onde parou — o `/salvar` é só o backup, não muda o rumo do que você estava fazendo.
