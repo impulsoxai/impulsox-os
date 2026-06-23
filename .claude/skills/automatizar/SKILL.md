@@ -135,6 +135,11 @@ skills do sistema:
 - Seção "O que ler antes" apontando os arquivos do núcleo/marca de que ela depende.
 - Workflow em passos, com os pontos de aprovação do usuário marcados.
 - Seção "Regras" com o que sempre e o que nunca fazer.
+- Seção "Teste de aceitação (comportamental)" — 3-5 casos concretos de "entra X → sai Y"
+  que provam que a skill faz o que promete (é o que as melhores skills do sistema têm).
+- **Fecho padrão obrigatório** (regra do CLAUDE.md): "**✓ Pronto:** [o que entregou] ·
+  **→ próximo passo:** `/<skill>` — [por quê]" (ou a variante "**↩ esta é uma skill de
+  apoio:** …" quando ela é chamada por outra e não tem próximo passo próprio).
 - Calibrada com `nucleo/voz.md` e `nucleo/negocio.md` — skill genérica é skill ruim.
 - Arquivos de apoio (template, exemplo) dentro da pasta da própria skill.
 

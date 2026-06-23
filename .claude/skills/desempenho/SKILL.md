@@ -144,4 +144,4 @@ a medição alimenta o banco de prova, que volta pra alimentar a próxima peça 
 
 ---
 
-**✓ Pronto:** relatório do período + aprendizados destilados em `nucleo/aprendizados.md` · **→ próximo passo:** `/calendario` do próximo ciclo — ele lê o que funcionou aqui e monta o mês embasado. Pré-requisito: métricas (coladas ou da API); sem número real, a skill não fecha o ciclo.
+**✓ Pronto:** relatório do período + aprendizados destilados em `nucleo/aprendizados.md` · **→ próximo passo:** `/calendario` do próximo ciclo — ele lê o que funcionou aqui e monta o mês embasado. **Se o gargalo for a PÁGINA** (tráfego chega mas não converte, lead caro), o conserto não é mais conteúdo: voltar pra `/copy` (texto que vende) ou `/oferta` (a proposta em si). Pré-requisito: métricas (coladas ou da API); sem número real, a skill não fecha o ciclo.

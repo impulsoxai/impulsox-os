@@ -36,9 +36,12 @@ degrau e marca claramente o que é **fato** (extraído/confirmado) e o que é **
 | 3 | + entrevista (transcrição ou ao vivo) | Núcleo completo: voz, foco, estratégia |
 | 4 | + dados reais (exports de ads, analytics) | Campanhas e relatórios baseados em performance |
 
-Regra: cada skill declara o degrau mínimo de que precisa, roda mesmo abaixo dele com
+Regra: cada skill tem um degrau mínimo de que precisa, roda mesmo abaixo dele com
 defaults, e devolve uma lista **"confirmar com o cliente"** quando assume algo. A reunião
-com o cliente vira refinamento, nunca ponto de partida do zero.
+com o cliente vira refinamento, nunca ponto de partida do zero. O degrau/pré-requisito de
+cada skill é registrado de forma estruturada na **tabela de fluxo do `docs/mapa-de-skills.md`**
+(coluna "Pré-requisito") — essa é a fonte única; a skill cita o pré-requisito no fecho, mas
+não precisa de um campo declarado próprio.
 
 O degrau atual de cada contexto fica registrado em `nucleo/escada.md` (negócio próprio)
 ou em `clientes/<nome>/escada.md` (cada cliente). Qualquer sessão futura lê esse arquivo
@@ -125,9 +128,9 @@ executam cada peça.
 O dono não precisa decorar qual skill chamar nem em que ordem — **o sistema guia**. Três
 regras, todas valendo pra qualquer skill:
 
-1. **Ao terminar uma skill, apontar o próximo passo.** Fechar com "✓ pronto: [o que foi
-   feito] · → próximo passo natural: `/<skill>` — [por quê]". A ordem está em
-   `docs/mapa-de-skills.md`. **Há um FLUXO PRINCIPAL e os OPCIONAIS** (ver o mapa):
+1. **Ao terminar uma skill, apontar o próximo passo.** Fechar com "**✓ Pronto:** [o que foi
+   feito] · **→ próximo passo:** `/<skill>` — [por quê]" (skill de apoio usa a variante
+   "**↩ esta é uma skill de apoio:** …"). A ordem está em `docs/mapa-de-skills.md`. **Há um FLUXO PRINCIPAL e os OPCIONAIS** (ver o mapa):
    - **Principal** (todo cliente): DESIGN/identidade → página → CONTEÚDO automático (radar →
      calendário → post/linkedin → revisar → publicar → desempenho). O guia conduz por aqui.
    - **Opcionais** (só quando o dono pede): YouTube (⚠️ em teste — não oferecer a cliente como
