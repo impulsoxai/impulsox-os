@@ -180,6 +180,23 @@ desenhada**:
 
 Não é decoração: é o 1º filtro do briefing. A peça que não mira send NEM save fica bonita e some.
 
+### Matriz CTA × plataforma (o CTA mira a métrica que a plataforma premia)
+
+Send/save é o alvo de desenho (acima). Na hora do CTA, casar o pedido com a métrica que
+cada plataforma mais distribui:
+
+| Plataforma | Premia mais | CTA que dispara |
+|---|---|---|
+| Instagram (feed) | Save, depois send | "Salva isto pra…", "Manda pra alguém que…" |
+| Instagram (Reels) | Completion, depois save | Texto na tela + "salva pra depois" |
+| TikTok / Reel | Watch-time / completion | Hook nos primeiros 1,7s; "espera o final" na tela |
+| LinkedIn | Comentário (~2x peso vs like) | Pergunta polarizadora, "o que você adicionaria?" |
+| Facebook | Share | "Marca alguém que precisa ver isto" |
+| X / Threads | Reply | Take polarizador, "me diz que tô errado" |
+
+Regra: um CTA por peça (já vale na seção Regras). A matriz só escolhe QUAL, conforme onde
+a peça vai. Peça multi-plataforma adapta o CTA por destino, não repete o mesmo cru.
+
 **Texto-na-tela como sinal de categorização.** O Instagram lê o texto escrito no slide 1 (e na
 capa do reel) pra entender do que a peça trata e a quem entregar. A **keyword do nicho no slide
 1** (a mesma das 2 primeiras linhas da legenda) é o que categoriza a peça pro Explore — não é só
