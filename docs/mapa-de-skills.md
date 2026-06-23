@@ -138,6 +138,14 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
 
 ---
 
+## Inteligência competitiva (alimenta estratégia)
+
+- **/concorrente** — mantém o dossiê vivo do concorrente do cliente (posicionamento, preço,
+  ofertas, cadência, anúncios ativos, novidades, lacuna) em `nucleo/concorrentes.md`, só de
+  fonte pública (site, Meta Ad Library, busca aberta). É a FONTE: `/radar` lê a lacuna de
+  pauta, `/ads-meta` parte dos anúncios mapeados, `/oferta` e `/proposta` leem o comparativo.
+  Opcional — entra quando o dono quer inteligência competitiva.
+
 ## Presença que não é feed (perfil + local)
 
 - **/perfil-ig** — otimiza o perfil do Instagram (bio, destaques, nome de busca) pra
@@ -218,6 +226,7 @@ contrato pra aquilo.
 | /voz | /calendario ou produção | — |
 | /calendario | /post · /linkedin · /conteudo (peça a peça) | radar do mês, núcleo |
 | /radar | /calendario (ou /repurpose, se há fonte longa pra reaproveitar) | núcleo |
+| /concorrente | /radar (lacuna→pauta) ou /proposta·/oferta (posicionar) | nome dos concorrentes |
 | /repurpose | /calendario (peças jogadas no mês) | fonte longa, núcleo |
 | /post · /linkedin · /conteudo | /revisar | marca/, voz, provas |
 | /revisar | /publicar (se aprovada) | a peça pronta |

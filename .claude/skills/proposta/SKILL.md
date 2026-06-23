@@ -32,6 +32,8 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
 - `nucleo/perfil.md` — esta skill é do modo `agencia` (vender pra um prospect) ou de
   negócio próprio que fecha serviço um-a-um (`profissional-liberal`). Perfil `criador` só
   usa se for vender mentoria/serviço
+- `nucleo/concorrentes.md` — se existe o dossiê do `/concorrente`, o comparativo (cliente ×
+  concorrentes) ancora o "por que a gente" e a defesa de preço na lacuna que eles deixam
 - `docs/persuasao.md` — a proposta é peça de persuasão; regras inegociáveis valem
 - `marca/` de quem propõe — identidade visual da proposta
 

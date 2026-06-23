@@ -31,6 +31,8 @@ marca, gera o plano e marca os criativos como defaults até a `/identidade` roda
 - `producao/posts/` — criativos orgânicos que performaram são candidatos a anúncio
 - `producao/ads/swipe-meta.md` — banco de anúncios vencedores já dissecados (Passo 0); se
   existe e está fresco (<30 dias), partir dele em vez de pesquisar de novo
+- `nucleo/concorrentes.md` — se existe o dossiê do `/concorrente`, os anúncios ativos do
+  concorrente já estão mapeados ali; partir deles no Passo 0 e aprofundar no swipe
 
 ## Pré-requisito de medição — Pixel + CAPI (sem isso o Advantage+ aprende errado)
 

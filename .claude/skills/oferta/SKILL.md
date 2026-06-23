@@ -44,6 +44,8 @@ pra ele).
 - `docs/persuasao.md` — esta peça é persuasão; as regras inegociáveis valem (escassez
   real só, sem promessa que a entrega não sustenta)
 - `nucleo/perfil.md` — o molde da oferta muda por tipo de negócio (ver tabela de formatos)
+- `nucleo/concorrentes.md` — se existe o dossiê do `/concorrente`, usar o comparativo
+  (preço/oferta/ângulos deles) pra ancorar a oferta na lacuna que os concorrentes deixam
 
 ## Qual é o tipo de negócio (decide o molde)
 

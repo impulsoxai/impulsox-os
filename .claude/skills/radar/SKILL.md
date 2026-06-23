@@ -85,9 +85,11 @@ suposição** — nunca inflar demanda sem o número que a sustenta.
 > dia houver chave oficial paga autorizada pelo dono, esta camada ganha as fontes extras.
 
 ### 3. Concorrentes — o que cobriram e o que deixaram de fora
-Olhar os 2-3 concorrentes mapeados (no núcleo, ou perguntar quais são). Registrar os
-ângulos que eles **NÃO** cobriram — a lacuna é a melhor oportunidade. Conteúdo de
-concorrente é inspiração de ângulo, nunca cópia.
+**Se existe `nucleo/concorrentes.md`** (dossiê do `/concorrente`), ler de lá a cadência e a
+**lacuna já mapeada** — não re-pesquisar o concorrente do zero. Sem o dossiê, olhar os 2-3
+concorrentes citados no núcleo (ou perguntar quais são) e registrar os ângulos que eles
+**NÃO** cobriram. A lacuna é a melhor oportunidade. Conteúdo de concorrente é inspiração de
+ângulo, nunca cópia. (Pra um perfil completo do concorrente, rodar o `/concorrente` antes.)
 
 ### 4. Sazonalidade — as datas dos próximos 60 dias
 Datas comerciais brasileiras dos próximos 60 dias relevantes ao nicho. Se o MCP

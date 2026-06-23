@@ -10,6 +10,12 @@ saber o que cada clone está rodando e o que ainda falta puxar do template.
 ## [0.2.5] — 2026-06-23
 
 ### Adicionado
+- Skill `/concorrente` — vigia competitiva: dossiê vivo do concorrente em
+  `nucleo/concorrentes.md` (posicionamento, preço, ofertas, cadência, anúncios ativos via
+  Meta Ad Library, lacuna), só de fonte pública. Modos mapear/alerta/comparativo.
+  `/radar`, `/ads-meta`, `/oferta` e `/proposta` consomem o dossiê. (Oportunidade O6 — 1ª
+  das 3 OS-puro da auditoria; as do eixo-lead esperam o CRM ganhar a ponte — ver
+  `docs/prd-integracao-crm.md`.)
 - Skills `/copy`, `/geo`, `/local`, `/perfil-ig`, `/relatorio`, `/analisar-dados`,
   `/gravar-tela` agora aparecem no `docs/mapa-de-skills.md` (estavam órfãs); seções novas
   de "Presença que não é feed" e "Medição (três portas)".
