@@ -74,6 +74,10 @@ embasadas  e quando         (leem marca + voz + provas)       sênior           
 - **/radar** pesquisa → **/calendario** decide → skills de produção executam (cada uma lê
   `marca/`, `nucleo/voz.md`, `nucleo/provas.md`) → **/revisar** (olhos frios) → **/publicar**
 - **/desempenho** mede → destila em `aprendizados.md` → alimenta o próximo **/calendario**
+- **/repurpose** (opcional, entre /radar e /calendario): 1 fonte longa (vídeo, artigo,
+  newsletter) vira uma semana de peças nativas (IG, LinkedIn, Reel/TikTok) via as skills
+  donas, graduadas pelo /revisar e jogadas no /calendario. Oferecido quando o dono tem
+  material denso pra reaproveitar; não empurrado.
 - Todo texto passa pelo **/escritor-br** (humaniza); toda peça de venda pelo **/revisar**
 - **Reel: dois caminhos distintos.** **/post** faz reel com rosto/cena REAL por IA (Fal).
   **/reel-marca** faz reel de MOTION GRAPHICS por código (Remotion): texto animado + produto/
@@ -194,7 +198,8 @@ contrato pra aquilo.
 | /identidade | /voz (se voz rasa) → depois /calendario ou /pagina | núcleo lido |
 | /voz | /calendario ou produção | — |
 | /calendario | /post · /linkedin · /conteudo (peça a peça) | radar do mês, núcleo |
-| /radar | /calendario | núcleo |
+| /radar | /calendario (ou /repurpose, se há fonte longa pra reaproveitar) | núcleo |
+| /repurpose | /calendario (peças jogadas no mês) | fonte longa, núcleo |
 | /post · /linkedin · /conteudo | /revisar | marca/, voz, provas |
 | /revisar | /publicar (se aprovada) | a peça pronta |
 | /publicar | /desempenho (no fim do mês) | publicacoes.md |

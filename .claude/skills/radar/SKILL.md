@@ -158,4 +158,4 @@ de WhatsApp este mês").
 
 ---
 
-**✓ Pronto:** temas pesquisados com demanda real (fontes citadas) · **→ próximo passo:** `/calendario` — transforma os temas em plano do mês (o quê e quando). Sem núcleo lido, o radar não calibra por foco/oferta — o sistema reorienta.
+**✓ Pronto:** temas pesquisados com demanda real (fontes citadas) · **→ próximo passo:** `/calendario` — transforma os temas em plano do mês (o quê e quando). Sem núcleo lido, o radar não calibra por foco/oferta — o sistema reorienta. _(Se você tem uma fonte longa — vídeo, artigo, newsletter — o `/repurpose` vira o mês inteiro de uma vez; é só pedir.)_
