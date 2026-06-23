@@ -7,6 +7,36 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.5] — 2026-06-23
+
+### Adicionado
+- Skills `/copy`, `/geo`, `/local`, `/perfil-ig`, `/relatorio`, `/analisar-dados`,
+  `/gravar-tela` agora aparecem no `docs/mapa-de-skills.md` (estavam órfãs); seções novas
+  de "Presença que não é feed" e "Medição (três portas)".
+- Incorporação da inteligência do time Sabrina (ver 0.2.4): nota X/10, Wedge, matriz CTA,
+  `/repurpose`.
+
+### Alterado
+- **Auditoria de nível-sistema** (4 frentes: arquitetura, UX do dono leigo, consistência,
+  oportunidades) — `docs/auditoria-so-2026-06-23.md`. Correções:
+  - Desambiguação de descoberta: "preciso de um site / por que não apareço no Google" tem
+    desempate claro entre `/raio-x` (diagnóstico), `/pagina` (criar) e `/seo` (ajustar).
+  - `/desempenho-yt` vira stub que não compete por gatilho com a porta única `/desempenho`.
+  - `/conteudo` description distinta de `/post` (um post) e `/repurpose` (fonte longa).
+  - Loop medição→página: `/desempenho` e `/analisar-ads` apontam `/copy`/`/oferta` quando o
+    gargalo é a landing.
+  - Fronteira `/post` (reel IA) vs `/reel-marca` (motion graphics) no frontmatter.
+  - CLAUDE.md: mapa-de-skills como fonte única do degrau; fecho alinhado à prática.
+  - `/automatizar` exige "Teste de aceitação" + fecho padrão no molde de skill nova.
+- Fechos "→ próximo passo" adicionados em `/thumbnail`, `/gravar-tela`, `/reel-marca`.
+- Onboarding: README e `/abrir` reforçam "fale natural, não decore comando".
+
+### Corrigido
+- **CHANGELOG reconstruído** (0.2.2/0.2.3/0.2.4 estavam faltando — o `/atualizar-motor`
+  estava cego sobre o que os clones precisavam puxar).
+- Prefixo de script padronizado no `impulsox-chatgpt-ads` (`scripts/`, não `skill/scripts/`).
+- `impulsox-chatgpt-ads` ganha gatilhos em PT-BR na description.
+
 ## [0.2.4] — 2026-06-23
 
 ### Adicionado
