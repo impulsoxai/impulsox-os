@@ -102,7 +102,7 @@ git tag "pre-atualizacao-$VERSAO_ATUAL"
 Trazer do template apenas os caminhos de motor, deixando o núcleo deste negócio intocado:
 
 ```bash
-git checkout template/main -- .claude/ docs/ scripts/ remotion/ .env.example
+git checkout template/main -- .claude/ docs/ scripts/ remotion/ .env.example .gitignore
 
 # remotion/src/tema.ts é GERADO das cores deste negócio (não motor) — restaurar a versão local
 # se o checkout acima o trouxe do template. Se o clone ainda não tem tema.ts, gerar:
