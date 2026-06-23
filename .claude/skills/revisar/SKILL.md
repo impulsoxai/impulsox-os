@@ -33,7 +33,9 @@ Autoria: ImpulsoX AI. Conteúdo original.
    contexto limpo, sem o histórico de criação da peça. É isso que garante a revisão
    fria: o revisor não sabe quais escolhas doeram, só vê o resultado.
 3. **Receber o veredito:** APROVADA / AJUSTAR / REPROVADA + achados (um por linha,
-   cada um com correção proposta).
+   cada um com correção proposta). **Para peça de social orgânico, junto vem a nota
+   X/10 do scorecard** (ver "Nota numérica" abaixo); anúncio pago e página ficam só
+   com o veredito categórico.
 4. **Encaminhar:**
    - **APROVADA** → registrar no Status do calendário ("revisada") e seguir pro
      `/publicar`.
@@ -44,6 +46,43 @@ Autoria: ImpulsoX AI. Conteúdo original.
      o brief corrigido.
 5. **Mostrar ao usuário** o veredito e os achados sempre — a revisão também ensina o
    dono a ler marketing.
+
+## Nota numérica (só peça de social orgânico: post, carrossel, reel, legenda)
+
+Para peça de **social orgânico**, o revisor devolve **nota X/10 ponderada + o veredito**
+(os dois somam): a nota é o motor do loop, o veredito é o rótulo legível pro dono.
+
+**Anúncio pago e copy de página NÃO recebem nota** — ficam com o veredito categórico
+(prioridades diferentes: política de plataforma, clareza da oferta, prova não cabem na
+ponderação Hook=50%).
+
+### Scorecard (7 dimensões ponderadas)
+
+| Dimensão | Peso | O que checa |
+|---|---|---|
+| **Hook strength** | **50%** | As 3-5 primeiras palavras param o scroll? Específico/surpreendente/polarizador? Passa como tweet sozinho? Sem throat-clearing ("em um mundo cada vez mais…") |
+| Curiosidade + especificidade | 10% | Número/nome/momento real vs genérico; abre questão e resolve |
+| Carga emocional | 10% | Provoca sentimento forte (surpresa, indignação, reconhecimento)? Sem emoção não viaja |
+| Shareability | 10% | O leitor marcaria/salvaria/mandaria? Motivo específico. "Informativo" não conta |
+| Voice match | 10% | Soa como a `nucleo/voz.md`? Tem ponto de vista ou poderia ser qualquer IA? |
+| Polaridade | 5% | Diz algo discutível? Dá pra concordar OU rebater? Puxa do Wedge de `negocio.md` |
+| Fit de plataforma | 5% | Tamanho/hook/hashtag certos; convida a métrica que a plataforma premia |
+
+**Implicação do Hook=50%:** hook 4/10 com resto perfeito teto ~7; hook 10/10 com resto
+mediano ~7,5. Post abaixo de 8 quase sempre = reescrever o hook.
+
+### Auditoria de voz (pass/fail, penaliza a nota)
+
+Cada falha subtrai 0,5 da nota final (teto −3): travessão `—`, contração ausente onde a
+voz pede fala, número por extenso, voz passiva, filler ("realmente/muito/só/basicamente/
+literalmente"), abertura-filler, contagem de hashtag fora do limite da plataforma.
+
+### Régua da nota
+
+**"10 não existe. 8 é forte. 9 quase nada a consertar. Harsh but fair."** Nota falsa alta
+custa mais que crítica honesta. O loop existente (AJUSTAR → re-revisar, máx 2 rodadas) usa
+a nota como gatilho: **nota < 8 → AJUSTAR** pela skill de origem, re-graduar; na 3ª
+divergência o dono decide.
 
 ## Checklist de copy de página (quando a peça é landing/página de venda)
 
