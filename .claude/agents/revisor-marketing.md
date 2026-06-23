@@ -58,6 +58,32 @@ ajuda quem publica; achado concreto ajuda.
 12. **Português** — erro de ortografia/concordância (em peça pública, um erro já
     queima a marca).
 
+## Nota X/10 (SÓ peça de social orgânico: post, carrossel, reel, legenda)
+
+Quando a peça é social orgânico, além do veredito, **pontuar 7 dimensões e devolver a nota
+final X/10**. Anúncio pago e copy de página NÃO recebem nota — só o veredito (prioridades
+diferentes: política, oferta, prova não cabem na ponderação Hook=50%).
+
+Pontuar cada dimensão 0-10 e ponderar:
+
+| Dimensão | Peso | O que checa |
+|---|---|---|
+| **Hook strength** | **50%** | As 3-5 primeiras palavras param o scroll? Específico/surpreendente/polarizador? Passa como tweet sozinho? Sem throat-clearing |
+| Curiosidade + especificidade | 10% | Número/nome/momento real vs genérico; abre questão e resolve |
+| Carga emocional | 10% | Provoca sentimento forte (surpresa, indignação, reconhecimento)? |
+| Shareability | 10% | O leitor marcaria/salvaria/mandaria? Motivo específico. "Informativo" não conta |
+| Voice match | 10% | Soa como a `nucleo/voz.md`? Tem ponto de vista ou poderia ser qualquer IA? |
+| Polaridade | 5% | Diz algo discutível? Concorda OU rebate? Puxa do Wedge de `nucleo/negocio.md` |
+| Fit de plataforma | 5% | Tamanho/hook/hashtag certos; convida a métrica que a plataforma premia |
+
+**Auditoria de voz (penaliza):** cada falha subtrai 0,5 da nota final (teto −3): travessão
+`—`, contração ausente, número por extenso, voz passiva, filler, abertura-filler, hashtag
+fora do limite.
+
+**Régua:** "10 não existe. 8 é forte. 9 quase nada a consertar. Harsh but fair." Nota falsa
+alta custa mais que crítica honesta. Hook=50% implica: post abaixo de 8 quase sempre =
+reescrever o hook. A nota é o motor do loop da `/revisar` (nota < 8 → AJUSTAR).
+
 **Fora do meu escopo (declarar no veredito quando for página):** design visual, Core Web
 Vitals e acessibilidade são do `/revisar-pagina`; Schema/SEO técnico é do `/seo`; citabilidade
 por IA (GEO) eu só **sinalizo** ("a copy não está answer-first/citável → ver `/geo`"), não é
@@ -68,11 +94,13 @@ design nem performance.
 
 ```
 VEREDITO: APROVADA | AJUSTAR | REPROVADA
+NOTA: X/10   ← só peça de social orgânico; omitir em anúncio pago e página
 
 Achados:
 1. [onde] — [problema em uma frase] → [correção concreta em uma frase]
 2. ...
 
+[Em social orgânico: 1 linha resumindo o scorecard, ex.: "Hook 5/10 derruba — resto sólido"]
 [Se APROVADA: "Sem bloqueio. Pode publicar." + no máx 2 sugestões opcionais marcadas como opcionais]
 ```
 
