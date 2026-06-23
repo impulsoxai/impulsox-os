@@ -181,6 +181,8 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
 - **/abrir** (começa a sessão) · **/salvar** (backup GitHub) · **/painel** (dashboard ao vivo)
 - **/plugar** (1º setup) · **/atualizar** (revisa o núcleo) · **/atualizar-motor** (puxa
   melhorias do template pros clones) · **/automatizar** (rotina repetida → skill nova)
+- **/cliente** (cria a casa do cliente, modo agência) · **/intake** (onboarding operacional
+  do contrato: acessos por convite, KPI, aprovação, escopo → `nucleo/intake.md`)
 - **/voz** (entrevista de voz → nucleo/voz.md)
 
 ---
@@ -221,7 +223,8 @@ contrato pra aquilo.
 | /oferta | /proposta (serviço/B2B) ou /copy → /pagina (vender em página) | negocio, ofertas |
 | /raio-x | /proposta | — (só a URL) |
 | /proposta | /cliente (se fechou) ou /email (follow-up) | nucleo/provas, ofertas |
-| /cliente | /identidade | — |
+| /cliente | /intake → /identidade | — |
+| /intake | /identidade | cliente criado (/cliente) |
 | /identidade | /voz (se voz rasa) → depois /calendario ou /pagina | núcleo lido |
 | /voz | /calendario ou produção | — |
 | /calendario | /post · /linkedin · /conteudo (peça a peça) | radar do mês, núcleo |

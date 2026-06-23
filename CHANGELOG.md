@@ -10,6 +10,9 @@ saber o que cada clone está rodando e o que ainda falta puxar do template.
 ## [0.2.5] — 2026-06-23
 
 ### Adicionado
+- Skill `/intake` — onboarding operacional do cliente novo (acessos por convite seguro —
+  nunca senha; KPI do contrato; calendário de aprovação; escopo) → formulário pro cliente +
+  `nucleo/intake.md`. Roda após `/cliente`, antes de `/identidade`. (Oportunidade O4.)
 - Skill `/concorrente` — vigia competitiva: dossiê vivo do concorrente em
   `nucleo/concorrentes.md` (posicionamento, preço, ofertas, cadência, anúncios ativos via
   Meta Ad Library, lacuna), só de fonte pública. Modos mapear/alerta/comparativo.

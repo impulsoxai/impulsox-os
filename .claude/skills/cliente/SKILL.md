@@ -124,3 +124,7 @@ fazer primeiro.
   marcado na entrega.
 - Dado de um cliente jamais aparece no trabalho de outro (nem como "exemplo").
 - Trabalhar para o cliente = sessão aberta dentro da pasta dele.
+
+---
+
+**✓ Pronto:** estrutura do cliente criada (CLAUDE.md, núcleo, marca, produção) com o degrau registrado · **→ próximo passo:** `/intake` — coleta o operacional do contrato (acessos, KPI, aprovação, escopo) antes de começar a produção; depois `/identidade`. Esperar o "sim" do dono.
