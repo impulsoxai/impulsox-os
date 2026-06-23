@@ -1,10 +1,10 @@
 ---
 name: desempenho-yt
 description: >
-  Use pra medir os vídeos do YouTube e validar qual fórmula funciona — "/desempenho-yt",
-  "como foi o vídeo?", "qual fórmula performou?", "mede a retenção", "fecha o ciclo do
-  canal". A análise agora vive na porta única /desempenho (régua de YouTube: retenção,
-  curva, CTR vs a média do canal) com diagnóstico que aponta a skill que conserta.
+  Redirect interno. A medição de YouTube vive na porta única `/desempenho` (detecta a
+  plataforma e usa a régua certa). Esta entrada existe só pra quem digita "/desempenho-yt"
+  por hábito — encaminha pra `/desempenho`. NÃO é a porta de "como foi o vídeo?" / "mede a
+  retenção": essa é a `/desempenho`.
 ---
 
 # /desempenho-yt — (redireciona pra /desempenho)

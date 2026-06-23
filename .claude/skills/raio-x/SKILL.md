@@ -6,6 +6,8 @@ description: >
   apareço no Google?", ou como material de impacto antes de uma reunião comercial.
   Audita site, conteúdo, presença local e redes, e entrega relatório com notas e o
   plano do que consertar primeiro — a porta de entrada de venda do sistema.
+  (Use esta quando quer um DIAGNÓSTICO geral da presença — tendo site ou não. Para CRIAR
+  um site é o `/pagina`; para AJUSTAR uma página que já existe é o `/seo`.)
 ---
 
 # /raio-x — Diagnóstico da presença digital

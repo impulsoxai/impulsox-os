@@ -1,13 +1,15 @@
 ---
 name: seo
 description: >
-  Use quando uma página precisa ser achada no Google E estruturada pra ser citável por
-  IA — "/seo", "otimiza essa página", "por que não apareço no Google?", "deixa o site
-  achável", "Schema da página", "SEO da landing", ou logo depois do /pagina antes de
-  publicar. Faz auditoria on-page + os blocos GEO da página (Schema JSON-LD, answer-first,
-  FAQ, robots pra GPTBot/ClaudeBot/CCBot, llms.txt) e entrega o relatório com nota mais os blocos prontos pra
-  colar. Serve pra página do /pagina, site externo por URL, ou artigo do /conteudo.
-  (Medir se as IAs CITAM a empresa de verdade e o monitoramento mensal é o `/geo`.)
+  Use quando uma página que JÁ EXISTE precisa ser achada no Google E estruturada pra ser
+  citável por IA — "/seo", "otimiza essa página", "deixa o site achável", "Schema da
+  página", "SEO da landing", ou logo depois do /pagina antes de publicar. Faz auditoria
+  on-page + os blocos GEO da página (Schema JSON-LD, answer-first, FAQ, robots pra
+  GPTBot/ClaudeBot/CCBot, llms.txt) e entrega o relatório com nota mais os blocos prontos
+  pra colar. Serve pra página do /pagina, site externo por URL, ou artigo do /conteudo.
+  (Use esta pra AJUSTAR uma página existente. Diagnóstico geral da presença — "por que não
+  apareço no Google?" — é o `/raio-x`; medir se as IAs CITAM a empresa e o monitoramento
+  mensal é o `/geo`.)
 ---
 
 # /seo — Achável no Google, citável pela IA

@@ -102,9 +102,9 @@ embasadas  e quando         (leem marca + voz + provas)       sênior           
 ## A esteira de YOUTUBE (o canal, ciclo completo)
 
 ```
-/tema-yt ──→ /roteiro-yt ──→ (gravar) ──→ /editar-video ──→ /shorts ──→ /publicar ──→ /desempenho-yt
-escolhe     escreve com      tela          corta+áudio       longo→      YouTube       mede retenção
-tema real   a fórmula        narrada       +karaokê          N shorts    (privado)     valida fórmula
+/tema-yt ──→ /roteiro-yt ──→ /gravar-tela ──→ /editar-video ──→ /shorts ──→ /publicar ──→ /desempenho
+escolhe     escreve com      tela+voz        corta+áudio       longo→      YouTube       mede retenção
+tema real   a fórmula        +webcam         +karaokê          N shorts    (privado)     valida fórmula
 (4 fontes)  (Sabrina/Chase/                                                                │
             Jonathan)                                                                      │
    ↑                                                                                       │
@@ -112,8 +112,9 @@ tema real   a fórmula        narrada       +karaokê          N shorts    (priv
 ```
 
 - **/tema-yt** (demanda real) → **/roteiro-yt** (copia fórmula de quem performa + classifica o
-  vídeo por funil topo/meio/fundo e ajusta hook/CTA/prova) → editar →
-  shorts → publicar → **/desempenho-yt** (retenção valida a fórmula) → realimenta
+  vídeo por funil topo/meio/fundo e ajusta hook/CTA/prova) → **/gravar-tela** → editar →
+  shorts → publicar → **/desempenho** (porta única YT+IG; retenção valida a fórmula) → realimenta
+  _(`/desempenho-yt` é só um redirect pra `/desempenho` — não chamar direto)_
 - **/thumbnail** (consultor de CTR: Four C's + crivo de nota) é chamada pela **/editar-video**
   (capa do vídeo longo) e roda **avulsa** (capa pra vídeo de fora; repacote quando o CTR cai).
   O **/roteiro-yt** projeta o conceito; a **/thumbnail** gera e pontua. Capa decide o clique
@@ -137,6 +138,22 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
 
 ---
 
+## Presença que não é feed (perfil + local)
+
+- **/perfil-ig** — otimiza o perfil do Instagram (bio, destaques, nome de busca) pra
+  converter quem chega. Roda no setup e quando o perfil está fraco; aponta pra /calendario.
+- **/local** — Perfil de Empresa no Google (post local, responder avaliação via API oficial).
+  Entra pra negócio com ponto físico/atendimento por região; aponta pra /publicar.
+
+## Medição (três portas, fronteira clara)
+
+- **/desempenho** — porta única de social orgânico + YouTube (alcance/save/send/retenção →
+  diagnóstico acionável). É a porta padrão de "como foi?".
+- **/analisar-ads** — só tráfego PAGO (CSV do Google/Meta; cálculo por script; atribuição).
+- **/analisar-dados** — genérica de planilha de NEGÓCIO (CSV/XLSX/JSON além de marketing).
+- **/relatorio** — consolida o que as três medem num relatório executivo pro cliente
+  (topo OUTCOME: o resultado de negócio, não só métrica de vaidade).
+
 ## Skills que TODAS as outras usam (a infraestrutura invisível)
 
 | Skill | Papel | Quem chama |
@@ -146,8 +163,10 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
 | **/revisar-pagina** | olhos frios em design + copy de página pronta (régua nomeada) | publicar (gate pré-deploy de página), sob demanda |
 | **/provas** | banco de prova real | copy, post, pagina, proposta, ads, relatorio |
 | **/oferta** | constrói/diagnostica a oferta (Equação de Valor) | antes de proposta, pagina, lancar-produto |
-| **/formulas** | moldes de post que funcionam | post, linkedin |
+| **/formulas** | moldes de post que funcionam | post, linkedin, repurpose |
 | **/premium-design** | DNA visual + nível agência | identidade, pagina |
+| **/copy** | engine de copy de conversão (4 camadas) | pagina, raio-x (mini-redesign) |
+| **/geo** | mede/estrategia citação por IA (par do /seo: /geo decide, /seo marca) | sob demanda, depois do /seo |
 
 ## Skills de SISTEMA (operam o motor, não produzem peça)
 
@@ -206,12 +225,18 @@ contrato pra aquilo.
 | /desempenho | /calendario (próximo ciclo) | métricas |
 | /pagina | /seo → /publicar | **marca/ (senão: rodar /identidade antes)** |
 | /copy | /escritor-br → volta pro /pagina | voz |
-| /seo | /publicar | a página pronta |
+| /seo | /geo (mede citação por IA) → /publicar | a página pronta |
+| /geo | /publicar (ou plano de citação) | a página/site no ar |
+| /perfil-ig | /calendario | perfil atual ou print |
+| /local | /publicar | Perfil de Empresa no Google |
+| /relatorio | /calendario (próximo ciclo) | métricas de /desempenho, /analisar-ads |
+| /analisar-dados | conforme o dado pedir | CSV/XLSX/JSON do negócio |
 | /tema-yt | /roteiro-yt | criadores-monitorados, pilares |
-| /roteiro-yt | (gravar) → /editar-video | **voz-canal.md, fórmula** |
+| /roteiro-yt | /gravar-tela → /editar-video | **voz-canal.md, fórmula** |
+| /gravar-tela | /editar-video | — (só a gravação crua) |
 | /editar-video | /shorts → /publicar | final.mp4, whisper |
 | /shorts | /publicar | palavras.json |
-| /desempenho-yt | /tema-yt (próximo vídeo) | métricas/publicação |
+| /desempenho (YouTube) | /tema-yt (próximo vídeo) | métricas/publicação |
 | /ads-google · /ads-meta | (humano sobe) → /analisar-ads em 30d | **marca/, página de destino** |
 | /analisar-ads | /ads-* (nova campanha) | exports CSV |
 | /criar-ebook | /email (sequência) ou /pagina (captura) | núcleo, marca |

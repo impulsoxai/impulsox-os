@@ -1,10 +1,12 @@
 ---
 name: conteudo
 description: >
-  Use quando um tema deve virar o pacote completo de conteúdo — "/conteudo", "transforma
+  Use quando você JÁ SABE o tema e quer TUDO dele de uma vez — "/conteudo", "transforma
   esse tema em conteúdo", "artigo + posts sobre X", "conteúdo completo do tema", ou ao
   executar uma linha do calendário que pede blog + redes. Orquestra: artigo pro site,
   carrossel via /post, post de LinkedIn via /linkedin — tudo amarrado num tema só.
+  (Quer só UM post? é o `/post`. Quer explodir uma FONTE LONGA já pronta (vídeo, artigo) em
+  vários formatos? é o `/repurpose`. Esta aqui parte de UM tema e monta o pacote dele.)
 ---
 
 # /conteudo — Um tema, o pacote inteiro

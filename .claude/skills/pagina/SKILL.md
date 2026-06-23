@@ -1,11 +1,12 @@
 ---
 name: pagina
 description: >
-  Use para criar landing page ou site de uma página com padrão premium — "/pagina",
-  "cria a landing page", "preciso de um site", "página de vendas", "página pro
-  lançamento". Entrega HTML/CSS/JS completo com a identidade da marca, copy que
-  converte, dados estruturados e verificação visual em múltiplos tamanhos de tela —
-  o produto de R$ 5.000 do portfólio.
+  Use para CRIAR uma landing page ou site de uma página com padrão premium (quando você
+  ainda não tem site ou quer um novo) — "/pagina", "cria a landing page", "preciso de um
+  site", "página de vendas", "página pro lançamento". Entrega HTML/CSS/JS completo com a
+  identidade da marca, copy que converte, dados estruturados e verificação visual em
+  múltiplos tamanhos de tela — o produto de R$ 5.000 do portfólio. (Para AJUSTAR uma
+  página que já existe é o `/seo`; pra um diagnóstico geral da presença é o `/raio-x`.)
 ---
 
 # /pagina — Landing page premium
