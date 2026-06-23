@@ -49,25 +49,28 @@ O agente não é FAQ passivo: é um SDR. Comportamento:
 - **Não inventa fato do negócio** — o que não está no núcleo, ele não afirma; oferece falar
   com um humano.
 
-## Contrato de `POST /api/chat` (o que o CRM implementa)
+## Contrato de `POST /api/chat` (travado com o dev do CRM, 2026-06-23)
 
 ```
 POST /api/chat
-Headers: x-tenant: <tenant_id ou chave pública do site>
+Headers:
+  Content-Type: application/json
+  x-impulsox-site: ixs_pub_<key>        // chave PÚBLICA do tenant (scope chat:public)
 Body: {
-  messages: [{role:"user"|"assistant", content:"..."}],   // histórico da conversa
-  system: "<persona gerada pelo /agente-ia>",              // OU referenciada por id no CRM
-  page_context: { url, oferta_em_foco }                    // contexto da página
+  messages: [{role:"user"|"assistant", content:"..."}],   // histórico — SEM system
+  page_context: { url, oferta_em_foco }
 }
 Resposta (envelope success/fail do CRM): {
-  reply: "...",                 // a fala do agente
-  capture: null | {             // preenchido quando o agente fecha o lead
-    name, contact, channel:"site", necessidade, utm?:{...}
-  }
+  reply: "...",
+  capture: null | { name, contact, channel:"site", necessidade, utm? }
 }
 ```
-Quando `capture` vem preenchido, o CRM cria o `Contact` (channel=site). O system prompt pode
-ir no body OU ficar guardado no CRM por tenant (decisão do PRD; o body é o MVP).
+- Identidade do tenant = **chave pública `ixs_pub_<key>`** (do `data-site-key` do embed),
+  nunca `tenant_id` cru (o widget é HTML público). Reusa a `ApiKey` do CRM, scope
+  `chat:public`, prefixo `ixs_pub_` (≠ `ixk_live_` secreto do service token).
+- **Persona guardada no CRM por tenant** — não vai no body; o OS sobe uma vez via endpoint
+  de gestão JWT-only. A chave resolve o tenant → o CRM carrega a persona e chama Haiku.
+- `capture` preenchido → o CRM cria o `Contact` (channel=site) server-side.
 
 ## Segurança
 

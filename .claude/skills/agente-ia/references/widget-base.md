@@ -6,7 +6,7 @@
 
 ```html
 <!-- ImpulsoX-OS · widget /agente-ia · injetar antes de </body> -->
-<div id="ix-chat" data-endpoint="" aria-live="polite">
+<div id="ix-chat" data-endpoint="" data-site-key="" aria-live="polite">
   <button id="ix-chat-bubble" aria-label="Abrir conversa com o assistente" aria-expanded="false">
     <!-- ícone simples; trocar por SVG da marca se houver -->
     <span aria-hidden="true">💬</span>
@@ -53,7 +53,8 @@
 <script>
 (function(){
   var root=document.getElementById('ix-chat');
-  var endpoint=root.dataset.endpoint;            // setar pro /api/chat do CRM ao instalar
+  var endpoint=root.dataset.endpoint;            // URL do /api/chat do CRM
+  var siteKey=root.dataset.siteKey;              // chave PÚBLICA do tenant (ixs_pub_...)
   var bubble=document.getElementById('ix-chat-bubble');
   var win=document.getElementById('ix-chat-window');
   var log=document.getElementById('ix-chat-log');
@@ -68,24 +69,43 @@
   });
   function add(role,text){var d=document.createElement('div');d.className=role==='user'?'u':'a';
     d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;}
-  // estado desabilitado honesto: sem endpoint configurado, não finge conversar
-  if(!endpoint){form.setAttribute('hidden','');off.removeAttribute('hidden');return;}
+  // estado desabilitado honesto: sem endpoint OU sem chave, não finge conversar
+  if(!endpoint||!siteKey){form.setAttribute('hidden','');off.removeAttribute('hidden');return;}
+  function fail(){form.setAttribute('hidden','');off.removeAttribute('hidden');}
   form.addEventListener('submit',function(e){
     e.preventDefault();var t=input.value.trim();if(!t)return;
     add('user',t);msgs.push({role:'user',content:t});input.value='';
-    fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},
+    // body sem system: a persona fica guardada no CRM, resolvida pela chave do tenant
+    fetch(endpoint,{method:'POST',headers:{
+        'Content-Type':'application/json',
+        'x-impulsox-site':siteKey              // chave pública resolve o tenant no CRM
+      },
       body:JSON.stringify({messages:msgs,page_context:{url:location.href}})})
       .then(function(r){return r.json();})
-      .then(function(j){var reply=(j&&j.data&&j.data.reply)||(j&&j.reply);
-        if(reply){add('assistant',reply);msgs.push({role:'assistant',content:reply});}
-        else{form.setAttribute('hidden','');off.removeAttribute('hidden');}})
-      .catch(function(){form.setAttribute('hidden','');off.removeAttribute('hidden');});
+      .then(function(j){
+        var d=(j&&j.data)||j||{};
+        if(d.reply){add('assistant',d.reply);msgs.push({role:'assistant',content:d.reply});}
+        else{fail();}
+        // d.capture (lead fechado) é tratado pelo CRM — cria o Contact server-side;
+        // o widget não faz nada com PII no front.
+      })
+      .catch(fail);
   });
 })();
 </script>
 ```
 
-**Instalação:** injetar antes de `</body>`; setar `data-endpoint` pro `POST /api/chat` do CRM
-do cliente; trocar `[NEGÓCIO]` e `[NUMERO]` do WhatsApp; conferir que os `var(--...)` batem
-com os tokens reais da marca. Sem `data-endpoint`, o widget mostra o fallback do WhatsApp (não
-finge conversar).
+**Instalação:** injetar antes de `</body>`; preencher os dois `data-`:
+- `data-endpoint` → URL do `POST /api/chat` do CRM.
+- `data-site-key` → a **chave pública** do tenant no CRM (`ixs_pub_...`), gerada na aba
+  Integrações do CRM. É pública por desenho (vai pro front); o dano máximo se vazar é abusar
+  do chat daquele tenant, contido pelo rate-limit do CRM. **Nunca** usar aqui o service token
+  secreto (`ixk_live_...`) nem o `tenant_id` cru.
+
+Trocar `[NEGÓCIO]` e `[NUMERO]` do WhatsApp; conferir que os `var(--...)` batem com os tokens
+reais da marca. Faltando `data-endpoint` OU `data-site-key`, o widget mostra o fallback do
+WhatsApp (não finge conversar).
+
+**A persona NÃO vai no widget** — fica guardada no CRM por tenant; a `data-site-key` resolve
+o tenant e o CRM carrega a persona certa. O OS sobe a persona uma vez via o endpoint de
+gestão do CRM (JWT-only). Persona nunca toca o front.

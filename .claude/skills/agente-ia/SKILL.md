@@ -62,26 +62,36 @@ Molde em `references/widget-base.md`. Regras:
 - Na marca (`marca/tokens.css`) — cor, fonte, raio, sombra do cliente. Nunca default genérico.
 - Bolha + janela de chat; abre/fecha suave; respeita `prefers-reduced-motion`.
 - Acessível: foco visível, navegável por teclado, contraste mínimo 4.5:1, `aria-label`.
-- Chama `POST /api/chat` (ver contrato). **Estado desabilitado honesto** quando o endpoint
-  não responde: mostra "fale no WhatsApp" em vez de fingir que conversa ou quebrar a página.
-- Nenhum segredo no front — o widget só manda a conversa.
+- Chama `POST /api/chat` (ver contrato) com a chave PÚBLICA do tenant (`data-site-key` →
+  header `x-impulsox-site`). **Estado desabilitado honesto** quando falta endpoint/chave ou
+  o endpoint não responde: mostra "fale no WhatsApp" em vez de fingir que conversa.
+- Nenhum **segredo** no front — só a chave pública (`ixs_pub_`, sem poder de ler/escrever
+  dado); o service token secreto e a persona ficam no CRM.
 
 ## Contrato `POST /api/chat` (o CRM implementa — está no PRD)
 
 ```
 POST /api/chat
-Headers: x-tenant: <tenant_id ou chave pública do site>
+Headers:
+  Content-Type: application/json
+  x-impulsox-site: ixs_pub_<key>        // chave PÚBLICA do tenant (resolve o tenant no CRM)
 Body: {
-  messages: [{role, content}],          // histórico
-  system: "<persona>",                  // ou id no CRM
+  messages: [{role, content}],          // histórico — SEM system (persona fica no CRM)
   page_context: { url, oferta_em_foco }
 }
-Resposta (envelope success/fail): {
+Resposta (envelope success/fail do CRM): {
   reply: "...",
   capture: null | { name, contact, channel:"site", necessidade, utm? }
 }
 ```
-`capture` preenchido → o CRM cria o `Contact`.
+- **Identidade do tenant:** a chave pública `ixs_pub_...` (do `data-site-key` do embed),
+  nunca o `tenant_id` cru. Escopo `chat:public`. É pública por desenho; se vazar, o dano
+  máximo é abusar do chat daquele tenant (contido por rate-limit). O service token secreto
+  (`ixk_live_...`) NUNCA vai pro front.
+- **Persona guardada no CRM por tenant** — não vai no body. O OS sobe a persona uma vez via
+  o endpoint de gestão do CRM (JWT-only); a chave resolve o tenant → o CRM carrega a persona.
+- `capture` preenchido → o CRM cria o `Contact` (channel=site) server-side; o widget não
+  mexe em PII no front.
 
 ## Regras (duras, herdadas)
 

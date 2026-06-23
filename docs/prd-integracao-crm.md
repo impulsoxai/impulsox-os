@@ -133,12 +133,15 @@ lead) na landing page. A página é HTML estático — o runtime tem que viver n
 `@anthropic-ai/sdk` (Haiku). **O OS entrega o widget + a persona; o CRM implementa o
 endpoint.**
 
+**Contrato travado** (alinhado com o dev do CRM, 2026-06-23):
+
 ```
 POST /api/chat
-Headers: x-tenant: <tenant_id ou chave pública do site daquele tenant>
+Headers:
+  Content-Type: application/json
+  x-impulsox-site: ixs_pub_<key>        // chave PÚBLICA do tenant (scope chat:public)
 Body: {
-  messages: [{role:"user"|"assistant", content}],   // histórico da conversa
-  system: "<persona gerada pelo /agente-ia>",        // ou referenciada por id no CRM
+  messages: [{role:"user"|"assistant", content}],   // histórico — SEM system
   page_context: { url, oferta_em_foco }
 }
 Resposta (envelope success/fail): {
@@ -146,14 +149,23 @@ Resposta (envelope success/fail): {
   capture: null | { name, contact, channel:"site", necessidade, utm? }
 }
 ```
-- O CRM chama a Claude (Haiku) com o `system` recebido + `messages`, devolve `reply`.
-- Quando o agente fecha o lead, devolve `capture` preenchido → o CRM cria o `Contact`
-  (channel=site, + utm se 3.2-A).
-- **Segurança:** key da Claude só no CRM (nunca no front); **rate-limit por tenant
-  obrigatório** (chat público é alvo de abuso/custo); validar/limitar tamanho do `system` e
-  do histórico.
-- **Por que vale:** é o diferencial "IA-Ready" que o cliente vê e toca, e um canal de lead
-  novo (site→Contact) direto no CRM. Reusa o SDK que o CRM já tem.
+- **Identidade do tenant = chave pública `ixs_pub_<key>`**, não `tenant_id` cru (o widget é
+  HTML público; tenant_id cru seria enumerável/forjável). Reusa a tabela `ApiKey` do 3.1
+  (hash SHA-256, prefixo, revogável, scopes) com scope novo **`chat:public`** e prefixo
+  **`ixs_pub_`** (distinto do `ixk_live_` secreto do service token). Vazou (e vai — está no
+  front) → dano máximo = abusar do chat daquele tenant, contido por rate-limit.
+- **Persona guardada no CRM por tenant** — NÃO vai no body. O OS sobe a persona uma vez via
+  um endpoint de gestão (JWT-only, na aba Integrações). A chave resolve o tenant → o CRM
+  carrega a persona dele e chama a Claude (Haiku) com ela + `messages`.
+- Quando o agente fecha o lead, devolve `capture` → o CRM cria o `Contact` (channel=site,
+  + utm se 3.2-A) server-side.
+- **Segurança:** key da Claude só no CRM; **rate-limit por tenant obrigatório** (teto
+  agressivo — chat público é alvo de abuso/custo); validar tamanho de `messages`.
+- **Por que vale:** diferencial "IA-Ready" que o cliente vê e toca + canal de lead novo
+  (site→Contact). Reusa o `@anthropic-ai/sdk` (Haiku) e a infra de `ApiKey` do CRM.
+- **Lado OS (pronto):** o widget (`/agente-ia` → `references/widget-base.md`) já casa com
+  este contrato — lê `data-site-key`, manda `x-impulsox-site`, body sem `system`, trata
+  `j.data.reply`/`j.data.capture`.
 
 ### 3.5. Itens menores
 
