@@ -39,6 +39,24 @@ Usuário traz uma peça: texto colado, print ou link público. Extrair, nesta or
    - **Question ~28%** — pergunta direta
    - **Pain Point ~27%** — dor reconhecível
    - **Generic Reveal ~12% ("Oi pessoal")** — o pior; anotar como antipadrão
+
+   Ao escolher o ângulo de uma peça NOVA, preferir os tipos do topo (Specific Outcome,
+   POV, Unpopular Opinion) — maior teto de viralização e alinhados à regra "copiar a
+   fórmula de quem performa". Adaptar sempre ao nosso tom (professor, não vendedor): o
+   molde transfere, a estética de vendedor americano não.
+
+   **Protocolo de iteração do hook (vale pra QUALQUER hook que o `/post` e o `/linkedin`
+   escrevem, não só na dissecação).** O hook é ~50% do desempenho — escrever o hook
+   PRIMEIRO e reescrever 3-5x antes do corpo:
+   1. 3 variações do hook, de categorias diferentes da taxonomia acima.
+   2. **first-3-words test:** as 3 primeiras palavras sozinhas criam curiosidade/
+      surpresa? ("Aqui está o que eu" → falha; "Testei 47" → passa; "A maioria acha"
+      → passa).
+   3. Primeira palavra = a mais forte (número/nome/surpresa na frente; cortar "então/
+      hoje/bom").
+   4. Passa como tweet sozinho? Se só faz sentido com o corpo, está fraco.
+   5. Não soa IA, sem abertura genérica. Só depois de o hook passar, escrever o corpo.
+
    Registrar o **tipo** e a **retenção esperada** no molde (campo unificado com o
    `/reel-marca`), e qual loop o gancho abre. Taxonomia única = `/post`, `/linkedin` e
    `/reel-marca` falam a mesma língua de hook.
