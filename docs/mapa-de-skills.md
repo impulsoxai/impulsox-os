@@ -235,7 +235,8 @@ contrato pra aquilo.
 | /revisar | /publicar (se aprovada) | a peça pronta |
 | /publicar | /desempenho (no fim do mês) | publicacoes.md |
 | /desempenho | /calendario (próximo ciclo) | métricas |
-| /pagina | /seo → /publicar | **marca/ (senão: rodar /identidade antes)** |
+| /pagina | /seo → /publicar (add-on: /agente-ia) | **marca/ (senão: rodar /identidade antes)** |
+| /agente-ia | /publicar (chat liga com o /api/chat do CRM) | página pronta + núcleo |
 | /copy | /escritor-br → volta pro /pagina | voz |
 | /seo | /geo (mede citação por IA) → /publicar | a página pronta |
 | /geo | /publicar (ou plano de citação) | a página/site no ar |

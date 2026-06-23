@@ -126,6 +126,35 @@ O OS precisa, via API REST (prefixo a confirmar — provável `/api`), com envel
 **Ação do dev do CRM:** confirmar o prefixo real e se esses filtros (`from`/`to`/`channel`/
 `status`) já existem nos controllers; onde faltar filtro, é ajuste pequeno (where do Prisma).
 
+### 3.4-bis. Endpoint `POST /api/chat` — runtime do agente-IA da página 🟡 alto valor
+
+A skill `/agente-ia` do OS coloca um agente conversacional (SDR que qualifica e captura
+lead) na landing page. A página é HTML estático — o runtime tem que viver no CRM, que já tem
+`@anthropic-ai/sdk` (Haiku). **O OS entrega o widget + a persona; o CRM implementa o
+endpoint.**
+
+```
+POST /api/chat
+Headers: x-tenant: <tenant_id ou chave pública do site daquele tenant>
+Body: {
+  messages: [{role:"user"|"assistant", content}],   // histórico da conversa
+  system: "<persona gerada pelo /agente-ia>",        // ou referenciada por id no CRM
+  page_context: { url, oferta_em_foco }
+}
+Resposta (envelope success/fail): {
+  reply: "...",
+  capture: null | { name, contact, channel:"site", necessidade, utm? }
+}
+```
+- O CRM chama a Claude (Haiku) com o `system` recebido + `messages`, devolve `reply`.
+- Quando o agente fecha o lead, devolve `capture` preenchido → o CRM cria o `Contact`
+  (channel=site, + utm se 3.2-A).
+- **Segurança:** key da Claude só no CRM (nunca no front); **rate-limit por tenant
+  obrigatório** (chat público é alvo de abuso/custo); validar/limitar tamanho do `system` e
+  do histórico.
+- **Por que vale:** é o diferencial "IA-Ready" que o cliente vê e toca, e um canal de lead
+  novo (site→Contact) direto no CRM. Reusa o SDK que o CRM já tem.
+
 ### 3.5. Itens menores
 
 - **PII cifrada (AES-256-GCM):** email/phone/documento vêm cifrados/HMAC, não em claro. O OS
@@ -170,9 +199,12 @@ Reclassificadas agora que sabemos o que o CRM faz:
    `/csv`. Destrava ROI por campanha.
 3. **🟡 Filtros de período/status nos GETs** (3.4) — `from`/`to`/`channel`/`status` onde
    faltar. Ajuste de `where` no Prisma.
-4. **🟢 Webhook de eventos** (3.3-A) — `lead.created`/`deal.won`/`invoice.paid` por tenant.
+4. **🟡 Endpoint `POST /api/chat`** (3.4-bis) — runtime do agente-IA da página (chama Haiku
+   com o system+messages, devolve reply + capture→Contact). Rate-limit por tenant
+   obrigatório. O widget e a persona já vêm prontos do OS (skill `/agente-ia`).
+5. **🟢 Webhook de eventos** (3.3-A) — `lead.created`/`deal.won`/`invoice.paid` por tenant.
    Pode vir depois (OS começa por poll); necessário pro `/depoimento` em tempo real e hub vivo.
-5. **🟢 Confirmar:** prefixo real (`/api`?), o que `/reports` já agrega, e que os GETs de
+6. **🟢 Confirmar:** prefixo real (`/api`?), o que `/reports` já agrega, e que os GETs de
    listagem não exigem decifrar PII pro OS.
 
 Quando 1-3 estiverem no ar, o OS começa pela `lib-crm.mjs` + `/roi`. O dono crava as

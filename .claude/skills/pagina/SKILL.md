@@ -173,4 +173,4 @@ depois da escolha.
 
 ---
 
-**✓ Pronto:** landing page premium em `producao/paginas/<slug>/` (HTML/CSS/JS na marca, CWV medido) · **→ próximo passo:** `/seo` (Schema/GEO) e depois `/publicar` — página bonita que ninguém acha não vale. Pré-requisito que mais trava: **`marca/` precisa existir** — sem identidade não há página premium; se faltar, rodar `/identidade` antes (o sistema reorienta).
+**✓ Pronto:** landing page premium em `producao/paginas/<slug>/` (HTML/CSS/JS na marca, CWV medido) · **→ próximo passo:** `/seo` (Schema/GEO) e depois `/publicar` — página bonita que ninguém acha não vale. Pré-requisito que mais trava: **`marca/` precisa existir** — sem identidade não há página premium; se faltar, rodar `/identidade` antes (o sistema reorienta). _(Add-on opcional: `/agente-ia` põe um assistente que qualifica e captura lead 24/7 na página — o diferencial IA-Ready; é só pedir.)_

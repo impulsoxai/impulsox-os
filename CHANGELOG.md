@@ -10,6 +10,11 @@ saber o que cada clone está rodando e o que ainda falta puxar do template.
 ## [0.2.5] — 2026-06-23
 
 ### Adicionado
+- Skill `/agente-ia` — SDR conversacional na landing: gera o widget de chat na marca
+  (injetável) + a persona (do núcleo, só oferta ATIVA + prova autorizada) + o contrato de
+  `POST /api/chat`. Runtime vive no CRM (item novo no `docs/prd-integracao-crm.md`); o widget
+  fica em estado desabilitado honesto até o endpoint existir. (Oportunidade O8 — 3ª OS-puro;
+  o "liga" depende do CRM.)
 - Skill `/intake` — onboarding operacional do cliente novo (acessos por convite seguro —
   nunca senha; KPI do contrato; calendário de aprovação; escopo) → formulário pro cliente +
   `nucleo/intake.md`. Roda após `/cliente`, antes de `/identidade`. (Oportunidade O4.)
