@@ -106,7 +106,23 @@ nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual 
     vol). Sem trilha → mudo (legenda queimada cobre os ~60% sem som).
 11. **Audita 1 frame por cena** (`npx remotion still ... --frame=N`) antes do full render.
 12. **Renderiza (só com o texto do GATE 2 aprovado):** `npx remotion render remotion/src/index.ts <CompId>
-    producao/reels/<slug>/reel.mp4` (`--gl=angle` se logo 3D). Guarda o `.tsx`.
+    producao/reels/<slug>/reel.mp4` (`--gl=angle` se logo 3D). Esse é o reel MUDO (preservar).
+    Guarda o `.tsx`.
+12b. **Trilha + compressão (1 passo de ffmpeg).** Muxa a música de fundo E comprime de uma vez —
+    o render do Remotion sai com bitrate alto (~3-4 Mbps, 6-10 MB); recomprimir com CRF 23 corta
+    ~50% sem perda visível (Instagram recomprime no upload de qualquer jeito). Salva
+    `reel-com-trilha.mp4` ao lado, PRESERVANDO o `reel.mp4` mudo:
+    ```bash
+    dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 producao/reels/<slug>/reel.mp4)
+    fo=$(python3 -c "print(round($dur-2,3))")   # fade-out começa 2s antes do fim
+    ffmpeg -y -i producao/reels/<slug>/reel.mp4 -i producao/reels/trilhas/<trilha>.m4a \
+      -filter_complex "[1:a]volume=0.22,afade=t=in:st=0:d=1,afade=t=out:st=${fo}:d=2[a]" \
+      -map 0:v -map "[a]" -c:v libx264 -crf 23 -preset slow -pix_fmt yuv420p -movflags +faststart \
+      -c:a aac -b:a 160k -shortest producao/reels/<slug>/reel-com-trilha.mp4
+    ```
+    Régua de áudio: **`volume=0.22`** (música de fundo ≈ −28/−29 dB) · **fade-in 1s / out 2s**.
+    Trilha tratada antes (loudnorm -14 LUFS + estéreo) se gravada de celular. Sem trilha → pular,
+    o reel mudo já serve (legenda queimada cobre os ~60% sem som).
 13. **Gera a capa (cover):** `npx remotion still remotion/src/index.ts <CompId>
     producao/reels/<slug>/capa.png --frame=<N>`. Default `N` = um frame do MONEY SHOT (a cena do
     produto/resultado real — melhor prova visual). A skill sugere o frame; ajustável vendo o
