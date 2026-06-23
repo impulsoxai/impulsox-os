@@ -74,6 +74,13 @@ São abertas de propósito: a pergunta 1 sozinha já puxa origem, visão e a men
 marca. Se o dono engrenar e falar muito além delas, ótimo — deixar correr. Quanto mais
 fala solta, mais voz.
 
+**Extrair o Wedge da transcrição.** A opinião contrária do dono (o **Wedge** — ver
+`nucleo/negocio.md`) costuma aparecer sozinha quando ele fala do setor nas perguntas 1 e
+3. Se aparecer, capturar a frase literal e gravar em `nucleo/negocio.md` (campo Opinião
+contrária / Wedge), não no `voz.md` — é munição de conteúdo, não tom de escrita. Se a
+entrevista não revelar nenhuma, deixar como pendência da Escada; o `/plugar` (pergunta 4b)
+é o ponto principal de captura.
+
 ### Quando a voz é do canal (`--canal`)
 
 As mesmas seis perguntas valem — a voz ainda sai de como a pessoa fala do negócio, não de

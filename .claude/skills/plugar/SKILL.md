@@ -91,6 +91,11 @@ se repete.
 3. "Pensa no último cliente que fechou com você: quem era e o que ele estava
    precisando quando chegou?"
 4. "Por que escolhem você e não o concorrente? O que te diferencia de verdade?"
+4b. "Qual opinião forte você tem sobre o seu setor — algo que a maioria dos seus
+   concorrentes rebateria?" (o **Wedge**: a crença contrária que divide a audiência,
+   não o diferencial). Se travar, empurrar: "que hábito comum do seu nicho você acha
+   um erro? que conselho repetido você ignora?". Pegar algo específico, mesmo pequeno;
+   se ainda não vier, marcar como pendência da Escada — nunca inventar.
 
 A pergunta 3 se adapta ao perfil escolhido na Fase 0:
 - **criador** → "Quem é a sua audiência — quem assiste/segue você — e como você pretende
@@ -135,7 +140,8 @@ escrever como a pessoa fala. Marcar a voz como provisória até o `/voz` rodar.
 ## Fase 3 — Preencher o núcleo
 
 Com o que veio da extração + entrevista, escrever:
-- `nucleo/negocio.md` — respostas 1-4 (+ extração): o que é, o que entrega, quem paga, diferencial
+- `nucleo/negocio.md` — respostas 1-4b (+ extração): o que é, o que entrega, quem paga,
+  diferencial e a **Opinião contrária / Wedge** (resposta 4b)
 - `nucleo/perfil.md` — a partir do molde escolhido na Fase 0 (catálogo em `docs/perfis.md`):
   copiar os campos do molde (cliente, skills que lideram, ênfase da escada, o que se produz
   mais, o que não se aplica, mix do `/calendario`) já **preenchidos pro caso deste negócio**,
