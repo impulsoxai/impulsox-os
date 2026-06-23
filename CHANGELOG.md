@@ -7,23 +7,30 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
-## [0.2.5] — 2026-06-23
+## [0.2.6] — 2026-06-23
+
+> Oportunidades da auditoria SO — as 3 que NÃO dependem do CRM. As 5 do eixo-lead
+> (`/leads`, `/roi`, `/reativar`, `/depoimento`, hub multi-cliente) esperam o CRM ganhar a
+> ponte do `docs/prd-integracao-crm.md`.
 
 ### Adicionado
+- Skill `/concorrente` — vigia competitiva: dossiê vivo do concorrente em
+  `nucleo/concorrentes.md` (posicionamento, preço, ofertas, cadência, anúncios ativos via
+  Meta Ad Library, lacuna), só de fonte pública (zero login). Modos mapear/alerta/
+  comparativo. `/radar`, `/ads-meta`, `/oferta` e `/proposta` consomem o dossiê. (O6.)
+- Skill `/intake` — onboarding operacional do cliente novo (acessos por convite seguro —
+  nunca senha; KPI do contrato; calendário de aprovação; escopo) → formulário pro cliente +
+  `nucleo/intake.md`. Roda após `/cliente`, antes de `/identidade`. (O4.)
 - Skill `/agente-ia` — SDR conversacional na landing: gera o widget de chat na marca
   (injetável) + a persona (do núcleo, só oferta ATIVA + prova autorizada) + o contrato de
   `POST /api/chat`. Runtime vive no CRM (item novo no `docs/prd-integracao-crm.md`); o widget
-  fica em estado desabilitado honesto até o endpoint existir. (Oportunidade O8 — 3ª OS-puro;
-  o "liga" depende do CRM.)
-- Skill `/intake` — onboarding operacional do cliente novo (acessos por convite seguro —
-  nunca senha; KPI do contrato; calendário de aprovação; escopo) → formulário pro cliente +
-  `nucleo/intake.md`. Roda após `/cliente`, antes de `/identidade`. (Oportunidade O4.)
-- Skill `/concorrente` — vigia competitiva: dossiê vivo do concorrente em
-  `nucleo/concorrentes.md` (posicionamento, preço, ofertas, cadência, anúncios ativos via
-  Meta Ad Library, lacuna), só de fonte pública. Modos mapear/alerta/comparativo.
-  `/radar`, `/ads-meta`, `/oferta` e `/proposta` consomem o dossiê. (Oportunidade O6 — 1ª
-  das 3 OS-puro da auditoria; as do eixo-lead esperam o CRM ganhar a ponte — ver
-  `docs/prd-integracao-crm.md`.)
+  fica em estado desabilitado honesto até o endpoint existir. (O8.)
+- `docs/prd-integracao-crm.md` — PRD da ponte CRM↔OS (service token por tenant, UTM no
+  Contact, filtros, `POST /api/chat`, webhook) que destrava as 5 oportunidades do eixo-lead.
+
+## [0.2.5] — 2026-06-23
+
+### Adicionado
 - Skills `/copy`, `/geo`, `/local`, `/perfil-ig`, `/relatorio`, `/analisar-dados`,
   `/gravar-tela` agora aparecem no `docs/mapa-de-skills.md` (estavam órfãs); seções novas
   de "Presença que não é feed" e "Medição (três portas)".
