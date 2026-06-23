@@ -80,6 +80,18 @@ embasadas  e quando         (leem marca + voz + provas)       sênior           
   serviço real do cliente em mockup (carrossel, página, antes/depois, depoimento), na marca e
   voz dele, com estrutura de retenção comprovada. Opcional — oferecido quando o dono quer vídeo
   de marca; serve qualquer nicho. Lê o núcleo do cliente; o motor desce do template.
+- **Sequência do /reel-marca** (de onde entra, pra onde sai):
+
+  ```
+  (precisa antes) /identidade → /post ou /pagina   ← marca + peça real pra mostrar
+                          │
+                          ▼
+                    /reel-marca ──→ /revisar ──→ /publicar ──→ /desempenho
+                    (motion graphics)  (olhos frios)            (mede save/send,
+                                                                 realimenta o próximo)
+  ```
+  Pré-requisito mínimo: `marca/` (tema do reel) + alguma peça real em `producao/`. Sem isso, a
+  Escada de Contexto reorienta (faz `/identidade`/`/post` antes). Fecha o loop no `/desempenho`.
 
 ---
 

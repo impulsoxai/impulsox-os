@@ -128,7 +128,13 @@ nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual 
     produto/resultado real — melhor prova visual). A skill sugere o frame; ajustável vendo o
     render. A capa serve de thumbnail/post estático e de vídeo-capa no Google Business Profile.
 
-Fechar com: "✓ reel pronto: `producao/reels/<slug>/reel.mp4` + `capa.png` · → `/revisar` ou `/publicar`."
+**Sequência (de onde vem, pra onde vai):** o reel-marca normalmente entra DEPOIS de ter marca
+(`/identidade`) e peça real pra mostrar (`/post`, `/pagina`); e sai pra `/revisar` (olhos frios)
+→ `/publicar` → `/desempenho` (mede save/send e realimenta o próximo). É opcional na esteira —
+entra quando o dono quer vídeo de marca.
+
+Fechar com: "✓ reel pronto: `producao/reels/<slug>/reel-com-trilha.mp4` (+ `reel.mp4` mudo,
+`capa.png`) · → próximo: `/revisar` (olhos frios) → `/publicar` → `/desempenho` fecha o loop."
 
 ## Cenas de PROVA (fortes em qualquer nicho)
 
