@@ -42,3 +42,13 @@ public/carrosseis/
 public/paginas/
 public/trilhas/
 public/specimen.png
+
+# Mídia pesada (áudio/vídeo) — fica local, não versiona. Reel renderiza do .tsx; trilha
+# extrai da gravação. O CÓDIGO (.tsx) versiona; o MP4/áudio não.
+*.mp4
+*.mov
+*.webm
+*.m4a
+*.aac
+*.wav
+*.mp3

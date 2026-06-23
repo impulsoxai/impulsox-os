@@ -30,6 +30,7 @@ Autoria: ImpulsoX AI. Conteúdo original.
 | `CLAUDE.md` (a constituição) | `marca/` (design-guide, tokens, logo) |
 | `docs/` (persuasao, formulas, ferramentas, perfis, skills-prontas) | `producao/` (tudo que o sistema gerou) |
 | `scripts/` (código compartilhado das skills) | `dados/` (uploads, exports, transcrições) |
+| `remotion/` SEM `src/tema.ts` (motor do reel — componentes `.tsx`, `index.ts`, `templates/`, `.mjs`) | `remotion/src/tema.ts` (GERADO de `marca/tokens.css` — cores da marca deste negócio) |
 | `.env.example`, `.gitignore` | `clientes/` (se houver) · `.env` (segredos) |
 
 Se algum dia uma atualização do motor **precisar** mexer num arquivo de dado (ex: novo campo
@@ -74,7 +75,7 @@ Comparar o motor local com o do template e **mostrar ao usuário, em português,
 só nos caminhos de motor:
 
 ```bash
-git diff --stat HEAD template/main -- .claude/ CLAUDE.md docs/ scripts/ .env.example
+git diff --stat HEAD template/main -- .claude/ CLAUDE.md docs/ scripts/ remotion/ .env.example
 ```
 
 Traduzir o resultado em linguagem de dono: "3 skills novas (`/abrir`, `/geo`, …), `persuasao.md`
@@ -101,7 +102,12 @@ git tag "pre-atualizacao-$VERSAO_ATUAL"
 Trazer do template apenas os caminhos de motor, deixando o núcleo deste negócio intocado:
 
 ```bash
-git checkout template/main -- .claude/ docs/ scripts/ .env.example
+git checkout template/main -- .claude/ docs/ scripts/ remotion/ .env.example
+
+# remotion/src/tema.ts é GERADO das cores deste negócio (não motor) — restaurar a versão local
+# se o checkout acima o trouxe do template. Se o clone ainda não tem tema.ts, gerar:
+#   git checkout HEAD -- remotion/src/tema.ts 2>/dev/null || node remotion/gerar-tema.mjs
+git checkout HEAD -- remotion/src/tema.ts 2>/dev/null || true
 ```
 
 O `CLAUDE.md` da raiz é a constituição (motor) e também atualiza — **mas** se este clone tem
