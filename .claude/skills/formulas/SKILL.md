@@ -29,8 +29,17 @@ trouxer. Pesquisa automática só na web aberta (artigos, breakdowns públicos).
 
 Usuário traz uma peça: texto colado, print ou link público. Extrair, nesta ordem:
 
-1. **O gancho** — que tipo de abertura é? (pergunta, contraintuitivo, número, cena,
-   lista, confissão). Qual loop ela abre?
+1. **O gancho — tipo + retenção esperada.** Classificar pela **mesma taxonomia do
+   `/reel-marca`** (não inventar rótulo solto), em ordem de retenção:
+   - **Specific Outcome ~45%** — número/resultado concreto ("12 manchas sumiram em 30 dias")
+   - **POV Realism ~42%** — "POV: você achou o…"
+   - **Unpopular Opinion ~38%** — opinião contraintuitiva/posição firme
+   - **Question ~28%** — pergunta direta
+   - **Pain Point ~27%** — dor reconhecível
+   - **Generic Reveal ~12% ("Oi pessoal")** — o pior; anotar como antipadrão
+   Registrar o **tipo** e a **retenção esperada** no molde (campo unificado com o
+   `/reel-marca`), e qual loop o gancho abre. Taxonomia única = `/post`, `/linkedin` e
+   `/reel-marca` falam a mesma língua de hook.
 2. **A estrutura** — mapear o esqueleto tela a tela ou parágrafo a parágrafo: onde
    está a tensão, onde o "mas", onde a prova, como fecha.
 3. **Os gatilhos** — quais do `docs/persuasao.md` estão em jogo (o persuasao.md define
@@ -73,7 +82,9 @@ Quando o usuário pede "atualiza as fórmulas" ou não tem peça pra trazer:
    porquê, não. Anotar a fonte de cada uma.
 3. Gravar as aprovadas pelo usuário em `docs/formulas.md` com origem `mercado`.
 
-Sugerir refresh por trimestre — fórmula de rede social apodrece rápido.
+Sugerir refresh **mensal** — os sinais de algoritmo (send/save/comment-velocity, peso de
+keyword, formato em alta) mudam por updates mensais agora, não trimestrais; fórmula de rede
+social apodrece rápido e o que distribuía mês passado pode ter mudado.
 
 ## Modo 3 — Validar (os dados da casa)
 
@@ -82,9 +93,17 @@ O melhor filtro é a própria conta. Quando `producao/relatorios/` tem relatóri
 
 1. Cruzar as peças medidas com as fórmulas que elas usaram (o `/post` e o `/linkedin`
    registram a fórmula na pasta da peça).
-2. Promover ou rebaixar: fórmula que performa na conta ganha marca **validada aqui**
-   (e o padrão vai pro `nucleo/aprendizados.md`); fórmula de mercado que flopou duas
-   vezes ganha **não funciona neste nicho** — economiza as próximas tentativas.
+2. Promover ou rebaixar **pelo sinal certo, não pela curtida** — a hierarquia de 2026 é
+   **send > save > comment-velocity > like**. Uma fórmula que gera envio/save vence uma que
+   só junta like, ainda que o like seja maior. Validar e promover olhando o topo da
+   hierarquia primeiro:
+   - **send/DM** (compartilhamento) — ~3-5x o like, nº1 de alcance pra não-seguidores;
+   - **save** — ~2-3x o like, referência guardada;
+   - **comment-velocity** — resposta rápida na 1ª hora (sinal de qualidade);
+   - **like** — o mais fraco; sozinho não promove fórmula nenhuma.
+3. Fórmula que performa nesses sinais na conta ganha marca **validada aqui** (e o padrão vai
+   pro `nucleo/aprendizados.md`); fórmula de mercado que flopou duas vezes ganha **não
+   funciona neste nicho** — economiza as próximas tentativas.
 
 ## Modo 4 — Monitorar canais (cron)
 
@@ -114,14 +133,23 @@ Cada fórmula é um bloco:
 ## [nome curto da fórmula]
 - **Esqueleto:** [estrutura abstrata, passo a passo]
 - **Gancho típico:** [o molde da primeira linha/tela]
+- **Tipo de hook + retenção:** [Specific Outcome ~45% / POV ~42% / … — taxonomia do /reel-marca]
 - **Gatilhos:** [1-2 do playbook]
 - **Rede e formato:** [onde rende]
+- **Sinal-alvo:** [send / save / comment-velocity — qual sinal esta fórmula busca]
 - **Origem:** dissecada de peça real ([data]) | mercado ([fonte]) — **validada aqui** /
   a testar / não funciona neste nicho
 ```
 
 Máximo ~20 fórmulas vivas. Arquivo é arsenal, não museu: fórmula rebaixada duas vezes
 sai ou vira nota de rodapé.
+
+**Moldes de LinkedIn ficam separados.** LinkedIn não joga o jogo do Instagram — o que
+distribui lá é **dwell time** (leitura 30s+), **Topic Authority** (70-80% num cluster por
+60+ dias) e **Golden Hour** (responder na 1ª hora), não send/save de carrossel. Por isso as
+fórmulas de LinkedIn vivem num bloco próprio do arquivo (rotular `Rede: LinkedIn`) e carregam
+campos de mecânica própria — densidade que prende, amarração ao cluster, kit de resposta da
+1ª hora. Não misturar com molde de IG/reel: a mecânica é outra, e tratar igual quebra os dois.
 
 ## Quem consome
 
@@ -133,7 +161,8 @@ sugerida na linha do plano.
 
 - Fórmula ≠ cópia. Esqueleto sim; frase, tema ou estética da peça original, nunca.
 - **Viral ≠ vende.** Alcance sem salvamento, compartilhamento ou lead é vaidade — a
-  validação do Modo 3 olha os sinais que o `/desempenho` prioriza, não curtida.
+  validação do Modo 3 olha os sinais na ordem **send > save > comment-velocity > like**
+  (a hierarquia que o `/desempenho` prioriza), nunca a curtida sozinha.
 - Toda fórmula carrega origem e status. Molde de mercado nunca vira "verdade da conta"
   sem passar pelo Modo 3.
 - Não inventar métrica da peça dissecada ("isso teve 2M de views") — se o usuário não

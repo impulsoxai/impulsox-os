@@ -158,20 +158,30 @@ slide de prova/contexto); o miolo educativo continua na tipografia forte que já
 - Contraste do texto sobre a foto: mínimo 4.5:1 (medir, não estimar). O overlay existe pra isso.
 - Modo 3 sempre pede aprovação visual antes de usar a imagem gerada.
 
-## Objetivo da peça: salvar ou enviar (decidir ANTES de desenhar)
+## Objetivo da peça: ENVIAR ou salvar (decidir ANTES de desenhar)
 
-Em 2026 o sinal que mais distribui não é o like — é **save** (vale ~2-3x o like) e **send/DM**
-(vale ~3-5x; é o fator nº1 de alcance pra quem não te segue — Mosseri). Toda peça declara, antes
-de qualquer slide, **pra qual dos dois ela é desenhada**:
+Em 2026 o sinal que mais distribui não é o like — é **send/DM** (vale ~3-5x o like e é o
+fator **nº1** de alcance pra quem não te segue — Mosseri), seguido de **save** (~2-3x).
+**Send é o default**: toda peça mira ser enviada, salvo quando o tema é guardável (referência)
+e aí o alvo vira save. A peça declara, antes de qualquer slide, **pra qual dos dois ela é
+desenhada**:
 
-- **Pra SALVAR** — a peça precisa de um slide-referência guardável: um checklist, um resumo, uma
-  tabela, o "print que vale guardar pra usar depois". Se a pessoa não pensa "isso eu salvo", a
-  peça não foi desenhada pra salvar. Costuma cair bem no penúltimo/último slide (o resumo).
-- **Pra ENVIAR** — a peça precisa de um gancho explícito de compartilhamento: algo que a pessoa
-  manda pra alguém específico ("manda isso pro sócio que cuida do financeiro", "marca quem vive
-  atrasado"). O conteúdo tem que ser relatável o bastante pra virar "isso é a sua cara".
+- **Pra ENVIAR (default)** — a peça precisa de um gancho explícito de compartilhamento: algo
+  que a pessoa manda pra alguém específico ("manda isso pro sócio que cuida do financeiro",
+  "marca quem vive atrasado"). O conteúdo tem que ser relatável o bastante pra virar **"isso é
+  a sua cara"** — o gatilho do envio é o reconhecimento ("essa pessoa precisa ver isso"). É o
+  primeiro alvo de desenho de qualquer peça.
+- **Pra SALVAR** — quando o tema é referência guardável: a peça precisa de um slide-referência
+  (um checklist, um resumo, uma tabela, o "print que vale guardar pra usar depois"). Se a pessoa
+  não pensa "isso eu salvo", a peça não foi desenhada pra salvar. Costuma cair bem no
+  penúltimo/último slide (o resumo).
 
-Não é decoração: é o 1º filtro do briefing. A peça que não mira save NEM send fica bonita e some.
+Não é decoração: é o 1º filtro do briefing. A peça que não mira send NEM save fica bonita e some.
+
+**Texto-na-tela como sinal de categorização.** O Instagram lê o texto escrito no slide 1 (e na
+capa do reel) pra entender do que a peça trata e a quem entregar. A **keyword do nicho no slide
+1** (a mesma das 2 primeiras linhas da legenda) é o que categoriza a peça pro Explore — não é só
+hierarquia visual, é sinal de máquina. Slide 1 com keyword clara > slide 1 só com frase de efeito.
 
 ## Anatomia do carrossel
 
@@ -359,13 +369,47 @@ HTML das telas → **crivo de design** (impeccable, no visual) → render Playwr
 5. Salvar em `producao/posts/<YYYY-MM-DD>-<slug-do-tema>/` (HTMLs + PNGs + `legenda.md`).
 6. Mostrar as imagens ao usuário pra aprovação antes de dar por pronto.
 
+## Trial Reel antes de publicar (reel)
+
+Pro reel, oferecer publicar primeiro como **Trial Reel** (recurso nativo do IG): o reel sai
+**só pra não-seguidores** por ~24-72h, sem aparecer no grid nem pro público atual. É um A/B
+de graça com o público que mais importa pra alcance (quem ainda não te segue). Se segurar
+retenção e gerar send/save, **promover ao grid** (vira reel normal, fica no perfil); se
+flopar, fica fora do grid e não suja o perfil. Regra: reel de descoberta (alcance/novos
+seguidores) nasce como Trial; reel pro público atual pode ir direto. É publicação assistida —
+o sistema entrega o reel pronto + a instrução de marcar "Trial" na hora de postar.
+
+## Áudio em carrossel e foto (trending audio)
+
+O IG liberou **áudio fora do reel** — carrossel e post de foto agora carregam trilha. Trending
+audio em carrossel dá um empurrão de alcance (o áudio em alta tem distribuição própria). Quando
+fizer sentido pro tema, sugerir anexar um áudio em alta na hora de postar (o sistema não escolhe
+a faixa — é curadoria do usuário no app, como nas fórmulas: copiar a mecânica de quem performa,
+não a faixa). Instrução vai junto da legenda; nunca forçar áudio onde não cabe.
+
 ## Legenda
 
 Estrutura: primeira linha que segura (continua o gancho, não o repete) → desenvolvimento
-curto com substância → chamada única → hashtags (3-6 específicas do nicho; zero hashtag
-genérica tipo #marketing #sucesso). No desenvolvimento, usar micro-loops do playbook:
-o "mas" como pivô, anunciar antes de mostrar, pergunta seguida de resposta — pequenos
-fechamentos que mantêm a leitura até a chamada.
+curto com substância → chamada única → **fecho que provoca resposta rápida** → hashtags
+(3-6 específicas do nicho; zero hashtag genérica tipo #marketing #sucesso). No
+desenvolvimento, usar micro-loops do playbook: o "mas" como pivô, anunciar antes de
+mostrar, pergunta seguida de resposta — pequenos fechamentos que mantêm a leitura até a
+chamada.
+
+**Legenda é SEO de keyword (hashtag-follow morreu).** Em 2026 a busca do Instagram (e o
+Google que indexa o post) é por **keyword**, não por hashtag — seguir hashtag acabou e o
+peso delas caiu pra quase nada. O que indexa pro Explore e pra busca é a **keyword do
+nicho escrita nas 2 primeiras linhas da legenda** + o **texto-na-tela do slide 1** (ver
+abaixo). Por isso: identificar a 1-2 keywords reais que o cliente do negócio digitaria
+(ex: "marketing para clínica", "automação de cobrança") e plantá-las cedo, de forma
+natural — sem socar. As hashtags continuam (3-6 de nicho), mas como reforço, não como
+motor de alcance.
+
+**Comment-velocity no fecho (sinal da 1ª hora).** Resposta rápida nos primeiros 60
+minutos é sinal forte de qualidade pro algoritmo. O fecho da legenda fecha com uma
+**pergunta concreta e fácil de responder na hora** — escolha binária ("time A ou time
+B?"), pedido de exemplo ("qual desses você já viveu?") ou opinião curta. Não é a isca
+proibida ("comenta EU QUERO"): é uma pergunta genuína que pede um clique de resposta.
 
 **Passo obrigatório:** passar a legenda pelo `/escritor-br` antes de entregar. Nenhum
 texto sai com cara de IA.

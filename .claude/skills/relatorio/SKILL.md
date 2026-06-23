@@ -27,6 +27,24 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - Marca de **quem assina**: no modo agência, o relatório pro cliente sai com a marca
   da agência (raiz); peça interna do próprio negócio sai com a marca da empresa
 
+## Topo: escaneável em 30s, defensável em 3
+
+O decisor não loga em dashboard nem lê planilha — ele bate o olho no topo e decide se
+confia. O topo do relatório fala **OUTCOME** (leads, vendas, ROI, faturamento influenciado),
+nunca atividade (alcance, curtida, posts publicados). Atividade entra mais embaixo, como
+prova do trabalho; o titular é sempre o resultado de negócio.
+
+## Dois níveis num relatório só
+
+Todo relatório carrega duas leituras:
+
+- **Executiva** (primeira página) — ROI, receita, leads, custo por resultado. É o que o
+  dono lê em 30s pra saber se vale o que paga.
+- **Operacional** (páginas seguintes) — métrica por canal, criativo que puxou, ajustes
+  feitos. É o que defende a leitura executiva pra quem quiser cavar.
+
+Um documento, dois níveis: o ocupado para no topo, o curioso desce.
+
 ## Estrutura (nesta ordem — decisor lê de cima e para quando confia)
 
 1. **O mês em uma frase** — a conclusão honesta antes de qualquer número
@@ -37,8 +55,19 @@ Autoria: ImpulsoX AI. Conteúdo original.
    18% — puxado pelos dois carrosséis de [tema]". Nada de despejo de planilha
 4. **O que aprendemos** — padrões do `nucleo/aprendizados.md` em linguagem simples;
    é o que mostra que existe método, não sorte
-5. **Plano do próximo mês** — 3-5 ações concretas saídas dos aprendizados
-6. **Recado final** — onde precisamos do cliente (material, aprovação, acesso, prova)
+5. **Prova social do mês** — o depoimento, caso ou número novo capturado no período;
+   puxar do banco (`/provas`) o que entrou desde o último relatório (só prova autorizada).
+   Cliente ver a própria reputação crescendo é argumento de retenção
+6. **Plano do próximo mês** — 3-5 ações concretas saídas dos aprendizados
+7. **Recado final** — onde precisamos do cliente (material, aprovação, acesso, prova)
+
+## Narrativa por seção — toda métrica fecha com recomendação
+
+Cada seção de número segue o arco: **Observação → Hipótese → O que fizemos → Resultado →
+Próxima ação**. Não basta "alcance subiu 18%" — fecha com o que fazer a respeito ("logo,
+dobramos carrossel de [tema] em julho"). **Seção sem takeaway acionável é problema de
+narrativa, não de dado**: se um número não leva a uma decisão, ou ele vira recomendação
+ou sai do relatório.
 
 ## Produção
 
@@ -49,6 +78,23 @@ Autoria: ImpulsoX AI. Conteúdo original.
    comparação em HTML/CSS — sem biblioteca).
 3. Salvar em `clientes/<nome>/producao/relatorios/<YYYY-MM>.pdf` (modo agência) ou
    `producao/relatorios/mensal-<YYYY-MM>.pdf` (negócio próprio).
+
+## Entrega por inbox — não esperar o cliente logar
+
+Cliente não abre dashboard nem caça PDF em pasta. **Padrão é levar o relatório até ele**:
+e-mail/mensagem com **resumo de 5 linhas no corpo** (o mês em uma frase + os 2-3 números de
+outcome + a próxima ação) e o **PDF anexo** pra quem quiser cavar. Quem auto-envia o resumo
+retém mais — o valor precisa chegar sem esforço do cliente. Gerar junto com o relatório o
+texto desse e-mail, na voz de quem assina, pronto pra enviar.
+
+## Cadência — alerta proativo entre relatórios
+
+Relatório mensal é o ritmo base, não o único toque. Se algo cair de forma relevante **entre**
+os relatórios (campanha que despencou, CPL que disparou, alcance que travou), disparar um
+**alerta proativo curto** — não esperar o fim do mês pra dar a má notícia. Reporting proativo
+sustenta retenção bem acima do relatório mensal isolado: o cliente sente que tem alguém
+olhando, não um PDF automático. O alerta também avisa quando algo **sobe** (momento de pico
+→ gancho pra `/provas` pedir depoimento).
 
 ## Honestidade — a parte que segura contrato de verdade
 

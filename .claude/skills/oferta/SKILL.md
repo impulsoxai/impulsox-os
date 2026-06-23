@@ -187,24 +187,29 @@ pergunta no B2B — antes do tipo de negócio, antes da Equação.
 
 Uma oferta isolada otimiza conversão de um item e deixa caixa na mesa. O estado-da-arte
 (Hormozi, *Money Models*) pensa a **sequência** de ofertas, não uma só — é o que dá fôlego pra
-escalar:
+escalar. A taxonomia canônica do Money Model, na ordem em que o cliente percorre:
 
-- **Oferta de entrada** — baixa fricção, fácil de dizer sim (diagnóstico pago, piloto, projeto
-  pequeno). Traz o cliente pra dentro e gera caixa rápido.
-- **Oferta principal** — o serviço/produto central (o de R$ 5k+).
-- **Continuidade** — receita recorrente (retainer, manutenção, acompanhamento). É o que
-  transforma projeto em previsibilidade.
+- **Attraction (oferta de entrada)** — baixa fricção, fácil de dizer sim (diagnóstico pago,
+  piloto, projeto pequeno, isca paga). Traz o cliente pra dentro e gera caixa rápido. É a porta.
+- **Upsell (oferta principal)** — o serviço/produto central (o de R$ 5k+), oferecido logo
+  depois do primeiro ganho da entrada, quando a confiança está no pico.
+- **Downsell** — a versão menor pra quem disse **não** ao principal (preço, prazo ou risco).
+  Em vez de perder o lead, oferecer um degrau abaixo (escopo enxuto, parcelado, autosserviço
+  guiado). Recupera caixa de quem ia embora — o componente que a maioria esquece e por isso
+  deixa dinheiro na mesa.
+- **Continuity (continuidade)** — receita recorrente (retainer, manutenção, acompanhamento).
+  É o que transforma projeto em previsibilidade.
 
-Princípio de caixa: o ideal é o cliente **pagar de volta o custo de adquiri-lo cedo** (o ganho
-dos primeiros ~30 dias cobrindo o custo de aquisição) — é o que libera reinvestir em mais
-clientes sem quebrar o caixa. O primeiro ganho rápido (alavanca "tempo até o resultado") tem
-papel duplo aqui: além de satisfazer, é o **gatilho natural do upsell** pra próxima oferta da
-escada.
+Princípio de caixa — **CAC payback ≤ 30 dias**: a meta numérica é o cliente **se pagar em 30
+dias**, ou seja, o que ele paga nos primeiros ~30 dias cobre o custo de tê-lo adquirido (CAC).
+Quando isso fecha, dá pra reinvestir em mais clientes sem quebrar o caixa — é o motor que
+sustenta escala. O primeiro ganho rápido (alavanca "tempo até o resultado") tem papel duplo
+aqui: além de satisfazer, é o **gatilho natural do upsell** pra próxima oferta da escada.
 
 Quando usar: se o negócio só tem **uma** oferta e vive de fechar projeto avulso, sugerir
-montar a escada (entrada → principal → continuidade) costuma render mais que otimizar a
-conversão da oferta única. *(Os números de payback são de resumos de Money Models — usar como
-princípio, verificar antes de cravar regra numérica.)*
+montar o Money Model (Attraction → upsell/downsell → continuity) costuma render mais que
+otimizar a conversão da oferta única. *(O alvo de payback ≤30 dias é o princípio de Money
+Models — usar como meta, verificar a viabilidade no caixa real do negócio antes de cravar.)*
 
 ## O que NUNCA fazer (régua da casa, inegociável)
 

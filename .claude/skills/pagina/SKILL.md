@@ -88,6 +88,17 @@ genérica abaixo continuam valendo como rede de segurança, não como ponto de p
 - Mobile-first de verdade: projetar a 390px primeiro, expandir depois
 - Performance como requisito: imagens otimizadas (WebP, `loading="lazy"` abaixo da
   dobra), zero framework por padrão, fontes com `font-display: swap`
+- **Hero rápido por padrão (requisito de LCP, não opcional):** a imagem/elemento LCP do
+  hero leva `fetchpriority="high"` e um `<link rel="preload">` no `<head>` (e a fonte do
+  headline também pré-carregada). É o conserto de maior impacto no LCP — não basta "imagem
+  otimizada"; o navegador precisa saber priorizar o hero antes de descobrir o resto.
+- **Formulário mínimo na conversão:** pedir só nome + um contato (WhatsApp/e-mail). Todo
+  campo extra derruba conversão — reduzir o form chega a +120% de conversão. O resto
+  (empresa, orçamento, detalhe) coleta no pós (resposta automática, próxima etapa), nunca
+  na primeira ação.
+- **CTA sticky/repetido no mobile:** no celular o botão da conversão fica sempre alcançável
+  (barra fixa no rodapé ou CTA repetido ao longo do scroll). Ninguém deve precisar rolar de
+  volta pro topo pra agir.
 - `prefers-reduced-motion` respeitado em qualquer animação
 - Dados estruturados no `<head>`: `LocalBusiness`/`Organization` + `FAQPage` do FAQ.
   A camada de Schema/GEO completa e suas regras moram no `/seo` (autoridade única) —
@@ -130,8 +141,9 @@ certas. Mostrar as capturas ao usuário pra aprovação — ele aprova vendo.
 **4b. Core Web Vitals (medir, não prometer).** Performance é requisito do produto R$ 5.000 —
 não declarar "carrega rápido" sem medir. Rodar Lighthouse (ou medição equivalente via
 Playwright) na página e conferir os limiares de 2026:
-- **LCP ≤ 2,5s** · **INP ≤ 200ms** · **CLS ≤ 0,1** (INP substituiu o FID em 2024 — FID é
-  métrica morta, não usar)
+- **LCP ≤ 2,0s** · **INP ≤ 200ms** · **CLS ≤ 0,1** (LCP "good" caiu de 2,5s pra 2,0s no core
+  update de mar/2026 — era 2,5s até então; INP substituiu o FID em 2024 — FID é métrica morta,
+  não usar)
 - Reprovou algum → consertar a causa antes de declarar pronto: LCP alto = imagem/hero pesado
   ou fonte bloqueando; INP alto = JS de animação (Etapa 3.5) travando a thread; CLS alto =
   imagem/fonte sem dimensão reservada. A camada de movimento (3.5) é o suspeito nº1 de INP —

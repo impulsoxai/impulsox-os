@@ -212,6 +212,17 @@ Página é o único caso que pede o passo extra de refino, e é o `/pagina` que 
 - **Logo** — variações em `marca/logo/`, área de respiro, usos proibidos
 - **Tom visual** — clima e lista do que evitar
 - **Tokens** — referência ao `marca/tokens.css`
+- **Entidade** (semente pro Schema, preencher o que já se sabe) — o que o `/seo` e o `/geo`
+  vão transformar em `Organization`/`Person` JSON-LD depois. Documentar agora evita
+  redescobrir na hora da página:
+  - **nome canônico** — a grafia oficial única da marca (sempre a mesma em todo lugar; é o
+    `name` da entidade);
+  - **`sameAs`** — as URLs dos perfis oficiais (site, Instagram, LinkedIn, Google Business,
+    YouTube) que confirmam que é a mesma entidade;
+  - **`knowsAbout`** — os 3-5 temas/áreas em que a marca é autoridade (o que ela domina e
+    quer ser citada por IA).
+  Preencher só com fato confirmado; o que faltar vira pendência na escada — mas semear aqui
+  poupa retrabalho no `/seo` (Schema de entidade) e no `/geo` (autoridade/citação).
 
 ## `tokens.css` — formato
 

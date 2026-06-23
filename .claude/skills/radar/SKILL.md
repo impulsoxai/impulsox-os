@@ -66,6 +66,13 @@ existe no ambiente):
    mais views: `yt-dlp "ytsearch20:<termo>" --dateafter now-30days --print "%(view_count)s | %(title)s | %(webpage_url)s" --skip-download`.
    Título de vídeo que viralizou = ângulo que o algoritmo premia. (Mesmo anti-bot de
    sempre pode bater — se falhar, registrar a fonte como vazia, não travar.)
+5. **Autocomplete nativo de plataforma** (YouTube/Instagram/TikTok search bar) — a barra de
+   busca completa o termo com as buscas reais que as pessoas digitam ali: grátis, sem login,
+   sem API, sem risco à conta. Digitar o termo-raiz e variações ("[serviço] como",
+   "[serviço] para", "[serviço] vale a pena") e anotar as sugestões — é demanda crua da
+   própria plataforma onde a peça vai viver. Complementa o PAA: o PAA dá a dúvida em texto,
+   o autocomplete dá o jeito que o público busca conteúdo de vídeo/social. Sugestão que se
+   repete entre plataformas = pauta com demanda confirmada.
 
 Fechar a camada cruzando as fontes: tema que aparece em DUAS+ com tração alta vira ideia
 de pontuação de demanda 5. Tema só do WebSearch (sem sinal de engajamento) entra como
@@ -92,6 +99,16 @@ Se houver export ou relato de perguntas de clientes (ex.: log do agente de Whats
 `dados/`), cada dúvida recorrente vira **ideia validada** — alguém já perguntou. Vídeos
 existentes do cliente (transcrições em `dados/`) também são fonte: cada bloco de um vídeo
 do dono é uma pauta candidata (repurposing — ver `/conteudo`).
+
+### Content-decay — reaquecer o que já performou
+Antes de fechar a lista, cruzar o radar novo com as peças antigas que **deram certo**
+(ler `nucleo/aprendizados.md` e os relatórios de `producao/relatorios/`). Conteúdo que
+performou tem prazo de validade: o alcance morre conforme a audiência muda e o tema sai de
+circulação. Quando uma pauta nova bate com um campeão antigo (mesmo tema, mesma dor),
+sinalizar **"reaquecer"** — refazer a peça que já provou demanda, em formato novo ou com
+dado atualizado, costuma render mais barato que pauta inédita. Marcar essas ideias como
+`reaquecer (peça de <data>)` na saída: é demanda já validada pelo próprio negócio, não
+suposição.
 
 ## Saída — `producao/radar/<AAAA-MM>.md`
 

@@ -93,6 +93,15 @@ usuário). Degradar calado é proibido: o usuário tem que saber que entrou no c
 3. **Checkpoint:** apresentar o DS recombinado ao usuário (decisões de herança +
    amostra visual de 1 tela renderizada). Aprovação antes de gravar na marca.
 
+**Vocabulário de estilo de 2026 (pra nomear o que se extrai, não pra impor).** As correntes
+vivas do ano dão linguagem pra descrever a direção de um DS e pra alinhar com o cliente sem
+jargão vazio: **Tactile Brutalism** (brutalismo com textura/grão/sombra — cru, mas com tato,
+não o brutalismo plano), **bento grid** (a grade modular de blocos de tamanhos variados, tipo
+caixa de bento — organiza muita informação com hierarquia), **anti-grid** (composição
+deliberadamente fora do alinhamento previsível, sobreposição e quebra de coluna). Servem como
+rótulo da técnica capturada da referência — a marca do cliente continua lei (cor/fonte/clima),
+o estilo só dá o "jeito" da composição.
+
 ### Fase 3 — Consumo
 
 - Handoff pro `/identidade`: o DS aprovado vira `marca/design-guide.md` + as variáveis
@@ -219,11 +228,20 @@ separa "site bonito com banco de imagem" de "site que parece fotografado pro cli
 5. **Performance (Core Web Vitals) — medir, não confiar no olho:** a camada de movimento
    (Uso 2/3) é o maior suspeito de estourar **INP** (JS de scroll/parallax/reveal travando a
    thread) e **CLS** (reveal sem dimensão reservada). Depois de aplicar o movimento, medir:
-   **LCP ≤ 2,5s · INP ≤ 200ms · CLS ≤ 0,1** (INP substituiu o FID em 2024; medir 2-3x e usar a
-   mediana, descartando o 1º run — cold start do browser infla o LCP). Reprovou → enxugar
+   **LCP ≤ 2,0s · INP ≤ 200ms · CLS ≤ 0,1** (LCP "good" caiu de 2,5s pra 2,0s no core update de
+   mar/2026 — era 2,5s até então; INP substituiu o FID em 2024; medir 2-3x e usar a mediana,
+   descartando o 1º run — cold start do browser infla o LCP). Reprovou → enxugar
    o efeito (menos observers, animar `transform`/`opacity` em vez de layout, respeitar
    `prefers-reduced-motion`). Efeito premiado que derruba CWV não é premium — é peso. Quando
    eleva uma página do `/pagina`, esse gate é o mesmo da Etapa 4b de lá.
+6. **Kinetic typography quase nunca passa em produção.** Texto que se desmonta/anima letra a
+   letra é demo de reel de Awwwards, não entrega: briga com acessibilidade (leitor de tela
+   perde a ordem), com crawler/IA (o texto que importa fica preso em JS e some pra quem cita)
+   e com CWV (o LCP é justamente o bloco de texto do hero — animá-lo o atrasa). Capturar a
+   técnica como referência de movimento tudo bem; **aplicar no texto vivo da página do cliente,
+   não.** O efeito de tipografia que entra é o discreto (reveal suave do headline já montado),
+   não o coreografado. Se a referência premiada é "só" kinetic type, ela é inspiração de portfólio,
+   não molde de produção.
 
 ## Regras
 

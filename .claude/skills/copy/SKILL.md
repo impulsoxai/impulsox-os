@@ -84,6 +84,22 @@ Depois, travar em uma frase cada:
 - **Um leitor** (pra quem se fala) · **uma promessa** (o resultado central) ·
   **uma ação** (o que ele faz no fim). Página que mira três leitores não converte nenhum.
 
+### VoC — minerar a linguagem do cliente ANTES de escrever (Voice of Customer)
+
+Antes de rascunhar, pescar **as palavras que o cliente real usa** — não as que a empresa usa
+pra se descrever. A copy mais forte não é inventada; é a fala do cliente devolvida pra ele.
+Em teste real, escrever com VoC rendeu **+70% de leads** e headline **+400%** vs. copy de
+dentro da empresa. Fontes, na ordem de quem tem:
+- reviews/avaliações (Google, redes, marketplace) — a frase exata da dor e do elogio;
+- WhatsApp/DM/e-mail de cliente — como ele descreve o problema antes de comprar;
+- transcrição de venda ou de atendimento — a objeção e o "ahá" no momento que acontecem;
+- `nucleo/provas.md` — depoimento autorizado já traz fala literal.
+
+Extrair: **a dor nas palavras dele**, **o resultado que ele celebra**, **a objeção que ele
+verbaliza**. Essas frases viram matéria-prima de headline, dor e objeção (Camada 2). Sem
+nenhuma fonte de VoC disponível, marcar "confirmar linguagem com o cliente" e seguir com a
+hipótese do núcleo — nunca travar.
+
 ---
 
 ## CAMADA 2 · RASCUNHO
@@ -239,8 +255,12 @@ Checar (cruza com `/seo` e `/geo`, que são a autoridade de Schema/on-page — a
 2. **Claim com dado + fonte** — afirmação forte vem com **número e de onde veio** (Princeton
    KDD: citação por IA sobe +41% com quote, +30% com fonte, +32% com estatística). Dado real,
    nunca inventado — vazio = pendente, como toda prova.
-3. **FAQ extraível** — prever bloco de FAQ onde cada pergunta é a que o público realmente
-   digita e a resposta é **standalone** (a IA cita a resposta sozinha, sem o resto da página).
+3. **FAQ extraível — pra IA, não pra SERP.** Prever bloco de FAQ onde cada pergunta é a que o
+   público realmente digita e a resposta é **standalone** (a IA cita a resposta sozinha, sem o
+   resto da página). O `FAQPage` **deixou de gerar a sanfona de rich result no Google** (rich
+   result aposentado em mai/2026) — então o FAQ aqui não é mais jogada de SERP; o valor é a
+   **citabilidade por IA**: ChatGPT, Perplexity e AI Overviews leem essas respostas standalone e
+   citam. Continua valendo, mudou só o porquê.
 4. Sem virar robótico: a citabilidade mora nos blocos de resposta/FAQ; o resto da copy mantém
    ritmo e voz. Citável **e** humana, em camadas — não a página inteira em tom de verbete.
 

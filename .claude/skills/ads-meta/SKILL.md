@@ -32,6 +32,25 @@ marca, gera o plano e marca os criativos como defaults até a `/identidade` roda
 - `producao/ads/swipe-meta.md` — banco de anúncios vencedores já dissecados (Passo 0); se
   existe e está fresco (<30 dias), partir dele em vez de pesquisar de novo
 
+## Pré-requisito de medição — Pixel + CAPI (sem isso o Advantage+ aprende errado)
+
+"O Advantage+ é só tão bom quanto o dado que ele aprende." Em 2026, **só o Pixel de navegador não
+basta**: iOS, bloqueadores de anúncio e o fim do cookie de terceiro comem boa parte do sinal antes
+de chegar na Meta. A correção é a **Conversions API (CAPI)** — o evento sai do servidor do cliente
+(não do navegador), então não é bloqueado. Pixel + CAPI juntos = o dado que o algoritmo precisa.
+
+Tratar como pré-requisito obrigatório quando o destino é site (não "ajuste depois"):
+
+1. **Pixel** instalado na página (o `/seo`/`/pagina` cuidam do código no site).
+2. **CAPI** ligado — caminho mais simples pra PME: **Conversions API via parceiro/Gateway** (sem
+   dev) ou a integração nativa da plataforma do site (Shopify, WordPress, etc.). Pra WhatsApp/lead
+   sem site, o evento vem do próprio fluxo da Meta.
+3. **Deduplicação** Pixel↔CAPI (mesmo `event_id`) pra não contar o mesmo lead duas vezes.
+
+O guia visual entrega o passo a passo de Pixel + CAPI com link do tutorial oficial da Meta. Sem
+esse pré-requisito, avisar o dono em uma linha: a campanha roda, mas o Advantage+ vai otimizar com
+sinal furado — é a causa nº 1 de PME que paga e não converte.
+
 ## Passo 0 — Swipe file: o que JÁ está ganhando no nicho (research antes de criar)
 
 Criativo feito no vácuo queima orçamento. Antes de inventar arte, olhar o que o **mercado já
@@ -98,21 +117,48 @@ com os ângulos de persuasão do Passo 3 (não travar a campanha).
 
 Padrão enxuto (PME aprende mais rápido com menos campanhas):
 - **1 campanha** pelo objetivo definido (vendas/leads/tráfego — CBO ligado)
-- **2-3 conjuntos de anúncio:**
-  - Público amplo na região (a entrega da Meta otimiza sozinha — confiar no algoritmo
-    com criativo segmentando por mensagem)
-  - Interesse direto do nicho (1-3 interesses, não 15)
-  - Remarketing (envolvidos com perfil/site, 30-60 dias) — quando a base existir
-- **3-4 criativos por conjunto**, formatos misturados:
-  - Estático 1080x1350 (gerado pelo `/post` com a marca)
-  - Carrossel quando a oferta tem etapas ou portfólio
-  - Roteiro de vídeo curto (o usuário grava; vídeo nativo costuma ganhar)
+- **Público — em duas fases (mesma lógica do `/ads-google`, honesto pra conta nova):**
+  - **Fase 1 (conta nova / hiperlocal raio < 16 km / < 50 conversões/semana):** usar
+    **Detailed Targeting** (segmentação manual) — interesse direto do nicho (1-3 interesses, não
+    15) + região. A skill antes mandava "público amplo, confia no algoritmo" cedo demais: sem dado
+    e em raio pequeno, o amplo não tem o que otimizar e o targeting manual performa melhor.
+  - **Fase 2 (depois de acumular conversão — ~50/semana):** migrar pro **Advantage+ Audience**
+    (público amplo, a Meta otimiza sozinha pelo sinal de quem já converteu). Advantage+ só DEPOIS
+    de ter dado, nunca como ponto de partida cego.
+  - **Remarketing** (envolvidos com perfil/site, 30-60 dias) — quando a base existir, em qualquer
+    fase.
+  - Deixar a fase explícita no plano: começa controlado, migra pro automático quando tem dado.
+- **3-4 conjuntos** no máximo (não fatiar demais — cada conjunto precisa de evento pra aprender).
+- **Criativos:** ver Passo 3 — em 2026 o volume e o tipo de criativo importam mais que o número de
+  conjuntos. O gargalo de resultado é criativo, não estrutura de público.
 
 ## Passo 3 — Criativos e textos
 
 Acionar o **`/post`** para cada peça estática/carrossel, com a diretriz de anúncio:
 gancho mais direto que o orgânico, oferta explícita, uma chamada só. Textos (primário
 125 chars visíveis, título 40, descrição 30) passam pelo **`/escritor-br`**.
+
+**Volume de criativo — o gargalo nº 1 do Advantage+ (2026):** o padrão antigo de 3-4 criativos não
+alimenta o algoritmo. Mirar **10-15 ativos por campanha** + **3-5 novos por semana** — o Advantage+
+testa volume e a fadiga de criativo mata performance rápido. É aqui que o `/post` puxa o peso:
+gerar peças em escala (variações de hook, formato e ângulo sobre a mesma oferta) é o que abastece
+essa esteira. Sem reposição semanal, a conta estabiliza e o CPA sobe.
+
+**Formato dominante — vídeo curto e UGC, não opcional:** o mix que ganha em 2026 é cerca de **30%
+vídeo curto (6-15s) + 30-40% UGC/depoimento** (menor CPA), o resto estático/carrossel. UGC =
+material com cara de pessoa real, não anúncio polido. **Depoimento autorizado de `nucleo/provas.md`
+é UGC** — puxar de lá. O roteiro de vídeo curto conecta com o reel do `/post`. Formatos:
+  - Vídeo curto 6-15s / reel (gerado/roteirizado pelo `/post`; vídeo nativo costuma ganhar)
+  - UGC/depoimento autorizado (`nucleo/provas.md`, status autorizada)
+  - Estático 1080x1350 e carrossel (`/post` com a marca) — base, não maioria
+
+**Régua de diagnóstico de criativo (diz QUAL parte do vídeo corrigir):**
+  - **Hook Rate** = quem assistiu 3s ÷ impressões. Alvo **> 25-35%**. Baixo = o primeiro frame não
+    segura; trocar a abertura.
+  - **Hold Rate** = quem chegou a 15s ÷ quem viu 3s. Alvo **> 30%**. Baixo = o hook prende mas o
+    corpo perde; encurtar ou refazer o meio.
+  - Levar isso pro `/analisar-ads` na leitura de 30 dias — corrige o criativo certo, não a campanha
+    toda.
 
 **Molde do swipe (Passo 0):** quando o banco `swipe-meta.md` tem padrões recorrentes, usá-los
 como esqueleto dos criativos (formato, estrutura de hook, ritmo) — mecânica testada no nicho,
@@ -147,12 +193,17 @@ Meta Ads não tem importação tipo Editor pra PME — entregar o **guia visual 
     rotular como ilustração do fluxo, não captura).
   - **Link do tutorial OFICIAL da Meta** (Central de Ajuda / Meta Blueprint) pra aquele
     passo — sempre atualizado, nunca desatualiza.
-- Pixel/API de conversões como pré-requisito quando o destino é site
+  - **Aviso no topo do guia:** a Meta unificou os fluxos do Gerenciador em fev/2026 — as telas
+    podem ter mudado de lugar. Instruir o dono a **conferir cada passo contra a tela atual do
+    Gerenciador de Anúncios**; os diagramas ilustram o fluxo, não são captura da versão de hoje.
+- **Pixel + CAPI como pré-requisito** quando o destino é site (ver seção "Pré-requisito de
+  medição" acima) — passo a passo dos dois no guia, não só do Pixel
 - Arquivos dos criativos prontos na pasta
 - **Quem executa:** o dono faz com o guia, ou a agência faz pelo cliente (acesso ao
   Gerenciador dele). Automação de conta de ads viola termos — o clique final é humano.
-- Janela de aprendizado: não mexer por 7 dias ou ~50 conversões por conjunto; primeira
-  leitura séria em 30 dias com `/analisar-ads`
+- Janela de aprendizado: não mexer por 7 dias ou ~50 eventos por conjunto; primeira
+  leitura séria em 30 dias com `/analisar-ads`. O Advantage+ precisa de **~50 eventos/semana** por
+  conjunto pra sair da fase de aprendizado — abaixo disso ele não estabiliza.
 
 ## Regras
 
@@ -161,7 +212,9 @@ Meta Ads não tem importação tipo Editor pra PME — entregar o **guia visual 
   Meta Ad Library é pública; nunca raspar atrás de login.
 - Criativo orgânico vencedor vira anúncio antes de arte nova — dado > estreia.
 - Nunca prometer CPM/CPA/resultado. Leilão muda todo dia.
-- Orçamento mínimo honesto: abaixo de ~R$ 20/dia por conjunto, consolidar conjuntos.
+- Orçamento mínimo honesto BR 2026 (CPM subiu ~12%): o Advantage+ pede **~R$ 100/dia** pra juntar
+  os ~50 eventos/semana e sair da fase de aprendizado. Abaixo disso, consolidar em menos conjuntos
+  (ou um só) pra concentrar evento, e avisar o dono que vai aprender devagar.
 - Conta de anúncio, página e pixel são do cliente — o sistema orienta, nunca pede senha.
 - Remarketing respeita a LGPD: avisar sobre política de privacidade na página quando
   houver pixel.

@@ -28,6 +28,8 @@ autor, não genérico — e no LinkedIn voz genérica é morte na primeira linha
   (no LinkedIn, puxar mais o educativo/autoridade que a venda direta)
 - `nucleo/perfil.md` — o tipo de negócio molda o tom (criador e profissional liberal vivem
   de voz pessoal e autoridade; agência fala pelo cliente, na voz DELE)
+- `nucleo/foco.md` — o **cluster de nicho** do momento (ver "Topic Authority" abaixo): o
+  post se amarra ao tema central da conta, não dispara em qualquer direção
 - `nucleo/aprendizados.md` — o que já se provou que funciona nesta conta; pesa mais que
   padrão genérico
 - `docs/persuasao.md` — gatilhos e storytelling; no LinkedIn os que mais rendem são
@@ -51,6 +53,14 @@ autor, não genérico — e no LinkedIn voz genérica é morte na primeira linha
 3. **Documento PDF** — o "carrossel" do LinkedIn: conteúdo educativo denso, 6-12 páginas
    verticais, geradas como no `/post` (HTML → PNG → PDF) com a identidade da marca.
 
+**Roteamento de formato por objetivo (escolher pelo alvo, não pelo gosto):**
+
+| Objetivo | Formato | Por quê |
+|---|---|---|
+| **Alcance / distribuição** | **Texto nativo** | Post de texto puro distribui ~28% mais no B2B que post com link ou mídia pesada — o algoritmo prioriza quem fica na plataforma |
+| **Profundidade salvável / autoridade** | **Documento PDF** | O doc é o formato mais salvável (engaja ~6,6%); vira referência guardada e prova de expertise |
+| **Sustentar um dado/visual** | **Post com imagem** | Quando um número ou gráfico carrega o argumento melhor que o texto sozinho |
+
 ## Anatomia do post de texto
 
 **Linhas 1-2 — o corte.** Só elas aparecem antes do "ver mais". Têm que criar a pergunta
@@ -62,6 +72,13 @@ obviedade queima o autor com o público mais cético das redes.
 **Corpo — uma ideia, com lastro.** Parágrafos de 1-3 linhas com respiro entre eles
 (leitura mobile). Argumento → exemplo concreto vivido → consequência prática. O leitor
 tem que sair com algo que consegue aplicar ou repetir na reunião de segunda.
+
+**Dwell time é o sinal nº1.** O algoritmo de 2026 mede acima de tudo **quanto tempo a
+pessoa fica parada no seu post** (o "ver mais" expandido, a leitura até o fim). Vale mais
+que like e até que comentário. Por isso o corpo é desenhado pra **prender 30s+ de leitura**:
+densidade real (cada parágrafo entrega uma coisa nova, sem encheção), um micro-loop por
+bloco que puxa pro próximo, e o texto longo o suficiente pra justificar o "ver mais" — mas
+nunca inflado. Post raso que se lê em 5s não distribui, por mais curtido que seja.
 
 **Quando o tema permite, contar como história.** O formato que mais segura leitura no
 LinkedIn é a cena vivida na espinha do playbook: cena concreta (reunião, ligação, erro)
@@ -89,14 +106,48 @@ não existe pro algoritmo nem pra memória de ninguém.
 de IA em português matam um post de LinkedIn mais rápido que em qualquer outra rede —
 o público de lá lê texto o dia inteiro e fareja template.
 
+## Topic Authority (o jogo de 60 dias)
+
+O algoritmo de 2026 recompensa quem é **consistente num assunto**: manter **70-80% dos posts
+dentro de um mesmo cluster de nicho** ao longo de 60+ dias dá +78% de distribuição (o LinkedIn
+te reconhece como autoridade naquele tema e entrega pra quem busca aquilo). Por isso:
+
+- Ler o cluster atual em `nucleo/foco.md` (e o histórico em `producao/linkedin/`) e **amarrar
+  este post ao cluster** — o ângulo do dia é uma faceta do tema central, não um tema solto.
+- Se o pedido foge do cluster, dizer em uma linha: "isto sai do seu cluster de [tema] — tudo
+  bem 1 post fora a cada 4-5, mas se virar regra, sua autoridade dilui". O dono decide; o
+  sistema só não deixa o perfil virar colcha de retalhos sem avisar.
+- Os ~20-30% restantes (bastidor, opinião, prova) dão respiro humano — não são o motor de
+  distribuição, são o que evita o perfil soar robô de um assunto só.
+
+## Saves no LinkedIn (desenhar pra ser guardado)
+
+Save virou sinal forte de distribuição no LinkedIn (referência guardada = "vou voltar nisso").
+O formato mais salvável é o **documento PDF**: quando o tema é guia/checklist/framework, desenhar
+como doc salvável — uma página = uma ideia que vale guardar, capa com a promessa, última página
+com o resumo guardável e o convite a salvar ("salva pra usar na próxima reunião"). Post de texto
+também pode mirar save quando entrega um framework completo, mas o doc é o cavalo de batalha do
+conteúdo guardável.
+
 ## Saída
 
 Salvar em `producao/linkedin/<YYYY-MM-DD>-<slug>.md`:
 - O post pronto (e o comentário com link, se houver)
 - Variação alternativa do corte (linhas 1-2) pra escolha
 - Se documento PDF: arquivos em subpasta + o texto de apresentação do post
+- **Kit de Golden Hour** (ver abaixo): 1-2 comentários de resposta prontos + a instrução
+  de responder na 1ª hora
 - Sugestão de melhor janela de publicação (terça a quinta, manhã, como padrão — ajustar
   quando houver dados reais da conta)
+
+**Golden Hour — a 1ª hora decide a distribuição.** O LinkedIn testa o post num público
+pequeno na primeira hora; cada **resposta do autor a um comentário reinicia o ciclo** de
+distribuição (e puxa dwell time de volta). Por isso a entrega inclui um **kit de Golden Hour**:
+- **1-2 comentários de resposta prontos** — não respostas genéricas ("obrigado!"), mas
+  continuações que agregam (um dado a mais, um contraponto, uma pergunta que puxa o próximo
+  comentário). São o que o autor cola assim que alguém comenta.
+- **Instrução clara:** publicar e **ficar disponível na 1ª hora** pra responder cada comentário
+  rápido (não deixar pra responder à noite). Responder é parte da peça, não pós-venda.
 
 Publicação: perfil pessoal é **publicação assistida** (o sistema entrega pronto, o
 usuário cola e publica — automação de perfil viola os termos do LinkedIn). Página de

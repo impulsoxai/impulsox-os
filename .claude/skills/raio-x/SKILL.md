@@ -41,10 +41,24 @@ Scraping (firecrawl) + verificação direta:
   principal está acima da dobra?
 - **Conversão:** existe chamada clara (WhatsApp, telefone, formulário)? Em quantos
   cliques?
-- **Técnica:** título e descrição de cada página principal; site responde rápido?
-  funciona no celular? HTTPS? Páginas quebradas nos links principais?
+- **Técnica (Core Web Vitals reais, não "responde rápido?"):** medir os três sinais que
+  o Google usa, com o limiar **2026** — **LCP ≤ 2,0s** (novo teto "good", era 2,5s antes do
+  core update de mar/2026), **INP < 200ms**, **CLS < 0,1**. Mais: HTTPS, mobile, título e
+  descrição de cada página principal, páginas quebradas nos links. Acima dos limiares =
+  furo de Site que custa Google.
 - **Conteúdo:** blog/artigos existem? Respondem perguntas reais ou são institucionais
   vazios? Dados estruturados (JSON-LD) presentes?
+
+### 1b. Visibilidade em IA / GEO — aparece quando o cliente pergunta pra uma IA?
+O comprador de 2026 pergunta no ChatGPT/Gemini/Perplexity e lê o AI Overview do Google
+antes de clicar em qualquer site. Auditar:
+- **Citação:** perguntar a uma IA "[serviço] em [cidade]" (ex.: "melhor dentista em
+  Pinheiros") — a empresa **aparece na resposta**? Quem aparece no lugar dela? É o mesmo
+  teste de vazamento da busca por intenção, agora no canal IA.
+- **Crawlability pra bots de IA:** o `robots.txt` **permite** `GPTBot`, `ClaudeBot` e
+  `CCBot`? (Bloquear esses bots tira a empresa do índice das IAs.) Existe `llms.txt` na
+  raiz? Sem permissão de crawler, a empresa é invisível pra IA por construção — furo que
+  o dono nem sabe que tem.
 
 ### 2. Presença local (quando o negócio é local)
 - Perfil no Google (Maps): existe? Completo (fotos, horário, categoria certa)? Nota e

@@ -66,15 +66,35 @@ peças respondem em pedaços (loop de série — ver `docs/persuasao.md`). Quem 
 volta pra próxima peça; o mapa intenção → gatilhos do playbook orienta a produção de
 cada uma.
 
-### 3. Formato por rede
-- **Instagram:** carrossel é o formato orgânico mais forte (maior engajamento mediano em
-  2026); usar como espinha. Intercalar post único (dado, frase, bastidor) e roteiro de
-  reel quando o tema pede movimento.
+### 3. Formato por OBJETIVO (não por gosto)
+O formato segue o que a peça precisa entregar — escolher pelo objetivo, não pelo hábito:
+- **Alcance / descoberta → reel.** Reels dominam a descoberta no IG 2026 (é o formato que
+  o algoritmo mais empurra pra não-seguidores). Pauta de topo de funil que precisa achar
+  gente nova nasce reel.
+- **Profundidade / salvamento → carrossel.** Carrossel é o que gera save e dwell time —
+  conteúdo que ensina, lista, compara, dá passo a passo. É a espinha do "ensinar".
+- **Posicionamento / frase → post único** (dado, opinião, bastidor).
+- **Ritmo semanal de referência (IG):** **3-4 reels + 2-3 carrosséis por semana** ajusta-se
+  ao volume que o dono sustenta — reel puxa alcance, carrossel sustenta autoridade.
 - **LinkedIn:** texto pessoal com profundidade > link externo (algoritmo derruba post com
   link no corpo). Documento PDF para conteúdo educativo denso. Tom de pessoa, não de
   assessoria de imprensa.
 - O mesmo tema pode render nas duas redes, mas **reescrito por rede** — nunca a mesma
   legenda copiada.
+
+### 3b. Repurposing one-to-many — uma peça Hero gera várias derivadas
+Não tratar cada linha do calendário como peça do zero. O padrão eficiente de 2026 é
+**1 peça Hero → N derivadas**: a peça mais densa do mês (artigo do `/conteudo`, carrossel
+forte, vídeo do dono) vira a fonte, e dela saem carrosséis recortados, reels de trechos,
+cortes e posts de frase. Uma pesquisa boa, muitas peças — muda a economia da esteira.
+No plano, marcar a peça Hero e as **derivadas** que descendem dela (ex.: "carrossel Hero:
+5 erros ao contratar X" → "reel: o erro nº1" + "post: a frase do erro nº3"). A produção
+puxa a Hero primeiro; as derivadas reaproveitam o material já feito.
+
+Opcional — sobrepor **Hero/Hub/Hygiene (70-20-10)** ao mix de intenções: Hygiene (70%) é
+o conteúdo de rotina que responde dúvida (boa parte do "ensinar"); Hub (20%) é a série
+que constrói autoridade num tema; Hero (10%) é a peça grande que puxa alcance. Os dois
+eixos convivem: intenção diz o PORQUÊ da peça, Hero/Hub/Hygiene diz o PESO dela na esteira.
 
 ### 4. Datas
 Distribuir nos dias confirmados pelo usuário. Aproveitar a sazonalidade do

@@ -28,12 +28,29 @@ disso, perguntar o mínimo antes de montar — campanha sem oferta clara queima 
 - `producao/ads/analise-*.md` — se `/analisar-ads` já rodou, as campanhas sugeridas lá
   são o ponto de partida (dados > opinião)
 
+## Pré-requisito de medição (sem isso, o lance automático é cego)
+
+Em 2026 o Smart Bidding aprende num mundo sem cookie de terceiro. O que faz ele funcionar é
+**sinal próprio (first-party)**, não a tag genérica de conversão de anos atrás. Tratar como
+pré-requisito do lançamento, não como ajuste posterior:
+
+- **Enhanced Conversions for Leads** ligado + **import do GA4** como fonte de conversão.
+  Manda dado hasheado (e-mail/telefone do lead, com consentimento) de volta pro Google — recupera
+  conversão que o cookie perdeu (fontes 2026 reportam **+5-17% de conversões reportadas**) e é o
+  que mantém o Smart Bidding preciso no cenário cookieless. Sem isso, a conta otimiza no escuro.
+- **Pra gasto < R$ 25k/mês, Enhanced Conversions + Consent Mode v2 basta** — NÃO precisa de
+  tracking server-side (GTM server). Server-side só compensa em volume alto; empurrar isso numa
+  PME é custo e complexidade sem retorno.
+- O guia visual entrega o passo a passo de ligar Enhanced Conversions for Leads e o import do GA4
+  (com link do tutorial oficial), e o bloco de Consent Mode v2 (abaixo).
+
 ## Passo 1 — Fundamentos (perguntar só o que falta)
 
 1. **Objetivo:** o que é uma conversão aqui? (ligação, WhatsApp, formulário, compra)
-2. **Orçamento mensal:** valor confortável pra 90 dias de teste. Abaixo de ~R$ 600/mês
-   em pesquisa, avisar que o dado vai demorar a dar sinal — não recusar, calibrar
-   expectativa.
+2. **Orçamento mensal:** valor confortável pra 90 dias de teste. Piso BR 2026 pra volume
+   real de lead na Pesquisa: **R$ 2.000-3.000/mês** (CPC subiu ~13% em 2026). Abaixo disso,
+   avisar que o dado vai demorar a dar sinal e que o Smart Bidding pode nem sair da fase de
+   aprendizado — não recusar, calibrar expectativa e considerar concentrar em menos grupos.
 3. **Região:** onde o negócio atende (cidade, raio, estado).
 4. **Página de destino:** existe e sustenta a oferta? Sem página decente, parar e
    recomendar resolver isso antes de pagar clique (a skill de página resolve).
@@ -66,6 +83,14 @@ Padrão para serviço local / PME (ajustar ao caso):
   benefício direto e chamada de ação — o leilão testa as combinações sozinho. PAS
   cabe nas descrições: a dor na primeira, a saída na segunda.
 - **Extensões:** sitelinks, frase de destaque, chamada (telefone) e local quando houver.
+- **Performance Max — camada COMPLEMENTAR, nunca a base:** PMax entra depois que a Pesquisa
+  prova intenção, não no lugar dela. Regras pra não queimar dinheiro:
+  - **Só após 30+ conversões/mês** rastreadas na conta — abaixo disso a PMax não tem sinal pra
+    otimizar e vira gasto cego.
+  - **No máximo 20-30% do orçamento**, com a Pesquisa segurando a base.
+  - **Brand exclusions + search themes são obrigatórios** — sem brand exclusions a PMax canibaliza
+    o tráfego de marca (paga por quem já ia te achar de graça) e sem search themes ela traz lead
+    lixo. Não montar PMax sem os dois.
 
 ## Passo 3 — Gerar o arquivo de importação
 
@@ -81,8 +106,16 @@ Final URL, etc.). Junto, gerar o **guia visual de leigo** (`producao/ads/google-
     desatualiza) — ex.: baixar o Editor, importar CSV, configurar conversão.
 - Configurações que o CSV não carrega (região, orçamento diário = mensal/30,4, lance
   inicial: CPC manual ou Maximizar cliques com teto no primeiro mês).
-- O que esperar: primeiras 2 semanas são aprendizado; julgamento sério só com ~100
-  cliques por grupo.
+- **Consent Mode v2 + LGPD:** o guia inclui o bloco de banner de consentimento (aceitar/recusar
+  cookie) ligado ao Consent Mode v2 — exigência pra Enhanced Conversions rodar e pra ficar dentro
+  da LGPD. O **conversion modeling** do Google recupera ~69% das conversões de quem nega cookie
+  (modela a partir de quem aceitou), então banner correto não significa perder o dado — só sem
+  Consent Mode v2 é que a conversão de quem recusa some de vez.
+- O que esperar (benchmark BR 2026 por setor, não só "100 cliques"): **CPC entre R$ 4 e R$ 25**
+  conforme o nicho (serviço local mais barato, advogado/saúde/financeiro no topo) e **CPL entre
+  R$ 15 e R$ 350**. Primeiras 2 semanas são aprendizado; julgamento sério só com volume real de
+  conversão (≥30), não com cliques soltos. Dar a faixa do setor do cliente, nunca um número como
+  promessa.
 - **Quem executa:** deixar explícito no topo — ou o dono faz os 5 passos com este guia, ou
   a agência faz pelo cliente (com acesso à conta de ads dele). O sistema entrega pronto; o
   clique final é humano (automação de conta de ads viola termos e arrisca suspensão).
@@ -100,8 +133,8 @@ A campanha não termina no lançamento — começa nele.
 - Nunca prometer posição, clique ou resultado. Anúncio é leilão, não contrato.
 - Palavra-chave de marca de concorrente: não usar no texto do anúncio (risco jurídico);
   como palavra-chave, só com o usuário ciente da prática e dos limites.
-- Conversão sem rastreamento = campanha cega: incluir no guia a configuração da tag de
-  conversão (ou importação do GA4) como pré-requisito do lançamento.
+- Conversão sem rastreamento = campanha cega: o pré-requisito de medição (Enhanced Conversions
+  for Leads + import GA4 + Consent Mode v2) é condição de lançamento, não opcional.
 - Orçamento do cliente é do cliente: recomendar teto, nunca empurrar aumento sem dado.
 
 ---

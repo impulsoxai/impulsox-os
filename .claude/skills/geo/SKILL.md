@@ -67,6 +67,14 @@ fabricar fonte ou simular avaliação.
    fontes a IA cita** (site próprio, diretório, avaliação, matéria, blog do nicho)?
 3. O ouro está nas fontes citadas: é o mapa de onde a empresa precisa estar pra ser puxada.
 
+**Motores a auditar — incluir o AI Mode / AI Overviews do Google explicitamente.** Além de
+ChatGPT, Gemini, Perplexity e Claude, auditar o **AI Mode e as AI Overviews do Google** — é o
+motor de **maior alcance no Brasil**, porque roda direto sobre o índice de busca que o público
+já usa (a resposta de IA aparece no topo da SERP, sem o cliente trocar de ferramenta). Quem é
+citado ali alcança muito mais gente que numa ferramenta de IA à parte. Rodar as mesmas perguntas
+e registrar separado o que a AI Overview mostra — a fonte que ela puxa costuma ser a mesma que
+o orgânico premia, então o ganho conversa com o `/seo`.
+
 > Limite honesto: respostas de IA variam por sessão e não são 100% reproduzíveis. Tratar o
 > resultado como amostra, não como verdade fixa — registrar a data e repetir no monitoramento.
 
@@ -167,6 +175,13 @@ falsa de "conserte uma vez e domine por anos".
 **Hedge obrigatório no relatório (régua da casa):** o SoM é uma amostra de um conjunto de
 prompts, em motores que personalizam resposta. Não é "a verdade absoluta sobre o que a IA diz
 da marca". O relatório declara isso explícito. Honestidade no diagnóstico é inegociável.
+
+**Escalar o monitoramento manual (pra retainer):** as 5 perguntas rodadas à mão fecham o ciclo
+de um negócio; quando o volume cresce (vários clientes, dezenas de prompts, todos os motores),
+ferramentas de **tracking de Share-of-Model** automatizam a coleta — **Semrush AI Visibility**
+e **LLMrefs** são as opções pra acompanhar SoM em escala sem rodar tudo na mão. Oferecer como
+camada do retainer quando o monitoramento manual não dá mais conta; pro caso simples, a rodada
+manual basta. (Continua valendo o hedge: ferramenta automatiza a amostra, não vira verdade fixa.)
 
 Oferecer agendar o monitoramento junto com o ciclo mensal de `/desempenho`.
 

@@ -35,6 +35,19 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
 - `docs/persuasao.md` — a proposta é peça de persuasão; regras inegociáveis valem
 - `marca/` de quem propõe — identidade visual da proposta
 
+## Gate de timing — antes de montar (não pular)
+
+- **Sem reunião marcada, não manda proposta.** Proposta que cai na caixa de entrada sem uma
+  conversa antes vira PDF ignorado — o decisor não construiu contexto nem compromisso. A
+  proposta serve a uma reunião (ao vivo ou call): apresenta-se nela, ou manda-se logo após,
+  com a próxima conversa já agendada. Sem isso marcado, o passo certo é o `/email` (aquecer +
+  conseguir a reunião), não a proposta. Se o dono insistir em mandar a frio, avisar o custo e
+  seguir — guiar, não travar.
+- **Janela dos 50 dias.** Proposta fechada em **≤50 dias** do primeiro contato fecha a ~47% de
+  win rate; depois disso cai pra ~20%. Deal que arrasta perde força. Calibrar a validade e o
+  follow-up (via `/email`) pra empurrar a decisão dentro dessa janela — urgência honesta é
+  manter o ritmo, não inventar prazo teatral.
+
 ## O que perguntar (só o que falta)
 
 1. **Escopo pretendido:** o que vai ser vendido? (do diagnóstico ou da conversa)
@@ -45,9 +58,12 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
 
 ## Estrutura persuasiva (nesta ordem)
 
-1. **Onde o negócio está** — espelho do diagnóstico: os 2-3 problemas que mais custam,
-   com o dado do raio-x (aversão à perda honesta: nomear o custo de seguir assim).
-   O prospect precisa se reconhecer na primeira página.
+1. **Onde o negócio está + o custo de não agir** — espelho do diagnóstico: os 2-3 problemas
+   que mais custam, com o dado do raio-x. Puxar do `/raio-x` o **custo de não-agir** em número
+   (lead/venda que escapa por mês enquanto fica assim) e contrastar com o investimento da
+   proposta — é o esqueleto do ROI honesto, sem prometer retorno garantido. Aversão à perda
+   bem usada: o que continuar perdendo pesa mais que o que se ganha. O prospect precisa se
+   reconhecer na primeira página.
 2. **Onde dá pra chegar** — a foto do depois, concreta, sem prometer número garantido.
 3. **Como — o plano em fases** — escopo claro por fase: o que será feito, o que entrega,
    em quanto tempo. Fase 1 com vitória rápida visível (gera confiança pro resto).
@@ -56,10 +72,15 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
 5. **Investimento** — 2-3 opções nomeadas pelo resultado, não por "bronze/prata/ouro".
    A do meio é a recomendada (ancoragem: a de cima dá referência, a de baixo dá porta
    de entrada). Preço por extenso, sem asterisco escondido.
-6. **Plano de ação mútuo** — não só o que a agência faz; o que o CLIENTE faz e quando
-   (material, aprovação, acesso) numa pequena tabela de datas/responsáveis. Pesquisa B2B
-   2026: as propostas que mais fecham trazem plano de ação mútuo, não só preço — ele
-   constrói consenso e tira o "vou pensar". Cada linha: o quê · quem · quando.
+6. **Plano de ação mútuo (MAP) — com mais de um nome do lado do cliente** — não só o que a
+   agência faz; o que o CLIENTE faz e quando (material, aprovação, acesso) numa pequena tabela
+   de datas/responsáveis. Pesquisa B2B 2026: as propostas que mais fecham trazem plano de ação
+   mútuo, não só preço — ele constrói consenso e tira o "vou pensar". Cada linha: o quê · quem ·
+   quando. **Multi-threading:** deal com **3+ contatos envolvidos** fecha ~42% mais que deal de
+   um contato só, e ter um **sponsor executivo** (quem decide o orçamento) dentro da conversa
+   multiplica o close por ~2,3x. Então o MAP nomeia mais de uma pessoa do lado do cliente — e o
+   próximo passo (#7) pede pra trazer quem decide pra mesa, não deixa a proposta presa num
+   contato só que pode sumir.
 7. **Próximo passo único** — uma ação, clara: "responde este e-mail / chama no WhatsApp
    até [validade] que agendamos o início". Validade real, destacada uma vez, sem
    contagem regressiva teatral.
@@ -99,6 +120,11 @@ Estruturar a proposta já antecipando por que deals morrem — e desarmando os 3
   `docs/persuasao.md` (dentro do teto de gatilhos de lá: aqui, aversão à perda + prova).
 - Proposta perdida vira aprendizado: perguntar o motivo e registrar no
   `nucleo/aprendizados.md` quando o usuário souber.
+- **Benchmark de close honesto (pra calibrar a expectativa do dono):** taxa de fechamento de
+  proposta enviada gira em torno de **25% na mediana** e **~35% no topo**. Serve pra ancorar o
+  dono: nem toda proposta fecha, e perder 2 de 3 é normal — o jogo é mandar mais propostas
+  qualificadas (com reunião antes, dentro da janela dos 50 dias, com multi-threading), não
+  esperar 100%. Evita o desânimo de quem acha que "proposta que não fecha é erro".
 
 ---
 

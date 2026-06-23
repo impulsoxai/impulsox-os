@@ -69,9 +69,24 @@ casa). O modelo interpreta, o script calcula:
 - **Instagram:** save_rate <2% fraco · 3-6% sólido · 6%+ forte. reach_rate <10% fraco ·
   10-20% médio · 20-30%+ bom. **Régua por formato:** reel = views/retenção/sends; carrossel =
   saves/swipe-through (≥65%)/completion (≥55%). Vaidade (só medir): likes, seguidores.
+- **Engagement médio caiu em 2026 — contextualizar antes de soar alarme:** a taxa média de
+  engajamento do IG está em **~0,48% (-24% ano a ano)**. Benchmark **por formato** (pra não
+  comparar laranja com maçã): **carrossel ~0,55% > reel ~0,50% > imagem ~0,35%**. Um número
+  "baixo" no absoluto pode estar acima da média do formato — sempre ler a peça contra a
+  régua do formato dela, não contra um ideal antigo. Falso alarme queima confiança do dono.
 - **YouTube:** AVD bom por duração — <5min 50-70% · 5-15min 40-55% · 15-30min 30-45% · Shorts
   70%+ (educacional/PME ~42% é normal). Retenção 1º minuto alvo ≥65-70%. Vaidade: views,
   inscritos (Shorts views infláveis — usar Engaged Views).
+- **YouTube — fonte de tráfego no diagnóstico:** ler de ONDE veio a view (relatório
+  Traffic source do Studio). **Browse / Suggested** alto = o algoritmo está empurrando (sinal
+  de saúde — capa/título e retenção convencendo o sistema a recomendar). **Search** alto =
+  o vídeo é evergreen achável (bom pra cauda longa). Vídeo que só vive de tráfego externo/
+  inscritos e não pega Browse não foi "abraçado" pelo algoritmo — diagnóstico diferente de
+  um que pega Browse e cai na retenção.
+- **YouTube — satisfaction signals:** além de retenção, o YT mede satisfação direta —
+  **likes e shares por view** e as **surveys** ("o quanto você gostou deste vídeo", no
+  Studio). Vídeo com retenção mediana mas satisfação alta tende a ser empurrado mais; o
+  inverso (retém mas ninguém curte/compartilha) é sinal de clickbait que o sistema corrige.
 
 ## Diagnóstico acionável — cada problema aponta a SKILL que conserta
 
@@ -111,6 +126,13 @@ casa). O modelo interpreta, o script calcula:
 
 > "Esses aprendizados já ficam valendo: o próximo `/calendario` monta o mês lendo o que
 > funcionou aqui. Quer que eu já monte?"
+
+**Resultado bom = gatilho de prova social.** Quando a medição revela um pico real — post que
+bombou, campanha que converteu acima da meta, cliente com salto de venda no período — é o
+melhor momento documentado pra pedir depoimento (o cliente está no pico de satisfação). Ao
+detectar um spike/forte, sugerir: *"este foi um resultado forte — bom momento pra rodar
+`/provas` e capturar um depoimento agora, no pico."* Fecha o loop decide→produz→mede→**prova**:
+a medição alimenta o banco de prova, que volta pra alimentar a próxima peça de venda.
 
 ## Regras
 

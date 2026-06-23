@@ -56,7 +56,11 @@ Tema sem ângulo é commodity. Antes de escrever, definir:
 ## Passo 2 — Artigo (800-1.500 palavras)
 
 Salvar em `producao/artigos/<slug>.md` com frontmatter (título, descrição de 150-160
-caracteres, data, palavra-chave, `rascunho: true` — o usuário aprova antes de ir pro site).
+caracteres, data, **palavra-chave**, `rascunho: true` — o usuário aprova antes de ir pro
+site). A palavra-chave do artigo é a **âncora cross-canal**: a mesma keyword vira a keyword
+das 2 primeiras linhas da legenda do `/post` e o cluster do `/linkedin` (ver Passo 3). Um
+tema, uma keyword, todos os canais reforçando o mesmo termo — é o que faz o pacote inteiro
+empurrar a mesma busca em vez de competir consigo mesmo.
 
 Estrutura que funciona pra leitor E pra máquina de busca (clássica ou IA):
 
@@ -77,27 +81,52 @@ vai pro site, passar pelo `/seo` evita divergência de marcação.
 
 **Texto passa pelo `/escritor-br`** antes de fechar.
 
-## Passo 3 — Derivar as peças
+## Passo 3 — Multiplicar a saída (1 pillar → N peças)
 
-- **Instagram:** extrair do artigo o recorte mais visual (os passos, o dado mais forte,
-  o contraste) e acionar o **`/post`** com tema e intenção definidos. A legenda fecha
-  apontando: "guia completo no site/link da bio".
-- **LinkedIn:** extrair o recorte de opinião/experiência (não o resumo do artigo — o
-  ponto de vista por trás dele) e acionar o **`/linkedin`**. Link do artigo vai no
-  primeiro comentário.
+O artigo é a **peça-mãe (pillar)**: dentro de um artigo de 800-1.500 palavras moram
+**10-15 peças sociais + 3-5 reels/shorts + um e-mail**. Não derivar só "1 IG + 1 LinkedIn" —
+isso joga fora 80% do que o tema rende e mantém a economia da esteira cara. Cada subtítulo
+H2, cada dado, cada passo, cada FAQ é matéria-prima de uma peça. Derivar é reescrever pro
+canal, nunca copiar trecho — as peças se reforçam, não se repetem.
 
-Derivar é reescrever pro canal, nunca copiar trecho. Os três conteúdos se reforçam, não
-se repetem.
+**O que sai de um pillar:**
+
+- **Instagram (carrossel/post):** os recortes mais visuais (os passos, o dado mais forte,
+  o contraste, cada H2 vira um ângulo) → acionar o **`/post`** com tema e intenção. A
+  **keyword do artigo entra nas 2 primeiras linhas da legenda** (cross-canal). A legenda
+  fecha apontando: "guia completo no site/link da bio".
+- **Reel/Short (peça de descoberta):** o reel é o que chega a quem não te segue — todo pillar
+  deriva 1-3 reels. Extrair o gancho mais forte (o dado que choca, o erro comum, o "antes/
+  depois") e acionar **`/post reel`** (reel b-roll) ou **`/reel-marca`** quando o tema pede a
+  cara da marca. É a peça que traz público novo pro resto do pacote.
+- **LinkedIn:** o recorte de opinião/experiência (não o resumo do artigo — o ponto de vista
+  por trás dele) → acionar o **`/linkedin`**, **amarrando o post ao cluster** de
+  `nucleo/foco.md` (a keyword do artigo é o tema do cluster). Link do artigo no 1º comentário.
+- **E-mail:** o artigo vira um e-mail (resumo + o link) pra base — acionar o **`/email`** quando
+  houver lista. Fecha o ciclo: quem já é cliente recebe o conteúdo direto.
+
+**Cross-canal é a regra:** a keyword do artigo é a mesma keyword da legenda IG e o mesmo
+cluster do LinkedIn. Um termo, todos os canais — o pacote inteiro empurra a mesma busca.
+
+**Trava de qualidade > volume.** Multiplicar é tirar tudo que o tema DÁ, não inflar o que ele
+não tem. **3 peças fortes valem mais que 10 mornas.** Se o artigo só sustenta 4 ângulos
+verdadeiros, entregar 4 — e dizer ao usuário "esse tema rende 4 peças fortes; forçar 12 sairia
+morno". Tema gordo rende muitas peças naturalmente; tema magro, poucas. Recusar inflar é regra,
+não exceção.
 
 ## Passo 4 — Entregar o pacote
 
 ```
-✓ Artigo: producao/artigos/<slug>.md (rascunho — aprovar antes de subir)
+✓ Artigo (pillar): producao/artigos/<slug>.md (rascunho — aprovar antes de subir)
 ✓ Dados estruturados: <slug>.jsonld
-✓ Instagram: producao/posts/<data>-<slug>/ (PNGs + legenda)
-✓ LinkedIn: producao/linkedin/<data>-<slug>.md
-→ Aprovou tudo? /publicar sobe o que for automatizável.
+✓ Instagram: producao/posts/<data>-<slug>/ (N peças — PNGs + legenda)
+✓ Reel/Short: producao/posts/<data>-<slug>/ (peça de descoberta)
+✓ LinkedIn: producao/linkedin/<data>-<slug>.md (no cluster de foco)
+✓ E-mail: producao/email/<data>-<slug>.md (se houver lista)
+→ keyword única em todos · Aprovou tudo? /publicar sobe o que for automatizável.
 ```
+
+O número de peças é o que o tema sustenta com força (Passo 3), não um número fixo.
 
 Atualizar Status no calendário.
 
@@ -107,6 +136,10 @@ Atualizar Status no calendário.
 - Sem palavra-chave socada artificialmente — densidade natural, o assunto se repete
   porque o texto é sobre ele.
 - Um tema por pacote. Tema gordo demais → dividir em dois no calendário.
+- **Qualidade > volume, sempre.** O número de peças derivadas é o que o tema sustenta com
+  força — nunca um alvo a bater. 3 fortes > 10 mornas; recusar inflar quando o tema não dá.
+- Keyword única atravessa o pacote (artigo = legenda IG = cluster LinkedIn). Não trocar o
+  termo de canal pra canal — dilui a busca.
 - Site ainda não existe? Gerar o artigo mesmo assim (fica pronto) e avisar que a skill
   de página (Fase premium) resolve a casa dele.
 

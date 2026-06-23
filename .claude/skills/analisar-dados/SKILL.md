@@ -54,6 +54,18 @@ O script devolve JSON: total por dimensão (ranqueado) e agregado, com dinheiro 
 financeira, ainda vale rodar pra somar quantidades — ou a IA calcula contagens simples e
 mostra a conta.
 
+**Variação período-a-período sai do SCRIPT, nunca do olho.** Quando há dimensão temporal
+(mês, semana, data), o crescimento/queda em **%** entre períodos é calculado no código —
+"subiu 18%" tem que vir de `(atual − anterior) / anterior` feito pelo script, não de
+estimativa visual da IA (que erra %). Quando o script ainda não expõe a comparação temporal,
+rodá-lo por período e deixar a divisão pro código, não calcular de cabeça.
+
+**Detecção de outliers e dados faltantes no output.** Antes de interpretar, o resumo
+sinaliza: linhas com valor fora da curva (muito acima/abaixo do resto da dimensão — podem ser
+erro de digitação ou evento real, mas o dono decide), colunas com células vazias/zeradas, e
+o `registros_ignorados` do script. Outlier não some no agregado sem aviso — distorce média e
+total. Dado faltante vira ressalva explícita, não buraco silencioso.
+
 ### 3. Interpretar → resumo executivo
 Com os números do script na mão, escrever o resumo:
 
@@ -61,6 +73,10 @@ Com os números do script na mão, escrever o resumo:
   vendas subiram", e sim "Bebidas = 42% da receita, R$ 12.400 de R$ 29.500").
 - **3 tendências** — o que está em movimento (subindo, caindo, concentrando). Tendência
   pede série temporal ou comparação; sem base pra afirmar, marcar como **suposição**.
+- **Contra a meta** — quando `nucleo/foco.md` declara uma meta numérica (faturamento,
+  leads, ticket), bater o número apurado contra ela: bateu, está a X% de distância, ou
+  passou. Sem meta declarada, pular — não inventar alvo. É o que transforma "vendeu R$ X" em
+  "vendeu R$ X, **82% da meta do mês**".
 - **3 recomendações** — a ação que cada padrão sugere, ligada à prioridade do `nucleo/foco.md`.
 - **Tabela de sustentação** — os números do script que embasam cada insight, pro cliente
   conferir a conta (transparência: a IA interpretou, o código somou).

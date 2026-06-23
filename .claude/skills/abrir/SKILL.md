@@ -29,6 +29,9 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - `nucleo/perfil.md` — se existir, o tipo de negócio (molda o que sugerir como próximo passo)
 - `producao/calendario/<mês-atual>.md` — se existir, o que está pendente vs. publicado
 - `nucleo/aprendizados.md` — só pra puxar 1 padrão recente, se houver
+- `nucleo/provas.md` — só a **saúde do banco**: tem prova suficiente e variada pra vender? Se
+  está vazio/magro ou a última captura é antiga, vira pendência ("banco de provas fraco —
+  rodar `/provas` antes da próxima peça de venda"). Não listar as provas, só o estado.
 
 No modo agência, quando a sessão está aberta dentro de `clientes/<nome>/`, ler o núcleo
 **desse cliente**, não o da raiz.

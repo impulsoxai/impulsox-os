@@ -31,6 +31,10 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - **O ciclo** — Decide → Produz → Publica → Mede, com os números reais.
 - **Produção & publicado**, **Contexto** (degrau, foco, ofertas), **Custos de IA**
   (gasto por modelo) e **Saúde do núcleo** (arquivos preenchidos + pendências).
+- **Saúde do banco de provas** — quantas objeções estão cobertas (preço / demora /
+  funciona-pra-mim / confio?), idade da última captura e se as peças estão reciclando a mesma
+  prova. Banco fraco aparece como alerta — é o que impede vender sem munição (lido de
+  `nucleo/provas.md`, ver `/provas`).
 
 ## Regras
 

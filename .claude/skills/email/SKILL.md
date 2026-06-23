@@ -29,6 +29,17 @@ SPF/DKIM/DMARC, one-click unsubscribe, reputação. Pode escrever a sequência s
 declarar "pronta pra ar" quando a infra estiver resolvida. Conferir com o dono qual ferramenta
 de envio ele usa (ela costuma resolver a autenticação) — não assumir que está feito.
 
+- **DMARC sai do `p=none` — ele é só a partida.** `p=none` serve pra observar (recebe relatório,
+  não protege); o destino é **`p=quarantine`** e depois **`p=reject`**, que é o que Gmail/Yahoo
+  passaram a exigir de quem dispara em volume. Domínio parado em `p=none` está exposto a spoofing
+  e perde entregabilidade — avançar a política conforme os relatórios mostram que o tráfego
+  legítimo está alinhado.
+- **Reclamação de spam é o limiar que mata a lista.** Alvo **≤ 0,10%** de spam complaints; o
+  **teto de emergência é 0,30%** — passar disso e o Gmail começa a bloquear/jogar tudo na lixeira
+  (a régua oficial do Gmail desde 2024). Por isso a lista só recebe quem pediu (LGPD abaixo),
+  o descadastro é fácil (one-click) e o conteúdo entrega valor — reclamação alta vem de e-mail
+  não pedido ou só-venda. Acompanhar a taxa pelo painel da ferramenta de envio.
+
 ## O que ler antes
 
 - `nucleo/voz.md` — a voz manda em assunto, abertura e fecho de cada e-mail
@@ -44,8 +55,13 @@ Decidir cedo qual se aplica (o pedido ou o handoff já indica).
 
 ### 1. Boas-vindas pós-isca (handoff do `/criar-ebook`)
 Quem baixou a isca levantou a mão — é o lead mais quente que existe. Sequência de **4-5
-e-mails**:
-1. **Entrega da isca** — o link/arquivo, sem enrolação, e o próximo passo de leitura.
+e-mails**. **O 1º sai NA HORA** (automático, no segundo em que ele se cadastra — é quando a
+atenção e a confiança estão no pico) e a **janela de ouro são as primeiras 48h pós-signup**:
+concentrar os e-mails que mais constroem relação aí, enquanto a marca ainda está fresca. Lead
+que recebe o 1º e-mail só horas depois já esfriou. Os primeiros toques saem mais juntos
+(dia 0 na hora, dia 1, dia 2), depois espaçam:
+1. **Entrega da isca** — o link/arquivo, sem enrolação, e o próximo passo de leitura. **Dispara
+   imediato** no cadastro, não em lote diário.
 2. **Melhor conteúdo** — o material mais forte do negócio sobre o tema da isca (constrói
    autoridade antes de vender).
 3. **Prova autorizada** — caso ou depoimento real (de `nucleo/provas.md`) que mostra o
@@ -53,7 +69,8 @@ e-mails**:
 4. **Oferta com objeção respondida** — a oferta ligada à isca, com a principal objeção de
    `nucleo/ofertas.md` desarmada no corpo.
 5. **Convite direto** — chamada única e clara para a ação (falar, agendar, comprar).
-Sugerir intervalos entre os e-mails (ex.: dia 0, 2, 4, 6, 9) — ajustar ao ciclo do negócio.
+Sugerir intervalos (ex.: dia 0 **na hora do cadastro**, dia 1, dia 2, dia 4, dia 7 — peso na
+janela de 48h) — ajustar ao ciclo do negócio.
 
 ### 2. Newsletter mensal
 Reaproveita o que o mês já produziu: ler `producao/` (o que `/conteudo` e `/post` geraram).
@@ -101,8 +118,12 @@ que cai no spam não vende; este gate é tão obrigatório quanto o `/escritor-b
   de envio.
 - **Gate de entregabilidade obrigatório** (`docs/entregabilidade-email.md`): varrer assunto e
   corpo por palavra/formatação de spam antes de fechar. Reescrever hype em linguagem plana.
-- **Métrica de e-mail** (abertura, clique) só entra em relatório se vier de **export real**
-  da ferramenta de envio; nunca estimar taxa de e-mail de cabeça.
+- **Métrica de sucesso é CLIQUE/CTOR, não abertura.** O Apple Mail Privacy Protection (MPP)
+  pré-carrega imagens e infla a taxa de abertura — abertura virou número fantasiado, não mede
+  interesse real. A régua passou a ser **clique** e **CTOR** (click-to-open rate: cliques ÷
+  aberturas). Open rate só serve, com ressalva, pra comparar A/B de assunto na mesma base — nunca
+  como prova de que a campanha funcionou. Toda métrica entra em relatório só de **export real**
+  da ferramenta de envio; nunca estimar de cabeça.
 - Uma CTA por e-mail. E-mail que pede três coisas não consegue nenhuma.
 
 ## Teste de aceitação (comportamental)

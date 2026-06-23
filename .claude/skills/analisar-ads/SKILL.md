@@ -23,6 +23,25 @@ Autoria: ImpulsoX AI. Conteúdo original.
 `scripts/analisar-ads.mjs`. O modelo interpreta o resultado e decide — nunca calcula
 métrica de cabeça. Se o script não roda, a análise não existe.
 
+## ⭐ Atribuição inflada — o aviso que muda toda decisão de orçamento
+
+O **ROAS que a plataforma reporta NÃO é incremental** — ele credita à campanha vendas que
+teriam acontecido de qualquer jeito, e infla o número em **2-5x** sobre o ganho real. Pior:
+Google e Meta usam modelos e janelas de atribuição **diferentes**, então o ROAS de uma não
+é comparável com o da outra. Regra da casa, sempre no relatório:
+
+- Rotular todo ROAS/CPA vindo do export como **"ROAS atribuído pela plataforma — não usar
+  pra decidir orçamento entre Google e Meta"**. Serve pra ranquear DENTRO de uma mesma
+  plataforma e período; não serve pra dizer "Meta rende mais que Google".
+- Decisão de quanto investir em cada plataforma só com sinal **incremental** (teste de
+  geo-lift, holdout, ou — no mínimo — o dado de faturamento real do negócio batido contra o
+  gasto total). Sem isso, a recomendação de realocar verba entre plataformas fica marcada
+  como **hipótese a testar**, nunca como veredito.
+- **Mudança de janela do Meta (28d → 7d-click):** o padrão de atribuição do Meta encurtou de
+  28 dias para 7 dias de clique. Ao comparar períodos, conferir se a janela é a mesma — uma
+  queda de "conversões" pode ser só a janela mais curta contando menos, não a campanha
+  piorando. Avisar isso explicitamente quando o período cruza a mudança.
+
 ## Sem ads ainda?
 
 Esta skill não se aplica — dizer isso com clareza e apontar o caminho: `/ads-google`,
@@ -71,9 +90,17 @@ Com os números do script na mão:
    Ordenar por CPA (ou ROAS, se há valor). Nomear vencedoras e sangrias em cada nível.
 2. **Onde o dinheiro vaza.** Campanhas com gasto relevante (>10% do total) e zero
    conversão — candidatas a pausa ou reforma.
-3. **Sinal fino.** Dado insuficiente (< ~100 cliques na campanha) = "sem veredito ainda",
-   nunca conclusão forçada.
-4. **Padrão do que converte.** O que as vencedoras têm em comum — tema, oferta, público,
+3. **Significância por CONVERSÕES, não por cliques.** O que decide a confiança no veredito é
+   o volume de **conversões**, não de cliques — uma campanha com 2.000 cliques e 4 conversões
+   ainda não diz nada. Limiar: **≥30-50 conversões** na campanha pra cravar CPA/ROAS;
+   abaixo disso = "sem veredito ainda", nunca conclusão forçada (cliques altos com poucas
+   conversões enganam). Pausa/escala só passa desse limiar.
+4. **Comparar contra benchmark de nicho 2026.** Número solto não diz se é bom — ancorar:
+   **ROAS de referência Google ~3,5x · Meta ~1,9x** (mediana 2026, varia por setor). CPA/ROAS
+   muito abaixo do benchmark do nicho = sinal de problema (tracking, oferta ou público), não
+   só "campanha fraca". Usar como régua de leitura, não como meta cravada — cada negócio tem
+   sua margem.
+5. **Padrão do que converte.** O que as vencedoras têm em comum — tema, oferta, público,
    plataforma? Esse padrão é a matéria-prima das sugestões.
 
 ## Passo 5 — Entregar
@@ -111,6 +138,11 @@ Padrão consolidado (não número cru) vai pra seção **Tráfego pago** de
 `/ads-meta` e `/calendario` leem antes de propor o próximo ciclo. Primeira vez que
 exports reais entram no sistema → atualizar `nucleo/escada.md` (degrau 4 no eixo de
 dados de campanha).
+
+**Campanha que converteu bem = gatilho de prova.** Resultado de tráfego acima da meta é
+evidência fresca e momento de pico do cliente — sugerir rodar `/provas` pra capturar o
+depoimento/caso agora ("essa campanha trouxe X leads/vendas — bom momento pra registrar
+isso como prova"). O número da campanha vira caso com objeção que ele mata no banco.
 
 ## Regras
 

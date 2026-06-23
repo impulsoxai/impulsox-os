@@ -71,8 +71,9 @@ Conferir e anotar nota por item (✅ ok / ⚠️ ajustar / ❌ ausente):
 - Canonical correto; sem `noindex` acidental
 - Open Graph + Twitter Card pra compartilhamento
 - Sinais de Core Web Vitals (imagem dimensionada, sem layout shift óbvio, CSS/JS enxuto)
-  — alinhar com o padrão do `marca/design-guide.md` e o alvo do CLAUDE.md global
-  (LCP < 2.5s, CLS < 0.1)
+  — alinhar com o padrão do `marca/design-guide.md`. Régua de 2026: **LCP ≤ 2,0s · INP ≤
+  200ms · CLS ≤ 0,1** (LCP "good" caiu de 2,5s pra 2,0s no core update de mar/2026 — era 2,5s
+  até então; INP substituiu o FID em 2024)
 
 ## Fase 3 — Blocos GEO da página (o jogo da IA, on-page)
 
@@ -82,11 +83,27 @@ no nicho e o loop mensal é o `/geo`; aqui é a execução estrutural numa pági
 
 - **Answer-first em cada seção.** A resposta vem antes da história. IA extrai parágrafos
   auto-suficientes — cada bloco precisa fazer sentido fora de contexto.
-- **FAQ real e estruturado.** Mínimo 8 perguntas que o cliente de fato faz, com resposta
-  direta. Vira `FAQPage` em JSON-LD.
-- **Schema JSON-LD** do que a página é: `Organization`/`LocalBusiness`, `WebSite`,
-  `BreadcrumbList`, `FAQPage`, e `Service`/`Product`/`Article` conforme o caso. Tudo
-  refletindo o conteúdo real.
+- **FAQ real e estruturado — agora por citabilidade IA, não por rich result.** Mínimo 8
+  perguntas que o cliente de fato faz, com resposta direta e **standalone** (cada resposta
+  faz sentido sozinha, fora da página). Vira `FAQPage` em JSON-LD. **O `FAQPage` deixou de
+  gerar a sanfona de rich result na SERP do Google** (rich result aposentado em mai/2026) —
+  então não se mantém o FAQ "pra ganhar espaço no Google"; mantém-se porque **ChatGPT,
+  Perplexity e AI Overviews leem essas respostas standalone e citam**. Mudou o porquê, não o
+  bloco: continua valendo, agora pela IA.
+- **Schema JSON-LD — entidade primeiro.** Do que a página é: `Organization`/`LocalBusiness`,
+  `WebSite`, `BreadcrumbList`, `FAQPage`, e `Service`/`Product`/`Article` conforme o caso, tudo
+  refletindo o conteúdo real. **Priorizar o Schema de ENTIDADE:** a `Organization` (ou `Person`,
+  pra criador) com `name` canônico, **`sameAs`** (URLs dos perfis oficiais — Instagram, LinkedIn,
+  Google Business, YouTube) e **`knowsAbout`** (os temas em que a marca é autoridade), e
+  identificadores externos quando existirem. É o que liga a página a uma entidade reconhecível —
+  o que a IA usa pra saber QUEM é e decidir citar. Puxar essa semente do `marca/design-guide.md`
+  (seção Entidade, preenchida no `/identidade`); o que faltar lá, completar aqui e devolver.
+- **Schema em HTML ESTÁTICO, não injetado por JS.** O bloco `<script type="application/ld+json">`
+  tem que estar no HTML cru entregue pelo servidor — **não** adicionado depois por JavaScript
+  (GTM, framework client-side). Motivo: Perplexity e ChatGPT leem o HTML como vem, **não executam
+  JS** — Schema injetado por JS simplesmente some pra eles. (O Google até renderiza JS, mas a IA
+  não — e o jogo aqui é a IA.) Auditar: o Schema aparece no "ver código-fonte" da página, não só
+  no DOM depois de carregar? Se só no DOM, está invisível pra quem mais importa.
 - **Dado citável.** Número, prazo e fato específico (com fonte) são o que a IA prefere
   citar — vago não vira citação. Puxar do `nucleo/provas.md` quando houver prova autorizada.
 - **Acesso pra crawler de IA.** `robots.txt` liberando `GPTBot` (OpenAI), `ClaudeBot`
@@ -110,6 +127,10 @@ Dois produtos:
 2. **Relatório com nota.** Tabela item a item (✅/⚠️/❌), nota geral 0-10 separada em
    **Google (on-page)** e **GEO (citabilidade)**, e a lista priorizada do que consertar
    primeiro — o que dá mais resultado no topo. Linguagem de dono de negócio, não de técnico.
+   Quando o Schema estiver completo e estático, **dimensionar o ganho de citação** pra justificar
+   o esforço: página com Schema completo é citada ~2,7x mais no Perplexity e ~3,1x mais nas AI
+   Overviews do Google que a mesma página sem Schema. É o argumento de por que vale o trabalho —
+   número de referência, não promessa por página.
 
 ## Encaixe com o resto do sistema
 
