@@ -249,11 +249,11 @@ export const ReelSistema: React.FC = () => {
           <Cena3 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition timing={linearTiming({ durationInFrames: 18 })} presentation={fade()} />
-        <TransitionSeries.Sequence durationInFrames={105}>
+        <TransitionSeries.Sequence durationInFrames={150}>
           <Cena4 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition timing={springTiming({ config: { damping: 200 }, durationInFrames: 20 })} presentation={fade()} />
-        <TransitionSeries.Sequence durationInFrames={60}>
+        <TransitionSeries.Sequence durationInFrames={105}>
           <Cena5 />
         </TransitionSeries.Sequence>
       </TransitionSeries>
