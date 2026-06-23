@@ -43,9 +43,14 @@ cd impulsox-os
 claude
 ```
 
-Dentro do Claude Code, digite **`/plugar`** — uma conversa curta sobre o seu negócio
-monta a memória do sistema. Sem tempo hoje? Entregue só a URL do seu site: ele extrai
-o que conseguir e já começa a produzir. O refino vem depois, no seu ritmo.
+Dentro do Claude Code, digite **`/plugar`** (ou só escreva **"quero começar"**) — uma
+conversa curta sobre o seu negócio monta a memória do sistema. Sem tempo hoje? Entregue só
+a URL do seu site: ele extrai o que conseguir e já começa a produzir. O refino vem depois,
+no seu ritmo.
+
+> **Você não precisa decorar nome de comando.** Fale o que quer em português comum —
+> "cuida do meu Instagram", "preciso de um site", "analisa meus anúncios" — e o sistema
+> acha a ferramenta certa e conduz. A lista de comandos abaixo é só referência.
 
 A produção liga na hora — calendário, posts e páginas saem no primeiro dia. Medir e
 publicar no automático dependem de conectar Instagram e Meta, uns minutos uma vez só;
@@ -56,7 +61,7 @@ Dica: dê à pasta o nome da sua empresa. É dela que o marketing sai daqui pra 
 
 ---
 
-## As 39 automações
+## As automações (mais de 45)
 
 ### Fundação — o sistema aprende quem você é
 - **`/plugar`** liga o sistema: negócio, oferta e foco, em poucos minutos.

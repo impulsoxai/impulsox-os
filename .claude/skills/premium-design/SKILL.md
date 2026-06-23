@@ -12,6 +12,9 @@ description: >
   dos 3 melhores sites do NICHO dele (cliente escolhe o estilo), com a identidade cravada —
   nível dos melhores do mercado, cara do cliente. É o produto de posicionamento (10k+).
   Acervo curado por nicho em references/referencias-por-nicho.md; biblioteca em marca/design-systems/.
+  (Skill de APOIO/motor de design — normalmente chamada pelo `/identidade` e pelo `/pagina`,
+  não é porta de entrada do dono leigo. Quem quer "um site" pede `/pagina`; quem quer "a
+  marca" pede `/identidade` — elas acionam esta por baixo.)
 ---
 
 # /premium-design — Motor de identidade visual por código-fonte

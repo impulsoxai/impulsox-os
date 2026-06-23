@@ -1,6 +1,9 @@
 ---
 name: impulsox-chatgpt-ads
 description: >-
+  Use pra criar campanha de ChatGPT Ads / OpenAI Ads — "quero anunciar no ChatGPT",
+  "anúncio na IA", "campanha no OpenAI Ads", "ads no ChatGPT". (Brasil é país-piloto: prepara
+  pra lançar no dia em que o acesso abrir.)
   Build launch-ready OpenAI Ads (ChatGPT Ads) campaigns from a client offer and landing
   page. Use when planning ChatGPT Ads / OpenAI Ads Manager Beta strategy, campaign and ad
   group structure, context hints, ad titles and copy, creative angles, landing page

@@ -6,6 +6,8 @@ description: >
   do calendário marcada como IG. Produz carrossel, post único ou **reel (foto + vídeo)**
   com a identidade da marca: carrossel/post em PNG 1080x1350; reel em vídeo vertical
   1080x1920 (foto realista por IA, animada e legendada) + legenda pronta.
+  (Reel aqui = foto/cena REAL por IA. Reel de MOTION GRAPHICS por código — texto animado +
+  produto em mockup, vídeo institucional/de marca — é o `/reel-marca`.)
 ---
 
 # /post — Peça visual de Instagram

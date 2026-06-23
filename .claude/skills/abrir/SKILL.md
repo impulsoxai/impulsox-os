@@ -63,6 +63,11 @@ medição do mês passado não feita; no máximo 3 itens]
 O que vamos fazer?
 ```
 
+Se for a **primeira vez** do dono (sem histórico de sessão / núcleo recém-preenchido),
+fechar com a linha-convite que tira o peso da lista de comandos:
+> Não sabe por onde? É só falar o que você quer — ex.: "cuida do meu Instagram",
+> "preciso de um site", "analisa meus anúncios". Eu acho a ferramenta e conduzo.
+
 Regras da síntese:
 - Cabe em ~8 linhas no terminal. Se passar disso, está virando relatório — cortar.
 - O **degrau da Escada** sempre aparece — é a informação que orienta o que o sistema pode
