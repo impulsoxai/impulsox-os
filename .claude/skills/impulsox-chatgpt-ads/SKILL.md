@@ -87,7 +87,7 @@ intake (URL) -> extract-facts.mjs -> fact-sheet.json -> Step 0.6 Phase 1 (operat
    informs angle and objection handling, never overrides an extracted price.
 0.5. **Factual extraction.** Load `references/factual-extraction.md`. Run:
    ```
-   node skill/scripts/extract-facts.mjs <client-url> deliverables/<client>-fact-sheet.json
+   node scripts/extract-facts.mjs <client-url> deliverables/<client>-fact-sheet.json
    ```
    The script maps the site, selects relevant pages (home, menu, about, hours, reservations),
    and scrapes each with PDF parsing. Produces `fact-sheet.json`. If the script exits non-zero

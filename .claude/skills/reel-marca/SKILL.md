@@ -184,3 +184,7 @@ thumbnail/GBP) + a composição `.tsx`. A produção fica no clone; o motor desc
 v1: só 9:16 vertical + capa still. **Multi-formato (1:1, 4:5, 16:9)** e **cutdowns (15s/5s)** são
 lote futuro — exigem layout responsivo (as cenas hoje são calibradas em px fixos pro 9:16) e peça
 dedicada (cutdown bem-feito é hook+payoff com ritmo próprio, não corte cego do mp4).
+
+---
+
+**✓ Pronto:** reel de marca 9:16 (motion graphics na marca + produto real) + capa · **→ próximo passo:** `/revisar` — crivo sênior de olhos frios antes de ir ao ar; depois `/publicar`. Pré-requisito: núcleo do cliente + `marca/tokens.css`; se faltar marca, o sistema reorienta pro `/identidade`.

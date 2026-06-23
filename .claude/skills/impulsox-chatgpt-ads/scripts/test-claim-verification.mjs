@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * test-claim-verification.mjs — Tests for validate-packet.mjs Section 8 (claim verification).
- * Usage: node skill/scripts/test-claim-verification.mjs
+ * Usage: node scripts/test-claim-verification.mjs
  */
 import { writeFileSync, mkdirSync, rmSync, existsSync } from "node:fs";
 import { spawnSync } from "node:child_process";

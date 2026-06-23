@@ -26,7 +26,7 @@ generate factual copy until Step 0.6 is signed off.
 Run:
 
 ```
-node skill/scripts/extract-facts.mjs <client-url> deliverables/<client>-fact-sheet.json
+node scripts/extract-facts.mjs <client-url> deliverables/<client>-fact-sheet.json
 ```
 
 The script runs three internal stages. Understand why each exists:
@@ -141,7 +141,7 @@ prior scrape instead of spending credits — restaurant facts rarely change with
 Force a fresh scrape with `--refresh`:
 
 ```
-node skill/scripts/extract-facts.mjs <client-url> deliverables/<client>-fact-sheet.json --refresh
+node scripts/extract-facts.mjs <client-url> deliverables/<client>-fact-sheet.json --refresh
 ```
 
 Use `--refresh` when the operator knows the menu or hours just changed, or when re-verifying

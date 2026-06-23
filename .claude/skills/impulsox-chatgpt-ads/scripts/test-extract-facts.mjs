@@ -8,7 +8,7 @@
  * Test B — cache miss, mock Firecrawl: full map→select→scrape flow with mocked SDK
  * Test C — failure handling: Firecrawl throws → exit(1), no file written
  *
- * Run with: node skill/scripts/test-extract-facts.mjs
+ * Run with: node scripts/test-extract-facts.mjs
  */
 
 import { writeFileSync, readFileSync, existsSync, mkdirSync, rmSync } from "node:fs";

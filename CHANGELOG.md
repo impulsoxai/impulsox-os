@@ -7,6 +7,80 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.4] — 2026-06-23
+
+### Adicionado
+- Skill `/revisar-pagina` — avaliador frio de design+copy de página pronta (agente
+  `revisor-pagina`, régua nomeada, captura 390/768/1440); gate antes de `/publicar`.
+- Skill `/reel-marca` — reel de motion graphics por código (Remotion): texto animado +
+  produto real do cliente em mockup, na marca e voz dele; tema parametrizável por
+  `marca/tokens.css`; CTA local + objetivo save/send + cover.
+- **YT-OS Gravação & Movimento** (port headless do Recordly): `/gravar-tela` (tela + voz +
+  webcam + telemetria de cliques/cursor + áudio do sistema), auto-zoom por clique
+  (anti-tontura), bolha de webcam, edição por trechos/velocidade, filler-removal,
+  auto-reframe 9:16, punch-in, corte de intro morta.
+- Skill `/repurpose` — 1 fonte longa vira uma semana de peças nativas (IG, LinkedIn,
+  Reel/TikTok) via as skills donas, graduadas pelo `/revisar`, jogadas no `/calendario`.
+- Campo **Opinião contrária / Wedge** em `nucleo/negocio.md` (capturado no `/plugar` e
+  `/voz`; lido por `/post`, `/formulas`, `/calendario`, `/repurpose`).
+- Nota X/10 + scorecard de 7 dimensões (Hook=50%) no `/revisar` e no agente
+  `revisor-marketing`, só para peça de social orgânico.
+- B-roll com voz narrada (`gerar-tts.mjs` ElevenLabs; a fala manda a duração; karaokê).
+- Camada de funil TOFU/MOFU/BOFU na `/roteiro-yt`.
+
+### Alterado
+- `/desempenho` vira **porta única** YouTube + Instagram com diagnóstico acionável
+  (sintoma → skill que conserta); `/desempenho-yt` vira redirect.
+- `/post` — save/send default, punchline no último slide, 7-10 slides, swipe-retention,
+  matriz CTA × plataforma, régua técnica de reel; reel de conteúdo na fórmula viral.
+- `/formulas` — protocolo de iteração de hook (first-3-words) + taxonomia ordenada por teto.
+- **Auditoria 2026** aplicada (estado-da-arte em ~25 skills); fecho "→ próximo passo"
+  padronizado em todas as skills.
+- `/atualizar-motor` inclui `remotion/` e `.gitignore` no checkout do motor.
+
+### Corrigido
+- CWV medido 2-3x usando a mediana (1º run é cold start, inflava o LCP).
+
+## [0.2.3] — 2026-06-17
+
+### Adicionado
+- Skill `/painel` — status board vivo do negócio (servidor local + front em `dashboard/`,
+  4 blocos, live 5s, ciclo protagonista) + ledger de custo (`dados/custos.jsonl`).
+- Conector de **publicação** (`/publicar`): Instagram + Facebook + LinkedIn via API oficial
+  (dry-run + `--confirmar`, redação de token) e Google Meu Negócio (`/local`).
+- **Canal YouTube (Fase 1-3.5):** `/roteiro-yt` (packaging título+thumbnail, hook split,
+  funil), `/tema-yt` (radar de tema), `/thumbnail`, `/editar-video` (corte de silêncio,
+  legenda karaokê, normalização -14 LUFS), `/shorts` (long→shorts), upload pro YouTube,
+  `/desempenho-yt` (métricas/retenção), `/voz --canal`, `/formulas` modo vídeo + Modo 4
+  (monitorar criadores).
+- `/identidade` — mood board de escolha, logo por IA (wordmark por grid), árvore de decisão
+  completa, liga o daemon do Open Design sozinha.
+- `/premium-design` — Uso 2 (elevar design com camada premium) e Uso 3 (re-estilizar no
+  jeito de site premiado do nicho com a marca cravada; biblioteca `referencias-por-nicho.md`).
+- `docs/mapa-de-skills.md` — como as esteiras se conectam + infra invisível.
+
+### Alterado
+- Sistema **guia pela esteira**: cada skill aponta o próximo passo, pergunta antes, e se
+  acha se o dono pular etapa. Fluxo principal × opcionais (YouTube beta/ads/chatgpt-ads só
+  quando o dono pede).
+- `canal-youtube/` no template usa só exemplos genéricos; dado real do canal vai pro clone.
+- Regra global "copiar a fórmula de quem já faz sucesso" gravada na conduta.
+
+## [0.2.2] — 2026-06-14
+
+### Adicionado
+- Skill `/copy` — engine de copy de conversão para landing pages, em 4 camadas (incl. a
+  Camada de Ideia: caçar a frase que pega), plugada no `/pagina` com gate `/escritor-br`.
+- `docs/frase-que-pega.md` + `docs/swipe-copy.md` — craft de hook e acervo de copy real.
+- **Fal.ai imagem + vídeo** (substitui OpenAI): `gerar-imagem.mjs` (minimax/FLUX/Nano
+  Banana) e `gerar-video.mjs` (Kling/Seedance/LTX; corte rápido por cena); `/post` passa a
+  entregar **reel** (foto + vídeo), não só carrossel.
+- `gerar-avatar.mjs` — foto + áudio vira pessoa falando (lip-sync), com guarda de custo.
+- `/raio-x` ganha etapa de mini-redesign (prova de valor da reunião).
+
+### Alterado
+- Regra dura "**peça pública só vende oferta ATIVA**" gravada no `/copy` e na conduta.
+
 ## [0.2.1] — 2026-06-13
 
 ### Corrigido

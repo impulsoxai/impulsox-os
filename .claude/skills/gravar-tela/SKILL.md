@@ -96,3 +96,7 @@ de zoom a partir dos seus cliques → depois **`/editar-video`** pega o `tela.mp
 - **Telemetria do cursor** (pro auto-zoom automático nos cliques) entra na Fase 3. As
   gravações de agora não têm esse dado; quando o auto-zoom existir, grava-se de novo com ele.
 - Os arquivos de gravação **não sobem pro GitHub** (são grandes — ficam só na máquina).
+
+---
+
+**✓ Pronto:** gravação crua (tela + voz + webcam + telemetria) salva na máquina · **→ próximo passo:** `/editar-video` — corta silêncio/filler, aplica auto-zoom e legenda, e entrega o vídeo pronto. Pré-requisito: a gravação crua; é o que esta skill produz. _(Fase 2 — recurso novo; validar antes de oferecer a cliente como pronto.)_

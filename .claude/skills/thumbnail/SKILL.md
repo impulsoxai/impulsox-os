@@ -204,3 +204,7 @@ Ao terminar, apontar o próximo (regra do `CLAUDE.md`) e esperar o "sim":
 4. `--fal` sem `--confirmar` → mostra só o preview do plano; não gasta crédito.
 5. Capa veio do `/roteiro-yt` → parte do conceito do Passo 8, não reinventa.
 6. Em todos: marca preservada (cor/fonte/contraste); nunca rosto IA identificável.
+
+---
+
+**✓ Pronto:** thumbnail 16:9 na marca, aprovada no crivo Four C's (≥8) · **↩ esta é uma skill de apoio:** a capa é consumida pelo `/editar-video` e `/roteiro-yt` (e gerada avulsa quando o dono pede) — não tem próximo passo próprio; o fluxo volta pra quem a chamou.
