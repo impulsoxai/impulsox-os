@@ -11,20 +11,29 @@
 | O4 | `/intake` | ✅ feita (commit 1152606) |
 | O8 | `/agente-ia` | ✅ widget+persona feitos; contrato `/api/chat` travado com o dev (af59d8e). **Liga quando o CRM gerar a `ixs_pub_` e o OS subir a persona via PUT /api/settings/persona.** |
 
-## ⛔ Bloqueadas pelo CRM — as 5 do eixo-lead
+## ✅ CRM no ar — ponte + /roi FEITOS (v0.2.8)
 
-Todas dependem da `lib-crm.mjs` (spec pronto:
-`docs/superpowers/specs/2026-06-23-lib-crm-design.md`), que depende do **service token por
-tenant** (PRD 3.1).
+CRM mergeou service token (`ixk_live_`) + chave pública (`ixs_pub_`).
+
+| # | Item | Estado |
+|---|---|---|
+| — | **`lib-crm.mjs`** | ✅ feita, 7/7 testes (commit 85a8a06) |
+| O2 | `/roi` ⭐ | ✅ feita + `lib-roi` 5/5 (commit 10f7a08). Atribuição por canal (UTM espera sub 1) |
+| O8 | `/agente-ia` chat | ✅ ligado: persona via `PUT /api/settings/persona`, widget com `ixs_pub_` |
+
+### 🔶 GATE: dono valida a ponte antes do resto
+Antes de construir as 4 restantes sobre a `lib-crm`: o dono gera o `CRM_TOKEN` (aba
+Integrações, scope `data:read`), põe no `.env`, roda `/roi` de verdade contra o CRM e
+confirma que a ponte funciona. Validado → seguir.
+
+## ⛔ Restantes do eixo-lead (depois da validação)
 
 | # | Skill | O que faz | Espera |
 |---|---|---|---|
-| — | **`lib-crm.mjs`** | a ponte (auth+REST+envelope) — fundação das 5 | service token (PRD 3.1) |
-| O2 | `/roi` ⭐ | cruza channel/utm × Deal.value × Invoice.paid → faturamento influenciado | lib-crm + (UTM 3.2 pra campanha exata) |
-| O7 | hub multi-cliente | `/painel`/`/abrir` leem o CRM por tenant → visão de carteira | lib-crm (token por clone) |
-| O1 | `/leads` | manda lead da página/ads pro Contact; lê status | lib-crm |
-| O5 | `/depoimento` | reage a deal.won → pede prova → abastece /provas | lib-crm + webhook (3.3) ou poll |
-| O3 | `/reativar` | parametriza o follow-up que o CRM JÁ faz (quase não é skill) | lib-crm |
+| O7 | hub multi-cliente | `/painel`/`/abrir` leem o CRM por tenant → visão de carteira | validação + token por clone |
+| O1 | `/leads` | manda lead da página/ads pro Contact; lê status | validação (POST /contacts já existe) |
+| O5 | `/depoimento` | reage a deal.won → pede prova → abastece /provas | webhook (3.3) ou começa por poll |
+| O3 | `/reativar` | parametriza o follow-up que o CRM JÁ faz (quase não é skill) | validação |
 
 ## 🔓 O que destrava (pré-condições do lado CRM — PRD)
 
