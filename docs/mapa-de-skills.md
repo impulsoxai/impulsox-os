@@ -278,7 +278,7 @@ contrato pra aquilo.
 | /depoimento | /provas (formata e guarda) | CRM_TOKEN (ou dono diz quem fechou) |
 | /tema-yt | /roteiro-yt | criadores-monitorados, pilares |
 | /roteiro-yt | /gravar-tela → /editar-video | **voz-canal.md, fórmula** |
-| /slides | /gravar-tela | **marca/ (senão: rodar /identidade antes)** |
+| /slides | /gravar-tela | **marca/ (senão: /identidade antes) · docs/pitch-narrado.md** |
 | /gravar-tela | /editar-video | — (só a gravação crua) |
 | /editar-video | /shorts → /publicar | final.mp4, whisper |
 | /shorts | /publicar | palavras.json |

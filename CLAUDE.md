@@ -75,6 +75,9 @@ página, e-mail), ler `docs/persuasao.md` — gatilhos, storytelling e as regras
 inegociáveis de persuasão honesta, e `docs/frase-que-pega.md` — a craft do hook/headline
 que gruda (Made to Stick, devices, Big Idea, autenticidade). Para copy de página, ler
 também `docs/swipe-copy.md` — acervo de copy real que converte (molde transfere, frase não).
+Para qualquer PITCH NARRADO (deck de `/slides`, proposta ao vivo, vídeo), ler
+`docs/pitch-narrado.md` — o craft do arco que converte (Sparkline/Duarte, espinha de Raskin,
+Equação de Valor/Hormozi, demo Tell-Show-Tell).
 Para qualquer DECISÃO de estratégia (calendário, raio-x, proposta, oferta, análise de ads),
 ler `docs/modelos-mentais.md` — Jobs to Be Done, Teoria das Restrições, psicologia de preço,
 loops de crescimento; o andar de cima da persuasão (pensar o problema certo antes da peça).
@@ -208,4 +211,4 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 
 ---
 
-*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.8*
+*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.9*
