@@ -136,3 +136,7 @@ O relatório aponta o buraco e **de quem pedir** pra tapá-lo. Também sinalizar
   e é propaganda enganosa). Pedir avaliação honesta pode; comprar nota, jamais.
 - Banco vazio não trava peça — a peça muda de intenção (regra das skills de produção)
   e esta skill entra na fila como próximo passo sugerido.
+
+---
+
+**✓ Pronto:** banco de provas em `nucleo/provas.md` (cada prova com tipo, origem e status de autorização) · **↩ esta é uma skill de apoio:** o banco é consumido por `/copy`, `/post`, `/pagina`, `/proposta`, `/ads-*` e `/relatorio`; o `/depoimento` aciona o pedido no pós-resultado. Não tem próximo passo próprio — o fluxo volta pra quem pediu a prova.
