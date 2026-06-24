@@ -124,6 +124,10 @@ movimento por cima. Fluxo:
    mas extraindo o que importa aqui: **animações de entrada, scroll-triggered, hover/micro-
    interações, easing (cubic-bezier), parallax, reveal, transições de estado.** O acervo de
    movimento entra em `marca/design-systems/` como qualquer DS.
+   **Ler antes `docs/craft-movimento.md`** — o catálogo nomeia os efeitos disponíveis
+   (text-split, count-up, scroll cinematic, magnetic, clip-path, parallax, spotlight, WebGL,
+   smooth scroll), diz quando cada um dá WOW e quando mata performance, e aponta de qual site
+   premiado capturar. É o vocabulário pra escolher o que aplicar, em vez de improvisar.
 3. **Aplicar sobre o design base** — adicionar as animações/efeitos SEM alterar a identidade:
    - entrada suave dos elementos no scroll (IntersectionObserver)
    - hover states e micro-interações nos botões/cards
@@ -161,6 +165,25 @@ O fluxo que vira diferencial:
 > é opção de venda; é só um detalhe técnico interno pra quando uma página simples já ficou
 > boa e só falta animar, sem reformar. Cliente que paga premium quer o nível dos melhores do
 > nicho dele — isso é sempre Uso 3.
+
+## Uso 4 — Captura dirigida pelo dono ("vi essa animação, faz igual") ⭐
+
+O dono viu uma animação massa num site e quer igual. Em vez de o sistema escolher a referência,
+o **dono traz a URL**. Reaproveita a **Fase 1 (Captura)** desta skill — não é fluxo novo.
+
+- **Gatilho:** "quero essa animação", "copia o efeito desse site", "faz igual a esse site",
+  dono cola uma URL.
+- **Fluxo:**
+  1. Fase 1 (Captura) puxa o código-fonte da URL.
+  2. Isolar o efeito que o dono quer (o keyframe/easing/JS daquela animação específica) — usar
+     o `docs/craft-movimento.md` pra nomear qual efeito é e entender seu custo.
+  3. Adaptar com a marca do cliente: a MECÂNICA do movimento vem do site; a cor/fonte/conteúdo
+     são sempre da marca (mesma régua do Uso 3 — do site vem só o "como").
+  4. Plugar na página, com `prefers-reduced-motion` e a verificação de performance.
+- **Cuidado (WebGL):** se o site de origem usa WebGL pesado, avisar o dono do trade-off de
+  performance (ameaça o LCP, o número de que a marca tem orgulho) e oferecer a versão CSS
+  equivalente do catálogo (`docs/craft-movimento.md`, efeito 8).
+- **Régua:** nunca copiar a identidade do site de origem (cor/fonte/texto). Só o movimento.
 
 Três ingredientes, com hierarquia clara de quem manda:
 
