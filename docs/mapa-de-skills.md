@@ -57,7 +57,9 @@ oferta forte da URL        negócio      cliente
 
 - **/pagina** orquestra: copy (**/copy**+**/escritor-br**) → constrói na marca → **/premium-design**
   põe o nível agência → verifica visual → **/seo** fecha a achabilidade
-- **/premium-design** Uso 3 = padrão premium (3 sites do nicho, marca cravada, posicionamento 10k+)
+- **/premium-design** Uso 3 = padrão premium (3 sites do nicho, marca cravada, posicionamento 10k+);
+  Uso 4 = captura dirigida pelo dono ("faz essa animação igual", cola URL). Camada de movimento
+  lê o catálogo `docs/craft-movimento.md` (9 efeitos cinematográficos, quando usar, de onde capturar).
 
 ---
 

@@ -78,6 +78,9 @@ também `docs/swipe-copy.md` — acervo de copy real que converte (molde transfe
 Para qualquer PITCH NARRADO (deck de `/slides`, proposta ao vivo, vídeo), ler
 `docs/pitch-narrado.md` — o craft do arco que converte (Sparkline/Duarte, espinha de Raskin,
 Equação de Valor/Hormozi, demo Tell-Show-Tell).
+Para qualquer PÁGINA premium que precisa de MOVIMENTO (animação, efeitos cinematográficos),
+ler `docs/craft-movimento.md` — o catálogo do que dá WOW (9 efeitos), quando usar, e de qual
+site real capturar; lido pelo `/premium-design` (Usos 2 e 4) e pela Etapa 3.5 do `/pagina`.
 Para qualquer DECISÃO de estratégia (calendário, raio-x, proposta, oferta, análise de ads),
 ler `docs/modelos-mentais.md` — Jobs to Be Done, Teoria das Restrições, psicologia de preço,
 loops de crescimento; o andar de cima da persuasão (pensar o problema certo antes da peça).
@@ -211,4 +214,4 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 
 ---
 
-*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.9*
+*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.10*

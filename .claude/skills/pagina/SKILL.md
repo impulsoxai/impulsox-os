@@ -119,6 +119,10 @@ base veio do Open Design (ótimo em compor, fraco em movimento). Aqui o `/premiu
 entra no **Uso 2 (elevar)**: pega a página pronta e aplica a camada de movimento nível
 agência — animações de entrada no scroll, hover/micro-interações, easing de **referência
 premiada real** (não o `ease` default), reveal/profundidade onde o layout pede.
+O vocabulário de efeitos (o que existe, quando dá WOW, quando mata performance, de onde
+capturar) mora em `docs/craft-movimento.md` — o catálogo que o `/premium-design` lê pra
+escolher o movimento certo, em vez de improvisar. Se o dono trouxer uma URL ("quero essa
+animação"), é o **Uso 4** do `/premium-design`.
 
 - **Padrão premium → `/premium-design` Uso 3:** mostrar ao cliente os **3 melhores sites do
   NICHO dele** (acervo `referencias-por-nicho.md`) → ele escolhe o estilo → re-estilizar a
