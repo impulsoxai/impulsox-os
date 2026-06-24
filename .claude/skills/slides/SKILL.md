@@ -125,12 +125,19 @@ Autoria: ImpulsoX AI.
      do jeito antigo (copiar engine, injetar tokens, montar slides). É o plano B, não o padrão.
 
    **9b. A skill pluga o resto no HTML do OD:**
-   - **assets reais** de `producao/`: trocar cada placeholder de mockup por `<img>`. Capturar com
-     Playwright (carrossel/página são HTML; reel vira capa via `ffmpeg -ss <money-shot>`). REGRA
-     DO MOCKUP: a foto enche o frame com `object-fit:cover` SÓ quando o ratio bate; **carrossel
-     de Instagram é 4:5 e o phone-mockup é 9:19.5 — `cover` corta o headline. Usar `object-fit:
-     contain` + fundo da marca** (a imagem inteira centrada, sem corte). Capturar o slide no
-     tamanho NATIVO (1080x1350) e deixar o `contain` enquadrar — não tentar esticar HTML de px fixo.
+   - **assets reais** de `producao/`: trocar cada placeholder de mockup por `<img>` (ou `<video>`,
+     ver reel abaixo). Capturar com Playwright (carrossel/página são HTML). REGRA DO MOCKUP: a
+     foto enche o frame com `object-fit:cover` SÓ quando o ratio bate; **carrossel de Instagram é
+     4:5 e o phone-mockup é 9:19.5 — `cover` corta o headline. Usar `object-fit:contain` + fundo
+     da marca** (a imagem inteira centrada, sem corte). Capturar o slide no tamanho NATIVO
+     (1080x1350) e deixar o `contain` enquadrar — não tentar esticar HTML de px fixo.
+   - **REEL = VÍDEO RODANDO no mockup (não capa estática).** O dono adorou ("ficou massa!"): o
+     reel toca dentro do phone, em loop, mudo. Copiar o `reel.mp4` (o MUDO, não o com-trilha) pra
+     a pasta do deck e usar `<video src="reel.mp4" autoplay muted loop playsinline poster="reel-
+     capa.png">`. O `poster` é a capa de fallback (frame do money shot via `ffmpeg -ss`) enquanto
+     o vídeo carrega. CSS: `object-fit:cover` (reel já é 9:16, casa com o phone). O mp4 pesa
+     (~7MB) então o deck deixa de ser 100% leve, mas abre offline igual. Capa estática só se não
+     houver mp4.
    - **navegação** (deck de gravação de verdade): injetar antes de `</body>` o bloco de teclado +
      presenter view + blackout (modelo em `references/navegacao.html`): `→`/espaço próximo,
      `←` anterior, `Home`/`End`, `F` tela cheia, `S` presenter view (nota + próximo slide),
