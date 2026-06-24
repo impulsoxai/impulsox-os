@@ -129,6 +129,8 @@ Pendências de núcleo do cliente (ImpulsoX-AI), via `/atualizar`:
    (Sebrae 2025: 44% usam alguma IA / 51% com plataforma nomeada / só 15% das MPE com
    frequência / maturidade digital 37%; custo de ficar atrás: Bain +14% produtividade +9%
    resultado, McKinsey +20%, Microsoft BR 76-77%). É a munição do Pilar 2 (mudança inegável).
+   **Número de destaque do pitch: "até 20% mais produtividade com IA em pelo menos um
+   processo (McKinsey 2025)"** — exato, fonte citada, nunca inflado pra "mais de 20%".
 
 São trabalho de cliente, não de motor. Spec foca só no motor.
 
