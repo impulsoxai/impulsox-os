@@ -49,6 +49,21 @@ lembrar. → Resolvido pela feature **check de versão no `/abrir`** (ver pendê
   vezes — precisa de falha graciosa: se o fetch falhar, o "bom dia" sai normal, sem travar);
   (3) onde cachear pra não fazer fetch a cada abertura no mesmo dia. Merece spec próprio.
 
+- [ ] **`docs/craft-video.md`** — doc de craft de vídeo/reel (a real alavanca do veredito do
+  auditor, 2026-06-24). A craft de retenção/hook de vídeo está hoje DUPLICADA inline em 4
+  skills (`/roteiro-yt`, a régua de reel do `/post`, `/reel-marca`, `/shorts`): cada uma carrega
+  sua cópia de "muted-first, 2-3 cortes nos 3s, foreshadowing, open loops, reforço ~50%, AVD,
+  Quality-CTR". Centralizar num doc e as skills passam a LER em vez de duplicar — é o paralelo
+  real da melhoria da `/slides` (que extraiu craft pro `pitch-narrado.md`). Merece spec próprio.
+  **Decisão do auditor sobre propagar o LOOP da /slides:** NÃO propagar a auto-crítica inline
+  pra `/post`/`/linkedin`/`/roteiro-yt` — seria redundante com `/escritor-br` (humaniza, loop
+  draft→audit→final) + `/revisar` (gate frio externo, nota Hook=50%), que essas skills já
+  chamam e a `/slides` não chamava. O que transfere da `/slides` é a extração pra doc, não o loop.
+- [ ] **Gate frio no eixo YouTube** (lacuna secundária, achada na mesma auditoria). O `/revisar`
+  só pontua social orgânico IG/LinkedIn; o `revisor-marketing` não lê Quality-CTR nem funil de
+  vídeo, e `/roteiro-yt` vai direto pra `/editar-video` sem crivo externo. Eixo YouTube está
+  "em teste" no sistema → fica como nota, não ação agora. Reavaliar quando o YouTube sair de teste.
+
 ## Notas
 
 - Este doc é MOTOR → ele mesmo desce pros clones no próximo `/atualizar-motor`. Cada clone vê
