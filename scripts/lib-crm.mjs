@@ -65,3 +65,12 @@ export const listDeals     = (c, q) => crmFetch(c.base, c.token, "GET",  "/deals
 export const listInvoices  = (c, q) => crmFetch(c.base, c.token, "GET",  "/invoices", { query: q });
 export const getReports    = (c, q) => crmFetch(c.base, c.token, "GET",  "/reports",  { query: q });
 export const importCsv     = (c, b) => crmFetch(c.base, c.token, "POST", "/csv",      { body: b });
+
+// extrai a receita do shape do /reports: data.receitaTotal pode vir {value} ou número cru.
+// Defensivo — o CRM entrega {value}; tolera número direto sem quebrar.
+export function receitaDeReports(data) {
+  const rt = data && data.receitaTotal;
+  if (rt == null) return 0;
+  if (typeof rt === "number") return rt;
+  return Number(rt.value) || 0;
+}

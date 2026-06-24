@@ -38,9 +38,11 @@ número).
 1. **Config.** Montar o cliente do CRM com `crmFromEnv()` da `scripts/lib-crm.mjs`. Sem
    token → parar e instruir o dono a gerar a chave (aba Integrações do CRM, scope
    `data:read`) e pôr no `.env`.
-2. **Puxar a receita do CRM** via `lib-crm`:
-   - `getReports(c)` → receita 6m + trend, ticket médio, receita/mês, deals/mês, leads por
-     canal, top 5 clientes (é o agregado pronto — fonte principal).
+2. **Puxar a receita do CRM** via `lib-crm` — `getReports(c)` devolve (shape real, validado):
+   - `data.receitaTotal.value` — **a receita** (objeto aninhado: usar o helper
+     `receitaDeReports(data)` da `lib-crm`, que lê `.value` e tolera número cru)
+   - `data.ticketMedio`, `data.receitaPorMes` (6m), `data.dealsPorMes` (6m),
+     `data.leadsPorCanal` (`[{channel, count}]`), `data.topClientes`.
    - quando precisar de detalhe: `listDeals(c)` (ganhos/valor) e `listInvoices(c)` (pagas =
      dinheiro que entrou de verdade).
 3. **Puxar o gasto** de `producao/ads/analise-<data>.md` (ou o que o dono informar).

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createServer } from "node:http";
-import { semToken, crmFromEnv, crmFetch, CrmError, getReports, createContact } from "./lib-crm.mjs";
+import { semToken, crmFromEnv, crmFetch, CrmError, getReports, createContact, receitaDeReports } from "./lib-crm.mjs";
 
 // servidor mock do CRM: ecoa o que recebeu e responde pelo path
 function mockCrm(handler) {
@@ -79,6 +79,13 @@ test("crmFetch mapeia 401/429 no status do CrmError", async () => {
     await assert.rejects(() => getReports({ base, token: "k" }), (e) => e.status === code);
     srv.close();
   }
+});
+
+test("receitaDeReports lê o shape {value} e tolera número cru", () => {
+  assert.equal(receitaDeReports({ receitaTotal: { value: 7194 } }), 7194);  // shape real
+  assert.equal(receitaDeReports({ receitaTotal: 5000 }), 5000);             // número cru
+  assert.equal(receitaDeReports({}), 0);                                    // sem campo
+  assert.equal(receitaDeReports(null), 0);
 });
 
 test("crmFetch resposta não-JSON vira CrmError legível", async () => {
