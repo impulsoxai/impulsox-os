@@ -7,6 +7,32 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.8] — 2026-06-23
+
+> CRM no ar (service token `ixk_live_` + chave pública `ixs_pub_` mergeados). Primeiras
+> oportunidades do eixo-lead plugadas.
+
+### Adicionado
+- `scripts/lib-crm.mjs` — a ponte OS→CRM v3: `crmFetch` (Bearer service-token, envelope
+  success/fail, `CrmError` com status), helpers reports/contacts/deals/invoices/csv. Token
+  sempre redigido em erro. Só transporte. 7/7 testes (mock http). Fundação do eixo-lead.
+- Skill `/roi` (O2 ⭐) — cruza gasto de mídia (do `/analisar-ads`) × receita real do CRM
+  (reports/deals/invoices via lib-crm) → faturamento influenciado, CAC, ROI. Cálculo só por
+  `scripts/lib-roi.mjs` (5/5 testes; divisão-por-zero→null, nunca inventa). Atribuição por
+  canal (UTM por campanha espera o sub 1 do PRD). Alimenta o `/relatorio`.
+- `.env.example` — `CRM_BASE_URL` + `CRM_TOKEN` (um token por tenant, scope data:read).
+
+### Ligado
+- `/agente-ia` — chat da landing operante: persona sobe via `PUT /api/settings/persona`,
+  widget usa a `ixs_pub_` (`x-impulsox-site`) no `POST /api/chat`. (Detalhe do passo de
+  ativação no SKILL.)
+
+## [0.2.7] — 2026-06-23
+
+### Adicionado
+- Skill `/slides` — deck de apresentação premium navegável pra gravar vídeo (produto real em
+  mockup, slides-ponte pra demo ao vivo, notas do apresentador). Distinta do `/reel-marca`.
+
 ## [0.2.6] — 2026-06-23
 
 > Oportunidades da auditoria SO — as 3 que NÃO dependem do CRM. As 5 do eixo-lead

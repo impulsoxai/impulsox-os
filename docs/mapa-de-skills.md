@@ -163,8 +163,11 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
   diagnóstico acionável). É a porta padrão de "como foi?".
 - **/analisar-ads** — só tráfego PAGO (CSV do Google/Meta; cálculo por script; atribuição).
 - **/analisar-dados** — genérica de planilha de NEGÓCIO (CSV/XLSX/JSON além de marketing).
+- **/roi** — cruza o gasto de mídia (do /analisar-ads) com a receita real do CRM (via
+  `lib-crm`: reports/deals/invoices) → faturamento influenciado, CAC, ROI. Dinheiro só por
+  script (`lib-roi`). É o topo OUTCOME que o /relatorio usa. Precisa de `CRM_TOKEN` no `.env`.
 - **/relatorio** — consolida o que as três medem num relatório executivo pro cliente
-  (topo OUTCOME: o resultado de negócio, não só métrica de vaidade).
+  (topo OUTCOME: o resultado de negócio, não só métrica de vaidade); puxa o ROI do /roi.
 
 ## Skills que TODAS as outras usam (a infraestrutura invisível)
 
@@ -249,6 +252,7 @@ contrato pra aquilo.
 | /local | /publicar | Perfil de Empresa no Google |
 | /relatorio | /calendario (próximo ciclo) | métricas de /desempenho, /analisar-ads |
 | /analisar-dados | conforme o dado pedir | CSV/XLSX/JSON do negócio |
+| /roi | /relatorio | CRM_TOKEN no .env + gasto do /analisar-ads |
 | /tema-yt | /roteiro-yt | criadores-monitorados, pilares |
 | /roteiro-yt | /gravar-tela → /editar-video | **voz-canal.md, fórmula** |
 | /slides | /gravar-tela | **marca/ (senão: rodar /identidade antes)** |
