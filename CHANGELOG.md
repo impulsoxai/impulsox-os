@@ -39,8 +39,10 @@ saber o que cada clone está rodando e o que ainda falta puxar do template.
 ## [0.2.7] — 2026-06-23
 
 ### Adicionado
-- Skill `/slides` — deck de apresentação premium navegável pra gravar vídeo (produto real em
-  mockup, slides-ponte pra demo ao vivo, notas do apresentador). Distinta do `/reel-marca`.
+- Skill `/slides` — deck de apresentação premium navegável (HTML tela cheia, na marca) pra
+  rodar no PC: gravando vídeo do YouTube OU apresentando pra cliente em potencial. Produto
+  real em mockup, slides-ponte pra demo ao vivo, notas do apresentador. Modo institucional
+  (pitch) + modo tema (deck do vídeo). Distinta do `/reel-marca` (vídeo que toca sozinho).
 
 ## [0.2.6] — 2026-06-23
 

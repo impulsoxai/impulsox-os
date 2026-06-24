@@ -2,8 +2,9 @@
 name: slides
 description: >
   Use pra criar um deck de apresentação premium (slides em tela cheia, na marca do negócio) pra
-  rodar no PC enquanto grava vídeo — "/slides", "faz uns slides", "apresentação pro vídeo", "deck
-  pra gravação", "slides com a minha marca". Gera um HTML navegável (setas, tela cheia, presenter
+  rodar no PC — gravando um vídeo (YouTube) OU apresentando pra um cliente em potencial —
+  "/slides", "faz uns slides", "apresentação pro vídeo", "deck pra gravação", "apresentação pro
+  cliente", "pitch pra reunião", "slides com a minha marca". Gera um HTML navegável (setas, tela cheia, presenter
   view) com produto real em mockup, slides-ponte pra demo ao vivo no Claude Code e notas do
   apresentador. Aceita tema em 1 frase, roteiro colado, ou roteiro de /roteiro-yt·/tema-yt
   (Escada de Contexto). Distinta do /reel-marca (vídeo que toca sozinho) — aqui o dono NAVEGA
