@@ -52,27 +52,30 @@ Autoria: ImpulsoX AI.
    conteúdo/produto-real/ponte-demo/assinatura), o headline, onde entra cada ponte-demo e qual
    produto real aparece. Espera o "sim". (Regra do `/reel-marca`: alinhar a estrutura antes de produzir.)
 
-5. **Escreve a copy — como PITCH NARRADO, não catálogo de slides.** O deck é lido em sequência,
-   em voz alta, em ~90s. Escrever o conjunto inteiro de uma vez, lendo do slide 1 ao 9 de
-   seguida, NUNCA slide a slide isolado (foi o erro-raiz da 1ª versão: cada slide pensado só pra
-   si gera repetição de ideia e perda de fio). Régua de pitch (lições do `revisor-marketing`):
-   - **Headline vende o RESULTADO, não descreve o produto.** "O conteúdo sai pronto" descreve;
-     o que muda pro dono é o ganho. Nunca abrir slide com "o que é" (feature) nem jargão interno
-     ("feito em código" não diz nada pro dono de PME) — abrir com o que aquilo MUDA pra ele.
-   - **O ângulo (wedge) é a espinha, não uma frase de passagem.** Puxar o diferencial real do
-     negócio (no caso ImpulsoX: "IA como funcionário que conhece o negócio, não chatbot
-     genérico") por TODO o arco, não só num slide. Sem ângulo, o deck vira "mais uma agência".
-   - **Prova concreta, tirada do banco — não afirmação vazia.** Ler `nucleo/provas.md` e plugar
-     número/caso/dado AUTORIZADO em pelo menos 1-2 slides (a marca que diz "IA de verdade ≠
-     promessa de slide" não pode fazer só promessa). Demo ao vivo conta como prova e vem perto
-     do clímax, não no miolo.
-   - **Arco:** dor → virada (com o ângulo) → prova → demo → oferta → fecho. Considerar ABRIR na
-     dor (hook que para o dedo nos 3 primeiros segundos do vídeo), deixando a tagline pro fecho.
-   - **O fecho é CTA, não cartão de visita.** Último slide = UMA chamada de baixo atrito (o verbo
-     do negócio: "Chama no WhatsApp", "Agende"), não só logo + URL. Pitch sem CTA é apresentação.
-   - **Só oferta ATIVA** (CLAUDE.md — peça pública não vende oferta futura/roadmap, nem "em breve").
-   - Escreve as notas do apresentador (`data-notes`) aqui: nas pontes-demo, o passo a passo do
-     que fazer no Claude Code.
+5. **Escreve a copy — loop ativo de pitch narrado (não checklist).** A régua completa do craft
+   mora em `docs/pitch-narrado.md` (Sparkline, espinha de Raskin, Equação de Valor, demo
+   Tell-Show-Tell). **Ler antes de escrever.** O passo não é preencher slides: é rodar o loop
+   que o `/escritor-br` usa, adaptado pra pitch:
+   - **a. Mapa do arco** — antes de qualquer slide, desenhar a oscilação do Sparkline (onde abro
+     no vale/dor, onde subo pro pico/futuro, quantas vezes oscilo) e a espinha de Raskin (mudança
+     inegável, inimigo/jeito velho, terra prometida, produto como caminho, prova). É o esqueleto
+     emocional, não a tabela de slides.
+   - **b. Rascunho** — escrever o pitch inteiro lido em sequência, do primeiro ao último slide de
+     seguida, em voz alta na cabeça, em ~90s. NUNCA slide isolado (cada slide pensado só pra si
+     gera repetição de ideia e perda de fio).
+   - **c. Auto-crítica explícita** (bullets, obrigatório, não pular) — responder:
+     - qual slide DESCREVE produto em vez de vender o ganho do ouvinte?
+     - onde o arco fica linear (sobe e não oscila)?
+     - a prova é real, tirada de `nucleo/provas.md` com fonte, ou inventada?
+     - o slide de oferta mexe nos 4 fatores da Equação de Valor (sonho, probabilidade, tempo,
+       esforço), ou só lista serviço?
+     - algum slide vende oferta INATIVA (roadmap/futura/"em breve")? (regra dura do CLAUDE.md)
+     - a aversão à perda está calma (constatação), ou virou grito?
+   - **d. Reescrita** — resolver cada bullet da auto-crítica. Voltar ao mapa se o arco quebrou.
+
+   O fecho é sempre UM CTA de baixo atrito (o verbo do negócio: "Chama no WhatsApp", "Agende"),
+   nunca só logo + URL. Escreve as notas do apresentador (`data-notes`) aqui: nas pontes-demo, o
+   passo a passo do que fazer ao vivo (o ouvinte vê o ganho, não a ferramenta, ver Pilar 4 do doc).
 
 6. **Humaniza — OBRIGATÓRIO antes de mostrar (passo que não se pula).** TODA a copy passa pelo
    `/escritor-br` antes do GATE 2. Slide tem texto curto, então o tique de IA salta à vista: o
@@ -161,9 +164,10 @@ Autoria: ImpulsoX AI.
 Opcional (o guia não empurra), eixo vídeo. Pré-requisito mínimo: `marca/` — sem ela, reorienta
 pro `/identidade`. Entra avulsa ou depois de `/roteiro-yt`·/tema-yt. Sai pro `/gravar-tela`.
 
-**Conecta sozinha (o leigo não precisa saber).** A skill orquestra por baixo: **Open Design**
-desenha o visual premium, `/escritor-br` humaniza a copy, `/revisar` (`revisor-marketing`) audita
-com olhos frios, `/provas` dá a prova real, mockups phone/browser vêm do padrão do `/reel-marca`.
+**Conecta sozinha (o leigo não precisa saber).** A skill orquestra por baixo: o craft de pitch
+vem de `docs/pitch-narrado.md`, **Open Design** desenha o visual premium, `/escritor-br` humaniza
+a copy, `/revisar` (`revisor-marketing`) audita com olhos frios, `/provas` dá a prova real,
+mockups phone/browser vêm do padrão do `/reel-marca`.
 O dono pede `/slides` e recebe o deck pronto — nenhuma dessas etapas vira pergunta pra ele.
 
 ## Saída
