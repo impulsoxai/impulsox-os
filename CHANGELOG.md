@@ -21,6 +21,15 @@ saber o que cada clone está rodando e o que ainda falta puxar do template.
   `scripts/lib-roi.mjs` (5/5 testes; divisão-por-zero→null, nunca inventa). Atribuição por
   canal (UTM por campanha espera o sub 1 do PRD). Alimenta o `/relatorio`.
 - `.env.example` — `CRM_BASE_URL` + `CRM_TOKEN` (um token por tenant, scope data:read).
+- Eixo-lead completo (ponte validada com dado real — `GET /reports` 200):
+  - `/leads` (O1) — ponte do lead pro CRM (Contact) + lê status; não recria captura.
+  - `/carteira` (O7) — modo agência: lê o CRM por tenant (1 token/cliente) → visão de
+    carteira (receita, leads, saúde, "o que fazer hoje"). Cockpit pra escalar N clientes.
+  - `/reativar` (O3) — segmenta inativos no CRM + escreve win-back na voz; o CRM dispara
+    pela régua de follow-up que já tem (não duplica o motor).
+  - `/depoimento` (O5) — gatilho de timing: deal ganho no CRM (poll) → aciona o pedido de
+    prova do `/provas` no pós-resultado. (Webhook = fase 2.)
+- `receitaDeReports()` na `lib-crm` — lê o shape real `data.receitaTotal.value`.
 
 ### Ligado
 - `/agente-ia` — chat da landing operante: persona sobe via `PUT /api/settings/persona`,

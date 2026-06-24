@@ -142,6 +142,25 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
 
 ---
 
+## Eixo lead → dinheiro (integração com o ImpulsoX CRM v3)
+
+O CRM é dono do lead/venda/receita; o OS fala com ele pela `scripts/lib-crm.mjs` (service
+token `ixk_live_` por tenant, no `.env` do clone). As skills:
+
+- **/leads** — ponte do lead pro CRM (Contact) + lê status do funil. Não recria captura.
+- **/roi** — gasto de ads × receita real do CRM → faturamento influenciado, CAC, ROI
+  (cálculo por `lib-roi`). Alimenta o /relatorio.
+- **/carteira** — modo agência: lê o CRM de cada cliente (1 token por tenant) → visão de
+  carteira (receita, leads, saúde, o que fazer hoje). O cockpit pra escalar N clientes.
+- **/reativar** — segmenta inativos no CRM + escreve win-back na voz da marca; o CRM dispara
+  pela régua de follow-up que ele já tem.
+- **/depoimento** — gatilho de timing: vê deal ganho no CRM (poll; webhook é fase 2) →
+  aciona o pedido de prova do /provas no pós-resultado.
+- **/agente-ia** — o lead que o chat da página captura entra no CRM (via /api/chat → Contact).
+
+Pendente no CRM (não bloqueia o básico): UTM no Contact (atribuição por campanha) e webhook
+(depoimento em tempo real). Ver `docs/prd-integracao-crm.md`.
+
 ## Inteligência competitiva (alimenta estratégia)
 
 - **/concorrente** — mantém o dossiê vivo do concorrente do cliente (posicionamento, preço,
@@ -253,6 +272,10 @@ contrato pra aquilo.
 | /relatorio | /calendario (próximo ciclo) | métricas de /desempenho, /analisar-ads |
 | /analisar-dados | conforme o dado pedir | CSV/XLSX/JSON do negócio |
 | /roi | /relatorio | CRM_TOKEN no .env + gasto do /analisar-ads |
+| /leads | /roi (cruza) ou /relatorio | CRM_TOKEN no .env |
+| /carteira | /abrir no cliente que pede ação, ou /relatorio | modo agência + CRM_TOKEN por cliente |
+| /reativar | (CRM dispara) → /roi mede depois | CRM_TOKEN (ou segmento manual) |
+| /depoimento | /provas (formata e guarda) | CRM_TOKEN (ou dono diz quem fechou) |
 | /tema-yt | /roteiro-yt | criadores-monitorados, pilares |
 | /roteiro-yt | /gravar-tela → /editar-video | **voz-canal.md, fórmula** |
 | /slides | /gravar-tela | **marca/ (senão: rodar /identidade antes)** |

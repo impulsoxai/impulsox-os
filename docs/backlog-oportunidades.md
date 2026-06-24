@@ -21,19 +21,21 @@ CRM mergeou service token (`ixk_live_`) + chave pública (`ixs_pub_`).
 | O2 | `/roi` ⭐ | ✅ feita + `lib-roi` 5/5 (commit 10f7a08). Atribuição por canal (UTM espera sub 1) |
 | O8 | `/agente-ia` chat | ✅ ligado: persona via `PUT /api/settings/persona`, widget com `ixs_pub_` |
 
-### 🔶 GATE: dono valida a ponte antes do resto
-Antes de construir as 4 restantes sobre a `lib-crm`: o dono gera o `CRM_TOKEN` (aba
-Integrações, scope `data:read`), põe no `.env`, roda `/roi` de verdade contra o CRM e
-confirma que a ponte funciona. Validado → seguir.
+### ✅ GATE PASSADO — ponte validada com dado real (2026-06-23)
+Dono rodou `GET /reports` com `ixk_live_` → 200, `data.receitaTotal.value` etc. Autenticação,
+scope e payload corretos. As 4 restantes foram construídas.
 
-## ⛔ Restantes do eixo-lead (depois da validação)
+## ✅ Restantes do eixo-lead — FEITAS (v0.2.8)
 
-| # | Skill | O que faz | Espera |
-|---|---|---|---|
-| O7 | hub multi-cliente | `/painel`/`/abrir` leem o CRM por tenant → visão de carteira | validação + token por clone |
-| O1 | `/leads` | manda lead da página/ads pro Contact; lê status | validação (POST /contacts já existe) |
-| O5 | `/depoimento` | reage a deal.won → pede prova → abastece /provas | webhook (3.3) ou começa por poll |
-| O3 | `/reativar` | parametriza o follow-up que o CRM JÁ faz (quase não é skill) | validação |
+| # | Skill | Estado |
+|---|---|---|
+| O1 | `/leads` | ✅ ponte do lead pro Contact + lê status |
+| O7 | `/carteira` | ✅ hub multi-cliente (1 token/tenant, semáforo de saúde) |
+| O3 | `/reativar` | ✅ segmenta inativos + win-back na voz; CRM dispara |
+| O5 | `/depoimento` | ✅ gatilho por poll (deal ganho → pedido do /provas); webhook=fase 2 |
+
+**AS 8 OPORTUNIDADES ESTÃO FEITAS.** Pendências do CRM que melhoram (não bloqueiam):
+UTM no Contact (atribuição por campanha no /roi) e webhook (depoimento em tempo real).
 
 ## 🔓 O que destrava (pré-condições do lado CRM — PRD)
 
