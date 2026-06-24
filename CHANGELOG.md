@@ -7,6 +7,27 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.9] — 2026-06-24
+
+> Craft de pitch narrado: a `/slides` passou a gerar pitch fraco (auditoria do
+> `revisor-marketing` reprovou — headline descrevia produto, arco vazio, prova inventada).
+> Causa raiz: o passo 5 era um checklist passivo. Conserto: doc de craft novo + loop ativo.
+
+### Adicionado
+- `docs/pitch-narrado.md` — craft do ARCO de pitch que converte (o nível acima de
+  `persuasao.md`/`frase-que-pega.md`). 4 pilares: Sparkline (Duarte, arco oscilante), espinha
+  estratégica (Raskin, 5 passos: mudança inegável → inimigo → terra prometida → produto-caminho
+  → prova), Equação de Valor (Hormozi, o slide de oferta), demo Tell-Show-Tell. Na voz da casa,
+  com as regras duras (só oferta ATIVA, prova só real do banco, calma nunca grito). Lido por
+  `/slides`; disponível pra `/proposta` e `/roteiro-yt`.
+
+### Mudado
+- `/slides` passo 5 — de checklist passivo pra **loop ativo** (mapa do arco → rascunho →
+  auto-crítica explícita → reescrita), lendo `docs/pitch-narrado.md`. Os 4 achados que
+  reprovaram o pitch viram as perguntas da auto-crítica, pegas antes do GATE 2. O bloco de
+  regras inline duplicado saiu (a régua mora no doc, fonte única).
+- `CLAUDE.md` — pitch-narrado.md entra na lista de docs de craft lidos.
+
 ## [0.2.8] — 2026-06-23
 
 > CRM no ar (service token `ixk_live_` + chave pública `ixs_pub_` mergeados). Primeiras
