@@ -7,6 +7,26 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.10] — 2026-06-24
+
+> Craft de movimento: o sistema já elevava páginas com animação (`/premium-design` Uso 2), mas
+> sem catálogo nomeado de efeitos. E faltava o caminho "dono viu uma animação e quer igual".
+
+### Adicionado
+- `docs/craft-movimento.md` — catálogo de 9 efeitos cinematográficos com WOW (text-split,
+  count-up, scroll cinematic, magnetic, clip-path, parallax, spotlight, WebGL, smooth scroll),
+  cada um com ficha (quando dá WOW / quando não / custo / reduced-motion / de qual site real
+  capturar: Apple, Lusion, OHZI, GSAP, Lenis, Codrops). Regras: movimento serve a mensagem,
+  capturar de fonte real, performance é lei, reduced-motion sempre, máx 2-3 por página. Lido
+  por `/premium-design` e `/pagina`.
+- `/premium-design` **Uso 4** — captura dirigida pelo dono: ele cola a URL de um site, a skill
+  usa a Fase 1 (Captura) pra isolar o efeito e adapta com a marca. Do site vem só o "como".
+
+### Mudado
+- `/premium-design` Uso 2 lê o `craft-movimento.md` (ganha o vocabulário que faltava).
+- `/pagina` Etapa 3.5 referencia o catálogo.
+- `CLAUDE.md` — craft-movimento.md entra na lista de docs de craft lidos.
+
 ## [0.2.9] — 2026-06-24
 
 > Craft de pitch narrado: a `/slides` passou a gerar pitch fraco (auditoria do
