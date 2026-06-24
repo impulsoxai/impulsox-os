@@ -120,12 +120,21 @@ só melhora o que chega lá.
 
 ## Fora de escopo (tratado separado, não neste spec)
 
-Pendências de núcleo do cliente (ImpulsoX-AI), via `/atualizar` no `ofertas-impulsox.md`:
-1. CRM → mover de FUTURAS pra ATIVAS (confirmado pronto e vendável).
+Pendências de núcleo do cliente (ImpulsoX-AI), via `/atualizar`:
+1. CRM → mover de FUTURAS pra ATIVAS (confirmado pronto e vendável). `ofertas-impulsox.md`.
 2. Trial de 3 dias → remover (descontinuado; aparece como porta de entrada em 2 ofertas).
-3. Agente WhatsApp / prazo ~27/06 → atualizar status.
+   `ofertas-impulsox.md`.
+3. Agente WhatsApp / prazo ~27/06 → atualizar status. `ofertas-impulsox.md`.
+4. Atualizar a prova `mercado-ia-pme-brasil` em `nucleo/provas.md` com os números novos
+   (Sebrae 2025: 44% usam alguma IA / 51% com plataforma nomeada / só 15% das MPE com
+   frequência / maturidade digital 37%; custo de ficar atrás: Bain +14% produtividade +9%
+   resultado, McKinsey +20%, Microsoft BR 76-77%). É a munição do Pilar 2 (mudança inegável).
 
 São trabalho de cliente, não de motor. Spec foca só no motor.
+
+O `pitch-narrado.md` (Pilar 2) só REFERENCIA o banco de provas como fonte do dado de mercado —
+não duplica número cru (que desatualiza). O doc ENSINA o padrão "abrir com a mudança inegável";
+o número vem do banco.
 
 ## Critério de pronto
 
