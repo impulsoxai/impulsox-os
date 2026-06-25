@@ -88,7 +88,8 @@ Ordem de leitura:
    sem validada, usar **a testar**.
 
 Não inventar estilo do zero (conduta do CLAUDE.md). Sem nenhum molde de vídeo, avisar e
-sugerir rodar `/formulas` (Modo 2) ou dissecar um canal de sucesso antes.
+sugerir rodar `/formulas` (Modo 2) ou dissecar um canal de sucesso antes — `/watch <url>` no
+vídeo de referência (frames + hook 0-10s) dissecta o molde real, não só o transcript.
 
 ## Passo 2 — Pacote primeiro-rascunho (a PROMESSA antes do roteiro)
 

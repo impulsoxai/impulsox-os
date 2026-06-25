@@ -37,30 +37,32 @@ scope e payload corretos. As 4 restantes foram construídas.
 **AS 8 OPORTUNIDADES ESTÃO FEITAS.** Pendências do CRM que melhoram (não bloqueiam):
 UTM no Contact (atribuição por campanha no /roi) e webhook (depoimento em tempo real).
 
-## 🔓 O que destrava (pré-condições do lado CRM — PRD)
+## ✅ GATE E2E FECHADO — CRM vivo verificado (2026-06-24)
 
-- [ ] **Service token por tenant** (PRD 3.1) — 🔴 bloqueia TODAS as 5. *Status: dev
-  entregou o sub 0 (service token) — confirmar que cobre o por-tenant pro OS.*
-- [ ] **`ixs_pub_` (scope chat:public)** + **`PUT /api/settings/persona`** (PRD 3.4-bis) —
-  liga o `/agente-ia`. *Status: contrato travado; dev vai implementar com o /api/chat.*
-- [ ] **UTM no Contact** (PRD 3.2) — `/roi` por campanha (sem isso, ROI só por canal).
-- [ ] **Filtros `from/to/channel/status` nos GETs** (PRD 3.4).
-- [ ] **Webhook** lead.created/deal.won/invoice.paid (PRD 3.3) — `/depoimento` em tempo
-  real e hub vivo (senão começa por poll).
+Dev entregou a ligação completa (runbook `integracao-os-runbook.md`, sub 0+1+2+3+chat).
+Smoke ao vivo na tailnet (`http://100.103.213.22:3001/api`, token read-only `ixk_live_`):
+- `GET /reports` → 200, shape `{receitaTotal:{value,trend},ticketMedio,receitaPorMes,dealsPorMes,leadsPorCanal,topClientes}`; `receitaDeReports()` lê `.value` certo.
+- `/contacts` `/deals` `/invoices` → todos `{items,total,page,pageSize}` (bate o runbook).
+- Filtro `from/to/stage` ok; `from>to` → 422 com mensagem certa. Bearer ok, token não vaza.
+- **Caminho de LEITURA (base de /roi + /carteira) = lib-crm casa com o CRM vivo.** ✓
 
-## ▶ Ordem quando o token sair
+## 🔧 Gaps reais do lado OS (triados — nenhum bloqueia /roi)
 
-1. `lib-crm.mjs` + teste (TDD) — a fundação.
-2. `/roi` (⭐ maior alavanca — prova a lib).
-3. hub multi-cliente.
-4. `/leads` + `/depoimento`.
-5. `/reativar`.
+- [ ] **CSV em massa** — `importCsv` na lib aponta pro `POST /csv` antigo; real = fluxo 4
+  passos `/csv/upload→/map→/preview→/import` (runbook §1). *Consertar junto com `/leads`
+  import em massa, com token `leads:write` (read-only não testa write).*
+- [x] **Webhook → POLL (decidido 2026-06-24).** Não construir receptor agora. `/depoimento`
+  e `/carteira` leem por poll (`GET /deals?stage=ganho&from&to`) quando a skill roda — segue
+  PRD §3.3 "começar por poll". Receptor HMAC 24/7 (Tailscale Funnel) só quando o hub estiver
+  vivo + volume justificar servidor público. **Não é trabalho pra agora.**
+
+## 🟡 Melhorias do CRM que afinam (não bloqueiam)
+
+- [ ] **UTM no Contact** (PRD 3.2) — destrava `/roi` por campanha (hoje atribui só por canal).
+  Dev marcou como sub 1; widget já manda utm no `page_context`.
 
 ## Lembrete pro dono
 
-- Quando o **service token por-tenant** estiver acessível pro OS, avisar → começo pela
-  `lib-crm.mjs`.
-- Quando a **`ixs_pub_` + settings/persona** existirem, fecho o último passo do
-  `/agente-ia` (subir a persona + setar a chave no embed) — aí o chat liga de verdade.
-- Pendência paralela (não relacionada ao CRM): rodar **`/atualizar-motor`** nos clones pra
-  propagar v0.2.4 → v0.2.6.
+- `.env` do OS preenchido com `CRM_BASE_URL` + `CRM_TOKEN` (read-only `data:read`, gitignored).
+  Quando ligar escrita (`/leads` criando Contact), trocar por token com `leads:write`.
+- Pendência paralela (não-CRM): rodar **`/atualizar-motor`** nos clones pra propagar o motor.

@@ -22,6 +22,11 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - **Busca no YouTube** por palavra-chave do nicho (yt-dlp `ytsearch`) — nicho inteiro, não só os monitorados.
 - **WebSearch** — tendências de IA/Claude Code, lançamentos, features novas.
 - **Google Trends** (best-effort) — sinal extra de demanda; se bloquear, ignora.
+- **`/watch <url>`** (plugin instalado) — quando um vídeo específico do nicho está em alta,
+  dissecar de verdade (frames + hook 0-10s + transcript), não só ler título/transcript cru.
+  Mostra a fórmula visual real (ritmo de corte, o que está na tela no hook). Usar pontual nos
+  1-2 vídeos-chave do leque, não em todos. Fórmula dissecada vai pra
+  `canal-youtube/formulas-video.md` (molde, nunca o conteúdo).
 
 ## Fluxo
 
