@@ -1,3 +1,8 @@
+// TEMPLATE (motor) — reel "entrar no notebook" com paginas demo rolando dentro + marca no fecho.
+// RODA NO CLONE do cliente, nao no motor (precisa da marca/demos do negocio). Pre-requisitos no
+// clone: os clipes em public/demos/*.mp4 (gravados da pagina real via Playwright, scroll linear)
+// JA re-encodados com keyframe a cada frame (ffmpeg -g 1) senao a juncao TREME. Os CLIPES (lista
+// abaixo) sao dados do cliente — trocar por nicho. Ver memoria reel-remotion-formula + /reel-marca.
 import React from "react";
 import {
   AbsoluteFill, Sequence, Video, staticFile,

@@ -158,6 +158,15 @@ Fechar com: "✓ reel pronto: `producao/reels/<slug>/reel-com-trilha.mp4` (+ `re
   do print. Página dark: ajustar `maxScroll` pra não parar no rodapé vazio.
 - **Auditar frames antes do full render.** Duração = soma Sequences − soma Transitions.
 - **Ritmo:** comando em terminal digita devagar (~1 char/4 frames); carrossel ~30-34 frames/slide.
+- **Vídeo GRAVADO não se monta todo no Remotion — ele TREME.** Quando o reel tem gravação de tela
+  (página rolando capturada via Playwright), o `<Video>` do Remotion faz seek impreciso em mp4
+  H.264 e a junção sai trêmula (judder no começo de cada clipe). **Regra: Remotion só nas partes
+  ANIMADAS por código (intro, marca, transições); a GRAVAÇÃO junta via ffmpeg** (sem o problema de
+  seek). Se for inevitável meter o clipe gravado no Remotion, re-encodar antes com keyframe a cada
+  frame: `ffmpeg -i in.mp4 -c:v libx264 -g 1 -keyint_min 1 -pix_fmt yuv420p -crf 20 out.mp4` (todo
+  frame vira seekable, mata o judder). Gravar a página sem branco/tremor: scroll LINEAR (não
+  easeInOutQuad), settle ~22ms/frame, esperar `fonts.ready` + forçar lazy-images (rolar até o fim
+  e voltar) ANTES de capturar.
 
 ## O motor (componentes reusáveis em `remotion/src/`)
 

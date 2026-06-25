@@ -40,6 +40,18 @@ lembrar. → Resolvido pela feature **check de versão no `/abrir`** (ver pendê
 
 ## ▶ Próximas features de motor (a construir)
 
+- [ ] **Parametrizar o reel `DemoNotebook.tsx`** (2026-06-24). O componente do reel "entrar no
+  notebook" (3 páginas demo rolando + marca) nasceu hardcoded pras demos da ImpulsoX
+  (`demos/maresia.mp4` etc.). Pro próximo cliente, parametrizar: a lista de clipes (nome, nicho,
+  duração) vem de um prop/config do clone, não fixa no código. Também avaliar a regra nova
+  (Remotion só animação + gravação via ffmpeg) ao refazer — hoje monta tudo no Remotion (funciona
+  com `-g 1`, mas não é o padrão ideal). Roda no clone, não no motor. Ver `/reel-marca` + memória
+  `reel-remotion-formula`.
+- [ ] **Remotion no clone precisa das deps no package.json** (achado 2026-06-24). O clone
+  ImpulsoX-AI tinha os componentes `.tsx` mas o `package.json` NÃO listava as deps do Remotion
+  (10 pacotes) — `npm install` não instalava nada. Quando o `/atualizar-motor` desce o motor, tem
+  que garantir que as deps de Remotion entrem no package.json do clone (ou o `/reel-marca` faz o
+  install na 1ª vez). Hoje adicionei na mão no ImpulsoX-AI; o fluxo precisa cobrir isso.
 - [ ] **Check de versão no `/abrir`** (resolve o furo acima). Quando o dono abre um clone, a
   `/abrir` faz `git fetch template` + compara a versão do `CLAUDE.md` local vs `template/main`.
   Se o template está na frente, avisa: "motor novo disponível (vX.Y.Z): [resumo]. Rodar
