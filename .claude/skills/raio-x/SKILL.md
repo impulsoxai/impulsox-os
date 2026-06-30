@@ -120,6 +120,12 @@ vende mais que um que ataca tudo.
    **[a confirmar]** (hipótese plausível que precisa de acesso interno pra fechar)
 ...
 
+> **Vazamento que quase sempre cabe — velocidade de resposta (speed-to-lead).** Chamar a
+> `/velocidade` pra cravar o número: "responder lead em <5min qualifica ~21x mais; sua demora
+> custa ~X leads e R$ Y/mês". É o vazamento mais concreto e o que mais fecha reunião. Sem CRM,
+> roda por estimativa do dono (marcar "a confirmar"); com CRM, vira número real. É também a
+> métrica de saída da Fase 1 da esteira (`docs/blueprint-esteira-crescimento.md`).
+
 ## Plano dos primeiros 30 dias
 [3-5 ações em ordem, cada uma ligada a uma skill do sistema que a executa]
 

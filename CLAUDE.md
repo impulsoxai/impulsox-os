@@ -79,8 +79,12 @@ Para qualquer PITCH NARRADO (deck de `/slides`, proposta ao vivo, vídeo), ler
 `docs/pitch-narrado.md` — o craft do arco que converte (Sparkline/Duarte, espinha de Raskin,
 Equação de Valor/Hormozi, demo Tell-Show-Tell).
 Para qualquer PÁGINA premium que precisa de MOVIMENTO (animação, efeitos cinematográficos),
-ler `docs/craft-movimento.md` — o catálogo do que dá WOW (9 efeitos), quando usar, e de qual
+ler `docs/craft-movimento.md` — o catálogo do que dá WOW (10 efeitos), quando usar, e de qual
 site real capturar; lido pelo `/premium-design` (Usos 2 e 4) e pela Etapa 3.5 do `/pagina`.
+Para a DIREÇÃO CRIATIVA inteira de um site "nível agência / WOW" (não só movimento — tipografia,
+cor, profundidade, composição, 3D, e as 8 técnicas premiadas com a ferramenta e o site real de
+onde capturar), ler `docs/dna-cinematografico.md` — o andar de cima do craft-movimento; lido pelo
+`/premium-design`, pela Etapa 3.5 do `/pagina` e pela `/identidade` quando o cliente quer WOW.
 Para qualquer DECISÃO de estratégia (calendário, raio-x, proposta, oferta, análise de ads),
 ler `docs/modelos-mentais.md` — Jobs to Be Done, Teoria das Restrições, psicologia de preço,
 loops de crescimento; o andar de cima da persuasão (pensar o problema certo antes da peça).
@@ -212,6 +216,14 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
   (`/radar`→`/calendario`→produção). Ads entra com a casa cheia. Quando o dono pede ads cedo
   demais, oferecer a ordem certa — sem travar. Tese e playbook em `docs/formula-ads-jp.md`; a
   esteira completa em 4 fases em `docs/blueprint-esteira-crescimento.md`.
+- **Vender modular, fazer upsell depois — nunca empurrar o pacote fechado.** As ofertas COEXISTEM
+  (página, conteúdo, CRM+agente, auditoria, ads, sistema completo). Descobrir a NECESSIDADE do
+  cliente primeiro e vender a peça que resolve a dor dele AGORA — talvez ele só queira a página,
+  ou só conteúdo, ou só o CRM. Entregar bem, ele gosta, então subir pra a fase adjacente (upsell).
+  No começo o que importa é VENDER ALGO: cliente satisfeito compra mais. O Sistema de Crescimento
+  completo é o DESTINO do upsell, não a primeira venda. Molde em
+  `.claude/skills/oferta/references/molde-esteira.md`; catálogo exemplo em
+  `docs/exemplo-oferta-impulsox.md`.
 - **Review nunca por gating nem por incentivo ao cliente.** Filtrar por nota antes de pedir
   review, ou dar brinde/desconto/sorteio em troca de review do Google, é proibido (Google +
   FTC, multa real) e arrisca o perfil do cliente. Coleta legal = pedir a TODOS no timing certo,

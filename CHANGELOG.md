@@ -25,9 +25,21 @@ saber o que cada clone está rodando e o que ainda falta puxar do template.
 - `docs/auditoria-esteira-2026-06-29.md` — auditoria de olhos frios (subagente) + pesquisa de
   mercado 2026; backlog priorizado (blockers de LGPD/WhatsApp resolvidos; 6 oportunidades).
 
+### Adicionado (pós-auditoria — oportunidades 1 e 2)
+- **Skill `/velocidade`** + `scripts/lib-velocidade.mjs` (+ 8 testes) — speed-to-lead: calcula
+  por script quantos leads e R$ o negócio perde por responder devagar e o ganho de responder em
+  <5min. Roda por estimativa (prospect) ou dado real do CRM. Chamada pelo `/raio-x` e `/proposta`
+  como argumento de abertura; é a métrica de saída da Fase 1. Argumento de venda nº 1 da esteira.
+- **Molde da oferta-esteira** (`.claude/skills/oferta/references/molde-esteira.md`) + catálogo
+  exemplo (`docs/exemplo-oferta-impulsox.md`) — 6 partes + Money Model + gates de compliance pra
+  montar a oferta do Sistema de Crescimento. Filosofia modular: ofertas coexistem, vende-se o que
+  o cliente precisa agora, upsell depois.
+
 ### Mudado
-- `CLAUDE.md` §Conduta — 2 regras novas: "tráfego pago é o último passo" e "review nunca por
-  gating/incentivo ao cliente". Bump v0.2.11.
+- `CLAUDE.md` §Conduta — 3 regras novas: "tráfego pago é o último passo", "review nunca por
+  gating/incentivo ao cliente", "vender modular, fazer upsell depois". Bump v0.2.11.
+- `/raio-x` (vazamento de velocidade) + `/proposta` (abertura) chamam `/velocidade`.
+- `/oferta` lê o molde-esteira pro perfil agência.
 - `/ads-meta` — framework "4 Elementos" no Passo 3 + descoberta via Ad Library (reviews→nome real).
 - `/reativar` — canal WhatsApp + regra de ouro (reativação SEMPRE com oferta) + modo serviço-
   cliente-final + **gate LGPD (consentimento próprio de WhatsApp, opt-out, multa ANPD R$50M) +

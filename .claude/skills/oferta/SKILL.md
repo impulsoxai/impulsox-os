@@ -108,7 +108,11 @@ ou escassez (nenhuma, ou falsa). Oferta gritada demais falha em garantia (promet
 ou escassez (countdown fake).
 
 Detalhe de cada parte em `references/anatomia.md`. Garantia tem decisão própria (8 tipos)
-em `references/garantia.md`.
+em `references/garantia.md`. **Quando o negócio é uma agência vendendo a Esteira de Crescimento**
+(as 4 fases do `docs/blueprint-esteira-crescimento.md`) pro cliente local, usar o molde pronto em
+`references/molde-esteira.md` — 6 partes pré-estruturadas + Money Model (auditoria→sistema→
+continuidade) + os gates de compliance da esteira (LGPD/WhatsApp, review sem gating, nunca garantir
+faturamento, não vender o que depende do agente ~jul/2026).
 
 ## Garantia — escolher o tipo certo
 

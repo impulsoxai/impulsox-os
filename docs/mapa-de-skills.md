@@ -161,6 +161,10 @@ O CRM é dono do lead/venda/receita; o OS fala com ele pela `scripts/lib-crm.mjs
 token `ixk_live_` por tenant, no `.env` do clone). As skills:
 
 - **/leads** — ponte do lead pro CRM (Contact) + lê status do funil. Não recria captura.
+- **/velocidade** — speed-to-lead: calcula (por `lib-velocidade`, nunca de cabeça) quantos leads
+  e R$ o negócio perde por responder devagar, e o ganho de responder em <5min. Roda por
+  estimativa (prospect novo) ou dado real do CRM (timestamps). Chamada pelo `/raio-x` e
+  `/proposta` como argumento de abertura; é a métrica de saída da Fase 1 da esteira.
 - **/roi** — gasto de ads × receita real do CRM → faturamento influenciado, CAC, ROI
   (cálculo por `lib-roi`). Alimenta o /relatorio.
 - **/carteira** — modo agência: lê o CRM de cada cliente (1 token por tenant) → visão de
@@ -288,6 +292,7 @@ contrato pra aquilo.
 | /analisar-dados | conforme o dado pedir | CSV/XLSX/JSON do negócio |
 | /roi | /relatorio | CRM_TOKEN no .env + gasto do /analisar-ads |
 | /leads | /roi (cruza) ou /relatorio | CRM_TOKEN no .env |
+| /velocidade | /raio-x ou /proposta (vira argumento) | leads/mês + tempo de resposta (CRM ou estimativa) |
 | /carteira | /abrir no cliente que pede ação, ou /relatorio | modo agência + CRM_TOKEN por cliente |
 | /reativar | (CRM dispara) → /roi mede depois | CRM_TOKEN (ou segmento manual) |
 | /depoimento | /provas (formata e guarda) | CRM_TOKEN (ou dono diz quem fechou) |

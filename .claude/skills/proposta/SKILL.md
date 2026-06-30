@@ -66,6 +66,11 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
    proposta — é o esqueleto do ROI honesto, sem prometer retorno garantido. Aversão à perda
    bem usada: o que continuar perdendo pesa mais que o que se ganha. O prospect precisa se
    reconhecer na primeira página.
+   - **Abrir pela velocidade de resposta (o número que mais fecha):** chamar a `/velocidade`
+     pra cravar "você responde lead em X; em <5min qualificaria ~21x mais — são ~Y leads e
+     R$ Z/mês na mesa". É o custo-de-não-agir mais concreto e o argumento de maior conversão.
+     Estimativa do dono se não há CRM (marcar "a confirmar"); número real se há. Nunca prometer
+     o ganho — falar em potencial estimado.
 2. **Onde dá pra chegar** — a foto do depois, concreta, sem prometer número garantido.
 3. **Como — o plano em fases** — escopo claro por fase: o que será feito, o que entrega,
    em quanto tempo. Fase 1 com vitória rápida visível (gera confiança pro resto).

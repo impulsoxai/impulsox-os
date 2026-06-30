@@ -97,14 +97,17 @@ fechamento (qual atendente fechou), não do Google.
 
 ## 🚀 OPORTUNIDADES (não-defeitos — maior alavancagem; backlog)
 
-1. **Speed-to-lead como métrica vendável (skill nova ou bloco no `/raio-x`/`/proposta`).** "Seu
-   tempo de resposta hoje é X horas; cada hora custa Y leads (21x menos conversão após 5min)". O
-   CRM já tem o timestamp. É o argumento de abertura de proposta mais forte e mais provável de
-   fechar. **Maior alavanca comercial.** ⏳ backlog
-2. **A OFERTA empacotada com Equação de Valor + nome + preço.** Rodar `/oferta` sobre a esteira:
-   "Sistema de Crescimento ImpulsoX — R$ X/mês, entrega Fase 1+2, garantia Z". Benchmark de
-   pricing 2026: setup + mensal (Agent Licensing) ou hybrid retainer; value capture 15-20% do
-   valor anual gerado. Sem isso, o sistema produz peças soltas que ninguém compra como conjunto. ⏳ backlog
+1. **Speed-to-lead como métrica vendável.** ✅ FEITO — skill `/velocidade` + `lib-velocidade.mjs`
+   (cálculo por script, 8 testes verdes) + integração no `/raio-x` ("vazamento que quase sempre
+   cabe") e `/proposta` (abertura da estrutura persuasiva). Roda por estimativa (prospect novo)
+   ou dado real do CRM. É a métrica de saída da Fase 1.
+2. **A OFERTA empacotada com Equação de Valor + nome + preço.** ✅ FEITO — molde reutilizável em
+   `.claude/skills/oferta/references/molde-esteira.md` (6 partes + Money Model + gates de
+   compliance) que a `/oferta` lê pro perfil agência. Catálogo-exemplo modular em
+   `docs/exemplo-oferta-impulsox.md`. **Filosofia (decisão do dono):** ofertas COEXISTEM — vende
+   o que o cliente precisa agora (página / conteúdo / CRM+agente / auditoria), upsell do sistema
+   completo depois. Regra "vender modular, upsell depois" no CLAUDE.md. Pricing 2026 ancorado
+   (setup+mensal, value capture 15-20%). Preços ficam `(?)` até o dono cravar.
 3. **Garantia / risco invertido.** Garantir só o controlável e compliant (volume de review, tempo
    de resposta) — **nunca faturamento**. "X reviews novos em 30 dias ou não cobro o setup". ⏳ backlog
 4. **Onboarding/intake específico da esteira.** Checklist: exportar base do cliente **com prova de
