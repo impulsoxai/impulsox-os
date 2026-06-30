@@ -3,6 +3,11 @@
 > O ImpulsoX-OS não é um monte de comandos soltos: as skills se chamam umas às outras em
 > cadeias. Este mapa mostra QUEM chama QUEM, pra ninguém se perder. Cada seta é uma conexão
 > real codificada nas skills. Produto da ImpulsoX AI.
+>
+> **Visão de produto (a esteira completa em 4 fases):** `docs/blueprint-esteira-crescimento.md`
+> — como as skills se ordenam pra levar um negócio local de "leads parados" a "tráfego pago que
+> converte" (casa → dinheiro que já existe → demanda orgânica → ads). Este mapa é o QUEM-CHAMA-QUEM;
+> o blueprint é a ORDEM e o PORQUÊ.
 
 ---
 

@@ -210,7 +210,8 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
   arrumar a casa: reativar a base que já existe (`/reativar` — sempre com oferta), juntar review
   no timing certo de forma COMPLIANT (`/local`+`/depoimento`), e ligar o conteúdo orgânico
   (`/radar`→`/calendario`→produção). Ads entra com a casa cheia. Quando o dono pede ads cedo
-  demais, oferecer a ordem certa — sem travar. Tese e playbook em `docs/formula-ads-jp.md`.
+  demais, oferecer a ordem certa — sem travar. Tese e playbook em `docs/formula-ads-jp.md`; a
+  esteira completa em 4 fases em `docs/blueprint-esteira-crescimento.md`.
 - **Review nunca por gating nem por incentivo ao cliente.** Filtrar por nota antes de pedir
   review, ou dar brinde/desconto/sorteio em troca de review do Google, é proibido (Google +
   FTC, multa real) e arrisca o perfil do cliente. Coleta legal = pedir a TODOS no timing certo,
