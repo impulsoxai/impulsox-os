@@ -81,14 +81,21 @@ confiança. Tudo roda no **CRM + agente WhatsApp**.
 | Pilar | Skill | O que faz | O que dá pra entregar HOJE (sem o agente) |
 |---|---|---|---|
 | 1. Reativação de base | `/reativar` | reaborda lead/cliente parado, SEMPRE com gancho-oferta, agenda, embute referral | **E-mail sim** (régua do CRM). **WhatsApp em massa NÃO** sem o agente + template HSM + gate LGPD. Sequência gerada fica pronta, disparo pendente |
-| 2. Review + referral | `/local` + `/depoimento` | pede review COMPLIANT (a todos, timing, sem gating/incentivo ao cliente), responde, pede indicação | **QR/link no recibo + responder reviews (lote aprovado) sim** via `/local`. **Disparo proativo em massa** espera agente + gates |
+| 2. Review + referral | `/local` + `/depoimento` | pede review COMPLIANT (a todos, timing, sem gating/incentivo ao cliente), responde, pede indicação | **Responder review é INDEPENDENTE do WhatsApp** — usa a Google Business Profile API (`scripts/gbp.mjs`), dá pra um agente DIÁRIO que monitora e responde já. **PEDIR review em massa** é que espera o WhatsApp + gates. QR/link no recibo também é hoje |
 | 3. Lead nurture <5min | **agente WhatsApp** (sem fallback manual viável) | responde form/lead na hora, qualifica, agenda, reagenda no-show | **Só "alerta de lead novo"** que o CRM dispara pro dono responder na mão. O nurture automático <5min **é 100% do agente** |
 | 4. Atendimento (receptionist) | **agente WhatsApp** | responde quem o humano não pegou; no BR = WhatsApp, não ligação | **Nada automático** sem o agente. É 100% dele |
 
 > **Honestidade de venda (Blocker da auditoria):** Pilares 3 e 4 são **inteiramente** do agente
-> WhatsApp (~jul/2026) — **não entram na promessa de venda atual**. Pilares 1 e 2 entregam HOJE
-> só na coluna da direita (e-mail, QR, responder review). Vender "reativo sua base e respondo em
-> <5min" antes do agente = prometer o que hoje é manual. Não fazer.
+> WhatsApp (~jul/2026) — **não entram na promessa de venda atual**. Pilar 1 entrega HOJE por
+> e-mail (WhatsApp em massa espera o agente). **Pilar 2 se divide:** RESPONDER review é
+> independente (Google API, `gbp.mjs`) — dá pra automatizar já num agente diário; só o PEDIR
+> review em massa espera o WhatsApp. Vender "reativo sua base e respondo lead em <5min" antes do
+> agente = prometer o que hoje é manual. Não fazer.
+>
+> **Dois motores distintos (não confundir):** (a) **Responder Google review** = Google Business
+> Profile API, OS-puro, agente agendado (cron) possível agora — não toca no WhatsApp. (b) **Pedir
+> review / reativar / atender lead** = WhatsApp Business API, espera o agente (~jul/2026). São
+> canais e dependências separados.
 
 **Compliance dura (regra do CLAUDE.md + `docs/formula-ads-jp.md` §0.5.B):** review nunca por
 gating (filtrar nota) nem incentivo ao cliente. Incentivo só na EQUIPE do negócio (a validar — ver
@@ -185,8 +192,10 @@ Nunca duplicar o motor de envio.
 3. ✅ **A OFERTA empacotada** RESOLVIDA: molde modular em `oferta/references/molde-esteira.md` +
    catálogo exemplo `docs/exemplo-oferta-impulsox.md`. Filosofia: ofertas coexistem, vende-se o
    que o cliente precisa, upsell depois. Preços ficam a cargo do dono.
-4. **Pilar 2 como serviço** — `/depoimento`+`/local` têm o modo serviço; o disparo em massa
-   depende do agente, e validar a política Google BR vigente na instalação.
+4. **Pilar 2 como serviço** — `/depoimento`+`/local` têm o modo serviço. **Responder review já é
+   possível** (Google API `gbp.mjs`, agente diário OS-puro — não depende do WhatsApp); só o PEDIR
+   review em massa depende do agente. Pendente: testar o `gbp.mjs` em produção (credencial Google
+   aprovada) e validar a política Google BR na instalação.
 
 > **Quase tudo da auditoria foi fechado** (ver `docs/auditoria-esteira-2026-06-29.md`): garantia,
 > onboarding/consentimento, gate de saúde da casa, speed-to-lead, oferta, Pilar 5. O que sobra é

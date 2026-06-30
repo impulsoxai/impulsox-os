@@ -45,9 +45,14 @@ Money Model: auditoria paga (porta) → core → upsell → continuidade (recorr
 oferta modular; garantia; gate de saúde da casa; onboarding com prova de consentimento.
 
 **Pendente — 1 buraco estrutural:** o **agente WhatsApp** (~jul/2026). Sem ele, a Fase 1
-automática (reativação/atendimento em massa) não roda. As skills já o referenciam como
-dependência em estado honesto — quando ligar, é só ativar o disparo. Pilares 3/4 ficam fora da
-promessa de venda até lá.
+automática (reativação/atendimento em massa, PEDIR review em massa) não roda. As skills já o
+referenciam como dependência em estado honesto — quando ligar, é só ativar o disparo. Pilares 3/4
+ficam fora da promessa de venda até lá.
+
+**Dois motores de review (não confundir):** RESPONDER Google review é **independente do WhatsApp**
+— usa a Google Business Profile API (`scripts/gbp.mjs`), dá pra um agente DIÁRIO (cron) que
+monitora e responde já (só falta testar a credencial Google em produção). PEDIR review em massa é
+que espera o WhatsApp. Canais e dependências separados.
 
 ## Documentos-mestre (onde está cada coisa)
 
