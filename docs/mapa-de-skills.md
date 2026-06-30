@@ -141,6 +141,12 @@ cria a campanha pronta        anúncio nunca sobe sozinho             mede o que
   é o `/formulas` dos anúncios (copiar mecânica de quem performa, nunca conteúdo)
 - **/ads-*** monta a campanha + guia visual de leigo → humano sobe → **/analisar-ads** mede
   (cálculo só por script) → padrão volta pro próximo **/ads-***
+- **Criativo do `/ads-meta`** lê o framework "4 Elementos" (Ad Copy/Creative/Headline/Description)
+  de `docs/formula-ads-jp.md` — checklist por elemento + contra-exemplo do anúncio ruim
+- **TRÁFEGO PAGO É O ÚLTIMO PASSO** (tese do `docs/formula-ads-jp.md`): antes de ads, arrumar a
+  casa — reativar a base (`/reativar`), juntar review compliant (`/local`+`/depoimento`), ligar
+  o orgânico (`/radar`→`/calendario`). Lead pago vaza em negócio que não responde. Ordem na
+  Conduta do CLAUDE.md.
 
 ---
 
@@ -154,10 +160,12 @@ token `ixk_live_` por tenant, no `.env` do clone). As skills:
   (cálculo por `lib-roi`). Alimenta o /relatorio.
 - **/carteira** — modo agência: lê o CRM de cada cliente (1 token por tenant) → visão de
   carteira (receita, leads, saúde, o que fazer hoje). O cockpit pra escalar N clientes.
-- **/reativar** — segmenta inativos no CRM + escreve win-back na voz da marca; o CRM dispara
-  pela régua de follow-up que ele já tem.
+- **/reativar** — segmenta inativos no CRM + escreve win-back na voz da marca (SEMPRE com
+  oferta/gancho), por e-mail ou WhatsApp; o CRM/agente dispara pela régua de follow-up. Modo
+  serviço-cliente-final reativa a base do cliente do cliente (Pilar 1 de `docs/formula-ads-jp.md`).
 - **/depoimento** — gatilho de timing: vê deal ganho no CRM (poll; webhook é fase 2) →
-  aciona o pedido de prova do /provas no pós-resultado.
+  aciona o pedido de prova do /provas no pós-resultado. Modo serviço: review compliant pros
+  clientes do cliente (Pilar 2; operação no Google é da `/local`; sem gating/incentivo ao cliente).
 - **/agente-ia** — o lead que o chat da página captura entra no CRM (via /api/chat → Contact).
 
 Pendente no CRM (não bloqueia o básico): UTM no Contact (atribuição por campanha) e webhook

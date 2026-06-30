@@ -33,6 +33,8 @@ marca, gera o plano e marca os criativos como defaults até a `/identidade` roda
   existe e está fresco (<30 dias), partir dele em vez de pesquisar de novo
 - `nucleo/concorrentes.md` — se existe o dossiê do `/concorrente`, os anúncios ativos do
   concorrente já estão mapeados ali; partir deles no Passo 0 e aprofundar no swipe
+- `docs/formula-ads-jp.md` — fórmula de anúncio dissecada (framework "4 Elementos", checklist
+  por elemento, contra-exemplo do anúncio ruim). É o molde de criativo do Passo 3.
 
 ## Pré-requisito de medição — Pixel + CAPI (sem isso o Advantage+ aprende errado)
 
@@ -66,6 +68,11 @@ a página de resultados do nicho/concorrente.
 
 1. **Termo de busca:** o nicho do negócio (ou um concorrente nomeado pelo dono). Perguntar se
    não estiver claro. País = Brasil (`countries=BR`); `active_status=active`.
+   - **Ângulo de descoberta extra (truque do JP, `docs/formula-ads-jp.md`):** pra achar quem
+     mais roda anúncio no nicho além do concorrente óbvio — pegar um **review recente** de uma
+     agência/negócio que domina o nicho → achar o **nome real do negócio** de quem avaliou
+     (LinkedIn/busca) → colar esse nome na Ad Library. Revela anunciantes que o dono não
+     conhecia. Só fonte pública; nunca raspar atrás de login.
 2. **Filtro de winner (a sacada — com a ressalva honesta):** ficar com anúncio que **começou
    há 60+ dias E ainda aparece ativo**. Começou cedo + ainda no ar = **forte candidato** a
    winner (o anunciante segue pagando), **não garantia**. Dado de mercado: só ~11% dos
@@ -139,6 +146,21 @@ Padrão enxuto (PME aprende mais rápido com menos campanhas):
 Acionar o **`/post`** para cada peça estática/carrossel, com a diretriz de anúncio:
 gancho mais direto que o orgânico, oferta explícita, uma chamada só. Textos (primário
 125 chars visíveis, título 40, descrição 30) passam pelo **`/escritor-br`**.
+
+**Checklist "4 Elementos do Anúncio" (`docs/formula-ads-jp.md`):** todo anúncio se quebra em
+quatro partes, cada uma com função distinta. Usar como régua de cada criativo:
+- **Texto principal (Ad Copy):** chamar o público no topo, ANTES do corte do "ver mais"
+  ("Donos de academia:"); usar "NOVO"; nível 5ª série; liderar com resultado/ROI (caso real se
+  houver); vender o alívio (menos trabalho), não o recurso.
+- **Criativo (imagem/vídeo):** texto NA imagem chamando o nicho em PT ("DONOS DE ACADEMIA");
+  alto contraste (texto claro/fundo escuro); evitar fundo claro vibrante; copy da imagem em
+  5ª série; símbolo do nicho. Diretriz pro `/post` no modo anúncio.
+- **Título (Headline):** "Novo" + nicho direto + urgência no fim + "feito pra aquele mercado".
+- **Descrição:** camada de prova/confiança — só prova **autorizada** (`nucleo/provas.md`);
+  sem prova, reforça diferencial/novidade (nunca inventa social proof).
+- **DON'T:** anúncio que serve pra qualquer nicho não serve pra nenhum (contra-exemplo no doc).
+  Recurso vago → traduzir em **resultado numerável** ("Agende 20-50 atendimentos/mês"), sem
+  número inventado. Ancorar na dor + no ganho (PAS).
 
 **Volume de criativo — o gargalo nº 1 do Advantage+ (2026):** o padrão antigo de 3-4 criativos não
 alimenta o algoritmo. Mirar **10-15 ativos por campanha** + **3-5 novos por semana** — o Advantage+

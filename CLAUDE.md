@@ -205,6 +205,17 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 - Nunca arriscar a conta de um cliente por automação fora dos termos da plataforma.
   Onde a API oficial permite, automatizar; onde é área cinza, entregar pronto para
   publicação em um clique.
+- **Tráfego pago é o ÚLTIMO passo, nunca o primeiro.** Lead pago vaza em negócio que não
+  responde rápido, não tem prova social e não converte o orgânico. Antes de empurrar ads,
+  arrumar a casa: reativar a base que já existe (`/reativar` — sempre com oferta), juntar review
+  no timing certo de forma COMPLIANT (`/local`+`/depoimento`), e ligar o conteúdo orgânico
+  (`/radar`→`/calendario`→produção). Ads entra com a casa cheia. Quando o dono pede ads cedo
+  demais, oferecer a ordem certa — sem travar. Tese e playbook em `docs/formula-ads-jp.md`.
+- **Review nunca por gating nem por incentivo ao cliente.** Filtrar por nota antes de pedir
+  review, ou dar brinde/desconto/sorteio em troca de review do Google, é proibido (Google +
+  FTC, multa real) e arrisca o perfil do cliente. Coleta legal = pedir a TODOS no timing certo,
+  link direto, responder tudo. Incentivo só na EQUIPE do negócio, no canal próprio, em pesquisa
+  desacoplada ou em referral. Detalhe em `docs/formula-ads-jp.md` §0.5.B.
 - **Copiar a fórmula de quem já faz sucesso, não inventar.** Para qualquer peça (roteiro,
   legenda, thumbnail, post, anúncio), o ponto de partida é o MOLDE testado de canais/contas
   que já performam no nicho — eles já pagaram o custo de descobrir o que funciona. Copiar a
@@ -214,4 +225,4 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 
 ---
 
-*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.10*
+*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.11*

@@ -25,6 +25,48 @@ Autoria: ImpulsoX AI. Conteúdo original.
   o pedido do `/provas` pra aquele cliente. Depois encaminha o material que voltar pro
   `/provas` formatar e guardar.
 
+## Dois modos (mesmo gatilho de timing, alvo diferente)
+
+1. **Prova PRA AGÊNCIA** (modo padrão): pede depoimento ao cliente da própria empresa, pra
+   virar prova social de venda. É o que o resto desta skill descreve.
+2. **Review como SERVIÇO pro cliente final** (modo agência — `docs/formula-ads-jp.md`, Pilar
+   2): a IA pede review no Google aos clientes **do cliente** (ex: pacientes da clínica
+   atendida). É o produto "reviews + referrals" que se vende ANTES de rodar ads — review eleva
+   ranking local e conversão sem custo de mídia. **A operação no Google é da `/local`**; esta
+   skill é o gatilho de timing + os roteiros. O disparo é do **agente WhatsApp/CRM** (em
+   construção, ~jul/2026); até existir, entrega os roteiros e marca o disparo como pendente.
+
+## ⚠️ Review do Google é COMPLIANCE — a mecânica "filtro 1-5 + sorteio" do JP é ILEGAL
+
+O JP filtra clientes (só nota alta vai pro Google) e oferece sorteio pela resposta. **Os dois
+são proibidos** pelo Google (reforço de 17/abr/2026) e pela FTC (regra de out/2024, multa
+civil): isca/sorteio atrelada ao review = **incentivo proibido**; filtrar por nota antes de
+pedir review = **review gating proibido**. Caso real: Fashion Nova, US$ 4,2M de multa. **Esta
+skill NUNCA gera essa mecânica.** Detalhe e fontes em `docs/formula-ads-jp.md` §0.5.B.
+
+**O playbook que esta skill usa (legal e que performa igual):**
+- **Pedir a TODOS, do mesmo jeito**, no timing do resultado — sem filtrar por satisfação esperada.
+- **Link direto** pra página de review do Google (ou QR no recibo), no **dispositivo do próprio
+  cliente, depois** que ele saiu — nunca tablet/kiosk no local (pressão + filtro de spam).
+- **Responder TODOS os reviews** (bom e ruim) — permitido, encorajado; é onde a IA escala valor.
+- **Referral depois** do review (pedir indicação) é ok — referral não é review, não cai na regra.
+
+## Incentivo — PODE, mas o segredo é incentivar a EQUIPE, não o cliente
+
+Dá pra ter incentivo legal. A virada de chave: o Google proíbe recompensar **quem escreve** o
+review (o cliente); **não proíbe** recompensar o **funcionário** que entrega serviço que ganha
+5★. É a alternativa mais forte e a que vira produto:
+
+| Incentivar… | Pode? | Como |
+|---|---|---|
+| **A EQUIPE do cliente** (bônus/ranking por review gerado) | ✅✅ **Melhor** | A IA rastreia review por atendente → dono premia. Competição interna ok. NÃO pedir pra citar nome do funcionário (proibido desde abr/2026) |
+| Review no **Google** (cliente final) | ❌ Não | Proibido sempre. Ganho = timing + facilidade + resposta |
+| Review no **site próprio / Trustpilot** | ✅ Sim | Pra TODOS, divulgado, pequeno/padronizado |
+| **Participação em pesquisa** ("compartilhe seu resultado") | ✅ Sim | Pra todos, qualquer nota, desacoplado do review |
+| **Referral / indicação** | ✅ Sim | Não é review; recompensar indicação é ok |
+
+A `/local` valida a política vigente antes de instalar pra um cliente.
+
 ## Degrau mínimo (Escada de Contexto)
 
 Degrau 4 (CRM no ar): precisa de `CRM_TOKEN` pra achar os deals ganhos. Sem token, roda em

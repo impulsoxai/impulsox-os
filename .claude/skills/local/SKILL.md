@@ -63,8 +63,43 @@ Entregar preenchido, pronto pra colar no painel:
   o tema do `/calendario` reescrito pro formato (não a mesma arte)
 - **Avaliações:** meta honesta de N novas por mês; o pedido sai pela `/provas` (momento
   certo + mensagem pronta). **Nunca comprar avaliação nem fazer "troca por desconto"**
-  — viola os termos do Google e arrisca o perfil inteiro
+  — viola os termos do Google e arrisca o perfil inteiro (ver Passo 3.5)
 - **Perguntas e respostas:** semear as 3-5 perguntas que todo cliente faz, com resposta
+
+## Passo 3.5 — Campanha de coleta de review COMPLIANT (a parte que escala — Pilar 2)
+
+Quando o negócio quer **mais review em escala** (e quando isso vira serviço pro cliente final
+da agência — `docs/formula-ads-jp.md` §0.5.B), a coleta segue regra dura de compliance. O
+Google reforçou a política em **17/abr/2026** e a FTC criminalizou em **out/2024** (multa civil).
+**Duas coisas são PROIBIDAS e a skill nunca gera:**
+1. **Review gating** — filtrar por nota antes de pedir (só elogio vai pro Google, crítica vai
+   pro privado). Caso real: Fashion Nova, US$ 4,2M de multa.
+2. **Incentivo ao cliente pelo review** — desconto, brinde, sorteio em troca de review do
+   Google. Inclui entrada em sorteio. Proibido independente da nota.
+
+**A campanha que A SKILL monta (legal e que performa por volume+timing):**
+- **Pedir a TODOS, do mesmo jeito**, no timing do resultado/atendimento — sem filtrar nota.
+- **Link direto** pra página de review (ou QR no recibo/fatura), no **dispositivo do próprio
+  cliente, depois** que ele saiu — nunca tablet/kiosk no local (pressão + dispara filtro de spam
+  por mesmo IP/device).
+- **Responder TODOS** os reviews (Passo 4) — onde a IA escala valor de verdade.
+- **Não pedir pra cliente citar o nome do funcionário** no review (proibido desde abr/2026);
+  menção espontânea é ok.
+
+**Incentivo — pode, mas o segredo é incentivar a EQUIPE, não o cliente:**
+
+| Incentivar… | Pode? | Como |
+|---|---|---|
+| **A EQUIPE do negócio** (bônus/ranking por review gerado) | ✅✅ **Melhor** | A IA rastreia review por atendente → dono premia; competição interna ok |
+| Review no **Google** (cliente) | ❌ Não | Proibido sempre |
+| Review no **site próprio / Trustpilot** | ✅ Sim | Pra TODOS, divulgado, pequeno |
+| **Participação em pesquisa** ("compartilhe seu resultado") | ✅ Sim | Pra todos, qualquer nota, desacoplado do Google review |
+| **Referral / indicação** | ✅ Sim | Não é review |
+
+**Disparo em escala:** pelo **agente WhatsApp/CRM** (em construção, ~jul/2026) — a skill monta a
+campanha e os roteiros; até o agente existir, entrega pronto e marca o disparo como pendente.
+**Validar a política vigente** (Google + leis BR) antes de instalar pra qualquer cliente — as
+regras mudam; esta seção reflete jun/2026.
 
 ## Passo 4 — Responder avaliações (o que mais gente lê e quase ninguém faz bem)
 
@@ -121,6 +156,9 @@ mais sensível do marketing local.
 - Respostas seguem `nucleo/voz.md` — protocolo é o esqueleto, a voz é da marca.
 - Sem técnica cinza: keyword stuffing no nome da empresa ("Padaria X - Melhor Pão da
   Cidade") viola as diretrizes e some com o perfil.
+- **Review COMPLIANCE (Passo 3.5) é regra dura:** nunca gating (filtrar por nota), nunca
+  incentivo ao cliente pelo review do Google, nunca pedir pra citar nome de funcionário.
+  Incentivo só na equipe / canal próprio / pesquisa / referral. Validar política antes de instalar.
 - Negócio sem ponto físico (atende a domicílio): configurar como área de atendimento,
   sem endereço público.
 
