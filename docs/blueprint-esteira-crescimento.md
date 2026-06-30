@@ -78,21 +78,35 @@ responder. Sem isso, Fase 1-3 enchem um balde furado. Pré-requisito das fases s
 Custo de mídia zero. É o que se entrega/vende **antes** de pedir 1 real de tráfego. Gera caixa e
 confiança. Tudo roda no **CRM + agente WhatsApp**.
 
-| Pilar | Skill | O que faz | Dependência |
+| Pilar | Skill | O que faz | O que dá pra entregar HOJE (sem o agente) |
 |---|---|---|---|
-| 1. Reativação de base | `/reativar` | reaborda lead/cliente parado, SEMPRE com gancho-oferta (aniversário, vaga, brinde), agenda na hora, embute referral | agente WhatsApp (disparo) |
-| 2. Review + referral | `/local` + `/depoimento` | pede review COMPLIANT (a todos, no timing, sem gating/incentivo ao cliente), responde todos, pede indicação | `/local` (Google) + agente (disparo) |
-| 3. Lead nurture <5min | agente WhatsApp + `/leads` | responde form/lead na hora, qualifica, agenda, reagenda no-show | agente WhatsApp |
-| 4. Atendimento (receptionist) | agente WhatsApp | responde quem o humano não pegou; no BR = WhatsApp, não ligação | agente WhatsApp |
+| 1. Reativação de base | `/reativar` | reaborda lead/cliente parado, SEMPRE com gancho-oferta, agenda, embute referral | **E-mail sim** (régua do CRM). **WhatsApp em massa NÃO** sem o agente + template HSM + gate LGPD. Sequência gerada fica pronta, disparo pendente |
+| 2. Review + referral | `/local` + `/depoimento` | pede review COMPLIANT (a todos, timing, sem gating/incentivo ao cliente), responde, pede indicação | **QR/link no recibo + responder reviews (lote aprovado) sim** via `/local`. **Disparo proativo em massa** espera agente + gates |
+| 3. Lead nurture <5min | **agente WhatsApp** (sem fallback manual viável) | responde form/lead na hora, qualifica, agenda, reagenda no-show | **Só "alerta de lead novo"** que o CRM dispara pro dono responder na mão. O nurture automático <5min **é 100% do agente** |
+| 4. Atendimento (receptionist) | **agente WhatsApp** | responde quem o humano não pegou; no BR = WhatsApp, não ligação | **Nada automático** sem o agente. É 100% dele |
+
+> **Honestidade de venda (Blocker da auditoria):** Pilares 3 e 4 são **inteiramente** do agente
+> WhatsApp (~jul/2026) — **não entram na promessa de venda atual**. Pilares 1 e 2 entregam HOJE
+> só na coluna da direita (e-mail, QR, responder review). Vender "reativo sua base e respondo em
+> <5min" antes do agente = prometer o que hoje é manual. Não fazer.
 
 **Compliance dura (regra do CLAUDE.md + `docs/formula-ads-jp.md` §0.5.B):** review nunca por
-gating (filtrar nota) nem incentivo ao cliente. Incentivo só na EQUIPE do negócio, canal próprio,
-pesquisa desacoplada ou referral. A mecânica original do JP (filtro 1-5 + sorteio) é ilegal —
-não copiar.
+gating (filtrar nota) nem incentivo ao cliente. Incentivo só na EQUIPE do negócio (a validar — ver
+buracos), canal próprio, pesquisa desacoplada ou referral. A mecânica original do JP (filtro 1-5 +
+sorteio) é ilegal — não copiar. **WhatsApp:** gate LGPD (consentimento próprio, não o de e-mail;
+opt-out; multa ANPD até R$50M) + template HSM aprovado (Meta) — ver `/reativar`.
 
-**Estado:** as skills geram as mensagens hoje; o **disparo automático espera o agente WhatsApp
-(~jul/2026)**. Até lá, entregam pronto e marcam disparo pendente (estado honesto, igual
-`/agente-ia` com `/api/chat`).
+### Métrica de saída por fase (o gatilho objetivo pra avançar)
+
+Nenhuma fase "termina por sensação" — cada uma tem um número que diz se funcionou e libera a
+próxima. Medido por `/desempenho`/`/roi`:
+
+| Fase | Métrica de saída (gatilho pra avançar) |
+|---|---|
+| 0 — Casa | página no ar + SDR respondendo + destino que converte (teste de 1 lead real) |
+| 1 — Lead que já existe | X% da base reativada agendou · tempo médio de 1ª resposta < N min · reviews subiram de A pra B |
+| 2 — Orgânico | conteúdo ativo há ≥30d · save/reach acima da linha de base · ≥1 peça que virou candidata a criativo de ads |
+| 3 — Pago | CPL e CPA dentro da meta · ROI positivo no `/roi` (gasto × receita real do CRM) |
 
 ---
 
@@ -160,6 +174,9 @@ Nunca duplicar o motor de envio.
 ---
 
 ## Buracos abertos (o que falta pra esteira ficar 100%)
+
+> Backlog completo e priorizado (com a pesquisa de mercado que sustenta cada um) em
+> `docs/auditoria-esteira-2026-06-29.md`. Resumo dos de maior alavancagem:
 
 1. **Pilar 5 — Sales trainer** (treino de vendas IA: script + role-play + nota de call). É o
    único pilar do JP sem skill. Candidato: `/treinar-vendas` (lê CRM, grava nota por call).

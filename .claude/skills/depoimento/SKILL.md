@@ -51,21 +51,20 @@ skill NUNCA gera essa mecânica.** Detalhe e fontes em `docs/formula-ads-jp.md` 
 - **Responder TODOS os reviews** (bom e ruim) — permitido, encorajado; é onde a IA escala valor.
 - **Referral depois** do review (pedir indicação) é ok — referral não é review, não cai na regra.
 
-## Incentivo — PODE, mas o segredo é incentivar a EQUIPE, não o cliente
+## Incentivo — a régua canônica vive na `/local` (Passo 3.5)
 
-Dá pra ter incentivo legal. A virada de chave: o Google proíbe recompensar **quem escreve** o
-review (o cliente); **não proíbe** recompensar o **funcionário** que entrega serviço que ganha
-5★. É a alternativa mais forte e a que vira produto:
+Dá pra ter incentivo legal, mas a tabela completa (o que pode/não pode) é **canônica na `/local`
+Passo 3.5** — fonte única, pra não dessincronizar quando a política mudar. Resumo: review do
+Google **nunca** por incentivo ao cliente; incentivo só na **EQUIPE do negócio** (ideia a validar
+— o Google não atribui review por funcionário; a atribuição teria que vir do CRM no fechamento),
+canal próprio, pesquisa desacoplada ou referral. A `/local` valida a política vigente antes de
+instalar.
 
-| Incentivar… | Pode? | Como |
-|---|---|---|
-| **A EQUIPE do cliente** (bônus/ranking por review gerado) | ✅✅ **Melhor** | A IA rastreia review por atendente → dono premia. Competição interna ok. NÃO pedir pra citar nome do funcionário (proibido desde abr/2026) |
-| Review no **Google** (cliente final) | ❌ Não | Proibido sempre. Ganho = timing + facilidade + resposta |
-| Review no **site próprio / Trustpilot** | ✅ Sim | Pra TODOS, divulgado, pequeno/padronizado |
-| **Participação em pesquisa** ("compartilhe seu resultado") | ✅ Sim | Pra todos, qualquer nota, desacoplado do review |
-| **Referral / indicação** | ✅ Sim | Não é review; recompensar indicação é ok |
-
-A `/local` valida a política vigente antes de instalar pra um cliente.
+**Gate LGPD + WhatsApp (modo serviço, disparo por mensagem):** vale o mesmo gate da `/reativar` —
+o pedido de review por WhatsApp é marketing direto: consentimento próprio de WhatsApp (não o de
+e-mail), opt-out, e template HSM aprovado via WhatsApp Business API. Sem isso, gera o roteiro mas
+não libera disparo. (Pedido de review no recibo/QR/canal orgânico não cai nesse gate — só o
+disparo proativo em massa.)
 
 ## Degrau mínimo (Escada de Contexto)
 

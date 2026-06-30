@@ -35,8 +35,9 @@ porque lead pago vaza num negócio que não responde. Isso casa com a régua que
 ### A. REATIVAÇÃO de base ("follow-up" = reabordar lead JÁ CADASTRADO)
 
 **O que é:** o cliente (gym, clínica, etc.) tem uma base de leads/ex-clientes parada no
-cadastro — gente que já demonstrou interesse e nunca mais foi abordada. Dado do JP: 27% das
-PMEs nunca dão follow-up no lead. A IA reaborda essa base por mensagem, **sempre amarrada a uma
+cadastro — gente que já demonstrou interesse e nunca mais foi abordada. Alegação do JP (não
+verificada): "27% das PMEs nunca dão follow-up no lead". Vale o mecanismo (base parada existe e
+converte), não o número — não usar a estatística como fato em peça de venda sem fonte própria. A IA reaborda essa base por mensagem, **sempre amarrada a uma
 oferta/gancho concreto**, e empurra a pessoa de volta pra dentro da porta. Sem gastar 1 real em
 ads — é dinheiro que já existe na base.
 
@@ -91,7 +92,9 @@ reabordar sem soar spam.
 
 **O que é:** pedir review no Google pros clientes do cliente, mas de um jeito que **filtra quem
 está insatisfeito** (não vira review ruim público) e **maximiza resposta com uma vantagem**.
-Dado: 98% leem review antes de comprar, só 11% dos negócios pedem.
+Alegações do JP (não verificadas): "98% leem review antes de comprar, só 11% dos negócios pedem".
+Vale o mecanismo, não o número — não usar como fato em peça de venda sem fonte própria. (Dado
+verificável e linkável de speed-to-lead — 21x/100x em <5min — está em `docs/auditoria-esteira-2026-06-29.md`.)
 
 **A mecânica em 4 passos (a sacada está na ordem):**
 
@@ -188,9 +191,12 @@ recompensar o funcionário que entrega um serviço que ganha 5 estrelas.
   atendente atrelado a quantos reviews 5★ / NPS / satisfação ele gera. **Totalmente legal** e
   muda comportamento melhor que treino genérico.
 - Dá pra rodar **competição interna** ("quem pega mais review no mês ganha X") — permitido.
-- **Como vira produto da ImpulsoX:** a IA rastreia quantos reviews cada atendente gerou e
-  entrega o ranking pro dono premiar. Vende-se como feature ("seu time engajado a pedir
-  review"). **O cliente final nunca é subornado** — a régua do Google fica intacta.
+- **Como viraria produto da ImpulsoX (a validar — M9 da auditoria):** a ideia é a IA rastrear
+  quantos reviews cada atendente gerou e entregar o ranking pro dono premiar. **Problema técnico:
+  o Google não atribui review a um funcionário** (review não vem com tag de quem serviu). A
+  atribuição teria que vir do **CRM no fechamento** (qual atendente fechou aquele cliente), não
+  do review. Enquanto esse mecanismo não existir, é ideia de produto, não feature pronta — não
+  vender como entregável. **O cliente final nunca é subornado** — a régua do Google fica intacta.
 - ⚠️ Ressalva do reforço de abr/2026: o time pode **pedir** review, mas **não pode pedir pra
   cliente citar o nome do funcionário** no review (isso virou proibido). Menção espontânea do
   cliente é ok; campanha pra mencionar nome, não.
@@ -199,7 +205,7 @@ recompensar o funcionário que entrega um serviço que ganha 5 estrelas.
 
 | Quero incentivar… | Pode? | Como |
 |---|---|---|
-| **A EQUIPE do cliente** (bônus por review gerado) | ✅✅ **Melhor opção** | Compliant total; competição interna ok; não pedir pra citar nome do funcionário |
+| **A EQUIPE do cliente** (bônus por review gerado) | ✅ Legal, **mas a validar** | O Google não atribui review por funcionário — a atribuição teria que vir do CRM no fechamento. Ideia de produto, não feature pronta. Competição interna ok; não pedir pra citar nome do funcionário |
 | Review no **Google** (cliente final) | ❌ Não | Proibido sempre. Ganho vem de timing+facilidade+resposta |
 | Review no **site próprio / Trustpilot / G2** | ✅ Sim | Pra todos, divulgado, pequeno |
 | **Participação numa pesquisa** ("compartilhe seu resultado") | ✅ Sim | Pra todos, qualquer nota, desacoplado do review |
@@ -362,7 +368,10 @@ Do playbook dele, traduzido pro Gerenciador (confirmado nos frames do Ads Manage
   precisa gastar muito." (Frame real: campanha a US$ 30/dia, CPL US$ 3,69.)
 - **Conjunto / targeting deliberadamente ABERTO:**
   - País (ele: EUA + Canadá, exclui Quebec se não fala francês)
-  - **Idade 27–65+** — corta < 27 ("não são donos de negócio, é queimar dinheiro")
+  - **Idade 27–65+** — corta < 27 ("não são donos de negócio"). ⚠️ **Isso só vale quando o
+    público-alvo é DONO DE NEGÓCIO** (ex: a ImpulsoX prospectando PME). Quando a campanha anuncia
+    a oferta do CLIENTE pro consumidor final dele (clínica vendendo pra paciente), a idade vem do
+    `nucleo/negocio.md` do cliente — não herdar 27–65+ cego. (Achado da auditoria, M8.)
   - **Sem interesse, sem custom audience** — deixa o algoritmo achar
 - Placements: feed do Facebook + Instagram
 
@@ -417,7 +426,7 @@ viva nas skills.)
 | Contra-exemplo (anúncio ruim) | **Adotar** como checklist negativa de revisão |
 | Objetivo Leads + CBO + orçamento baixo | **Já alinhado** — manter |
 | Targeting aberto desde o dia 1 | **NÃO adotar cego** — manter a régua de 2 fases da `/ads-meta` (manual→Advantage+) |
-| Idade 27–65+ pra dono de negócio | **Herdar** como default B2B |
+| Idade 27–65+ | **Herdar SÓ quando o alvo é dono de negócio**; cliente final usa a idade do `negocio.md` (M8) |
 | Ad Library via reviews→LinkedIn→nome | **Incorporar** o ângulo de descoberta no Passo 0 |
 | GPT que faz anúncio por nicho | **Montar** molde de prompt por nicho (fórmula + swipe + marca) |
 

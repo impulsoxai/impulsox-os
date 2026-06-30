@@ -61,8 +61,26 @@ skill avisa e pede uma — não inventa promoção, não dispara win-back oco.
   WhatsApp + CRM** (em construção, ~jul/2026). Até existir: gerar a sequência de WhatsApp pronta
   e marcar como **pendente de disparo** (o dono cola/dispara manual, ou espera o agente). Estado
   honesto, igual o `/agente-ia` faz com o `/api/chat` — não fingir que dispara sozinho ainda.
-- **WhatsApp exige opt-in + LGPD:** só reabordar quem é lead/cliente cadastrado, com base legal
-  (relacionamento prévio). Nunca disparar pra contato sem consentimento.
+
+### ⚠️ GATE LGPD + Política WhatsApp (obrigatório antes de gerar sequência de WhatsApp)
+
+Reativação com oferta é **marketing direto** — não é mensagem transacional. No BR isso tem dois
+gates duros (multa ANPD até **R$ 50M/infração**; banimento do número pela Meta):
+
+1. **LGPD — consentimento próprio de WhatsApp.** Consentimento de e-mail **NÃO cobre** WhatsApp
+   (ANPD, 2024-2025: canais distintos, consentimentos separados). Base de "ex-cliente parado há
+   anos" é a de MAIOR risco (consentimento velho/inexistente). Antes de gerar a sequência,
+   **confirmar com o dono a origem e a validade do consentimento da base** — sem isso, não gerar
+   pra disparo (só rascunho marcado "bloqueado por consentimento"). Toda mensagem leva **opt-out**
+   (sair fácil), processado em ≤24h. Consentimento auditável (data, texto exato).
+2. **Política WhatsApp/Meta — template aprovado.** Disparo proativo em escala exige **WhatsApp
+   Business API + template (HSM) pré-aprovado pela Meta**, categoria marketing, número de
+   qualidade. **Número pessoal automatizado em volume = número derrubado.** A sequência que esta
+   skill gera vira **texto de template a submeter** — não texto livre disparado em massa. O
+   agente WhatsApp opera por essa API; o disparo respeita a janela de 24h e a qualidade do número.
+
+Sem os dois gates atendidos, a skill entrega o rascunho mas **não libera pra disparo** — marca a
+pendência. Isto protege a conta do cliente (perfil + número), que é o ativo dele.
 
 ## Degrau mínimo (Escada de Contexto)
 
@@ -100,7 +118,9 @@ Degrau 4 (CRM no ar): precisa de `CRM_TOKEN` pra achar os inativos. Sem token, r
   segmenta e escreve.
 - **Só oferta ATIVA** na reativação.
 - **Sem falsa urgência/escassez** — win-back honesto; base fria desconfia de pressão fake.
-- **WhatsApp só com opt-in + LGPD** — relacionamento prévio; nunca disparar sem consentimento.
+- **WhatsApp só com os 2 gates** (ver seção acima): consentimento próprio de WhatsApp (não o de
+  e-mail), opt-out em toda mensagem; e template HSM aprovado via WhatsApp Business API (nunca
+  número pessoal em massa). Sem os gates → rascunho só, disparo bloqueado.
 - **Só prova autorizada.** **Token nunca em log** (lib-crm redige). **Nunca Postgres direto.**
 - **Respeitar descadastro** — quem saiu, saiu; reativação não é spam.
 - É MOTOR: nasce no template, desce via `/atualizar-motor`.

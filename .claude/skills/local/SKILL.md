@@ -86,15 +86,15 @@ Google reforçou a política em **17/abr/2026** e a FTC criminalizou em **out/20
 - **Não pedir pra cliente citar o nome do funcionário** no review (proibido desde abr/2026);
   menção espontânea é ok.
 
-**Incentivo — pode, mas o segredo é incentivar a EQUIPE, não o cliente:**
+**Incentivo — RÉGUA CANÔNICA (as outras skills referenciam esta tabela):**
 
 | Incentivar… | Pode? | Como |
 |---|---|---|
-| **A EQUIPE do negócio** (bônus/ranking por review gerado) | ✅✅ **Melhor** | A IA rastreia review por atendente → dono premia; competição interna ok |
+| **A EQUIPE do negócio** (bônus por review gerado) | ✅ Sim, mas **a validar** | Legal (Google não proíbe premiar quem entrega 5★), porém **o Google NÃO atribui review por funcionário** — a atribuição "qual atendente serviu" teria que vir do CRM no fechamento, não do review. É ideia de produto, não feature pronta. Competição interna ok; NUNCA pedir pra cliente citar nome do funcionário (proibido desde abr/2026) |
 | Review no **Google** (cliente) | ❌ Não | Proibido sempre |
-| Review no **site próprio / Trustpilot** | ✅ Sim | Pra TODOS, divulgado, pequeno |
+| Review no **site próprio / Trustpilot** | ✅ Sim | Pra TODOS, divulgado, pequeno/padronizado |
 | **Participação em pesquisa** ("compartilhe seu resultado") | ✅ Sim | Pra todos, qualquer nota, desacoplado do Google review |
-| **Referral / indicação** | ✅ Sim | Não é review |
+| **Referral / indicação** | ✅ Sim | Não é review; recompensar indicação é ok |
 
 **Disparo em escala:** pelo **agente WhatsApp/CRM** (em construção, ~jul/2026) — a skill monta a
 campanha e os roteiros; até o agente existir, entrega pronto e marca o disparo como pendente.
@@ -106,7 +106,10 @@ regras mudam; esta seção reflete jun/2026.
 Resposta a avaliação é texto público de marketing — o próximo cliente lê antes de ligar.
 
 **Positiva:** curta, pessoal, citando algo específico da avaliação (nada de "Obrigado
-pelo feedback!" em série — parece robô). Variar a abertura entre respostas.
+pelo feedback!" em série — parece robô). Variar a abertura entre respostas. **No modo
+serviço-cliente (responder em escala no perfil de terceiro), até a resposta positiva passa por
+aprovação (lote aprovado), nunca full-auto** — resposta gerada em massa dispara detecção de
+padrão do Google. A IA redige; um humano libera o lote.
 
 **Negativa — o protocolo:**
 1. Responder rápido, sem brigar e sem ironia — quem lê é o próximo cliente, não o autor

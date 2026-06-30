@@ -7,6 +7,37 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.11] — 2026-06-29
+
+> Integração do playbook JP Middleton (agência de IA ~US$25M) + esteira de crescimento +
+> auditoria de olhos frios com pesquisa de mercado. Tese central: **tráfego pago é o último
+> passo** — antes, arrumar a casa (reativar base, review, atendimento, orgânico).
+
+### Adicionado
+- `docs/formula-ads-jp.md` — teardown da fórmula de ads do JP (framework "4 Elementos":
+  Ad Copy/Creative/Headline/Description + checklist por elemento + contra-exemplo) e o playbook
+  de reativação de base (gancho-SEMPRE-com-oferta) e review. **Alerta jurídico:** a mecânica de
+  review do JP (filtro 1-5 + sorteio) é ILEGAL (gating + incentivo; Google abr/2026 + FTC; caso
+  Fashion Nova US$4,2M) — documentado o que NÃO fazer + o playbook compliant que performa igual.
+- `docs/blueprint-esteira-crescimento.md` — mapa-mestre de 4 fases (Casa → lead que já existe →
+  orgânico → pago), com métrica de saída por fase e a coluna "o que dá pra entregar hoje sem o
+  agente WhatsApp".
+- `docs/auditoria-esteira-2026-06-29.md` — auditoria de olhos frios (subagente) + pesquisa de
+  mercado 2026; backlog priorizado (blockers de LGPD/WhatsApp resolvidos; 6 oportunidades).
+
+### Mudado
+- `CLAUDE.md` §Conduta — 2 regras novas: "tráfego pago é o último passo" e "review nunca por
+  gating/incentivo ao cliente". Bump v0.2.11.
+- `/ads-meta` — framework "4 Elementos" no Passo 3 + descoberta via Ad Library (reviews→nome real).
+- `/reativar` — canal WhatsApp + regra de ouro (reativação SEMPRE com oferta) + modo serviço-
+  cliente-final + **gate LGPD (consentimento próprio de WhatsApp, opt-out, multa ANPD R$50M) +
+  template HSM obrigatório** antes de disparo em massa.
+- `/depoimento` + `/local` — modo serviço (review pros clientes do cliente) COMPLIANT; régua de
+  incentivo canônica na `/local` Passo 3.5 (as outras só referenciam); resposta a review em
+  escala passa por aprovação (nunca full-auto); "premiar a equipe" rebaixado a ideia a validar
+  (Google não atribui review por funcionário).
+- `mapa-de-skills.md` — esteira pré-ads + referências aos docs novos.
+
 ## [0.2.10] — 2026-06-24
 
 > Craft de movimento: o sistema já elevava páginas com animação (`/premium-design` Uso 2), mas
