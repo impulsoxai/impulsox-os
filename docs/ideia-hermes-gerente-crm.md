@@ -31,33 +31,46 @@ ImpulsoX-OS é o "estúdio" que cria. O Hermes plugaria no CRM e no `gbp.mjs` po
 - **Funciona com qualquer modelo** — Nous Portal, OpenRouter, OpenAI, ou qualquer endpoint.
 - Doc: hermes-agent.nousresearch.com/docs
 
-## ⚠️ O motor de modelo — o plano Codex $20 NÃO serve (pegadinha)
+## O motor de modelo — o plano ChatGPT $20 (Codex OAuth) FUNCIONA ✅
 
-A ideia inicial era usar o **plano ChatGPT/Codex de $20** como motor. **Não dá** (pesquisa
-confirmou — Morphllm, OpenAI community):
+Confirmado na doc oficial do Hermes (`/docs/integrations/providers`): a tabela de providers
+lista **"OpenAI Codex — `hermes model` (ChatGPT OAuth, uses Codex models)"**. Ou seja:
 
-- O plano $20 dá acesso ao Codex/ChatGPT **dentro da ferramenta da OpenAI** (app, CLI do Codex).
-- Um agente externo como o Hermes precisa de **API key** (cobrada por token, fatura separada).
-- **"Não existe assinatura Codex pra API — uso por API key é cobrado nos preços de token padrão."**
+- `hermes auth add openai-codex` → OAuth da conta ChatGPT (device code, login no browser) →
+  usa GPT-5.4/5.5 **sem API key por token**, pelo plano de assinatura.
+- É o mesmo padrão que o Claude Code usa com a assinatura Claude Max — OAuth de assinatura, não
+  fatura de token. **O plano $20 cobre.**
+- O Hermes também suporta outros providers OAuth de assinatura (Nous Portal, GitHub Copilot,
+  Anthropic/Claude Max, xAI SuperGrok) e API keys (OpenRouter, etc.) — flexível.
 
-**Os motores que funcionam de verdade:**
-1. **OpenRouter** — o Hermes já é feito pra isso; escolhe modelo barato, paga por uso.
-2. **Nous Portal** — o portal da própria Nous (um OAuth cobre modelo + ferramentas).
-3. **API key OpenAI** com modelo mini/barato — paga por token.
+> **Ressalva honesta:** integração via OAuth de assinatura é área que o provedor (OpenAI) pode
+> apertar a qualquer momento — já aconteceu com outras ferramentas. Funciona hoje; tratar como
+> "vale enquanto vale". Plano B sempre disponível: OpenRouter (modelo barato, por uso).
 
-**Custo real estimado (a confirmar com medição):** pra "monitorar review 1x/dia + CRM leve" o
-volume é baixíssimo (poucas chamadas/dia). Em modelo barato via OpenRouter, **provavelmente
-custa MENOS que $20/mês** — mas é por uso, não assinatura fixa. Medir antes de cravar.
+**Correção:** uma versão anterior deste doc dizia que o plano $20 não servia — estava ERRADO
+(peguei a regra genérica de "assinatura ≠ API key" sem ver a integração OAuth específica do
+Hermes). O dono corrigiu; verificado na doc oficial.
 
 ## O que o Hermes-gerente faria (escopo da ideia)
 
 1. **Monitor de Google review (diário):** lê os reviews novos do Perfil do cliente, responde —
-   positivo em lote aprovado, negativo só com leitura humana (protocolo do `/local`). **Não
-   depende do WhatsApp** — é Google Business Profile API.
+   positivo em lote aprovado, negativo só com leitura humana (protocolo do `/local`). Google
+   Business Profile API via `gbp.mjs`.
 2. **Gerente de CRM (leve):** checa o funil, dispara o follow-up que já existe, sinaliza o que
    precisa de atenção (deal parado, lead sem resposta) — o que a `/carteira` mostra sob demanda,
    o Hermes vigia contínuo.
-3. **(Futuro, quando o agente WhatsApp existir):** pedir review / reativar base via WhatsApp.
+3. **WhatsApp (o Hermes PODE ser o agente WhatsApp que faltava):** a doc oficial do Hermes tem
+   **WhatsApp Business Cloud API** (a API OFICIAL da Meta — `/docs/user-guide/messaging/whatsapp-cloud`).
+   Requer: app com `whatsapp_business_messaging` + `whatsapp_business_management`,
+   `WHATSAPP_CLOUD_ACCESS_TOKEN` (System User permanente), webhook HTTPS público, allowlist de
+   números. Com isso, o Hermes faz reativação, pedir review, nurture e atendimento via WhatsApp
+   oficial — **com os gates LGPD + template HSM que a `/reativar` já exige**. Pode ser o motor que
+   o blueprint esperava pra ~jul/2026.
+
+> **Isto muda o blueprint:** o "agente WhatsApp ~jul/2026" pode ser **o próprio Hermes** rodando
+> a Cloud API oficial, com o plano $20 de motor. Não é mais uma peça a construir do zero — é
+> configurar o Hermes. (Verificar com o dono qual é o plano dele pro agente WhatsApp antes de
+> assumir que o Hermes substitui — pode já haver outra construção em andamento.)
 
 ## Gaps reais pra construir (honesto — não está pronto)
 
@@ -77,7 +90,8 @@ custa MENOS que $20/mês** — mas é por uso, não assinatura fixa. Medir antes
 
 1. Adicionar `--acao listar` ao `gbp.mjs` (buscar reviews recentes de um location).
 2. Testar o `gbp.mjs` em produção (credencial Google aprovada) — resolve o gap do `/local`.
-3. Subir o Hermes num VPS barato, modelo via OpenRouter/Portal (não o plano $20).
+3. Subir o Hermes num VPS barato, motor via Codex OAuth (plano ChatGPT $20) — `hermes auth add
+   openai-codex`. Plano B: OpenRouter por uso.
 4. Dar a ele uma skill que: (a) lista reviews novos via `gbp.mjs`, (b) responde pelo protocolo do
    `/local`, (c) lê o CRM via `lib-crm`. Começar só com o monitor de review (escopo mínimo).
 5. Medir o custo real de um mês antes de escalar pra N clientes.
