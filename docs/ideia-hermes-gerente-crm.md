@@ -67,6 +67,26 @@ Hermes). O dono corrigiu; verificado na doc oficial.
    oficial — **com os gates LGPD + template HSM que a `/reativar` já exige**. Pode ser o motor que
    o blueprint esperava pra ~jul/2026.
 
+   ### 🔴 REGRA DURA — Cloud API oficial obrigatória; Baileys PROIBIDO pra cliente
+
+   O Hermes oferece **dois adaptadores** de WhatsApp. A diferença é risco de CONTA — não é detalhe:
+
+   | Adaptador | O que é | Risco de ban | Uso |
+   |---|---|---|---|
+   | **Cloud API (oficial Meta)** | API que a Meta suporta | **"no account ban risk"** (doc oficial) | ✅ ÚNICO permitido pra cliente |
+   | **Baileys (bridge)** | emula WhatsApp Web (QR code) | **ban real** | ❌ proibido pra cliente; só teste pessoal |
+
+   Dado de mercado: em API não-oficial, **1 em cada 5 contas é banida em até 1 ano** ("não é SE,
+   é QUANDO"). O número do cliente é o ativo nº1 dele — arriscá-lo viola a régua da casa ("nunca
+   arriscar a conta de um cliente"). **Só Cloud API oficial.** O Baileys (jeito fácil, sem Meta
+   Business) está fora de questão pra qualquer coisa de cliente.
+
+   Cuidados extras mesmo na via oficial (da pesquisa):
+   - **Nunca número VoIP/Twilio** pra registrar — dispara bloqueio. Número real dedicado.
+   - **Número dedicado ao bot**, nunca o pessoal do dono (se a Meta restringir, não leva junto o
+     WhatsApp pessoal).
+   - Volume conversacional + template HSM aprovado + opt-in (já é a régua da `/reativar`).
+
 > **Isto muda o blueprint:** o "agente WhatsApp ~jul/2026" pode ser **o próprio Hermes** rodando
 > a Cloud API oficial, com o plano $20 de motor. Não é mais uma peça a construir do zero — é
 > configurar o Hermes. (Verificar com o dono qual é o plano dele pro agente WhatsApp antes de
