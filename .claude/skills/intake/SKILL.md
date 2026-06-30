@@ -41,6 +41,25 @@ a produção.
 3. **Calendário de aprovação** — quem aprova as peças, em quanto tempo, por qual canal.
 4. **Escopo/limites** — o que está dentro e o que está fora do contrato.
 
+## 5ª frente (condicional) — acessos extras por fase da Esteira de Crescimento
+
+Quando o contrato inclui a Esteira (`docs/blueprint-esteira-crescimento.md`), coletar também o
+que cada fase precisa pra não travar no dia 1. Só pedir o da(s) fase(s) contratada(s):
+
+| Fase contratada | Acesso / dado extra a coletar | Por quê |
+|---|---|---|
+| Fase 1 — Reativação | **Base de leads/clientes + PROVA de consentimento** (origem, data, texto, canal) | Sem prova, não dá pra disparar (gate LGPD do `/reativar`) |
+| Fase 1/2 — Review/local | Acesso ao **Perfil de Empresa no Google** (convite de gestor) | A `/local` opera o review/resposta por lá |
+| Fase 1/3 — Atendimento/WhatsApp | **WhatsApp Business API** + número dedicado + opt-in coletado fora do thread | Disparo exige API + template + consentimento (não número pessoal) |
+| Fase 3 — Ads | Meta Business (ad account + page + **pixel** + catalog) e/ou Google Ads, por convite | A `/ads-*` precisa do pixel/CAPI e da conta |
+
+**⚠️ A prova de consentimento da base é o gate que mais trava (e o que resolve o Blocker LGPD).**
+Consentimento de e-mail **não cobre** WhatsApp (ANPD). Coletar, por contato: **quando** o opt-in
+foi dado, **por qual canal** (form/landing/QR/loja — nunca dentro do WhatsApp), e o **texto exato**
+mostrado. Sem isso, a base entra como "bloqueada pra WhatsApp" — pode usar e-mail, não WhatsApp.
+Se o cliente não tem a prova, o caminho é **recoletar opt-in** (campanha de opt-in antes de
+qualquer disparo), não disparar e torcer. Registrar o status da prova no `intake.md`.
+
 ## Segurança (regra dura — inegociável)
 
 - **Nunca coletar senha de cliente em texto.** Só o método seguro de cada plataforma:
@@ -86,6 +105,14 @@ a produção.
 ## Escopo
 - Dentro: [...]
 - Fora: [...]
+
+## Esteira (só se contratada) — acessos extras + gate de consentimento
+| Item | Status | Observação |
+|---|---|---|
+| Base de leads + prova de consentimento (WhatsApp) | pedido/recebido/bloqueado | data+canal+texto do opt-in; sem isso, só e-mail |
+| Perfil Google (gestor) | … | Fase 1/2 |
+| WhatsApp Business API + opt-in | … | Fase 1/3; agente ~jul/2026 |
+| Meta Business (pixel/CAPI) / Google Ads | … | Fase 3 |
 ```
 
 ## Quem consome o `intake.md`

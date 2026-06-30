@@ -178,15 +178,20 @@ Nunca duplicar o motor de envio.
 > Backlog completo e priorizado (com a pesquisa de mercado que sustenta cada um) em
 > `docs/auditoria-esteira-2026-06-29.md`. Resumo dos de maior alavancagem:
 
-1. **Pilar 5 — Sales trainer** (treino de vendas IA: script + role-play + nota de call). É o
-   único pilar do JP sem skill. Candidato: `/treinar-vendas` (lê CRM, grava nota por call).
-2. **Agente WhatsApp** (~jul/2026) — destrava o disparo automático da Fase 1.
-3. **A OFERTA empacotada** — "Sistema de Crescimento ImpulsoX" (nome a definir): o pacote
-   vendável (assinatura mensal) que entrega Fase 1+2 e depois Fase 3, ancorado na Equação de
-   Valor (`/oferta` escreve em `nucleo/ofertas.md`). Hoje as peças existem soltas; falta o
-   produto que as vende na ordem.
-4. **Pilar 2 como serviço** — `/depoimento`+`/local` já têm o modo serviço documentado; falta o
-   disparo (depende do agente) e validar a política Google BR vigente na instalação.
+1. ✅ **Pilar 5 — Sales trainer** RESOLVIDO: skill `/treinar-vendas` (script + role-play + nota
+   por rubrica; calibra no CRM).
+2. **Agente WhatsApp** (~jul/2026) — destrava o disparo automático da Fase 1. **Único buraco
+   estrutural restante** — os Pilares 3 e 4 e o disparo em massa dos 1 e 2 dependem dele.
+3. ✅ **A OFERTA empacotada** RESOLVIDA: molde modular em `oferta/references/molde-esteira.md` +
+   catálogo exemplo `docs/exemplo-oferta-impulsox.md`. Filosofia: ofertas coexistem, vende-se o
+   que o cliente precisa, upsell depois. Preços ficam a cargo do dono.
+4. **Pilar 2 como serviço** — `/depoimento`+`/local` têm o modo serviço; o disparo em massa
+   depende do agente, e validar a política Google BR vigente na instalação.
+
+> **Quase tudo da auditoria foi fechado** (ver `docs/auditoria-esteira-2026-06-29.md`): garantia,
+> onboarding/consentimento, gate de saúde da casa, speed-to-lead, oferta, Pilar 5. O que sobra é
+> estrutural e externo: **o agente WhatsApp** (sem ele, Fase 1 automática não roda) e a validação
+> de política na hora de instalar.
 
 ---
 

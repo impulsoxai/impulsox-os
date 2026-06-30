@@ -165,6 +165,9 @@ token `ixk_live_` por tenant, no `.env` do clone). As skills:
   e R$ o negócio perde por responder devagar, e o ganho de responder em <5min. Roda por
   estimativa (prospect novo) ou dado real do CRM (timestamps). Chamada pelo `/raio-x` e
   `/proposta` como argumento de abertura; é a métrica de saída da Fase 1 da esteira.
+- **/treinar-vendas** — Pilar 5 da esteira: gera script de vendas (diagnóstico), faz role-play
+  (IA banca o cliente que rebate) e pontua call real por rubrica nomeada (Descoberta/Valor/
+  Objeção/Fechamento). Calibra nas objeções reais do CRM (deals perdidos). Persuasão honesta.
 - **/roi** — gasto de ads × receita real do CRM → faturamento influenciado, CAC, ROI
   (cálculo por `lib-roi`). Alimenta o /relatorio.
 - **/carteira** — modo agência: lê o CRM de cada cliente (1 token por tenant) → visão de
@@ -293,6 +296,7 @@ contrato pra aquilo.
 | /roi | /relatorio | CRM_TOKEN no .env + gasto do /analisar-ads |
 | /leads | /roi (cruza) ou /relatorio | CRM_TOKEN no .env |
 | /velocidade | /raio-x ou /proposta (vira argumento) | leads/mês + tempo de resposta (CRM ou estimativa) |
+| /treinar-vendas | (time treina) → medir fechamento no CRM | oferta ATIVA; CRM calibra (objeções reais) |
 | /carteira | /abrir no cliente que pede ação, ou /relatorio | modo agência + CRM_TOKEN por cliente |
 | /reativar | (CRM dispara) → /roi mede depois | CRM_TOKEN (ou segmento manual) |
 | /depoimento | /provas (formata e guarda) | CRM_TOKEN (ou dono diz quem fechou) |

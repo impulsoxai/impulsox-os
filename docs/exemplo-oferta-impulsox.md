@@ -96,10 +96,18 @@ Meta de caixa: **CAC payback ≤ 30 dias.** A auditoria paga (D) e a página (A)
 ---
 
 ## Garantia (a confirmar — só o controlável, nunca faturamento)
-- Página: "entrego em X dias ou não cobro o setup" (SLA).
-- Conteúdo: N peças/mês no prazo (entrega, não engajamento garantido).
-- CRM/agente: ativo e funcionando ou reembolso do setup.
-- **Nunca:** garantir faturamento, número de vendas, ROI específico. Régua dura da casa.
+
+Risco invertido em cima do que a ImpulsoX **controla** (pesquisa de mercado: garantir resultado
+que depende de algoritmo é antiético e o cliente percebe). 3 tipos, por oferta:
+- **Página (SLA):** "entrego em X dias úteis ou não cobro o setup."
+- **Conteúdo (SLA de entrega):** "N peças/mês no prazo" — entrega, nunca engajamento garantido.
+- **CRM/agente (condicional):** "ativo e funcionando no mês 1 ou o mês 2 é por conta da casa."
+- **Review/local (serviço condicional — favorita do Hormozi):** "N reviews novos em 30 dias ou
+  sigo trabalhando de graça até bater" — só com método compliant instalado + fluxo de clientes.
+- **Sistema completo, ticket alto (anti-garantia):** "trabalho com quem leva a sério e segue o
+  plano; se precisa de garantia de resultado pra começar, ainda não é a hora."
+- **Atrelar às ações do cliente** (acesso à base, aprovar criativo no prazo) filtra mau cliente.
+- **Nunca:** garantir faturamento, número de vendas, ROI específico, ranking. Régua dura da casa.
 
 ## Pendências (confirmar com o dono antes de virar peça pública)
 - Todos os preços `(?)`.

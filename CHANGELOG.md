@@ -33,7 +33,17 @@ saber o que cada clone está rodando e o que ainda falta puxar do template.
 - **Molde da oferta-esteira** (`.claude/skills/oferta/references/molde-esteira.md`) + catálogo
   exemplo (`docs/exemplo-oferta-impulsox.md`) — 6 partes + Money Model + gates de compliance pra
   montar a oferta do Sistema de Crescimento. Filosofia modular: ofertas coexistem, vende-se o que
-  o cliente precisa agora, upsell depois.
+  o cliente precisa agora, upsell depois. + garantia de risco invertido (SLA / serviço condicional
+  / anti-garantia, wording real, nunca faturamento).
+- **Skill `/treinar-vendas`** (Pilar 5 da esteira) — script de vendas (diagnóstico) + role-play
+  (IA banca o cliente que rebate) + nota da call por rubrica ponderada nomeada (Descoberta 30% /
+  Valor 25% / Objeção 25% / Fechamento 20%). Calibra nas objeções reais do CRM.
+- **Gate "saúde da casa"** no `/carteira` + Passo 0.5 na `/ads-meta` — 6 checagens objetivas antes
+  de liberar tráfego pago (destino converte, responde rápido, prova, orgânico, Pixel+CAPI, verba).
+  Informa e recomenda a ordem, não trava. Transforma "ads por último" de regra verbal em gate.
+- **`/intake` — 5ª frente da esteira** (acessos extras por fase) + **gate de prova de consentimento
+  da base** (data+canal+texto do opt-in; e-mail não cobre WhatsApp). Resolve o blocker LGPD do
+  onboarding no dia 1.
 
 ### Mudado
 - `CLAUDE.md` §Conduta — 3 regras novas: "tráfego pago é o último passo", "review nunca por

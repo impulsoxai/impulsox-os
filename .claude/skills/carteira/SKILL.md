@@ -57,6 +57,31 @@ Por cliente em `clientes/<nome>/`:
 5. **Entregar a tabela** ordenada por saúde (vermelho primeiro — o que precisa de atenção).
    No fim, "o que fazer hoje": os 1-3 clientes que pedem ação.
 
+## Gate "saúde da casa" — pronto pra ads? (semáforo objetivo, antes de liberar tráfego pago)
+
+A tese da esteira ("ads é o último passo") vira CHECAGEM objetiva, não sugestão verbal. Antes de
+o cliente ir pra Fase 3 (`/ads-meta`), o gate confere a casa — checklist validado de mercado
+(ver `docs/auditoria-esteira-2026-06-29.md`). Cada item é fato verificável, não achismo:
+
+| Checagem (a casa está pronta?) | Verde quando | Fonte |
+|---|---|---|
+| **Destino converte** | página/landing no ar, clara, com next step | `producao/paginas/`, `/raio-x` |
+| **Responde lead rápido** | tempo médio de 1ª resposta < ~5-15min | `/velocidade` (CRM ou estimativa) |
+| **Prova social** | tem reviews 4★+ / depoimento autorizado | `/local`, `nucleo/provas.md` |
+| **Tração orgânica** | conteúdo ativo há ≥30d com engajamento estável | `/desempenho`, `producao/posts/` |
+| **Medição ligada** | Pixel + CAPI instalados (destino site) | `/intake`, `/ads-meta` |
+| **Orçamento realista** | verba pra ≥60-90d + meta clara | `nucleo/intake.md` |
+
+**Como o gate age (não trava, alerta):**
+- 🟢 tudo verde → "casa pronta, pode liberar ads".
+- 🟡 1-2 vermelhos → "ads vai vazar em [item]; consertar antes rende mais. Quer que eu aponte a
+  skill que resolve?" (ex: sem prova → `/local`; sem velocidade → o agente/Pilar 3).
+- 🔴 3+ vermelhos → "ainda não é hora de ads — o dinheiro vaza. Caminho: Fase 0-2 primeiro."
+
+O gate **informa e recomenda a ordem**, nunca bloqueia à força (regra do CLAUDE.md: guiar é
+oferecer o caminho, não forçar o trilho). Mostra o gate por cliente que tem ads no escopo, ou
+sob demanda ("esse cliente está pronto pra ads?").
+
 ## Regras
 
 - **Um token por cliente** — nunca um token mestre (fura o isolamento do CRM).
@@ -65,6 +90,8 @@ Por cliente em `clientes/<nome>/`:
 - **Dado de um cliente jamais vaza pro outro** — cada linha usa só o token e os arquivos
   daquele cliente (regra do `/cliente`).
 - **Sinal de saúde é regra nomeada, não achismo** — o semáforo segue os limiares acima.
+- **Gate de ads informa, não trava** — recomenda a ordem (casa antes do tráfego), mas o dono
+  decide. Cada checagem é fato verificável de um arquivo/skill, nunca opinião.
 - **Só dado real** — cliente sem CRM aparece com o local + "não conectado", não com número
   inventado.
 - É MOTOR: nasce no template, desce via `/atualizar-motor`.

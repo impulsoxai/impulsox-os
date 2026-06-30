@@ -113,6 +113,14 @@ jamais a frase, a arte, a marca ou a oferta do concorrente. Frase e identidade s
 cliente. Sem firecrawl disponível ou biblioteca vazia pro nicho → avisar em uma linha e seguir
 com os ângulos de persuasão do Passo 3 (não travar a campanha).
 
+## Passo 0.5 — Gate "casa pronta?" (antes de montar a campanha)
+
+Tráfego pago é o último passo (CLAUDE.md). Antes de montar, conferir rápido o gate de saúde da
+casa (mesmo checklist do `/carteira`): destino converte? responde lead rápido (`/velocidade`)?
+tem prova social? tração orgânica? Pixel+CAPI? Se a casa está furada, avisar em uma linha — "ads
+vai vazar em [item]; consertar antes rende mais" — e oferecer a ordem certa. **Não trava** (o
+dono decide), mas não monta campanha fingindo que a casa está pronta quando não está.
+
 ## Passo 1 — Fundamentos (perguntar só o que falta)
 
 1. **Objetivo real:** mensagem no WhatsApp? lead? venda no site? visita ao perfil?

@@ -42,13 +42,31 @@ Candidatos (escolher 2-3 reais, nunca inflar): auditoria de velocidade de respos
 de brinde no fechamento; setup do Perfil Google + primeiros reviews; 1 mês de conteúdo orgânico
 adiantado; dashboard de saúde da casa. Bônus é aditivo real, não "R$50 mil em bônus" fake.
 
-### 3. Garantia (escolher só o controlável — ver references/garantia.md)
-**Nunca garantir faturamento.** Garantir o que está sob seu controle e é compliant:
-- **Garantia de velocidade/entrega (SLA):** "monto a Fase 0+1 em X dias ou não cobro o setup."
-- **Garantia de review (volume controlável):** "N reviews novos em 30 dias" — só se o método de
-  coleta compliant está instalado e o cliente tem fluxo de clientes pra pedir.
-- Comprador local cético → reembolso do setup é o que dá permissão pra tentar.
-Teste de estresse: o que acontece se 10% acionarem? Se quebra a margem, a garantia está errada.
+### 3. Garantia (RISCO INVERTIDO — só o que você CONTROLA. Catálogo de 8 tipos em references/garantia.md)
+
+**A regra de ouro (pesquisa de mercado, fontes na auditoria):** garante o que está **sob seu
+controle** — execução, prazo, transparência, volume de entrega. **NUNCA** o que depende do
+algoritmo/mercado: faturamento, ranking, número de vendas, leads. Prometer o que não controla é
+antiético e quem faz "dá o número mais baixo possível pra se proteger" — o cliente percebe.
+Princípio: prova forte + garantia fraca > garantia forte + prova fraca.
+
+Os 3 tipos que cabem na esteira/agência local (com wording real testado de mercado):
+
+| Tipo | Quando usar | Exemplo de wording (adaptar à voz do dono) |
+|---|---|---|
+| **SLA de entrega** | sempre cabe; o mais seguro | "Monto sua Fase 0+1 em X dias úteis ou não cobro o setup." |
+| **Serviço condicional** (a favorita do Hormozi — "trabalho de graça até X") | quando há um marco controlável claro | "Coloco N reviews novos no seu Google em 30 dias — se não, sigo trabalhando de graça até bater." (só se o método compliant está instalado E o cliente tem fluxo de clientes) · "Ativo seu atendimento <5min; se no mês 1 não estiver no ar, o mês 2 é por conta da casa." |
+| **Anti-garantia** | ticket alto, comprador maduro, prova forte | "Não dou garantia de resultado — trabalho com quem leva a sério e segue o plano. Se você precisa de garantia pra começar, não somos pra você." |
+
+**Princípios que vêm da pesquisa:**
+- **Atrelar a garantia às AÇÕES do cliente** filtra o cliente ruim e mantém você honesto ("se
+  você me der acesso à base e aprovar os criativos no prazo, eu garanto X"). Máx 2 condições.
+- **Primeiro ganho rápido (emotional win em ~7 dias)** sustenta a garantia: engenheirar um
+  resultado controlável cedo (ex: o número do `/velocidade` na 1ª semana, ou o Perfil Google no
+  ar) — Hormozi: "criar wins emocionais rápido depois da compra".
+- **Comprador local cético** → o reembolso do SETUP (não da operação) é o que dá permissão pra
+  tentar, sem expor a margem da mensalidade.
+- **Teste de estresse:** se 10% acionarem, quebra a margem? Se sim, a garantia está errada.
 
 ### 4. Escassez / urgência (só real)
 A urgência REAL aqui é o custo de não-agir (o número do `/velocidade`: "cada mês assim = R$ X na

@@ -108,16 +108,21 @@ fechamento (qual atendente fechou), não do Google.
    o que o cliente precisa agora (página / conteúdo / CRM+agente / auditoria), upsell do sistema
    completo depois. Regra "vender modular, upsell depois" no CLAUDE.md. Pricing 2026 ancorado
    (setup+mensal, value capture 15-20%). Preços ficam `(?)` até o dono cravar.
-3. **Garantia / risco invertido.** Garantir só o controlável e compliant (volume de review, tempo
-   de resposta) — **nunca faturamento**. "X reviews novos em 30 dias ou não cobro o setup". ⏳ backlog
-4. **Onboarding/intake específico da esteira.** Checklist: exportar base do cliente **com prova de
-   consentimento** (resolve B1), conectar Perfil Google, ligar Pixel. Sem isso o operador leigo
-   trava no dia 1. Estende o `/intake`. ⏳ backlog
-5. **Dashboard "saúde da casa" = gate objetivo antes de ads.** Semáforo no `/carteira` (responde
-   lead <Xmin? · ≥N reviews 4★+? · orgânico ativo ≥30d?) que **alerta/bloqueia** antes do
-   `/ads-meta`. Transforma a tese "ads por último" de sugestão verbal em produto. ⏳ backlog
-6. **Pilar 5 — `/treinar-vendas`** (sales coaching IA): persona do ICP que rebate → scoring por
-   rubrica → debrief → certificação. Único pilar do JP sem skill. ⏳ backlog
+3. **Garantia / risco invertido.** ✅ FEITO — 3 tipos no `molde-esteira.md` + catálogo exemplo
+   (SLA de entrega; serviço condicional "trabalho de graça até X" — favorita do Hormozi;
+   anti-garantia pra ticket alto), com wording real de mercado. Régua: só o controlável, nunca
+   faturamento; atrelar às ações do cliente; teste de estresse 10%.
+4. **Onboarding/intake específico da esteira.** ✅ FEITO — `/intake` ganhou a 5ª frente condicional
+   (acessos por fase) + o **gate de prova de consentimento da base** (resolve B1): coletar
+   data+canal+texto do opt-in; e-mail não cobre WhatsApp; sem prova, base "bloqueada pra WhatsApp".
+5. **Dashboard "saúde da casa" = gate objetivo antes de ads.** ✅ FEITO — gate no `/carteira`
+   (6 checagens verificáveis: destino converte, responde rápido, prova social, tração orgânica,
+   Pixel+CAPI, orçamento) + Passo 0.5 na `/ads-meta`. Checklist validado de mercado. Informa e
+   recomenda a ordem, não trava (regra do guia).
+6. **Pilar 5 — `/treinar-vendas`** ✅ FEITO — skill nova: script diagnóstico + role-play (IA banca
+   o cliente que rebate) + nota da call por rubrica ponderada (Descoberta 30% / Valor 25% /
+   Objeção 25% / Fechamento 20%, 0-10, comportamento observável). Calibra nas objeções reais do
+   CRM. Persuasão honesta; nota é da call, não da pessoa.
 
 ---
 

@@ -44,8 +44,8 @@ Scraping (firecrawl) + verificação direta:
 - **Conversão:** existe chamada clara (WhatsApp, telefone, formulário)? Em quantos
   cliques?
 - **Técnica (Core Web Vitals reais, não "responde rápido?"):** medir os três sinais que
-  o Google usa, com o limiar **2026** — **LCP ≤ 2,0s** (novo teto "good", era 2,5s antes do
-  core update de mar/2026), **INP < 200ms**, **CLS < 0,1**. Mais: HTTPS, mobile, título e
+  o Google usa, com o limiar **2026** — **LCP ≤ 2,5s** (teto "good" oficial Google/web.dev;
+  alvo da casa ≤ 2,0s), **INP < 200ms**, **CLS < 0,1**. Mais: HTTPS, mobile, título e
   descrição de cada página principal, páginas quebradas nos links. Acima dos limiares =
   furo de Site que custa Google.
 - **Conteúdo:** blog/artigos existem? Respondem perguntas reais ou são institucionais
