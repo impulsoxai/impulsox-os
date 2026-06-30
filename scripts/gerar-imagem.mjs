@@ -18,6 +18,7 @@
  */
 import { writeFileSync, readFileSync, existsSync } from "node:fs";
 import { registrarCusto } from "./registrar-custo.mjs";
+import { submeterTarefaKie, aguardarResultadoKie, uploadParaKieAPI } from "./lib-provedor-kie.mjs";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 const args = process.argv.slice(2);
@@ -32,46 +33,56 @@ const largura = Number(flag("--largura") || 1080);
 const altura = Number(flag("--altura") || 1350);
 const resolucao = flag("--resolucao") || "2K"; // só Nano Banana usa; default premium 2K
 const dryRun = has("--dry-run");
+const provedor = flag("--provedor") || "fal";
 
-// --- preços REAIS por modelo × resolução (confirmados em fal.ai, jun/2026) --
-// Fonte: páginas dos modelos na Fal. Reconferir antes de mudar — Fal ajusta preço.
-// nano (Banana 2): base 1K=$0.08; 0.5K×0.75, 2K×1.5, 4K×2. nano-pro: 1K/2K=$0.15, 4K=$0.30.
-// minimax fixo $0.01. FLUX schnell $0.003 / dev $0.025 (não usam --resolucao).
-const PRECOS = {
+// preços REAIS por modelo × resolução. fal confirmado nas páginas de modelo
+// (jun/2026); kie confirmado em kie.ai (home, jun/2026) — nano-pro kie sem
+// preço público claro ainda, null até confirmar em kie.ai/pricing.
+const PRECOS_FAL = {
   nano:        { "0.5K": 0.06, "1K": 0.08, "2K": 0.12, "4K": 0.16 },
   "nano-pro":  { "0.5K": 0.15, "1K": 0.15, "2K": 0.15, "4K": 0.30 },
   minimax:     { fixo: 0.01 },
   schnell:     { fixo: 0.003 },
   dev:         { fixo: 0.025 },
 };
-function precoImagem(mod, res) {
-  const t = PRECOS[mod]; if (!t) return 0;
+const PRECOS_KIE = {
+  nano:        { "1K": 0.04, "2K": 0.06, "4K": 0.09 },
+  "nano-pro":  null, // confirmar em kie.ai/pricing antes de usar em produção
+};
+const KIE_MODEL = { nano: "nano-banana-2", "nano-pro": "nano-banana-pro" };
+
+function precoImagem(tabela, mod, res) {
+  const t = tabela[mod]; if (!t) return null;
   if (t.fixo != null) return t.fixo;
-  return t[res] ?? t["2K"] ?? 0;
+  return t[res] ?? t["2K"] ?? null;
 }
 // --precos: imprime a tabela de modelos × resolução × preço e sai (sem gerar)
 if (has("--precos")) {
-  const usd = (n) => "$" + n.toFixed(3).replace(/0$/, "");
-  console.log("\nGerador de imagem — modelos e preços (Fal, jun/2026):\n");
-  console.log("  MODELO     QUALIDADE / USO                 0.5K    1K     2K     4K");
-  console.log("  ─────────────────────────────────────────────────────────────────");
-  console.log("  nano-pro   estúdio (Gemini 3 Pro)          —      $.15   $.15   $.30   ← padrão premium");
-  console.log("  nano       foto realista forte (Banana 2)  $.06   $.08   $.12   $.16   ← ótimo custo×qualidade");
-  console.log("  minimax    foto realista barata (volume)   —      $.01   $.01   $.01   ← redes/post");
-  console.log("  schnell    FLUX estilizado/abstrato        —      $.003 (iterar barato)");
-  console.log("  dev        FLUX qualidade                  —      $.025");
-  console.log("\n  Uso:  --modelo nano-pro --resolucao 2K   (4K dobra o preço)");
-  console.log("  Estimar sem gerar:  adicione --dry-run\n");
+  const usd = (n) => n == null ? "—" : "$" + n.toFixed(3).replace(/0$/, "");
+  console.log("\nGerador de imagem — modelos e preços, fal vs kie (jun/2026):\n");
+  console.log("  MODELO     PROVEDOR  0.5K    1K     2K     4K");
+  console.log("  ──────────────────────────────────────────────");
+  for (const mod of ["nano-pro", "nano", "minimax", "schnell", "dev"]) {
+    console.log(`  ${mod.padEnd(10)} fal       ${["0.5K","1K","2K","4K"].map((r) => usd(precoImagem(PRECOS_FAL, mod, r)).padEnd(7)).join("")}`);
+    if (PRECOS_KIE[mod] !== undefined) {
+      console.log(`  ${mod.padEnd(10)} kie       ${["0.5K","1K","2K","4K"].map((r) => usd(precoImagem(PRECOS_KIE, mod, r)).padEnd(7)).join("")}`);
+    }
+  }
+  console.log("\n  Uso:  --modelo nano-pro --resolucao 2K --provedor kie\n");
   process.exit(0);
 }
 
 if (!prompt) falhar("informe o --prompt (em inglês rende melhor).");
 if (!saida) falhar("informe o --saida (caminho do .png).");
 const FAL_KEY = process.env.FAL_KEY;
-if (!dryRun && !FAL_KEY) falhar("FAL_KEY não definida no ambiente (.env). Sem chave, não dá pra gerar.");
+const KIE_KEY = process.env.KIE_KEY;
+if (!dryRun && provedor === "fal" && !FAL_KEY) falhar("FAL_KEY não definida no ambiente (.env). Sem chave, não dá pra gerar.");
+if (!dryRun && provedor === "kie" && !KIE_KEY) falhar("KIE_KEY não definida no ambiente (.env). Sem chave, não dá pra gerar.");
 if (ref && !existsSync(ref)) falhar(`imagem-referência não encontrada: ${ref}`);
 if (!["nano", "nano-pro", "minimax", "schnell", "dev"].includes(modelo)) falhar(`--modelo inválido: ${modelo} (use nano, nano-pro, minimax, schnell ou dev).`);
 if (!["0.5K", "1K", "2K", "4K"].includes(resolucao)) falhar(`--resolucao inválida: ${resolucao} (use 0.5K, 1K, 2K ou 4K).`);
+if (!["fal", "kie"].includes(provedor)) falhar(`--provedor inválido: ${provedor} (use fal ou kie).`);
+if (provedor === "kie" && !KIE_MODEL[modelo]) falhar(`kie.ai não suporta --modelo ${modelo} ainda (use nano ou nano-pro, ou troque --provedor fal).`);
 
 // --- monta o payload e o endpoint -------------------------------------------
 const BASE = process.env.FAL_BASE_URL || "https://fal.run";
@@ -112,35 +123,66 @@ const payload = ehNano
     : { prompt, num_images: 1, image_size: { width: largura, height: altura }, ...(ref ? { image_url: refDataUri(ref), strength: 0.85 } : {}) };
 
 if (dryRun) {
-  console.log(JSON.stringify({ dry_run: true, modelo, endpoint: ENDPOINT, largura, altura, resolucao: ehNano ? resolucao : undefined, aspect_ratio: aspectRatio(largura, altura), ref: !!ref, custo_estimado_usd: precoImagem(modelo, resolucao) }, null, 2));
+  console.log(JSON.stringify({
+    dry_run: true, modelo, provedor, largura, altura,
+    resolucao: ehNano ? resolucao : undefined, ref: !!ref,
+    custo_estimado_fal_usd: precoImagem(PRECOS_FAL, modelo, resolucao),
+    custo_estimado_kie_usd: KIE_MODEL[modelo] ? precoImagem(PRECOS_KIE, modelo, resolucao) : null,
+  }, null, 2));
   process.exit(0);
 }
 
-// --- chama a Fal e salva ----------------------------------------------------
+// --- chama o provedor escolhido e salva ----------------------------------
 async function baixar(urlOuData) {
   if (urlOuData.startsWith("data:")) return Buffer.from(urlOuData.split(",")[1], "base64");
   const resp = await fetch(urlOuData);
   if (!resp.ok) falhar(`falha ao baixar a imagem gerada (HTTP ${resp.status}).`);
   return Buffer.from(await resp.arrayBuffer());
 }
-try {
-  const resp = await fetch(ENDPOINT, {
-    method: "POST",
-    headers: { Authorization: `Key ${FAL_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  if (resp.status === 401) falhar("FAL_KEY inválida ou sem permissão.");
-  if (resp.status === 402) falhar("conta Fal sem crédito. Recarregue antes de gerar.");
-  if (resp.status === 429) falhar("limite de uso da Fal atingido (rate limit). Tente em instantes.");
-  if (!resp.ok) falhar(`Fal retornou HTTP ${resp.status}. ${(await resp.text()).slice(0, 200)}`);
-  const data = await resp.json();
-  const img = data?.images?.[0]?.url;
-  if (!img) falhar("resposta da Fal sem imagem (prompt pode ter sido recusado).");
-  writeFileSync(saida, await baixar(img));
-  const custoReal = precoImagem(modelo, resolucao);
-  registrarCusto({ script: "gerar-imagem", modelo, custo: custoReal });
-  console.log(JSON.stringify({ ok: true, saida, modelo, resolucao: ehNano ? resolucao : undefined, custo_usd: custoReal }, null, 2));
-} catch (e) {
-  if (e?.code === "ENOTFOUND" || e?.cause) falhar("falha de rede ao chamar a Fal.");
-  falhar(String(e?.message || e).replace(FAL_KEY || "", "***"));
+
+if (provedor === "kie") {
+  try {
+    const KIE_BASE = process.env.KIE_BASE_URL || "https://api.kie.ai";
+    let imageInput;
+    if (ref) {
+      const url = await uploadParaKieAPI(ref, { kieKey: KIE_KEY, base: KIE_BASE });
+      imageInput = [url];
+    }
+    const input = {
+      prompt, aspect_ratio: aspectRatio(largura, altura),
+      ...(ehNano ? { resolution: resolucao, output_format: "png" } : {}),
+      ...(imageInput ? { image_input: imageInput } : {}),
+    };
+    const taskId = await submeterTarefaKie({ kieKey: KIE_KEY, base: KIE_BASE, model: KIE_MODEL[modelo], input });
+    const { resultUrls } = await aguardarResultadoKie({ kieKey: KIE_KEY, base: KIE_BASE, taskId });
+    if (!resultUrls?.[0]) falhar("kie.ai: resposta sem imagem.");
+    writeFileSync(saida, await baixar(resultUrls[0]));
+    const custoReal = precoImagem(PRECOS_KIE, modelo, resolucao);
+    registrarCusto({ script: "gerar-imagem", modelo: `${modelo}(kie)`, custo: custoReal ?? 0 });
+    console.log(JSON.stringify({ ok: true, saida, modelo, provedor, resolucao: ehNano ? resolucao : undefined, custo_usd: custoReal }, null, 2));
+  } catch (e) {
+    falhar(String(e?.message || e).replace(KIE_KEY || "", "***"));
+  }
+} else {
+  try {
+    const resp = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { Authorization: `Key ${FAL_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (resp.status === 401) falhar("FAL_KEY inválida ou sem permissão.");
+    if (resp.status === 402) falhar("conta Fal sem crédito. Recarregue antes de gerar.");
+    if (resp.status === 429) falhar("limite de uso da Fal atingido (rate limit). Tente em instantes.");
+    if (!resp.ok) falhar(`Fal retornou HTTP ${resp.status}. ${(await resp.text()).slice(0, 200)}`);
+    const data = await resp.json();
+    const img = data?.images?.[0]?.url;
+    if (!img) falhar("resposta da Fal sem imagem (prompt pode ter sido recusado).");
+    writeFileSync(saida, await baixar(img));
+    const custoReal = precoImagem(PRECOS_FAL, modelo, resolucao);
+    registrarCusto({ script: "gerar-imagem", modelo, custo: custoReal });
+    console.log(JSON.stringify({ ok: true, saida, modelo, resolucao: ehNano ? resolucao : undefined, custo_usd: custoReal }, null, 2));
+  } catch (e) {
+    if (e?.code === "ENOTFOUND" || e?.cause) falhar("falha de rede ao chamar a Fal.");
+    falhar(String(e?.message || e).replace(FAL_KEY || "", "***"));
+  }
 }

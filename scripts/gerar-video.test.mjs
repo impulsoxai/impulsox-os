@@ -92,7 +92,31 @@ test("argsFfmpeg: corte rápido — trima cada clipe pra duração da cena", () 
   assert.match(s, /trim=duration=2/);  // clipe 1 cortado em 2s
 });
 
-import { custoClipe } from "./gerar-video.mjs";
+import { custoClipe, custoClipeKie } from "./gerar-video.mjs";
+
+test("custoClipe (fal): kling 5s = 0.35, 8s = 0.70", () => {
+  assert.equal(custoClipe("kling", 5), 0.35);
+  assert.equal(custoClipe("kling", 8), 0.70);
+});
+
+test("custoClipeKie: kling $0.07/s", () => {
+  assert.ok(Math.abs(custoClipeKie("kling", 5) - 0.35) < 0.001, "kling 5s ~$0.35");
+  assert.ok(Math.abs(custoClipeKie("kling", 10) - 0.70) < 0.001, "kling 10s ~$0.70");
+});
+
+test("custoClipeKie: seedance $0.057/s", () => {
+  assert.equal(Math.round(custoClipeKie("seedance", 5) * 1000), Math.round(0.057 * 5 * 1000));
+});
+
+test("custoClipeKie: veo preço fixo $1.28", () => {
+  assert.equal(custoClipeKie("veo", 5), 1.28);
+  assert.equal(custoClipeKie("veo", 999), 1.28);
+});
+
+test("custoClipeKie: wan/ltx sem preço kie = null", () => {
+  assert.equal(custoClipeKie("wan", 5), null);
+  assert.equal(custoClipeKie("ltx", 5), null);
+});
 
 test("custoClipe: preço por modelo/segundos (preços reais Fal)", () => {
   assert.equal(custoClipe("kling", 5), 0.35);

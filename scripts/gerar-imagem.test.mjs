@@ -126,3 +126,44 @@ test("a FAL_KEY nunca aparece no stderr", async () => {
   assert.equal(r.code, 1);
   assert.doesNotMatch(r.stderr, /super-secreta-123/);
 });
+
+test("--provedor kie: dry-run mostra preço dos dois provedores", () => {
+  const out = join(tmp, "dry-kie.png");
+  const r = run(["--prompt", "x", "--saida", out, "--modelo", "nano", "--provedor", "kie", "--dry-run"], { FAL_KEY: "", KIE_KEY: "" });
+  assert.equal(r.code, 0, r.stderr);
+  const j = JSON.parse(r.stdout);
+  assert.ok(j.custo_estimado_fal_usd >= 0, "tem preço fal");
+  assert.ok(j.custo_estimado_kie_usd >= 0, "tem preço kie");
+});
+
+test("--provedor kie: minimax não suportado, erro claro", () => {
+  const out = join(tmp, "err.png");
+  const r = run(["--prompt", "x", "--saida", out, "--modelo", "minimax", "--provedor", "kie"], { KIE_KEY: "k" });
+  assert.equal(r.code, 1);
+  assert.match(r.stderr, /minimax.*kie|kie.*minimax/i);
+});
+
+test("--provedor kie sem KIE_KEY: erro claro, sem fallback pro fal", () => {
+  const out = join(tmp, "nokey.png");
+  const r = run(["--prompt", "x", "--saida", out, "--modelo", "nano", "--provedor", "kie"], { KIE_KEY: "", FAL_KEY: "presente-mas-nao-deve-usar" });
+  assert.equal(r.code, 1);
+  assert.match(r.stderr, /KIE_KEY/);
+});
+
+test("--provedor kie: chama createTask + recordInfo, baixa e salva imagem", async () => {
+  const out = join(tmp, "kie-ok.png");
+  const { srv, url } = await mockFal((req, payload, res) => {
+    if (req.url === "/api/v1/jobs/createTask") {
+      assert.equal(payload.model, "nano-banana-2");
+      res.writeHead(200, { "content-type": "application/json" });
+      res.end(JSON.stringify({ code: 200, data: { taskId: "t1" } }));
+    } else if (req.url.startsWith("/api/v1/jobs/recordInfo")) {
+      res.writeHead(200, { "content-type": "application/json" });
+      res.end(JSON.stringify({ code: 200, data: { state: "success", resultJson: JSON.stringify({ resultUrls: [`data:image/png;base64,${PNG_1x1_B64}`] }) } }));
+    } else { res.writeHead(404).end(); }
+  });
+  const r = await runAsync(["--prompt", "x", "--saida", out, "--modelo", "nano", "--provedor", "kie"], { KIE_KEY: "test", KIE_BASE_URL: url });
+  srv.close();
+  assert.equal(r.code, 0, r.stderr);
+  assert.ok(existsSync(out), "PNG foi escrito");
+});

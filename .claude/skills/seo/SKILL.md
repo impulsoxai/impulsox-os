@@ -73,9 +73,9 @@ Conferir e anotar nota por item (✅ ok / ⚠️ ajustar / ❌ ausente):
 - Canonical correto; sem `noindex` acidental
 - Open Graph + Twitter Card pra compartilhamento
 - Sinais de Core Web Vitals (imagem dimensionada, sem layout shift óbvio, CSS/JS enxuto)
-  — alinhar com o padrão do `marca/design-guide.md`. Régua de 2026: **LCP ≤ 2,0s · INP ≤
-  200ms · CLS ≤ 0,1** (LCP "good" caiu de 2,5s pra 2,0s no core update de mar/2026 — era 2,5s
-  até então; INP substituiu o FID em 2024)
+  — alinhar com o padrão do `marca/design-guide.md`. Régua de 2026: **LCP ≤ 2,5s** (limiar
+  oficial Google/web.dev; alvo da casa ≤ 2,0s) · **INP ≤ 200ms · CLS ≤ 0,1** (INP substituiu o
+  FID em 2024)
 
 ## Fase 3 — Blocos GEO da página (o jogo da IA, on-page)
 

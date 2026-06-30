@@ -49,6 +49,34 @@ regra de ler os arquivos da marca já garante a fidelidade.)
 
 Sem nenhuma das duas, seguir o processo desta skill — as regras abaixo cobrem o essencial.
 
+## Etapa 0 — O que já converte no nicho (substância antes de estilo)
+
+Antes da promessa, saber o que **já funciona** no nicho — não inventar do zero. Os melhores
+sites do nicho já pagaram o custo de descobrir que estrutura, que seções e que CTA convertem
+ali (mesma regra de "copiar a fórmula de quem já faz sucesso" do CLAUDE.md). Com **Firecrawl**
+(MCP/skill já instalada), pesquisar os **5 top-performers do nicho** (avaliados por reviews
+Google/Trustpilot, ranking de busca) e extrair, em resposta curta:
+
+1. **Pra quem é** — o VISITANTE, não o negócio (ex.: "dono de casa na zona sul com piso manchado")
+2. **A UMA ação** que a página empurra (orçamento, WhatsApp, agendar)
+3. **Objeções** que o visitante tem (preço, confiança, prazo)
+4. **O vibe** do nicho (sóbrio/premium, popular/direto, técnico)
+5. **Seções recorrentes** nos top-5 (qual ordem aparece em quem converte)
+6. **Voice of Customer (VoC) — a fala LITERAL do comprador.** Minerar as REVIEWS dos top-5 (e do
+   próprio negócio, se houver) pra extrair as palavras exatas que o cliente usa pra descrever a dor
+   e o resultado. É o insumo de maior alavancagem que existe — copy que usa a fala do cliente bate
+   headline genérica com folga. A copy (Etapa 2 / `/copy`) usa isso direto; não inventar a dor,
+   colher a dor dita.
+7. **Faixa de conversão-alvo do nicho** — registrar o benchmark pra calibrar expectativa honesta
+   (mediana de landing 2026 ~4%; serviços profissionais ~5,5-7,8%; topo >11%). Vira a meta contra
+   a qual a página é medida no pós (Etapa 5), não promessa.
+
+O resultado vira **requisito** da copy (Etapa 2) e do wireframe (Etapa 1) — não enfeite. A pesquisa
+olha o concorrente (estrutura) E a fala do comprador (VoC) — as duas coisas, não só a primeira.
+Degrau da Escada: roda mesmo sem Firecrawl (defaults marcados "confirmar"), mas com a
+pesquisa a página nasce no padrão de quem já vende no nicho. Quando há `/raio-x` ou
+`/concorrente` no `producao/`, reaproveitar esses achados em vez de refazer.
+
 ## Etapa 1 — Estrutura antes de pixel
 
 Definir e aprovar com o usuário ANTES de codar (mensagem curta, não documento):
@@ -58,6 +86,23 @@ Definir e aprovar com o usuário ANTES de codar (mensagem curta, não documento)
   números, portfólio REAIS) → quebra de objeções (FAQ) → chamada final
 - **Uma conversão** — a página inteira empurra pra UMA ação (WhatsApp, formulário,
   compra). Duas chamadas = nenhuma.
+
+**Landing de conversão ou site institucional? São produtos DIFERENTES — não confundir.** Multi-página
+NÃO é "mais premium": é mais páginas, e mais páginas brigam com conversão. Tirar a navegação de uma
+landing chega a **dobrar a conversão** (VWO/Yuppiechef: 3%→6%) — menu = caminhos de fuga. Escolher
+pelo JOB, não pelo preço:
+- **Landing de conversão** (default pra tráfego pago, lançamento, captura de lead) — **SEM menu de
+  navegação**, sticky CTA, **UMA ação**. KPI = taxa de conversão. É o fluxo padrão das Etapas 2-5.
+  Nunca adicionar páginas "pra parecer mais completo": cada saída derruba a conversão.
+- **Site institucional multi-página** (quando o job é descoberta/SEO por página — serviço local que
+  ranqueia por "X em [cidade]", autoridade, catálogo) — home + serviços + sobre + contato. KPI =
+  presença/SEO, não conversão de tráfego pago. Antes do pixel, montar e aprovar um **sitemap +
+  wireframe** (mapa de páginas + ordem das seções em caixas cinza, sem estilo): "substância antes
+  de estilo". Cada página repete Etapas 2-4, uma conversão por página, Schema por página, entrega
+  em `producao/paginas/<slug>/` com rota por página. (Open Design ajuda a montar o wireframe ao vivo.)
+
+  Regra de ouro: tráfego pago → SEMPRE landing de conversão (sem menu). Multi-página só quando o
+  objetivo declarado é ser ACHADO (SEO/descoberta), não converter clique pago. Na dúvida, landing.
 
 ## Etapa 2 — Copy
 
@@ -121,8 +166,23 @@ agência — animações de entrada no scroll, hover/micro-interações, easing 
 premiada real** (não o `ease` default), reveal/profundidade onde o layout pede.
 O vocabulário de efeitos (o que existe, quando dá WOW, quando mata performance, de onde
 capturar) mora em `docs/craft-movimento.md` — o catálogo que o `/premium-design` lê pra
-escolher o movimento certo, em vez de improvisar. Se o dono trouxer uma URL ("quero essa
+escolher o movimento certo, em vez de improvisar. A direção criativa que faz a página parecer
+cara MESMO PARADA (tipografia em escala, cor com coragem, profundidade/textura, composição, 3D
+via Spline/Rive) e o mapa das 8 técnicas premiadas mora em `docs/dna-cinematografico.md` — ler
+quando o cliente quer "nível agência / WOW"; a regra de lá é hero estático impecável > hero
+animado genérico. Se o dono trouxer uma URL ("quero essa
 animação"), é o **Uso 4** do `/premium-design`.
+
+**Regra GEO-safe (não-negociável — resolve a briga cinematográfico × IA-Ready):** nenhum crawler
+de IA renderiza JavaScript em 2026 (GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot). Conteúdo que
+precisa ser CITADO pela IA — headline, parágrafo de resposta (answer-first), FAQ, Schema JSON-LD —
+**nasce em HTML estático no source**, visível sem rolar e sem JS. O movimento desta etapa é
+**progressive enhancement SOBRE texto que já está lá**: o text-split anima um `<h1>` que já existe
+no HTML; o reveal no scroll mostra um parágrafo que já está no DOM; o Schema está no `<head>`, não
+injetado por JS. Nunca prender conteúdo citável atrás de IntersectionObserver, scroll ou render de
+JS — isso o torna invisível pra quem cita (e tráfego de IA converte ~5x mais que orgânico). O `/seo`
+audita isso; aqui é onde se evita o furo. Mesma lógica pro vídeo: o texto do hero é HTML, o vídeo é
+fundo decorativo por cima — nunca o texto dentro do vídeo.
 
 - **Padrão premium → `/premium-design` Uso 3:** mostrar ao cliente os **3 melhores sites do
   NICHO dele** (acervo `referencias-por-nicho.md`) → ele escolhe o estilo → re-estilizar a
@@ -136,6 +196,50 @@ animação"), é o **Uso 4** do `/premium-design`.
 - Pular esta etapa quando a página é simples/institucional e o cliente não quer movimento —
   é refino, não obrigação. Mas pro produto de R$ 5.000, é o que justifica o preço.
 
+**Vídeo hero cinematográfico (OPCIONAL — não é o default, e cuidado com "AI slop").** O default
+premium é **hero estático com direção de arte impecável** — `docs/dna-cinematografico.md` é claro:
+hero estático bem-dirigido vence hero animado genérico. Vídeo de produto por IA em loop só entra
+quando passa em DOIS testes, senão vira o "AI slop" que o público de 2026 aprendeu a farejar (só
+26% preferem conteúdo de IA hoje, era 60% em 2023; marcas estão banindo IA em campanha por
+backlash):
+1. **Cena REAL e específica do cliente** — produto/ambiente/pessoa que existem, não um genérico de
+   banco de prompt. Vídeo de IA de "bag de café qualquer" grita IA; o produto real do cliente, não.
+2. **Prova ou emoção, não enfeite** — o vídeo mostra o resultado/transformação que importa, não
+   movimento por movimento.
+
+Não passou nos dois → hero estático. Quando passa, a receita (validada nos canais de referência):
+1. **Imagem-base com logo** — gerar o produto/cena com o logo da marca embutido (Nano Banana 2
+   ou equivalente), 16:9, 2K. (Pra peça de motion-graphics em vez de produto real, é o `/reel-marca`.)
+2. **Loop perfeito** — usar **start frame = end frame** (modelo que aceita os dois, ex.: Kling)
+   pra o vídeo fechar no ponto onde começou; sem corte visível. ~7s é o sweet spot.
+3. **Hero com contraste** — vídeo como `<video autoplay muted loop playsinline>` de fundo, com
+   overlay/escurecimento garantindo contraste AA do texto na frente. Truque: escurecer as bordas
+   pra o vídeo fundir no fundo da seção.
+4. **Custo de performance é real** — vídeo pesa o LCP. Pôster (`poster=`) leve como LCP, vídeo
+   carrega depois; `preload="none"` se abaixo da dobra. Medir CWV na Etapa 4 DEPOIS de pôr o
+   vídeo. `prefers-reduced-motion` → trocar o vídeo pelo pôster estático.
+
+**Como o sistema GERA o vídeo (executável, não manual).** A geração do MP4 é automatizada pelo
+`scripts/gerar-video.mjs --provedor kie` — **KIE.AI é o provedor padrão** (mais barato; modelos
+`kling`, `seedance`, `veo`), com `--provedor fal` como alternativa. Precisa de `KIE_KEY` no `.env`
+(ver `.env.example`). O script faz o pipeline: still on-brand (via `gerar-imagem.mjs`, que também usa
+KIE) → anima image-to-video → devolve o MP4. Passos:
+1. **Imagem-base com logo** — `gerar-imagem.mjs` cria o produto/cena com o logo da marca, 16:9, 2K.
+   (Motion-graphics em vez de produto real = `/reel-marca`.)
+2. **Animar** — `gerar-video.mjs --provedor kie --modelo seedance` (movimento controlado) ou `kling`.
+   Loop: hoje o melhor caminho é movimento sutil que volta ao início (ex.: giro lento no eixo); para
+   loop perfeito frame-a-frame, fechar no corte/ffmpeg na pós (start=end ainda não é flag do script).
+   `--dry-run` mostra o custo KIE antes de gastar crédito.
+3-4. **Integrar e otimizar** (já feito pelo sistema): montar o hero `<video autoplay muted loop
+   playsinline poster="...">` com overlay de contraste medido (gate 4c), pôster leve como LCP,
+   `preload` correto, fallback `prefers-reduced-motion`, e validar CWV na Etapa 4.
+
+Honestidade comercial: o sistema gera o vídeo, mas a QUALIDADE depende do modelo/prompt — passar
+pelo `/revisar` antes de cravar no hero, e se sair genérico (AI slop), cair pro hero estático.
+O scroll-driven video (efeito #10 do `craft-movimento.md`) é integrável por código (sincronizar
+`video.currentTime` ao scroll); cuidar do seek travado em mobile — testar no 4a, cair pro
+before/after estático onde travar.
+
 ## Etapa 4 — Verificação visual + performance (obrigatória)
 
 **4a. Visual.** Abrir a página real (Playwright) e capturar screenshot em **390px, 768px e
@@ -146,10 +250,14 @@ certas. Mostrar as capturas ao usuário pra aprovação — ele aprova vendo.
 **4b. Core Web Vitals (medir, não prometer).** Performance é requisito do produto R$ 5.000 —
 não declarar "carrega rápido" sem medir. Rodar Lighthouse (ou medição equivalente via
 Playwright) na página e conferir os limiares de 2026:
-- **LCP ≤ 2,0s** · **INP ≤ 200ms** · **CLS ≤ 0,1** (LCP "good" caiu de 2,5s pra 2,0s no core
-  update de mar/2026 — era 2,5s até então; INP substituiu o FID em 2024 — FID é métrica morta,
-  não usar)
-- Reprovou algum → consertar a causa antes de declarar pronto: LCP alto = imagem/hero pesado
+- **LCP ≤ 2,5s** (limiar oficial de REPROVA) · **INP ≤ 200ms** · **CLS ≤ 0,1**. O Google e o
+  web.dev definem "good LCP = 2,5s ou menos" (web.dev/articles/lcp · developers.google.com/search/
+  docs/appearance/core-web-vitals) — esse é o número que vale com o cliente. **Alvo agressivo da
+  casa: ≤ 2,0s** — meta interna pra sobrar folga, NÃO motivo de reprova: página entre 2,0s e 2,5s
+  passa (o Google aprova), só não bateu a meta da casa. (INP substituiu o FID em 2024 — FID é
+  métrica morta, não usar.) Se algum dia o Google baixar o teto oficial, confirmar na fonte
+  primária antes de mudar este número — não citar limiar de blog de SEO como fato.
+- Reprovou (acima de 2,5s) → consertar a causa antes de declarar pronto: LCP alto = imagem/hero pesado
   ou fonte bloqueando; INP alto = JS de animação (Etapa 3.5) travando a thread; CLS alto =
   imagem/fonte sem dimensão reservada. A camada de movimento (3.5) é o suspeito nº1 de INP —
   medir DEPOIS de aplicá-la, não antes.
@@ -160,13 +268,35 @@ Playwright) na página e conferir os limiares de 2026:
 - Registrar os três números (a mediana) no `publicacao.md`. Página não é declarada pronta com
   CWV reprovado, do mesmo jeito que não é declarada pronta com texto vazando.
 
-## Etapa 5 — Entrega
+**4c. Acessibilidade — gate, não opinião (e o vídeo é o pior infrator).** 94% dos sites reprovam
+WCAG AA; o item nº1 é contraste de texto. Sobre VÍDEO/imagem de fundo o risco dobra porque o
+contraste muda quadro a quadro. Conferir:
+- **Contraste AA do texto do hero MEDIDO sobre o frame mais claro do vídeo** — não no olho. Garantir
+  com overlay sólido/gradiente entre vídeo e texto (ex.: camada escura a ≥45% sobre vídeo claro), e
+  re-medir. Texto que some num frame reprova.
+- **Vídeo autoplay:** `muted` obrigatório (senão o browser bloqueia e é hostil), controle de
+  pausa acessível se durar >5s, `prefers-reduced-motion` → pôster estático (já na Etapa 3.5).
+- **Foco visível, navegação por teclado, alt em imagem com conteúdo, ordem de leitura correta no
+  source** (liga com a regra GEO-safe: o que a IA lê é o que o leitor de tela lê).
+
+## Etapa 5 — Entrega + plano de medição
 
 `producao/paginas/<slug>/` com `index.html`, assets e `publicacao.md` (como subir:
 Vercel/Netlify/hospedagem própria, apontamento de domínio em passos simples). Variações
 pra reunião comercial (cenário "site antigo, reunião amanhã"): gerar 2 direções da
 Etapa 1 + abertura de cada uma renderizada — decisão visual na reunião, página completa
 depois da escolha.
+
+**Plano de medição + iteração (a entrega não é o fim — conversão é ciclo, não evento).** Página
+premium sem medição é chute caro. No `publicacao.md`, deixar registrado:
+- **O que medir** — taxa de conversão (a UMA ação), origem do tráfego, e onde o visitante abandona.
+  Instrumentar: analytics + um heatmap/gravação de sessão (ex.: Clarity grátis) pra ver o scroll e o
+  clique reais. A meta é a faixa do nicho fixada na Etapa 0, não um número inventado.
+- **Hipótese de teste A/B** — deixar UMA aposta pronta pra testar quando houver tráfego (geralmente o
+  headline ou o CTA — o que mais move a agulha). Não testar antes de ter volume; registrar a hipótese.
+- **Cadência** — CRO real é ciclo de ~4-6 semanas (medir → 1 mudança → re-medir), não entrega única.
+  O `/desempenho` fecha esse loop; o aprendizado validado sobe pra `nucleo/aprendizados.md` e calibra
+  a próxima página. Vender a página como "viva" (medida e melhorada), não como quadro pendurado.
 
 ## Regras
 

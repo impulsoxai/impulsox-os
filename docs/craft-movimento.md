@@ -9,13 +9,19 @@
 > prova velocidade ao mesmo tempo. Movimento sem propósito é poluição. A régua é capturar de
 > FONTE REAL (o `/premium-design` puxa o código do site), nunca inventar o efeito.
 
-A régua final mora em `marca/design-guide.md` (a marca é lei) e no CLAUDE.md (LCP < 2s,
-`prefers-reduced-motion` sempre). Este doc nomeia e prioriza; a captura do código é o
+A régua final mora em `marca/design-guide.md` (a marca é lei) e no CLAUDE.md (LCP ≤ 2,5s oficial /
+alvo da casa ≤ 2,0s, `prefers-reduced-motion` sempre). Este doc nomeia e prioriza; a captura do código é o
 `/premium-design`.
+
+> Este doc é só MOVIMENTO. A direção criativa completa de um site "nível agência" — tipografia,
+> cor, profundidade, composição editorial, 3D (Spline/Rive/Lottie) e o mapa das 8 técnicas
+> premiadas com site real de onde capturar — mora em **`docs/dna-cinematografico.md`**, o andar
+> de cima. Regra-mãe de lá: o hero estático com direção de arte impecável vence o hero animado
+> genérico — movimento é o tempero, não o prato.
 
 ---
 
-## O catálogo — 9 efeitos (do mais seguro ao mais pesado)
+## O catálogo — 10 efeitos (do mais seguro ao mais pesado)
 
 Cada efeito tem a ficha: **o que é · quando dá WOW · quando NÃO usar · custo · reduced-motion ·
 de onde capturar**.
@@ -120,6 +126,22 @@ de onde capturar**.
 - **De onde capturar:** Lenis (lenis.dev · github.com/darkroomengineering/lenis) — open-source,
   usado pelas top agências; exemplos cinematográficos em FreeFrontend e Codrops.
 
+### 10. Scroll-driven video (vídeo amarrado ao scroll)
+- **O que é:** um vídeo curto (ex.: transição before/after — antes sujo → depois limpo, produto
+  montando, cena transformando) cujo **tempo é controlado pela posição do scroll**: o usuário
+  rola e o vídeo avança quadro a quadro, em vez de tocar sozinho. A rolagem "conduz" a transformação.
+- **Quando dá WOW:** prova de transformação (antes/depois de serviço — limpeza, reforma, estética),
+  produto que se monta, processo que se revela. WOW + argumento juntos (mostra o resultado).
+- **Quando NÃO usar:** sem narrativa de transformação clara (vira firula); vídeo longo (sequestra
+  o scroll). Manter ≤5s de conteúdo.
+- **Custo:** médio. Técnica leve = sincronizar `video.currentTime` à fração de scroll da seção
+  (IntersectionObserver + scroll). Vídeo precisa ser otimizado/curto pra o seek ser fluido;
+  alternativa moderna = CSS `animation-timeline: scroll()` onde suportado.
+- **reduced-motion:** mostrar só o estado final (foto "depois") ou um before/after estático lado a lado.
+- **De onde capturar:** padrão consolidado em landings de serviço premium (Jack Roberts demonstra
+  na transição before/after de driveway); a mecânica `currentTime`↔scroll é canônica (CSS-Tricks
+  "scroll-controlled video"). Capturar o easing/sincronia, o conteúdo é sempre do cliente.
+
 ---
 
 ## Regras inegociáveis (valem mais que qualquer efeito acima)
@@ -129,7 +151,7 @@ de onde capturar**.
 2. **Capturar de fonte real, nunca inventar.** Este doc nomeia o efeito e aponta o site; a
    captura do código real (keyframe, easing, JS) é o `/premium-design`. Do site vem o "como",
    nunca a identidade (cor/fonte são sempre da marca do cliente).
-3. **Performance é lei.** LCP < 2s, zero layout shift, lazy-load. WebGL pesado ameaça o número de
+3. **Performance é lei.** LCP ≤ 2,5s (oficial; alvo da casa ≤ 2,0s), zero layout shift, lazy-load. WebGL pesado ameaça o número de
    que a marca tem orgulho — usar só quando o ganho justifica, com a versão CSS como alternativa.
 4. **`prefers-reduced-motion` sempre.** Todo efeito tem o fallback descrito na ficha.
 5. **Máximo 2-3 efeitos fortes por página.** Excesso mata o WOW; quando tudo se mexe, nada

@@ -24,6 +24,7 @@ import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { registrarCusto } from "./registrar-custo.mjs";
 import { registrarPasso } from "./registrar-passo.mjs";
+import { submeterTarefaKie, aguardarResultadoKie, submeterTarefaVeoKie, aguardarResultadoVeoKie, uploadParaKieAPI } from "./lib-provedor-kie.mjs";
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
 const args = process.argv.slice(2);
@@ -74,6 +75,14 @@ export function custoClipe(modelo, seg) {
   return s <= 5 ? 0.35 : 0.70;
 }
 
+export function custoClipeKie(modelo, seg) {
+  const s = Number(seg) || 5;
+  if (modelo === "kling") return s * 0.07;
+  if (modelo === "seedance") return Math.min(12, Math.max(2, s)) * 0.057;
+  if (modelo === "veo") return 1.28;
+  return null;
+}
+
 // duracaoAudio — lê a duração (s) da saída de `ffprobe -show_entries format=duration`.
 // Função pura: recebe a STRING de saída, não roda ffprobe. Devolve 0 se não achar.
 export function duracaoAudio(saidaFfprobe) {
@@ -117,6 +126,8 @@ if (import.meta.main) {
   if (!roteiroPath) falhar("informe o roteiro (.json com {slug, cenas:[{texto,visual,segundos}]}).");
   if (!existsSync(roteiroPath)) falhar(`roteiro não encontrado: ${roteiroPath}`);
   const modeloVideo = flag("--modelo") || "kling";
+  const provedor = flag("--provedor") || "fal";
+  if (!["fal", "kie"].includes(provedor)) falhar(`--provedor inválido: ${provedor} (use fal ou kie).`);
   const dryRun = has("--dry-run");
   const LARGURA = 1080, ALTURA = 1920;
 
@@ -125,7 +136,11 @@ if (import.meta.main) {
   catch { falhar("roteiro não é um JSON válido."); }
   const cenas = roteiro?.cenas;
   if (!Array.isArray(cenas) || cenas.length === 0) falhar("roteiro sem cenas (precisa de pelo menos uma).");
-  if (!["kling", "wan", "seedance", "ltx"].includes(modeloVideo)) falhar(`--modelo inválido: ${modeloVideo} (use kling, seedance, ltx ou wan).`);
+  const MODELOS_VALIDOS = ["kling", "wan", "seedance", "ltx", "veo"];
+  if (!MODELOS_VALIDOS.includes(modeloVideo)) falhar(`--modelo inválido: ${modeloVideo} (use kling, seedance, ltx, wan ou veo).`);
+  if (modeloVideo === "veo" && provedor !== "kie") falhar("--modelo veo só existe no kie.ai (use --provedor kie).");
+  const KIE_SUPORTADOS = ["kling", "seedance", "veo"];
+  if (provedor === "kie" && !KIE_SUPORTADOS.includes(modeloVideo)) falhar(`kie.ai não suporta --modelo ${modeloVideo} ainda (use kling, seedance ou veo, ou troque --provedor fal).`);
   for (const [i, c] of cenas.entries()) {
     if (!c.texto) falhar(`cena ${i + 1} sem "texto" (a legenda).`);
     if (!c.visual && !c.imagem) falhar(`cena ${i + 1} precisa de "visual" (prompt da still) OU "imagem" (caminho de uma foto pronta).`);
@@ -135,7 +150,9 @@ if (import.meta.main) {
   if (dryRun) {
     console.log(JSON.stringify({
       dry_run: true, slug: roteiro.slug, largura: LARGURA, altura: ALTURA,
-      modelo_video: modeloVideo, duracao_total: duracaoTotal,
+      modelo_video: modeloVideo, duracao_total: duracaoTotal, provedor,
+      custo_estimado_fal_usd: modeloVideo === "veo" ? null : Number(cenas.reduce((s, c) => s + custoClipe(modeloVideo, Number(c.segundos) || 5), 0).toFixed(2)),
+      custo_estimado_kie_usd: KIE_SUPORTADOS.includes(modeloVideo) ? Number(cenas.reduce((s, c) => s + (custoClipeKie(modeloVideo, Number(c.segundos) || 5) || 0), 0).toFixed(2)) : null,
       cenas: cenas.map((c) => ({ texto: c.texto, segundos: Number(c.segundos) || 5 })),
     }, null, 2));
     process.exit(0);
@@ -143,7 +160,9 @@ if (import.meta.main) {
 
   // --- orquestração real (still -> anima via Fal -> costura via ffmpeg) -------
   const FAL_KEY = process.env.FAL_KEY;
-  if (!FAL_KEY) falhar("FAL_KEY não definida no ambiente (.env).");
+  const KIE_KEY = process.env.KIE_KEY;
+  if (provedor === "fal" && !FAL_KEY) falhar("FAL_KEY não definida no ambiente (.env).");
+  if (provedor === "kie" && !KIE_KEY) falhar("KIE_KEY não definida no ambiente (.env).");
   const BASE = process.env.FAL_BASE_URL || "https://queue.fal.run";
   const saida = flag("--saida") || join(dirname(roteiroPath), `${roteiro.slug || "reel"}.mp4`);
   const ref = flag("--ref");
@@ -202,6 +221,29 @@ if (import.meta.main) {
     ltx: "fal-ai/ltx-video-13b-distilled/image-to-video",
   };
   const MODELO_EP = EP_VIDEO[modeloVideo] || EP_VIDEO.kling;
+  const KIE_MODEL_VIDEO = { kling: "kling/v3-turbo-image-to-video", seedance: "bytedance/seedance-2" };
+  const KIE_BASE = process.env.KIE_BASE_URL || "https://api.kie.ai";
+
+  async function kieVideo(stillPath, segundos, prompt) {
+    const seg = Number(segundos) || 5;
+    const imageUrl = await uploadParaKieAPI(stillPath, { kieKey: KIE_KEY, base: KIE_BASE });
+    let taskId, resultUrls;
+    if (modeloVideo === "veo") {
+      taskId = await submeterTarefaVeoKie({ kieKey: KIE_KEY, base: KIE_BASE, prompt, model: "veo3_fast", imageUrls: [imageUrl], aspect_ratio: "9:16", resolution: "1080p", duration: Math.min(8, Math.max(4, Math.round(seg))) });
+      ({ resultUrls } = await aguardarResultadoVeoKie({ kieKey: KIE_KEY, base: KIE_BASE, taskId }));
+    } else {
+      const input = modeloVideo === "seedance"
+        ? { prompt, image_url: imageUrl, duration: String(Math.min(12, Math.max(2, seg))), resolution: "1080p", aspect_ratio: "9:16" }
+        : { prompt, image_url: imageUrl, duration: seg <= 5 ? "5" : "10" };
+      taskId = await submeterTarefaKie({ kieKey: KIE_KEY, base: KIE_BASE, model: KIE_MODEL_VIDEO[modeloVideo], input });
+      ({ resultUrls } = await aguardarResultadoKie({ kieKey: KIE_KEY, base: KIE_BASE, taskId }));
+    }
+    if (!resultUrls?.[0]) falhar("kie.ai: resposta sem vídeo.");
+    const buf = Buffer.from(await (await fetch(resultUrls[0])).arrayBuffer());
+    const out = join(work, `c${clipes.length}.mp4`);
+    writeFileSync(out, buf);
+    return out;
+  }
 
   async function falVideo(stillPath, segundos, prompt) {
     const imageUrl = `data:image/png;base64,${readFileSync(stillPath).toString("base64")}`;
@@ -258,8 +300,8 @@ if (import.meta.main) {
       execFileSync("node", [GERAR_IMG, ...imgArgs], { stdio: "inherit", env: { ...process.env, FAL_KEY, FAL_BASE_URL: process.env.FAL_BASE_URL } });
     }
     const motion = (c.visual || "the scene") + ", slow subtle cinematic camera motion, smooth, photographic, no distortion";
-    clipes.push(await falVideo(still, segundos, motion));
-    custoVideo += custoClipe(modeloVideo, segundos);
+    clipes.push(await (provedor === "kie" ? kieVideo(still, segundos, motion) : falVideo(still, segundos, motion)));
+    custoVideo += provedor === "kie" ? (custoClipeKie(modeloVideo, segundos) || 0) : custoClipe(modeloVideo, segundos);
     legendas.push(c.texto);
     duracoes.push(segundos);
   }
@@ -295,7 +337,7 @@ if (import.meta.main) {
       renameSync(comVoz, saida);
     }
   }
-  registrarCusto({ script: "gerar-video", modelo: modeloVideo, custo: Number(custoVideo.toFixed(2)) });
+  registrarCusto({ script: "gerar-video", modelo: provedor === "kie" ? `${modeloVideo}(kie)` : modeloVideo, custo: Number(custoVideo.toFixed(2)) });
   const duracaoFinal = cenas.reduce((s, c) => s + (Number(c.segundos) || 5), 0);
   console.log(JSON.stringify({ ok: true, saida, cenas: cenas.length, duracao_total: duracaoFinal }, null, 2));
 }
