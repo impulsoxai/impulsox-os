@@ -245,4 +245,4 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 
 ---
 
-*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.11*
+*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.12*

@@ -38,8 +38,15 @@ depois. Nunca trava exigindo a entrevista inteira de uma vez.
    `canal-youtube/voz-canal.md` — é voz de **fala/narração**, distinta da voz de copy
    escrita em `nucleo/voz.md`; não confundir as duas nem misturar arquivo.
 2. **Já existe voz?** Se o arquivo tem conteúdo real, perguntar se é pra refinar em cima
-   do que existe ou refazer do zero a partir da nova entrevista.
-3. **Já tem transcrição na mão?** Se o usuário já chega com a entrevista pronta — caso
+   do que existe ou refazer do zero a partir da nova entrevista. **"Refazer do zero" vale
+   pro `voz.md`, nunca pra `nucleo/aula-do-dono.md`** — a aula espontânea do `/plugar` é a
+   melhor amostra não-ensaiada que o sistema jamais terá; ela se soma à entrevista nova,
+   não é substituída por ela.
+3. **Tem aula do `/plugar`?** Se `nucleo/aula-do-dono.md` existe, ler ANTES de entregar o
+   roteiro: marcar quais das 6 perguntas a aula já respondeu e avisar o dono ("sua aula do
+   setup já cobriu as perguntas X e Y — no áudio, foca nas outras; se quiser repetir
+   alguma, melhor ainda"). Ponto coberto não se repergunta — mesma regra do `/plugar`.
+4. **Já tem transcrição na mão?** Se o usuário já chega com a entrevista pronta — caso
    comum no modo agência, em que ele só cola a transcrição do dono-cliente — **pular o
    roteiro (Fase 1) e ir direto pra Fase 2.** O roteiro só serve a quem ainda vai gravar.
 
