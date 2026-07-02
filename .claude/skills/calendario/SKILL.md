@@ -40,6 +40,9 @@ Com degrau 3+ (entrevista feita), o plano sai calibrado de verdade.
 - `producao/radar/<mês>.md` — as ideias pesquisadas do mês (oferta, palavra-chave,
   pontuação). **Se não existir, oferecer rodar `/radar` antes** — calendário com radar
   sai embasado em demanda real; sem ele, sai do núcleo e marca as pautas como suposição.
+- `producao/ideias/banco.md` — o banco vivo do `/pulso`: as **EVERGREEN** acumuladas são
+  pauta pronta com demanda já filtrada (colher antes de inventar tema novo); deixar
+  ~1 slot/semana de flex pra ideia QUENTE do dia (newsjacking não espera o plano).
 
 ## Como montar o plano
 

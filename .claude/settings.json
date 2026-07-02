@@ -53,7 +53,9 @@
       "Bash(perl -i -pe 'if \\($. == 63\\) { $_ .= \"\\\\n**Novidade/tendência do setor entra — mas nunca crua.** Dica ou notícia do nicho \\(ex.:\\\\nnovidade de IA pra um negócio de IA\\) cabe dentro de Ensinar/Posicionar e REFORÇA a\\\\nautoridade de tópico — desde que passe pela lente do negócio: o post responde \\\\\"o que\\\\nisso muda pro [cliente do negócio] amanhã\\\\\", com opinião. Notícia repostada sem lente é\\\\ncommodity \\(mil contas postam igual no mesmo dia, zero save\\) e não entra no plano.\\\\n\" }' .claude/skills/calendario/SKILL.md)",
       "Bash(warp-cli status *)",
       "Bash(warp-cli connect *)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(git mv *)",
+      "Bash(perl -i -pe 'if \\($. == 35\\) { $_ .= \"- `producao/ideias/banco.md` — o banco do `/pulso` \\(diário\\): EVERGREEN com tração alta\\\\n  entra como candidata do mês SEM re-pesquisar \\(demanda já medida\\); o que o pulso viu\\\\n  morrer sem uso também ensina \\(tema quente que o dono deixou passar\\)\\\\n\" }' .claude/skills/radar/SKILL.md)"
     ],
     "additionalDirectories": [
       "c:\\Users\\ACER\\Desktop\\ImpulsoX-OS\\.firecrawl"
