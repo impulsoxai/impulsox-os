@@ -38,6 +38,16 @@ tamanho de frase (curta? longa? misturado?), nível de vocabulário, como abre p
 tiques de pontuação, jeito de fazer transição. Reescrever casando com esses padrões — não
 só tirar IA, mas substituir pelo jeito da amostra.
 
+## O motor de engajamento — `references/craft-de-engajamento.md`
+
+Tirar o vício é a metade defensiva. A ofensiva — escrever com **inteligência**, abrir
+**curiosidade** de verdade, mexer com a **emoção** certa e levar até a **ação** — mora
+nos 8 pilares de `references/craft-de-engajamento.md` (clareza, voz do cliente,
+inteligência, curiosidade, emoção, prova, ritmo, ação — cada um com mecânica e exemplo
+antes→depois). **Ler antes de reescrever qualquer peça de conteúdo/venda**; o checklist
+de lá roda junto com o audit "ainda-IA" do passo 2. Em texto técnico/neutro, pular
+(mesma ressalva do SOUL).
+
 ## Como roda — loop draft → audit → final
 
 Substitui os "3 modos avulsos" por uma sequência com auto-crítica no meio. Não é passada
@@ -47,12 +57,15 @@ Substitui os "3 modos avulsos" por uma sequência com auto-crítica no meio. Nã
 Reescrever o texto tirando os vícios da tabela e consertando o ritmo. Cobrir tudo o que
 o original cobria — se tinha cinco parágrafos, o rascunho tem cinco. Trocar genérico por
 concreto (número, nome, exemplo real). Ler em voz alta na cabeça: varia o tamanho da
-frase? Prefere o simples (é/tem/faz) ao rebuscado?
+frase? Prefere o simples (é/tem/faz) ao rebuscado? Aplicar os 8 pilares do craft
+(referência acima): a 1ª frase puxa a 2ª? tem "mas"-pivô? a lacuna aberta é concreta?
 
-### 2. Audit — "o que aqui ainda denuncia IA?"
+### 2. Audit — "o que aqui ainda denuncia IA?" + checklist do craft
 Parar e responder essa pergunta em bullets curtos. Listar os tells que sobraram (ritmo
 ainda tidy demais, contraste limpo demais, fecho meio slogan, etc.). É auto-crítica
-explícita, não opcional.
+explícita, não opcional. Em peça de conteúdo/venda, rodar TAMBÉM o checklist dos 8
+pilares (fim do `references/craft-de-engajamento.md`) — os furos de curiosidade, emoção
+e prova entram nos mesmos bullets.
 
 ### 3. Final
 Reescrever resolvendo os bullets do audit **e** respeitando as restrições duras abaixo.
@@ -170,6 +183,9 @@ Como pôr pulso:
 - Passou a **varredura de restrição dura**: nenhum `—`/`–`/`--`, nenhuma aspa curva,
   nenhum título em title-case, sem negrito mecânico, sem emoji decorativo.
 - Nenhum item da tabela sobrou sem motivo; o audit "ainda-IA" foi respondido e resolvido.
+- Em peça de conteúdo/venda: o checklist dos 8 pilares passou (1ª frase puxa a 2ª;
+  lacuna concreta aberta E fechada; uma emoção dominante; objeção nº 1 respondida;
+  um CTA com ponte) — ver `references/craft-de-engajamento.md`.
 - A voz é reconhecível como a da marca (bate com `nucleo/voz.md`) — e o texto tem alma,
   não só ausência de tique (ver SOUL).
 - O freio de falso-positivo foi respeitado: especificidade, sentimento misto e estrutura

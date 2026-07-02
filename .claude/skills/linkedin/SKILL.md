@@ -40,14 +40,19 @@ autor, não genérico — e no LinkedIn voz genérica é morte na primeira linha
   (priorizando os **validados aqui**) e registrar o nome da fórmula no arquivo da peça
 - `docs/frase-que-pega.md` — a craft da **primeira linha que segura** (Made to Stick,
   devices, Big Idea, autenticidade); no LinkedIn voz genérica morre na 1ª linha
+- `docs/hooks.md` — o acervo de mecânicas de hook; a variação alternativa do corte (que
+  esta skill já entrega) sai de uma mecânica DIFERENTE da principal, e a mecânica usada
+  fica registrada no arquivo da peça pro `/desempenho` validar
 - `producao/calendario/<mes>.md` — tema e intenção, se veio do calendário
 - Perguntar uma vez e registrar em `nucleo/voz.md`: o post sai no **perfil pessoal**
-  (do dono/sócio) ou na **página da empresa**? Perfil pessoal alcança mais; página
-  constrói presença institucional. Recomendar pessoal como motor principal.
+  (do dono/sócio) ou na **página da empresa**? Perfil pessoal alcança MUITO mais — página
+  de empresa perdeu 60-66% de alcance desde 2024 e hoje atinge ~1,6% dos seguidores; é
+  vitrine institucional, não motor. Recomendar pessoal como motor principal, sempre.
 
 ## Formatos
 
-1. **Post de texto (padrão)** — 900-1.800 caracteres. O formato com melhor custo-benefício.
+1. **Post de texto (padrão)** — 900-1.800 caracteres, sweet spot **1.000-1.300** (a faixa que mais
+   gera dwell time sem inflar). O formato com melhor custo-benefício.
 2. **Post com imagem** — quando um dado ou visual sustenta o argumento (pedir a imagem ao
    `/post` se precisar de peça da marca).
 3. **Documento PDF** — o "carrossel" do LinkedIn: conteúdo educativo denso, 6-12 páginas
@@ -90,8 +95,11 @@ nessa rede.
 **Fecho — abre conversa.** Pergunta genuína que um par responderia, ou posição firme que
 convida discordância civilizada. Nunca "concorda? 👇".
 
-**Link?** No corpo, não. Se precisa apontar pra algo: "link no primeiro comentário" — e
-entregar o comentário pronto junto.
+**Link?** No corpo, não (−60% de alcance). E **"link no primeiro comentário" TAMBÉM é
+penalizado desde o início de 2026** — o truque morreu. Caminho: entregar o valor completo
+NATIVO no post (o leitor não deveria precisar sair) e apontar pro perfil/bio ou "me chama
+na DM que eu mando". Se o link externo é inevitável (ex.: inscrição), aceitar o custo de
+alcance conscientemente e avisar o dono em uma linha — nunca fingir que o comentário salva.
 
 **Hashtags:** 0 a 3, específicas. No LinkedIn elas pesam pouco; relevância do texto pesa
 muito.
@@ -140,9 +148,13 @@ Salvar em `producao/linkedin/<YYYY-MM-DD>-<slug>.md`:
 - Sugestão de melhor janela de publicação (terça a quinta, manhã, como padrão — ajustar
   quando houver dados reais da conta)
 
-**Golden Hour — a 1ª hora decide a distribuição.** O LinkedIn testa o post num público
-pequeno na primeira hora; cada **resposta do autor a um comentário reinicia o ciclo** de
-distribuição (e puxa dwell time de volta). Por isso a entrega inclui um **kit de Golden Hour**:
+**Golden Hour — a 1ª hora decide a distribuição.** Em 2026 o post entrega **~40% do
+alcance total na primeira hora** (e ~55% nas primeiras 24h); só ~5% dos posts que flopam
+na 1ª hora se recuperam. O LinkedIn testa o post num público pequeno (2-5% da rede);
+cada **resposta do autor a um comentário reinicia o ciclo** de distribuição (e puxa
+dwell time de volta). Regra de cadência: **2-3 posts por semana, com 48h+ entre eles** —
+um post bom rende por 48-72h, e postar em cima canibaliza o anterior. Por isso a entrega
+inclui um **kit de Golden Hour**:
 - **1-2 comentários de resposta prontos** — não respostas genéricas ("obrigado!"), mas
   continuações que agregam (um dado a mais, um contraponto, uma pergunta que puxa o próximo
   comentário). São o que o autor cola assim que alguém comenta.
