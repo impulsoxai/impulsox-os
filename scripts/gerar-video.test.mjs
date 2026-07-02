@@ -104,8 +104,8 @@ test("custoClipeKie: kling $0.07/s", () => {
   assert.ok(Math.abs(custoClipeKie("kling", 10) - 0.70) < 0.001, "kling 10s ~$0.70");
 });
 
-test("custoClipeKie: seedance $0.057/s", () => {
-  assert.equal(Math.round(custoClipeKie("seedance", 5) * 1000), Math.round(0.057 * 5 * 1000));
+test("custoClipeKie: seedance-2 $0.215/s (preço medido 2026-07-02, não o v1 barato)", () => {
+  assert.equal(Math.round(custoClipeKie("seedance", 5) * 1000), Math.round(0.215 * 5 * 1000));
 });
 
 test("custoClipeKie: veo preço fixo $1.28", () => {
