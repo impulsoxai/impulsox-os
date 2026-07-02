@@ -78,7 +78,7 @@ export function custoClipe(modelo, seg) {
 export function custoClipeKie(modelo, seg) {
   const s = Number(seg) || 5;
   if (modelo === "kling") return s * 0.07;
-  if (modelo === "seedance") return Math.min(12, Math.max(2, s)) * 0.057;
+  if (modelo === "seedance") return Math.min(12, Math.max(2, s)) * 0.215; // seedance-2 no KIE: ~$1,29/6s (medido 2026-07-02) — NÃO é o v1 barato
   if (modelo === "veo") return 1.28;
   return null;
 }
