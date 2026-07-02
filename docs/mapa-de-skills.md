@@ -81,6 +81,13 @@ embasadas  e quando         (leem marca + voz + provas)       sênior           
 - **/radar** pesquisa → **/calendario** decide → skills de produção executam (cada uma lê
   `marca/`, `nucleo/voz.md`, `nucleo/provas.md`) → **/revisar** (olhos frios) → **/publicar**
 - **/desempenho** mede → destila em `aprendizados.md` → alimenta o próximo **/calendario**
+- **/pulso** (diário, irmão do /radar): varre as fontes de `nucleo/fontes.md` (últimas
+  24-48h), filtra pela lente do negócio e alimenta o **banco de ideias vivo**
+  (`producao/ideias/banco.md`). Ideia QUENTE → `/post`/`/linkedin` na hora (newsjacking);
+  EVERGREEN → o `/calendario` colhe. O `/abrir` sugere o pulso quando o dia ainda não
+  rodou. Fronteira: `/radar` = foto do MÊS (5 camadas); `/pulso` = o que tem validade
+  de 48h. Hooks das peças saem de `docs/hooks.md` (acervo de mecânicas, validado pelo
+  /desempenho)
 - **/repurpose** (opcional, entre /radar e /calendario): 1 fonte longa (vídeo, artigo,
   newsletter) vira uma semana de peças nativas (IG, LinkedIn, Reel/TikTok) via as skills
   donas, graduadas pelo /revisar e jogadas no /calendario. Oferecido quando o dono tem
@@ -278,6 +285,7 @@ contrato pra aquilo.
 | /voz | /calendario ou produção | — |
 | /calendario | /post · /linkedin · /conteudo (peça a peça) | radar do mês, núcleo |
 | /radar | /calendario (ou /repurpose, se há fonte longa pra reaproveitar) | núcleo |
+| /pulso | ideia QUENTE → /post·/linkedin agora; EVERGREEN → /calendario | núcleo; sem fontes.md, a 1ª rodada monta |
 | /concorrente | /radar (lacuna→pauta) ou /proposta·/oferta (posicionar) | nome dos concorrentes |
 | /repurpose | /calendario (peças jogadas no mês) | fonte longa, núcleo |
 | /post · /linkedin · /conteudo | /revisar | marca/, voz, provas |

@@ -37,6 +37,24 @@
 - **Rede e formato:** ambas; exige material real — sem caso, a fórmula não se aplica
 - **Origem:** mercado (padrão clássico de case) — a testar
 
+## Carousel Arc (arco de venda em 5 atos)
+
+- **Esqueleto:** HOOK (capa: UMA palavra-herói dominante + subline dor+ganho) → DOR
+  (nomeia o problema direto + lista curta do que quebra por causa dele) → SISTEMA (o
+  mecanismo que resolve, em passos numerados 01/02/03 — mostrar o COMO, não só o quê) →
+  RESULTADO (um número específico massivo dominando a tela + checkmarks de desfechos
+  reais) → CONVITE (a oferta + promessa concreta + CTA único, keyword de comentário
+  quando houver automação de DM). Em 5 telas cruas ou expandido pra 7-10 (DOR e SISTEMA
+  ganham telas extras); o módulo PONTE do `/post` entra entre RESULTADO e CONVITE
+- **Gancho típico:** capa de uma palavra ("PARADO?" / "COBRANÇA") + subline "o que
+  [dor] te custa — e o sistema que resolve"
+- **Gatilhos:** dor reconhecida + mecanismo crível + prova específica
+- **Rede e formato:** IG carrossel de VENDA (peça CONVERTER — só oferta ATIVA, prova
+  autorizada obrigatória no RESULTADO; sem número real, não usar esta fórmula); adapta
+  pra documento PDF de LinkedIn
+- **Origem:** dissecada do molde Duncan Rogoff (carousel arc, 2026) + convergência com
+  pesquisa de carrosséis de conversão — a testar
+
 ## Bastidor com confissão
 
 - **Esqueleto:** cena interna que o público nunca vê (decisão difícil, erro, número
@@ -49,6 +67,6 @@
 
 ---
 
-*Fórmulas dissecadas de peças reais entram acima conforme o `/formulas` roda. As quatro
+*Fórmulas dissecadas de peças reais entram acima conforme o `/formulas` roda. As cinco
 iniciais são moldes de mercado — validar com o `/desempenho` antes de tratar como
 verdade da conta.*

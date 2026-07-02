@@ -42,6 +42,10 @@ Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degra
   `legenda.md` da peça — é o que permite ao `/desempenho` validar o molde depois
 - `docs/frase-que-pega.md` — a craft do **hook que gruda** (Made to Stick, devices, Big
   Idea, autenticidade); usar na 1ª tela/linha e no fecho — no carrossel o hook é tudo
+- `docs/hooks.md` — o **acervo de mecânicas de hook** (10 moldes com exemplo). Regra:
+  toda peça nasce com **2-3 variações de capa/hook de mecânicas DIFERENTES** pro dono
+  escolher (o slide 1 carrega ~80% do peso — não se decide de primeira). Registrar a
+  mecânica escolhida no `legenda.md`; o `/desempenho` valida
 - `nucleo/provas.md` — pros módulos FALA e HISTÓRIA: só prova com status autorizada;
   banco vazio → a `/provas` entra na fila como próximo passo
 - `producao/calendario/<mes>.md` — se a peça veio do calendário, tema e intenção já
@@ -162,13 +166,14 @@ slide de prova/contexto); o miolo educativo continua na tipografia forte que já
 - Contraste do texto sobre a foto: mínimo 4.5:1 (medir, não estimar). O overlay existe pra isso.
 - Modo 3 sempre pede aprovação visual antes de usar a imagem gerada.
 
-## Objetivo da peça: ENVIAR ou salvar (decidir ANTES de desenhar)
+## Objetivo da peça: ENVIAR, salvar ou CONVERTER (decidir ANTES de desenhar)
 
 Em 2026 o sinal que mais distribui não é o like — é **send/DM** (vale ~3-5x o like e é o
 fator **nº1** de alcance pra quem não te segue — Mosseri), seguido de **save** (~2-3x).
 **Send é o default**: toda peça mira ser enviada, salvo quando o tema é guardável (referência)
-e aí o alvo vira save. A peça declara, antes de qualquer slide, **pra qual dos dois ela é
-desenhada**:
+e aí o alvo vira save. Quando a intenção do calendário é VENDA, existe um terceiro alvo:
+**converter** — e aí a peça muda de arquitetura (ver abaixo). A peça declara, antes de
+qualquer slide, **pra qual dos três ela é desenhada**:
 
 - **Pra ENVIAR (default)** — a peça precisa de um gancho explícito de compartilhamento: algo
   que a pessoa manda pra alguém específico ("manda isso pro sócio que cuida do financeiro",
@@ -179,8 +184,19 @@ desenhada**:
   (um checklist, um resumo, uma tabela, o "print que vale guardar pra usar depois"). Se a pessoa
   não pensa "isso eu salvo", a peça não foi desenhada pra salvar. Costuma cair bem no
   penúltimo/último slide (o resumo).
+- **Pra CONVERTER** — quando a linha do calendário é de VENDA (oferta ativa). Carrossel de
+  engajamento e carrossel de conversão são bichos diferentes: o de conversão cria desejo
+  específico + credibilidade + próximo passo (fórmula: valor + especificidade + confiança +
+  CTA único — tirou um, a peça trava). Arquitetura obrigatória: arco de venda (fórmula
+  **Carousel Arc** em `docs/formulas.md`) com módulo **PONTE** + 1 slide de **prova
+  embutida** (número específico real — "R$ 47k em 3 meses" > "resultado significativo";
+  sem prova autorizada, trocar a intenção da peça). CTA por conversão (ranking 2026):
+  keyword de comentário→DM (12-18% de conversão vs 2-3% do link na bio) > link na bio >
+  save. Keyword de comentário só quando há automação de DM configurada (ou o dono responde
+  manualmente na 1ª hora) — CTA que ninguém atende queima confiança.
 
-Não é decoração: é o 1º filtro do briefing. A peça que não mira send NEM save fica bonita e some.
+Não é decoração: é o 1º filtro do briefing. A peça que não mira send, save NEM conversão
+fica bonita e some.
 
 ### Matriz CTA × plataforma (o CTA mira a métrica que a plataforma premia)
 
@@ -218,7 +234,9 @@ ela sozinha. Variar a composição entre os módulos abaixo pra criar ritmo; alt
 micro-loop pro próximo** — termina deixando uma pergunta/gancho que o slide seguinte responde
 ("e o 3º erro é o pior →"). O algoritmo lê a **completion** (quem chega ao fim) como o sinal de
 qualidade do carrossel; o swipe contínuo é o que segura. Não basta o loop capa→fecho: cada
-passagem de slide tem que puxar o dedo.
+passagem de slide tem que puxar o dedo. Reforço barato de swipe: um lembrete discreto
+("desliza →") no slide 2 e um pré-CTA ("falta 1 — não pula") — só ~5% dos carrosséis usam
+e mede-se ganho real de engajamento; discreto, nunca berrando mais que o conteúdo.
 
 Módulos de composição (vocabulário próprio do ImpulsoX-OS):
 - **TESE** — afirmação central grande + uma linha de apoio
@@ -229,6 +247,12 @@ Módulos de composição (vocabulário próprio do ImpulsoX-OS):
 - **HISTÓRIA** — mini-narrativa em 2-3 telas na espinha do playbook: personagem que o
   público reconhece → tensão real → a virada (o "mas") → desfecho com prova. Pede
   material real; sem caso, trocar de módulo
+- **PONTE** — o slide que conecta o valor entregue à oferta: depois de ensinar, dizer
+  explicitamente "se fazer isso na mão toma seu tempo, é exatamente o que a [marca] faz
+  por você". É o slide que quase todo criador pula — e a razão de carrossel bom não
+  converter. Uma frase, específica, sem pressão. **Obrigatório em peça CONVERTER**
+  (penúltimo slide, antes do FECHO); opcional e bem-vindo em peça educativa quando a
+  oferta ativa cobre o tema
 - **FECHO** — última tela: **guarda o dado/punchline mais valioso pro fim** (a melhor virada,
   o número que mais surpreende, o resumo salvável) — NÃO entregue antes. É o que puxa a
   completion >60% (quem chega ao fim) → mais Explore. A chamada única (seguir, salvar, chamar

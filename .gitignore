@@ -52,3 +52,4 @@ public/specimen.png
 *.aac
 *.wav
 *.mp3
+.claude/settings.local.json

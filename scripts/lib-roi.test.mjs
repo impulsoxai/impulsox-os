@@ -30,7 +30,36 @@ test("calcularRoi: gasto pendente (null) → marca pendente, sem inventar", () =
   assert.equal(r.gastoPendente, true);
 });
 
+// --- guardas de entrada suja: valor inválido GRITA, não vira null/0 silencioso ---
+
+test("calcularRoi: gasto negativo → erro (não vira null silencioso)", () => {
+  assert.throws(() => calcularRoi({ receita: 5000, gasto: -500 }), /gasto/i);
+});
+
+test("calcularRoi: clientesNovos negativo → erro", () => {
+  assert.throws(() => calcularRoi({ receita: 5000, gasto: 1000, clientesNovos: -3 }), /clientes/i);
+});
+
+test("calcularRoi: receita não-numérica (NaN) → erro, não R$0 fingido", () => {
+  assert.throws(() => calcularRoi({ receita: "abc", gasto: 1000 }), /receita/i);
+});
+
+test("calcularRoi: gasto não-numérico (NaN) → erro", () => {
+  assert.throws(() => calcularRoi({ receita: 5000, gasto: "xyz" }), /gasto/i);
+});
+
+test("calcularRoi: gasto null segue pendente (não é erro — é ausência)", () => {
+  const r = calcularRoi({ receita: 8000, gasto: null });
+  assert.equal(r.gastoPendente, true);
+  assert.equal(r.roi, null);
+});
+
 test("formatarBRL formata em real", () => {
   assert.equal(formatarBRL(2000), "R$ 2.000,00");
   assert.equal(formatarBRL(30000.5), "R$ 30.000,50");
+});
+
+test("formatarBRL: valor não-numérico → erro (não 'R$ NaN' no relatório)", () => {
+  assert.throws(() => formatarBRL("abc"), /número|numero/i);
+  assert.throws(() => formatarBRL(NaN), /número|numero/i);
 });

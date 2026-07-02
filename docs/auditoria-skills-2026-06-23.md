@@ -13,7 +13,7 @@ e entrega número velho perde credibilidade (e, no produto R$10k, entrega "repro
 
 | # | O quê | Onde | Fonte |
 |---|---|---|---|
-| U1 | **LCP "good" 2,5s → 2,0s** (Google core update mar/2026) | `/pagina` (Etapa 4b), `/premium-design` (gate 5), `/seo` (Fase 2) | DigitalApplied CWV 2026 |
+| U1 | ⚠️ **REVERTIDO 2026-06-30** — o "2,0s" veio só de blog de SEO (DigitalApplied); a fonte primária (web.dev/articles/lcp e developers.google.com/search/docs/appearance/core-web-vitals) mantém **LCP "good" = 2,5s**. Limiar oficial de reprova voltou a 2,5s; 2,0s virou alvo agressivo da casa. | `/pagina`, `/premium-design`, `/seo`, `/raio-x`, docs | ❌ fonte não-primária — corrigido na auditoria externa |
 | U2 | **FAQ rich result aposentado** (7 mai/2026) — FAQPage não gera mais sanfona na SERP; vale por **citabilidade IA** agora | `/seo`, `/copy` (Camada 4.5) | DigitalApplied Schema 2026 |
 | U3 | **Pisos de orçamento BR desatualizados** — Google R$600→R$2-3k/mês; Meta R$20→~R$100/dia (CPC/CPM +12-13% em 2026) | `/ads-google`, `/ads-meta` | aIntegrare, Nexus Growth BR |
 | U4 | **Open rate morreu como métrica** (Apple MPP) — usar clique/CTOR | `/email` | DigitalApplied welcome 2026 |

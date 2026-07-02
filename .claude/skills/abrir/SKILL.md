@@ -32,6 +32,9 @@ Autoria: ImpulsoX AI. Conteúdo original.
 - `nucleo/provas.md` — só a **saúde do banco**: tem prova suficiente e variada pra vender? Se
   está vazio/magro ou a última captura é antiga, vira pendência ("banco de provas fraco —
   rodar `/provas` antes da próxima peça de venda"). Não listar as provas, só o estado.
+- `producao/ideias/banco.md` — só o **cabeçalho** (data da última varredura do `/pulso`):
+  se não rodou hoje, vira a sugestão de próximo passo; se rodou, citar em meia linha quantas
+  ideias quentes estão vivas ("pulso de hoje: 3 quentes no banco").
 
 No modo agência, quando a sessão está aberta dentro de `clientes/<nome>/`, ler o núcleo
 **desse cliente**, não o da raiz.
@@ -80,6 +83,9 @@ Regras da síntese:
 
 Quando há um próximo passo óbvio dado o estado, oferecer **um** só, calibrado pelo perfil:
 
+- Pulso do dia não rodou (e `nucleo/fontes.md` existe) → "Rodo o `/pulso` de hoje?
+  (varredura de 5 min — ideias quentes do dia no banco)" — é a sugestão padrão de
+  começo de dia quando não há pendência mais urgente.
 - Degrau < 3 e sem entrevista → "Vale subir o contexto: rodo o `/plugar` completo?"
 - Calendário do mês não existe → "Quer que eu monte o `/calendario` do mês?"
 - Mês anterior fechou sem medição → "Antes de planejar, mede o mês passado? (`/desempenho`)"

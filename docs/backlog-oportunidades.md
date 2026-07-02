@@ -1,7 +1,26 @@
 # Backlog — as 8 oportunidades da auditoria SO
 
-> Rastreio vivo do que foi feito e do que espera o quê. Atualizado em 2026-06-23.
+> Rastreio vivo do que foi feito e do que espera o quê. Atualizado em 2026-07-01.
 > Origem: `docs/auditoria-so-2026-06-23.md`. Ponte com o CRM: `docs/prd-integracao-crm.md`.
+
+## 📍 Onde paramos (2026-07-01)
+
+Feito nesta sessão:
+- Leitura do CRM verificada e2e (smoke ao vivo passou — ver "GATE E2E FECHADO" abaixo).
+- `lib-roi.mjs` **endurecido**: guardas de entrada (receita/gasto/clientesNovos NaN ou
+  negativo → erro claro; `formatarBRL` rejeita não-número). Matemática inalterada. Testes:
+  lib-roi 11/11, lib-crm 8/8. Commit `5e48f34`.
+- Backup na nuvem: 2 commits empurrados pra `impulsoxai/impulsox-os` (branch
+  `melhoria-pagina-cinematografico-kie`).
+
+**🔴 BLOQUEIO ABERTO — servidor do CRM está DOWN.** `http://100.103.213.22:3001` respondeu
+200 no smoke (2026-06-24) e depois caiu (ping = 000/timeout em 2026-07-01). **Ação: pedir ao
+dev do CRM pra subir os servidores.** Enquanto down, nada de CRM ao vivo roda.
+
+Espera o server voltar:
+- [ ] Rodar `/roi` com dado real (leitura já provada; só precisa do server no ar + token `data:read` que já está no `.env`).
+- [ ] **Gerar chave `leads:write`** — self-service na aba Integrações do CRM (precisa da interface web no ar). Não depende do dev além de subir o server.
+- [ ] Validar o **write path** ao vivo (`POST /contacts` com contato-teste "TESTE OS") — hoje só testado em mock.
 
 ## ✅ Feitas — as 3 OS-puro (v0.2.6, no GitHub)
 

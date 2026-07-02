@@ -40,6 +40,9 @@ Com degrau 3+ (entrevista feita), o plano sai calibrado de verdade.
 - `producao/radar/<mês>.md` — as ideias pesquisadas do mês (oferta, palavra-chave,
   pontuação). **Se não existir, oferecer rodar `/radar` antes** — calendário com radar
   sai embasado em demanda real; sem ele, sai do núcleo e marca as pautas como suposição.
+- `producao/ideias/banco.md` — o banco vivo do `/pulso`: as **EVERGREEN** acumuladas são
+  pauta pronta com demanda já filtrada (colher antes de inventar tema novo); deixar
+  ~1 slot/semana de flex pra ideia QUENTE do dia (newsjacking não espera o plano).
 
 ## Como montar o plano
 
@@ -62,6 +65,12 @@ preenchido, usar o padrão genérico abaixo:
 - **Vender (15%)** — oferta direta com chamada clara
 Se o foco do mês é lançamento/data forte, subir Vender pra ~25% naquela janela.
 
+**Novidade/tendência do setor entra — mas nunca crua.** Dica ou notícia do nicho (ex.:
+novidade de IA pra um negócio de IA) cabe dentro de Ensinar/Posicionar e REFORÇA a
+autoridade de tópico — desde que passe pela lente do negócio: o post responde "o que
+isso muda pro [cliente do negócio] amanhã", com opinião. Notícia repostada sem lente é
+commodity (mil contas postam igual no mesmo dia, zero save) e não entra no plano.
+
 Quando possível, dar ao mês um **fio condutor**: uma pergunta grande do nicho que as
 peças respondem em pedaços (loop de série — ver `docs/persuasao.md`). Quem acompanha
 volta pra próxima peça; o mapa intenção → gatilhos do playbook orienta a produção de
@@ -80,8 +89,12 @@ O formato segue o que a peça precisa entregar — escolher pelo objetivo, não 
 - **LinkedIn:** texto pessoal com profundidade > link externo (algoritmo derruba post com
   link no corpo). Documento PDF para conteúdo educativo denso. Tom de pessoa, não de
   assessoria de imprensa.
-- O mesmo tema pode render nas duas redes, mas **reescrito por rede** — nunca a mesma
-  legenda copiada.
+- **Pauta dupla é o padrão: 1 tema = 2 peças NATIVAS.** Tema que serve às duas redes entra
+  como UMA linha marcada "IG + LI", e a produção gera duas peças distintas (repurposing é
+  tradução, não duplicação): no IG, carrossel visual com hook de 5-10 palavras e CTA de
+  save/DM; no LinkedIn, texto em 1ª pessoa (ou doc PDF) com corte de 150 caracteres e fecho
+  de conversa. Nunca a mesma legenda copiada, nunca o PNG do IG postado como imagem no
+  LinkedIn. Não há penalidade cross-platform (mito) — a punição é parecer não-nativo.
 
 ### 3b. Repurposing one-to-many — uma peça Hero gera várias derivadas
 Não tratar cada linha do calendário como peça do zero. O padrão eficiente de 2026 é

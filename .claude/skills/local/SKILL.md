@@ -96,8 +96,16 @@ Google reforçou a política em **17/abr/2026** e a FTC criminalizou em **out/20
 | **Participação em pesquisa** ("compartilhe seu resultado") | ✅ Sim | Pra todos, qualquer nota, desacoplado do Google review |
 | **Referral / indicação** | ✅ Sim | Não é review; recompensar indicação é ok |
 
-**Disparo em escala:** pelo **agente WhatsApp/CRM** (em construção, ~jul/2026) — a skill monta a
-campanha e os roteiros; até o agente existir, entrega pronto e marca o disparo como pendente.
+**Dois motores distintos (não confundir):**
+- **RESPONDER review = independente do WhatsApp.** Usa a Google Business Profile API
+  (`scripts/gbp.mjs`, `--acao responder`, dry-run por padrão, `--confirmar` publica). Dá pra um
+  **agente diário** (cron/`/automatizar`) que monitora os reviews novos e responde — positivo em
+  lote aprovado, negativo só com leitura humana (Passo 4). Não toca no WhatsApp, OS-puro,
+  possível já (depende só da credencial Google aprovada — testar o `gbp.mjs` em produção).
+- **PEDIR review em massa = espera o WhatsApp.** O disparo proativo (a pesquisa 1-5, o convite ao
+  review) vai pelo **agente WhatsApp/CRM** (~jul/2026) com os gates LGPD+HSM. Até lá, a skill
+  entrega os roteiros e marca o disparo como pendente. (Pedir por QR/recibo/canal orgânico é hoje.)
+
 **Validar a política vigente** (Google + leis BR) antes de instalar pra qualquer cliente — as
 regras mudam; esta seção reflete jun/2026.
 

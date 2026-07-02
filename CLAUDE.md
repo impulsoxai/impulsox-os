@@ -63,6 +63,8 @@ por aqui. Arquivos (ler os que estiverem preenchidos):
 - `nucleo/voz.md` — tom, estilo de escrita, palavras e clichês a evitar
 - `nucleo/foco.md` — prioridade atual, metas, prazos, sazonalidade
 - `nucleo/escada.md` — degrau de contexto atual e o que ainda falta confirmar
+- `nucleo/fontes.md` — fontes curadas da varredura diária do `/pulso`; alimenta o banco
+  de ideias vivo (`producao/ideias/banco.md`)
 - `nucleo/aprendizados.md` — o que a medição real já provou que funciona neste negócio;
   aprendizado consolidado pesa mais que qualquer padrão genérico de skill
 - `nucleo/provas.md` — banco de provas sociais (depoimentos, casos, números) com status
@@ -73,8 +75,13 @@ relatório de leitura. Para qualquer peça visual (post, anúncio, página), ler
 `marca/design-guide.md`. Para qualquer peça que precisa convencer (post, anúncio,
 página, e-mail), ler `docs/persuasao.md` — gatilhos, storytelling e as regras
 inegociáveis de persuasão honesta, e `docs/frase-que-pega.md` — a craft do hook/headline
-que gruda (Made to Stick, devices, Big Idea, autenticidade). Para copy de página, ler
+que gruda (Made to Stick, devices, Big Idea, autenticidade); o acervo de MECÂNICAS de hook
+prontas (10 moldes com exemplo, validadas pelo /desempenho) está em `docs/hooks.md` — toda
+peça nasce com 2-3 variações de hook de mecânicas diferentes. Para copy de página, ler
 também `docs/swipe-copy.md` — acervo de copy real que converte (molde transfere, frase não).
+A execução FRASE A FRASE de qualquer texto (os 8 pilares: clareza, voz do cliente,
+inteligência, curiosidade, emoção, prova, ritmo, ação) mora em
+`.claude/skills/escritor-br/references/craft-de-engajamento.md`, aplicada pelo `/escritor-br`.
 Para qualquer PITCH NARRADO (deck de `/slides`, proposta ao vivo, vídeo), ler
 `docs/pitch-narrado.md` — o craft do arco que converte (Sparkline/Duarte, espinha de Raskin,
 Equação de Valor/Hormozi, demo Tell-Show-Tell).

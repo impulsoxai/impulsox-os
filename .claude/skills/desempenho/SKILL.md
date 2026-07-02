@@ -111,6 +111,9 @@ casa). O modelo interpreta, o script calcula:
   batendo as de "vender" é padrão.
 - **Validar fórmulas:** cruzar molde × resultado e atualizar o status em `docs/formulas.md` /
   `canal-youtube/formulas-video.md` (validada / não funciona neste nicho).
+- **Validar mecânicas de hook:** as peças registram a mecânica usada (de `docs/hooks.md`);
+  mecânica que rende acima da média da conta sobe pra seção "Validadas aqui" de lá, com o
+  número. Mesma régua das fórmulas: padrão, não pico.
 - <~8 peças (IG) ou vídeo com <7-14 dias (YT) → conclusões marcadas como **tendência fraca
   (amostra pequena)**, não aprendizado consolidado.
 

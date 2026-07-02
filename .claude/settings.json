@@ -1,13 +1,78 @@
 {
-  "dangerouslySkipPermissions": true,
+  "permissions": {
+    "allow": [
+      "Edit(/.claude/skills/pagina/**)",
+      "Bash(python -c ' *)",
+      "Bash(firecrawl map *)",
+      "Bash(python kie.py)",
+      "Bash(ls ImpulsoX-OS/scripts/lib-fal-upload.mjs)",
+      "Bash(ls ImpulsoX-OS/scripts/registrar-custo.mjs ImpulsoX-OS/scripts/registrar-passo.mjs)",
+      "Bash(ls -la .firecrawl/)",
+      "Bash(grep -n \"firecrawl\" .gitignore)",
+      "Bash(git status *)",
+      "Bash(grep -iE \"\\\\.env$|\\\\.env \")",
+      "Bash(ls -d .claude/skills/velocidade .claude/skills/treinar-vendas)",
+      "Bash(ls scripts/lib-velocidade.mjs scripts/lib-velocidade.test.mjs)",
+      "Bash(ls docs/formula-ads-jp.md docs/blueprint-esteira-crescimento.md docs/auditoria-esteira-2026-06-29.md docs/exemplo-oferta-impulsox.md .claude/skills/oferta/references/molde-esteira.md)",
+      "Bash(npx --no-install playwright --version)",
+      "Bash(node \"C:/Users/ACER/AppData/Local/Temp/claude/c--Users-ACER-Desktop-ImpulsoX-OS/4a883861-4d6e-4894-9ae7-15d5bdceec47/scratchpad/shot.mjs\")",
+      "Bash(cp \"C:/Users/ACER/AppData/Local/Temp/claude/c--Users-ACER-Desktop-ImpulsoX-OS/4a883861-4d6e-4894-9ae7-15d5bdceec47/scratchpad/shot.mjs\" ./_shot_tmp.mjs)",
+      "Bash(node ./_shot_tmp.mjs)",
+      "Bash(python sd.py)",
+      "Bash(npx --no-install lighthouse --version)",
+      "Bash(cp \"C:/Users/ACER/AppData/Local/Temp/claude/c--Users-ACER-Desktop-ImpulsoX-OS/4a883861-4d6e-4894-9ae7-15d5bdceec47/scratchpad/cwv.mjs\" ./_cwv_tmp.mjs)",
+      "Bash(node ./_cwv_tmp.mjs)",
+      "Bash(mkdir -p producao/paginas/impulsox-ai/assets/hero-test)",
+      "Bash(node scripts/gerar-imagem.mjs --modelo nano --resolucao 2K --provedor kie --largura 1920 --altura 1080 --saida producao/paginas/impulsox-ai/assets/hero-test/still.png --prompt \"Cinematic dark abstract background, deep navy-black \\(#06060d\\), slow flowing golden light particles and thin light streaks, subtle violet glow in lower right, premium tech atmosphere, volumetric light, photographic depth, 16:9, no text, no logo\" --dry-run)",
+      "Bash(node scripts/gerar-imagem.mjs --modelo nano --resolucao 2K --provedor kie --largura 1920 --altura 1080 --saida producao/paginas/impulsox-ai/assets/hero-test/still.png --prompt \"Cinematic dark abstract background, deep navy-black \\(#06060d\\), slow flowing golden light particles and thin light streaks, subtle violet glow in lower right, premium tech atmosphere, volumetric light, photographic depth, 16:9, no text, no logo\")",
+      "Bash(awk '{print $5\" bytes = \"$5/1024/1024\" MB\"}')",
+      "Bash(ffmpeg -y -i still.png -vf \"scale=1280:-1\" -q:v 6 still-small.jpg)",
+      "Bash(awk '{print $5/1024\" KB\"}')",
+      "Edit(/.claude/skills/local/**)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\('•',w['title'],'::',w['url'],'\\\\n ',w.get\\('description',''\\)[:170]\\) for w in d.get\\('data',{}\\).get\\('web',[]\\)]\")",
+      "Bash(rm -f .firecrawl/herm*.json .firecrawl/herm-*.md .firecrawl/codex1.json)",
+      "Bash(head -40 docs/prd-integracao-crm.md)",
+      "Bash(ls marca/tokens.css marca/design-guide.md)",
+      "Bash(cd \"C:/Users/ACER/Desktop/ImpulsoX-OS\" && echo \"=== ha referencia de cor ImpulsoX em algum lugar? ===\"; grep -rhi \"impulsox\\\\|#[0-9a-f]\\\\{6\\\\}\" marca/ 2>/dev/null | grep -i \"#\" | head -5; echo \"=== chrome/edge pra PDF? ===\"; ls \"/c/Program Files/Google/Chrome/Application/chrome.exe\" \"/c/Program Files \\(x86\\)/Microsoft/Edge/Application/msedge.exe\" 2>/dev/null | head -2)",
+      "Read(//c/Program Files/Google/Chrome/Application/**)",
+      "Bash(head -45 marca/design-guide.md)",
+      "Bash(head -5 marca/logo/logo_impulsox_premium.svg)",
+      "Bash(mkdir -p C:/Users/ACER/AppData/Local/Temp/claude/c--Users-ACER-Desktop-ImpulsoX-OS/4c2bc516-1f98-486b-be0a-a9f184fe278e/scratchpad)",
+      "Bash(cp C:/Users/ACER/Desktop/ImpulsoX-AI/marca/logo/logo_impulsox_premium.svg C:/Users/ACER/AppData/Local/Temp/claude/c--Users-ACER-Desktop-ImpulsoX-OS/4c2bc516-1f98-486b-be0a-a9f184fe278e/scratchpad/logo.svg)",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=C:/Users/ACER/Desktop/ImpulsoX-OS/ImpulsoX-OS-Escopo.pdf file:///C:/Users/ACER/AppData/Local/Temp/claude/c--Users-ACER-Desktop-ImpulsoX-OS/4c2bc516-1f98-486b-be0a-a9f184fe278e/scratchpad/escopo.html)",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless --disable-gpu --screenshot=C:/Users/ACER/AppData/Local/Temp/claude/c--Users-ACER-Desktop-ImpulsoX-OS/4c2bc516-1f98-486b-be0a-a9f184fe278e/scratchpad/preview.png --window-size=794,1123 --default-background-color=00000000 file:///C:/Users/ACER/AppData/Local/Temp/claude/c--Users-ACER-Desktop-ImpulsoX-OS/4c2bc516-1f98-486b-be0a-a9f184fe278e/scratchpad/escopo.html)",
+      "Bash(rm -f C:/Users/ACER/AppData/Local/Temp/claude/c--Users-ACER-Desktop-ImpulsoX-OS/4c2bc516-1f98-486b-be0a-a9f184fe278e/scratchpad/preview.png)",
+      "Bash(cd \"c:/Users/ACER/Desktop/ImpulsoX-OS\" && echo \"=== mtime do backlog no repo ===\" && stat -c '%y' docs/backlog-oportunidades.md && echo \"=== grep pela minha linha nova ===\" && grep -c \"GATE E2E FECHADO\" docs/backlog-oportunidades.md)",
+      "Read(//c/Users/ACER/Desktop/ImpulsoX-OS/**)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(mkdir -p .firecrawl && firecrawl search \"Instagram carousel structure that converts 2026 hook pain proof CTA framework\" --limit 6 -o .firecrawl/s1-carousel-converts.json --json 2>&1 | tail -2)",
+      "Edit(/.claude/skills/post/**)",
+      "Edit(/.claude/skills/linkedin/**)",
+      "Bash(perl -i -pe 's/900-1\\\\.800 caracteres\\\\. O formato com melhor custo-benef/900-1.800 caracteres, sweet spot **1.000-1.300** \\(a faixa que mais\\\\n   gera dwell time sem inflar\\). O formato com melhor custo-benef/' \".claude/skills/linkedin/SKILL.md\")",
+      "Edit(/.claude/skills/calendario/**)",
+      "Bash(perl -i -pe 'if \\($. == 63\\) { $_ .= \"\\\\n**Novidade/tendência do setor entra — mas nunca crua.** Dica ou notícia do nicho \\(ex.:\\\\nnovidade de IA pra um negócio de IA\\) cabe dentro de Ensinar/Posicionar e REFORÇA a\\\\nautoridade de tópico — desde que passe pela lente do negócio: o post responde \\\\\"o que\\\\nisso muda pro [cliente do negócio] amanhã\\\\\", com opinião. Notícia repostada sem lente é\\\\ncommodity \\(mil contas postam igual no mesmo dia, zero save\\) e não entra no plano.\\\\n\" }' .claude/skills/calendario/SKILL.md)",
+      "Bash(warp-cli status *)",
+      "Bash(warp-cli connect *)",
+      "Bash(git rm *)",
+      "Bash(git mv *)",
+      "Bash(perl -i -pe 'if \\($. == 35\\) { $_ .= \"- `producao/ideias/banco.md` — o banco do `/pulso` \\(diário\\): EVERGREEN com tração alta\\\\n  entra como candidata do mês SEM re-pesquisar \\(demanda já medida\\); o que o pulso viu\\\\n  morrer sem uso também ensina \\(tema quente que o dono deixou passar\\)\\\\n\" }' .claude/skills/radar/SKILL.md)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\ACER\\Desktop\\ImpulsoX-OS\\.firecrawl"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {
         "matcher": "Write|Edit|Bash",
         "hooks": [
-          { "type": "command", "command": "node .claude/hooks/atividade-passo.mjs" }
+          {
+            "type": "command",
+            "command": "node .claude/hooks/atividade-passo.mjs"
+          }
         ]
       }
     ]
-  }
+  },
+  "dangerouslySkipPermissions": true
 }

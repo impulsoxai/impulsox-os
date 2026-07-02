@@ -33,6 +33,9 @@ e ofertas preenchidos (degrau 3+), as ideias saem amarradas à prioridade comerc
   local puxa "[serviço] em [cidade]" e datas regionais)
 - `nucleo/aprendizados.md` — o que a medição já provou que funciona aqui (não redescobrir)
 - `producao/radar/` — radar anterior: não repetir ideia já usada, fechar lacunas que ficaram
+- `producao/ideias/banco.md` — o banco do `/pulso` (diário): EVERGREEN com tração alta
+  entra como candidata do mês SEM re-pesquisar (demanda já medida); o que o pulso viu
+  morrer sem uso também ensina (tema quente que o dono deixou passar)
 
 ## Workflow — 5 camadas de pesquisa
 
