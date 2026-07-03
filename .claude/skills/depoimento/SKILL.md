@@ -87,9 +87,17 @@ o webhook existir, vira automático. Não bloqueia — o poll já entrega o valo
 ## Como roda
 
 1. **Config.** `crmFromEnv()` da `lib-crm`. Sem token → pedir ao dono quem fechou.
-2. **Achar quem teve resultado** via `lib-crm`: `listDeals(c, query)` filtrando
-   `closeReason`=ganho / `stage`=fechado, recentes. (Filtro fino por data espera o sub 2;
-   usar o que vier e marcar a janela.)
+2. **Achar quem teve RESULTADO — o gatilho bifurca por tipo de negócio** (deal ganho =
+   acabou de COMPRAR; o pedido único não pode ser gasto antes do resultado existir):
+   - **Transacional** (academia, restaurante, estética — compra≈experiência): deal
+     ganho/fechado recente JÁ É o momento — `listDeals(c, query)` com
+     `closeReason`=ganho, e pedir.
+   - **Serviço/projeto** (página, conteúdo, esteira — o cliente típico da agência): deal
+     ganho é só o CADASTRO do candidato; o gatilho de pedir é o **marco de RESULTADO** —
+     a "vitória da semana 1" registrada no `intake.md`, ou a entrega registrada em
+     `producao/` (página no ar, primeiro relatório com número). Assinou ontem = "ainda é
+     cedo" na certa, e queima o pedido único.
+   (Filtro fino por data espera o sub 2; usar o que vier e marcar a janela.)
 3. **Cruzar com o banco** (`nucleo/provas.md`): tirar quem já deu prova — não pedir 2x.
 4. **Acionar o pedido** pra cada cliente novo de resultado: chamar o **roteiro do `/provas`**
    (o pedido na voz da marca, no canal certo). Esta skill não reescreve o pedido — usa o do

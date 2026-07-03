@@ -59,8 +59,13 @@ número).
   (whatsapp/site/instagram/indicacao), sem UTM granular (sub 1 da F-OS ainda não feito). O
   ROI sai por canal; "qual ANÚNCIO/campanha exata deu a venda" espera o UTM no Contact
   (PRD 3.2). Declarar isso no relatório — não fingir precisão de campanha.
-- **Sem filtro de período nos GETs ainda** (sub 2). O `getReports` traz a janela que ele
-  entrega (6m); recorte fino por data espera o filtro. Usar o que vier e marcar a janela.
+- **Janelas SEMPRE casadas — `recortarJanela` do lib-roi.** O `getReports` traz 6m, mas o
+  ROI NUNCA divide receita de 6 meses por gasto de 90 dias: o shape já traz
+  `receitaPorMes`/`dealsPorMes` mensais — `recortarJanela({receitaPorMes, dealsPorMes,
+  mesesDoGasto})` soma SÓ os meses do gasto (mês sem dado vira `mesesSemDado` declarado,
+  nunca zero fingido) e é ISSO que entra no `calcularRoi`. O total-6m aparece como
+  contexto ("receita do semestre: R$X"), jamais como numerador. (Recorte por DIA espera o
+  sub 2; por mês já é casado.)
 - **Atribuição ≠ incremental.** ROAS de plataforma infla 2-5x (regra do `/analisar-ads`); o
   ROI do CRM (receita real ÷ gasto) é mais honesto, mas ainda é correlação, não prova causal.
   Dizer isso ao dono.

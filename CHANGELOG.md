@@ -7,6 +7,43 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.18] — 2026-07-03
+
+> Onda 4 da auditoria total: o eixo COMERCIAL — fechamento que não morre no PDF e
+> retenção com dono.
+
+### Adicionado
+- **/proposta fecha de verdade:** próximo-passo-único virou ACEITE (link de assinatura
+  Clicksign/Autentique/ZapSign, ou botão de aceite com registro; "me chama" virou caminho
+  secundário — e-signature fecha 3,4x mais) + proposta enviada vira **Deal no CRM**
+  (stage=proposta via lib-crm) — follow-up dos 50 dias, /roi e /carteira enxergam
+  propostas em aberto sem reler rodapé de arquivo.
+- **/raio-x ganhou a AUDITORIA PAGA** (a oferta Attraction do Money Model que estava
+  definida em 2 docs e implementada em nenhuma skill): dois empacotamentos — isca de 1
+  página vs produto pago (custo em R$ por vazamento via /velocidade, mini-redesign,
+  plano de 30 dias, call de entrega; valor abate do projeto se fechar).
+- **/depoimento dispara no momento CERTO:** bifurca transacional (deal ganho = pedir) vs
+  serviço (deal ganho = cadastro; o gatilho é o marco de resultado — vitória da semana 1
+  do intake ou entrega em producao/). O pedido único não se queima mais na assinatura.
+- **/intake coleta o CONTRATO** (início, vigência, valor, data de renovação) + a "vitória
+  da semana 1" + bloco de rotinas mapeadas (o /cliente grava, a /proposta precifica);
+  **/carteira ganhou o alerta de renovação** (🔴 renova ≤30d com KPI amarelo — o
+  anti-churn mais barato; sem o dado, coluna sai "?" em vez de fingir).
+- **/reativar com expectativa honesta e métrica própria:** segmentação por recência
+  (30-90d / 90d-1a / 1a+), benchmarks declarados ao dono (12-18% automatizado; 4 toques =
+  +137% vs toque único → default subiu pra 3-4 toques) e "X% da base agendou" como a
+  métrica de saída da Fase 1.
+- **/relatorio: o alerta proativo TEM DONO** — check quinzenal de 10 min (CPL, alcance,
+  leads; gatilho ±30% → mensagem hoje com plano) + **modo `--trimestral` (QBR)**: revisão
+  ao vivo com deck via /slides, cenário competitivo e plano do próximo tri — contrato
+  10k+ se renova no QBR.
+- **`recortarJanela` no lib-roi (+3 testes):** ROI SEMPRE de janelas casadas — soma
+  receita/deals só dos meses do gasto (mês sem dado = pendência declarada); o total-6m
+  vira contexto, nunca numerador.
+- **/treinar-vendas: role-play ANTI-TEATRO** — comprador como subagente de contexto limpo
+  com persona card oculta + regra de cessão explícita + dificuldade calibrável + debrief
+  com citação literal + loop treino→script (3 derrotas na mesma objeção = bloco novo).
+
 ## [0.2.17] — 2026-07-03
 
 > Onda 3 da auditoria total: FECHAR O LOOP DE MEDIÇÃO — o ciclo estava automatizado nas

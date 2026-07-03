@@ -87,14 +87,36 @@ outcome + a próxima ação) e o **PDF anexo** pra quem quiser cavar. Quem auto-
 retém mais — o valor precisa chegar sem esforço do cliente. Gerar junto com o relatório o
 texto desse e-mail, na voz de quem assina, pronto pra enviar.
 
-## Cadência — alerta proativo entre relatórios
+## Cadência — o alerta proativo agora TEM DONO (check quinzenal)
 
-Relatório mensal é o ritmo base, não o único toque. Se algo cair de forma relevante **entre**
-os relatórios (campanha que despencou, CPL que disparou, alcance que travou), disparar um
-**alerta proativo curto** — não esperar o fim do mês pra dar a má notícia. Reporting proativo
-sustenta retenção bem acima do relatório mensal isolado: o cliente sente que tem alguém
-olhando, não um PDF automático. O alerta também avisa quando algo **sobe** (momento de pico
-→ gancho pra `/provas` pedir depoimento).
+Relatório mensal é o ritmo base, não o único toque — e "alguém avisa se cair" só funciona
+se alguém OLHA. O dono é o **check quinzenal** desta skill (10 min, 3 números):
+
+1. **Quando:** dia ~15 de cada mês (entre relatórios). Oferecer agendar pela
+   `/automatizar` na primeira rodada — é tarefa com cara de rotina (regra do CLAUDE.md).
+2. **O que olhar (só o que já existe, sem montar nada):** CPL/gasto da quinzena
+   (`/analisar-ads` rápido ou o painel da plataforma) · alcance/engajamento
+   (`metricas-instagram.mjs --todas --dias 14`) · leads no CRM (`/leads` modo consulta).
+3. **Gatilho de alerta:** qualquer um dos 3 fora da faixa do mês anterior (±30%) →
+   mensagem curta ao cliente HOJE — má notícia com plano ("caiu X, já estamos fazendo Y")
+   ou boa notícia com gancho (pico → `/provas` pede depoimento no momento quente).
+   Nada fora da faixa → ninguém é incomodado; o check morre em 10 min.
+
+48% dos churns de agência são "insatisfação com a entrega" (Swydo, 2026) — e o cliente
+decide isso ENTRE relatórios, não lendo o PDF. O check quinzenal é o seguro de retenção
+mais barato que existe.
+
+## Modo `--trimestral` — o QBR que renova contrato
+
+A cada 3 meses (e sempre a ~60-30 dias de uma renovação — a `/carteira` avisa), o
+relatório sobe de formato: **revisão trimestral AO VIVO**, não e-mail:
+1. Agregar os 3 relatórios mensais: a história do trimestre em números (o que subiu, o
+   que travou, o que aprendemos), o cenário competitivo em 2-3 linhas (`/concorrente`) e
+   o **plano do próximo trimestre** (3 apostas, com o porquê).
+2. Gerar o **deck via `/slides`** (produto real em mockup, números grandes, notas do
+   apresentador) — QBR é apresentação, não anexo.
+3. O fecho do QBR é a ponte de renovação/upsell: "pro próximo tri, o plano é X — faz
+   sentido seguirmos?" Contrato 10k+ se renova NO QBR, não no boleto.
 
 ## Honestidade — a parte que segura contrato de verdade
 

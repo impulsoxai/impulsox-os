@@ -31,6 +31,24 @@ export function calcularRoi({ receita = 0, gasto, clientesNovos = 0 }) {
   };
 }
 
+// recortarJanela — casa a JANELA da receita com a do gasto (ROI de janelas descasadas é
+// número errado com nota de rodapé). receitaPorMes/dealsPorMes = objetos {"2026-05": n}
+// como o CRM devolve; mesesDoGasto = ["2026-05","2026-06"]. Devolve as somas SÓ desses
+// meses + o que faltou (mês do gasto sem dado de receita vira pendência declarada).
+export function recortarJanela({ receitaPorMes = {}, dealsPorMes = {}, mesesDoGasto = [] }) {
+  if (!Array.isArray(mesesDoGasto) || mesesDoGasto.length === 0) {
+    throw new Error("recortarJanela: mesesDoGasto vazio — sem janela não há recorte.");
+  }
+  let receita = 0, clientesNovos = 0;
+  const mesesSemDado = [];
+  for (const mes of mesesDoGasto) {
+    if (receitaPorMes[mes] === undefined && dealsPorMes[mes] === undefined) { mesesSemDado.push(mes); continue; }
+    receita += exigirNaoNegativo(receitaPorMes[mes] ?? 0, `receitaPorMes[${mes}]`);
+    clientesNovos += exigirNaoNegativo(dealsPorMes[mes] ?? 0, `dealsPorMes[${mes}]`);
+  }
+  return { receita, clientesNovos, meses: mesesDoGasto, mesesSemDado };
+}
+
 // formata número em BRL (pra exibir no relatório). Valor inválido grita — nunca "R$ NaN" pro cliente.
 export function formatarBRL(v) {
   const n = Number(v);

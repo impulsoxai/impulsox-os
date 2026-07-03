@@ -48,10 +48,26 @@ médico, não vendedor): abertura → perguntas de descoberta (a dor real) → r
 apresentar a solução como ponte → tratar objeção → fechar com próximo passo único. Sai na voz
 do negócio, com a oferta ATIVA e prova autorizada. Calibrado nas objeções reais (CRM) quando há.
 
-### 2. Role-play (simular)
-A IA banca o **cliente que rebate** (persona do ICP do negócio: o tipo de comprador real, com as
-objeções dele). O vendedor pratica; a IA reage como comprador de verdade, não entrega o fechamento
-de bandeja. No fim, debrief: o que o vendedor fez bem, o que escorregou, o que treinar na próxima.
+### 2. Role-play (simular) — com engenharia ANTI-TEATRO
+O modo de falha nº 1 de role-play com IA é o teatro: comprador que vê o script do vendedor,
+aceita qualquer resposta e devolve elogio genérico (LLM condescende por padrão —
+SmartWinnr/Hyperbound, 2026). Aqui o comprador é DE VERDADE:
+
+1. **Comprador = SUBAGENTE de contexto limpo** (mesmo padrão do `/revisar`): ele NÃO vê o
+   script, a oferta detalhada nem a intenção do treino — recebe só a persona card.
+2. **Persona card OCULTA do vendedor**, montada das objeções reais (CRM/negócio): quem é,
+   a dor, o orçamento real, as 2-3 objeções que VAI levantar, e — a peça-chave — a **regra
+   de cessão**: "só aceita avançar se o vendedor [descobrir a dor X / tratar a objeção Y
+   sem brigar / propor próximo passo único]". Sem a condição cumprida, o comprador NÃO
+   cede — educadamente enrola, como gente de verdade.
+3. **Dificuldade calibrável** (fácil = 1 objeção, cede rápido · média = 2-3 · difícil =
+   cético com trauma de fornecedor anterior). Começar na média.
+4. **Debrief com CITAÇÃO LITERAL:** cada ponto do feedback cita o trecho exato da
+   transcrição do role-play ("quando ele disse X, você respondeu Y — o que faltou foi Z").
+   Feedback sem citação é achismo; a rubrica do modo 3 já exige observável — aqui é igual.
+5. **O loop treino→material:** 3+ role-plays (ou calls reais) perdendo na MESMA objeção →
+   o script do modo 1 ganha um bloco novo pra ela; anotar em `nucleo/aprendizados.md`.
+   O debrief individual morre na pessoa; o padrão vira material.
 
 ### 3. Pontuar call real (avaliar) — rubrica nomeada, não achismo
 Recebe a transcrição de uma call real e pontua por **rubrica ponderada** (0-10 por dimensão),

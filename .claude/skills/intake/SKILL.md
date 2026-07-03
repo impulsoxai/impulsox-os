@@ -32,14 +32,19 @@ Roda no degrau 1 (cliente já plugado pelo `/cliente`). Sem a estrutura do clien
 reorientar pra `/cliente` primeiro. Acesso que ainda não chegou vira pendência — não trava
 a produção.
 
-## O que coleta (4 frentes — só o operacional)
+## O que coleta (5 frentes — só o operacional)
 
 1. **Acessos** — contas de rede, domínio, pixels/analytics. **NUNCA pede senha** (ver
    Segurança). Registra o método e o status de cada um.
 2. **KPI do contrato** — a métrica de sucesso e o prazo (o que vamos bater, até quando, como
-   medimos).
+   medimos). **+ a "vitória da semana 1":** qual resultado controlável o cliente VÊ nos
+   primeiros 7 dias e quem o entrega (operacionaliza o primeiro-ganho da doutrina de
+   oferta — molde-esteira; é também o gatilho de serviço do `/depoimento`).
 3. **Calendário de aprovação** — quem aprova as peças, em quanto tempo, por qual canal.
 4. **Escopo/limites** — o que está dentro e o que está fora do contrato.
+5. **O CONTRATO em si** — início, vigência, valor/mês, **data de renovação**. Sem isso a
+   `/carteira` não cumpre a própria promessa ("qual contrato vence") e ninguém dispara a
+   conversa de renovação a tempo — renovação é onde agência perde receita em silêncio.
 
 ## 5ª frente (condicional) — acessos extras por fase da Esteira de Crescimento
 
@@ -98,6 +103,10 @@ qualquer disparo), não disparar e torcer. Registrar o status da prova no `intak
 
 ## KPI do contrato
 - Meta: [o que bater] · Prazo: [até quando] · Como medimos: [fonte]
+- Vitória da semana 1: [o resultado controlável que o cliente VÊ em 7 dias] · Entrega: [quem]
+
+## Contrato
+- Início: [data] · Vigência: [n meses] · Valor: [R$/mês] · **Renovação: [data]**
 
 ## Aprovação
 - Quem aprova: [nome] · Prazo de resposta: [ex: 48h] · Canal: [WhatsApp/e-mail]
@@ -105,6 +114,10 @@ qualquer disparo), não disparar e torcer. Registrar o status da prova no `intak
 ## Escopo
 - Dentro: [...]
 - Fora: [...]
+
+## Rotinas mapeadas (vem do Passo 5 do /cliente; a /proposta precifica o retainer por aqui)
+| Rotina | Ganho estimado (tempo/semana) | Status |
+|---|---|---|
 
 ## Esteira (só se contratada) — acessos extras + gate de consentimento
 | Item | Status | Observação |

@@ -103,9 +103,22 @@ Degrau 4 (CRM no ar): precisa de `CRM_TOKEN` pra achar os inativos. Sem token, r
 ## Como roda
 
 1. **Config.** `crmFromEnv()` da `lib-crm`. Sem token → pedir o segmento manual.
-2. **Segmentar** via `lib-crm`: `listContacts(c, query)` pra achar inativos (status
-   `inativo`, `lastInteractionAt` antigo). O CRM define "inativo"; usar o que ele marca.
-   (Filtro fino por data espera o sub 2 do PRD; usar o status que vier.)
+2. **Segmentar via `lib-crm` — POR RECÊNCIA, não num balde só:** `listContacts(c, query)`
+   pra achar inativos (status `inativo`, `lastInteractionAt` antigo), e separar em 3
+   faixas — a mensagem e a expectativa mudam com o tempo de sumiço:
+   - **30-90 dias** (a janela de ouro — quanto mais espera, mais frio): tom "continua daqui",
+     oferta direta;
+   - **90 dias-1 ano:** re-apresentação curta + oferta com motivo;
+   - **1 ano+:** o mais frio e o de maior risco de consentimento — só com base legal
+     confirmada; tom de reconquista, expectativa mínima.
+   (Filtro fino por data espera o sub 2 do PRD; usar o `lastInteractionAt` que vier.)
+
+   **Expectativa honesta pro dono (benchmarks de mercado, dar ANTES de disparar):**
+   win-back automatizado reativa **12-18% da base** (Klaviyo 2025: ~15% vs ~3% do manual);
+   sequência de **4 toques rende ~14,7% cumulativo vs ~6,2% de toque único** (+137% —
+   ustechautomations/Validity, 2026). Ou seja: 8% numa base fria não é fracasso, e 2-3
+   toques deixam dinheiro na mesa — por isso a sequência default sobe pra **3-4 toques**
+   espaçados (não 2-3), cada um com gancho diferente da MESMA oferta.
 3. **Escolher o gancho-com-oferta** por segmento (a regra de ouro): qual oferta ATIVA + qual
    motivo (aniversário, vaga, brinde, condição de retorno). Nunca "sentimos sua falta" oco,
    nunca falsa escassez. Sem oferta ativa que sirva → avisar e pedir, não inventar.
@@ -114,7 +127,11 @@ Degrau 4 (CRM no ar): precisa de `CRM_TOKEN` pra achar os inativos. Sem token, r
 5. **Escrever a sequência** na voz da marca → passar pelo `/escritor-br`.
 6. **Entregar** pro CRM/agente: a copy entra na régua que o motor dispara (ou o dono cola, se a
    integração ainda não existir / agente não está no ar — marcar como pendência honesta).
-7. **Fechar** apontando o próximo passo.
+7. **Medir COM MÉTRICA PRÓPRIA** — a taxa de reativação é a métrica de saída da Fase 1
+   do blueprint e é DESTA skill: registrar (quando o CRM devolver) **"X% da base
+   contatada respondeu/agendou"** e comparar com a faixa honesta (12-18% automatizado).
+   É esse número que o `/relatorio` mostra na Fase 1 — não um "ROI genérico".
+8. **Fechar** apontando o próximo passo.
 
 ## Regras
 

@@ -92,9 +92,17 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
    grandeza, reconferir anualmente). Então o MAP nomeia mais de uma pessoa do lado do cliente — e o
    próximo passo (#7) pede pra trazer quem decide pra mesa, não deixa a proposta presa num
    contato só que pode sumir.
-7. **Próximo passo único** — uma ação, clara: "responde este e-mail / chama no WhatsApp
-   até [validade] que agendamos o início". Validade real, destacada uma vez, sem
-   contagem regressiva teatral.
+7. **Próximo passo único = ACEITE, não "me chama"** — e-assinatura fecha 3,4x mais e 33%
+   mais rápido que proposta que termina em conversa (~21% fecham nos primeiros 5 min —
+   cobl.ai/Proposify, 2025); o pico de intenção é o momento da leitura, e "responde este
+   e-mail" o desperdiça. Em ordem de preferência:
+   - **Link de assinatura digital** (BR, com plano grátis/barato: Clicksign, Autentique,
+     ZapSign) — o dono sobe o PDF na ferramenta e o link vai NO botão final da proposta;
+   - **Botão de aceite na própria proposta HTML** ("Aceito a opção [X] — iniciar") que
+     registra data/hora e abre o WhatsApp com a mensagem de aceite pré-preenchida — mínimo
+     viável quando o dono não quer ferramenta;
+   - "chama no WhatsApp até [validade]" fica como CAMINHO SECUNDÁRIO pra quem tem dúvida,
+     nunca como o CTA principal. Validade real, destacada uma vez, sem contagem teatral.
 
 ### Blindar contra as 5 razões de perda (pesquisa de 23 mil propostas — Proposify, 2025)
 
@@ -113,8 +121,12 @@ Estruturar a proposta já antecipando por que deals morrem — e desarmando os 3
    hierárquica, mobile-first — proposta é lida no celular) + PDF.
 3. Salvar em `clientes/<nome>/proposta-<YYYY-MM-DD>.html` (+ `.pdf`) ou
    `producao/propostas/` se o prospect ainda não tem pasta.
-4. Registrar no fim da pasta do cliente: data de envio, validade, status (enviada /
-   negociando / fechada / perdida) — insumo pro follow-up.
+4. Registrar a proposta como **Deal no CRM** quando há `CRM_TOKEN` (lib-crm): criar/
+   atualizar o Deal com stage=proposta, valor da opção do meio e validade — é o que faz o
+   follow-up dos 50 dias, o `/roi` e a `/carteira` ENXERGAREM propostas em aberto sem
+   ninguém reler rodapé de arquivo. Sem token → fallback: registrar no fim da pasta do
+   cliente (data de envio, validade, status enviada/negociando/fechada/perdida). Mudou o
+   status → atualizar o Deal (ganhou/perdeu), não só o markdown.
 5. **Follow-up:** proposta enviada e silêncio não é "não" — acionar `/email` pra sequência
    de follow-up (3 toques: resumo do valor → prova/caso → pergunta de fechamento, nunca
    tom de cobrança). É o que recupera proposta parada sem queimar a relação.

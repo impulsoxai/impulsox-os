@@ -48,12 +48,18 @@ Por cliente em `clientes/<nome>/`:
    do cliente, não o global) → `getReports`. Sem token → marcar "CRM não conectado" e seguir
    com o local.
 3. **Montar a linha da carteira:** nome · degrau · receita (CRM) · leads no mês · última
-   entrega (producao) · KPI do contrato (intake) · sinal de saúde.
+   entrega (producao) · KPI do contrato (intake) · **renovação** (bloco Contrato do
+   intake) · sinal de saúde.
 4. **Sinal de saúde** (semáforo honesto, regra simples e explicável):
-   - 🔴 vermelho: sem entrega há >14 dias, OU KPI do contrato vencendo sem resultado, OU CRM
+   - 🔴 vermelho: sem entrega há >14 dias, OU KPI do contrato vencendo sem resultado, OU
+     **renovação em ≤30 dias com KPI no amarelo** (o anti-churn mais barato da carteira:
+     a conversa de renovação começa AGORA, com plano — não no dia do vencimento), OU CRM
      não conectado num cliente que deveria ter.
-   - 🟡 amarelo: entrega atrasando (7-14 dias) ou pendência aberta na escada.
-   - 🟢 verde: entrega em dia + KPI no caminho.
+   - 🟡 amarelo: entrega atrasando (7-14 dias), pendência aberta na escada, ou renovação
+     em ≤60 dias sem conversa marcada.
+   - 🟢 verde: entrega em dia + KPI no caminho + renovação longe ou encaminhada.
+   (Sem o bloco Contrato no intake.md → coluna renovação sai "?" e vira pendência — nunca
+   fingir que o dado existe.)
 5. **Entregar a tabela** ordenada por saúde (vermelho primeiro — o que precisa de atenção).
    No fim, "o que fazer hoje": os 1-3 clientes que pedem ação.
 

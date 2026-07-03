@@ -98,6 +98,31 @@ Se o negócio já está bem, o valor da agência aparece no que falta de IA/conv
 problema fabricado. Um raio-x honesto que diz "seu site é ótimo, o vazamento é no atendimento"
 vende mais que um que ataca tudo.
 
+## Dois empacotamentos — isca vs PRODUTO PAGO (a oferta Attraction do Money Model)
+
+O raio-x tem duas vidas comerciais — e a doutrina da casa (molde-esteira do `/oferta`,
+"AI Audit Gateway") define a segunda como a PORTA DE ENTRADA que gera caixa e ancora o
+projeto grande. Perguntar cedo qual é o caso:
+
+1. **ISCA (grátis — material de impacto pré-reunião):** o resumo de 1 página — a leitura
+   em uma frase + as notas + o vazamento nº 1 com a evidência. É o aperitivo: prova a
+   competência e cria a urgência, mas NÃO entrega o plano. Fecha convidando pra versão
+   completa ou pra conversa.
+2. **AUDITORIA PAGA (o produto — preço `(?)` do dono; lá fora esse produto se vende a
+   US$ 2,5-4k):** tudo desta skill + os complementos que só entram aqui:
+   - o relatório completo com os 3 vazamentos e o CUSTO EM R$ de cada um por linha
+     (o `/velocidade` calcula o custo do speed-to-lead; é o formato que converte
+     auditoria→retainer acima do baseline de mercado);
+   - o mini-redesign da abertura (via `/copy`);
+   - o **plano de 30 dias priorizado** (o que consertar primeiro e por quê);
+   - 1 call de entrega ao vivo (walkthrough — auditoria entregue por e-mail não ancora).
+   **Fecho da paga:** o valor pago ABATE do projeto se fechar em [validade] — a auditoria
+   vira entrada do contrato, não custo. É o downsell natural de proposta grande recusada
+   e o upsell natural da isca que impressionou.
+
+Regra: a isca nunca entrega o plano de 30 dias nem o custo por linha — é o que separa
+aperitivo de produto. E ambos obedecem a regra de ouro (nenhuma nota sem verificação).
+
 ## Saída
 
 `producao/raio-x/<dominio>-<YYYY-MM-DD>.md`:

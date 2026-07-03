@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { calcularRoi, formatarBRL } from "./lib-roi.mjs";
+import { calcularRoi, formatarBRL, recortarJanela } from "./lib-roi.mjs";
 
 test("calcularRoi: receita 30k, gasto 10k, 5 clientes novos", () => {
   const r = calcularRoi({ receita: 30000, gasto: 10000, clientesNovos: 5 });
@@ -62,4 +62,31 @@ test("formatarBRL formata em real", () => {
 test("formatarBRL: valor não-numérico → erro (não 'R$ NaN' no relatório)", () => {
   assert.throws(() => formatarBRL("abc"), /número|numero/i);
   assert.throws(() => formatarBRL(NaN), /número|numero/i);
+});
+
+// --- recortarJanela (ROI de janelas CASADAS) ---
+
+test("recortarJanela soma receita/deals só dos meses do gasto", () => {
+  const r = recortarJanela({
+    receitaPorMes: { "2026-04": 8000, "2026-05": 5000, "2026-06": 3000 },
+    dealsPorMes: { "2026-04": 4, "2026-05": 2, "2026-06": 1 },
+    mesesDoGasto: ["2026-05", "2026-06"],
+  });
+  assert.equal(r.receita, 8000);        // só mai+jun; abril (fora da janela) NÃO entra
+  assert.equal(r.clientesNovos, 3);
+  assert.deepEqual(r.mesesSemDado, []);
+});
+
+test("recortarJanela declara mês do gasto sem dado de receita (pendência, não zero fingido)", () => {
+  const r = recortarJanela({
+    receitaPorMes: { "2026-06": 3000 },
+    dealsPorMes: { "2026-06": 1 },
+    mesesDoGasto: ["2026-06", "2026-07"],
+  });
+  assert.equal(r.receita, 3000);
+  assert.deepEqual(r.mesesSemDado, ["2026-07"]);
+});
+
+test("recortarJanela sem janela grita", () => {
+  assert.throws(() => recortarJanela({ receitaPorMes: {}, dealsPorMes: {}, mesesDoGasto: [] }));
 });
