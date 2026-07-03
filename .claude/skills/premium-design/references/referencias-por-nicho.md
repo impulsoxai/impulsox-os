@@ -39,10 +39,33 @@ Curado 2026-06-18 (capturado + DNA extraído em `marca/design-systems/`).
    _Capturar: personalidade, linha manuscrita, contraste de blocos de cor, assimetria editorial._
 
 ## Wellness / pilates / yoga / estúdio de movimento
-_(pesquisar e gravar — Awwwards "wellness/fitness", Godly "health")_
+Curado 2026-07-03 (validado ao vivo — DNA ainda não extraído em `marca/design-systems/`).
+1. **coreatelierpilates.com** — Awwwards Honorable Mention: "confiança serena através de
+   design minimalista". Bege `#F7E7DE` / marrom profundo `#25140C`, tipografia dinâmica com
+   interação de scroll, quiz personalizado no cadastro, carrossel com interação de mouse,
+   GSAP + Tailwind. _Capturar: minimalismo quente, scroll-driven typography, booking como
+   experiência (não formulário)._
+2. **yyoga.ca** — paleta de 2 cores só (turquesa `#49c5b6` + branco), estética limpa e
+   contemporânea, abordagem editorial/corporativa equilibrada. _Capturar: serenidade por
+   REDUÇÃO de paleta (2 cores bastam), clareza sem excesso visual._
+3. **debskiclinic.pl** (clínica de saúde feminina, mas o registro visual serve wellness) —
+   "prestígio + acolhimento": colorido controlado, tipografia de destaque, parallax e
+   formas interativas em Webflow. _Capturar: equilíbrio entre autoridade profissional e
+   calor humano, parallax sofisticado sem exagero._
 
 ## Jurídico / advocacia / consultoria
-_(pesquisar e gravar — sites premium de law firm, consultoria boutique)_
+Curado 2026-07-03 (validado ao vivo — DNA ainda não extraído em `marca/design-systems/`).
+1. **ario.law** — fundo carvão quase preto `#1a1a1a`, texto branco, gradiente âmbar/laranja
+   de destaque, sans-serif moderna, hierarquia por peso de fonte. Tagline "Rock the Future
+   with the Rule of Law". _Capturar: escuro + acento quente (foge do jurídico-cinza-frio),
+   confiança por espaço negativo e restrição._
+2. **drpb.ch** (Burkhalter Rechtsanwälte, Suíça) — branco/cinza/neutro, tipografia
+   corporativa legível sem ornamento, muito espaço em branco, fotografia de alta qualidade.
+   _Capturar: o "sóbrio suíço" — minimalismo que comunica solidez, não frieza._
+3. **heroncode.com** — preto `#000` + branco `#fff` + amarelo-ouro `#ECD06F`, fullscreen,
+   React, timeline interativa (linha do tempo de revoluções industriais como storytelling
+   da própria consultoria). _Capturar: 1 acento de cor forte sobre P&B, storytelling
+   interativo como prova de expertise (mostrar pensamento, não só listar serviço)._
 
 ## Imobiliário / construtora / arquitetura / interiores
 Curado 2026-06-18 (capturado + DNA em `marca/design-systems/`).
@@ -59,7 +82,33 @@ Curado 2026-06-18 (capturado + DNA em `marca/design-systems/`).
    empreendimento, foto aérea, navegação por tipo de espaço._
 
 ## E-commerce / marca de produto
-_(pesquisar e gravar — Godly "ecommerce", marcas DTC premiadas)_
+Curado 2026-07-03 (validado ao vivo — DNA ainda não extraído em `marca/design-systems/`).
+1. **dropedition.com** — P&B + neutro com fotografia de produto vibrante em contexto,
+   sans-serif minimalista, drops numerados (escassez real por coleção). _Capturar:
+   storytelling visual por fotografia (não ilustração), numeração de coleção como
+   narrativa de marca._
+2. **giellygreen.co.uk** (haircare de salão de luxo) — P&B + tons naturais premium,
+   tipografia elegante, "salon care at home" como proposta. _Capturar: refinamento por
+   simplicidade estratégica, ecossistema de produto (não item avulso)._
+3. **lab46.de** — azul-ardósia + neutros suaves + acento laranja/verde, tipografia
+   contemporânea legível, prova social (4,7★/420+ reviews) logo no hero. _Capturar:
+   credibilidade científica sem frieza clínica (lifestyle + prova social cedo), paleta
+   com 1 acento quente sobre base fria._
+
+## Saúde / clínica / estética
+Curado 2026-07-03 (validado ao vivo — DNA ainda não extraído em `marca/design-systems/`).
+1. **royalclinic.pl** (medicina estética) — marrom escuro `#2D1D12` + bege claro `#F3F1EF`,
+   minimalista, animações/transições suaves, categorias de serviço visuais (Modelagem,
+   Laserterapia, Cuidados). _Capturar: paleta neutra quente (não branco-clínico frio),
+   navegação por categoria de procedimento, tom inclusivo ("cada um é belo à sua
+   maneira")._
+2. **debskiclinic.pl** (saúde feminina, Fábrica Norblin) — 3 palavras no hero ("forte,
+   saudável, feminina"), prova social explícita (892+ avaliações no ZnanyLekarz) acima da
+   dobra, Webflow com parallax. _Capturar: prova social QUANTIFICADA no hero (não
+   depoimento vago), palavra-chave tripla como âncora emocional._
+3. **coreatelierpilates.com** (o mesmo de Wellness — a fronteira saúde/wellness é fina;
+   registro válido pros dois) — ver ficha em Wellness acima. _Capturar aqui: o quiz de
+   onboarding como substituto de anamnese/triagem inicial._
 
 ## Tech / SaaS / IA
 Curado 2026-06-18 (capturado + DNA em `marca/design-systems/`).
@@ -79,3 +128,9 @@ _(pesquisar e gravar — clínicas e estética premium)_
 
 > Nichos novos entram conforme aparecem clientes. Cada entrada: 3 URLs validadas + o
 > diferencial de cada (o que capturar). Mantido enxuto — acervo é mapa, não inventário.
+>
+> **Nota (2026-07-03):** wellness, jurídico, e-commerce e saúde foram validados ao vivo
+> (site no ar, DNA visual descrito) mas a captura de código-fonte completa (Fase 1 da
+> `/premium-design` → `marca/design-systems/`) ainda não rodou nesses 6 — fica pro
+> primeiro cliente real de cada nicho, quando a Etapa 3.5 do `/pagina` a dispara.
+> Restaurante, imobiliário e Tech/SaaS já têm o DNA extraído e salvo.
