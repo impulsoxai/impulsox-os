@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  parseTempo, acharCortesPorMarcador, limitar30s, recortarPalavras,
+  parseTempo, acharCortesPorMarcador, limitarDuracao, limitar30s, recortarPalavras,
   filtroReenquadreCrop, filtroReenquadreSplit,
 } from "./lib-shorts.mjs";
 
@@ -30,9 +30,39 @@ test("acharCortesPorMarcador devolve [] sem marcador", () => {
 
 // --- Task 3 ---
 
-test("limitar30s corta trecho acima de 30s e mantém os curtos", () => {
-  assert.deepEqual(limitar30s({ inicio: 10, fim: 50 }), { inicio: 10, fim: 40 });
-  assert.deepEqual(limitar30s({ inicio: 10, fim: 25 }), { inicio: 10, fim: 25 });
+test("limitarDuracao mantém trecho dentro do teto (default 60s) sem truncar", () => {
+  assert.deepEqual(limitarDuracao({ inicio: 252, fim: 288 }), { inicio: 252, fim: 288, truncado: false });
+});
+
+test("limitarDuracao trunca no teto e marca truncado (corte seco sem palavras)", () => {
+  assert.deepEqual(limitarDuracao({ inicio: 10, fim: 90 }), { inicio: 10, fim: 70, truncado: true });
+});
+
+test("limitarDuracao recua o corte pro fim da FRASE mais próxima dentro do teto", () => {
+  const palavras = [
+    { inicio: 12, fim: 13, texto: "olha" },
+    { inicio: 40, fim: 41.2, texto: "resultado." },   // fim de frase aos 41.2
+    { inicio: 55, fim: 56, texto: "depois" },          // palavra inteira sem pontuação
+    { inicio: 72, fim: 73, texto: "tarde." },          // fora do teto (10+60=70)
+  ];
+  assert.deepEqual(limitarDuracao({ inicio: 10, fim: 90 }, { palavras }), { inicio: 10, fim: 41.2, truncado: true });
+});
+
+test("limitarDuracao sem fim de frase no alcance recua pra última palavra inteira", () => {
+  const palavras = [
+    { inicio: 12, fim: 13, texto: "sem" },
+    { inicio: 55, fim: 56.5, texto: "pontuacao" },
+  ];
+  assert.deepEqual(limitarDuracao({ inicio: 10, fim: 90 }, { palavras }), { inicio: 10, fim: 56.5, truncado: true });
+});
+
+test("limitarDuracao aceita teto custom", () => {
+  assert.deepEqual(limitarDuracao({ inicio: 0, fim: 120 }, { teto: 90 }), { inicio: 0, fim: 90, truncado: true });
+});
+
+test("limitar30s (compat) corta em 30s e mantém os curtos", () => {
+  assert.deepEqual(limitar30s({ inicio: 10, fim: 50 }), { inicio: 10, fim: 40, truncado: true });
+  assert.deepEqual(limitar30s({ inicio: 10, fim: 25 }), { inicio: 10, fim: 25, truncado: false });
 });
 
 test("recortarPalavras filtra a janela e rebaseia o timestamp pra zero", () => {

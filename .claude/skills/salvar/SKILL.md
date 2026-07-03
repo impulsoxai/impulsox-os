@@ -55,14 +55,28 @@ e seguir o fluxo de primeira vez abaixo, trocando o remote com
 3. Mensagem do commit: gerar automaticamente a partir do que mudou, em português,
    uma linha ("Adiciona calendário de julho e 3 carrosséis aprovados"). Se o usuário
    quiser descrever com as palavras dele, usar as palavras dele.
-4. `git add -A` → `git commit` → `git push`.
-5. Confirmar com o link do repositório (`git remote get-url origin`).
+4. **Varredura de segredo no CONTEÚDO** (o `.gitignore` protege arquivos, não texto
+   colado): antes do add, procurar padrões de credencial nos arquivos que vão subir —
+
+   ```bash
+   git diff --cached --diff-filter=d --name-only 2>/dev/null; \
+   git ls-files -mo --exclude-standard | xargs -r grep -lE 'ixk_live_|ixs_pub_|sk-[A-Za-z0-9]{20}|Bearer [A-Za-z0-9._-]{20}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{36}' 2>/dev/null
+   ```
+
+   Achou algo → **mostrar o arquivo e a linha ao usuário e PERGUNTAR** ("isso parece uma
+   chave/token — apago antes de salvar, ou movo pro .env?"). **Nunca subir com achado
+   pendente.** Cenário real: o dono cola um token do CRM numa nota de `producao/` — o
+   .gitignore não vê isso; o grep vê.
+5. `git add -A` → `git commit` → `git push`.
+6. Confirmar com o link do repositório (`git remote get-url origin`).
 
 ## Proteções
 
 - **Segredos:** antes de `git add`, conferir que `.env` e variações seguem fora do
   versionamento (o `.gitignore` da raiz já cobre; se o usuário criou `.env` em
-  subpasta de cliente, conferir que também está ignorado). Token nunca sobe.
+  subpasta de cliente, conferir que também está ignorado). Token nunca sobe — e a
+  varredura de CONTEÚDO do passo 4 pega token colado em arquivo versionado, que o
+  `.gitignore` não protege.
 - Push recusado por divergência → explicar sem jargão ("a nuvem tem coisa que esta
   máquina não tem"), rodar `git pull --rebase` e tentar de novo; conflito que não se
   resolve sozinho → mostrar os arquivos em conflito e perguntar qual versão vale.

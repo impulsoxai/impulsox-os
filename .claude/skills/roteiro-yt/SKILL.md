@@ -192,8 +192,9 @@ voltar ao Passo 2 e ajustar a promessa, não inflar o hook.
 
 **Benchmarks numéricos (alvo mensurável, não "retém bem"):** ~71% dos espectadores decidem ficar
 ou sair nos **3 primeiros segundos** — o hook tem que firar aí. Retenção média (AVD) alvo: **≥70%
-nos primeiros 30s** e **≥50% no vídeo todo** (long-form). Short: sweet-spot **31-60s** (decisão em
-3s, payoff até o segundo 3). Esses números são a régua do `/desempenho-yt` na hora de validar.
+nos primeiros 30s** e **≥50% no vídeo todo** (long-form). Short: **20-60s conforme o job** (decisão
+em 3s, payoff até o segundo 3; régua única do eixo — a mesma do `/shorts`). Esses números são a
+régua do `/desempenho-yt` na hora de validar.
 
 ## Passo 6 — Marcar cortes pra short
 
@@ -204,7 +205,8 @@ obrigatório.
 ## Passo 7 — Short standalone (quando não há long-form pra cortar)
 
 Estrutura invertida: começa pelo **payoff/lição** no segundo 0-1 (não pela configuração).
-Uma promessa só. 15-30s (curto retém mais; máx 60s). Sem "e aí galera", sem slow build.
+Uma promessa só. 20-60s conforme o job — curto força clareza, 50-60s cabe payoff maior
+(régua única do eixo, a mesma do `/shorts`). Sem "e aí galera", sem slow build.
 
 Regras de short que a pesquisa 2026 prova decisivas:
 - **Primeiros 1-3s decidem tudo** (swipe ou fica). Abrir com MOVIMENTO/mudança visual, não

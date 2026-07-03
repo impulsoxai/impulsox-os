@@ -18,9 +18,29 @@ export function acharCortesPorMarcador(roteiroTexto) {
   return out;
 }
 
-// Limita o trecho a no máximo 30s (padrão de short que retém).
+// Limita o trecho ao teto de duração (default 60s — banda forte de short em 2026 é
+// 20-60s; teto real da plataforma é 180s). Quando precisa truncar e há `palavras`
+// (word-timestamps do vídeo), recua o corte pro FIM DA FRASE mais próxima dentro do
+// teto — truncar no meio da frase amputa o payoff. Sem fronteira de frase no alcance,
+// recua pro fim da última palavra inteira; sem palavras, corta seco no teto.
+// Devolve `truncado: true` quando mexeu no fim — o dry-run avisa em vez de silenciar.
+export function limitarDuracao({ inicio, fim }, { teto = 60, palavras } = {}) {
+  if (fim - inicio <= teto) return { inicio, fim, truncado: false };
+  const tetoAbs = inicio + teto;
+  let corte = tetoAbs;
+  if (Array.isArray(palavras) && palavras.length) {
+    const noAlcance = palavras.filter((p) => p.fim > inicio && p.fim <= tetoAbs);
+    const fimFrase = [...noAlcance].reverse().find((p) => /[.!?…]$/.test(p.texto.trim()));
+    const ultima = noAlcance[noAlcance.length - 1];
+    if (fimFrase) corte = fimFrase.fim;
+    else if (ultima) corte = ultima.fim;
+  }
+  return { inicio, fim: +corte.toFixed(3), truncado: true };
+}
+
+// Compat: nome antigo com o teto antigo. Preferir limitarDuracao.
 export function limitar30s({ inicio, fim }) {
-  return { inicio, fim: Math.min(fim, inicio + 30) };
+  return limitarDuracao({ inicio, fim }, { teto: 30 });
 }
 
 // Palavras cujo tempo cai em [inicio, fim], com os tempos rebaseados pra começar em 0

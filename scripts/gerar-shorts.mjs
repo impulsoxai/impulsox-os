@@ -12,18 +12,23 @@ import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { registrarPasso } from "./registrar-passo.mjs";
 import { montarASS, filtroLegendaAss, lerGlossario, corrigirTermos } from "./lib-edicao.mjs";
-import { parseTempo, acharCortesPorMarcador, limitar30s, recortarPalavras, filtroReenquadreCrop, filtroReenquadreSplit } from "./lib-shorts.mjs";
+import { parseTempo, acharCortesPorMarcador, limitarDuracao, recortarPalavras, filtroReenquadreCrop, filtroReenquadreSplit } from "./lib-shorts.mjs";
 
 const FFMPEG = process.env.FFMPEG_BIN || "ffmpeg";
 
-// Resumo do dry-run — função pura, testável. Aplica limitar30s a cada corte.
-export function montarPlanoShorts({ slug, cortes, reenquadre }) {
+// Resumo do dry-run — função pura, testável. Aplica limitarDuracao a cada corte e AVISA
+// quando truncou (corte silencioso amputa payoff — o dono decide se reescreve o marcador).
+export function montarPlanoShorts({ slug, cortes, reenquadre, teto = 60, palavras }) {
   const base = `canal-youtube/edicao/${slug}/shorts`;
   const shorts = cortes.map((c, i) => {
-    const { inicio, fim } = limitar30s(c);
-    return { n: i + 1, inicio, fim, duracao: +(fim - inicio).toFixed(2), razao: c.razao || "", saida: `${base}/short-${i + 1}.mp4` };
+    const { inicio, fim, truncado } = limitarDuracao(c, { teto, palavras });
+    return {
+      n: i + 1, inicio, fim, duracao: +(fim - inicio).toFixed(2), razao: c.razao || "",
+      saida: `${base}/short-${i + 1}.mp4`,
+      ...(truncado && { aviso: `trecho pedido tinha ${(c.fim - c.inicio).toFixed(0)}s — truncado no teto de ${teto}s${palavras?.length ? " (corte recuado pro fim da frase)" : " (corte seco; sem palavras.json pra achar fim de frase)"}` }),
+    };
   });
-  return { dry_run: true, slug, reenquadre, shorts };
+  return { dry_run: true, slug, reenquadre, teto, shorts };
 }
 
 function falhar(msg) { console.error("ERRO: " + msg); process.exit(1); }
@@ -46,8 +51,8 @@ function lerRoteiro(slug) {
 }
 
 // Gera UM short: corta o trecho, reenquadra, queima a legenda karaokê do trecho.
-function gerarUmShort({ base, final, palavras, corte, n, reenquadre }) {
-  const { inicio, fim } = limitar30s(corte);
+function gerarUmShort({ base, final, palavras, corte, n, reenquadre, teto }) {
+  const { inicio, fim } = limitarDuracao(corte, { teto, palavras });
   const dur = fim - inicio;
   const clipe = join(base, `_clip-${n}.mp4`);
   const assPath = join(base, `_short-${n}.ass`);
@@ -88,28 +93,32 @@ if (import.meta.main) {
   const cortes = lerCortes({ cortesFlag: flag("--cortes"), roteiroTexto: lerRoteiro(slug) });
   if (cortes.length === 0) falhar("nenhum [CORTE-SHORT] no roteiro e nenhum --cortes informado. Modo análise: a IA precisa propor os trechos da transcrição (palavras.json) antes.");
 
-  if (!has("--confirmar")) {
-    console.log(JSON.stringify(montarPlanoShorts({ slug, cortes, reenquadre }), null, 2));
-    process.exit(0);
-  }
+  // Teto de duração: default 60s (banda forte 2026); configurável até o teto da plataforma (180s).
+  const teto = Math.min(180, Math.max(15, Number(flag("--teto")) || 60));
 
-  // palavras pra legenda (Fase 2). Sem o arquivo, segue sem legenda nos shorts (aviso).
+  // palavras: usadas na LEGENDA e no corte-no-fim-da-frase do limitarDuracao — carregar
+  // antes do dry-run pra o plano já mostrar onde o corte de verdade vai cair.
   const palavrasPath = join(base, "palavras.json");
   let palavras = [];
   if (existsSync(palavrasPath)) {
     palavras = JSON.parse(readFileSync(palavrasPath, "utf8"));
     const glossPath = join("canal-youtube", "glossario.md");
     if (existsSync(glossPath)) palavras = corrigirTermos(palavras, lerGlossario(readFileSync(glossPath, "utf8")));
-  } else {
-    console.error("AVISO: palavras.json ausente — shorts sairão sem legenda. Re-rode /editar-video pra gerar.");
   }
+
+  if (!has("--confirmar")) {
+    console.log(JSON.stringify(montarPlanoShorts({ slug, cortes, reenquadre, teto, palavras }), null, 2));
+    process.exit(0);
+  }
+
+  if (!palavras.length) console.error("AVISO: palavras.json ausente — shorts sairão sem legenda e corte truncado sai seco (sem fim de frase). Re-rode /editar-video pra gerar.");
 
   mkdirSync(join(base, "shorts"), { recursive: true });
   const gerados = [];
   cortes.forEach((corte, i) => {
     try {
       registrarPasso({ skill: "/shorts", etapa: `gerando short ${i + 1}`, status: "inicio" });
-      const saida = gerarUmShort({ base: join(base, "shorts"), final, palavras, corte, n: i + 1, reenquadre });
+      const saida = gerarUmShort({ base: join(base, "shorts"), final, palavras, corte, n: i + 1, reenquadre, teto });
       gerados.push(saida);
     } catch (e) { console.error(`AVISO: short ${i + 1} falhou — ${e.message}`); }
   });

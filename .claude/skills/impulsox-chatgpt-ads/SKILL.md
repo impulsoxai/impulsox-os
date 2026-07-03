@@ -2,8 +2,9 @@
 name: impulsox-chatgpt-ads
 description: >-
   Use pra criar campanha de ChatGPT Ads / OpenAI Ads — "quero anunciar no ChatGPT",
-  "anúncio na IA", "campanha no OpenAI Ads", "ads no ChatGPT". (Brasil é país-piloto: prepara
-  pra lançar no dia em que o acesso abrir.)
+  "anúncio na IA", "campanha no OpenAI Ads", "ads no ChatGPT". (Disponibilidade por país
+  MUDA SEMANALMENTE — a skill re-verifica o status ao vivo em toda rodada; se o Brasil
+  ainda não abriu, ela prepara pra lançar no dia em que abrir.)
   Build launch-ready OpenAI Ads (ChatGPT Ads) campaigns from a client offer and landing
   page. Use when planning ChatGPT Ads / OpenAI Ads Manager Beta strategy, campaign and ad
   group structure, context hints, ad titles and copy, creative angles, landing page
@@ -11,10 +12,10 @@ description: >-
   cadence, or a client-ready campaign packet. Produces a canonical campaign-plan.json,
   validates it deterministically, then renders a PDF + bulk-upload CSV + client brief.
   Conducts a guided intake one question at a time for operators who do not know marketing.
-  Supports pilot-readiness plans for pilot-announced countries (Brazil, Mexico, Japan,
-  South Korea) so clients launch the day access opens. Do not use for advertisers in
-  countries that are neither live nor pilot-announced, excluded categories, policy evasion,
-  guaranteed-performance promises, sensitive targeting, or claims the landing page cannot back.
+  Supports pilot-readiness plans for pilot-announced countries so clients launch the day
+  access opens. Do not use for advertisers in countries that are neither live nor
+  pilot-announced, excluded categories, policy evasion, guaranteed-performance promises,
+  sensitive targeting, or claims the landing page cannot back.
 ---
 
 # ImpulsoX ChatGPT Ads Agent

@@ -11,13 +11,13 @@ description: >
 
 # /treinar-vendas — Sales coaching com IA (Pilar 5)
 
-Gerar lead é a parte fácil; **fechar** é onde o dinheiro vaza. Dado de mercado: só ~30% dos
-times de negócio local recebem treino de vendas formal — e quem recebe vende **+50%**. Esta
+Gerar lead é a parte fácil; **fechar** é onde o dinheiro vaza. A maioria dos negócios locais
+não tem treino de vendas formal — o dono aprendeu vendendo e o time aprende olhando. Esta
 skill é o treinador que o dono não tem tempo de ser: cria o script, simula a call, e pontua as
 calls reais com nota por rubrica — pra o time melhorar sem o dono ter que ouvir cada ligação.
 
-Autoria: ImpulsoX AI. Conteúdo original. Rubrica e benchmarks de fontes de mercado 2026
-(ver `docs/auditoria-esteira-2026-06-29.md`).
+Autoria: ImpulsoX AI. Conteúdo original. A tese "sales coaching com IA é alavanca da esteira"
+vem de `docs/auditoria-esteira-2026-06-29.md` (linha Sales coaching IA).
 
 ## Onde entra na esteira
 
@@ -65,9 +65,10 @@ julgamento subjetivo — então a rubrica mede o que dá pra ver):
 | **Tratamento de objeção** | 25% | reconheceu + perguntou de volta (não brigou), trouxe evidência, confirmou |
 | **Fechamento** | 20% | próximo passo claro e único, compromisso mútuo, sem "depois te aviso" solto |
 
-Benchmarks de apoio (sinais, não nota): **falar 40-45% do tempo** (ouvir mais que falar),
-**15-20 perguntas de descoberta**, tom positivo. Nota final ponderada + os 2-3 ajustes de maior
-impacto pra próxima call (não uma lista de 10 — o que muda o jogo).
+Benchmarks de apoio (sinais, não nota; ordem de grandeza da prática de conversation
+intelligence — estilo Gong/Chorus, sem estudo único que os crave): **falar 40-45% do tempo**
+(ouvir mais que falar), **15-20 perguntas de descoberta**, tom positivo. Nota final ponderada
++ os 2-3 ajustes de maior impacto pra próxima call (não uma lista de 10 — o que muda o jogo).
 
 ## Honestidade dura (o que NÃO fazer)
 

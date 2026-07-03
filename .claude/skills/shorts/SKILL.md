@@ -3,7 +3,7 @@ name: shorts
 description: >
   Use pra transformar um vídeo longo do canal em vários shorts verticais — "/shorts",
   "corta esse vídeo em shorts", "gera os cortes verticais", "repurpose esse longo". Pega o
-  final.mp4 (16:9) e gera shorts 9:16 (≤30s) com legenda karaokê, por marcador [CORTE-SHORT]
+  final.mp4 (16:9) e gera shorts 9:16 (20-60s) com legenda karaokê, por marcador [CORTE-SHORT]
   do roteiro ou por trechos que eu proponho da transcrição e você aprova.
 ---
 
@@ -31,7 +31,7 @@ Autoria: ImpulsoX AI. Conteúdo original.
      montar o `--cortes "ini-fim,..."`.
 2. **Escolher o trecho certo (pesquisa 2026):** o short decide nos **primeiros 1-3s**.
    Priorizar cortes cujo começo já tem MOVIMENTO/punch (não fala morna de transição) —
-   começar na frase de impacto, não na preparação. Cada short = uma lacuna só, ≤30s.
+   começar na frase de impacto, não na preparação. Cada short = uma lacuna só, 20-60s.
 3. **Escolher o reenquadre** conforme o conteúdo: `--reenquadre crop` (talking-head/tela
    centralizada, default) ou `split` (screen-recording, vídeo no topo + legenda embaixo).
 4. **Dry-run primeiro** — mostrar quantos shorts, tempos e duração. Com OK, `--confirmar`.
@@ -41,7 +41,11 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 ## Regras
 
-- Cada short ≤30s (curto força clareza — padrão dos canais que retêm).
+- Régua de duração (a MESMA do `/roteiro-yt`): **20-60s conforme o job** — curto força
+  clareza; 50-60s aguenta payoff maior (até ~76% de watch-through; opus.pro/shortimize,
+  2026). Teto do script: 60s default, configurável via `--teto` até 180s (limite da
+  plataforma). Trecho maior que o teto → o script recua o corte pro fim da frase mais
+  próxima (via `palavras.json`) e AVISA no dry-run — nunca trunca em silêncio.
 - O corte tem que **prender nos primeiros 1-3s** — começar no punch, não na preparação.
 - Legenda reusa a transcrição do longo (não transcreve de novo).
 - Modo análise (sem marcador): a IA propõe, o dono aprova — nunca corta sem aval.
@@ -52,4 +56,4 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 ---
 
-**✓ Pronto:** N shorts verticais (9:16, ≤30s) com legenda karaokê, cortados do longo · **→ próximo passo:** `/publicar` — leva os shorts pro YouTube (detecta short e já põe `#Shorts`). Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltar `palavras.json`, os shorts saem sem legenda e o sistema reorienta.
+**✓ Pronto:** N shorts verticais (9:16, 20-60s) com legenda karaokê, cortados do longo · **→ próximo passo:** `/publicar` — leva os shorts pro YouTube (detecta short e já põe `#Shorts`). Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltar `palavras.json`, os shorts saem sem legenda e o sistema reorienta.

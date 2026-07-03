@@ -102,7 +102,7 @@ git tag "pre-atualizacao-$VERSAO_ATUAL"
 Trazer do template apenas os caminhos de motor, deixando o núcleo deste negócio intocado:
 
 ```bash
-git checkout template/main -- .claude/ docs/ scripts/ remotion/ .env.example .gitignore
+git checkout template/main -- .claude/ CLAUDE.md docs/ scripts/ remotion/ .env.example .gitignore
 
 # remotion/src/tema.ts é GERADO das cores deste negócio (não motor) — restaurar a versão local
 # se o checkout acima o trouxe do template. Se o clone ainda não tem tema.ts, gerar:
@@ -136,11 +136,15 @@ avisar o usuário que algo saiu do esperado. Dado alterado é abortar, sem exce�
 
 1. Rodar `/abrir` — o resumo tem que sair igual a antes (nome, degrau, tom da voz rica). Se a
    voz sumiu ou ficou genérica, o núcleo foi tocado → abortar pelo branch de segurança.
-2. Gravar `motor-versao.md` na raiz do clone — o carimbo do motor que este negócio roda agora
-   (versão lida do `CLAUDE.md` já aplicado, data e hash do commit do template):
+2. Gravar `motor-versao.md` na raiz do clone — o carimbo do motor que este negócio roda agora.
+   A versão é lida **do template**, não do arquivo local (se o Passo 2 falhou em atualizar o
+   `CLAUDE.md`, ler o local carimbaria a versão velha com confiança — o pior dos mundos):
 
    ```bash
-   VERSAO=$(grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' CLAUDE.md | tail -1)
+   VERSAO=$(git show template/main:CLAUDE.md | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | tail -1)
+   VERSAO_LOCAL=$(grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' CLAUDE.md | tail -1)
+   # Gate: as duas TÊM que bater. Divergiram = o CLAUDE.md não desceu → voltar ao Passo 2.
+   [ "$VERSAO" = "$VERSAO_LOCAL" ] || echo "⚠️ ABORTAR: CLAUDE.md local ($VERSAO_LOCAL) != template ($VERSAO)"
    HASH=$(git rev-parse --short template/main)
    printf '# Motor\n\nVersão: %s\nAtualizado em: %s\nCommit do template: %s\n' \
      "$VERSAO" "$(date +%F)" "$HASH" > motor-versao.md
@@ -174,6 +178,9 @@ avisar o usuário que algo saiu do esperado. Dado alterado é abortar, sem exce�
    `/atualizar`, não aplica.
 4. Sem remote `template` configurado → a skill oferece criar o remote antes de seguir.
 5. Trabalho não commitado → a skill manda `/salvar` antes de atualizar.
+6. **Pós-atualização, a versão do rodapé do `CLAUDE.md` local == a do template** (e o
+   `motor-versao.md` carimba essa mesma versão). Divergiu → o `CLAUDE.md` não desceu;
+   abortar e refazer o Passo 2 — carimbo nunca pode confirmar versão errada.
 
 ## Onde registrar
 

@@ -7,6 +7,50 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.13] — 2026-07-03
+
+> Fase URGENTE da auditoria total (6 auditores externos + pesquisa web, relatórios em
+> `docs/auditoria-*-2026-07-0*.md`, plano em `docs/auditoria-total-2026-07-03-plano.md`).
+> Bugs silenciosos e itens com relógio, corrigidos antes das ondas 1-5.
+
+### Corrigido
+- **`/atualizar-motor` não propagava o `CLAUDE.md`** — a constituição nunca descia pros
+  clones e o `motor-versao.md` carimbava a versão velha com confiança. Agora: `CLAUDE.md`
+  no checkout, versão lida do TEMPLATE com gate local==template, teste de aceitação novo.
+- **`lib-shorts.mjs` amputava short aos 30s em silêncio** (meio da frase = payoff perdido).
+  Novo `limitarDuracao`: teto 60s default (`--teto` até 180s), corte recuado pro fim da
+  frase via `palavras.json`, flag `truncado` + aviso no dry-run. Régua de duração unificada
+  (20-60s conforme o job) no `/shorts` e `/roteiro-yt`. 12 testes.
+- **Recência fictícia no radar de temas** (`dias: 7` cravado) — agora `upload_date` real do
+  yt-dlp (`diasDesdeUploadDate`); data desconhecida vale 0, nunca frescor inventado. Score
+  ganhou **outlier** (views ÷ mediana do canal — demanda de TEMA, padrão Galloway) no lugar
+  de views absoluto. Fallback de termos hardcoded ("claude code") removido — termos vêm de
+  `pilares.md`/`--termos`. 15 testes.
+- **Citação quebrada no `/treinar-vendas`** (30%/+50% apontavam pra fonte que não os contém)
+  — reescrito sem falsa precisão; benchmarks de call marcados como ordem de grandeza.
+
+### Adicionado
+- **Varredura de segredo no `/salvar`** — grep de padrões de credencial (`ixk_live_`,
+  `sk-`, `Bearer`, `AKIA`, `ghp_`) no CONTEÚDO antes do `git add -A`; achado → mostra e
+  pergunta, nunca sobe. O `.gitignore` protege arquivo, não token colado em nota.
+- **ChatGPT Ads re-verificado (2026-07-03)** — tabela de países atualizada (UK live+self-serve,
+  JP/KR live, piso de gasto US removido, BR/MX "coming weeks"); description sem estado
+  cravado ("status muda semanalmente — a skill confere ao rodar"); watch-item de múltiplos
+  formatos.
+
+## [0.2.12] — 2026-07-02
+
+> Entrevista invertida no `/plugar` (método Hormozi via vídeo Dream Labs) + auditoria
+> externa da melhoria aplicada (8 ajustes).
+
+### Adicionado
+- `/plugar` Fase 2B invertida: o dono dá uma AULA solta (texto ou áudio via whisper local)
+  → o sistema marca cobertura contra 12 pontos de business context → pergunta SÓ o que
+  faltou (pode pular; aula curta ganha fallback em blocos). Aula crua preservada em
+  `nucleo/aula-do-dono.md` (fato ≠ fala); pede 2-3 amostras reais de texto; eco de
+  validação da voz; asset novo `.claude/skills/plugar/assets/contexto-do-negocio.md`.
+- `/voz` lê a aula do `/plugar` antes do roteiro e NUNCA a descarta no "refazer do zero".
+
 ## [0.2.11] — 2026-06-29
 
 > Integração do playbook JP Middleton (agência de IA ~US$25M) + esteira de crescimento +

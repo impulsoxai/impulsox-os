@@ -1,21 +1,27 @@
 # OpenAI Ads — Platform Field Guide
 
-> Verified: 2026-06-10 against official OpenAI docs + hands-on agency reports.
+> Verified: 2026-07-03 (Digiday, PPC Land, Briefs — expansão de jun/2026).
 > These facts are VOLATILE — beta changes weekly. RE-VERIFY LIVE before every launch.
+> A tabela abaixo é um SNAPSHOT datado, nunca a verdade atual — o geo gate re-verifica
+> ao vivo em toda rodada, e o snapshot existe só pra dar o ponto de partida.
 > Sources at bottom.
 
 ## Country availability (drives the geo gate — re-verify FIRST)
-| Country | Status (2026-06-10) | Plan type allowed |
+| Country | Status (2026-07-03) | Plan type allowed |
 |---|---|---|
-| US | Self-serve LIVE (ads.openai.com, since 2026-05-05) | launch / fix_first / narrow |
-| CA, AU, NZ | Closed pilot LIVE | launch / fix_first / narrow |
-| UK (GB) | Pilot LIVE (first expansion wave) | launch / fix_first / narrow |
-| **Brazil (BR)**, MX, JP, KR | Pilot ANNOUNCED — "coming weeks", closed beta, NOT self-serve at first, selected advertisers only | **prepare_pilot** only |
+| US | Self-serve LIVE (ads.openai.com, desde 2026-05-05); piso mínimo de gasto REMOVIDO — qualquer porte anuncia | launch / fix_first / narrow |
+| CA, AU, NZ | Pilot LIVE | launch / fix_first / narrow |
+| UK (GB) | LIVE desde 2026-06-06; **self-serve desde 2026-06-22** | launch / fix_first / narrow |
+| JP, KR | **LIVE desde 2026-06-22** (managed; self-serve a caminho) | launch / fix_first / narrow |
+| **Brazil (BR)**, MX | Pilot ANNOUNCED — "coming weeks" (anúncio de mai/2026; pode abrir a qualquer dia), closed beta primeiro, selected advertisers | **prepare_pilot** only |
 | Everywhere else | Not announced | do_not_launch |
 
 - Demand for pilot slots is expected to exceed availability — prepare_pilot clients should
   be waitlist-ready BEFORE the pilot opens (see SKILL.md "Pilot-readiness mode").
 - Self-serve approval: ~2 business days; longer for restricted verticals.
+- Watch-item (jul/2026): OpenAI sinalizou expansão pra MÚLTIPLOS formatos de anúncio —
+  a creative matrix atual assume formato único (title ≤50 / copy ≤100); re-verificar
+  formatos junto com a tabela.
 
 ## Structure
 - Managed in OpenAI Ads Manager (ads.openai.com) — self-serve since 2026-05-05 (US).
