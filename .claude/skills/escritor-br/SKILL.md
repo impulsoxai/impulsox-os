@@ -67,11 +67,28 @@ explícita, não opcional. Em peça de conteúdo/venda, rodar TAMBÉM o checklis
 pilares (fim do `references/craft-de-engajamento.md`) — os furos de curiosidade, emoção
 e prova entram nos mesmos bullets.
 
-### 3. Final
+### 3. Final + GATE POR SCRIPT (máquina verifica, não a introspecção)
 Reescrever resolvendo os bullets do audit **e** respeitando as restrições duras abaixo.
 
-Entregar: o rascunho, os bullets do "ainda-IA", e o texto final. (Em uso embutido por
-outra skill, entregar só o final, mas rodar o loop internamente mesmo assim.)
+**Depois, rodar o gate determinístico** — tell mecânico se pega com regex, não com
+auto-crítica (o modelo corrigindo a si mesmo no mesmo contexto é o elo fraco):
+
+```bash
+node scripts/lib-humanizador.mjs <arquivo-do-texto> --banidas "<palavras banidas da voz.md, separadas por vírgula>"
+```
+
+O script devolve, com linha e coluna: **DUROS** (travessão, meia-risca fora de intervalo,
+aspa curva, ` -- `), **BANIDAS** (as da voz.md) e **VÍCIOS** (a parte regexável da tabela
++ onda 2025). Régua:
+- Qualquer **duro** ou **banida** → o texto NÃO está pronto; corrigir e re-rodar.
+- **Vícios** entram como bullets do audit — tell isolado não condena (freio de
+  falso-positivo), mas 3+ vícios no mesmo texto = aglomerado, reescrever.
+- Texto que só existe no chat → salvar num arquivo temporário do scratchpad e rodar; o
+  gate nunca é pulado por preguiça de salvar.
+
+Entregar: o rascunho, os bullets do "ainda-IA", o resultado do gate (pass) e o texto
+final. (Em uso embutido por outra skill, entregar só o final, mas rodar o loop e o gate
+internamente mesmo assim.)
 
 ## Restrições duras (régua de "zero", não de "evite")
 
@@ -79,7 +96,9 @@ No texto **final**, zero de:
 - **Travessão `—` e meia-risca `–`.** É o tell nº 1 de IA. Trocar, nesta ordem de
   preferência: ponto (frase nova), vírgula (aparte curto), dois-pontos (explicação),
   parênteses (aparte de verdade), ou reestruturar. Pegar também ` — ` espaçado e ` -- `.
-  **Varredura final:** achou `—`/`–`/`--`, não está pronto.
+  **Única exceção: meia-risca de INTERVALO colado** ("seg–sex", "9h–18h", "2024–2026") —
+  aí o hífen no lugar é que seria o erro; o gate por script já sabe disso.
+  **Varredura final:** o `lib-humanizador.mjs` acha qualquer um deles com linha e coluna.
 - **Aspas curvas `“ ” ‘ ’`.** Usar retas `" "`.
 - **Title-case em título** ("Negociações Estratégicas E Parcerias" → "Negociações
   estratégicas e parcerias"). Só a 1ª letra e nomes próprios.
@@ -121,9 +140,15 @@ Caçar e cortar. Os marcados (✦) entraram da fusão com o guia de detecção:
 | ✦ Abertura retórica falso-sincera: "Olha,", "Sinceramente?", "Vou ser honesto:" | Cortar o teatro; começar pela frase |
 | ✦ Artefato de chat: "Claro!", "Ótima pergunta!", "Espero que ajude", "Quer que eu…?" | Não é conteúdo; cortar |
 | ✦ Disclaimer de cutoff / preenchimento especulativo: "até onde sei", "não há muita informação disponível" | Dizer o que se sabe, ou cortar a frase; nunca inventar |
+| ★ Onda 2025: "destacando", "evidenciando", "reforçando", "garantindo que" (o novo "proporcionando") | Verbo direto no presente; a coisa destaca-se sozinha |
+| ★ Onda 2025: "vale destacar", "nesse sentido", "sendo assim" | Emendar a ideia direto, sem conectivo de preenchimento |
+| ★ Hedging enfileirado: "pode", "geralmente", "em muitos casos" na MESMA frase | Um hedge honesto no máximo; dois é medo de afirmar |
+| ★ Trio adjetival: "rápido, prático e eficiente" (o tricolon em adjetivos) | Um adjetivo que importa, ou o fato que prova os três |
 
 (Os PT-BR-específicos que o guia de fora não tem ficam: cadeia de gerúndios, "além disso",
-tricolon à brasileira. Não perder esses.)
+tricolon à brasileira. Não perder esses. Os ★ são a onda de vocabulário 2025+ registrada
+pelo guia da Wikipedia — o vocabulário-tell muda a cada geração de modelo; quando o
+`/formulas` rodar o refresh mensal, esta tabela e o `lib-humanizador.mjs` atualizam juntos.)
 
 ## Freio de falso-positivo — "o que NÃO matar"
 
@@ -186,8 +211,15 @@ Como pôr pulso:
 - Em peça de conteúdo/venda: o checklist dos 8 pilares passou (1ª frase puxa a 2ª;
   lacuna concreta aberta E fechada; uma emoção dominante; objeção nº 1 respondida;
   um CTA com ponte) — ver `references/craft-de-engajamento.md`.
-- A voz é reconhecível como a da marca (bate com `nucleo/voz.md`) — e o texto tem alma,
+- A voz é reconhecível como a da marca — e a checagem é NOMEÁVEL, não impressão: **citar
+  2 marcadores concretos da `voz.md` presentes no final** (o jeito de abrir, uma palavra
+  da casa, a postura). "Parece a marca" sem apontar onde = não passou. E o texto tem alma,
   não só ausência de tique (ver SOUL).
+- **Anti-template de LOTE** (uso embutido em batch — /repurpose, /calendario executando
+  vários): antes de fechar cada peça, 1 pergunta no audit: *"esta peça abre e fecha igual
+  à anterior do lote?"* O molde da casa (soco curto + parágrafo de 1 linha + fecho que
+  devolve a bola) vira o novo template detectável quando 10 peças da semana compartilham
+  a mesma assinatura rítmica — variar a PROSA entre peças do lote, não só o hook.
 - O freio de falso-positivo foi respeitado: especificidade, sentimento misto e estrutura
   de história continuam de pé.
 - Toda afirmação concreta é verdadeira — humanizar **nunca** inventa fato, número ou

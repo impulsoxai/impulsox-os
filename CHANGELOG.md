@@ -7,6 +7,37 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.15] — 2026-07-03
+
+> Onda 2A da auditoria total: o eixo COPY (prioridade nº 1 do dono). Princípio novo:
+> **modelo cria, máquina verifica.**
+
+### Adicionado
+- **`scripts/lib-humanizador.mjs` + 11 testes** — gate DETERMINÍSTICO do /escritor-br:
+  varre DUROS (travessão, meia-risca fora de intervalo, aspa curva, ` -- `), BANIDAS
+  (palavras da voz.md por parâmetro) e VÍCIOS (a parte regexável da tabela + onda 2025)
+  com linha e coluna. Duro/banida = não entrega; 3+ vícios = aglomerado. Fronteiras
+  unicode PT (o \b do JS não enxerga acento). CLI com exit code.
+- **Tabela de vícios atualizada com a onda 2025+** (Wikipedia/Forbes): "destacando/
+  evidenciando/garantindo que", "vale destacar/nesse sentido/sendo assim", hedging
+  enfileirado, trio adjetival — e a exceção da meia-risca de intervalo ("seg–sex").
+- **Anti-template de LOTE** no audit (peças do mesmo batch não podem compartilhar a
+  assinatura rítmica) e **fidelidade de voz nomeável** (citar 2 marcadores da voz.md
+  presentes no final — "parece a marca" sem apontar onde não passa).
+- **Seção "E-mail legível por IA" no /email** — Gemini resume o inbox desde jan/2026
+  (até 40% despriorizado): 1º parágrafo sobrevive a resumo de 1 frase, chave nos
+  primeiros 100-200 chars, teste do sumarizador no gate; plain-text vs HTML decidido
+  POR MODO (follow-up = plain-text obrigatório); política de sunset 90-120d.
+- **Camada BR no acervo** — seção MECÂNICAS BR no swipe-copy (12x como âncora, PIX com
+  desconto, boleto como confiança, WhatsApp-CTA documentado como mecânica) + sementes BR
+  no Modo 2 do /formulas (Ícaro de Carvalho, Paulo Maccedo, Rafael Albertoni — mecânica,
+  nunca tema) + busca PT-BR obrigatória no refresh.
+- **Protocolo de mineração VoC com volume no /copy** — 30+ frases em tabela de 4 colunas,
+  frequência decide a candidata a headline, e a ponte CRM→VoC (objeções e motivos de
+  perda dos deals como matéria-prima — a mina que SaaS de copy não tem).
+- **Headlines perdedoras viram teste** — fecho da /copy oferece as 3 finalistas como
+  variações de criativo no /ads-meta; o público escolhe, não o gosto.
+
 ## [0.2.14] — 2026-07-03
 
 > Onda 1 da auditoria total: ~30 quick-wins de custo baixo em 25+ arquivos.

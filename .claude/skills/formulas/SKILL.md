@@ -96,9 +96,16 @@ Quando o usuário pede "atualiza as fórmulas" ou não tem peça pra trazer:
 
 1. Buscar (via skill de scraping/busca) análises públicas recentes: breakdowns de
    posts que performaram, estudos de hooks, relatórios de formato por rede.
-   Pro nicho de IA/Claude Code, canais americanos de referência (sementes, não lista
-   fechada — `canal-youtube/criadores-monitorados.md` tem a lista viva): Sabrina Ramonov,
+   **Buscar SEMPRE também em PT-BR no nicho do cliente** ("análise post viral [nicho]",
+   "breakdown reel [nicho] Brasil") — fórmula de hook transfere entre línguas só em parte:
+   a sintaxe do PT empurra verbo e número pra outras posições (o first-3-words test muda),
+   e a estética que performa no feed BR não é a do feed americano.
+   Sementes gringas pro nicho IA/Claude Code (não lista fechada —
+   `canal-youtube/criadores-monitorados.md` tem a lista viva): Sabrina Ramonov,
    Luuk Alleman, Matt Ganzak, Jonathan Acuña "Doctor AI", Duncan Rogoff, Chase AI, Yury AI.
+   Sementes BR de mecânica de copy/lançamento (dissecar a MECÂNICA, nunca copiar tema/
+   estética): Ícaro de Carvalho (O Novo Mercado), Paulo Maccedo, Rafael Albertoni — o
+   estilo "carta longa BR" deles é material de dissecação pro Modo 1.
 2. Filtrar: só fórmula com **explicação plausível** entra; "use emoji no título" sem
    porquê, não. Anotar a fonte de cada uma.
 3. Gravar as aprovadas pelo usuário em `docs/formulas.md` com origem `mercado`.

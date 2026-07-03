@@ -96,6 +96,17 @@ nomeados, não lei universal; a direção é o que importa. Fontes, na ordem de 
 - transcrição de venda ou de atendimento — a objeção e o "ahá" no momento que acontecem;
 - `nucleo/provas.md` — depoimento autorizado já traz fala literal.
 
+**Protocolo de mineração (método > inspiração — LoopVOC/message mining):** quando as
+fontes existem, minerar com VOLUME, não pescar 3 frases bonitas:
+1. **Coletar 30+ frases literais** (o ideal do método é 80-120; abaixo de 30, marcar a
+   mineração como parcial) numa tabela de 4 colunas: *frase memorável* · *o que ele quer*
+   · *o que o irrita* · *emoção (+/−)*.
+2. **Contar repetição.** A frase/ideia que mais se REPETE — não a mais bonita — é a
+   candidata nº 1 a headline. Frequência é o dado; gosto é viés.
+3. **Com CRM ligado** (lib-crm): puxar também objeções e motivos de perda dos deals — a
+   fala de quem NÃO comprou é a objeção que a página precisa desarmar. (É a mina que
+   nenhum SaaS de copy tem: eles não moram dentro da operação.)
+
 Extrair: **a dor nas palavras dele**, **o resultado que ele celebra**, **a objeção que ele
 verbaliza**. Essas frases viram matéria-prima de headline, dor e objeção (Camada 2). Sem
 nenhuma fonte de VoC disponível, marcar "confirmar linguagem com o cliente" e seguir com a
@@ -115,6 +126,11 @@ hipótese do núcleo — nunca travar.
 - **Sprint obrigatório:** escrever **10 versões** antes de escolher. As 3 primeiras são
   óbvias; as boas vêm depois. Forçar variedade — direto, curiosidade, benefício, dor,
   mecanismo. Apresentar as **3 melhores** ao usuário com a recomendação.
+- **As 2 perdedoras não são lixo — são teste.** Quando o negócio roda ads, oferecer no
+  fecho: "as 3 finalistas viram variações de criativo no `/ads-meta` — o PÚBLICO escolhe
+  a headline, não a gente". A vencedora do teste vira a headline da página e entra em
+  `nucleo/aprendizados.md` (via `/desempenho`/`/analisar-ads`). Escolha por gosto é o
+  único elo sem medição do eixo; isso fecha ele.
 - **Gate de especificidade no headline:** headline sem **número, nome próprio ou recorte
   concreto** é candidato a refazer — é aqui que a abstração mais custa (5x mais leitores que o
   corpo). "Aumente sua eficiência" não passa; "Recupere a venda das 22h" passa. A Camada 3 caça

@@ -138,6 +138,46 @@ Exemplos em inglês vêm com adaptação PT-BR marcada como adaptação.
 
 ---
 
+## MECÂNICAS BR — o que só existe (ou só funciona assim) no Brasil
+
+> Um produto vendido como copy BR premium precisa do DNA local por escrito. Estas
+> mecânicas não têm equivalente no swipe gringo — são a camada que falta quando se
+> traduz Unbounce/CXL. Prática consolidada do e-commerce/infoproduto BR (GreatPages,
+> Berga, 2025); os moldes transferem, as promessas continuam precisando ser verdade.
+
+### BR-1. Parcela como âncora — "12x de R$ 497" no lugar de "R$ 5.970"
+- **Mecânica:** o mercado BR decide pela PARCELA, não pelo total. A parcela é o preço
+  percebido; o total entra ao lado, menor, por transparência.
+- **Transfere (molde):** `12x de R$ [parcela]` como número dominante + `(R$ [total] à
+  vista)` discreto. Nunca esconder o total (transparência é lei e confiança); nunca
+  parcela de valor quebrado feio (R$ 497, não R$ 512,33).
+- **Quando NÃO usar:** B2B de ticket alto por contrato (aí a âncora é o ROI, não a parcela).
+
+### BR-2. PIX com desconto — a reversão de fricção que fecha AGORA
+- **Mecânica:** desconto real à vista no PIX (3-8%) converte o indeciso em pagador
+  imediato — sem taxa de cartão, dinheiro na conta na hora. É urgência honesta: o
+  desconto existe porque o custo é menor.
+- **Transfere:** bloco de preço com 2 caminhos lado a lado: `12x de R$ X no cartão` /
+  `R$ Y à vista no PIX (economize R$ Z)`. O Z calculado e mostrado, não "desconto especial".
+
+### BR-3. Boleto = objeção de confiança, não de caixa
+- **Mecânica:** quem pede boleto muitas vezes não confia em pôr o cartão no site — o
+  boleto é resposta de CONFIANÇA. Oferecê-lo comunica "pode entrar sem cartão".
+- **Transfere:** aceitar boleto quando o público é desbancarizado/desconfiado; e tratar a
+  causa raiz na página (selo, garantia, prova) — o boleto remedia, a confiança cura.
+
+### BR-4. "Chama no WhatsApp" — o CTA-rei do BR
+- **Mecânica:** no Brasil o WhatsApp é O canal de decisão de compra local — o CTA de
+  conversa converte mais que formulário porque é o hábito nativo (a casa já usa; aqui
+  fica documentado como mecânica). Formulário pede compromisso; "chama no WhatsApp" pede
+  uma mensagem.
+- **Transfere:** CTA primário = botão WhatsApp com mensagem pré-preenchida que já abre a
+  conversa qualificando ("Oi! Quero saber sobre [oferta] pra [contexto]"). Formulário
+  vira o secundário. Regra da casa acoplada: quem oferece o canal RESPONDE rápido
+  (`/velocidade` mede o custo de não responder).
+
+---
+
 ## Regras de uso (inegociáveis)
 
 - **Molde, nunca frase.** Transplantar texto, tema ou marca de origem é proibido. A

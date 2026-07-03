@@ -49,6 +49,32 @@ de envio ele usa (ela costuma resolver a autenticação) — não assumir que es
 - `docs/entregabilidade-email.md` — a régua de palavras/formatação que tiram o e-mail da
   caixa de entrada; é o **gate** antes de fechar qualquer assunto, preview ou corpo
 
+## E-mail legível por IA — o inbox virou ambiente mediado (jan/2026)
+
+Desde jan/2026 o Gmail roda Gemini no inbox (AI Overviews + AI Inbox — CNBC, jan/2026):
+a IA **resume o e-mail antes de a pessoa abrir** e **despriorização atinge até ~40% dos
+e-mails que chegam** (Folderly, 2026); o CTR médio já caiu (~4,35% → ~3,93%). O resumo da
+IA é o novo preview — regras novas, válidas pros 3 modos:
+
+1. **O 1º parágrafo tem que sobreviver a um resumo de 1 frase.** Se o Gemini resumir só a
+   abertura, o leitor ainda recebe a promessa + o próximo passo? Escrever o parágrafo 1
+   como se fosse o e-mail inteiro.
+2. **Informação-chave nos primeiros 100-200 caracteres do corpo** (Bloomreach, 2026) —
+   valor CONCRETO antes de linguagem emocional; a IA prioriza e resume o específico.
+3. **Teste do sumarizador no gate:** antes de fechar, resumir o e-mail em 1 frase; se a
+   frase não carrega oferta/valor/ação, reescrever a abertura.
+
+**Plain-text vs HTML — decisão por modo (não por gosto):** HTML pesado sinaliza marketing
+e cai em Promoções; texto simples lê como mensagem 1-a-1 (SendCheckIt):
+- **Follow-up de proposta → plain-text OBRIGATÓRIO** (é conversa comercial 1-a-1, não peça).
+- **Boas-vindas → plain-text ou HTML mínimo** (logo + texto; o lead quer a isca, não design).
+- **Newsletter → HTML leve** (imagem só quando carrega conteúdo; nunca e-mail-imagem).
+
+**Higiene de lista (sunset) — o driver de reputação nº 1 em 2026:** quem não abre/clica há
+90-120 dias sai do envio regular (vai pra reativação do `/reativar` ou sai de vez).
+Mandar pra lista morta derruba a reputação do domínio inteiro — cortar a lista é o que
+mantém o resto entregando. Lembrar o dono disso a cada newsletter.
+
 ## Três modos
 
 Decidir cedo qual se aplica (o pedido ou o handoff já indica).
