@@ -72,8 +72,13 @@ Estrutura que funciona pra leitor E pra máquina de busca (clássica ou IA):
 2. **Desenvolvimento por subtítulos H2** — cada um respondendo uma sub-pergunta real,
    com dado, exemplo ou passo prático. Sem encheção pra inflar contagem de palavra.
 3. **Onde a empresa entra** — conexão natural com o serviço, sem virar panfleto.
-4. **FAQ final (3-5 perguntas)** — perguntas reais com respostas diretas de 2-4 frases.
-5. **Chamada** — próximo passo concreto (WhatsApp, orçamento, contato).
+4. **Quem assina (E-E-A-T)** — o artigo tem AUTOR nomeado (o dono/especialista, com a
+   credencial em 1 linha) e pelo menos **1 marca de experiência vivida** no corpo
+   ("atendemos N [clientes do nicho] e o padrão que vemos é X" — puxar de
+   `nucleo/negocio.md`/`provas.md`, nunca inventar). É o sinal que Google e os motores de
+   IA usam pra decidir QUEM citar; artigo órfão de autor compete só por keyword.
+5. **FAQ final (3-5 perguntas)** — perguntas reais com respostas diretas de 2-4 frases.
+6. **Chamada** — próximo passo concreto (WhatsApp, orçamento, contato).
 
 Junto do artigo, gerar o bloco de dados estruturados (JSON-LD: `Article` + `FAQPage`)
 num arquivo ao lado, pronto pra colar no site. Não anunciar isso como "estratégia GEO" —
@@ -124,7 +129,7 @@ não exceção.
 ✓ Instagram: producao/posts/<data>-<slug>/ (N peças — PNGs + legenda)
 ✓ Reel/Short: producao/posts/<data>-<slug>/ (peça de descoberta)
 ✓ LinkedIn: producao/linkedin/<data>-<slug>.md (no cluster de foco)
-✓ E-mail: producao/email/<data>-<slug>.md (se houver lista)
+✓ E-mail: producao/emails/<tipo>-<slug>/ (formato do /email — pasta única, não espalhar)
 → keyword única em todos · Aprovou tudo? /publicar sobe o que for automatizável.
 ```
 

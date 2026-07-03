@@ -147,6 +147,14 @@ Autoria: ImpulsoX AI.
      `←` anterior, `Home`/`End`, `F` tela cheia, `S` presenter view (nota + próximo slide),
      `B` blackout. Funciona com o scroll-snap do OD (navega por `scrollIntoView`) ou com o engine
      próprio (display:none). As notas do apresentador entram aqui (array na ordem dos slides).
+   - **transição de slide — num vídeo gravado, a transição É o motion design:** corte seco
+     entre slides lê como PowerPoint. Injetar um crossfade/slide-reveal de ~300ms no easing
+     da marca (`--ease-marca` do tokens.css quando existir; senão `cubic-bezier(0.16,1,0.3,1)`)
+     na troca de slide — os decks de referência (Linear/Vercel/Stripe) vivem de
+     micro-transição, não de efeito. Uma transição só, consistente, no deck inteiro.
+   - **vídeo no mockup reinicia ao entrar no slide:** autoplay desde o load faz o dono chegar
+     no slide com o loop no meio. No handler de navegação: ao ativar o slide do reel,
+     `video.currentTime = 0; video.play()` — 3 linhas, o money shot sempre abre do começo.
    - **`notas.md`** pro segundo monitor (as notas de cada slide, em ordem).
 
 10. **Verifica:** `node .claude/skills/slides/references/verificar.mjs producao/slides/<tema>/index.html

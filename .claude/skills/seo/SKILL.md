@@ -110,8 +110,10 @@ no nicho e o loop mensal é o `/geo`; aqui é a execução estrutural numa pági
   citar — vago não vira citação. Puxar do `nucleo/provas.md` quando houver prova autorizada.
 - **Acesso pra crawler de IA.** `robots.txt` liberando `GPTBot` (OpenAI), `ClaudeBot`
   (Anthropic), `CCBot` (Common Crawl), `Google-Extended` (Gemini) e `PerplexityBot`.
-  Recomendado: `llms.txt` na raiz — índice curado do conteúdo mais importante pra LLM
-  (prática crescente 2026; LLM em RAG puxa daí pra citar).
+  Opcional: `llms.txt` na raiz — índice curado do conteúdo. **Honestidade (2026): é aposta
+  de custo zero, não mecanismo comprovado** — adoção ~10%, os crawlers principais não buscam
+  o arquivo e estudos de citação não mediram ganho (aeo.press "State of llms.txt", 2026).
+  Fazemos pelo custo (5 min), nunca prometemos ganho por ele ao cliente.
 - **Meta description como resposta.** Reforço da Fase 2: escrita pra ser lida em voz alta
   como a resposta à pergunta da página.
 
@@ -129,10 +131,12 @@ Dois produtos:
 2. **Relatório com nota.** Tabela item a item (✅/⚠️/❌), nota geral 0-10 separada em
    **Google (on-page)** e **GEO (citabilidade)**, e a lista priorizada do que consertar
    primeiro — o que dá mais resultado no topo. Linguagem de dono de negócio, não de técnico.
-   Quando o Schema estiver completo e estático, **dimensionar o ganho de citação** pra justificar
-   o esforço: página com Schema completo é citada ~2,7x mais no Perplexity e ~3,1x mais nas AI
-   Overviews do Google que a mesma página sem Schema. É o argumento de por que vale o trabalho —
-   número de referência, não promessa por página.
+   Sobre dimensionar ganho de citação: **não usar multiplicadores tipo "2,7x mais citada" no
+   relatório do cliente.** São CORRELAÇÃO de estudos de vendor (site com Schema completo tende
+   a ser melhor em tudo), e LLMs não consomem JSON-LD na inferência (Search Engine Land,
+   "Schema markup & AI search — no hype", 2026). O argumento honesto: Schema estrutura a
+   página pras máquinas que alimentam as IAs, custa pouco e não tem contra — benefício
+   direcional, não multiplicador prometido.
 
 ## Encaixe com o resto do sistema
 

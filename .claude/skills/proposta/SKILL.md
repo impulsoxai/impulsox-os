@@ -46,9 +46,12 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
   conseguir a reunião), não a proposta. Se o dono insistir em mandar a frio, avisar o custo e
   seguir — guiar, não travar.
 - **Janela dos 50 dias.** Proposta fechada em **≤50 dias** do primeiro contato fecha a ~47% de
-  win rate; depois disso cai pra ~20%. Deal que arrasta perde força. Calibrar a validade e o
-  follow-up (via `/email`) pra empurrar a decisão dentro dessa janela — urgência honesta é
-  manter o ritmo, não inventar prazo teatral.
+  win rate; depois disso cai pra ~20% (Proposify, State of Proposals — base de 2,6M+ propostas).
+  Deal que arrasta perde força. Calibrar a validade e o follow-up (via `/email`) pra empurrar a
+  decisão dentro dessa janela — urgência honesta é manter o ritmo, não inventar prazo teatral.
+- **Velocidade de envio.** Proposta enviada em **≤24h da reunião** fecha ~25% mais (cobl.ai,
+  sales proposal statistics, 2025) — o pico de intenção é o dia da conversa. A proposta não
+  espera a semana fechar; espera no máximo o dia seguinte.
 
 ## O que perguntar (só o que falta)
 
@@ -85,14 +88,15 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
    mútuo, não só preço — ele constrói consenso e tira o "vou pensar". Cada linha: o quê · quem ·
    quando. **Multi-threading:** deal com **3+ contatos envolvidos** fecha ~42% mais que deal de
    um contato só, e ter um **sponsor executivo** (quem decide o orçamento) dentro da conversa
-   multiplica o close por ~2,3x. Então o MAP nomeia mais de uma pessoa do lado do cliente — e o
+   multiplica o close por ~2,3x (dados de proposal software 2025 — Proposify/cobl.ai; ordem de
+   grandeza, reconferir anualmente). Então o MAP nomeia mais de uma pessoa do lado do cliente — e o
    próximo passo (#7) pede pra trazer quem decide pra mesa, não deixa a proposta presa num
    contato só que pode sumir.
 7. **Próximo passo único** — uma ação, clara: "responde este e-mail / chama no WhatsApp
    até [validade] que agendamos o início". Validade real, destacada uma vez, sem
    contagem regressiva teatral.
 
-### Blindar contra as 5 razões de perda (pesquisa de 23 mil propostas)
+### Blindar contra as 5 razões de perda (pesquisa de 23 mil propostas — Proposify, 2025)
 
 Estruturar a proposta já antecipando por que deals morrem — e desarmando os 3 maiores:
 - **Orçamento/timing (31%)** → ter sempre uma **opção de entrada** acessível (a de baixo da
@@ -126,9 +130,13 @@ Estruturar a proposta já antecipando por que deals morrem — e desarmando os 3
 - Texto passa pelo `/escritor-br`; peça inteira respeita as regras do
   `docs/persuasao.md` (dentro do teto de gatilhos de lá: aqui, aversão à perda + prova).
 - Proposta perdida vira aprendizado: perguntar o motivo e registrar no
-  `nucleo/aprendizados.md` quando o usuário souber.
+  `nucleo/aprendizados.md` quando o usuário souber. **E perdida não morre sem downsell:**
+  oferecer a oferta um degrau abaixo do catálogo (a "opção de entrada" da ancoragem, ou a
+  peça modular que resolve a dor mais aguda — ver `nucleo/ofertas.md`); "não pra R$ X" muitas
+  vezes é "sim pra R$ X/3". Só depois do downsell recusado o deal fecha como perdido.
 - **Benchmark de close honesto (pra calibrar a expectativa do dono):** taxa de fechamento de
-  proposta enviada gira em torno de **25% na mediana** e **~35% no topo**. Serve pra ancorar o
+  proposta enviada gira em torno de **25% na mediana** e **~35% no topo** (Proposify, base
+  2,6M propostas; Flowcase 2025). Serve pra ancorar o
   dono: nem toda proposta fecha, e perder 2 de 3 é normal — o jogo é mandar mais propostas
   qualificadas (com reunião antes, dentro da janela dos 50 dias, com multi-threading), não
   esperar 100%. Evita o desânimo de quem acha que "proposta que não fecha é erro".

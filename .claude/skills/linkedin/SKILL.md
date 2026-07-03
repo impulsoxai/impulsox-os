@@ -46,8 +46,9 @@ autor, não genérico — e no LinkedIn voz genérica é morte na primeira linha
 - `producao/calendario/<mes>.md` — tema e intenção, se veio do calendário
 - Perguntar uma vez e registrar em `nucleo/voz.md`: o post sai no **perfil pessoal**
   (do dono/sócio) ou na **página da empresa**? Perfil pessoal alcança MUITO mais — página
-  de empresa perdeu 60-66% de alcance desde 2024 e hoje atinge ~1,6% dos seguidores; é
-  vitrine institucional, não motor. Recomendar pessoal como motor principal, sempre.
+  de empresa perdeu 60-66% de alcance desde 2024 e hoje atinge ~1,6% dos seguidores
+  (Linkboost/Dataslayer, 2026); é vitrine institucional, não motor. Recomendar pessoal
+  como motor principal, sempre.
 
 ## Formatos
 
@@ -57,14 +58,24 @@ autor, não genérico — e no LinkedIn voz genérica é morte na primeira linha
    `/post` se precisar de peça da marca).
 3. **Documento PDF** — o "carrossel" do LinkedIn: conteúdo educativo denso, 6-12 páginas
    verticais, geradas como no `/post` (HTML → PNG → PDF) com a identidade da marca.
+4. **Vídeo nativo** — o formato que o feed de 2026 mais prioriza (+36% de views YoY;
+   Hootsuite, 2026). Vertical curto (roteiro pelo padrão do `/shorts`/reel), subido NATIVO
+   (nunca link do YouTube). Quando o dono já grava vídeo, é o teto de alcance.
+5. **Newsletter do LinkedIn** — entrega direto na CAIXA DE ENTRADA dos inscritos, ignorando
+   o algoritmo do feed (Dataslayer, fev/2026). É a tese "dono do canal" que a casa defende
+   no `/email`, dentro do LinkedIn: 1 edição mensal reaproveitando o modo newsletter do
+   `/email` (mesmo conteúdo, capa própria). Recomendar quando o dono publica há 60+ dias
+   com consistência.
 
 **Roteamento de formato por objetivo (escolher pelo alvo, não pelo gosto):**
 
 | Objetivo | Formato | Por quê |
 |---|---|---|
-| **Alcance / distribuição** | **Texto nativo** | Post de texto puro distribui ~28% mais no B2B que post com link ou mídia pesada — o algoritmo prioriza quem fica na plataforma |
-| **Profundidade salvável / autoridade** | **Documento PDF** | O doc é o formato mais salvável (engaja ~6,6%); vira referência guardada e prova de expertise |
+| **Alcance / distribuição** | **Texto nativo** | Post de texto puro distribui ~28% mais no B2B que post com link ou mídia pesada (Dataslayer, 2026) — o algoritmo prioriza quem fica na plataforma |
+| **Alcance máximo com rosto** | **Vídeo nativo** | Feed 2026 prioriza vídeo (+36% YoY, Hootsuite); exige o dono topar gravar |
+| **Profundidade salvável / autoridade** | **Documento PDF** | O doc é o formato mais salvável (engaja ~6,6%; Dataslayer, 2026); vira referência guardada e prova de expertise |
 | **Sustentar um dado/visual** | **Post com imagem** | Quando um número ou gráfico carrega o argumento melhor que o texto sozinho |
+| **Relação direta com a base** | **Newsletter** | Chega na caixa de entrada, sem depender do feed — o canal que o algoritmo não tira |
 
 ## Anatomia do post de texto
 
@@ -117,8 +128,9 @@ o público de lá lê texto o dia inteiro e fareja template.
 ## Topic Authority (o jogo de 60 dias)
 
 O algoritmo de 2026 recompensa quem é **consistente num assunto**: manter **70-80% dos posts
-dentro de um mesmo cluster de nicho** ao longo de 60+ dias dá +78% de distribuição (o LinkedIn
-te reconhece como autoridade naquele tema e entrega pra quem busca aquilo). Por isso:
+dentro de um mesmo cluster de nicho** ao longo de 60+ dias dá +78% de distribuição (Linkboost,
+2026 — o LinkedIn te reconhece como autoridade naquele tema e entrega pra quem busca aquilo).
+Por isso:
 
 - Ler o cluster atual em `nucleo/foco.md` (e o histórico em `producao/linkedin/`) e **amarrar
   este post ao cluster** — o ângulo do dia é uma faceta do tema central, não um tema solto.
@@ -150,9 +162,10 @@ Salvar em `producao/linkedin/<YYYY-MM-DD>-<slug>.md`:
 
 **Golden Hour — a 1ª hora decide a distribuição.** Em 2026 o post entrega **~40% do
 alcance total na primeira hora** (e ~55% nas primeiras 24h); só ~5% dos posts que flopam
-na 1ª hora se recuperam. O LinkedIn testa o post num público pequeno (2-5% da rede);
-cada **resposta do autor a um comentário reinicia o ciclo** de distribuição (e puxa
-dwell time de volta). Regra de cadência: **2-3 posts por semana, com 48h+ entre eles** —
+na 1ª hora se recuperam (GrowLeads/Dataslayer, 2026). O LinkedIn testa o post num público
+pequeno (2-5% da rede); cada **resposta do autor a um comentário reinicia o ciclo** de
+distribuição (e puxa dwell time de volta) — e comentário pesa **~15x o like** no ranking
+2026 (Contentdrips), então o fecho-que-abre-conversa é mecânica de alcance, não estilo. Regra de cadência: **2-3 posts por semana, com 48h+ entre eles** —
 um post bom rende por 48-72h, e postar em cima canibaliza o anterior. Por isso a entrega
 inclui um **kit de Golden Hour**:
 - **1-2 comentários de resposta prontos** — não respostas genéricas ("obrigado!"), mas

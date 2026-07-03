@@ -88,8 +88,9 @@ Depois, travar em uma frase cada:
 
 Antes de rascunhar, pescar **as palavras que o cliente real usa** — não as que a empresa usa
 pra se descrever. A copy mais forte não é inventada; é a fala do cliente devolvida pra ele.
-Em teste real, escrever com VoC rendeu **+70% de leads** e headline **+400%** vs. copy de
-dentro da empresa. Fontes, na ordem de quem tem:
+Nos casos documentados pela Copyhackers (Joanna Wiebe — ex.: Beckett Simonon), escrever com
+VoC rendeu **+70% de leads** e headline **+400%** vs. copy de dentro da empresa — casos
+nomeados, não lei universal; a direção é o que importa. Fontes, na ordem de quem tem:
 - reviews/avaliações (Google, redes, marketplace) — a frase exata da dor e do elogio;
 - WhatsApp/DM/e-mail de cliente — como ele descreve o problema antes de comprar;
 - transcrição de venda ou de atendimento — a objeção e o "ahá" no momento que acontecem;

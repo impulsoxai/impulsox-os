@@ -13,7 +13,13 @@
 > si), o dono escolhe. Registrar no arquivo da peça qual mecânica foi usada — o
 > `/desempenho` valida e a coluna "validada aqui" cresce.
 
-## Dados que calibram (pesquisa 2026, 2M+ clips + análise de posts)
+## Dados que calibram
+
+> **Fonte + validade:** agregados de bibliotecas de clips 2026 (OpusClip ~13,5M clips e
+> análises de reels ~2M — consolidação em `docs/backlog-auditoria-skills-2026-06-22.md`,
+> fontes nomeadas lá). **Este arquivo é a CASA ÚNICA desses números** — `/formulas` e
+> `/reel-marca` referenciam daqui, nunca duplicam. Números de plataforma envelhecem: o
+> refresh mensal do `/formulas` revisita esta seção (regra de conduta do CLAUDE.md).
 
 - **Hook empilhado** (visual + texto na tela + primeira linha dizendo coisas
   complementares, não repetidas) rende +35-45% de retenção vs hook único.

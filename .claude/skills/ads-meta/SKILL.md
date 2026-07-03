@@ -50,6 +50,11 @@ Tratar como pré-requisito obrigatório quando o destino é site (não "ajuste d
    dev) ou a integração nativa da plataforma do site (Shopify, WordPress, etc.). Pra WhatsApp/lead
    sem site, o evento vem do próprio fluxo da Meta.
 3. **Deduplicação** Pixel↔CAPI (mesmo `event_id`) pra não contar o mesmo lead duas vezes.
+4. **Event Match Quality (EMQ) ≥ 7** — o número que o Gerenciador mostra (Eventos → cada
+   evento) e que diz se o sinal está SAUDÁVEL, não só ligado. EMQ baixo = evento chega sem
+   dado suficiente pra casar com usuário (faltam e-mail/telefone hasheados no payload).
+   "CAPI ligado" sem EMQ é binário cego — o playbook 2026 trata EMQ como o check nº 1
+   (Atria/Jetfuel, 2026). Conferir no go-live e na leitura de 30 dias.
 
 O guia visual entrega o passo a passo de Pixel + CAPI com link do tutorial oficial da Meta. Sem
 esse pré-requisito, avisar o dono em uma linha: a campanha roda, mas o Advantage+ vai otimizar com
@@ -135,10 +140,12 @@ dono decide), mas não monta campanha fingindo que a casa está pronta quando n�
 Padrão enxuto (PME aprende mais rápido com menos campanhas):
 - **1 campanha** pelo objetivo definido (vendas/leads/tráfego — CBO ligado)
 - **Público — em duas fases (mesma lógica do `/ads-google`, honesto pra conta nova):**
-  - **Fase 1 (conta nova / hiperlocal raio < 16 km / < 50 conversões/semana):** usar
+  - **Fase 1 — EXCEÇÃO HIPERLOCAL, não default (raio < 16 km / conta nova local):** usar
     **Detailed Targeting** (segmentação manual) — interesse direto do nicho (1-3 interesses, não
-    15) + região. A skill antes mandava "público amplo, confia no algoritmo" cedo demais: sem dado
-    e em raio pequeno, o amplo não tem o que otimizar e o targeting manual performa melhor.
+    15) + região. Em raio pequeno o amplo não tem o que otimizar e o manual performa melhor.
+    **Fora do hiperlocal, o consenso 2026 sob Andromeda é estrutura simples + criativo diverso
+    desde cedo** (o targeting acontece no criativo, não na audiência) — não prender conta
+    regional/nacional na Fase 1 por hábito.
   - **Fase 2 (depois de acumular conversão — ~50/semana):** migrar pro **Advantage+ Audience**
     (público amplo, a Meta otimiza sozinha pelo sinal de quem já converteu). Advantage+ só DEPOIS
     de ter dado, nunca como ponto de partida cego.
@@ -171,8 +178,11 @@ quatro partes, cada uma com função distinta. Usar como régua de cada criativo
   número inventado. Ancorar na dor + no ganho (PAS).
 
 **Volume de criativo — o gargalo nº 1 do Advantage+ (2026):** o padrão antigo de 3-4 criativos não
-alimenta o algoritmo. Mirar **10-15 ativos por campanha** + **3-5 novos por semana** — o Advantage+
-testa volume e a fadiga de criativo mata performance rápido. É aqui que o `/post` puxa o peso:
+alimenta o algoritmo. **O porquê tem nome: Andromeda** — o motor de entrega 2026 da Meta agrupa
+criativos SIMILARES em clusters (395 anúncios iguais performam como 10; Atria/Jetfuel, 2026), então
+volume só conta com DIVERSIDADE real; e a fadiga de criativo caiu pra **2-3 semanas** — é a razão
+da reposição semanal, não capricho. Mirar **10-15 ativos por campanha** + **3-5 novos por semana** —
+o Advantage+ testa volume e a fadiga mata performance rápido. É aqui que o `/post` puxa o peso:
 gerar peças em escala (variações de hook, formato e ângulo sobre a mesma oferta) é o que abastece
 essa esteira. Sem reposição semanal, a conta estabiliza e o CPA sobe.
 

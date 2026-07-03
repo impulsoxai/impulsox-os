@@ -47,8 +47,9 @@ número).
      dinheiro que entrou de verdade).
 3. **Puxar o gasto** de `producao/ads/analise-<data>.md` (ou o que o dono informar).
 4. **Calcular por script** (`scripts/lib-roi.mjs`, determinístico — dinheiro nunca de
-   cabeça): faturamento influenciado, CAC (gasto ÷ clientes novos), ROI ((receita − gasto) ÷
-   gasto), ROAS quando aplicável.
+   cabeça): faturamento influenciado, CAC (gasto ÷ **clientes novos = deals GANHOS no
+   período**, campo canônico — nunca contacts criados nem invoices, senão cada rodada
+   conta diferente), ROI ((receita − gasto) ÷ gasto), ROAS quando aplicável.
 5. **Entregar** o relatório: receita real, gasto, ROI/CAC, e a leitura contra a meta do
    `foco.md`. Marcar o que é fato (CRM) vs o que foi estimado (gasto informado à mão).
 

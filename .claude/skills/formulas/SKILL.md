@@ -30,7 +30,8 @@ trouxer. Pesquisa automática só na web aberta (artigos, breakdowns públicos).
 Usuário traz uma peça: texto colado, print ou link público. Extrair, nesta ordem:
 
 1. **O gancho — tipo + retenção esperada.** Classificar pela **mesma taxonomia do
-   `/reel-marca`** (não inventar rótulo solto), em ordem de retenção:
+   `/reel-marca`** (não inventar rótulo solto), em ordem de retenção (números com fonte na
+   casa canônica `docs/hooks.md` — atualizou lá, vale aqui):
    - **Specific Outcome ~45%** — número/resultado concreto ("12 manchas sumiram em 30 dias")
    - **POV Realism ~42%** — "POV: você achou o…"
    - **Unpopular Opinion ~38%** — opinião contraintuitiva/posição firme (puxar do

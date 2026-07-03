@@ -30,8 +30,10 @@ Precisa do **degrau 1** (negócio e voz); capas e fixados pedem **degrau 2** (ma
 
 ## O pacote, item a item
 
-### 1. Campo de nome (o mais ignorado e o único pesquisável)
-A busca do Instagram varre o **campo de nome**, não a bio. Formato:
+### 1. Campo de nome (o mais ignorado e o mais forte pra busca de PERFIL)
+Em 2026 a busca do IG varre várias superfícies (legenda, texto-na-tela, áudio — o SEO de
+conteúdo que o `/post` já faz), mas pra busca de PERFIL o campo de nome segue o sinal mais
+forte — e a bio ganhou peso na categorização ("Your Algorithm"). Formato:
 `[Nome] | [o que faz + onde, como o cliente busca]` — ex: "Clínica Sorria | Dentista
 em Moema". Marca pessoal: `[Nome] | [especialidade]`. Até 64 caracteres, sem emoji
 no lugar de palavra-chave.
@@ -76,6 +78,11 @@ botões de contato ativos.
 (nome, bio), capas em PNG, briefs dos fixados e checklist final de aplicação (5 min no
 app, passo a passo). A aplicação é manual pelo dono — configuração de perfil não tem
 API e automação de terceiros nesse ponto viola os termos.
+
+**Baseline — otimização sem antes/depois é opinião:** no dia da aplicação, o dono cola
+3 números dos insights nativos (Visitas ao perfil · novos seguidores no período · cliques
+no link, últimos 30 dias) e eles entram no `perfil.md` como baseline datado. Em 30 dias,
+o `/desempenho` re-olha os mesmos 3 — é o que prova (ou desmente) que a otimização valeu.
 
 ## Regras
 

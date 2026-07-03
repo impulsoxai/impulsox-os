@@ -45,8 +45,11 @@ chave (não inventa lead nem guarda paralelo).
      3.2); até lá fica em `channel`. Não bloquear.
 3. **Modo importar em lote** (lista/CSV de campanha): `importCsv(c, ...)` via `/csv` do CRM.
 4. **Modo consultar** ("lista meus leads", "como estão"): `listContacts(c, query)` →
-   mostrar volume por canal e status do funil. (Filtro por período espera o sub 2 do PRD;
-   usar o que o CRM entregar e marcar a janela.)
+   mostrar volume por canal e status do funil — **e o tempo médio de 1ª resposta** quando os
+   timestamps do CRM permitirem (criado → primeiro contato). Speed-to-lead é o argumento nº 1
+   que a casa prega no raio-x/proposta; consulta que não o mostra prega sem medir. Cálculo
+   detalhado/simulação de perda → apontar `/velocidade`. (Filtro por período espera o sub 2
+   do PRD; usar o que o CRM entregar e marcar a janela.)
 5. **Entregar** o resultado: o que entrou / o status atual. Marcar fato (CRM) vs pendência.
 
 ## Regras

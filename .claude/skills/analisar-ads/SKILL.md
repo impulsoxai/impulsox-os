@@ -37,10 +37,10 @@ Google e Meta usam modelos e janelas de atribuição **diferentes**, então o RO
   geo-lift, holdout, ou — no mínimo — o dado de faturamento real do negócio batido contra o
   gasto total). Sem isso, a recomendação de realocar verba entre plataformas fica marcada
   como **hipótese a testar**, nunca como veredito.
-- **Mudança de janela do Meta (28d → 7d-click):** o padrão de atribuição do Meta encurtou de
-  28 dias para 7 dias de clique. Ao comparar períodos, conferir se a janela é a mesma — uma
-  queda de "conversões" pode ser só a janela mais curta contando menos, não a campanha
-  piorando. Avisar isso explicitamente quando o período cruza a mudança.
+- **Janela de atribuição — conferir antes de comparar:** ao comparar períodos ou plataformas,
+  conferir que a janela de atribuição é a MESMA nos dois exports (7d-click é o padrão do Meta
+  desde 2021) — janela diferente = "queda" fantasma. Vale também Google vs Meta: cada um conta
+  conversão do seu jeito; nunca somar os dois como se fosse a mesma régua.
 
 ## Sem ads ainda?
 
@@ -58,7 +58,11 @@ Pedir os arquivos em `dados/ads/`:
 converteu", não só "qual campanha":
 - **Google Ads:** relatório por **Anúncio** (e por **Termo de pesquisa**/palavra-chave quando
   der) — não só por campanha. Cada nível vira uma aba de análise.
-- **Meta:** desagregar por **Anúncio** (e por **Criativo**), não parar no conjunto.
+- **Meta:** desagregar por **Anúncio** (e por **Criativo**), não parar no conjunto. **E incluir
+  as colunas de VÍDEO** quando a conta roda vídeo: reproduções de 3s, ThruPlay e reproduções
+  a 25/50/75% — são elas que alimentam a régua Hook Rate/Hold Rate que o `/ads-meta` manda
+  trazer pra cá (sem essas colunas, o diagnóstico "qual parte do criativo corrigir" não roda).
+  No `--mapa`, os campos são `videoviews3s` e `thruplay`.
 - Se o dono só conseguir o nível de campanha, analisar nesse nível e avisar que o "qual
   anúncio especificamente" fica pendente até o export granular.
 
@@ -96,7 +100,8 @@ Com os números do script na mão:
    abaixo disso = "sem veredito ainda", nunca conclusão forçada (cliques altos com poucas
    conversões enganam). Pausa/escala só passa desse limiar.
 4. **Comparar contra benchmark de nicho 2026.** Número solto não diz se é bom — ancorar:
-   **ROAS de referência Google ~3,5x · Meta ~1,9x** (mediana 2026, varia por setor). CPA/ROAS
+   **ROAS de referência Google ~3,5x · Meta ~1,9x** (medianas de agregados 2026 —
+   WordStream/Varos; ordem de grandeza, varia por setor). CPA/ROAS
    muito abaixo do benchmark do nicho = sinal de problema (tracking, oferta ou público), não
    só "campanha fraca". Usar como régua de leitura, não como meta cravada — cada negócio tem
    sua margem.

@@ -36,8 +36,9 @@ pré-requisito do lançamento, não como ajuste posterior:
 
 - **Enhanced Conversions for Leads** ligado + **import do GA4** como fonte de conversão.
   Manda dado hasheado (e-mail/telefone do lead, com consentimento) de volta pro Google — recupera
-  conversão que o cookie perdeu (fontes 2026 reportam **+5-17% de conversões reportadas**) e é o
-  que mantém o Smart Bidding preciso no cenário cookieless. Sem isso, a conta otimiza no escuro.
+  conversão que o cookie perdeu (**+5-17% de conversões reportadas** — docs Google/estudos de
+  agência, 2026; ordem de grandeza) e é o que mantém o Smart Bidding preciso no cenário
+  cookieless. Sem isso, a conta otimiza no escuro.
 - **Pra gasto < R$ 25k/mês, Enhanced Conversions + Consent Mode v2 basta** — NÃO precisa de
   tracking server-side (GTM server). Server-side só compensa em volume alto; empurrar isso numa
   PME é custo e complexidade sem retorno.
@@ -48,7 +49,8 @@ pré-requisito do lançamento, não como ajuste posterior:
 
 1. **Objetivo:** o que é uma conversão aqui? (ligação, WhatsApp, formulário, compra)
 2. **Orçamento mensal:** valor confortável pra 90 dias de teste. Piso BR 2026 pra volume
-   real de lead na Pesquisa: **R$ 2.000-3.000/mês** (CPC subiu ~13% em 2026). Abaixo disso,
+   real de lead na Pesquisa: **R$ 2.000-3.000/mês** (CPC subiu ~13% em 2026 — agregados de
+   benchmark WordStream/LocaliQ; ordem de grandeza). Abaixo disso,
    avisar que o dado vai demorar a dar sinal e que o Smart Bidding pode nem sair da fase de
    aprendizado — não recusar, calibrar expectativa e considerar concentrar em menos grupos.
 3. **Região:** onde o negócio atende (cidade, raio, estado).
@@ -69,6 +71,14 @@ Padrão para serviço local / PME (ajustar ao caso):
     Smart Bidding** (Maximizar conversões / Target CPA). Pesquisa 2026: ampla + Smart
     Bidding é hoje o setup mais escalável da Pesquisa (+~10% vs frase), porque captura
     intenção que não casa literal com a palavra. Exige conversão rastreada de qualidade.
+  - **AI Max for Search — quando ligar (novo em 2026):** o AI Max saiu de beta (Google
+    reporta ~+7% de conversões no pacote completo; blog.google, 2026) e é a evolução da
+    Pesquisa por IA: expansão de termo + criativo adaptado à query, com controle de
+    localização e marca. Regra da casa: **só na Fase 2** (conversões rastreadas + brand
+    controls configurados), como TESTE ao lado da campanha base — nunca no dia 1 de conta
+    cega. E atenção ao relógio: **DSA (anúncio dinâmico) está morrendo** — migração
+    automática pra AI Max a partir de set/2026, aposentado em fev/2027 (blog.google) —
+    campanha DSA nova não se cria mais; conta que tem DSA planeja a migração agora.
   - Deixar isso explícito no plano: a conta começa controlada e migra pro automático
     quando tem dado — não jogar broad+Smart Bidding numa conta cega.
 - **Negativas desde o dia 1:** lista por padrão (grátis, vaga, emprego, curso, "como
@@ -109,11 +119,11 @@ Final URL, etc.). Junto, gerar o **guia visual de leigo** (`producao/ads/google-
 - **Consent Mode v2 + LGPD:** o guia inclui o bloco de banner de consentimento (aceitar/recusar
   cookie) ligado ao Consent Mode v2 — exigência pra Enhanced Conversions rodar e pra ficar dentro
   da LGPD. O **conversion modeling** do Google recupera ~69% das conversões de quem nega cookie
-  (modela a partir de quem aceitou), então banner correto não significa perder o dado — só sem
-  Consent Mode v2 é que a conversão de quem recusa some de vez.
-- O que esperar (benchmark BR 2026 por setor, não só "100 cliques"): **CPC entre R$ 4 e R$ 25**
-  conforme o nicho (serviço local mais barato, advogado/saúde/financeiro no topo) e **CPL entre
-  R$ 15 e R$ 350**. Primeiras 2 semanas são aprendizado; julgamento sério só com volume real de
+  (docs Google, 2026 — modela a partir de quem aceitou), então banner correto não significa
+  perder o dado — só sem Consent Mode v2 é que a conversão de quem recusa some de vez.
+- O que esperar (benchmark BR 2026 por setor — agregados WordStream/LocaliQ adaptados ao BR;
+  ordem de grandeza, não promessa): **CPC entre R$ 4 e R$ 25** conforme o nicho (serviço local
+  mais barato, advogado/saúde/financeiro no topo) e **CPL entre R$ 15 e R$ 350**. Primeiras 2 semanas são aprendizado; julgamento sério só com volume real de
   conversão (≥30), não com cliques soltos. Dar a faixa do setor do cliente, nunca um número como
   promessa.
 - **Quem executa:** deixar explícito no topo — ou o dono faz os 5 passos com este guia, ou

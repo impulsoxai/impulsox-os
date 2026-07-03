@@ -164,14 +164,20 @@ convertem muito diferente:
 | Estrutura | Quando funciona | Trade-off |
 |---|---|---|
 | À vista | comprador de alta confiança, ticket menor | maior compromisso percebido, público menor |
+| **PIX com desconto à vista** | BR: reversão de fricção — desconto real (3-8%) por pagar agora, sem taxa de cartão | desconto come margem; só quando o caixa agradece |
 | 2-4 parcelas | ticket médio, comprador hesitante | mais compradores, risco de inadimplência |
+| **12x no cartão (a ÂNCORA BR)** | ticket alto B2C/PME: "12x de R$ 497" LÊ mais barato que "R$ 5.970" — o mercado BR decide pela parcela, não pelo total | taxa de antecipação; o total anunciado junto (transparência) |
 | Assinatura mensal | SaaS, serviço recorrente | receita recorrente, risco de churn |
 | Paga-depois-do-resultado | entrega de alta confiança, B2B sofisticado | caixa atrasa, menos disputa |
 | Entrada + saldo na entrega | serviço com entrega por marco | risco do saldo no fim |
 | Trial grátis → pago | SaaS de baixa fricção, info-produto | queda na conversão pós-trial |
 
 Muitas vezes o movimento certo não é baixar o preço — é adicionar parcelamento. Mesmo R$
-6.000: "R$ 6.000 hoje" vs "3x de R$ 2.000" convertem muito diferente.
+6.000: "R$ 6.000 hoje" vs "12x de R$ 500" convertem muito diferente — **no Brasil, a
+parcela É o preço percebido** (prática consolidada do e-commerce BR: oferta parcelada
+aumenta clique/conversão de forma consistente — GreatPages/Berga, 2025). O trio BR
+completo: 12x como âncora de entrada + PIX com desconto pra quem decide agora + boleto
+só quando o público não tem cartão (é objeção de confiança, não de caixa).
 
 ---
 

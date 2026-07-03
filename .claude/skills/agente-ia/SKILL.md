@@ -101,6 +101,16 @@ Resposta (envelope success/fail do CRM): {
   O CRM cria o `Contact` (channel=site) a partir dessa chamada — server-side; o widget nunca
   mexe em PII no front. `capture.utm` fica `null` no MVP (depende do UTM no Contact — sub 1
   da F-OS); o widget pode mandar utm no `page_context` desde já, sem bloquear.
+- **Consentimento LGPD — o opt-in NASCE aqui, então nasce documentado:**
+  1. O widget se apresenta como **assistente virtual/IA** (transparência — nunca fingir humano)
+     e mostra link da política de privacidade no rodapé do chat.
+  2. Antes de a persona pedir contato, o fluxo mostra a microcopy de consentimento:
+     "Pra te retornar, preciso do seu nome e WhatsApp/e-mail — usamos só pra esse contato.
+     Ok?" — o "ok" do usuário é o opt-in.
+  3. O `capture` persiste a PROVA: `{consent: {timestamp, texto_mostrado, canal:"site"}}` junto
+     do Contact — é exatamente a prova de consentimento que o `/intake` exige do cliente e que
+     o `/reativar` precisa pra poder falar com esse lead depois (gate LGPD). Sem esse registro,
+     o lead capturado aqui entra "bloqueado pra WhatsApp" na régua da esteira.
 - **Caps que o widget respeita** (acima → CRM responde 422): histórico ≤ 20 mensagens
   (trunca antes de mandar), ≤ 4000 chars por mensagem.
 - **Erros do CRM** (envelope `success:false`) que o widget trata: 401 (chave inválida/

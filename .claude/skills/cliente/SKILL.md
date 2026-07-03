@@ -102,7 +102,9 @@ automações concretas. As aprovadas viram skill pela `/automatizar`, criadas em
 `.claude/skills/` DESTE clone quando são específicas do cliente. **Regra de ouro:** se a
 automação serve a todos os clientes, ela nasce no template (ImpulsoX-OS), não aqui — e desce
 pelo `/atualizar-motor`. O conjunto de rotinas mapeadas dimensiona o escopo (e o preço) do
-retainer.
+retainer — **e é GRAVADO, não fica na conversa:** bloco "Rotinas mapeadas" no
+`clientes/<slug>/nucleo/intake.md` (rotina · ganho estimado · status), que a `/proposta`
+lê pra precificar o retainer e o `/intake` completa com o resto do operacional.
 
 ## Passo 6 — Resumo e próximo passo
 

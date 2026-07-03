@@ -103,3 +103,24 @@ test("parsearCsv (YouTube Studio) mapeia Average percentage viewed e CTR", () =>
 test("parsearCsv vazio devolve []", () => {
   assert.deepEqual(parsearCsv(""), []);
 });
+
+// --- VVSA (viewed-vs-swiped, Shorts 2026) ---
+
+test("taxasYouTube: VVSA classifica fraco/ok/forte só em Short", () => {
+  const fraco = taxasYouTube({ avdPercent: 0.75, ehShort: true, vvsa: 0.55 });
+  assert.equal(fraco.vvsaVeredito, "fraco");
+  const ok = taxasYouTube({ avdPercent: 0.75, ehShort: true, vvsa: 0.65 });
+  assert.equal(ok.vvsaVeredito, "ok");
+  const forte = taxasYouTube({ avdPercent: 0.75, ehShort: true, vvsa: 0.85 });
+  assert.equal(forte.vvsaVeredito, "forte");
+  const longo = taxasYouTube({ avdPercent: 0.5, duracaoSeg: 600, ehShort: false, vvsa: 0.5 });
+  assert.equal(longo.vvsaVeredito, null);
+  const semDado = taxasYouTube({ avdPercent: 0.75, ehShort: true });
+  assert.equal(semDado.vvsaVeredito, null);
+});
+
+test("diagnosticarYouTube: VVSA fraco aponta /shorts (abertura do corte)", () => {
+  const taxas = taxasYouTube({ avdPercent: 0.75, ehShort: true, vvsa: 0.5 });
+  const d = diagnosticarYouTube({ taxas });
+  assert.ok(d.some((x) => x.skill === "/shorts" && /VVSA/.test(x.motivo)));
+});

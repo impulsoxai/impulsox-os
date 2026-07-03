@@ -7,6 +7,49 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.14] — 2026-07-03
+
+> Onda 1 da auditoria total: ~30 quick-wins de custo baixo em 25+ arquivos.
+> Tema central: honestidade de número + contratos entre skills fechados.
+
+### Adicionado
+- **Regra de conduta no CLAUDE.md:** "fato de mercado carrega fonte + data — inclusive
+  dentro do próprio motor"; sem fonte nomeável → "ordem de grandeza", nunca fato. O
+  refresh mensal do /formulas passa a revisitar esses números. Gabarito: /velocidade e
+  o par grounding+validador do /geo.
+- **Mutirão de números órfãos:** ~25 estatísticas ganharam fonte+data ou foram rebaixadas
+  a ordem de grandeza (linkedin, formulas/hooks.md, desempenho, post, proposta, oferta,
+  provas, lancar-produto, ads-google, ads-meta, analisar-ads, seo, copy). `docs/hooks.md`
+  virou a CASA ÚNICA dos números de hook (formulas/reel-marca referenciam).
+- **Consentimento LGPD no /agente-ia** — o widget se apresenta como IA, microcopy de
+  opt-in antes de pedir contato, prova {timestamp, texto, canal} persistida no Contact
+  (alimenta o gate do /reativar).
+- **Camada BR na anatomia de oferta** — 12x como âncora, PIX com desconto, boleto como
+  objeção de confiança na tabela de forma de pagamento.
+- **Formatos LinkedIn 2026** — vídeo nativo (+36% YoY) e newsletter (inbox, ignora feed)
+  no cardápio e no roteamento; comentário ~15x like documentado como mecânica.
+- **AI Max no /ads-google** (quando ligar + aviso DSA morre fev/2027) · **Andromeda +
+  EMQ ≥7 no /ads-meta** (Fase 1 virou exceção hiperlocal) · **colunas de vídeo no
+  /analisar-ads** (fecha o contrato Hook/Hold Rate).
+- **Coluna HORA + Origem (hero/derivada) no /calendario** — fecha o contrato órfão com o
+  /publicar; /desempenho aprende a janela real da conta.
+- **Google Trends na camada 2 do /radar** (script já existia) + honestidade operacional
+  da fonte 5 (autocomplete IG/TikTok = tarefa do dono, nunca coleta inventada).
+- **Placar de fontes no /pulso** (acumulado que sustenta "fonte que não rende sai").
+- **`--comparar-por` no analisar-dados.mjs** — agrupa por mês e calcula variação % mês a
+  mês no script (testado end-to-end).
+- **VVSA (viewed-vs-swiped) na régua de Shorts** do lib-desempenho + diagnóstico
+  apontando /shorts (2 testes novos).
+- Menores: E-E-A-T/autor no /conteudo; e-book isca = curta consumível por default;
+  transições de slide + reinício do vídeo no /slides; disclosure IA fotorrealista no
+  /thumbnail; #Shorts aposentado (detecção por formato) e limite API 50/24h no /publicar;
+  tempo de 1ª resposta no /leads; rotinas mapeadas gravadas no /cliente; ANPD-agência no
+  gate do /reativar; oferta de /automatizar no modo Alerta do /concorrente; baseline de
+  3 números no /perfil-ig; enforcement retroativo de review no /local; CAC com campo
+  canônico no /roi; /escritor-br citado no /repurpose; 390px unificado no premium-design;
+  downsell na proposta perdida + "enviar ≤24h da reunião"; llms.txt e "2,7x" do /seo
+  reenquadrados com honestidade (aposta de custo zero / correlação, não promessa).
+
 ## [0.2.13] — 2026-07-03
 
 > Fase URGENTE da auditoria total (6 auditores externos + pesquisa web, relatórios em

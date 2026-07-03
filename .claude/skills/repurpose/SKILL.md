@@ -50,6 +50,10 @@ Esta skill precisa de material denso pra destilar.
    Devolver os temas em 2-3 linhas pro dono redirecionar se errou o ponto — **sem obrigar
    a aprovar um outline longo.**
 
+   (Todo texto que o dono lê ou que vira peça passa pelo `/escritor-br` — aqui e nos
+   passos seguintes; as skills donas do formato já o chamam, e o resumo de temas também
+   sai limpo, não com cara de outline de IA.)
+
 3. **Mapear no mix do negócio.** Distribuir os temas pelos formatos que o negócio usa:
    **Instagram (carrossel/post) · LinkedIn · vídeo vertical (Reel + TikTok)**. Um
    roteiro de vídeo vertical serve TikTok e Reels juntos (mesmo formato 9:16). Sem X

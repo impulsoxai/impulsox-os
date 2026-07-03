@@ -71,7 +71,8 @@ casa). O modelo interpreta, o script calcula:
   saves/swipe-through (≥65%)/completion (≥55%). Vaidade (só medir): likes, seguidores.
 - **Engagement médio caiu em 2026 — contextualizar antes de soar alarme:** a taxa média de
   engajamento do IG está em **~0,48% (-24% ano a ano)**. Benchmark **por formato** (pra não
-  comparar laranja com maçã): **carrossel ~0,55% > reel ~0,50% > imagem ~0,35%**. Um número
+  comparar laranja com maçã): **carrossel ~0,55% > reel ~0,50% > imagem ~0,35%** (agregados
+  de benchmark 2026 — RivalIQ/Metricool; ordem de grandeza, reconferir anual). Um número
   "baixo" no absoluto pode estar acima da média do formato — sempre ler a peça contra a
   régua do formato dela, não contra um ideal antigo. Falso alarme queima confiança do dono.
 - **YouTube:** AVD bom por duração — <5min 50-70% · 5-15min 40-55% · 15-30min 30-45% · Shorts

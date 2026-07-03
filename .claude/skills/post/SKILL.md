@@ -107,7 +107,7 @@ linha. Roteia assim:
 
 | Objetivo | Formato | Por quê |
 |---|---|---|
-| **Alcance / novos seguidores** | **Reel** | Entrega ~1.36x mais alcance que carrossel; é a peça de descoberta (chega a quem não te segue) |
+| **Alcance / novos seguidores** | **Reel** | Entrega ~1.36x mais alcance que carrossel (benchmark 2026 — consolidação em `docs/backlog-auditoria-skills-2026-06-22.md`); é a peça de descoberta (chega a quem não te segue) |
 | **Save / engajamento do público atual** | **Carrossel** | É o formato que mais salva (referência guardável); aprofunda e posiciona com quem já te acompanha |
 | **Recado pontual / um dado forte** | **Post único** | Uma frase de posição, um bastidor, um anúncio — sem precisar de jornada de slides |
 
@@ -190,9 +190,10 @@ qualquer slide, **pra qual dos três ela é desenhada**:
   CTA único — tirou um, a peça trava). Arquitetura obrigatória: arco de venda (fórmula
   **Carousel Arc** em `docs/formulas.md`) com módulo **PONTE** + 1 slide de **prova
   embutida** (número específico real — "R$ 47k em 3 meses" > "resultado significativo";
-  sem prova autorizada, trocar a intenção da peça). CTA por conversão (ranking 2026):
-  keyword de comentário→DM (12-18% de conversão vs 2-3% do link na bio) > link na bio >
-  save. Keyword de comentário só quando há automação de DM configurada (ou o dono responde
+  sem prova autorizada, trocar a intenção da peça). CTA por conversão (ranking 2026, dados
+  de DM-automation — pack Sabrina/ManyChat, consolidado em
+  `docs/backlog-auditoria-skills-2026-06-22.md`): keyword de comentário→DM (12-18% de
+  conversão vs 2-3% do link na bio) > link na bio > save. Keyword de comentário só quando há automação de DM configurada (ou o dono responde
   manualmente na 1ª hora) — CTA que ninguém atende queima confiança.
 
 Não é decoração: é o 1º filtro do briefing. A peça que não mira send, save NEM conversão

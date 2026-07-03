@@ -2,10 +2,12 @@
 // (cálculo determinístico; nunca de cabeça). Benchmarks 2026 das pesquisas. ImpulsoX AI.
 
 // Benchmarks de referência (pesquisa 2026). YT: CTR compara com a média do próprio canal.
+// vvsa = viewed-vs-swiped (Shorts): % que assistiu em vez de pular — a métrica nº1 do
+// feed de Shorts 2026 (<60% fraco · 70-90% forte).
 export const BENCH = {
   ig: { saveRateForte: 0.06, saveRateSolido: 0.03, saveRateFraco: 0.02, reachBom: 0.2, reachFraco: 0.1,
         swipeBom: 0.65, completionBom: 0.55 },
-  yt: { ctrFraco: 0.03, ctrBom: 0.05, primeiroMinAlvo: 0.65 },
+  yt: { ctrFraco: 0.03, ctrBom: 0.05, primeiroMinAlvo: 0.65, vvsaFraco: 0.60, vvsaForte: 0.70 },
 };
 
 const taxa = (num, den) => (den > 0 ? num / den : 0);
@@ -32,7 +34,7 @@ function pisoAVD({ duracaoSeg, ehShort }) {
 
 // taxasYouTube — classifica as métricas YT 2026: AVD vs faixa de duração, CTR vs a MÉDIA do próprio
 // canal (benchmark fixo engana — CTR cai com impressões), retenção do 1º minuto, watch time. Pura.
-export function taxasYouTube({ avdPercent = 0, duracaoSeg = 0, ehShort = false, ctr = null, mediaCanalCtr = null, retencao1min = null, watchTimeMin = null } = {}) {
+export function taxasYouTube({ avdPercent = 0, duracaoSeg = 0, ehShort = false, ctr = null, mediaCanalCtr = null, retencao1min = null, watchTimeMin = null, vvsa = null } = {}) {
   const piso = pisoAVD({ duracaoSeg, ehShort });
   return {
     ehShort,
@@ -44,6 +46,11 @@ export function taxasYouTube({ avdPercent = 0, duracaoSeg = 0, ehShort = false, 
     primeiroMinBom: retencao1min != null ? retencao1min >= BENCH.yt.primeiroMinAlvo : null,
     retencao1min,
     watchTimeMin,
+    // VVSA (viewed-vs-swiped) só faz sentido em Short; null = dado indisponível, não julga.
+    vvsa,
+    vvsaVeredito: (ehShort && vvsa != null)
+      ? (vvsa < BENCH.yt.vvsaFraco ? "fraco" : vvsa >= BENCH.yt.vvsaForte ? "forte" : "ok")
+      : null,
   };
 }
 
@@ -78,6 +85,7 @@ export function diagnosticarYouTube({ taxas = {}, curva = null } = {}) {
   else if (taxas.avdBom === false) out.push({ skill: "/editar-video", motivo: "retenção média baixa sem queda única: pacing lento — apertar a edição (cortar trechos chatos)." });
   if (taxas.ctrVsCanal === "abaixo" && taxas.avdBom === true) out.push({ skill: "/thumbnail", motivo: "CTR abaixo da média do canal, mas quem assiste fica: o problema é a capa/título — testar 15-20 títulos e nova thumbnail." });
   if (curva?.cliffs?.length) out.push({ skill: "/editar-video", motivo: `queda abrupta em ${curva.cliffs.map((c) => c.tSeg + "s").join(", ")}: corte/tangente — apertar ou cortar esse trecho.` });
+  if (taxas.vvsaVeredito === "fraco") out.push({ skill: "/shorts", motivo: "VVSA baixo (<60%): o público PULA antes de assistir — o 1º frame/1-3s não segura; refazer a abertura do corte (punch no segundo 0, texto grande no 1º frame)." });
   return out;
 }
 

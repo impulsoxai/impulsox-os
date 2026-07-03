@@ -64,7 +64,11 @@ Gatilho: "o que o concorrente mudou?", "novidade do concorrente".
 2. Recoletar (degrau 1+2) e comparar com o registrado.
 3. Reportar **só o que mudou** (anúncio novo, preço, página nova, oferta nova) — não
    re-despejar o dossiê inteiro. Atualizar a data de observação.
-4. Sugerir rechecar em ~30 dias. **Sem cron automático** — o dono no controle.
+4. Sugerir rechecar em ~30 dias. **Sem cron automático por default** — o dono no controle.
+   Mas isto é tarefa com cara de rotina (regra do CLAUDE.md): no fecho, **oferecer a
+   `/automatizar`** ("quer que isso rode sozinho todo mês e te avise só quando houver
+   mudança?") — detecção agendada COM aprovação humana é o estado da arte; o cron só
+   entra se o dono disser sim.
 
 ### Modo 3 — Comparativo (cliente × eles)
 Gatilho: "eu vs eles", ou chamado por `/proposta` e `/oferta`.

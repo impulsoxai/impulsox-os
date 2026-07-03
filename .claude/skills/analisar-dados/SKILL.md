@@ -55,10 +55,11 @@ financeira, ainda vale rodar pra somar quantidades — ou a IA calcula contagens
 mostra a conta.
 
 **Variação período-a-período sai do SCRIPT, nunca do olho.** Quando há dimensão temporal
-(mês, semana, data), o crescimento/queda em **%** entre períodos é calculado no código —
-"subiu 18%" tem que vir de `(atual − anterior) / anterior` feito pelo script, não de
-estimativa visual da IA (que erra %). Quando o script ainda não expõe a comparação temporal,
-rodá-lo por período e deixar a divisão pro código, não calcular de cabeça.
+(mês, semana, data), usar **`--comparar-por "<coluna de data>"`** — o script agrupa por mês
+(aceita YYYY-MM-DD, DD/MM/YYYY e YYYY-MM), soma cada valor por mês e devolve `por_mes` com
+`variacao_pct` mês a mês já calculada (`(atual − anterior) / |anterior|`; base zero → null,
+nunca divisão por zero). "Subiu 18%" tem que vir daí, não de estimativa visual da IA (que
+erra %). Registros com data não-parseável são contados em `registros_sem_data` — reportar.
 
 **Detecção de outliers e dados faltantes no output.** Antes de interpretar, o resumo
 sinaliza: linhas com valor fora da curva (muito acima/abaixo do resto da dimensão — podem ser

@@ -143,6 +143,12 @@ Não precisa ter passado pela nossa edição.
 reconhecível só com foto real autorizada. A imagem serve a marca (cor, fonte, contraste), não
 atropela. Contraste do texto sobre a imagem ≥ 4.5:1 (medir, não estimar).
 
+**Disclosure de IA fotorrealista (política YouTube, mai/2026):** o YouTube DETECTA
+automaticamente conteúdo fotorrealista sintético não declarado — distribuição reduzida ou
+remoção (outlierkit.com, 2026). Capa/cena REALISTA gerada por IA → o dono marca o checkbox
+de conteúdo alterado/sintético no upload. Ilustração/estilizado não precisa; fotorrealismo
+precisa. Não declarar virou custo algorítmico, não só risco de política.
+
 ## Fase 4 — Pontuar (o crivo, mín 8/10 pra liberar)
 
 Com a imagem pronta, pontuar **estrito** — capa não passa só por gentileza:

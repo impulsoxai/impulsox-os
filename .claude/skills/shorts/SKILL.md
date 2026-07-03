@@ -36,8 +36,8 @@ Autoria: ImpulsoX AI. Conteúdo original.
    centralizada, default) ou `split` (screen-recording, vídeo no topo + legenda embaixo).
 4. **Dry-run primeiro** — mostrar quantos shorts, tempos e duração. Com OK, `--confirmar`.
 5. **Apontar os shorts** em `canal-youtube/edicao/<slug>/shorts/` e sugerir `/publicar`
-   (que já detecta short e sobe privado). Na publicação, o short ganha 3-5 hashtags + `#Shorts`
-   (o `/publicar` já põe `#Shorts`).
+   (que já detecta short e sobe privado). Na publicação, 3-5 hashtags de NICHO — o YouTube
+   detecta short por formato; `#Shorts` é cargo cult em 2026 e não entra.
 
 ## Regras
 
@@ -56,4 +56,4 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 ---
 
-**✓ Pronto:** N shorts verticais (9:16, 20-60s) com legenda karaokê, cortados do longo · **→ próximo passo:** `/publicar` — leva os shorts pro YouTube (detecta short e já põe `#Shorts`). Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltar `palavras.json`, os shorts saem sem legenda e o sistema reorienta.
+**✓ Pronto:** N shorts verticais (9:16, 20-60s) com legenda karaokê, cortados do longo · **→ próximo passo:** `/publicar` — leva os shorts pro YouTube (detecta short por formato e sobe privado). Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltar `palavras.json`, os shorts saem sem legenda e o sistema reorienta.

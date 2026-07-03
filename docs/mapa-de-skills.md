@@ -198,6 +198,15 @@ Pendente no CRM (não bloqueia o básico): UTM no Contact (atribuição por camp
   pauta, `/ads-meta` parte dos anúncios mapeados, `/oferta` e `/proposta` leem o comparativo.
   Opcional — entra quando o dono quer inteligência competitiva.
 
+## Apoio — infraestrutura de pesquisa
+
+- **/pesquisa-web** — camada de execução opcional pra fonte pública/gratuita (GitHub, RSS,
+  YouTube, V2EX, Bilibili, busca semântica), via ferramenta de terceiro `agent-reach` quando
+  instalada na máquina. Não expande a regra de zero-login: canais que exigem cookie (Twitter,
+  Reddit completo, Instagram, Facebook, 小红书) ficam desligados, nunca em conta de cliente.
+  Chamada por `/radar`, `/pulso`, `/concorrente`; sem ela, essas skills seguem com
+  WebSearch/WebFetch/yt-dlp direto — nunca trava.
+
 ## Presença que não é feed (perfil + local)
 
 - **/perfil-ig** — otimiza o perfil do Instagram (bio, destaques, nome de busca) pra

@@ -61,6 +61,8 @@ vazia e seguir (nunca travar o dia por uma fonte fora do ar):
 
 > Mesma regra do `/radar`: nada de scraping pago de TikTok/IG/X nem cookie em área
 > cinza. Fonte nova só entra em `nucleo/fontes.md` se for grátis e dentro dos termos.
+> Se `/pesquisa-web` (agent-reach) estiver instalada, usar como roteador das mesmas
+> fontes públicas (Reddit, YouTube, RSS) — upgrade de confiabilidade, não de regra.
 
 ### 2. Filtrar pela lente (o corte que separa commodity de pauta)
 
@@ -100,12 +102,22 @@ Formato do banco (criar na primeira rodada):
 ...mesma tabela...
 
 ## USADAS / VENCIDAS (histórico do mês; zerar na virada)
+
+## PLACAR DE FONTES (acumulado — NUNCA zerar; soma na virada)
+| Fonte | Ideias geradas | Usadas |
+|---|---|---|
 ```
 
 Regras do banco: ideia nova entra com Status `nova`; virou peça → `usada (link da peça)`;
 QUENTE com 48h+ → mover pra VENCIDAS. Dedup por tema (mesma notícia de 2 fontes = 1 ideia,
 tração somada). O ângulo JÁ VAI RASCUNHADO — o banco não guarda link seco, guarda a ideia
 com a lente pronta ("Claude lançou X → post: o que muda pra quem atende no WhatsApp").
+
+**Placar de fontes:** na virada do mês, ANTES de zerar USADAS/VENCIDAS, somar no placar
+quantas ideias cada fonte gerou e quantas viraram peça. É esse acumulado que sustenta a
+regra "fonte que nunca rende ideia sai" do `fontes.md` — sem placar, a decisão de cortar
+fonte vive na memória de sessão, que não é fonte de verdade. Fonte com 3 meses e zero
+ideia usada → propor o corte ao dono, com o número na mão.
 
 ### 5. Digest do dia (a entrega)
 

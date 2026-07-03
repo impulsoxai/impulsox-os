@@ -110,10 +110,17 @@ o conteúdo de rotina que responde dúvida (boa parte do "ensinar"); Hub (20%) �
 que constrói autoridade num tema; Hero (10%) é a peça grande que puxa alcance. Os dois
 eixos convivem: intenção diz o PORQUÊ da peça, Hero/Hub/Hygiene diz o PESO dela na esteira.
 
-### 4. Datas
+### 4. Datas e HORAS
 Distribuir nos dias confirmados pelo usuário. Aproveitar a sazonalidade do
 `nucleo/foco.md` (datas do setor, lançamentos). Não inventar "dia nacional de X" como
 muleta — só datas que importam ao público do negócio.
+
+**Cada linha ganha HORA** — a primeira hora decide o alcance (Golden Hour do LinkedIn;
+comment-velocity do IG), então publicar "quando der" desperdiça a peça. Default por
+plataforma até a conta ter dado próprio: IG 11h-13h ou 18h-20h · LinkedIn terça-quinta
+8h-10h · YouTube fim de tarde. Quando o `/desempenho` aprender a janela REAL desta conta
+(grava em `nucleo/aprendizados.md`), o aprendizado substitui o default — regra da casa:
+aprendizado validado pesa mais que padrão genérico.
 
 ## Saída
 
@@ -123,10 +130,18 @@ Salvar em `producao/calendario/<YYYY-MM>.md`:
 # Calendário — [Mês/Ano]
 > Gerado em [data] · degrau de contexto [n] · [n] peças/semana combinadas
 
-| Data | Rede | Formato | Intenção | Tema | Status |
-|------|------|---------|----------|------|--------|
-| 03/07 | IG | carrossel | ensinar | [tema específico] | pendente |
+| Data | Hora | Rede | Formato | Intenção | Tema | Origem | Status |
+|------|------|------|---------|----------|------|--------|--------|
+| 03/07 | 11h30 | IG | carrossel | ensinar | [tema específico] | hero | pendente |
+| 05/07 | 18h | IG | reel | alcance | [recorte do tema] | derivada-de-0307 | pendente |
 | ... |
+```
+
+(Coluna **Origem**: `hero` / `derivada-de-<data>` / `avulsa` — na execução, a produção da
+derivada olha a Hero pronta antes de criar, pra manter o fio. Coluna **Hora**: é a janela
+que o `/publicar` usa — as duas skills leem a MESMA tabela.)
+
+```markdown
 
 ## Por que estes temas
 [2-4 linhas conectando os temas ao foco do mês — pro usuário entender a lógica]

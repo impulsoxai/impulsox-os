@@ -206,6 +206,13 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 - A voz da marca mora em `nucleo/voz.md` — é a régua de todo texto que sai daqui.
   Energia de professor, não de vendedor: ambição grande, entrega calma.
 - Dados concretos acima de afirmações vagas.
+- **Fato de mercado carrega fonte + data — inclusive dentro do próprio motor.** Todo número
+  de plataforma/algoritmo/benchmark escrito numa skill ou doc ganha `(fonte, mês/ano)`;
+  sem fonte nomeável, rebaixar pra "ordem de grandeza da prática de mercado" — nunca cravar
+  como fato. Número de plataforma envelhece (o incidente "LCP 2,0s" provou); o refresh
+  mensal do `/formulas` revisita também esses números, não só os moldes. O gabarito de como
+  número de mercado deve viver no sistema é a `/velocidade` (fonte rastreável + cálculo por
+  script) e o par grounding+validador do `/geo`.
 - Conteúdo real, nunca placeholder. Dado indisponível → instrução explícita de
   substituição, nunca texto inventado como se fosse fato.
 - **Peça pública só vende oferta ATIVA.** Página, post, anúncio, e-mail e proposta falam
@@ -245,4 +252,4 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 
 ---
 
-*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.13*
+*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.14*

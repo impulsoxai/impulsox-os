@@ -82,6 +82,11 @@ gates duros (multa ANPD até **R$ 50M/infração**; banimento do número pela Me
 Sem os dois gates atendidos, a skill entrega o rascunho mas **não libera pra disparo** — marca a
 pendência. Isto protege a conta do cliente (perfil + número), que é o ativo dele.
 
+**O risco deixou de ser teórico:** em out/2025 a ANPD virou agência reguladora com autonomia
+(MP 1.317 convertida em lei) e a fiscalização de WhatsApp marketing acelerou em 2026
+(SocialHub/Confidata). Isso é também **argumento de venda** do jeito compliant da casa: o
+concorrente que dispara sem base legal está acumulando passivo; o cliente daqui não.
+
 ## Degrau mínimo (Escada de Contexto)
 
 Degrau 4 (CRM no ar): precisa de `CRM_TOKEN` pra achar os inativos. Sem token, roda em modo

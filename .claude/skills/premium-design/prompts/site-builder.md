@@ -29,7 +29,7 @@ Estrutura de dobras sugerida: derive da seção "Padrões de layout" do DS, adap
 - [Interface de produto]: React + CSS Modules, padrão ImpulsoX CRM v3.
 - Animações: CSS puro sempre que possível; `IntersectionObserver` para scroll-reveal; `requestAnimationFrame` para efeitos de cursor/background. GSAP só se o DS exigir timeline complexa.
 - Fontes: importar exatamente as especificadas no DS (Google Fonts/Fontshare), com `font-display: swap`.
-- Responsivo: mobile-first, breakpoints do DS, testar 375/768/1440.
+- Responsivo: mobile-first, breakpoints do DS, testar 390/768/1440 (mesmas larguras da verificação do /pagina — uma régua só).
 - Performance: imagens otimizadas (WebP, lazy), sem libs desnecessárias, Lighthouse ≥ 90.
 - Acessibilidade: contraste AA, `prefers-reduced-motion` desativando animações decorativas, HTML semântico.
 - SEO básico: title, meta description, OG tags, favicon.

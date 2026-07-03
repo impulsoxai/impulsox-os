@@ -33,7 +33,13 @@ Roda no **degrau 1** (negócio e voz); a diagramação fica boa de verdade no **
 Três perguntas:
 1. "Tema e promessa: o que o leitor consegue FAZER depois de ler?"
 2. "Isca gratuita (troca por e-mail/WhatsApp) ou produto pago?"
-3. "Tamanho: guia direto (10-20 páginas) ou aprofundado (30-50)?"
+3. "Tamanho — a resposta 2 decide o default:
+   - **Isca → CURTA e consumível (5-15 páginas, lida em <15 min):** checklist, template,
+     guia de UMA coisa. A prática 2026 de lead magnet migrou pro quick-win porque a taxa
+     de CONSUMO da isca prevê a conversão da sequência melhor que a taxa de download —
+     e-book de 50 páginas baixado e não lido esfria o lead que o `/email` vai nutrir.
+   - **Produto pago / peça de autoridade → aprofundado (30-50 páginas)** se o tema
+     sustentar."
 
 Promessa vaga → afunilar: e-book que ensina UMA coisa bem feita converte mais que
 enciclopédia rasa.

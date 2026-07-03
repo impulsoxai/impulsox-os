@@ -10,9 +10,12 @@
  *   node scripts/analisar-dados.mjs <arquivo.csv|.json> \
  *        --valores "Receita,Custo,Qtd" [--dimensao "Categoria"] [--moeda "Receita,Custo"]
  *
- * --valores  (obrigatório) colunas numéricas a somar, separadas por vírgula.
- * --dimensao (opcional)    coluna de categoria pra agrupar; sem ela, só o agregado total.
- * --moeda    (opcional)    subconjunto de --valores a reportar em centavos (dinheiro).
+ * --valores      (obrigatório) colunas numéricas a somar, separadas por vírgula.
+ * --dimensao     (opcional)    coluna de categoria pra agrupar; sem ela, só o agregado total.
+ * --moeda        (opcional)    subconjunto de --valores a reportar em centavos (dinheiro).
+ * --comparar-por (opcional)    coluna de DATA — agrupa por mês (YYYY-MM) e calcula a
+ *                              variação % mês a mês de cada valor. Aceita datas
+ *                              YYYY-MM-DD, DD/MM/YYYY ou YYYY-MM.
  *
  * Entrada: CSV (vírgula ou ;) ou JSON (array de objetos, ou { "dados": [...] }).
  * XLSX não entra aqui — exportar a aba pra CSV antes (a skill explica). Mantém "sem deps".
@@ -30,7 +33,7 @@ function falhar(msg) {
 
 // --- argumentos -------------------------------------------------------------
 const args = process.argv.slice(2);
-const FLAGS_COM_VALOR = new Set(["--valores", "--dimensao", "--moeda"]);
+const FLAGS_COM_VALOR = new Set(["--valores", "--dimensao", "--moeda", "--comparar-por"]);
 const posicionais = args.filter((a, i) => !a.startsWith("--") && !FLAGS_COM_VALOR.has(args[i - 1]));
 const arquivo = posicionais[0];
 if (!arquivo) falhar("informe o arquivo (.csv ou .json).");
@@ -48,6 +51,17 @@ if (valores.length === 0) falhar("--valores é obrigatório (ex.: --valores \"Re
 const dimensao = flag("--dimensao");
 const moeda = new Set(lista(flag("--moeda")));
 for (const m of moeda) if (!valores.includes(m)) falhar(`coluna de --moeda "${m}" precisa estar em --valores.`);
+const compararPor = flag("--comparar-por");
+
+// "2026-07-03" | "03/07/2026" | "2026-07" -> "2026-07" (null se não parseia)
+function mesDe(bruto) {
+  const s = String(bruto ?? "").trim();
+  let m = /^(\d{4})-(\d{2})/.exec(s);              // YYYY-MM[-DD]
+  if (m) return `${m[1]}-${m[2]}`;
+  m = /^\d{1,2}\/(\d{1,2})\/(\d{4})/.exec(s);      // DD/MM/YYYY
+  if (m) return `${m[2]}-${String(m[1]).padStart(2, "0")}`;
+  return null;
+}
 
 // --- número BR ("1.234,56") ou US ("1,234.56"), com símbolo de moeda --------
 function numero(bruto) {
@@ -94,7 +108,7 @@ try {
   falhar(`não consegui ler "${arquivo}": ${e.code === "ENOENT" ? "arquivo não existe" : e.message}`);
 }
 
-const colunasPedidas = [...(dimensao ? [dimensao] : []), ...valores];
+const colunasPedidas = [...(dimensao ? [dimensao] : []), ...(compararPor ? [compararPor] : []), ...valores];
 let registros;
 
 if (/\.json$/i.test(arquivo) || texto.trimStart().startsWith("[") || texto.trimStart().startsWith("{")) {
@@ -145,7 +159,9 @@ function formatar(bucket) {
 
 const total = novoBucket();
 const grupos = new Map();
+const meses = new Map();
 let ignorados = 0;
+let semData = 0;
 
 for (const reg of registros) {
   const chave = dimensao ? String(reg[dimensao] ?? "").trim() : null;
@@ -157,6 +173,14 @@ for (const reg of registros) {
     g._n++;
     for (const v of valores) g[v] += numero(reg[v]);
     grupos.set(chave, g);
+  }
+  if (compararPor) {
+    const mes = mesDe(reg[compararPor]);
+    if (!mes) { semData++; continue; }
+    const b = meses.get(mes) ?? novoBucket();
+    b._n++;
+    for (const v of valores) b[v] += numero(reg[v]);
+    meses.set(mes, b);
   }
 }
 
@@ -170,6 +194,24 @@ if (dimensao) {
     .map(({ _ord, ...resto }) => resto);
 }
 
+// por_mes ordenado cronologicamente, com variação % mês a mês por valor
+let por_mes = null;
+if (compararPor) {
+  const ordenados = [...meses.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+  por_mes = ordenados.map(([mes, b], i) => {
+    const linha = { mes, ...formatar(b) };
+    if (i > 0) {
+      const ant = ordenados[i - 1][1];
+      const variacao = {};
+      for (const v of valores) {
+        variacao[v] = ant[v] !== 0 ? r4(((b[v] - ant[v]) / Math.abs(ant[v])) * 100) : null;
+      }
+      linha.variacao_pct = variacao; // % vs mês anterior; null = base zero (não divide)
+    }
+    return linha;
+  });
+}
+
 console.log(JSON.stringify({
   arquivo,
   gerado_em: new Date().toISOString(),
@@ -178,6 +220,8 @@ console.log(JSON.stringify({
   moeda: [...moeda],
   registros_lidos: total._n,
   registros_ignorados: ignorados,
+  ...(compararPor ? { comparar_por: compararPor, registros_sem_data: semData } : {}),
   ...(por_dimensao ? { por_dimensao } : {}),
+  ...(por_mes ? { por_mes } : {}),
   agregado: formatar(total),
 }, null, 2));

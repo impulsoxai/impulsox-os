@@ -69,7 +69,9 @@ quando não. Cada ato vira peças via `/post`, `/linkedin` e `/conteudo`, agenda
 
 ## Passo 3 — Sequência de e-mails/WhatsApp
 
-Padrão validado: 6-9 mensagens em 10-14 dias (ajustar ao tamanho do ciclo):
+Padrão de mercado de lançamento (molde PLF adaptado; ordem de grandeza — a fadiga do
+formato no BR muda, reconferir a cada ciclo): 6-9 mensagens em 10-14 dias (ajustar ao
+tamanho do ciclo):
 1. Véspera do Ato 1 — "vem coisa nova" (curiosidade honesta)
 2. Ato 1 publicado → link + contexto
 3. Ato 2 publicado → link + caso
@@ -81,7 +83,9 @@ Padrão validado: 6-9 mensagens em 10-14 dias (ajustar ao tamanho do ciclo):
 9. Último dia, 2-3h antes — última chamada, curta e direta
 
 Carrinho aberto: **4-7 dias** (menos não dá tempo de decidir; mais dissolve a urgência).
-~50% das vendas caem nas últimas 24-48h — os e-mails finais não são opcionais.
+A concentração de vendas no fim do carrinho é padrão consistente do formato (ordem de
+grandeza: metade cai nas últimas 24-48h — prática PLF, sem estudo único) — os e-mails
+finais não são opcionais.
 **Todo texto passa pelo `/escritor-br`.**
 
 ## Passo 4 — Infraestrutura

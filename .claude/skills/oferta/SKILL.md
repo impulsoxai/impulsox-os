@@ -185,9 +185,10 @@ pergunta no B2B — antes do tipo de negócio, antes da Equação.
    alavanca costuma ser a que pontuou mais baixo
 6. **Rascunhar a parte que muda** — bônus novo, garantia nova, escassez real, nome novo,
    forma de pagamento nova
-7. **Projetar o ganho com honestidade** — mudança de um componente costuma render 10-40%
-   de ganho em conversão. Quem promete 5x está vendendo alguma coisa. Duas rodadas em
-   alavancas diferentes podem empilhar pra 2-3x
+7. **Projetar o ganho com honestidade** — mudança de um componente costuma render ganho
+   na casa de 10-40% em conversão (ordem de grandeza da prática de CRO — não é lei; o
+   número real sai do teste). Quem promete 5x está vendendo alguma coisa. Duas rodadas em
+   alavancas diferentes podem empilhar — mas o empilhado também se mede, não se promete
 
 ## Modelo de dinheiro — a oferta vive numa escada, não sozinha
 

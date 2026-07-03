@@ -34,10 +34,10 @@ usuário tiver, mais rico o banco.
 4. **Print de resultado** — mensagem de agradecimento, métrica, foto da entrega
 5. **Volume** — "N clientes desde [ano]", "N entregas em [região]" (fato contável)
 
-A meta não é uma prova forte avulsa: é o **mix multi-formato**. Número + depoimento +
-volume juntos batem +37% de conversão na mediana (até 270% vs. formato isolado). Ao montar
-o banco, mirar cobrir os três formatos pra cada oferta — não acumular cinco depoimentos e
-zero número.
+A meta não é uma prova forte avulsa: é o **mix multi-formato** — a prática de CRO converge
+que combinar número + depoimento + volume supera qualquer formato isolado (ordem de
+grandeza de mercado; estudos de vendor variam, nenhum número universal). Ao montar o banco,
+mirar cobrir os três formatos pra cada oferta — não acumular cinco depoimentos e zero número.
 
 ## Indexar por OBJEÇÃO que a prova mata (não só por tipo)
 
@@ -69,10 +69,11 @@ massa pra base fria. Entregar ao usuário:
 
 1. **A mensagem de pedido** (WhatsApp, na voz da marca, 3-4 linhas): específica sobre o
    que foi entregue, fácil de responder, sem formulário longo. **Pedir VÍDEO/áudio como
-   padrão, não como exceção**: depoimento em vídeo converte +80% vs. texto e UGC é 60% mais
-   confiável. O roteiro é "uma pergunta por vez, grava e passa" — o cliente responde cada
-   pergunta num áudio/vídeo curto de celular, sem precisar montar um discurso. Texto só
-   quando o cliente não topar gravar.
+   padrão, não como exceção**: a pesquisa de social proof converge que vídeo supera texto
+   em conversão e confiança (direção consistente entre estudos — teleprompter.com 2025,
+   entre outros; os multiplicadores exatos variam por vendor). O roteiro é "uma pergunta
+   por vez, grava e passa" — o cliente responde cada pergunta num áudio/vídeo curto de
+   celular, sem precisar montar um discurso. Texto só quando o cliente não topar gravar.
 2. **As 2-3 perguntas que geram caso** (não "gostou?"): "como era antes?", "o que mudou
    na prática?", "o que diria pra quem está em dúvida?". Uma delas sempre puxa **número +
    prazo** — ver abaixo.
@@ -102,7 +103,10 @@ desce pra depoimento.
 ## Autorização — inegociável
 
 Prova só vai pra peça pública com consentimento registrado:
-- Pedir junto com o depoimento: "posso usar com seu nome no nosso site/redes?"
+- Pedir junto com o depoimento: "posso usar com seu nome no nosso site/redes?" — e no
+  MESMO pedido (um consentimento só), pedir a **foto** e confirmar **cargo/atividade e
+  cidade**: "dono da [clínica X] em [cidade Y]" com foto é o que mata a objeção
+  funciona-pra-mim; depoimento sem rosto nem contexto lê como inventado.
 - Status no banco: **autorizada com nome** / **autorizada anônima** ("cliente do setor
   X") / **uso interno** (proposta um-a-um) / **pendente** (não usar em nada público)
 - LGPD: nome, foto e dado identificável só com o "sim" do cliente. Na dúvida, anônima.
@@ -111,8 +115,9 @@ Prova só vai pra peça pública com consentimento registrado:
 
 Cada prova é um bloco: tipo, **objeção que derruba** (preço / demora / funciona-pra-mim /
 confio?), o material em si, **número + prazo** (quando for caso), formato (vídeo / áudio /
-texto / print), origem, data, status de autorização e onde já foi usada (evitar a mesma
-prova em tudo). Quem consome: `/post` (módulos FALA e HISTÓRIA), `/linkedin`, `/ads-meta`
+texto / print), **atribuição** (nome, cargo/atividade, cidade, foto sim/não — a atribuição
+completa é o que multiplica a credibilidade), origem, data, status de autorização e onde
+já foi usada (evitar a mesma prova em tudo). Quem consome: `/post` (módulos FALA e HISTÓRIA), `/linkedin`, `/ads-meta`
 (criativo de prova), `/pagina`, `/lancar-produto`, `/proposta` e `/relatorio`.
 
 ## Saúde do banco — cobertura por objeção

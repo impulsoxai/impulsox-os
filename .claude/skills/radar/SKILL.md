@@ -69,13 +69,19 @@ existe no ambiente):
    mais views: `yt-dlp "ytsearch20:<termo>" --dateafter now-30days --print "%(view_count)s | %(title)s | %(webpage_url)s" --skip-download`.
    Título de vídeo que viralizou = ângulo que o algoritmo premia. (Mesmo anti-bot de
    sempre pode bater — se falhar, registrar a fonte como vazia, não travar.)
-5. **Autocomplete nativo de plataforma** (YouTube/Instagram/TikTok search bar) — a barra de
-   busca completa o termo com as buscas reais que as pessoas digitam ali: grátis, sem login,
-   sem API, sem risco à conta. Digitar o termo-raiz e variações ("[serviço] como",
-   "[serviço] para", "[serviço] vale a pena") e anotar as sugestões — é demanda crua da
-   própria plataforma onde a peça vai viver. Complementa o PAA: o PAA dá a dúvida em texto,
-   o autocomplete dá o jeito que o público busca conteúdo de vídeo/social. Sugestão que se
-   repete entre plataformas = pauta com demanda confirmada.
+4.5. **Google Trends** (`scripts/trends-best-effort.mjs` — o script já existe no repo, sem
+   chave, best-effort) — related queries + interesse do termo-raiz. Pra PME local BR é A
+   fonte de demanda que Reddit/HN não cobrem ("clínica em Moema" não tem subreddit).
+   Mesmo contrato das outras: falhou/bloqueou → fonte vazia, nunca trava nem inventa.
+5. **Autocomplete nativo de plataforma** — honestidade operacional: o que o SISTEMA
+   consegue sozinho é só o do **YouTube** (endpoint público de suggest). O autocomplete de
+   **Instagram/TikTok exige app logado — é TAREFA DE 2 MIN DO DONO**, não coleta do
+   sistema: pedir a ele "digita [termo-raiz], '[serviço] como', '[serviço] vale a pena' na
+   busca do IG/TikTok e me manda um print (ou digita as sugestões)". Nunca apresentar
+   sugestão de IG/TikTok que o dono não mandou — isso seria demanda inventada, o oposto
+   da tese do radar. Complementa o PAA: o PAA dá a dúvida em texto, o autocomplete dá o
+   jeito que o público busca vídeo/social. Sugestão que se repete entre plataformas =
+   pauta com demanda confirmada.
 
 Fechar a camada cruzando as fontes: tema que aparece em DUAS+ com tração alta vira ideia
 de pontuação de demanda 5. Tema só do WebSearch (sem sinal de engajamento) entra como
@@ -86,6 +92,10 @@ suposição** — nunca inflar demanda sem o número que a sustenta.
 > em área cinza dos termos — risco à conta do cliente, vetado pelo CLAUDE.md. Reddit/HN/
 > YouTube cobrem o suficiente pra separar pauta quente de morna sem chave nem risco. Se um
 > dia houver chave oficial paga autorizada pelo dono, esta camada ganha as fontes extras.
+
+> Se `/pesquisa-web` (agent-reach) estiver instalada na máquina, ela pode servir de roteador
+> pras mesmas fontes públicas (Reddit, YouTube, busca) com fallback automático — não muda a
+> regra acima, só a confiabilidade da busca. Sem ela, seguir com os comandos diretos.
 
 ### 3. Concorrentes — o que cobriram e o que deixaram de fora
 **Se existe `nucleo/concorrentes.md`** (dossiê do `/concorrente`), ler de lá a cadência e a

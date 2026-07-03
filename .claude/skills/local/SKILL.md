@@ -85,6 +85,11 @@ Google reforçou a política em **17/abr/2026** e a FTC criminalizou em **out/20
 - **Responder TODOS** os reviews (Passo 4) — onde a IA escala valor de verdade.
 - **Não pedir pra cliente citar o nome do funcionário** no review (proibido desde abr/2026);
   menção espontânea é ok.
+- **Enforcement agora é automático e RETROATIVO** (IA do Gemini varrendo reviews,
+  Launchcodex abr/2026): review antigo não-compliant pode sumir do perfil do cliente SEM
+  aviso. Gerenciar a expectativa do dono — queda súbita no número de reviews pode ser
+  limpeza da plataforma, não bug; e é mais um motivo pra coleta 100% compliant desde o
+  dia 1.
 
 **Incentivo — RÉGUA CANÔNICA (as outras skills referenciam esta tabela):**
 

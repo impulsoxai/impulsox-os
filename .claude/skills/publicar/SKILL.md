@@ -91,8 +91,10 @@ carrossel|post|reel`. **Sem `--confirmar` é dry-run** (valida e mostra o plano,
 **com `--confirmar` publica de verdade**. A mídia sobe pro Fal CDN (URL pública) antes de
 publicar; o resultado vai pra `producao/publicacoes.md` (permalink) e pro feed do painel.
 Requer `IG_USUARIO_ID` + `META_TOKEN_PAGINA` no `.env` (conta Professional + página FB + app
-Meta com `instagram_business_content_publish`). Limite: 25 posts/24h. `META_TOKEN_PAGINA`
-nunca aparece em log/erro (redigido).
+Meta com `instagram_business_content_publish`). Limite de API: **50 posts/24h por conta**
+(doc Meta, 2026 — Reels/Stories no mesmo balde; era 25 até 2024 — reconferir na doc oficial
+se um cliente de volume alto encostar). `META_TOKEN_PAGINA` nunca aparece em log/erro
+(redigido).
 
 `scripts/publicar-facebook.mjs` publica na **página do Facebook** com a mesma peça e o mesmo
 padrão (dry-run / `--confirmar`): `--tipo post` (foto), `carrossel` (álbum multi-foto via
@@ -108,7 +110,9 @@ Erro de API: reportar a resposta exata (sem o token).
 `scripts/publicar-youtube.mjs` sobe `final.mp4` (short ou longo) pro YouTube como **privado**
 (Data API v3): `node scripts/publicar-youtube.mjs --slug <nome> --titulo "..." --descricao
 "..." --tags "a,b" [--thumb capa.png]`. Dry-run por padrão; `--confirmar` sobe. Short é
-detectado (vertical + ≤180s) e ganha `#Shorts`. Metadados vêm do roteiro — **sempre confirmar
+detectado pelo YouTube **por formato** (vertical + ≤180s) — a hashtag `#Shorts` virou cargo
+cult em 2026 e não entra mais (não ajuda a detecção; miraflow.ai — o espaço vale mais com
+hashtag de nicho). Metadados vêm do roteiro — **sempre confirmar
 antes**. A `--descricao` deve carregar a descrição completa do roteiro: gancho nos primeiros
 ~150 caracteres + **Chapters** (00:00 + mín 3 — viram Key Moments na busca do Google, +retenção)
 + 3-5 hashtags; `--tags` com 8-12 tags relevantes. Não subir vídeo >5min sem chapters — é
