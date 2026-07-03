@@ -23,8 +23,11 @@ Não inventar estilo de edição/legenda do zero. Canais que já bombam no nicho
 fórmula testada** — copiar o MOLDE (tamanho/posição/cor de legenda, ritmo de corte, padrão
 de capa), nunca o conteúdo. As referências vivem em `canal-youtube/criadores-monitorados.md`;
 puxe um short recente de um deles e replique a mecânica. Ex.: a legenda karaokê com palavra
-ativa em cor (dourado da marca) saiu direto do padrão de Chase/Matt/Yury (eles usam vermelho/
-branco). Molde transfere; tema e identidade são sempre da marca do dono.
+ativa em cor saiu direto do padrão de Chase/Matt/Yury (eles usam vermelho/branco). Molde
+transfere; tema e identidade são sempre da marca do dono — **a cor ativa da legenda vem de
+`marca/tokens.css` (cor de destaque da marca), NUNCA hardcoded**: no clone de um cliente, a
+legenda sai nos tokens DELE (dourado é o da ImpulsoX, não o default do sistema). Posição/
+tamanho seguem o molde; a cor segue a marca.
 
 ## Pré-checagem
 

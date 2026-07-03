@@ -12,6 +12,16 @@
 > Este arquivo é o MAPA e a ORDEM. O detalhe de cada item (arquivo:linha, fonte) vive
 > no relatório do eixo. Implementar por onda; marcar ☑ ao concluir; melhorias são MOTOR
 > (template → `/atualizar-motor` nos clones).
+>
+> **PROGRESSO (2026-07-03):**
+> - ☑ URGENTE (v0.2.13) — 6/6 · ☑ Onda 1 (v0.2.14) — ~30 itens · ☑ Onda 2A copy (v0.2.15)
+> - ☑ Onda 2B cinematográfico (v0.2.16) — QA de vídeo do scroll, motion tokens, biblioteca
+>   `premium-design/references/efeitos.md` (11 efeitos executáveis), scroll-driven nativo +
+>   View Transitions nos docs, preloader #11, som-na-web, sound design + 3 direções no reel,
+>   legenda karaokê nos tokens. **Pendências de PESQUISA REAL (não inventar):** completar o
+>   acervo por nicho (wellness/jurídico/e-commerce/saúde) e os 2-3 DS seeds em
+>   `marca/design-systems/` — exigem sessão de captura em sites reais.
+> - ☐ Ondas 3-5 — próximas.
 
 ---
 

@@ -21,10 +21,20 @@ alvo da casa ≤ 2,0s, `prefers-reduced-motion` sempre). Este doc nomeia e prior
 
 ---
 
-## O catálogo — 10 efeitos (do mais seguro ao mais pesado)
+## O catálogo — 11 efeitos (do mais seguro ao mais pesado)
 
 Cada efeito tem a ficha: **o que é · quando dá WOW · quando NÃO usar · custo · reduced-motion ·
 de onde capturar**.
+
+> **Default de implementação 2026 — nativo primeiro.** Tudo que é animação amarrada a
+> scroll tenta PRIMEIRO o CSS nativo: `animation-timeline: scroll()` / `view()` (suporte
+> universal em 2026, roda na thread do compositor = resolve por arquitetura a briga
+> cinema×INP que os gates medem depois; MDN "Scroll-driven animations", Josh Comeau).
+> GSAP/Lenis entram onde o nativo não chega (timeline complexa, split de texto, smooth
+> scroll). E o CÓDIGO pronto de cada efeito mora na biblioteca da casa —
+> `.claude/skills/premium-design/references/efeitos.md` — testado, license-safe, já com
+> reduced-motion; a captura de site premiado vira direção (ritmo/quando/quanto), não fonte
+> de código (bundle minificado não rende).
 
 ### 1. Text-split reveal (char/word/line)
 - **O que é:** cada letra, palavra ou linha do título anima individualmente (sobe, fade, blur).
@@ -141,6 +151,26 @@ de onde capturar**.
 - **De onde capturar:** padrão consolidado em landings de serviço premium (Jack Roberts demonstra
   na transição before/after de driveway); a mecânica `currentTime`↔scroll é canônica (CSS-Tricks
   "scroll-controlled video"). Capturar o easing/sincronia, o conteúdo é sempre do cliente.
+
+### 11. Preloader narrativo + coreografia de primeira dobra
+- **O que é:** a ENTRADA do site como assinatura: um preloader curto que conta algo (o
+  logo se desenhando, um contador 0→100 com a cor da marca, uma palavra que se resolve) e
+  emenda SEM corte na coreografia da primeira dobra (os elementos do hero entram em
+  sequência orquestrada — stagger de 80-120ms, easing da marca).
+- **Quando dá WOW:** é a assinatura de estúdio mais visível dos premiados (Awwwards
+  "transitions") — a primeira impressão literal. Faz sentido quando a página CARREGA algo
+  pesado de verdade (WebGL, vídeo hero, fontes display grandes): o preloader transforma a
+  espera real em marca.
+- **Quando NÃO usar:** página leve que abriria instantânea — **NUNCA atrasar LCP
+  artificialmente pra "mostrar o preloader"** (regra de custo: só quando há >1s real de
+  assets carregando). Página de conversão de PME local quase nunca justifica; página-
+  experiência/portfólio sim.
+- **Custo:** baixo-médio (CSS + uma promessa de `load`/fontes; a coreografia da dobra é o
+  mesmo stagger do efeito #1). O crime é de UX, não de código — por isso a regra de custo.
+- **reduced-motion:** pular o preloader inteiro (conteúdo direto) — espera forçada é pior
+  pra quem pediu menos movimento.
+- **De onde capturar:** awwwards.com/websites/transitions/ (registro premiado com print);
+  a mecânica canônica está na biblioteca da casa (`efeitos.md`).
 
 ---
 

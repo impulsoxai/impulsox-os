@@ -7,6 +7,43 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.16] — 2026-07-03
+
+> Onda 2B da auditoria total: o eixo CINEMATOGRÁFICO (prioridade nº 2 do dono).
+> Síntese do auditor: "faltavam mãos, assinatura e olhos" — esta onda entrega os três.
+
+### Adicionado
+- **OLHOS — QA de movimento:** a Etapa 4a do /pagina e o /revisar-pagina (passo 2b novo)
+  gravam o SCROLL EM VÍDEO (Playwright recordVideo, 390+1440, ~15s roteirizados) quando a
+  página tem camada de movimento — easing errado, reveal engasgado e parallax tremendo não
+  aparecem em screenshot; o diferencial premium agora passa por QA e entra na aprovação
+  do dono e no despacho do revisor frio.
+- **ASSINATURA — motion tokens da marca:** seção "Movimento" no design-guide (clima,
+  easing autoral, 3 durações, o que nunca faz) + `--dur-rapida/media/lenta` e
+  `--ease-marca` no tokens.css. /pagina, /reel-marca, /slides e /editar-video consomem —
+  página 1 e página 2 do mesmo cliente com o MESMO ritmo. Mood board ganha clip de ~3s
+  por referência quando o cliente quer WOW (print mata o movimento).
+- **MÃOS — biblioteca de efeitos executáveis** (`premium-design/references/efeitos.md`):
+  os 11 efeitos do catálogo em código testado e license-safe (MDN/GSAP/Codrops/Lenis,
+  nada de premiado minificado), já com reduced-motion e nativo-primeiro. A captura de
+  premiado vira o que sempre foi: DIREÇÃO (ritmo/quando/quanto), não fonte de código.
+- **Plataforma 2026 nos docs:** CSS `animation-timeline: scroll()/view()` como default
+  (compositor thread = resolve cinema×INP por arquitetura) e View Transitions API no
+  lugar do Barba.js (legado); validação de site premiado pelo registro (awwwards/godly),
+  não por Google do nome; doutrina de som-na-web (muted-by-default, só página-experiência).
+- **Efeito #11 — preloader narrativo + coreografia de primeira dobra** no catálogo, com
+  regra de custo (só quando há >1s real de assets; NUNCA atrasar LCP artificialmente).
+- **Reel nível estúdio no /reel-marca:** passo 10a — 3 DIREÇÕES de template
+  (calmo-editorial / enérgico-comercial / técnico-preciso) paramétricas via motion tokens
+  (mata o reel-gêmeo entre clientes); passo 10b — SOUND DESIGN por código (trilha escolhida
+  ANTES do storyboard, cortes no beat, SFX sincronizado via <Audio> do Remotion, biblioteca
+  CC0 com créditos) + doutrina de motion dos 3 primeiros segundos (1 movimento dominante,
+  ≤400ms, hold antes do resultado).
+- **Legenda karaokê nos tokens da marca** no /editar-video (cor ativa de tokens.css,
+  nunca hardcoded — clone de cliente sai na marca DELE).
+- Pendências de pesquisa real anotadas no plano (acervo por nicho + DS seeds — exigem
+  captura em sites reais, não invenção).
+
 ## [0.2.15] — 2026-07-03
 
 > Onda 2A da auditoria total: o eixo COPY (prioridade nº 1 do dono). Princípio novo:

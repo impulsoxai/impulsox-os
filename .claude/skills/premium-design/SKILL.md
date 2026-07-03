@@ -120,19 +120,24 @@ movimento por cima. Fluxo:
 1. **Receber o design base** — o HTML/specimen que o Open Design gerou (ou a página que o
    `/pagina` construiu na marca). Esse design é a estrutura a respeitar: cor, tipo, layout e
    hierarquia já estão certos e **não mudam** — a marca é lei.
-2. **Capturar o DNA de MOVIMENTO de referências premiadas** (Awwwards/Godly) — Fase 1+2 acima,
-   mas extraindo o que importa aqui: **animações de entrada, scroll-triggered, hover/micro-
-   interações, easing (cubic-bezier), parallax, reveal, transições de estado.** O acervo de
-   movimento entra em `marca/design-systems/` como qualquer DS.
-   **Ler antes `docs/craft-movimento.md`** — o catálogo nomeia os efeitos disponíveis
-   (text-split, count-up, scroll cinematic, magnetic, clip-path, parallax, spotlight, WebGL,
-   smooth scroll), diz quando cada um dá WOW e quando mata performance, e aponta de qual site
-   premiado capturar. É o vocabulário pra escolher o que aplicar, em vez de improvisar.
-3. **Aplicar sobre o design base** — adicionar as animações/efeitos SEM alterar a identidade:
-   - entrada suave dos elementos no scroll (IntersectionObserver)
+2. **Capturar a DIREÇÃO de movimento de referências premiadas** (Awwwards/Godly) — Fase 1+2,
+   com a honestidade sobre o que a captura RENDE: CSS declarativo (keyframes, easing em
+   `cubic-bezier`) vem; **timeline GSAP/Three.js em bundle minificado NÃO vem** — e no
+   premiado de verdade o movimento mora lá. Então a captura extrai a **direção** (que
+   efeito, em que ritmo, quando dispara, quanto dura, com que intensidade — observado e
+   descrito) e o CSS que der; entra em `marca/design-systems/` como qualquer DS.
+   **Ler antes `docs/craft-movimento.md`** — o catálogo nomeia os 11 efeitos, diz quando
+   cada um dá WOW e quando mata performance. É o vocabulário pra escolher.
+3. **Aplicar sobre o design base** — o CÓDIGO vem da biblioteca da casa
+   (`references/efeitos.md` — os 11 efeitos executáveis, testados, license-safe, já com
+   reduced-motion e nativo-primeiro), calibrado pela direção capturada e pelos motion
+   tokens da marca (`--dur-*`/`--ease-marca` do tokens.css). SEM alterar a identidade:
+   - entrada suave dos elementos no scroll (nativo `animation-timeline`/observer da biblioteca)
    - hover states e micro-interações nos botões/cards
-   - easing de referência real (não o `ease` default)
+   - easing DA MARCA (`--ease-marca`), calibrado pela referência — não o `ease` default
    - efeitos de profundidade/reveal onde o design pede
+   Efeito comprovado em projeto novo → volta pra biblioteca como #12+ (o acervo cresce
+   com trabalho real).
    - **respeitar `prefers-reduced-motion`** sempre (acessibilidade, regra do CLAUDE.md)
 4. **Verificação visual** (Playwright 390/768/1440px) + aprovação do usuário vendo o antes
    (Open Design estático) × depois (elevado). O movimento serve a marca; nunca a atropela.

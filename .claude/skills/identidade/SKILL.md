@@ -128,6 +128,10 @@ A escolha (e a rejeição) é a direção: as 3 escolhidas viram o briefing visu
 `/premium-design` recombina nas 3 direções. Anotar o porquê de cada escolha quando o cliente
 disser — mas a escolha sozinha já dirige. Ler as imagens enviadas/escolhidas diretamente;
 extrair paletas, contraste, peso tipográfico, densidade, clima. Direciona, não copia.
+**Quando o cliente quer WOW/cinematográfico:** print mata o movimento — pra cada
+referência do mood board, gravar (ou pedir à `/premium-design`) um clip/GIF de ~3s do
+scroll da abertura; o clima de MOVIMENTO que o cliente escolher ali vira a seção
+Movimento do design-guide (easing autoral + durações).
 
 ### 2. Propor 3 direções
 **As direções nascem de DNA real, não da imaginação da IA.** Se o usuário topar trazer
@@ -211,6 +215,18 @@ Página é o único caso que pede o passo extra de refino, e é o `/pagina` que 
 - **Tipografia** — display + corpo, pesos, escala, regra de hierarquia
 - **Logo** — variações em `marca/logo/`, área de respiro, usos proibidos
 - **Tom visual** — clima e lista do que evitar
+- **Movimento** — a personalidade de MOVIMENTO da marca (a assinatura mais barata de alto
+  retorno do `docs/dna-cinematografico.md` — sem ela, cada peça inventa o próprio ritmo):
+  - **clima de movimento** em 1 frase, derivado do clima visual (calmo-editorial /
+    enérgico-comercial / técnico-preciso);
+  - **easing autoral** — a curva da marca (ex.: expo-out suave pra editorial,
+    `cubic-bezier` com leve overshoot pra enérgico);
+  - **as 3 durações** (rápida ~150-200ms · média ~300-450ms · lenta ~600-900ms) e quando
+    cada uma entra (micro-interação / entrada de elemento / transição de cena);
+  - o que o movimento da marca NUNCA faz (ex.: bounce infantil numa marca sóbria).
+  Quem consome: `/pagina` (Etapa 3.5), `/reel-marca` (tema.ts), `/slides` (transições),
+  `/editar-video` (legenda karaokê nos tokens da marca — posição/tamanho/cor da legenda
+  saem daqui quando o clone é de cliente, nunca hardcoded).
 - **Tokens** — referência ao `marca/tokens.css`
 - **Entidade** (semente pro Schema, preencher o que já se sabe) — o que o `/seo` e o `/geo`
   vão transformar em `Organization`/`Person` JSON-LD depois. Documentar agora evita
@@ -227,8 +243,18 @@ Página é o único caso que pede o passo extra de refino, e é o `/pagina` que 
 ## `tokens.css` — formato
 
 Variáveis CSS sob `:root` (cores `--cor-*`, fontes `--fonte-*`, raios `--raio-*`,
-espaçamentos `--espaco-*`). É o contrato que a skill de landing page lê. Manter os nomes
-estáveis.
+espaçamentos `--espaco-*`, **movimento `--dur-*` e `--ease-*`**). É o contrato que a
+skill de landing page lê. Manter os nomes estáveis. Os de movimento (novos):
+
+```css
+--dur-rapida: 180ms;   /* micro-interação: hover, foco, toggle */
+--dur-media: 380ms;    /* entrada de elemento, reveal */
+--dur-lenta: 700ms;    /* transição de cena, hero */
+--ease-marca: cubic-bezier(0.16, 1, 0.3, 1); /* a curva autoral (exemplo: expo-out) */
+```
+
+Toda animação das peças usa `var(--dur-*)` + `var(--ease-marca)` — é o que faz página 1 e
+página 2 do mesmo cliente terem o MESMO ritmo, e o reel parecer irmão da página.
 
 ## Validação visual
 

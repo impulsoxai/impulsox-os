@@ -82,16 +82,27 @@ o `craft-movimento.md`, fonte única — não repetir aqui. Ex.: scroll-driven �
 mas sua ficha de execução é o **efeito #1/#10 do craft-movimento** (o vídeo amarrado ao scroll é o
 #10 de lá). Ao aplicar, ler a ficha no craft; este doc só diz QUE técnica usar e ONDE aprender.
 
-| # | Técnica | O que entrega | Capturar de (real) | Ferramenta |
+| # | Técnica | O que entrega | Capturar de (real)* | Ferramenta |
 |---|---------|---------------|--------------------|------------|
-| 1 | **Scroll-driven + smooth scroll** | animação sincronizada à rolagem; storytelling | C2MTL, Sundae Creative | Lenis/Locomotive + GSAP ScrollTrigger |
-| 2 | **Text-splitting** | título que revela letra/palavra (hero) | Motto, Sundae Creative | GSAP SplitText / SplitType |
+| 1 | **Scroll-driven + smooth scroll** | animação sincronizada à rolagem; storytelling | C2MTL, Sundae Creative | **CSS `animation-timeline: scroll()/view()` nativo primeiro** (2026: suporte universal, roda no compositor = INP-safe); Lenis/GSAP ScrollTrigger só onde o nativo não chega |
+| 2 | **Text-splitting** | título que revela letra/palavra (hero) | Motto, Sundae Creative | GSAP SplitText / SplitType (GSAP grátis desde 2025) |
 | 3 | **Micro-animações** | feedback tátil (botão, loader, ícone vivo) | NEWPEACE, Calm Craft | Rive (state machine) / Lottie |
-| 4 | **Transições & reveals** | troca de página/seção sem corte seco | Metalab, Alex Tkachev | GSAP + Barba.js / Framer Motion |
-| 5 | **Easing autoral** | personalidade do movimento (não o `ease` default) | Toyfight | curva custom GSAP / `cubic-bezier` |
+| 4 | **Transições & reveals** | troca de página/seção sem corte seco | Metalab, Alex Tkachev | **View Transitions API** (nativa, multi-página em 2026 — Barba.js virou legado) / Framer Motion em React |
+| 5 | **Easing autoral** | personalidade do movimento (não o `ease` default) | Toyfight | `--ease-marca` + `--dur-*` do `marca/tokens.css` (a /identidade grava a seção Movimento; toda peça consome) |
 | 6 | **SVG & mask animations** | revelar vídeo/imagem por máscara que se abre | Lightship, Accordion | CSS mask + GSAP |
 | 7 | **3D na página** | produto girando, profundidade, vitrine | Brew District 24, Mana Yerba Maté | **Spline** (fácil) / Blender→Three.js (avançado) |
 | 8 | **WebGL / Three.js** | distorção/shader reativo ao cursor — máximo WOW | Hatom, Lusion, OHZI | Three.js + GLSL (pesado, só com orçamento) |
+
+*Sites premiados saem do ar rápido: antes de capturar, validar o site no registro premiado
+(awwwards.com / godly.website têm o print) — não googlar o nome e capturar o que vier. E o
+código executável NÃO depende da captura: mora na biblioteca da casa
+(`.claude/skills/premium-design/references/efeitos.md`) — a captura de premiado dá a
+DIREÇÃO (ritmo, quando, quanto), nunca o código (bundle minificado não rende).
+
+**Som sutil na web (assinatura de estúdio — cardápio, não default):** premiados topo (Obys)
+usam sound cues em interação. Regra da casa: SEMPRE muted-by-default + toggle visível; nunca
+autoplay de áudio; só em página-experiência (portfólio/campanha), nunca em página de
+conversão de PME local (distrai do WhatsApp).
 
 **Hierarquia de esforço (do que mais paga ao mais caro):**
 - **Quase de graça, alto retorno:** easing autoral (5), text-split no hero (2), micro-animações no

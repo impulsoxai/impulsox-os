@@ -242,10 +242,25 @@ before/after estático onde travar.
 
 ## Etapa 4 — Verificação visual + performance (obrigatória)
 
-**4a. Visual.** Abrir a página real (Playwright) e capturar screenshot em **390px, 768px e
-1440px**. Olhar as imagens de verdade: texto vazando? hierarquia funciona no celular? botão da
-conversão visível sem rolar no mobile? Corrigir e re-capturar até as três larguras estarem
-certas. Mostrar as capturas ao usuário pra aprovação — ele aprova vendo.
+**4a. Visual — estático E movimento.** Abrir a página real (Playwright) e capturar
+screenshot em **390px, 768px e 1440px**. Olhar as imagens de verdade: texto vazando?
+hierarquia funciona no celular? botão da conversão visível sem rolar no mobile? Corrigir e
+re-capturar até as três larguras estarem certas.
+
+**E quando a página tem camada de movimento (Etapa 3.5), gravar o SCROLL EM VÍDEO** —
+screenshot parado não vê easing errado, reveal engasgado, parallax tremendo; o diferencial
+premium não pode ser o único pedaço sem QA:
+```js
+// Playwright: contexto com gravação + scroll roteirizado (~15s topo→fim, pausas por seção)
+const context = await browser.newContext({ recordVideo: { dir: 'verificacao/' },
+  viewport: { width: 390, height: 844 } });
+// rolar por etapas (mouse.wheel ou scrollTo suave), esperar as entradas, fechar o context
+// → verificacao/scroll-390.webm ; repetir em 1440
+```
+Assistir os 2 vídeos (390 + 1440) como quem assiste: entrada dispara na hora certa? o
+ritmo é o da marca (motion tokens)? nada treme/engasga? Os vídeos entram na aprovação do
+dono junto com os screenshots — e no despacho do `/revisar-pagina`. Sem camada 3.5, só os
+estáticos bastam. Mostrar as capturas ao usuário pra aprovação — ele aprova vendo.
 
 **4b. Core Web Vitals (medir, não prometer).** Performance é requisito do produto R$ 5.000 —
 não declarar "carrega rápido" sem medir. Rodar Lighthouse (ou medição equivalente via

@@ -102,8 +102,34 @@ nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual 
    antes/depois/produto/autor de depoimento → `public/provas/` ou `public/`.
 10. **Coda o reel:** copiar `remotion/src/templates/reel-referencia.tsx` pra
     `remotion/src/<slug>.tsx`, adaptar à estrutura de retenção, registrar a Composition em
-    `remotion/src/Root.tsx`. Trilha: `public/trilhas/*.mp3` (dono escolhe; fade-in 1s/out 2s/~40%
-    vol). Sem trilha → mudo (legenda queimada cobre os ~60% sem som).
+    `remotion/src/Root.tsx`.
+
+    **10a. DIREÇÃO do template (anti-fingerprint):** o molde é UM, a direção são TRÊS — o
+    clima vem da seção Movimento do `design-guide.md` do cliente:
+    - **calmo-editorial:** fades longos (`--dur-lenta`), hold maior no resultado, zero
+      overshoot, tipografia entra por opacity;
+    - **enérgico-comercial:** cortes no beat, entrada com leve overshoot, count-up rápido,
+      stagger curto (60-80ms);
+    - **técnico-preciso:** slides/wipes retos, easing linear-out, números em destaque,
+      nada de bounce.
+    Dois clientes do mesmo nicho NUNCA saem com a mesma direção + mesma paleta — a
+    variação paramétrica (durações/easing/stagger no tema.ts) mata o reel-gêmeo.
+
+    **10b. SOUND DESIGN por código (o separador amador→estúdio; a trilha vem ANTES):**
+    - **Escolher a trilha ANTES do storyboard**, não muxar depois: mapear os beats (BPM →
+      frames) e CORTAR as cenas nos beats — transição no tempo da música lê como estúdio;
+      música colada por cima lê como slideshow.
+    - **SFX sincronizado via `<Audio>` do Remotion por sequência:** whoosh na transição,
+      tick no count-up, pop no reveal do resultado. Biblioteca license-safe em
+      `remotion/public/sfx/` (fontes CC0 — mixkit/freesound; conferir a licença de CADA
+      arquivo ao adicionar e anotar a origem num `creditos.md` da pasta).
+    - Volumes: trilha ~0.22 (régua do 12b) · SFX ~0.5 pontual · narração sempre acima.
+    - **Motion dos 3 primeiros segundos** (onde template denuncia template): UM movimento
+      dominante no hook (não três), entrada em ≤400ms, hold de ~15 frames antes do
+      resultado — a energia sobrando vai pro meio, não empilhada na abertura.
+
+    Trilha: `public/trilhas/*.mp3` (dono escolhe). Sem trilha → mudo (legenda queimada
+    cobre os ~60% sem som) e sem SFX (SFX sem trilha soa solto).
 11. **Audita 1 frame por cena** (`npx remotion still ... --frame=N`) antes do full render.
 12. **Renderiza (só com o texto do GATE 2 aprovado):** `npx remotion render remotion/src/index.ts <CompId>
     producao/reels/<slug>/reel.mp4` (`--gl=angle` se logo 3D). Esse é o reel MUDO (preservar).

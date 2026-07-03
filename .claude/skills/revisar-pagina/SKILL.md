@@ -64,6 +64,15 @@ e avisa.
    2) ou a captura falhar, seguir o "Aviso de fallback" do reference: AVISAR EM VOZ ALTA e
    pedir os screenshots das 3 telas manualmente ao dono. Nunca degradar em silêncio.
 
+2b. **Gravar o MOVIMENTO quando a página o tem** (animação de entrada, parallax, vídeo
+   hero, scroll-driven): mesmo script/contexto Playwright com `recordVideo` + scroll
+   roteirizado topo→fim (~15s), em 390 e 1440 → `scroll-390.webm` e `scroll-1440.webm`.
+   Screenshot parado é cego pro diferencial premium — easing errado, reveal engasgado e
+   parallax tremendo só aparecem em vídeo. Os frames do vídeo entram no despacho frio; a
+   régua de movimento é `docs/craft-movimento.md` (efeito com propósito, reduced-motion,
+   nada de kinetic-typography em página) + os motion tokens da marca. Página estática →
+   pular sem aviso.
+
 3. **Ler a régua.** Carregar os arquivos da seção "A régua" acima (os que existirem).
 
 4. **Camada DESIGN.** Orquestrar a ferramenta externa "impeccable" (heurísticas de
