@@ -2,17 +2,25 @@
 name: tema-yt
 description: >
   Use pra ESCOLHER o tema do próximo vídeo do canal antes de roteirizar — "/tema-yt", "que
-  vídeo eu faço?", "tema em alta de IA/Claude Code", "o que os criadores estão falando", "tô
+  vídeo eu faço?", "tema em alta do meu nicho", "o que os criadores estão falando", "tô
   sem pauta de vídeo". Pesquisa demanda real (criadores monitorados, busca no YouTube,
-  WebSearch, Google Trends), ranqueia e entrega temas com ângulo e fórmula sugerida.
+  WebSearch, Google Trends) NO NICHO do canal (definido em canal-youtube/pilares.md),
+  ranqueia e entrega temas com ângulo e fórmula sugerida.
 ---
 
 # /tema-yt — Escolher o tema (passo 0 do vídeo)
 
 Tema bom não se inventa — vem de demanda real. Esta skill é o passo antes do roteiro: acha o
-que está em alta no nicho (IA/Claude Code) e o que os criadores de sucesso estão falando,
-ranqueia, e entrega o melhor pro `/roteiro-yt`. Princípio do CLAUDE.md: copiar a fórmula de
-quem performa — inclui o que eles escolhem falar.
+que está em alta NO NICHO DO CANAL e o que os criadores de sucesso estão falando, ranqueia,
+e entrega o melhor pro `/roteiro-yt`. Princípio do CLAUDE.md: copiar a fórmula de quem
+performa — inclui o que eles escolhem falar.
+
+**O nicho vem do NÚCLEO, nunca desta skill** (multi-tenant por construção): termos de busca
+e criadores saem de `canal-youtube/pilares.md` + `criadores-monitorados.md` deste clone —
+no canal da ImpulsoX é IA/Claude Code (exemplo, não default); no clone de um dentista é
+odontologia. Sem `pilares.md` preenchido, a skill PARA e monta o arquivo com o dono
+(2 min), nunca busca um nicho que não é dele. (O `coletar-temas-yt.mjs` já exige os termos
+— o fallback hardcoded foi removido.)
 
 Autoria: ImpulsoX AI. Conteúdo original.
 

@@ -7,6 +7,29 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.19] — 2026-07-03
+
+> Onda 5 (FINAL) da auditoria total: o eixo YOUTUBE. Com esta, as 5 ondas + URGENTE da
+> auditoria de 6 eixos estão implementadas (v0.2.13 → v0.2.19). O eixo YT segue
+> "⚠️ em teste" até rodar 3-5 vídeos reais ponta a ponta — condição de saída definida.
+
+### Adicionado
+- **Test & Compare de PACOTE no /thumbnail** — desde dez/2025 o teste nativo cobre título
+  e combinações título+thumbnail (até 3): o fluxo sobe PACOTES, não só capas; os 3
+  títulos do /roteiro-yt são a outra metade; vencedora vira fórmula de packaging da conta
+  em formulas-video.md. CTR fixo de 4% APAGADO do /roteiro-yt — régua relativa (mediana
+  do próprio canal), a mesma do /thumbnail e do lib-desempenho.
+- **Ponte Shorts→long-form** — os modelos foram desacoplados em 2026 (short viral não
+  puxa mais o longo): passo "related video" (manual no Studio, 2 cliques) no fecho do
+  /shorts e lembrete no /publicar; short sem related video é tráfego jogado fora.
+- **/voz --canal com esqueleto de NARRAÇÃO** (não de copy escrita): WPM medido da
+  transcrição (alvo 140-160), mapa de pausas (a pré-payoff é o recurso nº 1), curva de
+  energia, vícios-assinatura a preservar vs cortar (alimenta o /editar-video) — e o teste
+  de validação virou parágrafo LIDO EM VOZ ALTA (voz falada se valida no ritmo).
+- **/tema-yt multi-tenant por construção:** o nicho vem de canal-youtube/pilares.md do
+  clone (IA/Claude Code virou exemplo, não default); sem pilares.md a skill para e monta
+  o arquivo com o dono — nunca pesquisa um nicho que não é dele.
+
 ## [0.2.18] — 2026-07-03
 
 > Onda 4 da auditoria total: o eixo COMERCIAL — fechamento que não morre no PDF e

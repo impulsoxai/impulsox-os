@@ -124,6 +124,11 @@ antes**. A `--descricao` deve carregar a descrição completa do roteiro: gancho
 ranking grátis jogado fora. Com OAuth (`YT_CLIENT_ID`/`YT_CLIENT_SECRET`/`YT_REFRESH_TOKEN` no
 `.env`) sobe sozinho; sem credencial, gera `metadados.txt` pro Studio (assistido). Sobe
 **privado** — a publicação final é decisão do dono no Studio. Tokens nunca aparecem em log.
+**Short subiu → lembrar o dono do "related video"** (Studio → Shorts → editar → Vídeo
+relacionado → o long-form de origem): os modelos foram desacoplados em 2026 e esse link
+manual é a única ponte Shorts→longo — instrução no fecho, sempre. E capa/cena
+FOTORREALISTA gerada por IA → marcar o checkbox de conteúdo alterado/sintético no upload
+(política mai/2026; não declarar = distribuição reduzida).
 
 **Guia OAuth (1ª vez):** criar `producao/guia-youtube-oauth.md` com: projeto no Google Cloud
 → ativar *YouTube Data API v3* → tela de consentimento (modo Testing serve) → criar credencial

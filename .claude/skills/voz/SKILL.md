@@ -96,6 +96,23 @@ gírias/expressões que usa falando e não escrevendo, como abre e fecha uma ide
 Essa voz pode ser igual à de `nucleo/voz.md` ou diferente — a entrevista descobre, nunca
 assume a partir da voz escrita já existente.
 
+**O `voz-canal.md` NÃO usa o esqueleto de copy escrita** (emoji, hashtags, mecânica de
+escrita — isso é texto, não fala). As seções dele são de NARRAÇÃO — pacing e pausa são o
+que separa narração amadora de retenção alta:
+- **Ritmo (WPM medido, não estimado):** contar palavras da transcrição ÷ minutos de
+  áudio = o WPM natural do dono. Alvo de credibilidade+compreensão: **140-160 WPM**
+  (acima de ~160, a compreensão cai — voicecrafters/undetectable, 2026). Se o natural
+  foge muito, anotar a direção do ajuste (acelerar/segurar), não forçar a média.
+- **Mapa de pausas:** onde ele para naturalmente (antes do número? depois da pergunta?);
+  a pausa pré-payoff é o recurso nº 1 de retenção falada.
+- **Curva de energia:** onde sobe (abertura? revolta? demo?) e onde assenta — o roteiro
+  do `/roteiro-yt` marca esses pontos com a curva DELE.
+- **Como abre e fecha uma ideia ao vivo** (a muleta de abertura que é assinatura, o jeito
+  de amarrar).
+- **Vícios-assinatura a PRESERVAR de propósito** ("é o seguinte", "ó") vs os a cortar na
+  edição — vício de fala é voz; excesso é ruído. A lista alimenta o filtro do
+  `/editar-video`.
+
 ## Fase 2 — Receber a transcrição
 
 Quando o dono colar a transcrição, ler inteira antes de escrever qualquer coisa. Ler com
@@ -168,6 +185,11 @@ gancho de post e uma chamada pra ação — e mostrar:
 
 Se não bateu, ajustar o `voz.md` com o que o dono apontar — e só então fechar. Voz errada
 contamina toda peça futura; vale o minuto a mais.
+
+**No `--canal`, o teste é FALADO, não lido em silêncio:** escrever um parágrafo de ~30s
+de narração (na voz extraída, com as pausas marcadas) e pedir que o dono **leia em voz
+alta** — voz de narração se valida no ritmo e na naturalidade da fala, não no vocabulário
+da página. Travou ao ler = o texto não é a fala dele; ajustar até fluir.
 
 ## Fase 5 — Registrar a escada
 

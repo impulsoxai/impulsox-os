@@ -21,7 +21,17 @@
 >   legenda karaokê nos tokens. **Pendências de PESQUISA REAL (não inventar):** completar o
 >   acervo por nicho (wellness/jurídico/e-commerce/saúde) e os 2-3 DS seeds em
 >   `marca/design-systems/` — exigem sessão de captura em sites reais.
-> - ☐ Ondas 3-5 — próximas.
+> - ☑ Onda 3 medição (v0.2.17) — metricas-instagram.mjs, registro canônico (slug), check
+>   de 72h com dono do Trial Reel, calibragem do juiz, API como default.
+> - ☑ Onda 4 comercial (v0.2.18) — aceite digital + Deal no CRM, raio-x pago, depoimento
+>   no marco, contrato/renovação no intake+carteira, reativar com benchmark, check
+>   quinzenal + QBR, recortarJanela no roi, role-play anti-teatro.
+> - ☑ Onda 5 YouTube (v0.2.19) — Test&Compare de pacote, régua relativa de CTR, ponte
+>   related-video, voz --canal de narração, tema-yt multi-tenant.
+>
+> **IMPLEMENTAÇÃO COMPLETA (v0.2.13→19).** Ficam abertas só as pendências de pesquisa
+> real (acervo por nicho + DS seeds) e as condições de operação: rodar `/atualizar-motor`
+> nos clones e tirar o YT de "em teste" com 3-5 vídeos reais.
 
 ---
 

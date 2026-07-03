@@ -38,6 +38,13 @@ Autoria: ImpulsoX AI. Conteúdo original.
 5. **Apontar os shorts** em `canal-youtube/edicao/<slug>/shorts/` e sugerir `/publicar`
    (que já detecta short e sobe privado). Na publicação, 3-5 hashtags de NICHO — o YouTube
    detecta short por formato; `#Shorts` é cargo cult em 2026 e não entra.
+6. **A PONTE que justifica a estratégia — "related video" (manual, sem API):** em 2026 os
+   modelos de Shorts e long-form foram DESACOPLADOS (tubebuddy/socialbee) — short viral
+   NÃO puxa mais o vídeo longo sozinho; o link manual virou a única ponte confiável (e é
+   o mecanismo do padrão Sabrina que esta skill copia). Instruir o dono, por short
+   publicado: **Studio → Shorts → editar → "Vídeo relacionado" → apontar o long-form de
+   origem** (2 cliques, sem API). Short sem related video é tráfego jogado fora — este
+   passo entra no checklist de publicação, não é opcional.
 
 ## Regras
 

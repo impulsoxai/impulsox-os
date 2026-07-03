@@ -77,22 +77,27 @@ Rotular Conceito A / B / C. **Esperar o dono escolher** antes de gerar imagem �
 não é necessariamente UM: ver o loop A/B abaixo. Se o canal tem o **Test & Compare** nativo do
 YouTube, o ideal é levar 2-3 conceitos pro teste, não descartar dois.
 
-## Loop A/B nativo (não jogar fora 2 dos 3 conceitos)
+## Loop A/B nativo — teste de PACOTE, não só de capa (não jogar fora 2 dos 3 conceitos)
 
-O YouTube tem **Test & Compare** (teste de miniatura nativo, grátis): sobe-se até 3 capas e o
-YouTube roda o experimento e aplica a vencedora sozinho. **A métrica que ele otimiza é
-watch-time share por impressão — NÃO o CTR.** Ou seja: a capa vencedora é a que traz quem
-ASSISTE mais, não só quem clica mais. Isso muda a régua — clique vazio não ganha o teste.
+O YouTube tem **Test & Compare** nativo e grátis — e **desde dez/2025 ele testa TÍTULO e
+o PACOTE título+thumbnail** (até 3 combinações; tubefilter/searchenginejournal, 2025-26),
+não só a capa. A doutrina da casa sempre foi "capa + título = uma unidade" — agora a
+unidade é testável de verdade. **A métrica que ele otimiza é watch-time share por
+impressão — NÃO o CTR:** a vencedora é a que traz quem ASSISTE, não só quem clica.
 
-Fluxo recomendado quando o canal tem acesso:
-1. Gerar os 2-3 melhores conceitos como imagens reais (não escolher 1 no olho).
-2. Subir todos no Test & Compare **desde o 1º upload** — não esperar "o CTR cair".
-3. Deixar o YouTube decidir por watch-time share. O crivo Four C's (Fase 4) serve pra **não
-   subir capa furada** (todas ≥8), não pra eleger a vencedora — quem elege é o teste real.
+Fluxo quando o canal tem acesso:
+1. Montar **2-3 PACOTES** (cada conceito de capa casado com o título que o completa — os
+   3 títulos do `/roteiro-yt` são a outra metade; capa e título do mesmo pacote nunca
+   dizem a mesma coisa, se completam).
+2. Subir os pacotes no Test & Compare **desde o 1º upload** — não esperar "o CTR cair".
+3. Deixar o YouTube decidir por watch-time share. O crivo Four C's (Fase 4) serve pra
+   **não subir pacote furado** (todos ≥8), não pra eleger — quem elege é o teste real.
+4. Vencedora registrada em `canal-youtube/formulas-video.md` (padrão de capa + tipo de
+   título que ganhou) — 3-4 testes formam a fórmula de packaging DESTA conta.
 
-**Pré-requisito (verificar):** o Test & Compare exige verificação avançada do canal e roda no
-desktop. Se o canal ainda não tem acesso, cair pro caminho de capa única (escolher 1 pelo
-crivo) e guardar os outros conceitos pro repacote. Avisar o dono dessa condição.
+**Pré-requisito (verificar):** o Test & Compare exige Advanced Features do canal (sem
+precisar de YPP) e roda no desktop. Se o canal ainda não tem acesso, cair pro caminho de
+pacote único (escolher 1 pelo crivo) e guardar os outros pro repacote. Avisar o dono.
 
 ## Os Four C's (o checklist inegociável de toda capa)
 

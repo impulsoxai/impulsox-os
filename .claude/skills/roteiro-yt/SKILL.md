@@ -322,9 +322,13 @@ tag1, tag2, ... (8-12)
 
 ## Iteração de pacote (amarra no /desempenho-yt)
 
-Quando o canal tiver dados: CTR abaixo de ~4% nas primeiras 48h = o público não respondeu
-ao pacote — repacote (novo título e/ou thumbnail), não mexer no vídeo. Os 3 títulos servem
-pra teste A/B. O `/desempenho-yt` mede a RETENÇÃO (sinal #1) contra o benchmark da faixa e
+Quando o canal tiver dados: CTR abaixo da **mediana dos últimos vídeos do PRÓPRIO canal**
+nas primeiras 48h = o público não respondeu ao pacote — repacote (novo título e/ou
+thumbnail), não mexer no vídeo. (Régua relativa, a mesma do `/thumbnail` e do
+`lib-desempenho`: benchmark fixo de CTR engana — CTR cai quando as impressões sobem.)
+Os 3 títulos não são rascunho: viram **pacotes no Test & Compare** (título+thumbnail,
+nativo desde dez/2025 — ver o Loop A/B do `/thumbnail`); o público elege, não o gosto.
+O `/desempenho-yt` mede a RETENÇÃO (sinal #1) contra o benchmark da faixa e
 marca a fórmula como validada/não funciona no `formulas-video.md`; padrão que funcionou vai
 pro `nucleo/aprendizados.md` e ganha prioridade no próximo roteiro.
 
