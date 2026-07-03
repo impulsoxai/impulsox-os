@@ -97,6 +97,15 @@ if (import.meta.main) {
       mkdirSync(dirname(pub), { recursive: true });
       if (!existsSync(pub)) appendFileSync(pub, "# Publicações\n\n| Data | Canal | Link |\n|---|---|---|\n");
       appendFileSync(pub, `| ${new Date().toISOString().slice(0, 10)} | instagram | ${r.permalink} |\n`);
+      // Registro CANÔNICO do loop de medição: slug como chave + media_id + a meta da peça
+      // (bloco --- do legenda.md). É o que o metricas-instagram.mjs e o /desempenho leem —
+      // valida mecânica/fórmula sem join manual de 3 arquivos.
+      const { lerMetaDaPeca } = await import("./lib-peca.mjs");
+      const meta = lerMetaDaPeca(pecaDir);
+      const slug = meta.slug || pecaDir.replace(/[\\/]+$/, "").split(/[\\/]/).pop();
+      const campos = ["formato", "objetivo", "mecanica", "formula", "capa", "nota-revisar", "origem"]
+        .map((k) => `${k}=${meta[k] ?? (k === "formato" ? tipo : "-")}`).join("; ");
+      appendFileSync(pub, `IG ${slug}: id=${r.id}; data=${new Date().toISOString().slice(0, 10)}; ${campos}; link=${r.permalink}\n`);
       registrarPasso({ skill: "/publicar", etapa: `publicado no Instagram: ${r.permalink}`, status: "ok" });
       console.log(JSON.stringify({ ok: true, ...r }, null, 2));
     } catch (e) {

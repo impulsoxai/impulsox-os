@@ -26,5 +26,31 @@ export function lerLegenda(dir) {
   const caminho = join(dir, "legenda.md");
   const txt = existsSync(caminho) ? readFileSync(caminho, "utf8").trim() : "";
   if (!txt) throw new Error("legenda vazia ou legenda.md ausente na pasta da peça.");
-  return txt;
+  // a legenda publicável é o corpo SEM o bloco de meta (se houver)
+  return removerMeta(txt);
+}
+
+// Bloco de meta da peça: frontmatter simples no TOPO do legenda.md, entre linhas `---`.
+// É a chave canônica do loop de medição (slug, formato, objetivo, mecânica, fórmula,
+// capa, nota do /revisar, origem pulso/radar). Parse tolerante: key: value por linha.
+export function lerMetaPeca(texto) {
+  const m = /^---\r?\n([\s\S]*?)\r?\n---/.exec(String(texto).trim());
+  if (!m) return {};
+  const meta = {};
+  for (const linha of m[1].split(/\r?\n/)) {
+    const kv = /^([\w-]+)\s*:\s*(.+)$/.exec(linha.trim());
+    if (kv) meta[kv[1].toLowerCase()] = kv[2].trim();
+  }
+  return meta;
+}
+
+export function removerMeta(texto) {
+  return String(texto).trim().replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, "").trim();
+}
+
+// Lê a meta direto da pasta da peça (legenda.md pode não existir → {}).
+export function lerMetaDaPeca(dir) {
+  const caminho = join(dir, "legenda.md");
+  if (!existsSync(caminho)) return {};
+  return lerMetaPeca(readFileSync(caminho, "utf8"));
 }

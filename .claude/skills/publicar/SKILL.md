@@ -80,8 +80,13 @@ existir. Não travar o resto: o que não tem credencial sai em modo assistido.
    Esperar a confirmação de cada API (id da publicação) antes de declarar publicado —
    nunca assumir sucesso.
 5. **Registrar.** Atualizar Status no calendário para `publicado` com data, hora e link
-   da publicação. Salvar os ids retornados em `producao/publicacoes.md` (vira insumo da
-   análise de desempenho).
+   da publicação (peça `em-trial` no bloco meta → Status `em-trial`, não `publicado` — o
+   check de 72h do `/desempenho` decide a promoção). Salvar os ids em
+   `producao/publicacoes.md` — no Instagram, o script já grava a **linha canônica**
+   (`IG <slug>: id=...; formato=...; objetivo=...; mecanica=...; formula=...;
+   nota-revisar=...; origem=...`) copiando o bloco meta do `legenda.md`. É essa linha que
+   o `metricas-instagram.mjs` e o `/desempenho` leem — o slug é a chave; validar mecânica
+   deixou de ser join manual de 3 arquivos.
 
 ## Scripts
 

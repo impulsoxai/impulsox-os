@@ -63,7 +63,7 @@ ponderação Hook=50%).
 | **Hook strength** | **50%** | As 3-5 primeiras palavras param o scroll? Específico/surpreendente/polarizador? Passa como tweet sozinho? Sem throat-clearing ("em um mundo cada vez mais…") |
 | Curiosidade + especificidade | 10% | Número/nome/momento real vs genérico; abre questão e resolve |
 | Carga emocional | 10% | Provoca sentimento forte (surpresa, indignação, reconhecimento)? Sem emoção não viaja |
-| Shareability | 10% | O leitor marcaria/salvaria/mandaria? Motivo específico. "Informativo" não conta |
+| Shareability | 10% | **Pass/fail contra o OBJETIVO DECLARADO da peça** (o pacote do despacho leva o campo `objetivo` do bloco meta): `enviar` → tem o gancho de envio ("manda pra quem…")? `salvar` → tem o slide/frame-referência guardável? `converter` → tem PONTE + prova? Peça que não cumpre a mecânica do próprio objetivo não pontua aqui, mesmo boa no resto |
 | Voice match | 10% | Soa como a `nucleo/voz.md`? Tem ponto de vista ou poderia ser qualquer IA? |
 | Polaridade | 5% | Diz algo discutível? Dá pra concordar OU rebater? Puxa do Wedge de `negocio.md` |
 | Fit de plataforma | 5% | Tamanho/hook/hashtag certos; convida a métrica que a plataforma premia |
@@ -83,6 +83,12 @@ literalmente"), abertura-filler, contagem de hashtag fora do limite da plataform
 custa mais que crítica honesta. O loop existente (AJUSTAR → re-revisar, máx 2 rodadas) usa
 a nota como gatilho: **nota < 8 → AJUSTAR** pela skill de origem, re-graduar; na 3ª
 divergência o dono decide.
+
+**A nota é GRAVADA, não só falada:** ao aprovar, escrever a nota final no campo
+`nota-revisar` do bloco meta do `legenda.md` da peça — o `/publicar` a copia pro registro
+canônico e o `/desempenho` CALIBRA O JUIZ com ela (peças ≥9 performaram acima das 7-8?).
+Se `nucleo/aprendizados.md` registrar divergência do scorecard (2+ meses), ajustar o peso
+conforme o aprendizado — a régua desta conta vale mais que o default.
 
 ## Checklist de copy de página (quando a peça é landing/página de venda)
 

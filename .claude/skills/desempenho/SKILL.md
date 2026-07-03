@@ -33,19 +33,48 @@ se tem coluna `Average percentage viewed` / fala de retenção → **YouTube**; 
 
 ## Degrau mínimo (Escada de Contexto)
 
-Dois modos, qualquer plataforma:
+Dois modos, qualquer plataforma — **e no Instagram a API é o DEFAULT, não o "v2 pra
+depois"** (o token que publica já lê insights; o CSV manual era a fricção que fazia o mês
+fechar sem medição):
 
-- **Colar / CSV (v1, sempre funciona):** o dono cola os números do app/Studio, ou aponta o
-  CSV exportado — **YouTube Studio:** Analytics → Advanced → Export current view (CSV);
-  **Instagram:** Business Suite → Insights → Content → Export Data. O parser
-  (`scripts/lib-desempenho.mjs`, `parsearCsv`) normaliza as colunas (mapa de aliases;
-  Impressions é ignorado de propósito).
-- **API (v2, quando conectada):** YouTube Analytics API (`scripts/metricas-youtube.mjs`,
-  OAuth `yt-analytics.readonly`) / Instagram Graph API (`instagram_manage_insights`). Avisar
-  que existe; o setup de OAuth fica pra quando o dono quiser automatizar.
+- **API (default quando o /publicar está configurado):**
+  - **Instagram:** `node scripts/metricas-instagram.mjs --todas --dias 30` (ou `--slug
+    <peça>`) — usa o MESMO `META_TOKEN_PAGINA` do /publicar (exige
+    `instagram_manage_insights` no app, mesmo app), lê o registro canônico de
+    `publicacoes.md` e devolve taxas + diagnóstico prontos por peça.
+  - **YouTube:** `scripts/metricas-youtube.mjs` (OAuth `yt-analytics.readonly`).
+- **Colar / CSV (fallback, sempre funciona):** o dono cola os números do app/Studio, ou
+  aponta o CSV — **YouTube Studio:** Analytics → Advanced → Export; **Instagram:**
+  Business Suite → Insights → Content → Export. O parser (`lib-desempenho.mjs`,
+  `parsearCsv`) normaliza as colunas (Impressions ignorado de propósito). É o caminho de
+  publicação antiga sem registro canônico (só permalink, sem media_id).
 
 Nunca travar por falta de credencial — o colar resolve. Quando dados reais entram pela 1ª
 vez, atualizar `nucleo/escada.md` (degrau 4 no eixo de conteúdo).
+
+## As DUAS cadências (o mensal sozinho chega tarde)
+
+1. **Check de 72h (2 min, 3 números)** — pra peça que não pode esperar o mês:
+   - **Peça QUENTE do /pulso** (`origem: pulso-quente` no registro): newsjacking medido 3
+     semanas depois não ensina nada — medir em 48-72h e gravar o aprendizado ainda quente.
+   - **Trial Reel** (`status: em-trial`): a decisão "promover ao grid ou não" é de 24-72h
+     — rodar `metricas-instagram.mjs --slug <peça>`, olhar retenção/sends: acima da média
+     da conta → promover (e marcar `publicado`); abaixo → fica fora do grid, registrar o
+     porquê. **Esta decisão agora tem dono: é deste check.**
+2. **Mensal (o fechamento do ciclo)** — tudo da janela, com uma régua de honestidade:
+   medir cada peça na **janela fixa de 7 dias pós-publicação** quando a API permitir
+   (reach acumula com o tempo — peça do dia 2 vs dia 28 na mesma tabela crua engana;
+   o campo `janelaDias` do script existe pra isso).
+
+## Calibrar o JUIZ (nota do /revisar × resultado real)
+
+O gate de 8/10 do `/revisar` é um PREDITOR — e preditor se valida. No mensal, com o
+registro canônico (campo `nota-revisar`):
+- Comparar: as peças nota ≥9 performaram acima das 7-8 (save/send/reach)?
+- **Sim** → o scorecard prevê; nada a fazer.
+- **Não (2+ meses seguidos)** → o peso de 50% no hook está errado PRA ESTA conta —
+  registrar em `nucleo/aprendizados.md` a divergência e o ajuste sugerido de peso; o
+  `/revisar` lê aprendizados e calibra. Juiz nunca validado é dogma.
 
 ## O que ler antes
 

@@ -46,6 +46,30 @@ Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degra
   toda peça nasce com **2-3 variações de capa/hook de mecânicas DIFERENTES** pro dono
   escolher (o slide 1 carrega ~80% do peso — não se decide de primeira). Registrar a
   mecânica escolhida no `legenda.md`; o `/desempenho` valida
+
+**O BLOCO META do `legenda.md` (contrato canônico — todo registro da peça mora AQUI, num
+formato só):** o topo do `legenda.md` abre com um bloco entre `---`, e a legenda publicável
+vem depois (o `/publicar` remove o bloco antes de postar e o copia pro `publicacoes.md` —
+o slug é a CHAVE que liga peça → publicação → medição, sem join manual):
+
+```markdown
+---
+slug: <o-slug-da-pasta>
+formato: carrossel|post|reel
+objetivo: enviar|salvar|converter
+mecanica: <a mecânica de hook escolhida, nome do docs/hooks.md>
+formula: <a fórmula usada, nome do docs/formulas.md>
+capa: <tipo de capa/1º slide>
+nota-revisar: <preenchida pelo /revisar antes de publicar>
+origem: radar|pulso-quente|calendario|avulsa
+status: normal|em-trial
+---
+[a legenda de verdade começa aqui]
+```
+
+Campo sem valor entra `-`, nunca inventado. `origem: pulso-quente` separa a régua de
+newsjacking da de evergreen na medição; `status: em-trial` marca Trial Reel (o check de
+72h do `/desempenho` decide promover ao grid).
 - `nucleo/provas.md` — pros módulos FALA e HISTÓRIA: só prova com status autorizada;
   banco vazio → a `/provas` entra na fila como próximo passo
 - `producao/calendario/<mes>.md` — se a peça veio do calendário, tema e intenção já

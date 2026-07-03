@@ -7,6 +7,34 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 O `/atualizar-motor` usa este arquivo e a versão do rodapé do `CLAUDE.md` para
 saber o que cada clone está rodando e o que ainda falta puxar do template.
 
+## [0.2.17] — 2026-07-03
+
+> Onda 3 da auditoria total: FECHAR O LOOP DE MEDIÇÃO — o ciclo estava automatizado nas
+> duas pontas (publicar/produzir) e manual no meio (medir). "Validadas aqui: vazio" era
+> encanamento, não preguiça.
+
+### Adicionado
+- **`scripts/metricas-instagram.mjs` + `lib-instagram-insights.mjs` (+6 testes)** — fecha
+  o loop IG sem CSV: lê o registro canônico de publicacoes.md (slug → media_id), puxa os
+  insights da Graph API com o MESMO token que publica (`--slug`, `--todas --dias N`) e
+  devolve taxas + diagnóstico da régua da casa (lib-desempenho). Espelho do
+  metricas-youtube.mjs. Token nunca em log.
+- **Registro canônico por peça (slug = chave):** bloco meta `---` no topo do legenda.md
+  (slug, formato, objetivo, mecânica, fórmula, capa, nota-revisar, origem, status) —
+  `lerMetaPeca`/`removerMeta` no lib-peca (a legenda publicável sai limpa); o
+  publicar-instagram grava a linha `IG <slug>: id=...; ...` no publicacoes.md. Validar
+  mecânica de hook deixou de ser join manual de 3 arquivos.
+- **Check de 72h no /desempenho (a segunda cadência):** peça QUENTE do /pulso medida em
+  48-72h (não 3 semanas depois) e o veredito do Trial Reel (promover ao grid ou não) —
+  a decisão que não tinha dono agora tem. Mensal ganhou a régua de janela fixa de 7 dias
+  por peça (reach acumula; campo janelaDias no script).
+- **Calibrar o juiz:** o /revisar grava a nota no bloco meta; o /desempenho compara
+  peças ≥9 vs 7-8 no mensal — divergência de 2+ meses recalibra o peso do scorecard via
+  aprendizados.md. Shareability virou pass/fail contra o OBJETIVO DECLARADO da peça
+  (enviar/salvar/converter — o pacote do despacho leva o campo).
+- **API como default no /desempenho** pro Instagram (era "v2 pra depois" — o CSV manual
+  era a fricção que fazia o mês fechar sem medição); colar/CSV vira fallback.
+
 ## [0.2.16] — 2026-07-03
 
 > Onda 2B da auditoria total: o eixo CINEMATOGRÁFICO (prioridade nº 2 do dono).
