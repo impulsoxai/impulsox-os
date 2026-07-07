@@ -117,29 +117,6 @@ adquiri-lo. A auditoria paga (Attraction) ajuda a fechar isso.
 
 Exemplo de catálogo modular montado: `docs/exemplo-oferta-impulsox.md`.
 
-## A matemática da CARTEIRA (a meta de receita vira mix de clientes)
-
-Meta de faturamento recorrente não é "1 cliente grande" — é um mix planejado. Os 3
-caminhos clássicos pra uma meta de referência (ex.: R$ 50k/mês; a proporção transfere
-pra qualquer meta — Sprint/ScaleUP Stage 2, jul/2026):
-
-| Caminho | Estrutura | Perfil |
-|---|---|---|
-| Profundo | 3 clientes × ticket alto | retainers DFY high-touch; melhor preço por cliente, mais tempo por cliente |
-| Misto | 5 clientes × ticket médio | retainer + projeto; o ponto de partida mais comum |
-| Volume | 10 clientes × ticket baixo | produtizado low-touch; escala sem escalar tempo |
-| **Híbrido** | 2 retainers-âncora + 4 projetos | âncoras cobrem o custo fixo; projetos dão upside. É o DESTINO (mês 3+), não o modelo do mês 1 |
-
-Uso na `/oferta`: ao montar o catálogo de uma agência, perguntar QUAL mix ela quer
-operar (menos clientes pagando mais × mais clientes pagando menos?) — o mix decide o
-peso de cada produto do catálogo (retainer vs produtizado) e o canal de venda.
-
-**Regra anti-dispersão (a que mais salva agência nova): 1 oferta, 1 canal, 30 dias de
-execução — só então avaliar e adicionar.** Cinco canais a 20% produzem nada; um canal a
-100% produz cliente. E preço baixo não reduz fricção: sinaliza valor baixo, atrai
-cliente que exige muito e trava a agência num teto baixo — a saída é subir ticket, não
-volume (coerente com o value capture acima).
-
 ---
 
 ## Gates de honestidade (herdados — não furar)
