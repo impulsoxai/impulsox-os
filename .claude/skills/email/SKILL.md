@@ -98,6 +98,17 @@ que recebe o 1º e-mail só horas depois já esfriou. Os primeiros toques saem m
 Sugerir intervalos (ex.: dia 0 **na hora do cadastro**, dia 1, dia 2, dia 4, dia 7 — peso na
 janela de 48h) — ajustar ao ciclo do negócio.
 
+**Variante longa — o arco de 7 dias (funil de keyword/lead magnet forte, método
+ScaleUP/Sprint jul/2026):** quando a isca é robusta (vídeo-treinamento + material denso) e a
+oferta pede mais aquecimento, esticar pra 7 e-mails com um trabalho POR dia: d1 entrega +
+arma a série · d2 o frame macro (por que AGORA, janela real, sem escassez fabricada) · d3
+credibilidade por HISTÓRIA — a lição cara, a cicatriz (confiança por vulnerabilidade) · d4 a
+ideia central contrária, o e-mail mais encaminhável (CTA suave entra aqui) · d5 prova por
+caso específico · d6 a MATEMÁTICA da oferta (argumento quantitativo) · d7 fechamento com
+DUAS portas (entrada de baixo atrito + alta intenção). Régua de forma: 1 ideia e 1 CTA por
+e-mail, <250 palavras, legível em 90s no celular; CTA suave d2-3 → médio d4-5 → duro d6-7;
+**todo e-mail tem P.S. que trabalha** (não decorativo).
+
 ### 2. Newsletter mensal
 Reaproveita o que o mês já produziu: ler `producao/` (o que `/conteudo` e `/post` geraram).
 Estrutura: **1 ideia central** (o tema do mês, com a opinião do dono) + **2-3 notas curtas**

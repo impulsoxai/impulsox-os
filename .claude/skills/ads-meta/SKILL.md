@@ -150,7 +150,17 @@ Padrão enxuto (PME aprende mais rápido com menos campanhas):
     (público amplo, a Meta otimiza sozinha pelo sinal de quem já converteu). Advantage+ só DEPOIS
     de ter dado, nunca como ponto de partida cego.
   - **Remarketing** (envolvidos com perfil/site, 30-60 dias) — quando a base existir, em qualquer
-    fase.
+    fase. **É o primeiro dinheiro de ads, não o último** (método ScaleUP/Sprint jul/2026:
+    "retargeting não é como você acha clientes novos — é como você PARA DE PERDER os que já
+    ganhou; se o funil orgânico+e-mail não converte sem ads, ads não conserta"). Audiências por
+    temperatura, cada uma com ângulo próprio: viu 50%+ de vídeo → CTA direto pra página de venda
+    (já investiu minutos; precisa do fechamento, não de outro teaser) · baixou a isca → ad
+    quebra-objeção · abriu e-mails sem clicar → prova + CTA duro · lookalike de COMPRADORES →
+    frio, manda pro CONTEÚDO (topo), nunca direto pra venda. Regras de operação: warm em
+    frequência baixa (2-4 impressões/semana), **refresh de criativo a cada 7-14 dias** (audiência
+    quente satura rápido — mesma oferta, ângulo novo), verba pequena por audiência, matar o que
+    estoura o CPA-alvo e escalar agressivo o que fica bem abaixo. Lookalike frio só DEPOIS do
+    remarketing dar lucro.
   - Deixar a fase explícita no plano: começa controlado, migra pro automático quando tem dado.
 - **3-4 conjuntos** no máximo (não fatiar demais — cada conjunto precisa de evento pra aprender).
 - **Criativos:** ver Passo 3 — em 2026 o volume e o tipo de criativo importam mais que o número de
