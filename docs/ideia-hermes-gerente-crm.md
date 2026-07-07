@@ -255,6 +255,25 @@ o princípio de montagem: contexto ESTÁVEL primeiro no prompt (identidade, regr
 volátil no fim — favorece qualquer cache automático do provedor; e a nota operacional de
 que credencial é POR agente, não herda. Cartão: `material-matt/openclaw-prompt-caching.md`.)
 
+## Camada de visibilidade — o "Mission Control" do Hermes (doc do OpenClaw, jul/2026)
+
+O agente autônomo precisa de um lugar onde a dona VÊ a operação sem abrir terminal
+(cartão: `ImpulsoX-AI/material-matt/openclaw-mission-control.md`). Metade do Mission
+Control já é nossa arquitetura (projects isolados = clones/`clientes/<nome>/`; chat com
+contexto de projeto = sessão do Claude Code na pasta). O que entra como requisito NOVO:
+
+- **Painel de visibilidade:** tasks ativas · execuções rodando · próximos agendamentos ·
+  conclusões recentes · **tasks bloqueadas** (nada morre em silêncio) · histórico de runs
+  com logs · artefatos indexados por run. Candidato natural: aba no hub do CRM v3 (painel
+  multi-tenant já existe) — não construir dashboard do zero.
+- **Scheduler anti-sobreposição:** cron do Hermes (brief diário, monitor de review) nunca
+  dispara um job que ainda está rodando; run-now manual + histórico por job.
+- **Executor allowlisted:** o Hermes só executa comandos de uma lista aprovada, com
+  validação de path antes — nunca comando arbitrário (fecha com o kill switch e o Exec-
+  com-aprovação do hardening).
+- **Disciplina de task:** toda task declara o deliverable esperado antes de rodar; status
+  Blocked é visível no painel, não engolido.
+
 ## Caminho sugerido (quando for construir)
 
 1. Adicionar `--acao listar` ao `gbp.mjs` (buscar reviews recentes de um location).
