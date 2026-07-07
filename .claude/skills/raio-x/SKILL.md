@@ -38,11 +38,19 @@ Instagram com 50 mil seguidores). Coleta primeiro, nota depois.
 ## O que auditar (com a URL na mão)
 
 ### 1. Site — fundação
-Scraping (firecrawl) + verificação direta:
-- **Clareza:** em 5 segundos dá pra saber o que a empresa vende e pra quem? A oferta
-  principal está acima da dobra?
-- **Conversão:** existe chamada clara (WhatsApp, telefone, formulário)? Em quantos
-  cliques?
+Scraping (firecrawl) + verificação direta, com as **5 lentes** (método de audit ao
+vivo Sprint/Matt Ganzak, jul/2026 — cada lente tem sinal objetivo de reprova):
+- **Clareza:** um estranho explica o que a empresa oferece em 10 segundos vendo só o
+  hero? Se precisa explicar, o hero quebrou. A oferta principal está acima da dobra?
+- **Relevância:** o problema nº 1 do visitante aparece NA LÍNGUA DELE no primeiro
+  scroll? (Procurar o fraseado real do comprador na página — VoC, não jargão da empresa.)
+- **Prova:** prova de RESULTADO (número, logo, depoimento — não claim) acima da dobra
+  ou nos 2 primeiros scrolls?
+- **Fricção/Conversão:** quantas decisões a página pede? Existe chamada clara
+  (WhatsApp, telefone, formulário)? Em quantos cliques? 1 CTA primário por seção;
+  campos de formulário no mínimo impiedoso.
+- **Foco em resultado:** cada seção constrói confiança OU aproxima do CTA? Seção que
+  não faz nenhum dos dois é peso morto (vira recomendação de corte).
 - **Técnica (Core Web Vitals reais, não "responde rápido?"):** medir os três sinais que
   o Google usa, com o limiar **2026** — **LCP ≤ 2,5s** (teto "good" oficial Google/web.dev;
   alvo da casa ≤ 2,0s), **INP < 200ms**, **CLS < 0,1**. Mais: HTTPS, mobile, título e
@@ -153,6 +161,10 @@ aperitivo de produto. E ambos obedecem a regra de ouro (nenhuma nota sem verific
 
 ## Plano dos primeiros 30 dias
 [3-5 ações em ordem, cada uma ligada a uma skill do sistema que a executa]
+
+> **A pergunta resultado-primeiro (abre o plano):** *"se só desse pra consertar UMA
+> coisa, qual conserto cria o maior ganho mensurável?"* — essa é a ação nº 1 do plano
+> e o destaque da reunião; o resto é sequência. Foco vende mais que lista.
 
 ## O que este raio-x não vê (e o que ficou a confirmar)
 [dados internos: analytics, custo real de ads, taxa de conversão — vem depois]

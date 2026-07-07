@@ -126,6 +126,35 @@ antes de escolher o regime.
 
 ---
 
+## 7.5 O MODELO DE NEGÓCIO decide o site (antes de qualquer pixel)
+
+Do treinamento "Agency Website Rebuild" (mesma fonte): a decisão de precificação
+vem ANTES do código, porque ela muda a página inteira:
+
+| Elemento | Oferta produtizada (preço fixo) | Retainer/considerada |
+|---|---|---|
+| CTA do hero | "Ver pacotes" / comprar direto | "Agendar conversa" |
+| Preço | público e transparente | "a partir de" + qualificação antes |
+| Prova | resultado por pacote | cases com número de receita/lead |
+| Form | curto, estilo checkout | longo, perguntas de qualificação |
+| Conteúdo | método/processo | resultado/ROI |
+
+Teste dos 30 segundos antes de construir: *"este negócio vende X pra Y por Z,
+pago assim"* — se o dono não completa a frase, resolver isso primeiro (a
+construção fica 10x mais rápida com a resposta travada). Modelo híbrido: o site
+tem que fazer UM caminho parecer o próximo passo óbvio — nunca dois CTAs
+competindo.
+
+**Fórmula de posicionamento do hero (variante com prazo):** "Ajudamos [comprador
+específico] a conseguir [resultado específico] em [prazo específico] sem [a
+coisa que ele odeia]". O prazo é o elemento que a nossa fórmula de headline
+ainda não pedia explicitamente — quando há prazo real entregável, ele entra.
+
+**Site de agência/serviço: 5 páginas é o suficiente** (Home, Serviços, Cases,
+Sobre, Contato/Aplicação) — "anything more is procrastination disguised as
+ambition". E a regra de corte por seção: constrói confiança OU aproxima do CTA;
+não faz nenhum → sai.
+
 ## 8. O método de CONSTRUÇÃO dele (pré-Focus Pilot): Brief → PRD → Prompts → Loop → Ship
 
 Da aula "Build a landing page from a brief" (Sprint vídeo 4, fonte bruta em
