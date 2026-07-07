@@ -271,6 +271,8 @@ contexto de projeto = sessão do Claude Code na pasta). O que entra como requisi
   duas visões distintas: **admin (dona)** = operacional completo, todos os tenants (runs,
   logs, bloqueadas); **cliente** = nunca logs — se vir algo, é o resumo de VALOR ("seu
   agente respondeu 47 msgs, agendou 5, escalou 2 este mês"), que é retenção, não técnica.
+  **PRD pronto pro dev do CRM: `docs/prd-aba-agente-crm.md`** (flag + schema + API + aba
+  admin + kill switch; a aba nasce antes do agente — o Hermes só consome quando existir).
 - **Scheduler anti-sobreposição:** cron do Hermes (brief diário, monitor de review) nunca
   dispara um job que ainda está rodando; run-now manual + histórico por job.
 - **Executor allowlisted:** o Hermes só executa comandos de uma lista aprovada, com
