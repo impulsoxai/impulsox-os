@@ -129,6 +129,37 @@ relação que a IA ainda não cobre — nunca VA generalista pra fazer o que o a
 Além disso, todo agente autônomo herda os 4 requisitos do Nível 2 da
 `/automacao-cliente` (guardas de decisão, teto de custo, memória de estado, log de decisão).
 
+## Arquitetura de operação — projetos, tarefas e roteamento de modelo (OpenClaw guide, Sprint jul/2026)
+
+O guia de treinamento do OpenClaw (o stack autônomo do Matt; no nosso contexto = Hermes)
+define COMO o agente se organiza por dentro. Cartão bruto com os prompts exatos:
+`ImpulsoX-AI/material-matt/openclaw-training-guide.md`. As mecânicas:
+
+- **3 camadas:** Project Folder (negócio/cliente) → Task Folder (workflow repetido) →
+  modelo atribuído por tarefa. Equivalência: Project = `clientes/<nome>/` (clone com
+  núcleo), Task = skill do OS. **A arquitetura do ImpulsoX-OS já é essa** — o Hermes é a
+  camada de execução autônoma por cima, não uma estrutura nova.
+- **Anatomia do prompt de task folder:** papel com recusa de escopo + contexto em 1 frase
+  + regras de output (formato/tom/comprimento/must-avoid) + **exemplos de bom E de ruim
+  output** ("a seção mais poderosa; gaste mais tempo aqui").
+- **Roteamento por custo (a regra dos 97%):** Haiku pra repetitivo/template (60-70% das
+  tarefas), Sonnet pra execução criativa (25-30%), Opus só pra estratégia (5-10%).
+  Começar SEMPRE no barato e subir só se a qualidade não bastar; auditoria mensal
+  perguntando "algum folder pode descer de modelo?". Vale pro HERMES (operação autônoma
+  24/7 em volume) — não muda a regra da casa de rodar o trabalho interativo em Opus.
+- **Router-mestre:** agente cujo único trabalho é rotear (nunca executar) — task folder +
+  modelo + razão em 1 linha; sem match → sugere folder novo. Testar com 5-10 requests
+  antes de valer.
+- **QC agent como gate:** revisa todo output antes de publicar (voz 1-10, acurácia de
+  claims, CTA, tom, comprimento → PASS/NEEDS REVISION). É o nosso `/revisar` — validação
+  externa de que o gate frio é peça obrigatória de agente autônomo.
+- **Chaining:** output de um folder vira input do próximo (blog → 5 posts standalone →
+  hashtags) — o nosso `/conteudo` → `/repurpose`, automatizado.
+
+Decisão de registro (dona, 2026-07-07): isto NÃO vira skill agora — o Hermes não existe;
+é spec de construção. Quando nascer, os prompts do cartão viram a configuração dos task
+folders dele.
+
 ## Caminho sugerido (quando for construir)
 
 1. Adicionar `--acao listar` ao `gbp.mjs` (buscar reviews recentes de um location).
