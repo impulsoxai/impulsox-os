@@ -142,11 +142,15 @@ define COMO o agente se organiza por dentro. Cartão bruto com os prompts exatos
 - **Anatomia do prompt de task folder:** papel com recusa de escopo + contexto em 1 frase
   + regras de output (formato/tom/comprimento/must-avoid) + **exemplos de bom E de ruim
   output** ("a seção mais poderosa; gaste mais tempo aqui").
-- **Roteamento por custo (a regra dos 97%):** Haiku pra repetitivo/template (60-70% das
-  tarefas), Sonnet pra execução criativa (25-30%), Opus só pra estratégia (5-10%).
-  Começar SEMPRE no barato e subir só se a qualidade não bastar; auditoria mensal
-  perguntando "algum folder pode descer de modelo?". Vale pro HERMES (operação autônoma
-  24/7 em volume) — não muda a regra da casa de rodar o trabalho interativo em Opus.
+- **Roteamento por custo (a regra dos 97%) — SUBSTITUÍDO no nosso caso:** o Matt roteia
+  Haiku/Sonnet/Opus porque paga por token na API. **Decisão da dona (2026-07-07): o Hermes
+  roda na SUBSCRIPTION do Codex (plano ChatGPT $20, OAuth — ver seção "O motor de modelo"
+  acima), custo FIXO** — rodar direto na API por token ficaria caro demais. Com custo fixo,
+  o roteamento multi-modelo perde a razão de ser; o que SOBREVIVE da mecânica é o
+  princípio "tarefa certa pro contexto certo" (task folder com escopo apertado) e a
+  auditoria mensal — só que auditando LIMITES DE USO da subscription (rate/janela do
+  plano), não preço por chamada. Não muda a regra da casa de rodar o trabalho interativo
+  da agência em Opus.
 - **Router-mestre:** agente cujo único trabalho é rotear (nunca executar) — task folder +
   modelo + razão em 1 linha; sem match → sugere folder novo. Testar com 5-10 requests
   antes de valer.
@@ -159,6 +163,43 @@ define COMO o agente se organiza por dentro. Cartão bruto com os prompts exatos
 Decisão de registro (dona, 2026-07-07): isto NÃO vira skill agora — o Hermes não existe;
 é spec de construção. Quando nascer, os prompts do cartão viram a configuração dos task
 folders dele.
+
+## Segurança do Hermes — hardening adaptado (OpenClaw Security Guide, Sprint jul/2026)
+
+O guia de hardening do OpenClaw (cartão com comparação item a item e os agent prompts
+copy-paste: `ImpulsoX-AI/material-matt/openclaw-security-hardening.md`) assume serviço
+web multi-usuário exposto na internet. O nosso perímetro é outro — VPS atrás de
+Tailscale, 1 operador, subscription Codex — então JWT/RBAC/CORS/rate-limit público se
+dissolvem numa regra só: **nada escuta em porta pública; tudo atrás do tailnet; /docs e
+/debug não existem em produção**. O que TRANSFERE vira requisito de construção:
+
+**Inegociáveis de dia 1 (antes do Hermes agir sozinho):**
+1. **Defesa de prompt injection (§6)** — o Hermes lê input NÃO-CONFIÁVEL (review de
+   cliente, e-mail, webhook) e age; injection vira ação real no mundo. Validação de
+   input antes do modelo (padrões "ignore instructions" etc.), filtro de OUTPUT (key
+   vazada, PII), **canary token no system prompt** (aparece na saída = injection
+   detectada), quarentena progressiva da fonte.
+2. **Kill switch + logging sem conteúdo (§7)** — agente sem operador olhando: log
+   estruturado de EVENTO (nunca prompt inteiro, senha, key inteira; sufixos só),
+   alertas em 3 níveis (crítico imediato / alto 15min / digest diário), kill switch
+   manual com confirmação do owner, severidades P0-P3 com tempo de resposta.
+3. **Secrets (§2)** — .env fora do git (já é regra), rotação 90d com lembrete, scan de
+   histórico git (key deletada continua no history), pre-commit hook de padrões.
+4. **Circuit breaker de USO (§5.2 adaptado)** — sem custo por token (subscription), o
+   breaker vigia USO e AÇÕES: tarefas/hora vs janela do plano Codex, e tetos de ação
+   no mundo (nº de e-mails/posts/respostas por dia). Escala de 4 degraus do guia:
+   WARNING (alerta) → SOFT (degrada: só tarefas de leitura) → HARD (pausa ações
+   externas) → EMERGENCY (tudo off, reset manual). Complementa os 4 requisitos do
+   Nível 2 da /automacao-cliente.
+
+**Vale pro VPS JÁ, antes do Hermes (§10):** backup criptografado do CRM v3 com
+**restore TESTADO** ("backup nunca testado não é backup, é esperança") — full diário +
+verificação automática; runbook de recovery. Auto-purge de logs com conteúdo (7d) e
+redação de PII em log (LGPD — o VPS guarda dado de cliente).
+
+**Método de implantação:** o guia é todo em agent-prompts (auditoria primeiro, "do NOT
+modify yet", depois cada controle) — na hora de construir, rodar os prompts do cartão
+no próprio Claude Code contra o VPS, na ordem, com o checklist de 28 itens como gate.
 
 ## Caminho sugerido (quando for construir)
 
