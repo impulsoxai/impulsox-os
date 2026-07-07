@@ -116,6 +116,19 @@ avisar que o resultado melhora depois do `/identidade`.
    > de cor na palavra ativa (karaokê) — é o que segura quem assiste sem som. A marca/logo
    > NÃO abre o reel (logo no começo = cara de anúncio, derruba alcance) — vai no fim.
 
+   > **Arco de VENDA do reel (estrutura UGC de 6 batidas, ScaleUP fev/2026)** — quando o
+   > reel é de oferta/produto (não puro educativo), o roteiro segue as batidas com tempo:
+   > **Hook 0-3s** (pattern-interrupt) → **Problema 3-8s** (a dor que o público reconhece) →
+   > **Descoberta 8-15s** (o produto como achado, não como pitch) → **Experiência 15-35s**
+   > (o resultado vivido) → **Prova 35-45s** (antes/depois, número real autorizado) →
+   > **CTA 45-60s**. Mapa roteiro→cena pro gerar-video: problema=frustração em close ·
+   > descoberta=primeiro contato/unboxing · uso=demo nas mãos · prova=antes/depois ·
+   > CTA=hero shot do produto. **Régua de corte de hook:** entre as 2-3 variações, a que
+   > tiver 3-second view <40% no teste morre; dobra na vencedora (o /desempenho mede).
+   > **Limite ético (não negociável):** avatar/rosto por IA NUNCA finge ser consumidor ou
+   > criador real ("UGC fake" viola a persuasão honesta e a regra do rosto). Avatar só como
+   > personagem DECLARADO da marca; depoimento é sempre de pessoa real autorizada.
+
    **3a-voz. Reel b-roll NARRADO (voz por cima do b-roll, zero-filmagem).** O mesmo reel do
    3a, mas com uma VOZ narrando as cenas — o dono não filma nada. Cada cena ganha um campo
    `"narracao"` (o que a voz fala). A voz vem de dois jeitos (Escada de Contexto):
