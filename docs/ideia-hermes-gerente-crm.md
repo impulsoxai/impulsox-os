@@ -124,6 +124,13 @@ for tactics, monthly for strategy":
 E o org chart AI-native que o Hermes ancora (7 papéis de IA antes de contratar humano):
 chief of staff (os briefs acima) · research/concorrência · SDR outbound · CS/churn watch
 · pós-produção de conteúdo · conciliação financeira · ferramentas internas (Claude Code).
+O papel de **SDR outbound tem spec pronta** no Cold Outreach Playbook (cartão
+`ImpulsoX-AI/material-matt/openclaw-cold-outreach-playbook.md`): signal detection por ICP
+(8 tipos de sinal de compra, urgency_score) + pipeline multi-agente de enriquecimento
+("never fabricate; null se não achou") + **Inbox Management Agent** — lê respostas a cada
+15 min, categoriza em 7 tipos (INTERESTED alerta a dona na hora; UNSUBSCRIBE/ANGRY
+removem de tudo; MAYBE LATER agenda nurture 30/60/90d) e fecha o dia com relatório 18h.
+⚠️ Adaptação BR obrigatória: canal WhatsApp/DM compliant, LGPD, nunca volume US cru.
 Regra de contratação do playbook: humano só pra papel que exige julgamento/confiança/
 relação que a IA ainda não cobre — nunca VA generalista pra fazer o que o agente já faz.
 Além disso, todo agente autônomo herda os 4 requisitos do Nível 2 da
