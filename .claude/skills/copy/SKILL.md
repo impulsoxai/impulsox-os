@@ -131,7 +131,10 @@ hipótese do núcleo — nunca travar.
   senão, ela quica.
 - **Sprint obrigatório:** escrever **10 versões** antes de escolher. As 3 primeiras são
   óbvias; as boas vêm depois. Forçar variedade — direto, curiosidade, benefício, dor,
-  mecanismo. Apresentar as **3 melhores** ao usuário com a recomendação.
+  mecanismo — e **pelo menos 1 corajosa que arrisca polarizar** (a opção segura demais
+  nunca é a que gruda). O leitor é o sujeito do headline, não a empresa (sem "nós"
+  abrindo o H1); o headline funciona SOZINHO, sem depender do subtítulo. Apresentar as
+  **3 melhores** ao usuário com a recomendação.
 - **As 2 perdedoras não são lixo — são teste.** Quando o negócio roda ads, oferecer no
   fecho: "as 3 finalistas viram variações de criativo no `/ads-meta` — o PÚBLICO escolhe
   a headline, não a gente". A vencedora do teste vira a headline da página e entra em
@@ -156,15 +159,25 @@ Toolbox de fórmulas (esqueleto, não molde a copiar):
 
 ### Passo 2 — Estrutura que converte (ordem provada, não reinvente)
 
+Cada bloco responde a **pergunta silenciosa** que o visitante está fazendo naquele
+ponto do scroll (método ScaleUP/Sprint, jul/2026) — a ordem importa porque cada
+seção GANHA a próxima:
+
 ```
-HERO        benefício (headline) + qualifica (subtítulo) + 1 CTA + prova rápida/visual
-PROBLEMA    2-4 dores específicas ("isso sou eu") — PAS: problema → agita → (vira no próximo)
-VIRADA      a solução como MECANISMO/diferencial (o que muda, por que é crível)
-PROVA       demonstração / casos / números REAIS (nunca inventar; vazio = pendente)
-COMO FUNCIONA  3 passos que tiram o medo e mostram controle
-OBJEÇÕES    responder as 3-4 que travam a compra (vêm do ofertas.md) + reversão de risco
-CTA FINAL   recompõe o benefício + uma ação só
+HERO        "estou no lugar certo?" — benefício (headline) + qualifica (subtítulo) + 1 CTA + prova rápida/visual
+PROBLEMA    "vocês entendem a MINHA situação?" — 2-4 dores específicas, nomeadas mais
+            precisamente do que ele mesmo nomearia (é aqui que o leitor "se apaixona") — PAS
+VIRADA      "o que vocês fazem, afinal?" — a solução como MECANISMO, na língua DELE
+PROVA       "funcionou pra alguém como eu?" — casos / números REAIS (nunca inventar; vazio = pendente)
+COMO FUNCIONA  "vai ser fácil ou doloroso?" — 3 passos que fazem parecer INEVITÁVEL, não trabalhoso
+OBJEÇÕES    "qual é a pegadinha?" — responder as dúvidas que ele JÁ estava tendo + reversão de risco
+CTA FINAL   "estou pronto?" — recompõe o benefício + uma ação só, zero distração
 ```
+
+Bloco que não responde a pergunta silenciosa da sua posição está no lugar errado ou
+sobrando. E o hero tem um trabalho extra que a copy sozinha não faz: **o visitante não
+LÊ o hero — ele SENTE** (tipografia, espaço, qualidade do visual sinalizam "essa gente
+é séria" antes da headline; é por isso que copy e design andam juntos no `/pagina`).
 
 CTA primário acima da dobra **e** repetido no fim. **Uma ação só** — cada opção extra é
 um motivo pra não decidir. Texto específico ("Falar no WhatsApp"), nunca "Clique aqui" /
