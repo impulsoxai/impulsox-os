@@ -201,6 +201,37 @@ redação de PII em log (LGPD — o VPS guarda dado de cliente).
 modify yet", depois cada controle) — na hora de construir, rodar os prompts do cartão
 no próprio Claude Code contra o VPS, na ordem, com o checklist de 28 itens como gate.
 
+## Gestão de contexto em messenger — o agente WhatsApp não vira vampiro de contexto (Token Guide, Sprint fev/2026)
+
+Agente plugado em messenger reenvia a thread INTEIRA a cada mensagem — a conversa longa
+estoura janela de contexto (qualidade degrada) e consome a cota do plano, mesmo com
+subscription de custo fixo. O guia de token do OpenClaw (cartão com prompts prontos:
+`ImpulsoX-AI/material-matt/openclaw-token-messenger.md`) resolve com 7 estratégias; 6
+transferem pro nosso agente WhatsApp (~jul/2026) e pro Hermes:
+
+- **Session clear com memória preservada** — triggers (`/clear` + `SESSION_CLEARED`
+  programático), auto-clear com aviso aos 30 msgs e clear aos 50 (ou por contador de
+  tokens). Descarta a THREAD, nunca a memória.
+- **Memória em arquivos, thread descartável** — a tese central. Valida a arquitetura
+  ImpulsoX-OS 1:1 (identity/context/tasks dele = nucleo/ + CLAUDE.md + escada nossos). O
+  que adotamos de NOVO: `log.md` de decisões em 1 linha (`[DATA] [AÇÃO] resumo`, nunca
+  transcrição) e o **protocolo de retomada pós-clear**: lê identidade → contexto → tarefas
+  → últimas 5 entradas do log → retoma como se nada tivesse acontecido. Teste de aceite:
+  limpar a sessão e ver se o agente retoma; se não retoma, a memória está incompleta.
+- **Limites duros por arquivo de contexto** (500-800 tokens cada) com gatilhos de poda
+  (arquivar/resumir/podar/mesclar ao estourar) — estilo telegráfico só em arquivo interno,
+  nunca em texto pro cliente.
+- **Limitador de resposta** — no WhatsApp é UX: confirmação em 1-2 frases, resposta padrão
+  em 3-5, sim/não quando sim/não resolve. Cliente não quer parágrafo.
+- **Handoff de 5 campos (<100 tokens)** — ao escalar pra dona: quem · problema em 1 frase ·
+  o que já foi tentado (máx 3) · status · próximo passo recomendado. Nunca encaminhar a
+  thread inteira. É o formato do alerta de escalação no celular.
+- **Dedup + poda agendada** — antes de consultar CRM/API: "já tenho isso no contexto?";
+  manutenção a cada 24h/50 interações (audita tamanhos, arquiva resolvido, re-comprime) —
+  a curadoria semanal do CLAUDE.md, automatizada dentro do agente.
+
+(Roteamento 85% Haiku não se aplica — subscription única, regra já fixada acima.)
+
 ## Caminho sugerido (quando for construir)
 
 1. Adicionar `--acao listar` ao `gbp.mjs` (buscar reviews recentes de um location).
