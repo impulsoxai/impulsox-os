@@ -190,7 +190,12 @@ dissolvem numa regra só: **nada escuta em porta pública; tudo atrás do tailne
    no mundo (nº de e-mails/posts/respostas por dia). Escala de 4 degraus do guia:
    WARNING (alerta) → SOFT (degrada: só tarefas de leitura) → HARD (pausa ações
    externas) → EMERGENCY (tudo off, reset manual). Complementa os 4 requisitos do
-   Nível 2 da /automacao-cliente.
+   Nível 2 da /automacao-cliente. **Quem abastece o breaker é o pre-flight de peso**
+   (Token Calibration Guide, cartão `material-matt/openclaw-token-calibration.md`):
+   o agente ESTIMA o peso da tarefa antes de rodar (chamadas/tempo/janela) e calibra
+   por loop de correção — estima → mede → devolve o delta → ajusta, por TIPO de
+   tarefa, 3-4 rodadas até <10-15% de erro. Tarefa pesada com cota da janela no fim
+   não entra: agenda pro próximo ciclo.
 
 **Vale pro VPS JÁ, antes do Hermes (§10):** backup criptografado do CRM v3 com
 **restore TESTADO** ("backup nunca testado não é backup, é esperança") — full diário +
