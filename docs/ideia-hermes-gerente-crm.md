@@ -173,6 +173,12 @@ Tailscale, 1 operador, subscription Codex — então JWT/RBAC/CORS/rate-limit p�
 dissolvem numa regra só: **nada escuta em porta pública; tudo atrás do tailnet; /docs e
 /debug não existem em produção**. O que TRANSFERE vira requisito de construção:
 
+**Regra de supply chain (Skills Security Guide, fev/2026 — ClawHavoc: 341 skills
+maliciosas num registro público de skills de agente):** o Hermes **NÃO instala skill de
+registro público. Nunca.** Só skills escritas pela casa — operação sensível (credencial,
+CRM, dado de cliente) é sempre código próprio. Protocolo geral de vetting de terceiros:
+`docs/seguranca-ferramentas-terceiros.md`.
+
 **Inegociáveis de dia 1 (antes do Hermes agir sozinho):**
 1. **Defesa de prompt injection (§6)** — o Hermes lê input NÃO-CONFIÁVEL (review de
    cliente, e-mail, webhook) e age; injection vira ação real no mundo. Validação de

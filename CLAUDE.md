@@ -135,6 +135,11 @@ plugin, credenciais de provedor e permissões de MCP.
   dela, nunca troca paleta, fonte ou identidade por defaults próprios.
 - **Atualizam rápido.** Reconferir o README oficial antes de cada upgrade — comando e versão
   mudam.
+- **Protocolo completo de vetting (vale pra QUALQUER plugin/skill/MCP de terceiro, não só
+  design):** `docs/seguranca-ferramentas-terceiros.md` — checklist TRUST antes de instalar,
+  red flags de recusa imediata, regras de operação (localhost, pin de versão, credencial
+  nunca em plaintext no contexto) e resposta a incidente. Princípio: markdown que o agente
+  obedece é instalador — operação sensível usa skill da casa, nunca de registro público.
 
 ---
 
