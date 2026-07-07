@@ -149,6 +149,24 @@ ads (a `/ads-meta` já lê `producao/posts/`). Orgânico testa de graça o que o
 Só agora, com a casa cheia: base reativada, review subindo, atendimento ligado, orgânico gerando
 prova. Aí o lead pago **converte** em vez de vazar.
 
+**A tese com unit economics (Operator's Playbook, Sprint jul/2026 — segunda fonte
+independente da mesma ordem):** pular o orgânico e ir direto pro pago = custo por venda
+3-5x maior e conversão pela metade — "você está pagando a plataforma de ads pra ENSINAR
+quem você é, em vez de o cliente já saber". O ad é o catalisador que fecha a relação que
+o orgânico começou, não o motor que a cria.
+
+**Gate de prontidão pra ligar ads (todos verdadeiros, senão volta uma fase):**
+- [ ] Orgânico gerando conversas inbound toda semana (referência dele: 5+/semana)
+- [ ] Processo de venda documentado com taxa de fechamento conhecida
+- [ ] LTV/ticket médio conhecido com confiança (CRM dá isso)
+- [ ] Verba aguenta ~60 dias de teste sem sufoco enquanto acha os criativos vencedores
+
+**E a ordem DENTRO do pago:** começar por RETARGETING (quem viu o conteúdo orgânico,
+quem visitou a página — a confiança já foi construída, retorno típico muito acima do
+frio), só depois público frio — usando as FRASES EXATAS dos clientes (VoC da síntese),
+nunca a nossa interpretação. Testar vários ângulos, matar os piores rápido, escalar
+vencedor aos poucos até quebrar.
+
 ```
 /ads-meta · /ads-google → (humano sobe, guia visual) → /analisar-ads → /roi → /relatorio
 cria campanha + criativo    anúncio nunca sobe sozinho   mede o que       cruza com receita real

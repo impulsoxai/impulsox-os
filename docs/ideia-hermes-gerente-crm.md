@@ -106,6 +106,29 @@ Hermes). O dono corrigiu; verificado na doc oficial.
 4. **Compliance herdada.** Tudo que o Hermes responde/dispara segue as regras da casa: review sem
    gating/incentivo, resposta negativa com leitura humana, LGPD no que tocar WhatsApp.
 
+## A spec de operação madura — os 3 ritmos do agente-COO (Operator's Playbook, Sprint jul/2026)
+
+Quando o Hermes sair do escopo mínimo (monitor de review) e virar o COO da operação, o
+formato validado é **3 ritmos recorrentes, 3 altitudes** — "daily for execution, weekly
+for tactics, monthly for strategy":
+
+- **Brief DIÁRIO (7h, WhatsApp/Telegram):** receita de ontem (CRM), gasto de ads,
+  sinais de churn no inbox, clientes sem valor registrado há 14+ dias → 5 bullets +
+  cópia no vault (`05-Strategy/Daily-Briefs/`).
+- **Brief SEMANAL (domingo):** receita vs semana/mês/ano anterior · novos clientes por
+  canal de origem · churn com motivo declarado · pipeline por estágio com R$ ·
+  capacidade da semana · itens flagados "revisar" durante a semana.
+- **Review MENSAL (dia 1):** P&L · retenção por coorte de aquisição · ROI por canal ·
+  SOPs atualizados no mês · as 3 maiores apostas do próximo mês baseadas no dado.
+
+E o org chart AI-native que o Hermes ancora (7 papéis de IA antes de contratar humano):
+chief of staff (os briefs acima) · research/concorrência · SDR outbound · CS/churn watch
+· pós-produção de conteúdo · conciliação financeira · ferramentas internas (Claude Code).
+Regra de contratação do playbook: humano só pra papel que exige julgamento/confiança/
+relação que a IA ainda não cobre — nunca VA generalista pra fazer o que o agente já faz.
+Além disso, todo agente autônomo herda os 4 requisitos do Nível 2 da
+`/automacao-cliente` (guardas de decisão, teto de custo, memória de estado, log de decisão).
+
 ## Caminho sugerido (quando for construir)
 
 1. Adicionar `--acao listar` ao `gbp.mjs` (buscar reviews recentes de um location).
