@@ -96,6 +96,8 @@ nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual 
    `/escritor-br`). Sem grito/caixa-alta/FOMO. Apresentar **cena a cena, o texto exato de cada
    uma** (hook, legendas, kicker save/send, CTA, assinatura) numa tabela. **GATE 2 — esperar o
    "sim". Nunca renderizar com texto não aprovado.** (Render gasta tempo; texto errado = refazer.)
+   Se o reel vai ter **narração do dono** (ver 12a), o GATE 2 inclui também o roteiro de
+   narração com timestamps — texto de tela e fala se aprovam juntos.
 8. **Auditoria da copy:** `/revisar`. Reprovou → ajustar.
 9. **Captura o real:** páginas → `node remotion/captura-produto.mjs <slug>=<caminho-html>`;
    posts → copiar `producao/posts/<post>/slide-*.png` pra `public/carrosseis/<post>/`; fotos de
@@ -134,7 +136,31 @@ nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual 
 12. **Renderiza (só com o texto do GATE 2 aprovado):** `npx remotion render remotion/src/index.ts <CompId>
     producao/reels/<slug>/reel.mp4` (`--gl=angle` se logo 3D). Esse é o reel MUDO (preservar).
     Guarda o `.tsx`.
-12b. **Trilha + compressão (1 passo de ffmpeg).** Muxa a música de fundo E comprime de uma vez —
+12a. **Narração por cima (opcional — a voz do dono no reel).** O reel renderiza MUDO; a voz
+    entra depois, sincronizada. Fluxo:
+    1. Junto do GATE 2, entregar o **roteiro de narração com timestamp por cena** (tabela:
+       cena · início–fim em segundos · frase a falar). Régua de caber: fala em ritmo normal
+       ≈ 2,5 palavras/segundo — frase que não cabe na cena → encurtar a FRASE ou alongar a
+       CENA antes do render, nunca pedir pro dono falar correndo.
+    2. O dono grava **uma tomada corrida** assistindo o `reel.mp4` mudo (celular perto da boca
+       já serve), seguindo os timestamps. Estourou uma cena → regrava só o trecho; drift de
+       menos de ~0,5s é ok (legenda queimada cobre).
+    3. Muxar voz + trilha ducked sob a narração, comprimindo de uma vez (substitui o 12b —
+       não rodar os dois):
+    ```bash
+    ffmpeg -y -i producao/reels/<slug>/reel.mp4 -i narracao.m4a -i producao/reels/trilhas/<trilha>.m4a \
+      -filter_complex "[1:a]loudnorm=I=-16:TP=-1.5,aresample=48000[voz]; \
+       [2:a]volume=0.12,afade=t=in:st=0:d=1[mus]; \
+       [voz][mus]amix=inputs=2:duration=longest:dropout_transition=2[a]" \
+      -map 0:v -map "[a]" -c:v libx264 -crf 23 -preset slow -pix_fmt yuv420p \
+      -movflags +faststart -c:a aac -b:a 160k -shortest producao/reels/<slug>/reel-narrado.mp4
+    ```
+    Réguas: narração `loudnorm -16 LUFS` · trilha **0.12** sob voz (não 0.22 — voz manda) ·
+    narração deve cobrir até o CTA (silêncio só no fade final). **Regra aprendida no Recordly:
+    áudio separado TEM que ser muxado explicitamente e o resultado conferido COM SOM antes de
+    aprovar — nunca assumir que juntou.** Salva `reel-narrado.mp4` ao lado, preservando
+    `reel.mp4` (mudo) e sem gerar `reel-com-trilha.mp4` (redundante quando há narração).
+12b. **Trilha + compressão (1 passo de ffmpeg — só quando NÃO há narração).** Muxa a música de fundo E comprime de uma vez —
     o render do Remotion sai com bitrate alto (~3-4 Mbps, 6-10 MB); recomprimir com CRF 23 corta
     ~50% sem perda visível (Instagram recomprime no upload de qualquer jeito). Salva
     `reel-com-trilha.mp4` ao lado, PRESERVANDO o `reel.mp4` mudo:
@@ -159,8 +185,9 @@ nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual 
 → `/publicar` → `/desempenho` (mede save/send e realimenta o próximo). É opcional na esteira —
 entra quando o dono quer vídeo de marca.
 
-Fechar com: "✓ reel pronto: `producao/reels/<slug>/reel-com-trilha.mp4` (+ `reel.mp4` mudo,
-`capa.png`) · → próximo: `/revisar` (olhos frios) → `/publicar` → `/desempenho` fecha o loop."
+Fechar com: "✓ reel pronto: `producao/reels/<slug>/reel-com-trilha.mp4` — ou `reel-narrado.mp4`
+se teve narração — (+ `reel.mp4` mudo, `capa.png`) · → próximo: `/revisar` (olhos frios) →
+`/publicar` → `/desempenho` fecha o loop."
 
 ## Cenas de PROVA (fortes em qualquer nicho)
 

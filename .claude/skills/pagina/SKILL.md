@@ -25,6 +25,11 @@ Autoria: ImpulsoX AI. Conteúdo original.
   `/premium-design`; é de lá que sai o DS que rege a construção (ver Etapa 3)
 - `nucleo/negocio.md`, `nucleo/voz.md` — oferta e voz
 - `producao/raio-x/` — se houver diagnóstico, os vazamentos apontados viram requisitos
+- `docs/acervo-landing-matt.md` — sistema de landing do Matt Ganzak destilado (regras de
+  processo: um destino de funil por página decidido pela temperatura do tráfego, fact-check
+  antes de entregar, mobile antes de "pronto", gate de aprovação nomeado no fecho; e a
+  régua de regime: página de CONVERSÃO direta = copy manda e design sai da frente; página
+  de POSICIONAMENTO WOW = eixo cinematográfico. Perguntar o job da página antes de escolher)
 
 **Ferramentas opcionais (usar quando instaladas):**
 - **Open Design** (plugin MCP `open-design`, daemon local em `127.0.0.1:7456`) — canvas de
@@ -293,6 +298,12 @@ contraste muda quadro a quadro. Conferir:
   pausa acessível se durar >5s, `prefers-reduced-motion` → pôster estático (já na Etapa 3.5).
 - **Foco visível, navegação por teclado, alt em imagem com conteúdo, ordem de leitura correta no
   source** (liga com a regra GEO-safe: o que a IA lê é o que o leitor de tela lê).
+
+**4d. Segurança do build (quando a página tem form/JS que fala com servidor).** Rodar os
+5 checks de `docs/qa-entrega-build.md`: nenhuma key no fonte (só `.env`/config), `.env` no
+`.gitignore` (já commitou → rotacionar a key), zero dado sensível em console.log, endpoint
+de form não exposto sem validação, zero TODO no código entregue. Página estática pura →
+só conferir que não vazou credencial em comentário/JS.
 
 ## Etapa 5 — Entrega + plano de medição
 

@@ -46,6 +46,14 @@ Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degra
   toda peça nasce com **2-3 variações de capa/hook de mecânicas DIFERENTES** pro dono
   escolher (o slide 1 carrega ~80% do peso — não se decide de primeira). Registrar a
   mecânica escolhida no `legenda.md`; o `/desempenho` valida
+- `references/molde-carrossel-arc.md` — o **gabarito do carrossel** (dissecado de perfil
+  que performa + aprovado pela dona): arco de 5 atos com regra dura por ato (HOOK → DOR
+  → SISTEMA → RESULTADO → CTA), anatomia do slide-cartaz (eyebrow mono, display gigante,
+  accent único, paginação, seta), sistema de capas por formato, card-ticket de produto
+  real e o slide final fixo SALVA/COMPARTILHA/SEGUE. Se o `marca/design-guide.md` do
+  negócio tem seção de carrossel/social, ela calibra as cores/fontes; o molde dá a
+  estrutura. Checar o rascunho ATO A ATO antes de renderizar — slide que não faz o
+  trabalho do seu ato volta
 
 **O BLOCO META do `legenda.md` (contrato canônico — todo registro da peça mora AQUI, num
 formato só):** o topo do `legenda.md` abre com um bloco entre `---`, e a legenda publicável

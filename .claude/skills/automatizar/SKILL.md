@@ -42,6 +42,11 @@ fase de mapeamento do `/cliente`.
 (ImpulsoX-OS) e desce pelo `/atualizar-motor`. Nunca instalar melhoria de motor direto num
 clone.
 
+**Rotina de quem?** Esta skill transforma rotina do DONO/sistema em skill interna. Se a
+tarefa repetida é do CLIENTE e a automação vai ser VENDIDA (script rodando em agenda no
+ambiente dele, com setup + mensalidade) → é a **`/automacao-cliente`** — produto da
+esteira, com blindagem de erro e modelo de assinatura próprios.
+
 ## Descoberta (quando a rotina ainda não está clara)
 
 Três perguntas, uma por vez:

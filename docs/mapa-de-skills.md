@@ -266,6 +266,10 @@ OPCIONAIS (o guia NÃO empurra; só entram quando o dono pede explicitamente):
    • YouTube  ⚠️ EM TESTE/BETA — funciona, mas não oferecer a cliente como serviço pronto
               até a Vivian validar (tema-yt → roteiro → editar → shorts → upload → desempenho-yt)
    • Apresentação/slides  (/slides → /gravar-tela)  — deck premium pra gravar vídeo
+   • Dashboard de cliente (/dashboard) — painel de KPIs reutilizável, ticket alto; entra
+     quando o cliente tem dados e precisa enxergá-los
+   • Automação de cliente (/automacao-cliente) — script em agenda vendido como assinatura
+     (setup + mensalidade); upsell natural de quem já tem /dashboard
    • Google Ads     (ads-google → analisar-ads)
    • Meta/FB Ads    (ads-meta → analisar-ads)
    • ChatGPT Ads    (impulsox-chatgpt-ads)
@@ -327,6 +331,8 @@ contrato pra aquilo.
 | /ads-google · /ads-meta | (humano sobe) → /analisar-ads em 30d | **marca/, página de destino** |
 | /analisar-ads | /ads-* (nova campanha) | exports CSV |
 | /criar-ebook | /email (sequência) ou /pagina (captura) | núcleo, marca |
+| /dashboard | oferta de manutenção mensal (no vídeo de entrega) → registrar em ofertas.md | **marca/ (senão defaults) · dados do cliente só na etapa 7 (mock antes)** |
+| /automacao-cliente | mensalidade em ofertas.md + CRM; logs na 1ª semana | **triagem de viabilidade (da /automatizar) · credenciais em .env · blindagem de erro no PRD** |
 | /lancar-produto | /pagina · /email · /ads-* (orquestra) | oferta, marca |
 
 Pré-requisito em **negrito** = o que mais trava na prática; quando falta, o sistema oferece

@@ -78,7 +78,10 @@ inegociáveis de persuasão honesta, e `docs/frase-que-pega.md` — a craft do h
 que gruda (Made to Stick, devices, Big Idea, autenticidade); o acervo de MECÂNICAS de hook
 prontas (10 moldes com exemplo, validadas pelo /desempenho) está em `docs/hooks.md` — toda
 peça nasce com 2-3 variações de hook de mecânicas diferentes. Para copy de página, ler
-também `docs/swipe-copy.md` — acervo de copy real que converte (molde transfere, frase não).
+também `docs/swipe-copy.md` — acervo de copy real que converte (molde transfere, frase não)
+— e `docs/acervo-landing-matt.md` — o sistema de landing do Matt Ganzak destilado (ordem
+do hero dor→promessa→CTA, CTA idêntico repetido, prova em output nunca renda; mecânica,
+nunca o conteúdo dele).
 A execução FRASE A FRASE de qualquer texto (os 8 pilares: clareza, voz do cliente,
 inteligência, curiosidade, emoção, prova, ritmo, ação) mora em
 `.claude/skills/escritor-br/references/craft-de-engajamento.md`, aplicada pelo `/escritor-br`.
@@ -95,6 +98,13 @@ onde capturar), ler `docs/dna-cinematografico.md` — o andar de cima do craft-m
 Para qualquer DECISÃO de estratégia (calendário, raio-x, proposta, oferta, análise de ads),
 ler `docs/modelos-mentais.md` — Jobs to Be Done, Teoria das Restrições, psicologia de preço,
 loops de crescimento; o andar de cima da persuasão (pensar o problema certo antes da peça).
+Antes de usar a FERRAMENTA EXTERNA **Hyperframes** (motor de vídeo HTML→MP4 da HeyGen, para reel
+cinematográfico), ler PRIMEIRO `docs/hyperframes-acervo.md` — é o cartão de aprendizado que já
+destila o contrato (bugs silenciosos), os moldes dissecados (apple-money-count, cinematic-zoom),
+os 15 blueprints de cena e o fluxo que funciona; evita redescobrir tudo a cada reel. Esse é o
+**padrão "cartão antes da skill"**: toda ferramenta de terceiro (Hyperframes, impeccable, Open
+Design, agent-reach) ou skill densa ganha um doc de conhecimento destilado que se lê ANTES de
+acionar — o que já aprendemos fica no doc, não se repete a pesquisa.
 
 Quanto melhor o núcleo, melhor a entrega. Núcleo vazio não impede o sistema de
 trabalhar — só o faz operar em degrau mais baixo, com mais suposições marcadas.
@@ -182,6 +192,20 @@ e o destino segue o assunto:
 A gravação é cirúrgica: acrescenta-se a linha nova e mostra-se ao usuário o que entrou
 — o resto do arquivo permanece intocado. Correção que só vale pra peça em edição se
 aplica e morre ali; oferecer registro apenas quando o aprendizado sobrevive à sessão.
+
+**A régua do aprendizado (o que entra em `nucleo/aprendizados.md`):** só vale registrar
+se um eu-futuro, lendo daqui a 3 meses, MUDARIA UMA DECISÃO por causa disso. Recibo de
+entrega ("postamos X hoje") não qualifica; registro operacional ("o deploy falhou e foi
+corrigido") não qualifica. Na dúvida, não escreve — melhor 5 aprendizados densos por mês
+que 50 esquecíveis. (Método second-brain Sprint/ScaleUP, jul/2026 — mesma tese do nosso
+motor, régua adotada por ser mais afiada.)
+
+**Curadoria periódica do cérebro (o núcleo só fica vivo se for curado):** de tempos em
+tempos (ideal: semanal, ~30 min), revisar o que o sistema escreveu com 4 movimentos —
+**promover** (aprendizado citado 3+ vezes vira regra em skill/doc/CLAUDE.md), **rebaixar**
+(regra que era decisão pontual sai do núcleo), **arquivar** (projeto acabado fica como
+trilha, marcado) e **deletar** (o que não passa na régua acima — sem dó). Sem curadoria,
+o núcleo dilui e o sistema degrada.
 
 ---
 

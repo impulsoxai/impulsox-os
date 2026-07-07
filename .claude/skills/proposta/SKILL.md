@@ -104,6 +104,39 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
    - "chama no WhatsApp até [validade]" fica como CAMINHO SECUNDÁRIO pra quem tem dúvida,
      nunca como o CTA principal. Validade real, destacada uma vez, sem contagem teatral.
 
+### Blindagem de escopo (os 5 elementos que evitam o projeto-pesadelo)
+
+Scope creep quase nunca é má-fé — é documento vago (método Sprint/Matt Ganzak, jul/2026).
+Todo escopo da proposta carrega os 5, escritos em português simples (lível em 3 min):
+
+1. **Entregáveis** — lista explícita, item por item. Não está na lista = fora do escopo.
+2. **Exclusões nomeadas** — o que cliente costuma pedir DEPOIS (integração extra, versão
+   app, páginas adicionais, gestão de usuários): escrever que não está incluso.
+3. **Política de revisão** — 1 rodada dentro de X dias da entrega; revisão = ajuste em
+   algo que EXISTE; feature nova = fase nova. Definido ANTES de começar, nunca durante.
+4. **Janela de aceite** — sem retorno do cliente dentro da janela de review, a entrega é
+   considerada aceita (protege de projeto que nunca fecha).
+5. **Sinal antes de começar** — 50% na assinatura, 50% na entrega (cliente novo, sem
+   exceção; cliente de carteira pode ter condição melhor). Trabalho não começa sem sinal.
+
+### Objeções de preço (a objeção quase nunca é o preço)
+
+É falta de valor percebido, falta de orçamento AGORA, ou dúvida se você entrega — e cada
+uma tem resposta diferente; descontar de cara é o erro mais caro. Scripts:
+
+- "Mais do que eu esperava" → "O que você esperava? Quero entender o que faria sentido."
+  E OUVIR — não preencher o silêncio; a resposta revela qual objeção é de verdade.
+- "Preciso pensar" → "Claro. O que te ajudaria a decidir com confiança?"
+- "Faz por menos?" → "Faço. Te mostro como fica um escopo menor." **Tira FEATURE, nunca
+  margem** — nunca o mesmo escopo mais barato (é o downsell das Regras, com nome de opção:
+  a versão reduzida vem nomeada e com caminho de volta pra fase 2).
+- "Sem orçamento agora" → "Quando renova? Seguro este escopo e preço por 30/60 dias." →
+  follow-up com data no CRM.
+- "Já tentei e não funcionou" → "Me conta o que aconteceu." → ouvir e MOSTRAR a
+  ferramenta viva (a demo da seção acima), não argumentar.
+- "Preciso falar com sócio" → "Te preparo um resumo de 1 página pra compartilhar hoje?"
+  → é a deixa do multi-threading do MAP: pedir pra trazer quem decide.
+
 ### Blindar contra as 5 razões de perda (pesquisa de 23 mil propostas — Proposify, 2025)
 
 Estruturar a proposta já antecipando por que deals morrem — e desarmando os 3 maiores:
@@ -113,6 +146,24 @@ Estruturar a proposta já antecipando por que deals morrem — e desarmando os 3
   que o concorrente não tem), não disputa de preço.
 - **Sem decisão (22%)** → o plano de ação mútuo + próximo passo com data combatem a inércia;
   é a maior causa silenciosa. Tornar o "sim" o caminho mais fácil que o "deixa pra depois".
+
+### A demo antes da proposta (quando há reunião ao vivo)
+
+Quando o dono apresenta em reunião (não só envia o arquivo), a proposta fecha mais se
+vier DEPOIS de uma demo viva — método validado (Sprint/Matt Ganzak, jul/2026; mecânica,
+não conteúdo). Os 4 momentos, nesta ordem:
+
+1. **Ferramenta VIVA na tela, não screenshot** — o CRM rodando, o site publicado, a
+   página gerando em tempo real. A demo é o pitch.
+2. **A frase que muda a conversa:** "isso aqui roda o MEU negócio todo dia." Vender o
+   que se usa é credibilidade que concorrente não copia (e é literalmente verdade no
+   nosso caso: OS + CRM próprios).
+3. **Mostrar as CONEXÕES, não a peça isolada** — o agente que alimenta o CRM, o
+   relatório que chega sozinho. Quem vê sistema conectado não pergunta preço,
+   pergunta prazo.
+4. **Prospect disse "quero" → brief NA HORA, não follow-up.** Puxar as perguntas de
+   diagnóstico e preencher junto, na mesma conversa. O brief preenchido é o
+   fechamento; agendar "outra call pra alinhar" esfria o sim.
 
 ## Produção
 
@@ -141,6 +192,10 @@ Estruturar a proposta já antecipando por que deals morrem — e desarmando os 3
   evitada na assinatura).
 - Texto passa pelo `/escritor-br`; peça inteira respeita as regras do
   `docs/persuasao.md` (dentro do teto de gatilhos de lá: aqui, aversão à perda + prova).
+- **Enviada em até 24h da conversa, lível em ~90 segundos.** Proposta que chega 3 dias
+  depois esfria; proposta de 3 páginas não é lida. A abertura reflete a LINGUAGEM que o
+  prospect usou na conversa (as palavras dele, não as nossas) e mostra o RESULTADO antes
+  do método — abrir com credenciais é o anti-padrão nº 1.
 - Proposta perdida vira aprendizado: perguntar o motivo e registrar no
   `nucleo/aprendizados.md` quando o usuário souber. **E perdida não morre sem downsell:**
   oferecer a oferta um degrau abaixo do catálogo (a "opção de entrada" da ancoragem, ou a

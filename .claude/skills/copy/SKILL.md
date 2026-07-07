@@ -65,6 +65,12 @@ gate de entrega.
   calibrar a força de cada bloco; molde transfere, frase não).
 - `docs/frase-que-pega.md` — **a craft da frase criativa e autêntica** (lido na Camada 4:
   Made to Stick, devices, Big Idea, autenticidade).
+- `docs/acervo-landing-matt.md` — **o sistema de landing do Matt Ganzak destilado**
+  (mecânica, nunca o conteúdo dele): ordem do hero (dor/verdade dura → promessa → CTA,
+  promessa só depois do leitor se reconhecer), CTA idêntico repetido (nunca um segundo),
+  objeção por reframe contrário, prova em métrica de output (nunca renda), biografia como
+  autoridade (nunca previsão do leitor), CTA final sem informação nova. Tem checklist de
+  uso rápido no fim — rodar na Camada 3 junto com a Afiação.
 
 Degrau mínimo: 2 (voz definida). Sem voz, escrever em tom neutro e marcar "confirmar voz".
 

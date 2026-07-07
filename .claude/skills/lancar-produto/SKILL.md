@@ -29,8 +29,19 @@ Autoria: ImpulsoX AI. Conteúdo original.
 | Tipo | Quando | Como |
 |---|---|---|
 | **Semente** | Produto ainda não existe ou não foi validado | Vender uma turma/lote pequeno ANTES de produzir tudo — valida com dinheiro real, e o feedback molda o produto |
+| **Cliente fundador** | O produto é SOFTWARE/SaaS (app, agente, sistema) ainda em construção | Um cliente com a dor financia o MVP a taxa reduzida em troca de acesso antecipado, input no roadmap e desconto PERMANENTE (~50% do preço público). **IP fica 100% com o dono** — o cliente compra licença de uso, nunca equity ou exclusividade, por escrito ANTES da primeira linha de código. Rejeição = pesquisa de mercado grátis (disposição a pagar é a validação). O desconto do fundador define o PISO do preço público, não o teto |
 | **Interno** | Produto pronto + audiência própria (mesmo pequena) | O lançamento completo desta skill, pra lista/seguidores |
 | **Perpétuo** | Depois de 1-2 lançamentos internos que funcionaram | Funil sempre aberto (captura → sequência automática → oferta), alimentado por tráfego pago |
+
+**Gate de prontidão pra SaaS/software (antes de qualquer lançamento público) — o teste
+"pronto o bastante pra vender", 6 perguntas:** o loop central de valor funciona de ponta
+a ponta? · usuário consegue se cadastrar e acessar sozinho? · consegue PAGAR pelo
+produto? · está numa URL viva? · falha com graça, sem crashar? · você compartilharia a
+URL com o cliente fundador hoje? — 6 sim = lança; "pronto de verdade" não existe, o
+resto é feature e feature vem DEPOIS do primeiro pagante. E a **história fundadora**
+(3 posts: o problema do cliente → o build junto → o resultado) é o conteúdo de
+pré-lançamento pronto — publicar antes de abrir ao público, via esteira normal
+(/calendario → /post). (Método Sprint/Matt Ganzak, jul/2026 — mecânica, não conteúdo.)
 
 Audiência zero? Recomendar: isca gratuita (`/criar-ebook`) + captura + 30-60 dias
 construindo lista ANTES de lançar. Lançar pro deserto frustra e queima o produto.

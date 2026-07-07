@@ -18,6 +18,9 @@ producao/**/rascunho-*
 .firecrawl-cache/
 eskina*
 
+# Obsidian — config local do visualizador do vault, não versiona
+.obsidian/
+
 # Sistema
 .DS_Store
 Thumbs.db
