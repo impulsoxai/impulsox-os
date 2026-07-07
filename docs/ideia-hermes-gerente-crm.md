@@ -255,6 +255,37 @@ o princípio de montagem: contexto ESTÁVEL primeiro no prompt (identidade, regr
 volátil no fim — favorece qualquer cache automático do provedor; e a nota operacional de
 que credencial é POR agente, não herda. Cartão: `material-matt/openclaw-prompt-caching.md`.)
 
+## Pipeline de conteúdo autônomo — o clone declarado do dono (AI Video Setup, Sprint jul/2026)
+
+A spec mais direta pra meta de volume de conteúdo (foco.md do clone: 20 carrosséis + 12
+LinkedIn + 8 YT + reels/mês): o pipeline de 9 agentes que produz e agenda vídeo diário com
+o **clone DECLARADO do dono** (voz ElevenLabs + rosto HeyGen treinados 1x com material
+próprio) — "your only job is to approve". Cartão com os 9 prompts e horários:
+`ImpulsoX-AI/material-matt/openclaw-video-pipeline-setup.md`. O que entra como spec:
+
+- **Máquina de estados como espinha:** todo item de conteúdo é um registro (VideoJob) com
+  status; cada agente acha seu trabalho PELO status e escreve o status ao terminar
+  (draft → scripted → voice_ready → ... → qa_passed → **approved [HUMANO]** → scheduled →
+  posted, + estados de falha). **Retry = voltar o status pro último estado bom** — o agente
+  re-pega sozinho no próximo ciclo. Casa 1:1 com o `agent_runs` do PRD da aba do CRM.
+- **Padrão submit/retrieve** pra render assíncrono (HeyGen/Kling/KIE): uma run submete,
+  outra colhe os prontos; timeout explícito; nunca re-submeter job que já tem ID.
+- **Gate humano inegociável:** nada publica sem `approved` do dono (o /revisar + aprovação
+  já é o nosso desenho — aqui vira estado formal do pipeline).
+- **QA mecânico antes do humano:** transcript vs script ≥90%, contagem de palavras no
+  range, CTA presente, frases banidas (as da voz.md), arquivo íntegro — o humano só vê o
+  que está pronto.
+- **AnalyticsAgent (o loop que se auto-melhora):** toda segunda, score composto
+  (saves×5 + shares×3 + follows×4 + retenção×2 + views×0.001), padrões dos top/bottom 3
+  (excluindo <48h no ar), e **5 tópicos novos entram sozinhos na fila** com prioridade
+  máxima baseados nos vencedores. É o ciclo /desempenho → aprendizados → /radar,
+  automatizado. Régua de insight: específico ou nada ("hook com valor em R$ salvou 2x
+  mais" serve; "hooks bons foram bem" é lixo).
+- **Go-live gradual de 5 dias** (testa keys → clone → 1 job manual e2e → conserta → liga o
+  cron) — disciplina que vale pro Hermes INTEIRO, não só vídeo.
+- Ética: clone declarado do dono ≠ UGC fake (rejeitado). ⚠️ Usar o rótulo de conteúdo IA
+  da plataforma quando aplicável (IG/TikTok/YT têm label própria).
+
 ## Camada de visibilidade — o "Mission Control" do Hermes (doc do OpenClaw, jul/2026)
 
 O agente autônomo precisa de um lugar onde a dona VÊ a operação sem abrir terminal
