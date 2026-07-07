@@ -265,7 +265,12 @@ contexto de projeto = sessão do Claude Code na pasta). O que entra como requisi
 - **Painel de visibilidade:** tasks ativas · execuções rodando · próximos agendamentos ·
   conclusões recentes · **tasks bloqueadas** (nada morre em silêncio) · histórico de runs
   com logs · artefatos indexados por run. Candidato natural: aba no hub do CRM v3 (painel
-  multi-tenant já existe) — não construir dashboard do zero.
+  multi-tenant já existe) — não construir dashboard do zero. **Decisão (dona, 2026-07-07):
+  aba com FEATURE FLAG por tenant** (`agente_ativo`) — só renderiza pra quem tem o agente;
+  sem teaser/"em breve" pra quem não tem (regra: peça pública só vende oferta ativa). E
+  duas visões distintas: **admin (dona)** = operacional completo, todos os tenants (runs,
+  logs, bloqueadas); **cliente** = nunca logs — se vir algo, é o resumo de VALOR ("seu
+  agente respondeu 47 msgs, agendou 5, escalou 2 este mês"), que é retenção, não técnica.
 - **Scheduler anti-sobreposição:** cron do Hermes (brief diário, monitor de review) nunca
   dispara um job que ainda está rodando; run-now manual + histórico por job.
 - **Executor allowlisted:** o Hermes só executa comandos de uma lista aprovada, com
