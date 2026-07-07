@@ -29,6 +29,12 @@ virar cliente, o `/cliente` aproveita a extração inteira.
 vende marketing como serviço e diagnostica um prospect. Negócio próprio dos outros perfis
 não costuma rodar `/raio-x` em si mesmo — usa `/desempenho` pra olhar pra dentro.
 
+**QUEM auditar primeiro (antes de escolher o alvo):** ler `docs/sinais-de-compra.md` —
+prospecção começa por SINAL público e recente de dor (review negativo repetido, site
+parado, vaga de atendente aberta, filial nova...), não por lista fria. O prospect com
+sinal quente (urgência 8-10) recebe o raio-x-isca hoje; a abordagem referencia o sinal
+na 1ª linha ("vi as avaliações reclamando de..."). Sinal sem evidência não entra.
+
 ## Regra de ouro — verificar antes de dar nota
 
 **Nenhuma nota sai de suposição.** Cada nota e cada vazamento precisa de uma coleta real
