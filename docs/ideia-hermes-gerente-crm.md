@@ -230,7 +230,12 @@ transferem pro nosso agente WhatsApp (~jul/2026) e pro Hermes:
   manutenção a cada 24h/50 interações (audita tamanhos, arquiva resolvido, re-comprime) —
   a curadoria semanal do CLAUDE.md, automatizada dentro do agente.
 
-(Roteamento 85% Haiku não se aplica — subscription única, regra já fixada acima.)
+(Roteamento 85% Haiku não se aplica — subscription única, regra já fixada acima. Idem
+prompt caching da API Anthropic: o guia de caching do OpenClaw confirma que auth por
+subscription não expõe cache config — nada a configurar no nosso caso. O que fica dele é
+o princípio de montagem: contexto ESTÁVEL primeiro no prompt (identidade, regras),
+volátil no fim — favorece qualquer cache automático do provedor; e a nota operacional de
+que credencial é POR agente, não herda. Cartão: `material-matt/openclaw-prompt-caching.md`.)
 
 ## Caminho sugerido (quando for construir)
 
