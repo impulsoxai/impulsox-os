@@ -60,7 +60,9 @@ Tema sem ângulo é commodity. Antes de escrever, definir:
 
 Salvar em `producao/artigos/<slug>.md` com frontmatter (título, descrição de 150-160
 caracteres, data, **palavra-chave**, `rascunho: true` — o usuário aprova antes de ir pro
-site). A palavra-chave do artigo é a **âncora cross-canal**: a mesma keyword vira a keyword
+site, e **`id: BLOG-<AAAA>-S<semana>-<seq>`** — o asset ID que o `/desempenho` usa pra
+casar tráfego/conversão com a peça; as peças derivadas do pacote herdam a semana/seq nos
+seus próprios IDs de canal). A palavra-chave do artigo é a **âncora cross-canal**: a mesma keyword vira a keyword
 das 2 primeiras linhas da legenda do `/post` e o cluster do `/linkedin` (ver Passo 3). Um
 tema, uma keyword, todos os canais reforçando o mesmo termo — é o que faz o pacote inteiro
 empurrar a mesma busca em vez de competir consigo mesmo.

@@ -296,6 +296,23 @@ próprio) — "your only job is to approve". Cartão com os 9 prompts e horário
   por exceção (alertas + amostragem periódica). Regressão de qualidade ou incidente
   → volta pro gate por peça. O QA mecânico roda SEMPRE, nos dois modos. Vale pra
   vídeo, artigo SEO e qualquer peça que o Hermes publique.
+- **Master Autonomy Matrix — a graduação vira ARTEFATO por workflow (Marketing Ops
+  guide, Sprint jul/2026):** um `autonomy.md` que o Hermes lê e obedece, com três
+  colunas por workflow — **Autônomo / Pergunta antes / NUNCA**. A graduação acima move
+  workflows da coluna "pergunta" pra "autônomo" conforme a confiança; a coluna NUNCA é
+  PERMANENTE e não gradua. Ponto de partida:
+  | Workflow | Autônomo | Pergunta antes | NUNCA |
+  |---|---|---|---|
+  | Monitorar (reviews, concorrente, métricas) | puxar + logar + alertar | — | — |
+  | Rascunhar (conteúdo, respostas, e-mails) | rascunhar + salvar | — | publicar não-aprovado (até graduar) |
+  | Publicar peça | (após graduação) | push ao vivo (na validação) | pular o QA mecânico |
+  | Responder review negativo | — | sempre (protocolo /local) | responder sozinho |
+  | Enviar mensagem externa (WhatsApp/e-mail) | (após graduação, por fluxo) | ativar fluxo novo | enviar sem approval na validação; approval ≠ send |
+  | **Verba de ads / qualquer gasto** | — | — | **mexer em orçamento, SEMPRE — recomenda, humano decide** |
+  | Mudar identidade/marca (design-guide, voz) | — | qualquer mudança | mudar sozinho |
+  Cartão: `ImpulsoX-AI/material-matt/openclaw-marketing-ops.md` (+ gotcha de cron:
+  day-of-month e day-of-week são OR, não AND — cuidado ao combinar; e monitorar
+  `cron list` + logs semanalmente: job que falha em silêncio é o modo de morte nº 1).
 - **QA mecânico antes do humano:** transcript vs script ≥90%, contagem de palavras no
   range, CTA presente, frases banidas (as da voz.md), arquivo íntegro — o humano só vê o
   que está pronto.

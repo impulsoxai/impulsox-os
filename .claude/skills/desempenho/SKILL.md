@@ -136,6 +136,11 @@ casa). O modelo interpreta, o script calcula:
 
 ## Análise — separar sinal de ruído
 
+- **Casar métrica com ASSET ID** ("no IDs, no learning" — Marketing Ops/Ganzak, jul/2026):
+  toda peça nasce com ID (`IG-/IGR-/LI-/BLOG-<AAAA>-S<semana>-<seq>`, gravado pelo
+  /post//linkedin//conteudo). A tabela do relatório é POR ID — assim hook, mecânica,
+  objetivo e fórmula de cada peça viram colunas cruzáveis, e o aprendizado sai por peça,
+  não por impressão geral. Peça antiga sem ID: atribuir retroativo na primeira medição.
 - Comparar **dentro do mesmo formato** antes de comparar formatos.
 - Procurar **padrão, não pico** — um viral isolado é anedota; três peças de "ensinar"
   batendo as de "vender" é padrão.
@@ -149,8 +154,20 @@ casa). O modelo interpreta, o script calcula:
 
 ## Saídas
 
-1. **Relatório do período** em `producao/relatorios/desempenho-<YYYY-MM>.md`: tabela por peça,
-   top/bottom 3 com hipótese, e **as recomendações apontando a skill** pro próximo ciclo.
+1. **Relatório do período** em `producao/relatorios/desempenho-<YYYY-MM>.md`: tabela por peça
+   (chaveada por asset ID), top/bottom 3 com hipótese, e **as recomendações apontando a
+   skill** pro próximo ciclo.
+   **O relatório FECHA com o brief Build / Kill / Scale** (1 tela, decisão — não só análise;
+   Marketing Ops/Ganzak, jul/2026):
+   - **BUILD:** 3-5 peças/ângulos novos a criar, cada um com o dado que sustenta
+   - **KILL:** o que parar de fazer porque o dado diz que não funciona (+ loga o porquê
+     no aprendizados.md)
+   - **SCALE:** vencedores comprovados a reforçar — mais peças do ângulo, ou RECOMENDAÇÃO
+     de verba (o dono decide todo gasto; o sistema nunca mexe em orçamento)
+   Matriz de decisão do SCALE: engajamento forte + conversão boa → scale · engajamento
+   forte + conversão fraca → build (testar oferta/funil antes de pagar — o gargalo não é
+   alcance) · fraco após teste justo (≥3 peças do ângulo) → kill · campanha paga com custo
+   estável por resultado → step-up medido, nunca salto.
 2. **Aprendizados duradouros** em `nucleo/aprendizados.md` — só o que sobrevive ao mês
    (padrões confirmados, com data e evidência). Contradição → revisar o antigo, não acumular.
 3. **Status no calendário** — marcar as peças medidas.

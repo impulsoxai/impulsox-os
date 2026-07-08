@@ -465,6 +465,12 @@ HTML das telas → **crivo de design** (impeccable, no visual) → render Playwr
    pediu pra pular. Visual só — texto e gatilhos ficam intocados.
 4. Renderizar cada HTML em PNG via Playwright (screenshot da viewport exata).
 5. Salvar em `producao/posts/<YYYY-MM-DD>-<slug-do-tema>/` (HTMLs + PNGs + `legenda.md`).
+   **Toda peça nasce com ASSET ID** no topo do `legenda.md`:
+   `ID: IG-<AAAA>-S<semana>-<seq>` (ex.: `IG-2026-S28-03`; reel usa `IGR-`).
+   O ID acompanha a peça até o `/desempenho` — é o que permite casar performance com
+   hook/mecânica/objetivo POR PEÇA e aprender de verdade ("no IDs, no learning" —
+   Marketing Ops/Ganzak, jul/2026). Junto do ID, registrar: mecânica de hook usada
+   (de `docs/hooks.md`), objetivo (enviar|salvar|converter) e fórmula aplicada.
 6. Mostrar as imagens ao usuário pra aprovação antes de dar por pronto.
 
 ## Trial Reel antes de publicar (reel)

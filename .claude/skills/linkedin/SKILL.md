@@ -154,6 +154,9 @@ conteúdo guardável.
 ## Saída
 
 Salvar em `producao/linkedin/<YYYY-MM-DD>-<slug>.md`:
+- **ASSET ID no topo do arquivo**: `ID: LI-<AAAA>-S<semana>-<seq>` (ex.: `LI-2026-S28-02`)
+  + formato (texto|imagem|documento) e cluster — o `/desempenho` casa a métrica com o ID
+  pra aprender por peça ("no IDs, no learning" — Marketing Ops/Ganzak, jul/2026)
 - O post pronto (e o comentário com link, se houver)
 - Variação alternativa do corte (linhas 1-2) pra escolha
 - Se documento PDF: arquivos em subpasta + o texto de apresentação do post
