@@ -155,6 +155,14 @@ define COMO o agente se organiza por dentro. Cartão bruto com os prompts exatos
 - **Anatomia do prompt de task folder:** papel com recusa de escopo + contexto em 1 frase
   + regras de output (formato/tom/comprimento/must-avoid) + **exemplos de bom E de ruim
   output** ("a seção mais poderosa; gaste mais tempo aqui").
+- **Ordem explícita de memória (Obsidian guide, Sprint jul/2026):** "ao completar uma
+  task, ANTES de reportar 'pronto', criar/atualizar as notas e o log relevantes — é
+  PARTE da task, não follow-up opcional". Sem essa ordem, todo agente degrada pra
+  só-leitura da memória. + hard rules do gabarito comercial: **approval ≠ send**
+  (aprovar rascunho não autoriza envio; aprovação é por mensagem específica) · pediram
+  N itens → devolve N ou MENOS com razão, nunca infla · **nunca afirmar que usou
+  ferramenta que não chamou** · incerteza de escopo → `paused` com pergunta, nunca
+  chuta. Cartão: `ImpulsoX-AI/material-matt/openclaw-obsidian-second-brain.md`.
 - **Roteamento por custo (a regra dos 97%) — SUBSTITUÍDO no nosso caso:** o Matt roteia
   Haiku/Sonnet/Opus porque paga por token na API. **Decisão da dona (2026-07-07): o Hermes
   roda na SUBSCRIPTION do Codex (plano ChatGPT $20, OAuth — ver seção "O motor de modelo"
