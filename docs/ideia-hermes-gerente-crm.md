@@ -23,7 +23,13 @@ ImpulsoX-OS é o "estúdio" que cria. O Hermes plugaria no CRM e no `gbp.mjs` po
 
 - Agente autônomo **open-source da Nous Research** (o lab dos modelos Hermes). MIT.
 - **Roda contínuo e fica mais capaz com o tempo** (learning loop: cria/melhora skills sozinho,
-  memória persistente entre sessões).
+  memória persistente entre sessões; desde v0.12.0, Curator autônomo avalia/consolida/poda a
+  biblioteca de skills em ciclo de 7 dias). **É a vantagem estrutural sobre o OpenClaw**, que
+  não tem loop nativo (memória lá é markdown "sugestão, não requisito") — por isso os guias do
+  Matt constroem tudo na mão. Nuance de projeto: o loop nativo do Hermes é PROCEDURAL (como
+  executar melhor); o loop de OUTCOME DE NEGÓCIO (qual mensagem/hook funciona, medido no
+  CRM/plataforma) ainda se constrói — no Hermes sobra só Outcome Collector + scoring (régua
+  completa no cartão `ImpulsoX-AI/material-matt/openclaw-ml-ops.md`).
 - **Vive onde você puser** — VPS $5, GPU, ou serverless (Daytona/Modal: hiberna quando ocioso,
   custo quase zero parado). Não preso ao laptop. Fala por 20+ canais (Telegram, WhatsApp, e-mail…).
 - **60+ ferramentas + MCP** — conecta a qualquer servidor MCP, então dá pra plugar no CRM e no
@@ -270,8 +276,14 @@ próprio) — "your only job is to approve". Cartão com os 9 prompts e horário
   re-pega sozinho no próximo ciclo. Casa 1:1 com o `agent_runs` do PRD da aba do CRM.
 - **Padrão submit/retrieve** pra render assíncrono (HeyGen/Kling/KIE): uma run submete,
   outra colhe os prontos; timeout explícito; nunca re-submeter job que já tem ID.
-- **Gate humano inegociável:** nada publica sem `approved` do dono (o /revisar + aprovação
-  já é o nosso desenho — aqui vira estado formal do pipeline).
+- **Gate humano com autonomia GRADUADA (decisão da dona, 2026-07-07):** na fase de
+  validação de qualquer pipeline de publicação, nada sai sem `approved` do dono (o
+  /revisar + aprovação vira estado formal). Quando o pipeline estiver BEM TESTADO
+  (qualidade consistente, zero incidente num período de amostra), o Hermes passa a
+  publicar AUTOMATICAMENTE — o humano sai da aprovação por peça e vira supervisor
+  por exceção (alertas + amostragem periódica). Regressão de qualidade ou incidente
+  → volta pro gate por peça. O QA mecânico roda SEMPRE, nos dois modos. Vale pra
+  vídeo, artigo SEO e qualquer peça que o Hermes publique.
 - **QA mecânico antes do humano:** transcript vs script ≥90%, contagem de palavras no
   range, CTA presente, frases banidas (as da voz.md), arquivo íntegro — o humano só vê o
   que está pronto.
