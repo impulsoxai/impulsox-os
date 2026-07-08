@@ -91,6 +91,14 @@ Nunca raspar rede social atrás de login (risco real à conta). Empilha conforme
     ativos: estrutura, oferta, há quanto aparece. Mesma mecânica e fonte do `/ads-meta`.
 - **Degrau 2 — busca aberta** via `WebSearch`: notícia, review, menção, ranking, presença.
   Pra redes sociais, só o que aparece em busca pública — nunca raspar IG/LinkedIn logado.
+  - **A camada de OURO do degrau 2 — reviews medianos e comentários** (AI Deployment
+    Playbook/Ganzak, jul/2026, adaptado BR): **reviews 3★ do concorrente** dizem o que
+    está QUASE certo — a expectativa real do cliente e onde o concorrente falha = o gap
+    que vira nosso posicionamento. Onde: Google Maps (reviews 2-4★), **Reclame Aqui**
+    (`site:reclameaqui.com.br <concorrente>` — a dor em português + como a empresa
+    responde), comentários dos vídeos top dele (yt-dlp, público) — o que a audiência pede
+    e ele não entrega. No dossiê, isso entra como "onde ele falha (voz do cliente dele)"
+    com citação; alimenta /oferta (objeções reais) e /copy (linguagem exata da dor).
 
 Se o firecrawl faltar nesta máquina (instala por `firecrawl`/skill), avisar em uma linha e
 seguir com degrau 0 + WebSearch — nunca travar a skill por falta da ferramenta.

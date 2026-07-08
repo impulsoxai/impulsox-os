@@ -113,6 +113,28 @@ Pros slides-ponte de demo ao vivo (onde o dono alterna pro produto real rodando)
 
 ---
 
+## Pilar 5 — VSL: o pitch em vídeo com relógio (formato de venda gravado)
+
+Quando o pitch vira VÍDEO de vendas (hero de página, VSL de lançamento, vídeo de oferta),
+o arco acima ganha TIMESTAMPS — cada beat tem janela de tempo, porque retenção em vídeo é
+implacável (estrutura do AI Deployment Playbook/Ganzak, jul/2026; mecânica, não conteúdo):
+
+| Janela | Beat | O que faz |
+|---|---|---|
+| 0-30s | **HOOK** | Nomeia a dor + promessa ousada + curiosidade sobre o "como" |
+| 30-90s | **STORY** | Eu tive esse problema · a virada · o que mudou (humaniza, nunca vitimiza) |
+| 90-180s | **MECHANISM** | O jeito único de resolver — por que funciona, por que é diferente (= mecanismo proprietário do /oferta) |
+| 180-240s | **PROOF** | Números, casos, depoimentos — só de `nucleo/provas.md`, autorizado |
+| 240-360s | **OFFER** | O stack completo, item a item, com o valor de cada peça |
+| 360-420s | **CLOSE** | Quebra as 2-3 objeções → garantia → UM CTA claro |
+
+Regras do formato: 5-7 min total · conversacional, nunca formal · o close soa INEVITÁVEL,
+não empurrado · o CTA é o mesmo da página onde o vídeo mora (CTA idêntico repetido — regra
+do acervo-landing-matt). Todas as regras inegociáveis abaixo valem dobrado em vídeo: o que
+está gravado não se corrige depois.
+
+---
+
 ## Regras inegociáveis (valem mais que qualquer técnica acima)
 
 1. **Só oferta ATIVA.** O pitch só vende o que existe à venda hoje. Roadmap, futura ou "em

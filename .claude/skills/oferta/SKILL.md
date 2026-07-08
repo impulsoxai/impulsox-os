@@ -154,6 +154,14 @@ Só seguir pro loop de oferta quando o sinal for: **gente certa chega, entende, 
 não compra**. Aí sim é a oferta. (Conecta com `docs/modelos-mentais.md` — Teoria das
 Restrições: achar o gargalo certo antes de otimizar o resto.)
 
+**O teste barato de DEMANDA — validação por conteúdo (antes de construir/reformular):**
+não precisa de produto pra validar demanda; precisa de conteúdo. 1 vídeo curto atacando a
+dor nº1 + CTA de comentário/opt-in → engajamento alto = demanda existe; baixo = pivota o
+ângulo e testa de novo (o ângulo, não o produto). Gate numérico: **~100 opt-ins em 7 dias
+de orgânico = demanda confirmada** — só então investir em construir. Ordem de grandeza da
+prática (AI Deployment Playbook/Ganzak, jul/2026); ajustar ao tamanho da audiência do
+cliente — o princípio é: o mercado responde ao CONTEÚDO antes de você gastar produção.
+
 ## Posicionamento proprietário — a alavanca nº1 no B2B/serviço (antes da Equação de Valor)
 
 Pra serviço/agência/B2B, o que mais separa oferta de R$ 5k de oferta comoditizada **não** é

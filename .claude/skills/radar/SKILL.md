@@ -82,6 +82,16 @@ existe no ambiente):
    da tese do radar. Complementa o PAA: o PAA dá a dúvida em texto, o autocomplete dá o
    jeito que o público busca vídeo/social. Sugestão que se repete entre plataformas =
    pauta com demanda confirmada.
+6. **Reviews medianos + comentários de vídeo de CONCORRENTE** (a mina de dor com a
+   linguagem exata do cliente — AI Deployment Playbook/Ganzak, jul/2026, adaptado BR):
+   - **Reviews 3★ são ouro** — dizem o que está QUASE certo: a expectativa real e onde o
+     mercado falha. Onde olhar no BR: Google Maps do nicho local (reviews 2-4★ dos
+     concorrentes), **Reclame Aqui** (a dor em português, com resposta da empresa —
+     WebSearch `site:reclameaqui.com.br <categoria>`), Amazon/Mercado Livre pra produto.
+   - **Comentários dos vídeos top de concorrente/nicho** (yt-dlp já baixa) — o que a
+     audiência PEDE nos comentários e o criador não entrega = pauta pronta com demanda
+     provada. Extração: dor recorrente com citação exata · o que pedem e ninguém responde
+     · objeção que se repete. Mesma regra de sempre: só fonte pública, falhou → vazia.
 
 Fechar a camada cruzando as fontes: tema que aparece em DUAS+ com tração alta vira ideia
 de pontuação de demanda 5. Tema só do WebSearch (sem sinal de engajamento) entra como

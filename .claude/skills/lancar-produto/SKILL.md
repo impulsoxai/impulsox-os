@@ -43,6 +43,14 @@ resto é feature e feature vem DEPOIS do primeiro pagante. E a **história funda
 pré-lançamento pronto — publicar antes de abrir ao público, via esteira normal
 (/calendario → /post). (Método Sprint/Matt Ganzak, jul/2026 — mecânica, não conteúdo.)
 
+**Gate de validação por CONTEÚDO (antes do tipo Semente/Fundador, custa zero):** grava
+1 vídeo curto atacando a dor nº1 do público + CTA de opt-in/comentário. Engajamento alto
+= demanda existe, segue pro lançamento; baixo = pivota o ÂNGULO e testa de novo antes de
+produzir qualquer coisa. Régua: ~100 opt-ins em 7 dias de orgânico = demanda confirmada
+(ordem de grandeza — AI Deployment Playbook/Ganzak, jul/2026; calibrar pela audiência).
+O conteúdo é o teste de mercado mais barato que existe — o produto nasce pra uma
+audiência que já pediu, nunca pro deserto.
+
 Audiência zero? Recomendar: isca gratuita (`/criar-ebook`) + captura + 30-60 dias
 construindo lista ANTES de lançar. Lançar pro deserto frustra e queima o produto.
 

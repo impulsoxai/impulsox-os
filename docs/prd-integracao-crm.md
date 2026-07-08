@@ -183,6 +183,33 @@ Resposta (envelope success/fail): {
 - **Rate limit:** definir um limite sensato pro service token (o hub pode varrer N tenants;
   o cron do OS roda periódico). Documentar o limite pro OS respeitar.
 
+### 3.6. Lead scoring COMPORTAMENTAL — a fórmula do campo `leadScore` 🟡 alto valor
+
+O `Contact.leadScore` existe mas não tem motor. Fórmula aprovada pela dona (2026-07-07;
+mecânica do AI Deployment Playbook/Ganzak, jul/2026 — adaptada aos nossos eventos):
+
+| Sinal (evento no CRM) | Pontos | Teto |
+|---|---|---|
+| E-mail aberto | +5 por abertura | +25 |
+| Clique em link (e-mail/página) | +10 por clique | +30 |
+| Visita a página rastreada | +8 por visita | +24 |
+| Vídeo assistido >75% (quando houver player rastreado) | +15 | +15 |
+| Respondeu a mensagem/agente (WhatsApp/chat/e-mail) | +20 | +20 |
+| Perfil casa com ICP do tenant (cargo/segmento) | +10 | +10 |
+| Porte/faixa casa com ICP | +5 | +5 |
+
+Regras:
+- Score 0-100 (soma com tetos), recalculado a cada evento novo (ou no cron diário —
+  decisão do dev, o barato primeiro).
+- **>70 = HIGH PRIORITY**: entra na lista "ligar hoje" — aparece no hub, na `/carteira`
+  e no brief diário do Hermes (quando existir). Saída sempre com os **top 3 sinais** que
+  puxaram o score + próxima ação recomendada — número sem explicação não gera ação.
+- Decaimento: −10/semana sem evento novo (lead esfria; evita lista "quente" fóssil).
+- Threshold e pesos por tenant em config (default acima) — nicho local pesa visita,
+  B2B pesa resposta.
+- LGPD: score deriva de eventos que o CRM já registra com opt-in; nada de fonte externa
+  de enriquecimento sem base legal.
+
 ---
 
 ## 4. Escopo das 8 oportunidades à luz do CRM
@@ -221,9 +248,12 @@ Reclassificadas agora que sabemos o que o CRM faz:
 4. **🟡 Endpoint `POST /api/chat`** (3.4-bis) — runtime do agente-IA da página (chama Haiku
    com o system+messages, devolve reply + capture→Contact). Rate-limit por tenant
    obrigatório. O widget e a persona já vêm prontos do OS (skill `/agente-ia`).
-5. **🟢 Webhook de eventos** (3.3-A) — `lead.created`/`deal.won`/`invoice.paid` por tenant.
+5. **🟡 Motor do `leadScore`** (3.6) — fórmula comportamental com tetos + decaimento
+   semanal + flag >70 "ligar hoje" (top 3 sinais + próxima ação). Job no cron diário
+   que já existe; pesos default em config por tenant.
+6. **🟢 Webhook de eventos** (3.3-A) — `lead.created`/`deal.won`/`invoice.paid` por tenant.
    Pode vir depois (OS começa por poll); necessário pro `/depoimento` em tempo real e hub vivo.
-6. **🟢 Confirmar:** prefixo real (`/api`?), o que `/reports` já agrega, e que os GETs de
+7. **🟢 Confirmar:** prefixo real (`/api`?), o que `/reports` já agrega, e que os GETs de
    listagem não exigem decifrar PII pro OS.
 
 Quando 1-3 estiverem no ar, o OS começa pela `lib-crm.mjs` + `/roi`. O dono crava as

@@ -154,10 +154,20 @@ Padrão enxuto (PME aprende mais rápido com menos campanhas):
     fase. **É o primeiro dinheiro de ads, não o último** (método ScaleUP/Sprint jul/2026:
     "retargeting não é como você acha clientes novos — é como você PARA DE PERDER os que já
     ganhou; se o funil orgânico+e-mail não converte sem ads, ads não conserta"). Audiências por
-    temperatura, cada uma com ângulo próprio: viu 50%+ de vídeo → CTA direto pra página de venda
-    (já investiu minutos; precisa do fechamento, não de outro teaser) · baixou a isca → ad
-    quebra-objeção · abriu e-mails sem clicar → prova + CTA duro · lookalike de COMPRADORES →
-    frio, manda pro CONTEÚDO (topo), nunca direto pra venda. Regras de operação: warm em
+    temperatura em **PIRÂMIDE de 3 camadas, cada uma com OBJETIVO e copy próprios** (AI
+    Deployment Playbook/Ganzak, jul/2026 — a pirâmide só existe com orgânico rodando antes,
+    o que confirma a ordem da casa):
+    - **HOT (assistiu 75%+ do vídeo; 50%+ se o volume for baixo):** objetivo = opt-in/oferta,
+      CTA direto pra página de venda. Copy HIPER-específica referenciando o TEMA do vídeo
+      assistido ("viu como X... o próximo passo é...") — nunca criativo genérico pra quem já
+      investiu minutos; precisa do fechamento, não de outro teaser.
+    - **WARM (visitou site / baixou isca / opt-in sem comprar):** objetivo = virar cliente.
+      5+ variantes em A/B — prova social · urgência real · quebra da objeção nº1 da pesquisa.
+      Baixou a isca → ad quebra-objeção · abriu e-mails sem clicar → prova + CTA duro.
+    - **COLD (lookalike de COMPRADORES / interesse):** objetivo = **VER CONTEÚDO (topo),
+      nunca venda direta** — hook de awareness tirado do top orgânico; existe pra aquecer e
+      virar HOT.
+    Regras de operação: warm em
     frequência baixa (2-4 impressões/semana), **refresh de criativo a cada 7-14 dias** (audiência
     quente satura rápido — mesma oferta, ângulo novo), verba pequena por audiência, matar o que
     estoura o CPA-alvo e escalar agressivo o que fica bem abaixo. Lookalike frio só DEPOIS do
