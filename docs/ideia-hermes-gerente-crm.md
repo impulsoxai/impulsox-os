@@ -197,7 +197,11 @@ CRM, dado de cliente) é sempre código próprio. Protocolo geral de vetting de 
    cliente, e-mail, webhook) e age; injection vira ação real no mundo. Validação de
    input antes do modelo (padrões "ignore instructions" etc.), filtro de OUTPUT (key
    vazada, PII), **canary token no system prompt** (aparece na saída = injection
-   detectada), quarentena progressiva da fonte.
+   detectada), quarentena progressiva da fonte. **Implementação pronta pra
+   Gmail/Drive:** o CLI `gws` do Google tem Model Armor nativo (`SANITIZE_MODE=block`
+   — escaneia a resposta da API antes de chegar ao agente); quando o Hermes ler
+   Workspace, usar por default (cartão `ImpulsoX-AI/material-matt/gws-google-workspace-cli.md`,
+   que também dá o caminho headless de credencial pro VPS e o brief diário pronto).
 2. **Kill switch + logging sem conteúdo (§7)** — agente sem operador olhando: log
    estruturado de EVENTO (nunca prompt inteiro, senha, key inteira; sufixos só),
    alertas em 3 níveis (crítico imediato / alto 15min / digest diário), kill switch
