@@ -25,6 +25,8 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 ## Pré-checagem
 
+- `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, gate específico desta skill no §6, aceite). Nenhum gate é opcional
+
 1. **`canal-youtube/voz-canal.md` existe e está preenchido?** Se não, parar e orientar
    `/voz --canal` primeiro — roteiro sem voz capturada sai genérico, igual copy sem
    `nucleo/voz.md`.

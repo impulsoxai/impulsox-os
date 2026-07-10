@@ -29,6 +29,7 @@ etapa. Sem marca definida, usar defaults premium e marcar pra calibrar depois.
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-visual.md` — **PRIMEIRO**: QA visual com defeitos nomeados + conferência de dado exibido contra o script gerador. Nenhum gate é opcional
 - `marca/design-guide.md` + `marca/tokens.css` — o dashboard veste a marca do
   cliente (cores dos cards, tipografia, tom dos gráficos), nunca default de lib
 - `nucleo/negocio.md` + `nucleo/ofertas.md` — quais métricas IMPORTAM pra este

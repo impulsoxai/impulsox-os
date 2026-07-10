@@ -23,6 +23,7 @@ marca, gera o plano e marca os criativos como defaults até a `/identidade` roda
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, gate de compliance desta skill no §6, aceite). Nenhum gate é opcional
 - `nucleo/negocio.md`, `nucleo/foco.md`, `marca/design-guide.md`
 - `nucleo/ofertas.md` — **cada oferta de prioridade alta é um conjunto de anúncios
   candidato** (a objeção da oferta vira ângulo de criativo)

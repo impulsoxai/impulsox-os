@@ -42,6 +42,7 @@ de envio ele usa (ela costuma resolver a autenticação) — não assumir que es
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, gate específico desta skill no §6, aceite). Nenhum gate é opcional
 - `nucleo/voz.md` — a voz manda em assunto, abertura e fecho de cada e-mail
 - `nucleo/ofertas.md` — a oferta que a sequência empurra, com benefício e objeções
 - `nucleo/provas.md` — só prova com status **autorizada** entra no corpo

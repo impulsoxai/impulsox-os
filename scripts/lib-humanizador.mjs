@@ -16,6 +16,8 @@
  *      (exit 0 = pass; exit 1 = duros/banidas encontrados; JSON no stdout)
  */
 import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
 
 // posição {linha, coluna} (1-based) de um índice no texto
 function posicao(texto, idx) {
@@ -70,22 +72,27 @@ const B0 = "(?<![\\wà-úÀ-Ú])"; // início de palavra (unicode PT)
 const B1 = "(?![\\wà-úÀ-Ú])";  // fim de palavra (unicode PT)
 const rx = (corpo) => new RegExp(`${B0}(?:${corpo})${B1}`, "gi");
 
+const __dirname_lib = dirname(fileURLToPath(import.meta.url));
+let TELLS_JSON;
+try {
+  TELLS_JSON = JSON.parse(readFileSync(join(__dirname_lib, "tells-ptbr.json"), "utf8"));
+} catch (e) {
+  throw new Error(`tells-ptbr.json ausente ou inválido (${e.message}). Esperado em scripts/tells-ptbr.json.`);
+}
+export const LIMITES = TELLS_JSON.limites;
+
+// tells simples vêm do JSON, montados com as fronteiras acento-safe da casa
+const VICIOS_SIMPLES = Object.entries(TELLS_JSON.tells_simples).map(([tipo, corpo]) => ({
+  tipo,
+  re: rx(corpo),
+}));
+
 const GERUNDIOS = "buscando|visando|proporcionando|garantindo|possibilitando|permitindo|promovendo|destacando|evidenciando|reforçando|impulsionando";
 const HEDGES = "podem?|geralmente|normalmente|em muitos casos|tendem? a|costumam?|na maioria das vezes";
 const ADJ = "\\w[\\wà-úÀ-Ú]*(?:oso|osa|ivo|iva|ado|ada|ido|ida|ico|ica|ente|ável|ível|al)";
 
 const VICIOS = [
-  { tipo: "e-importante-ressaltar", re: rx("é importante (?:ressaltar|destacar|frisar|notar)|vale (?:ressaltar|destacar|lembrar|notar)") },
-  { tipo: "vale-destacar-2025", re: rx("nesse sentido|sendo assim|é válido (?:destacar|ressaltar)") },
-  { tipo: "mundo-atual", re: rx("no mundo (?:atual|de hoje)|nos dias de hoje|na era digital|no cenário atual") },
-  { tipo: "nao-apenas-mas", re: rx("não (?:é|são|se trata de?) apenas [^.!?\\n]{1,60}, mas") },
-  { tipo: "papel-fundamental", re: rx("desempenham? um papel (?:fundamental|crucial|essencial|importante)") },
-  { tipo: "em-suma", re: rx("em suma|em resumo") },
-  { tipo: "corporates", re: rx("potencializar|alavancar|robust[oa]s?") },
-  { tipo: "de-forma-adverbial", re: rx("de forma (?:eficaz|eficiente|simples|prática|rápida|assertiva)") },
-  { tipo: "imagine-explore", re: rx("imagine que|vamos explorar|mergulhe") },
-  { tipo: "copula-evitada", re: rx("serve como|se destaca como|se configura como|atua como uma?") },
-  { tipo: "signposting", re: rx("a seguir,? veremos|neste artigo (?:você|vamos)|nesta seção") },
+  ...VICIOS_SIMPLES,
   { tipo: "artefato-chat", re: new RegExp(`(?:^|\\n)\\s*claro[!,]|${B0}(?:ótima pergunta|espero que (?:ajude|tenha ajudado)|quer que eu)${B1}`, "gi") },
   // gerúndio encadeado: 2+ da lista na MESMA frase
   { tipo: "gerundio-encadeado", re: new RegExp(`${B0}(?:${GERUNDIOS})${B1}[^.!?\\n]{1,120}${B0}(?:${GERUNDIOS})${B1}`, "gi") },
@@ -93,6 +100,9 @@ const VICIOS = [
   { tipo: "hedging-enfileirado", re: new RegExp(`${B0}(?:${HEDGES})${B1}[^.!?\\n]{1,100}${B0}(?:${HEDGES})${B1}`, "gi") },
   // trio adjetival "rápido, prático e eficiente" (primo do tricolon, em adjetivos)
   { tipo: "trio-adjetival", re: new RegExp(`${B0}${ADJ}${B1},\\s*${ADJ}${B1}\\s+e\\s+${ADJ}${B1}`, "gi") },
+  // "não é X, é Y" / "não é X, mas Y" — padrão retórico que Fable/Opus adora.
+  // Exige o segundo verbo pra não pegar negação comum ("não é caro.").
+  { tipo: "nao-e-x-e-y", re: new RegExp(`${B0}não (?:é|são)\\s+(?:um|uma|o|a|os|as)\\s[^.!?\\n]{2,40},\\s*(?:é|são|mas)\\s+(?:um|uma|o|a|os|as)\\s`, "gi") },
 ];
 
 export function varrerVicios(texto) {

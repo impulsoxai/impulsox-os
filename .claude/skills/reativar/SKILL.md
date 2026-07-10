@@ -18,6 +18,10 @@ da marca**, que entra na régua de follow-up do CRM/agente.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
+## Ler antes
+
+- `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto + o gate específico desta skill no §6 (framework de 4 linhas, teste do template, toque 2 = valor puro, breakup final). Nenhum gate é opcional
+
 ## A REGRA DE OURO — reativação SEMPRE vem com oferta (não existe win-back sem gancho)
 
 Reativação **nunca** é "oi, sumida, volta". É **sempre uma oferta com motivo**: aniversário do

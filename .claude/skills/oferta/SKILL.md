@@ -35,6 +35,7 @@ pra ele).
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-texto.md` — rodar o **bloco de aceite** (§5) no fim: afirmação com base, número com fonte, suposição marcada
 - `nucleo/negocio.md` — o que a empresa entrega, quem paga, qual o diferencial
 - `nucleo/ofertas.md` — a oferta que já existe (se existe); esta skill **reescreve este
   arquivo** com a oferta calibrada

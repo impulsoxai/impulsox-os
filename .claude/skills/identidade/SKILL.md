@@ -19,6 +19,8 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 ## Degrau mínimo (Escada de Contexto)
 
+- Ler antes: `docs/gabarito-execucao-visual.md` — QA visual com defeitos nomeados no lado-a-lado mostrado ao dono + conferência do design-guide destilado contra o que foi aprovado (§4)
+
 Roda do **degrau 0** — é a skill que CRIA o contexto visual (leva a marca ao degrau 2).
 Não espera nada pronto; quanto mais referência o usuário der, melhor calibra.
 

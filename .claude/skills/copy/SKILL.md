@@ -50,6 +50,7 @@ gate de entrega.
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, gate específico desta skill no §6, aceite). Nenhum gate é opcional
 - `nucleo/voz.md` — **a voz é o motorista** (tom, palavras banidas, exemplos "BOM").
 - `nucleo/negocio.md` — posicionamento (o que de fato se vende) e diferencial.
 - `nucleo/ofertas.md` (ou `nucleo/ofertas/`) — benefício, objeções e público de cada

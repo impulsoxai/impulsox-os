@@ -56,3 +56,4 @@ public/specimen.png
 *.wav
 *.mp3
 .claude/settings.local.json
+.claude/worktrees/

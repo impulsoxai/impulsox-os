@@ -25,6 +25,7 @@ Autoria: ImpulsoX AI.
 - Não é overlay de OBS — é deck de tela cheia que o dono passa no clique.
 
 ## Pré-requisitos (Escada de Contexto)
+- `docs/gabarito-execucao-visual.md` — **ler PRIMEIRO**: QA visual com defeitos nomeados (cada slide renderizado passa a tabela) + gate antes do passo caro. Nenhum gate é opcional
 - **Marca** (`marca/tokens.css`, `marca/design-guide.md`) — pro deck sair na identidade do cliente.
   Sem ela: defaults premium escuros marcados "confirmar com a marca" (não trava); ofereça
   `/identidade` antes.

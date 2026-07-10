@@ -82,3 +82,25 @@ lembrar. → Resolvido pela feature **check de versão no `/abrir`** (ver pendê
   o backlog do motor que roda.
 - Quando uma versão termina de propagar pra todos os clones, marcar a linha como propagada
   (não apagar — histórico).
+
+## Metodologia Fable→Opus — gabaritos de execução (2026-07-08)
+
+Tese: inteligência não transfere entre modelos, decisão transfere. As decisões que
+produzem peça "nível Fable" viram checklist com gates (2 passes de copy, proibições por
+busca literal, QA visual com defeitos nomeados, gate antes do passo caro) executável no
+Opus 4.8 do dia a dia. Levantamento completo feito na sessão de 2026-07-08.
+
+- [x] `docs/gabarito-execucao-social.md` — /post + /linkedin (feito 2026-07-08)
+- [x] `docs/gabarito-execucao-texto.md` — copy, proposta, email, conteudo, roteiro-yt,
+  ads-google, ads-meta, criar-ebook; bloco de aceite pra oferta/raio-x (feito 2026-07-08)
+- [x] `docs/gabarito-execucao-visual.md` — pagina, slides, reel-marca, dashboard,
+  criar-ebook, identidade, premium-design (feito 2026-07-08)
+- [x] Ponteiros "ler PRIMEIRO" inseridos nas 18 SKILL.md alvo (feito 2026-07-08)
+- [ ] **Replicar os 3 gabaritos + ponteiros + catálogo de estilos §8 no template
+  ImpulsoX-OS** (nasceram no clone ImpulsoX-AI — regra da casa: motor mora no template;
+  descer pros demais clones via /atualizar-motor)
+- [ ] NÃO aplicado de propósito (já resolvido de outra forma): /roi /velocidade
+  /analisar-* (cálculo por script), /geo (validador), /revisar /revisar-pagina
+  /escritor-br (SÃO o QA), /thumbnail (crivo Four C's), skills de sistema.
+- [ ] Validar na prática: 1º ciclo de produção no Opus 4.8 com gabarito vs peça desta
+  sessão — comparar no /revisar; ajustar gates que o Opus interpretar mal.

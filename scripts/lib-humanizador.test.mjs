@@ -69,6 +69,46 @@ test("varrerVicios NÃO dispara em texto humano normal", () => {
   assert.deepEqual(varrerVicios(t), []);
 });
 
+test("varrerVicios pega tells de substância (significance inflation, vague attribution)", () => {
+  const t = "Isso marca um momento decisivo com implicações profundas. Especialistas apontam que estudos mostram o cenário cada vez mais complexo.";
+  const tipos = varrerVicios(t).map((x) => x.tipo);
+  assert.ok(tipos.includes("significance-inflation"));
+  assert.ok(tipos.includes("vague-attribution"));
+});
+
+test("VICIOS simples são carregados do tells-ptbr.json (não hardcoded)", () => {
+  const t = "É importante ressaltar que no mundo atual isso importa. Em resumo, funciona.";
+  const tipos = varrerVicios(t).map((x) => x.tipo);
+  assert.ok(tipos.includes("e-importante-ressaltar"));
+  assert.ok(tipos.includes("mundo-atual"));
+  assert.ok(tipos.includes("em-suma"));
+});
+
+test("varrerVicios pega 'não é X, é Y' (padrão retórico do Fable/Opus)", () => {
+  const t = "Isso não é uma ferramenta, é uma mudança de hábito. O resto é detalhe.";
+  const tipos = varrerVicios(t).map((x) => x.tipo);
+  assert.ok(tipos.includes("nao-e-x-e-y"));
+});
+
+test("'não é X, é Y' NÃO dispara em negação comum", () => {
+  const t = "Não é caro. O preço cabe no bolso.";
+  const tipos = varrerVicios(t).map((x) => x.tipo);
+  assert.ok(!tipos.includes("nao-e-x-e-y"));
+});
+
+test("'não é X, é Y' NÃO dispara em negação-esclarecimento comum", () => {
+  const t = "Não é fácil, é verdade que dá trabalho. Não é que eu não quisesse, é que faltou tempo.";
+  const tipos = varrerVicios(t).map((x) => x.tipo);
+  assert.ok(!tipos.includes("nao-e-x-e-y"));
+});
+
+test("'em resumo' conectivo-muleta pega; 'resumo executivo' legítimo NÃO", () => {
+  const muleta = varrerVicios("Em resumo, funciona bem.").map((x) => x.tipo);
+  assert.ok(muleta.includes("em-suma"));
+  const legitimo = varrerVicios("Transforma a planilha em resumo executivo conferível.").map((x) => x.tipo);
+  assert.ok(!legitimo.includes("em-suma"));
+});
+
 // --- gate ---
 
 test("auditar: pass=false com duro ou banida; vícios não bloqueiam sozinhos", () => {

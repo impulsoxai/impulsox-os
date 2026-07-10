@@ -132,3 +132,89 @@ leitor aprende a ler o feed:
   prova autorizada; sem prova, o RESULT vira demonstração de capacidade, nunca número
   inventado.
 - Estética genérica de template: a identidade vem do design system do CLIENTE.
+
+## 8. Catálogo de ESTILOS VISUAIS (rotação — não repetir sempre o mesmo)
+
+> Decisão da dona (2026-07-08): o carrossel ImpulsoX tem MAIS DE UM estilo visual
+> aprovado, rotacionados pra o feed não ficar monótono. O ARCO (§1) e as regras de
+> slide (§2, §7) valem pra todos; o que muda é a pele. Regra de rotação: não usar o
+> mesmo estilo em 2 carrosséis seguidos do mesmo perfil. Registrar o estilo usado no
+> bloco META do `legenda.md` (campo `estilo:`) — o `/desempenho` valida qual performa.
+
+### Estilo A — "Concept Poster" (cartaz impresso)
+O do §5 acima. Papel + grão, display condensado caixa-alta, um accent, painéis com
+fio, numerais gigantes, detalhes editoriais. Tradução ImpulsoX já definida no §5.
+
+### Estilo B — "Spec Sheet" (folha de especificação técnica) — aprovado 2026-07-08
+Dissecado de carrossel do @chase.ai (visto 2026-07-08). A peça parece uma FOLHA DE
+ENGENHARIA/blueprint: grid de desenho técnico, marcas de registro, anotações de medida.
+Mecânica (nunca as cores/fontes dele):
+
+- **Fundo papel claro com GRID técnico visível** (linhas finas quadriculadas, tom
+  apagado) — desenho técnico, não caderno escolar.
+- **Marcas de registro de impressão** nos 4 cantos (cruzes `+` finas no accent) +
+  **cota de medida** no topo ("⊢ 1080 PX ⊣") — o slide se auto-documenta como peça.
+- **Moldura de metadados em MONO nos 4 cantos**: topo-esquerda etiqueta de estado em
+  barra preta ("PROMPT 01", "FINAL 24 HOURS"), topo-direita código curto ("T-24H ▲"),
+  rodapé-esquerda specs em mono minúsculo (3-4 linhas: modelo, versão, data), rodapé-
+  direita paginação "SHEET 02 / 08" + "SWIPE →". A moldura é IDÊNTICA em todo slide —
+  é ela que dá unidade ao carrossel.
+- **Título em 2 linhas com hierarquia dura**: linha 1 display preto no papel; linha 2
+  display claro DENTRO de tarja no accent (a tarja é o highlight). Sempre esse par.
+- **Legenda de figura** sob o título, em mono: "FIG.2 — plan-for-opus.prompt" +
+  fio horizontal curto. Numeração de figura avança ao longo do carrossel.
+- **Card terminal escuro pro conteúdo copiável**: quando o slide entrega um prompt/
+  código/receita, ele vai num cartão quase-preto estilo terminal — header mono
+  ("PROMPT · FABLE 5" + botão "COPY" desenhado), corpo mono claro com **negrito nas
+  palavras-chave**, cantoneiras no accent nos cantos do card. É o "card-ticket" do §6
+  em versão técnica — o produto entregável do slide vira objeto.
+- **Corpo de texto curto com 2-3 termos em negrito + 1 palavra no accent** — o olho
+  varre só o marcado e entende o slide.
+- **Comparação em par de cards**: opção atual = card preto sólido; alternativa = card
+  só com contorno no accent; seta → entre eles (slide de antes/depois ou A vs B).
+- **Mascote/ilustração 3D voxel/pixel** na capa (1 slide só) — objeto físico "de
+  brinquedo" segurando a metáfora (relógio, timer). Entra na capa, não se repete.
+- **Capa com adesivos/badges espalhados** (chips isométricos "24H", "5 PROMPTS", "RUN
+  NOW") em volta do objeto central — densidade só na capa; slides internos são limpos.
+- **Último slide = "YOUR MOVE"**: mesmo grid, quase vazio, recapitula a promessa em
+  display + CTA de algoritmo (save/share/follow) — consistente com o §6.
+
+**Tradução ImpulsoX (tokens.css):** manter a LÓGICA clara-técnica invertendo pro nosso
+dark: fundo `#06060d` com grid técnico em linha `--cor-borda` a ~8% de opacidade; papel
+→ superfície `#0e0e18` quando precisar de card claro; display Sora 800 caps em
+`#f0ebe0`; tarja de highlight → dourado `#d4af37` com texto escuro (regra do accent
+único mantida); cruzes de registro, cotas e cantoneiras em dourado; mono = DM Mono em
+`--cor-texto-mudo`; card terminal = preto `#030308` com fio dourado; roxo `#7c3aed`
+segue estrutural (barras de etiqueta, card sólido da comparação).
+
+### Estilo C — "Editorial de Notícia" (newsjacking) — aprovado 2026-07-09
+Nascido na peça "Anthropic/cobrança" (Opus, 2026-07-08; aprovado pela dona). É a pele
+oficial de peça de NOTÍCIA (origem pulso-quente): cara de matéria de revista técnica,
+urgência sem grito. Mecânica:
+
+- **Fundo dark da marca** (sem grid técnico; grão sutil) — mais editorial, menos folha
+  de engenharia que o Estilo B.
+- **Header por slide:** esquerda mono "// NN · NOME-DA-SEÇÃO" (CAPA, O QUE ACONTECEU,
+  POR QUE ISSO, O DETALHE, NO BRASIL, A JANELA, PRA GUARDAR, SUA VEZ) · direita a
+  **etiqueta do ATO em mono apagado** (FONTE ▲, DOR ▲, VIRADA ▲, PONTE ▲, DADO ▲,
+  RESUMO ▲, FECHO ▲) — o arco de 5 atos fica NOMEADO no canto de cada slide.
+- **Título display gigante** (3-4 linhas), última palavra/palavra-chave na cor de
+  acento + ponto final. FIG.n em mono colorido embaixo (numera ao longo da peça).
+- **Ghost letter** gigante em contorno (AI, ≠, símbolo do slide) ancorando o canto
+  inferior direito — preenche o vazio e assina o tema.
+- **Quote-card** em bloco chapado da cor estrutural (roxo) com aspas grandes + fonte
+  em mono ("// FONTE / ANO") — pra citação da notícia.
+- **Versus cards** (lá fora × no Brasil) e **checklist numerado** com fio — herdados
+  do Estilo B, mesma gramática.
+- **Rodapé:** site à esquerda; em slide de dado/notícia, "FONTE: X / ANO" no lugar —
+  **fonte nomeada no próprio slide é obrigatória em peça de notícia**.
+- **Fecho:** recap "em 3 linhas" (guarda a punchline) + slide final com CTA chips
+  (cheio + contorno + @handle); em newsjacking o CTA primário é ENVIAR.
+
+### Regras do catálogo
+- Estilo novo só entra aqui depois de aprovado pela dona (print → disseca mecânica →
+  tradução em tokens da marca). Nunca improvisar um estilo não catalogado em peça real.
+- Todo estilo obedece §1 (arco), §2 (1 ideia/slide), §6 (paginação, seta, slide final)
+  e §7 (anti-padrões). Estilo é pele, não estrutura.
+- Cliente de agência: o catálogo transfere a MECÂNICA; cores/fontes vêm sempre do
+  `marca/design-guide.md` + `tokens.css` DO CLIENTE.

@@ -23,6 +23,8 @@ Roda no **degrau 1** (negócio e voz); a diagramação fica boa de verdade no **
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, aceite). Nenhum gate é opcional
+- `docs/gabarito-execucao-visual.md` — na diagramação: QA visual com defeitos nomeados (amostra de 3 páginas antes do resto) + gate antes do passo caro
 - `nucleo/negocio.md`, `nucleo/voz.md` — o e-book tem que soar como a marca
 - `marca/design-guide.md` + `marca/tokens.css` — diagramação na identidade
 - `producao/artigos/` — artigos existentes sobre o tema são matéria-prima legítima

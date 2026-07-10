@@ -25,6 +25,9 @@ Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degra
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-social.md` — **PRIMEIRO**: o checklist de execução com gates
+  (ordem de leitura, 2 passes de copy, QA visual com defeitos nomeados). É o que garante
+  a mesma qualidade em qualquer modelo — nenhum gate dele é opcional
 - `marca/design-guide.md` + `marca/tokens.css` — obrigatório para qualquer pixel
 - `nucleo/voz.md` e `nucleo/negocio.md` — pro texto; em `negocio.md`, o campo
   **Opinião contrária / Wedge** é o combustível dos ângulos polarizadores (post
@@ -50,7 +53,10 @@ Roda no degrau 0 com os defaults premium; calibra de verdade a partir do **degra
   que performa + aprovado pela dona): arco de 5 atos com regra dura por ato (HOOK → DOR
   → SISTEMA → RESULTADO → CTA), anatomia do slide-cartaz (eyebrow mono, display gigante,
   accent único, paginação, seta), sistema de capas por formato, card-ticket de produto
-  real e o slide final fixo SALVA/COMPARTILHA/SEGUE. Se o `marca/design-guide.md` do
+  real e o slide final fixo SALVA/COMPARTILHA/SEGUE. O §8 é o **catálogo de estilos
+  visuais aprovados** (Concept Poster, Spec Sheet, …) — escolher um por peça e NÃO
+  repetir o estilo do carrossel anterior do mesmo perfil (rotação); registrar no campo
+  `estilo:` do bloco META. Se o `marca/design-guide.md` do
   negócio tem seção de carrossel/social, ela calibra as cores/fontes; o molde dá a
   estrutura. Checar o rascunho ATO A ATO antes de renderizar — slide que não faz o
   trabalho do seu ato volta
@@ -68,6 +74,7 @@ objetivo: enviar|salvar|converter
 mecanica: <a mecânica de hook escolhida, nome do docs/hooks.md>
 formula: <a fórmula usada, nome do docs/formulas.md>
 capa: <tipo de capa/1º slide>
+estilo: <estilo visual do catálogo §8 do molde-carrossel-arc (ex.: concept-poster, spec-sheet); só carrossel/post>
 nota-revisar: <preenchida pelo /revisar antes de publicar>
 origem: radar|pulso-quente|calendario|avulsa
 status: normal|em-trial
