@@ -24,6 +24,7 @@ como rascunho a confirmar.
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, gate específico desta skill no §6, aceite). Nenhum gate é opcional
 - `nucleo/negocio.md`, `nucleo/voz.md`, `nucleo/foco.md`
 - `producao/calendario/<mes>.md` — se o tema veio de lá
 - `producao/artigos/` — não repetir artigo existente

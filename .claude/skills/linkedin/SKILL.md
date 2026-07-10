@@ -23,6 +23,8 @@ autor, não genérico — e no LinkedIn voz genérica é morte na primeira linha
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-social.md` — **PRIMEIRO**: checklist de execução com gates
+  (2 passes de copy, proibições por busca literal, aceite). Nenhum gate é opcional
 - `nucleo/voz.md` e `nucleo/negocio.md`
 - `nucleo/ofertas.md` — cada oferta rende ângulos: **educativo**, **objeção** e **prova**
   (no LinkedIn, puxar mais o educativo/autoridade que a venda direta)

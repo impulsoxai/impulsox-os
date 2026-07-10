@@ -22,6 +22,7 @@ disso, perguntar o mínimo antes de montar — campanha sem oferta clara queima 
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, gate de compliance desta skill no §6, aceite). Nenhum gate é opcional
 - `nucleo/negocio.md` (oferta, região, diferencial) e `nucleo/foco.md` (prioridade)
 - `nucleo/ofertas.md` — **cada oferta de prioridade alta é um grupo de anúncio candidato**
   (palavras-chave e copy saem do benefício e das objeções da oferta)

@@ -24,6 +24,7 @@ Precisa do **degrau 1** de quem propõe (oferta e diferencial). O diagnóstico d
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, gate específico desta skill no §6, aceite). Nenhum gate é opcional
 - O diagnóstico do `/raio-x` do prospect (se existe — é a melhor matéria-prima)
 - `nucleo/negocio.md` e `nucleo/provas.md` **da agência/de quem propõe** — serviços,
   diferencial e os casos que sustentam a proposta

@@ -1,0 +1,21 @@
+{
+  "_comentario": "Tells simples de IA em PT-BR (lista editável, sem tocar código). Cada item vira um regex acento-safe. Tells compostos (gerúndio encadeado, hedging, trio, nao-e-x-e-y) ficam no lib-humanizador.mjs porque precisam de lógica. peso/limite: ver limites.",
+  "tells_simples": {
+    "e-importante-ressaltar": "é importante (?:ressaltar|destacar|frisar|notar)|vale (?:ressaltar|destacar|lembrar|notar)",
+    "vale-destacar-2025": "nesse sentido|sendo assim|é válido (?:destacar|ressaltar)",
+    "mundo-atual": "no mundo (?:atual|de hoje)|nos dias de hoje|na era digital|no cenário atual",
+    "nao-apenas-mas": "não (?:é|são|se trata de?) apenas [^.!?\\n]{1,60}, mas",
+    "papel-fundamental": "desempenham? um papel (?:fundamental|crucial|essencial|importante)",
+    "em-suma": "em suma|em resumo(?=\\s*[,.;:])",
+    "corporates": "potencializar|alavancar|robust[oa]s?",
+    "de-forma-adverbial": "de forma (?:eficaz|eficiente|simples|prática|rápida|assertiva)",
+    "imagine-explore": "imagine que|vamos explorar|mergulhe",
+    "copula-evitada": "serve como|se destaca como|se configura como|atua como uma?",
+    "signposting": "a seguir,? veremos|neste artigo (?:você|vamos)|nesta seção",
+    "significance-inflation": "momento (?:decisivo|crucial|histórico)|implicações profundas|mudança de paradigma|cada vez mais|marco (?:importante|histórico)|ponto de inflexão",
+    "vague-attribution": "especialistas (?:dizem|apontam|afirmam|recomendam)|estudos (?:mostram|apontam|indicam)|sabe-se que|é consenso que|pesquisas (?:mostram|indicam)|dados (?:mostram|apontam)"
+  },
+  "limites": {
+    "max_pct_paragrafos_com_conector": 25
+  }
+}

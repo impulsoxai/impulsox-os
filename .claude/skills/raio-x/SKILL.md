@@ -20,6 +20,8 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 ## Degrau de contexto
 
+- Ler antes: `docs/gabarito-execucao-texto.md` — rodar o **bloco de aceite** (§5) no fecho do diagnóstico: afirmação com base, número com fonte, suposição marcada
+
 Roda no degrau 1 (só a URL). Tudo que extrair aqui alimenta a escada — se a empresa
 virar cliente, o `/cliente` aproveita a extração inteira.
 

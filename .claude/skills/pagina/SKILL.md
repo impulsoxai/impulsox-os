@@ -19,6 +19,7 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 ## O que ler antes
 
+- `docs/gabarito-execucao-visual.md` — **PRIMEIRO**: QA visual com defeitos nomeados nos 3 tamanhos (390/768/1440) + gate antes do passo caro (copy fechada antes de 1 linha de HTML). Nenhum gate é opcional
 - `marca/design-guide.md` + `marca/tokens.css` — sem marca, rodar `/identidade` antes
   (página premium sem identidade não existe; aqui a escada TEM degrau mínimo: 2)
 - `marca/design-systems/` — a biblioteca de design systems extraídos/recombinados pela

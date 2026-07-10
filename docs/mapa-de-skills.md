@@ -233,6 +233,7 @@ Pendente no CRM (não bloqueia o básico): UTM no Contact (atribuição por camp
 | **/escritor-br** | humaniza todo texto | post, linkedin, email, copy, ads, conteudo |
 | **/revisar** | crivo sênior antes do ar | obrigatório em venda/ads pago |
 | **/revisar-pagina** | olhos frios em design + copy de página pronta (régua nomeada) | publicar (gate pré-deploy de página), sob demanda |
+| **/detectar-ia** | termômetro de cara-de-IA (índice relativo, aponta trechos p/ afiar) | antes de publicar artigo/página/post longo; sob demanda |
 | **/provas** | banco de prova real | copy, post, pagina, proposta, ads, relatorio |
 | **/oferta** | constrói/diagnostica a oferta (Equação de Valor) | antes de proposta, pagina, lancar-produto |
 | **/formulas** | moldes de post que funcionam | post, linkedin, repurpose |
@@ -301,7 +302,8 @@ contrato pra aquilo.
 | /pulso | ideia QUENTE → /post·/linkedin agora; EVERGREEN → /calendario | núcleo; sem fontes.md, a 1ª rodada monta |
 | /concorrente | /radar (lacuna→pauta) ou /proposta·/oferta (posicionar) | nome dos concorrentes |
 | /repurpose | /calendario (peças jogadas no mês) | fonte longa, núcleo |
-| /post · /linkedin · /conteudo | /revisar | marca/, voz, provas |
+| /post · /linkedin · /conteudo | /revisar (artigo/página: /detectar-ia antes) | marca/, voz, provas |
+| /detectar-ia | /escritor-br (afia os trechos que pesam) → re-roda | texto pronto num arquivo |
 | /revisar | /publicar (se aprovada) | a peça pronta |
 | /publicar | /desempenho (no fim do mês) | publicacoes.md |
 | /desempenho | /calendario (próximo ciclo) | métricas |

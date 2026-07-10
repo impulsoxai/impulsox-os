@@ -144,6 +144,11 @@ Caçar e cortar. Os marcados (✦) entraram da fusão com o guia de detecção:
 | ★ Onda 2025: "vale destacar", "nesse sentido", "sendo assim" | Emendar a ideia direto, sem conectivo de preenchimento |
 | ★ Hedging enfileirado: "pode", "geralmente", "em muitos casos" na MESMA frase | Um hedge honesto no máximo; dois é medo de afirmar |
 | ★ Trio adjetival: "rápido, prático e eficiente" (o tricolon em adjetivos) | Um adjetivo que importa, ou o fato que prova os três |
+| ✦ Significance inflation: "momento decisivo", "implicações profundas", "cada vez mais" (inflar importância vazia) | Cortar; se importa, o fato já mostra. Dizer o que muda de concreto |
+| ✦ Vague attribution: "especialistas dizem", "estudos mostram" sem fonte nomeada | Nomear a fonte com data, ou cortar a frase (regra de FATO-com-fonte do gabarito) |
+| ✦ Superficial analysis: parágrafo que parece analisar mas só reafirma o óbvio | Cortar ou trocar por 1 detalhe concreto que o leitor não sabia |
+| ✦ "Não é X, é Y" / "não é X, mas Y" (padrão retórico do Fable/Opus) | Afirmar direto o Y; usar 1x no máximo por peça, nunca em série |
+| ✦ Abertura de parágrafo em série (vários abrindo com conector ou a mesma palavra) | Reabrir com fato, número, nome ou afirmação seca; conteúdo conecta, conector não |
 
 (Os PT-BR-específicos que o guia de fora não tem ficam: cadeia de gerúndios, "além disso",
 tricolon à brasileira. Não perder esses. Os ★ são a onda de vocabulário 2025+ registrada

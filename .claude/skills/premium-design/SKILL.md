@@ -54,6 +54,8 @@ Esta skill é **motor, não entrega final**. Tem dois usos:
 
 ## Degrau mínimo (Escada de Contexto)
 
+- Ler antes: `docs/gabarito-execucao-visual.md` — QA visual com defeitos nomeados no resultado re-estilizado + gate antes do passo caro (§1, §4)
+
 Roda a partir do **degrau 1** (extração pura não precisa de nada do cliente). A
 **recombinação** pede degrau 2+ (briefing de marca: segmento, público, personalidade,
 cores existentes). Abaixo disso, recombinar com defaults e marcar as suposições na
