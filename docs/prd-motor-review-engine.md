@@ -5,8 +5,16 @@
 > **O que é:** o motor que dispara automaticamente uma sequência de pedido de Google Review
 > por WhatsApp — a versão brasileira do "Review Engine" que o Adam roda no Go High Level nos
 > EUA (dissecado em `docs/acervo-review-engine-ghl.md`).
-> **Princípio:** o CRM é dono do contato e da automação; o agente WhatsApp é o canal e o
-> cérebro que lê a resposta; o Hermes orquestra e o OS entrega a copy/oferta na voz da marca.
+> **Princípio (quem faz o quê):**
+> - **CRM** — dono do contato, do estado da sequência e da automação (dispara os timers).
+> - **Agente WhatsApp** — o canal de saída/entrada: manda M1/M2/M3 e recebe o reply.
+> - **Hermes** — o OPERADOR autônomo 24/7 (background worker, `docs/ideia-hermes-gerente-crm.md`):
+>   gerencia o CRM (monitora funil, dispara follow-up), **responde as reviews** (Camada 3, via
+>   `scripts/gbp.mjs`), e classifica o sentimento do reply. O Hermes é o "funcionário"; o
+>   agente WhatsApp é o "telefone" dele. (O próprio Hermes PODE ser o agente WhatsApp — ele
+>   suporta WhatsApp Cloud API oficial; ver 3.7.)
+> - **ImpulsoX-OS (skills)** — monta UMA vez: a copy dos moldes na voz da marca, a oferta, o
+>   provisionamento. Não opera em loop.
 > **Depende de:** `docs/prd-integracao-crm.md` (service token 3.1, UTM 3.2, webhook 3.3).
 > **Mercado:** Brasil (WhatsApp) agora; EUA (SMS) é fase futura — o motor é canal-agnóstico
 > por design (seção 3.6), então vender pros EUA não exige reescrever o motor, só plugar o
@@ -24,8 +32,9 @@ ORDEM e o TIMING. Detalhe completo em `docs/acervo-review-engine-ghl.md`.
 
 Nós temos os blocos pra fazer o mesmo, com 3 vantagens sobre o GHL:
 1. **Canal certo pro Brasil:** WhatsApp, não SMS (SMS é morto aqui).
-2. **Cérebro conversacional:** nosso agente LÊ a resposta do cliente (distingue "tá ótimo"
-   de "o portão ainda range") — o GHL faz isso com automação cega, nós com agente.
+2. **Cérebro conversacional OPCIONAL:** no tier com Hermes, o agente LÊ a resposta do cliente
+   (distingue "tá ótimo" de "o portão ainda range"). No motor puro (sem Hermes), o CRM segue
+   a regra cega igual o GHL — ainda funciona. O cérebro é upgrade, não pré-requisito.
 3. **Compliance mais rígida já documentada:** `docs/formula-ads-jp.md §0.5.B` já proíbe
    gating e incentivo — mesma régua do "review gating not allowed" dele, só que nossa.
 
@@ -37,9 +46,27 @@ oferta**, pedindo só a review. Mecânica diferente, gate condicional diferente.
 
 ## 2. A anatomia do motor (o que construir)
 
-Três camadas. Cada uma é uma capacidade do CRM+agente.
+Três camadas. **Leia isto antes de tudo — o que é sempre-automático e o que o Hermes NÃO
+bloqueia:**
 
-### Camada 1 — Sequência de 3 mensagens (o coração)
+| Camada | Roda sozinho? | Precisa do Hermes? |
+|---|---|---|
+| **C1 — pedir review (3 msgs)** | ✅ SEMPRE automático — CRM dispara, WhatsApp manda | ❌ NÃO |
+| **C2 — reativação da base** | ✅ SEMPRE automático — mesmo motor + rate-limiter | ❌ NÃO |
+| **C3 — RESPONDER review** | ⚠️ tem 3 níveis (manual / cron / Hermes) — cliente escolhe | só no nível 3 |
+
+**A regra que resolve o "cliente que só quer review":** o motor (C1+C2) vive no **CRM +
+agente WhatsApp** e roda sem o Hermes. O Hermes é **camada opcional por cima**, não
+dependência. Cliente que só quer a automação de review compra C1+C2 (+ C3 no nível que
+quiser) e **nunca toca no Hermes**. Isso casa com "vender modular, upsell depois": Review
+Engine é a primeira venda; Hermes-gerente é o destino do upsell (ver tabela de tiers em 3.8).
+
+**Por que C1/C2 são sempre-auto e C3 não:** pedir review (C1/C2) = mandar mensagem PRONTA
+(molde fixo, só troca o nome) — máquina faz cega, sem risco. Responder review (C3) = ESCREVER
+texto novo pra cada review (a resposta do João ≠ a da Maria; negativa é sensível) — por isso
+C3 pode ficar manual se o cliente não quiser IA respondendo sozinha.
+
+### Camada 1 — Sequência de 3 mensagens (o coração) — SEMPRE automática, sem Hermes
 
 Um **workflow condicional** disparado quando **o serviço é ENTREGUE** (não quando a venda é
 fechada — ver 3.0, é a peça mais importante do motor). Três passos:
@@ -75,16 +102,31 @@ qualidade). A M2/M3 disparada em massa pra base velha são **templates a submete
 não texto livre. Detalhe em `docs/prd-integracao-crm.md`? Não — em `.claude/skills/reativar/SKILL.md`
 seção "GATE LGPD + Política WhatsApp". O motor herda esse gate.
 
-### Camada 3 — Resposta automática às reviews (IA)
+### Camada 3 — RESPONDER as reviews (3 níveis — cliente escolhe, Hermes só no nível 3)
 
-Quando uma review nova entra no Google Business Profile do cliente, o Hermes/agente gera uma
-resposta personalizada na voz da marca e responde (delay 10-15min, como o Adam sugere).
-- **Depende de:** integração com a Google Business Profile API (ler reviews novas + postar
-  resposta). Confirmar acesso à API e política de resposta automática do Google.
-- Motivo duplo (por que vale): Google ranqueia melhor quem responde reviews ativamente; e
+Quando uma review nova entra no Google Business Profile do cliente, alguém responde na voz da
+marca. Isso NÃO passa pelo WhatsApp — usa a Google Business Profile API (`scripts/gbp.mjs`,
+que **já existe**). O grau de automação é escolha do cliente, **três níveis**:
+
+| Nível | Quem responde | Automático? | Precisa Hermes? |
+|---|---|---|---|
+| **1 — Manual** | `gbp.mjs --acao listar` mostra as reviews novas; a `/local` redige na voz da marca; o dono confirma/cola | ❌ dono aperta | ❌ |
+| **2 — Cron** | um script agendado (o cron que o CRM já tem) roda `gbp.mjs`, gera a resposta via API (Haiku/Claude), **publica a positiva em lote aprovado; a negativa espera humano** | ⚠️ semi | ❌ (é script, não Hermes) |
+| **3 — Hermes** | o worker 24/7 faz tudo isso + gerencia CRM + briefs — o "funcionário IA" | ✅ total | ✅ (é o tier de upsell) |
+
+- **A ferramenta JÁ EXISTE:** `scripts/gbp.mjs` — `--acao responder` publica (dry-run por
+  padrão, `--confirmar` publica). Falta `--acao listar` (buscar reviews recentes) — serve os
+  TRÊS níveis, não só o Hermes. É o gap #1 a fechar.
+- **Regra dura herdada do `/local` (vale nos 3 níveis):** review **positiva** → lote aprovado,
+  nunca full-auto sem revisão (resposta em massa dispara detecção de padrão do Google);
+  review **negativa** → **só com leitura humana**, nunca automática, em NENHUM nível. Quem
+  responde (script ou Hermes) RASCUNHA; humano libera a negativa. A negativa NUNCA gradua pra
+  automático.
+- **Motivo duplo (por que vale):** Google ranqueia melhor quem responde reviews ativamente; e
   prospect que vê o negócio respondendo TODAS as reviews confia mais.
-- Reusa a infra de IA que já existe (o `POST /api/chat` do CRM já chama Haiku — mesma
-  mecânica, prompt diferente: "responda esta review na voz da marca").
+- **Independe do agente WhatsApp E do Hermes** (níveis 1-2) — é OS-puro via `gbp.mjs`,
+  possível assim que a credencial Google estiver aprovada. É o "motor 1" dos dois que o
+  `/local` Passo 3.5 já separa. O Hermes (nível 3) é upgrade, não pré-requisito.
 
 ---
 
@@ -162,14 +204,16 @@ O M3 só dispara pra quem NÃO clicou. Precisa de link rastreado por contato.
   registra evento `review_link.clicked` (contact_id, timestamp).
 - Sem isso, ou o M3 não existe, ou incomoda quem já avaliou (queima a relação).
 
-### 3.3 — Detecção de sentimento no reply do M1 🟡 alto valor (o pulo do gato vs GHL)
+### 3.3 — Detecção de sentimento no reply do M1 🟡 alto valor (tier upsell — NÃO é do motor puro)
 
-Quando o cliente responde o M1 ("tá ótimo" vs "o portão ainda range"), o agente WhatsApp
-classifica: **satisfeito** → segue pro M2 normal; **problema** → NÃO manda M2 ainda, avisa o
-dono do negócio pra resolver primeiro. O Adam faz isso implícito (cliente reclama no check-in,
-dono vê e resolve); nós fazemos **explícito com o agente** — quem teve problema resolvido rápido
-deixa a MELHOR review.
+**Recurso do tier com IA/Hermes, não do motor básico.** No motor puro (Tier 1), o M1 sai, o
+cliente responde no WhatsApp, o dono lê e resolve manualmente (igual o Adam faz — implícito) —
+e o M2 dispara por timer normal. A detecção automática é o UPGRADE: quando o cliente responde
+o M1 ("tá ótimo" vs "o portão ainda range"), a IA classifica: **satisfeito** → segue pro M2
+normal; **problema** → NÃO manda M2 ainda, avisa o dono pra resolver primeiro. Quem teve
+problema resolvido rápido deixa a MELHOR review.
 - Reusa o Haiku que o CRM já chama. Prompt: classifica reply em `{satisfeito, problema, neutro}`.
+- **Só entra no Tier 2/3.** No Tier 1 o motor não lê o reply — o dono lê. Não bloqueia a venda básica.
 - **Regra de compliance:** isto NÃO é gating. Todos recebem o M2 com o mesmo link
   eventualmente. A detecção só ATRASA o M2 pra quem tem problema (pra resolver antes), não
   DESVIA ninguém pra canal privado nem filtra quem pode avaliar. Documentar essa fronteira
@@ -251,13 +295,65 @@ originais do Adam, seção 4) — viram os templates do adapter SMS quando a hor
 interface fina) e "acoplar no WhatsApp agora" (custo futuro: reescrever o motor pra vender
 EUA) é enorme. É decisão de arquitetura barata hoje, cara depois.
 
+### 3.7 — O HERMES é OPCIONAL (fora do caminho crítico) 🟡
+
+**Regra dura de arquitetura: o motor NÃO pode depender do Hermes.** Cliente que só quer a
+automação de review compra o motor (C1+C2 automáticas + C3 no nível 1 ou 2) e roda sem Hermes
+nenhum. O Hermes é **camada opcional por cima** — o "funcionário IA" pro cliente que faz o
+upsell. Construir o motor acoplado ao Hermes seria travar a primeira venda na peça mais cara.
+
+O que o Hermes ADICIONA quando o cliente contrata o tier de cima (não é requisito de nada):
+
+| Camada | Sem Hermes (motor puro) | Com Hermes (tier upsell) |
+|---|---|---|
+| C1 (pedir review) | CRM (timer) + WhatsApp (canal) — automático | Hermes pode SER o agente WhatsApp (Cloud API oficial) e refinar o timing |
+| C2 (reativação) | CRM (rate-limiter) + WhatsApp — automático | Hermes orquestra + monitora resultado |
+| C3 (responder review) | nível 1 (manual) ou 2 (cron) | nível 3 — Hermes responde 24/7 |
+| Gestão | — (dono olha o CRM) | Hermes gerencia CRM, briefs diário/semanal/mensal, monitora funil |
+
+**Regras herdadas do `ideia-hermes` (quando o Hermes for usado):**
+- **WhatsApp só via Cloud API oficial da Meta** — Baileys/não-oficial PROIBIDO pra cliente
+  (1 em 5 contas banidas/ano; o número do cliente é o ativo nº1 dele). Vale também pro agente
+  WhatsApp do motor puro, não só pro Hermes.
+- **Autonomy Matrix:** responder review negativo = SEMPRE pergunta; enviar mensagem externa
+  = após graduação por fluxo; mexer em orçamento = NUNCA sozinho. O QA mecânico roda sempre.
+- **Motor de modelo:** subscription Codex (plano ChatGPT $20, OAuth) — custo fixo.
+- **Não instala skill de registro público** — operação sensível é sempre código da casa.
+
+**Escopo agora:** o Hermes NÃO existe ainda — e o motor NÃO espera por ele. O que dá pra
+deixar pronto já: a skill `/review-engine` (moldes + provisionamento), o `gbp.mjs` com
+`--acao listar` (serve os 3 níveis de C3), e o motor do CRM (3.0-3.6). Quando/se o Hermes
+subir, ele consome tudo isso — sem reescrever nada.
+
+### 3.8 — Tiers de produto (vender modular, upsell depois)
+
+O motor destrava 3 produtos que COEXISTEM — cliente entra em qualquer um, sobe quando quiser:
+
+| Tier | O que é | Precisa | Pra quem |
+|---|---|---|---|
+| **1 — Review Engine básico** | C1 (pedir) + C2 (reativação) automáticas + C3 nível 1 (dono responde, sistema rascunha) | CRM + WhatsApp + `gbp.mjs` | "só quero mais review, eu respondo" |
+| **2 — + resposta IA** | tudo do T1 + C3 nível 2 (script responde positiva, humano libera negativa) | + cron de resposta | "não quero nem responder" |
+| **3 — Hermes gerente** | tudo do T2 + C3 nível 3 + gestão de CRM + briefs + monitor 24/7 | + Hermes | "quero o funcionário IA" (upsell) |
+
+O "cliente que só quer a automação do review" é o **Tier 1** — vendável e entregável sem
+Hermes, sem cron de IA, sem nada além do motor. É a primeira venda; o Tier 3 é o destino do
+upsell. Bate 1:1 com a regra da casa ("vender modular, fazer upsell depois").
+
 ---
 
 ## 4. As mensagens — adaptadas do Adam pro Brasil (WhatsApp, voz da marca)
 
 O Adam usa SMS em inglês, tom americano. Aqui: WhatsApp, português, tom brasileiro natural
 (a voz FINAL sai do `nucleo/voz.md` de cada cliente via `/escritor-br` — estes são os
-MOLDES). Placeholders: `{cliente}`, `{atendente}`, `{negocio}`, `{link}`.
+MOLDES). Placeholders: `{cliente}`, `{dono}`, `{negocio}`, `{link}`.
+
+**O detalhe do Adam que faz a mensagem funcionar — nome do cliente + nome do DONO.** No
+vídeo ele é explícito: cada mensagem usa o primeiro nome do cliente E o primeiro nome do dono
+do negócio — *"doesn't read like a mass text sent to everybody. It looks like Mike sent it to
+Sara himself. And when a review request feels human, people actually respond."* Por isso o
+`{dono}` é o nome REAL do dono/atendente que fez o serviço (Mike, Dr. Paulo, Ju), nunca o
+nome da empresa nem "equipe". A mensagem tem que parecer que a pessoa que atendeu mandou no
+WhatsApp dela — é isso que separa "pedido humano" de "disparo de robô".
 
 ### M1 — Check-in (sem pedir nada)
 
@@ -266,11 +362,12 @@ MOLDES). Placeholders: `{cliente}`, `{atendente}`, `{negocio}`, `{link}`.
 > good with the work we did today."
 
 **Nosso molde (BR):**
-> Oi {cliente}, aqui é o {atendente} da {negocio}. Passando só pra saber se ficou tudo certo
+> Oi {cliente}, aqui é o {dono} da {negocio}. Passando só pra saber se ficou tudo certo
 > com o serviço de hoje. Deu tudo certo por aí?
 
 Função idêntica: abre conversa real, captura reclamação cedo, NÃO pede review. A pergunta
-final ("deu tudo certo?") puxa reply — que é o que aciona o M2.
+final ("deu tudo certo?") puxa reply — que é o que aciona o M2. **`{dono}` = nome real de
+quem atendeu** (parece que ele mandou pessoalmente, não a empresa).
 
 ### M2 — Pedido de review (vai pra TODOS, mesmo link)
 
@@ -280,12 +377,15 @@ final ("deu tudo certo?") puxa reply — que é o que aciona o M2.
 > Google review? It helps other customers know they can trust us."
 
 **Nosso molde (BR):**
-> {cliente}, obrigado de novo pela confiança! 🙏 Se puder me ajudar com 30 segundos: deixaria
-> uma avaliação rápida da sua experiência aqui no Google? Ajuda muito outras pessoas a
-> confiarem na gente. É só clicar: {link}
+> {cliente}, aqui é o {dono} de novo! 🙏 Obrigado pela confiança. Se puder me ajudar com 30
+> segundos: deixaria uma avaliação rápida da sua experiência no Google? Ajuda muito outras
+> pessoas a confiarem na gente. É só clicar: {link}
+
+Note o `{dono}` de novo — mesma pessoa do M1, reforça que é ele falando, não a empresa. É o
+detalhe do Adam ("looks like Mike sent it to Sara himself").
 
 Regra travada: **mesmo texto, mesmo link, pra todo mundo** — feliz ou não. Personalização só
-de nome ({cliente}, {atendente}). Filtrar por sentimento aqui = gating = proibido.
+de nome ({cliente}, {dono}). Filtrar por sentimento aqui = gating = proibido.
 
 ### M3 — Lembrete gentil (só pra quem não clicou)
 
@@ -351,9 +451,19 @@ O motor é backend (CRM+agente). O OS entrega a camada de marketing por cima:
    TCPA/10DLC é fase futura EUA. Decisão de arquitetura barata hoje, cara depois.
 7. **🟢 Google Business Profile API** (3.4) — Camada 3; começar manual se travar.
 
-**Lado OS (não bloqueado pelo CRM):**
-8. Moldes M1/M2/M3 (seção 4) prontos → viram preset da `/local` (ou skill própria).
-9. Oferta modular "Gestão de Google Review" no `nucleo/ofertas.md` via `/oferta`.
+**Lado Hermes (background worker — `docs/ideia-hermes-gerente-crm.md`):**
+8. **`gbp.mjs --acao listar`** — hoje o conector só responde/posta; falta LISTAR reviews
+   novas pro Hermes agir (Camada 3). É o gap #1 do `ideia-hermes`.
+9. **Credencial Google aprovada em produção** — o `gbp.mjs` precisa de OAuth do perfil
+   aprovado. Destrava a Camada 3 sem depender do WhatsApp.
+10. Subir o Hermes (VPS + Codex OAuth) — consome o motor do CRM + o `gbp.mjs`. Pode SER o
+    agente WhatsApp (Cloud API oficial). Só depois que 1-7 existirem.
+
+**Lado OS (PRONTO AGORA — não bloqueado por nada):**
+11. **Skill `/review-engine`** — moldes M1/M2/M3 na voz da marca + roteiro de provisionamento
+    por cliente + motor marcado como pendência honesta (padrão `/agente-ia`). É o "deixar
+    tudo pronto pra plugar".
+12. Oferta modular "Gestão de Google Review" no `nucleo/ofertas.md` via `/oferta`.
 
 **Gates que valem SEMPRE (Camada 2 em escala):** consentimento próprio de WhatsApp + opt-out
 (LGPD) e template HSM aprovado (Meta) — herdados do gate da `/reativar`. Camada 1 (pós-serviço,
