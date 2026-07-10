@@ -19,7 +19,7 @@ quando não é obrigado. Este gabarito obriga.
    de estilos (carrossel) · pro LinkedIn, as regras da própria SKILL.md do /linkedin
 2. `marca/tokens.css` + `marca/design-guide.md` — cores/fontes; NUNCA inventar token
 3. `nucleo/voz.md` — INTEIRA: a lista de palavras banidas, os exemplos "BOM" e a seção
-   **AMOSTRA VIVIAN** (a escrita crua da dona — em conflito de calibragem, ela vence)
+   **AMOSTRA [NOME]** (a escrita crua do dono — em conflito de calibragem, ela vence)
 4. `nucleo/foco.md` — prioridade do mês + regras de produção registradas lá
    (ex.: design system aprovado de carrossel: Anton + DM Mono, dark, ouro/roxo)
 5. `nucleo/aprendizados.md` + `nucleo/ofertas.md` (ângulos) + banco de ideias

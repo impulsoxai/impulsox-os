@@ -55,14 +55,16 @@ test("trechosCulpados aponta tells com linha", () => {
   assert.ok(tr.some((x) => x.linha === 2 && /ressaltar/.test(x.motivo)));
 });
 
-// GUARDA DE CALIBRAÇÃO: o "chão" impresso no CLI é a média do índice dos 3 exemplares
-// Fable. Se varrerVicios, os pesos ou os exemplares mudarem, este teste trava e avisa
-// que o número hardcoded no CLI precisa ser atualizado (não pode mentir em silêncio).
-test("chão hardcoded no CLI bate com a média real dos exemplares (±3)", () => {
+// GUARDA DE CALIBRAÇÃO: o "chão" impresso no CLI é a média do índice dos exemplares de
+// fixture (texto humano de referência — não peça real, fica em scripts/__fixtures__/
+// pra o teste rodar em qualquer clone sem depender de producao/artigos/ do negócio).
+// Se varrerVicios, os pesos ou as fixtures mudarem, este teste trava e avisa que o
+// número hardcoded no CLI precisa ser atualizado (não pode mentir em silêncio).
+test("chão hardcoded no CLI bate com a média real das fixtures (±3)", () => {
   const exemplares = [
-    new URL("../producao/artigos/ia-para-pequenas-empresas-o-que-faz.md", import.meta.url),
-    new URL("../producao/artigos/ia-quanto-sobra-fim-do-mes.md", import.meta.url),
-    new URL("../producao/artigos/claude-para-pequenas-empresas-o-que-significa.md", import.meta.url),
+    new URL("./__fixtures__/exemplar-1.md", import.meta.url),
+    new URL("./__fixtures__/exemplar-2.md", import.meta.url),
+    new URL("./__fixtures__/exemplar-3.md", import.meta.url),
   ];
   const indices = exemplares.map((f) => indice(readFileSync(f, "utf8")).total);
   const media = indices.reduce((a, b) => a + b, 0) / indices.length;
@@ -74,7 +76,7 @@ test("chão hardcoded no CLI bate com a média real dos exemplares (±3)", () =>
 
   assert.ok(
     Math.abs(chaoHardcoded - media) <= 3,
-    `chão hardcoded ~${chaoHardcoded} desviou da média real ${media.toFixed(1)} dos exemplares — atualize o número no CLI de detectar-ia.mjs`
+    `chão hardcoded ~${chaoHardcoded} desviou da média real ${media.toFixed(1)} das fixtures — atualize o número no CLI de detectar-ia.mjs`
   );
 });
 

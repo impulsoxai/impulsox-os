@@ -16,18 +16,22 @@ o piso alto da versão FINAL em qualquer modelo.
 ## 1.5 Passo 0 — CARREGAR O CÉREBRO (anti-cold-start; roda ANTES de qualquer rascunho)
 
 Pedido frio ("escreve um post", "faz um artigo") SEM contexto carregado produz escrita
-genérica de IA — em qualquer modelo. É o padrão Brain do Matt (Focus Pilot: ele injeta
-Voice & Tone + Positioning + Standards no agente ANTES de pedir escrita; cartões em
-`material-matt/focus-pilot-*.md`). A versão determinística da casa:
+genérica de IA — em qualquer modelo. É o padrão Brain do Matt Ganzak (Focus Pilot): ele
+injeta Voice & Tone + Positioning + Standards no agente ANTES de pedir escrita (crédito
+de metodologia; o acervo de cartões desse material é opcional e vive fora do motor). A
+versão determinística da casa:
 
 1. Ler `nucleo/negocio.md` + `nucleo/ofertas.md` (o que a empresa é e vende AGORA).
-2. Ler `nucleo/voz.md` INTEIRA — inclusive a seção **AMOSTRA VIVIAN** (a escrita crua
-   da dona, que vence os exemplos aprovados em conflito).
+2. Ler `nucleo/voz.md` INTEIRA — inclusive a seção **AMOSTRA [NOME]** (a escrita crua
+   do dono, que vence os exemplos aprovados em conflito). Se a seção ainda não existe,
+   pedir 2-3 textos reais do dono antes de seguir (ver §2 "Gabarito em DUAS CAMADAS").
 3. Ler o exemplar do tipo da peça (`docs/swipe-artigos.md` pra artigo; exemplos BOM
    da voz.md pra peça curta).
 3b. Ler `nucleo/fatos.md` (banco de fatos) se a peça vai carregar número/dado de
    mercado — fato SATURADO não entra de novo; escolher outro da despensa ou buscar
-   novo com fonte.
+   novo com fonte. Se `nucleo/fatos.md` ainda não existir neste negócio, criar a
+   partir do molde vazio (ver seção "Formato do arquivo" no próprio molde) antes
+   de seguir — não pular a checagem de saturação por falta do arquivo.
 4. **Aceite do Passo 0 (bloqueia o rascunho):** antes de escrever a primeira frase,
    citar em 1 linha interna: 2 marcadores da voz que vão entrar + qual exemplar foi
    lido. Sem cérebro carregado, não se escreve — pedido frio vira primeiro leitura,
