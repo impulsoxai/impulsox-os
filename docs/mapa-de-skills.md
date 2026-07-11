@@ -213,6 +213,12 @@ Pendente no CRM (não bloqueia o básico): UTM no Contact (atribuição por camp
   converter quem chega. Roda no setup e quando o perfil está fraco; aponta pra /calendario.
 - **/local** — Perfil de Empresa no Google (post local, responder avaliação via API oficial).
   Entra pra negócio com ponto físico/atendimento por região; aponta pra /publicar.
+- **/review-engine** — motor de Google Review em esteira: monta a sequência de 3 mensagens
+  (check-in → pedido → lembrete) na voz da marca + reativação da base + plano de resposta, e o
+  roteiro de provisionamento pra plugar no CRM+agente WhatsApp. Vende em 3 tiers (básico sem
+  Hermes → resposta IA → Hermes gerente). A `/local` cuida do PERFIL e responde as reviews;
+  esta cuida do FLUXO que gera o volume. Motor roda sem Hermes (Tier 1). Opcional — entra
+  quando o negócio quer review automático. Arquitetura em `docs/prd-motor-review-engine.md`.
 
 ## Medição (três portas, fronteira clara)
 
@@ -314,6 +320,7 @@ contrato pra aquilo.
 | /geo | /publicar (ou plano de citação) | a página/site no ar |
 | /perfil-ig | /calendario | perfil atual ou print |
 | /local | /publicar | Perfil de Empresa no Google |
+| /review-engine | /local (mantém perfil + responde); provisionamento liga o disparo | nome do dono/serviços (`nucleo/negocio.md`); motor auto espera CRM+WhatsApp+`gbp.mjs` |
 | /relatorio | /calendario (próximo ciclo) | métricas de /desempenho, /analisar-ads |
 | /analisar-dados | conforme o dado pedir | CSV/XLSX/JSON do negócio |
 | /roi | /relatorio | CRM_TOKEN no .env + gasto do /analisar-ads |
