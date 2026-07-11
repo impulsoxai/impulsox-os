@@ -150,7 +150,7 @@ if (import.meta.main) {
   const r = indice(texto);
   const barra = (n) => "#".repeat(Math.round(n / 5)).padEnd(20, ".");
   const alerta = (n) => (n >= 60 ? "  <-- pesa" : "");
-  console.log(`\nINDICE CARA-DE-IA: ${r.total}/100  (chao dos exemplares Fable: ~9)\n`);
+  console.log(`\nINDICE CARA-DE-IA: ${r.total}/100  (chao dos exemplares Fable: ~5)\n`);
   console.log(`  Burstiness .......... ${String(r.sinais.burstiness).padStart(3)}  ${barra(r.sinais.burstiness)}${alerta(r.sinais.burstiness)}`);
   console.log(`  Repeticao n-grama ... ${String(r.sinais.ngrama).padStart(3)}  ${barra(r.sinais.ngrama)}${alerta(r.sinais.ngrama)}`);
   console.log(`  Densidade de tells .. ${String(r.sinais.tells).padStart(3)}  ${barra(r.sinais.tells)}${alerta(r.sinais.tells)}`);
