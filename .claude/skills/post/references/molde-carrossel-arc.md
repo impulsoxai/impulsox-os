@@ -25,6 +25,39 @@ PAIN sai das dores da oferta (`nucleo/ofertas.md` tem "as dores" prontas por pro
 RESULT só com prova AUTORIZADA (`nucleo/provas.md`) — número inventado nunca; JOIN
 respeita a régua de CTA da matriz (marca/CTA só no fim).
 
+**⚠️ Este arco é de VENDA** — o JOIN fecha com preço e ação de compra. Só serve pra peça
+`objetivo: converter`, e peça de venda é RARA no mix (CTA de venda 1-2×/semana; o resto
+posiciona). Peça educativa usa o Arco ENSINA abaixo — "adaptar" o arco de venda pra
+ensinar deixa o pitch escorregar pro meio das peças.
+
+## 1b. Arco ENSINA — a espinha da peça educativa
+
+> A régua da peça educativa: "hook forte com dor ou curiosidade, depois ENSINAR ou
+> mostrar um caminho melhor". Validado contra pesquisa externa (framework de carrossel
+> do Ruben Hassid + guias de mercado 2026): a espinha bate 1:1 com o padrão dos
+> carrosséis educativos que performam.
+
+| Ato | Telas | Trabalho | Regras do slide |
+|---|---|---|---|
+| **HOOK** | 1 | prender | dor ou curiosidade (mecânica do `docs/hooks.md`) + payoff de APRENDIZADO prometido ("dentro: 5 passos prontos") |
+| **ESPELHO** | 1 | nomear a falha | por que o jeito atual do leitor falha, na língua dele; sem dado requentado (checar `nucleo/fatos.md`) |
+| **CAMINHO** | 3-5 | ensinar | 1 passo/exemplo REPRODUZÍVEL por tela + a linha "o que volta" (resultado observável) |
+| **RESUMO** | 1 | fixar | checklist numerado do caminho inteiro — a tela que o leitor salva |
+| **FECHO** | 1 | dirigir | CTA de algoritmo (salvar/enviar/seguir); a venda vive só na LEGENDA |
+
+- **Gate por tela do CAMINHO:** "se o leitor printar SÓ esta tela, ele leva algo
+  utilizável?" Não → a tela ensina conceito, não caminho; reescrever com o passo
+  concreto (o pedido copiável, o exemplo com nome de arquivo, o antes/depois).
+- **Conceito ≠ caminho:** "IA que executa vale mais que IA que responde" é tese;
+  "cola este pedido e recebe o relatório de caixa" é caminho. Tese cabe em UMA tela
+  (o ESPELHO); o miolo é caminho.
+- **Ponte de produto no MEIO é proibida** (busca literal pelo nome da marca nas telas
+  internas). Em newsjacking, a tradução ensina o que o LEITOR faz com a notícia, não o
+  que a marca vende — a marca aparece no fecho e na legenda.
+- Escolha do arco é o PRIMEIRO gate da peça: `objetivo: converter` → arco de venda
+  (§1); `objetivo: salvar/enviar/posicionar` → Arco ENSINA. Registrar no META
+  (`formula: arco-ensina` ou `formula: carousel-arc-venda`).
+
 ## 2. Anatomia do slide dele (frame 10:00~, slide-01 real)
 
 - Fundo escuro atmosférico (gradiente radial sutil), NÃO chapado nem ruidoso.

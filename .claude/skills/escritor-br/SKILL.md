@@ -74,8 +74,13 @@ Reescrever resolvendo os bullets do audit **e** respeitando as restrições dura
 auto-crítica (o modelo corrigindo a si mesmo no mesmo contexto é o elo fraco):
 
 ```bash
-node scripts/lib-humanizador.mjs <arquivo-do-texto> --banidas "<palavras banidas da voz.md, separadas por vírgula>"
+node scripts/gate-voz.mjs <arquivo-do-texto> --publico [--formato ig-carrossel|linkedin|artigo|email|pagina] [--html|--legenda]
 ```
+
+> O gate-voz SUBSTITUI a chamada manual ao lib-humanizador com `--banidas` (que dependia
+> de o modelo montar a lista — o elo fraco; auditoria 10/07/2026). Ele lê a fonte única
+> `scripts/voz-regras.json` (pra/pro hardcoded, dois-pontos budget, CTA×formato,
+> caixa-alta, fecho-muleta, banidas) e herda os DUROS/VÍCIOS do lib-humanizador por baixo.
 
 O script devolve, com linha e coluna: **DUROS** (travessão, meia-risca fora de intervalo,
 aspa curva, ` -- `), **BANIDAS** (as da voz.md) e **VÍCIOS** (a parte regexável da tabela
@@ -94,8 +99,16 @@ internamente mesmo assim.)
 
 No texto **final**, zero de:
 - **Travessão `—` e meia-risca `–`.** É o tell nº 1 de IA. Trocar, nesta ordem de
-  preferência: ponto (frase nova), vírgula (aparte curto), dois-pontos (explicação),
-  parênteses (aparte de verdade), ou reestruturar. Pegar também ` — ` espaçado e ` -- `.
+  preferência: **ponto (frase nova — o substituto PADRÃO)**, vírgula (aparte curto),
+  parênteses (aparte de verdade), ou reestruturar. **Dois-pontos NÃO é substituto de
+  travessão**: trocar em massa cria o cacoete "afirmação: reafirmação" (incidente real,
+  11 ocorrências numa peça, 10/07/2026 — regra NÃO FAÇA #10 da voz.md). Budget: máx. 1
+  dois-pontos por peça CONTANDO enumeração na mesma frase ("arquivos: monta, organiza..."
+  também conta — endurecido 11/07, vazou numa peça real); ":" isento só em rótulo fixo de
+  layout ("O que volta:"), lista VERTICAL, URL e horário. A régua completa de pontuação
+  (vírgula, ponto, quando continuar a frase — norma culta + voz da casa) está em
+  **`references/pontuacao-pt.md`: ler antes de escrever qualquer peça.**
+  Pegar também ` — ` espaçado e ` -- `.
   **Única exceção: meia-risca de INTERVALO colado** ("seg–sex", "9h–18h", "2024–2026") —
   aí o hífen no lugar é que seria o erro; o gate por script já sabe disso.
   **Varredura final:** o `lib-humanizador.mjs` acha qualquer um deles com linha e coluna.

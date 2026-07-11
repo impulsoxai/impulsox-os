@@ -29,13 +29,26 @@ Autoria: ImpulsoX AI. Conteúdo original.
 
 1. **Reunir o pacote:** a peça final (texto + imagens renderizadas, se houver) e os
    caminhos dos arquivos de referência (`nucleo/`, `docs/persuasao.md`).
-2. **Despachar o agente `revisor-marketing`** (via Task/subagente) com o pacote — em
-   contexto limpo, sem o histórico de criação da peça. É isso que garante a revisão
-   fria: o revisor não sabe quais escolhas doeram, só vê o resultado.
-3. **Receber o veredito:** APROVADA / AJUSTAR / REPROVADA + achados (um por linha,
-   cada um com correção proposta). **Para peça de social orgânico, junto vem a nota
-   X/10 do scorecard** (ver "Nota numérica" abaixo); anúncio pago e página ficam só
-   com o veredito categórico.
+2. **Despachar DOIS agentes em paralelo, ambos em contexto limpo:**
+   - `revisor-marketing` — o julgamento estratégico (persuasão, verdade, oferta, CTA).
+   - `revisor-voz` — o julgamento de VOZ contra as amostras verbatim do banco
+     (`nucleo/voz/amostras/`): palavra que o dono não usaria, cacoete rítmico 3+,
+     postura professora-vs-vendedor. **UMA passada só, nunca iterativa** (pesquisa:
+     revisão em contexto limpo acha mais defeito, arXiv:2603.12123; re-revisão
+     iterativa piora o texto, ICLR 2024). Antes de despachar, rodar o gate mecânico
+     (`node scripts/gate-voz.mjs`) — o revisor-voz não repete o que a máquina pega.
+     Rodar também `node scripts/distancia-voz.mjs <peça>` (termômetro, não julgamento
+     — sempre automático aqui, nunca precisa pedir). Banda **longe** → sinalizar junto
+     dos achados do revisor-voz ("termômetro: longe — vale reler contra as amostras");
+     **perto/médio** → só registrar no rodapé do veredito, sem virar achado. O
+     termômetro NUNCA muda o veredito nem trava sozinho (calibração melhora conforme o
+     banco de amostras cresce — é sinal de apoio, quem julga fino é o revisor-voz).
+3. **Receber os vereditos:** APROVADA / AJUSTAR / REPROVADA (marketing) + PASSA /
+   AJUSTAR (voz, cada achado com a frase culpada citada) + banda do termômetro. **Para
+   peça de social orgânico, junto vem a nota X/10 do scorecard** (ver "Nota numérica" abaixo);
+   anúncio pago e página ficam só com o veredito categórico. Achado de voz entra na
+   mesma lista de correções da rodada — peça só segue pro `/publicar` com os DOIS
+   vereditos limpos.
 4. **Encaminhar:**
    - **APROVADA** → registrar no Status do calendário ("revisada") e seguir pro
      `/publicar`.

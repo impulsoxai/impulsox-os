@@ -1,0 +1,52 @@
+{
+  "_doc": "Fonte ÚNICA legível por máquina das regras de voz mecânicas (camada Standards do Brain de voz). O gate-voz.mjs lê daqui; a voz.md do negócio aponta pra cá. Regra nova regexável entra AQUI (+ caso de teste em gate-voz.test.mjs), nunca em prosa. Toda entrada carrega a data e o incidente que a criou. ESTE é o arquivo-MOLDE do template: as regras universais de PT-BR já vêm prontas; os blocos marcados _DADO_DO_NEGOCIO são exemplo — cada clone reescreve com as correções do próprio dono (via /corrigiu). NUNCA suba as preferências lexicais de um negócio pro template.",
+  "versao": "template-2026-07-11",
+  "banidas_sempre": {
+    "_keep_it": "pra/pro banidos em publicado (contração falada não entra em texto escrito da marca). Hardcoded: não depende de parâmetro manual.",
+    "palavras": ["pra", "pro", "pras", "pros"]
+  },
+  "banidas_publico": {
+    "_keep_it": "'marketing' fora de peça pública (o dono da PME não fala 'marketing', fala do resultado). Vale com --publico. Cada negócio ajusta.",
+    "palavras": ["marketing"]
+  },
+  "banidas_gerais": {
+    "_keep_it": "clichês de venda de IA (lista 'Evita' da voz.md) + 'gringo' (nacionalidade se fala pelo nome — americano, inglês, europeu). Universal.",
+    "palavras": ["disruptivo", "revolucionar", "transformação digital", "IA de ponta", "solução inovadora", "leve seu negócio a outro patamar", "gringo", "gringa", "gringos", "gringas"]
+  },
+  "fecho_muleta": {
+    "_keep_it": "fecho que não afirma nada concreto — cacoete de IA. Universal.",
+    "frases": ["E isso diz muito", "E isso muda tudo", "Pense nisso", "Fica a reflexão", "Vale a reflexão"]
+  },
+  "dois_pontos": {
+    "_keep_it": "cacoete 'afirmação: reafirmação' — a IA usa ':' como muleta rítmica em quase toda frase; ninguém escreve assim. Enumeração NA MESMA FRASE ('arquivos: monta, organiza...') também conta no budget. Isento só: rótulo de layout, ':' abrindo lista vertical, URL, horário, frontmatter. Universal.",
+    "budget_retorico": 1,
+    "_rotulos_nota": "rótulo visível de peça usa '·' no lugar de ':'. Só atribuição de fonte fica isenta por padrão; o negócio adiciona os rótulos de layout que usar.",
+    "rotulos_permitidos": ["FONTE:", "Fonte:"]
+  },
+  "caixa_alta": {
+    "_keep_it": "caixa-alta só em sigla; 'UM processo' (ênfase emocional) não. Limite de 3 letras (siglas curtas de 2-3 passam pela allowlist). Linha inteira em caps é label de design, ignorada. Universal — cada negócio acrescenta as siglas do próprio nicho.",
+    "siglas_permitidas": ["PME", "PMES", "MPE", "MPES", "IA", "CRM", "GEO", "SEO", "API", "CTA", "URL", "FAQ", "COPY", "HTML", "CSS", "PNG", "CSV", "PDF", "LLM", "MVP", "B2B", "CTR", "KPI", "UTM", "GPT", "CHATGPT", "WHATSAPP", "LINKEDIN", "OS", "AI", "BR", "PT", "FIG", "JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
+  },
+  "fragmento_sem": {
+    "_keep_it": "fragmento 'Sem + substantivo.' como frase solta vira tique quando repetido; budget de 2 por peça. Universal.",
+    "budget": 2
+  },
+  "maiuscula_mistica": {
+    "_keep_it": "maiúscula mística em substantivo comum no meio da frase ('esse Sistema', 'o Método') é branding de agência. Maiúscula só em nome próprio de produto. Universal — cada negócio adiciona os nomes próprios dele em 'excecoes'.",
+    "palavras": ["Sistema", "Método", "Fórmula", "Jornada", "Solução"],
+    "excecoes": []
+  },
+  "cta_por_formato": {
+    "_keep_it": "CTA tem que ser executável no formato. Em slide de carrossel IG só existe ação de dentro do app (não há link clicável nem número). Universal.",
+    "ig-carrossel": {
+      "proibidos": ["chama no whatsapp", "chama no zap", "manda um whatsapp", "clica no link", "clique aqui", "acesse o link", "acesse nosso site", "clica aqui"],
+      "permitidos_referencia": ["salva", "envia", "manda para", "comenta", "chama no direct", "compartilha", "segue"]
+    }
+  },
+  "preferencias_lexicais": {
+    "_keep_it": "_DADO_DO_NEGOCIO_ — trocas que O DONO já pediu; o gate AVISA (não trava) quando a forma preterida aparece. Cada clone reescreve este bloco com as correções do próprio dono via /corrigiu. O exemplo abaixo é só o molde do formato — apagar e preencher com as do negócio.",
+    "avisos": [
+      { "de": "<forma que o dono não usa>", "para": "<como o dono fala>", "origem": "<Dono, data, incidente>" }
+    ]
+  }
+}

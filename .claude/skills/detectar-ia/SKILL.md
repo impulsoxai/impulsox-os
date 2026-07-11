@@ -48,13 +48,31 @@ afiar ANTES de publicar. **É termômetro, não juiz** — não trava nada, info
   concreta são HUMANOS, não tell — o `/escritor-br` chama isso de freio de falso-positivo.
   Se o que sobra pesando é especificidade, o texto está pronto mesmo com índice médio.
 - **O único redutor honesto de detector EXTERNO é densidade de VOZ, não truque de
-  vocabulário.** Evidência medida num caso real (ImpulsoX AI, 10/07/2026, GPTZero):
-  pillar só-modelo 72% → com 3 injeções da voz do dono 64% → peça majoritariamente
-  dele 45%. Texto neutro com índice alto → o caminho é a seção "AMOSTRA [NOME]" da
-  `nucleo/voz.md` (1ª pessoa, opinião, convite, fecho com calor), nunca trocar
-  palavra clara por palavra rebuscada.
+  vocabulário.** Evidência medida (10/07/2026, GPTZero): pillar só-Fable 72% → com 3
+  injeções da voz do dono 64% → peça majoritariamente dele 45%. Texto neutro com índice
+  alto → o caminho é a AMOSTRA DO DONO da `nucleo/voz.md` (1ª pessoa, opinião, convite,
+  fecho com calor), nunca trocar palavra clara por palavra rebuscada.
 - O chão dos exemplares é ~9 (medido, não chutado). Até texto ótimo tem 1 tell afiável;
   índice baixo com 1 trecho apontado é normal, não é reprovação.
+
+## Sinal opcional — distância de voz (termômetro, não gate)
+
+Complemento ao índice de cara-de-IA: o `scripts/distancia-voz.mjs` mede quão perto a
+peça está do JEITO do dono escrever, contra o banco `nucleo/voz/amostras/`. Enquanto
+o índice pergunta "parece IA genérica?", este pergunta "parece o dono?".
+
+```
+node scripts/distancia-voz.mjs <arquivo> [--html|--legenda]
+```
+
+Sai como banda: **perto / médio / longe** (calibrada com controles reais — amostra dela
+~0.70, texto robótico ~1.72). SEMPRE roda nas features stylométricas (determinístico,
+PT-BR, zero dependência); se `@huggingface/transformers` estiver instalado, soma a camada
+semântica de estilo (paraphrase-multilingual-MiniLM, ONNX, roda em Node sem Python). Régua
+honesta gravada no próprio output: com só 5 amostras a calibração é FRACA (estilo estabiliza
+em ~25 — arXiv:2606.09854); a banda é orientação de tendência, **nunca veredito, nunca
+trava publicação**. Melhora sozinho conforme o banco de amostras cresce. O julgamento fino
+de voz continua sendo o agente `revisor-voz` (contexto limpo, frase culpada).
 
 ## O que NÃO é
 
