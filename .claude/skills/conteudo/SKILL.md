@@ -26,6 +26,8 @@ como rascunho a confirmar.
 
 - `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, gate específico desta skill no §6, aceite). Nenhum gate é opcional
 - `nucleo/negocio.md`, `nucleo/voz.md`, `nucleo/foco.md`
+- `docs/hooks.md` — título do artigo e abertura de cada peça nascem com 2-3 variações de
+  hook de mecânicas diferentes (regra da casa)
 - `producao/calendario/<mes>.md` — se o tema veio de lá
 - `producao/artigos/` — não repetir artigo existente
 - `dados/` — transcrição de vídeo do dono, quando a entrada for repurposing (ver abaixo)

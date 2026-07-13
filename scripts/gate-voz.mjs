@@ -130,10 +130,15 @@ export function gate(textoBruto, { formato = null, publico = false, html = false
   const doisPontos = classificarDoisPontos(texto, rotulosExtra);
   const estouroDoisPontos = doisPontos.length > REGRAS.dois_pontos.budget_retorico ? doisPontos : [];
   const caixaAlta = varrerCaixaAlta(texto);
-  const exclamacao = buscarLiterais(texto, ["!!"], "exclamacao-dupla");
-  // ponto e vírgula em prosa: a casa não usa (pontuacao-pt.md §4; pego em legenda 11/07)
+  // pontuação: regras movidas pro voz-regras.json (fonte única, 13/07/2026); fallback true
+  // preserva o comportamento em clone cujo JSON ainda não tem o bloco (template antigo)
+  const exclamacao = (REGRAS.pontuacao?.exclamacao_dupla_proibida ?? true)
+    ? buscarLiterais(texto, ["!!"], "exclamacao-dupla") : [];
   const pontoVirgula = [];
-  { const re = /[a-zà-ú]; ?[a-zà-ú]/gi; let m; while ((m = re.exec(texto))) pontoVirgula.push({ tipo: "ponto-e-virgula-em-prosa", trecho: texto.slice(Math.max(0, m.index - 20), m.index + 20).replace(/\n/g, " "), ...posicao(texto, m.index + 1) }); }
+  if (REGRAS.pontuacao?.ponto_e_virgula_em_prosa_proibido ?? true) {
+    const re = /[a-zà-ú]; ?[a-zà-ú]/gi; let m;
+    while ((m = re.exec(texto))) pontoVirgula.push({ tipo: "ponto-e-virgula-em-prosa", trecho: texto.slice(Math.max(0, m.index - 20), m.index + 20).replace(/\n/g, " "), ...posicao(texto, m.index + 1) });
+  }
   // fragmento "Sem + substantivo." como frase solta: budget da dona (voz-regras.json, 11/07)
   const fragmentosSem = [];
   { const re = /(?<=^|[.!?…]\s|\n)Sem [^.!?\n]{2,35}\.(?=\s|$)/gm; let m; while ((m = re.exec(texto))) fragmentosSem.push({ tipo: "fragmento-sem", trecho: m[0], ...posicao(texto, m.index) }); }

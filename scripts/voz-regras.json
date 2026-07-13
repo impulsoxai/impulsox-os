@@ -27,6 +27,11 @@
     "_keep_it": "caixa-alta só em sigla; 'UM processo' (ênfase emocional) não. Limite de 3 letras (siglas curtas de 2-3 passam pela allowlist). Linha inteira em caps é label de design, ignorada. Universal — cada negócio acrescenta as siglas do próprio nicho.",
     "siglas_permitidas": ["PME", "PMES", "MPE", "MPES", "IA", "CRM", "GEO", "SEO", "API", "CTA", "URL", "FAQ", "COPY", "HTML", "CSS", "PNG", "CSV", "PDF", "LLM", "MVP", "B2B", "CTR", "KPI", "UTM", "GPT", "CHATGPT", "WHATSAPP", "LINKEDIN", "OS", "AI", "BR", "PT", "FIG", "JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
   },
+  "pontuacao": {
+    "_keep_it": "movido do hardcode do gate-voz.mjs pra cá em 13/07/2026 (auditoria 2 item 3 — fonte única de verdade). Exclamação dupla nunca; ponto e vírgula em prosa a casa não usa (pontuacao-pt.md §4). Universal.",
+    "exclamacao_dupla_proibida": true,
+    "ponto_e_virgula_em_prosa_proibido": true
+  },
   "fragmento_sem": {
     "_keep_it": "fragmento 'Sem + substantivo.' como frase solta vira tique quando repetido; budget de 2 por peça. Universal.",
     "budget": 2
@@ -45,6 +50,7 @@
   },
   "preferencias_lexicais": {
     "_keep_it": "_DADO_DO_NEGOCIO_ — trocas que O DONO já pediu; o gate AVISA (não trava) quando a forma preterida aparece. Cada clone reescreve este bloco com as correções do próprio dono via /corrigiu. O exemplo abaixo é só o molde do formato — apagar e preencher com as do negócio.",
+    "_regra_promocao": "aviso confirmado 2x em peça real (mesma forma preterida vazou de novo depois de avisada) → promover a banidas_gerais; quem executa a promoção é o /corrigiu, registrando a origem (fecha o meio-gate — auditoria 2 item 3, 13/07/2026).",
     "avisos": [
       { "de": "<forma que o dono não usa>", "para": "<como o dono fala>", "origem": "<Dono, data, incidente>" }
     ]

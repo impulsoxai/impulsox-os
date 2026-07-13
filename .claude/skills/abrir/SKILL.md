@@ -17,7 +17,9 @@ que está pendente. Não é relatório — é o "bom dia" do sistema.
 
 Autoria: ImpulsoX AI. Conteúdo original.
 
-> Esta skill é só instrução: lê arquivos e resume. Não gera nem roda código.
+> Esta skill é só instrução: lê arquivos e resume. Não gera nem roda código — com UMA
+> exceção só-leitura: o check de versão do motor (Passo 1.5), que roda `git fetch` e
+> compara versões, nunca altera nada.
 
 ## O que ler antes
 
@@ -49,6 +51,21 @@ fingir contexto. Responder:
 > "O núcleo ainda não foi preenchido. Rodo o `/plugar` pra ligar o sistema?"
 
 E parar. Sistema sem núcleo não tem o que abrir.
+
+### Passo 1.5 — Check de versão do motor (silencioso, com falha graciosa)
+
+Resolve o furo "clone não sabe que há motor novo" (backlog do motor). Regras duras:
+
+1. **Cache diário:** se `dados/.motor-check` existe e tem a data de HOJE, pular o passo
+   inteiro (sem fetch). Um check por dia basta.
+2. **Só se o remote `template` existir** (`git remote get-url template`): rodar
+   `git fetch template --quiet` com tolerância a falha — **se o fetch falhar (sem rede,
+   GitHub fora), seguir o "bom dia" normal SEM mencionar o check**. Nunca travar a abertura.
+3. Comparar a versão do rodapé do `CLAUDE.md` local (`· vX.Y.Z`) com a de
+   `git show template/main:CLAUDE.md`. Gravar a data de hoje em `dados/.motor-check`
+   (mesmo quando falhou — não insistir no mesmo dia).
+4. Template na frente → UMA linha na síntese: "⬆ motor novo disponível (vX.Y.Z): rodar
+   `/atualizar-motor`?" — o dono decide, nada roda sozinho. Versões iguais → silêncio.
 
 ### Passo 2 — A síntese (curta, formato fixo)
 
@@ -111,3 +128,5 @@ Nunca empilhar três sugestões. Uma, a mais valiosa pro estado atual, ou nenhum
 3. Calendário com peças pendentes → aparecem em "Pendente"; calendário limpo → "Nada pendente".
 4. Sessão dentro de `clientes/<nome>/` → resume o cliente, não a agência.
 5. Sugere no máximo UM próximo passo, coerente com o degrau e o perfil.
+6. Check de motor: sem rede/remote → o "bom dia" sai normal, sem erro nem menção; template
+   na frente → uma linha oferecendo `/atualizar-motor`; já checado hoje → não refaz o fetch.

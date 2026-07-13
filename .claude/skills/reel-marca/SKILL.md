@@ -72,6 +72,12 @@ nº1 de alcance pra quem não te segue). Antes do storyboard, declarar pra qual 
 ## Pré-requisitos (Escada de Contexto)
 
 - `docs/gabarito-execucao-visual.md` — **ler PRIMEIRO**: gate antes do passo caro (storyboard + stills aprovados ANTES do render de vídeo) + QA de frames com defeitos nomeados. Nenhum gate é opcional
+- `docs/hooks.md` — os 3 primeiros segundos são hook: o texto de abertura nasce com 2-3
+  variações de mecânicas diferentes (regra da casa)
+- `docs/craft-video.md` — a lei COMPARTILHADA de retenção de vídeo (3s, muted-first, loop,
+  Quality-CTR); a doutrina de motion dos 3s do passo 10b é a de lá
+- `nucleo/aprendizados.md` (bloco vídeo/reel, se existir) — o que o /desempenho já provou
+  que retém neste perfil pesa mais que o padrão genérico
 - **Núcleo do cliente** (`nucleo/negocio.md`, `nucleo/ofertas/*`, `nucleo/voz.md`) — define o que
   o reel vende e como fala. É o que o torna DAQUELE negócio.
 - **Marca** (`marca/tokens.css`) — pro reel sair na identidade do cliente. Sem ela: defaults

@@ -226,4 +226,4 @@ Nada de prova inventada na copy — sem depoimento real, a abertura não exibe n
 
 ---
 
-**✓ Pronto:** diagnóstico da URL com notas, os vazamentos mais caros e o plano de 30 dias · **→ próximo passo:** `/proposta` — consome este raio-x e o transforma em proposta fechável no mesmo dia. Pré-requisito é só a URL, então segue direto.
+**✓ Pronto:** diagnóstico da URL com notas, os vazamentos mais caros e o plano de 30 dias · **→ próximo passo:** `/proposta` — consome este raio-x e o transforma em proposta fechável no mesmo dia. Se o raio-x for ENVIADO ao prospect como peça (PDF/HTML), passar pelo `/revisar` antes — é peça comercial com a marca. Pré-requisito é só a URL, então segue direto.

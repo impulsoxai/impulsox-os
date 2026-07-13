@@ -142,10 +142,11 @@ tema real   a fórmula        +webcam         +karaokê          N shorts    (pr
 ## A esteira de ADS (cria → mede → corrige)
 
 ```
-/ads-google · /ads-meta ──→ (cliente/agência sobe, guia visual) ──→ /analisar-ads
-cria a campanha pronta        anúncio nunca sobe sozinho             mede o que converteu
-   ↑                          (viola termos)                              │
-   └────────────── nucleo/aprendizados.md (Tráfego pago) ←───────────────┘
+/ads-google · /ads-meta ──→ /revisar ──→ (cliente/agência sobe, guia visual) ──→ /analisar-ads
+cria a campanha pronta       OBRIGATÓRIO   anúncio nunca sobe sozinho             mede o que converteu
+   ↑                         (ads pago)    (viola termos)                              │
+   └──────────────── nucleo/aprendizados.md (Tráfego pago) ←───────────────────────────┘
+                     (o /ads-* LÊ antes de montar; o /analisar-ads escreve)
 ```
 
 - **/ads-meta** abre com **swipe file** (Passo 0): pesquisa anúncios vencedores no Meta Ad
@@ -331,13 +332,13 @@ contrato pra aquilo.
 | /reativar | (CRM dispara) → /roi mede depois | CRM_TOKEN (ou segmento manual) |
 | /depoimento | /provas (formata e guarda) | CRM_TOKEN (ou dono diz quem fechou) |
 | /tema-yt | /roteiro-yt | criadores-monitorados, pilares |
-| /roteiro-yt | /gravar-tela → /editar-video | **voz-canal.md, fórmula** |
+| /roteiro-yt | /revisar (roteiro+pacote, antes de gravar) → /gravar-tela → /editar-video | **voz-canal.md, fórmula** |
 | /slides | /gravar-tela | **marca/ (senão: /identidade antes) · docs/pitch-narrado.md** |
 | /gravar-tela | /editar-video | — (só a gravação crua) |
 | /editar-video | /shorts → /publicar | final.mp4, whisper |
 | /shorts | /publicar | palavras.json |
 | /desempenho (YouTube) | /tema-yt (próximo vídeo) | métricas/publicação |
-| /ads-google · /ads-meta | (humano sobe) → /analisar-ads em 30d | **marca/, página de destino** |
+| /ads-google · /ads-meta | /revisar (obrigatório) → (humano sobe) → /analisar-ads em 30d | **marca/, página de destino** |
 | /analisar-ads | /ads-* (nova campanha) | exports CSV |
 | /criar-ebook | /email (sequência) ou /pagina (captura) | núcleo, marca |
 | /dashboard | oferta de manutenção mensal (no vídeo de entrega) → registrar em ofertas.md | **marca/ (senão defaults) · dados do cliente só na etapa 7 (mock antes)** |

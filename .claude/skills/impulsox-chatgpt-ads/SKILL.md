@@ -25,6 +25,9 @@ Turn a client offer into a launch-ready ChatGPT Ads campaign. The skill is the "
 (judgment, intent, copy, measurement) so an operator who does NOT know marketing can
 deliver professional campaigns. Treat ChatGPT Ads as a conversation-intent channel.
 
+House context (read if present): `nucleo/aprendizados.md` (Tráfego pago block) — what real
+measurement already proved for THIS business outweighs any generic pattern in this skill.
+
 ## Architecture: separate brain from hands
 - BRAIN (verdict, intent, hints, copy, optimization): you reason it from the references.
 - CANONICAL OBJECT: you emit a single `campaign-plan.json` (schema in
@@ -209,4 +212,4 @@ shape and quality reference for a real plan.
 
 ---
 
-**✓ Pronto:** campaign-plan.json validado + PDF do cliente + CSV de upload + brief (ChatGPT Ads — esteira opcional) · **→ próximo passo:** o **humano sobe a campanha** no OpenAI Ads Manager (anúncio nunca sobe sozinho — viola termos), depois `/analisar-ads` pra medir o que converteu. Pré-requisito que costuma faltar: país elegível/piloto e Pixel + CAPI instalados na página — se faltar, a skill reorienta (`prepare_pilot`/medição primeiro, ou `do_not_launch`).
+**✓ Pronto:** campaign-plan.json validado + PDF do cliente + CSV de upload + brief (ChatGPT Ads — esteira opcional) · **→ próximo passo:** `/revisar` — **obrigatório antes do clique** (regra do CLAUDE.md: ads pago não vai ao ar sem crivo frio); aprovada, o **humano sobe a campanha** no OpenAI Ads Manager (anúncio nunca sobe sozinho — viola termos), depois `/analisar-ads` pra medir o que converteu. Pré-requisito que costuma faltar: país elegível/piloto e Pixel + CAPI instalados na página — se faltar, a skill reorienta (`prepare_pilot`/medição primeiro, ou `do_not_launch`).

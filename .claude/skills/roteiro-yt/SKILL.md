@@ -26,6 +26,10 @@ Autoria: ImpulsoX AI. Conteúdo original.
 ## Pré-checagem
 
 - `docs/gabarito-execucao-texto.md` — **PRIMEIRO**: gates de qualidade do texto (2 passes de copy, proibições por busca literal, gate específico desta skill no §6, aceite). Nenhum gate é opcional
+- `docs/hooks.md` — acervo de MECÂNICAS de hook validado pelo /desempenho: o hook do vídeo
+  (Passo 5) nasce com 2-3 variações de mecânicas diferentes (regra da casa)
+- `docs/craft-video.md` — a lei COMPARTILHADA de retenção (3s, AVD, Quality-CTR, loop de
+  short); os benchmarks do Passo 5 são os de lá — mudou lá, vale aqui
 
 1. **`canal-youtube/voz-canal.md` existe e está preenchido?** Se não, parar e orientar
    `/voz --canal` primeiro — roteiro sem voz capturada sai genérico, igual copy sem
@@ -380,4 +384,4 @@ Quando o roteiro vira short, gerar de uma vez as 3 versões de caption (TikTok/R
 
 ---
 
-**✓ Pronto:** roteiro (long-form ou short) + pacote (título+thumbnail) + SEO, na voz do canal · **→ próximo passo:** gravar e depois `/editar-video` — corta, normaliza o áudio e queima a legenda na gravação. Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltar `voz-canal.md` ou a fórmula (o que mais trava aqui), o sistema reorienta antes.
+**✓ Pronto:** roteiro (long-form ou short) + pacote (título+thumbnail) + SEO, na voz do canal · **→ próximo passo:** `/revisar` no ROTEIRO + PACOTE antes de gravar — gravar é o passo caro do eixo; o crivo frio pega hook fraco e clickbait-mismatch enquanto refazer ainda é barato. Aprovado, gravar e depois `/editar-video` — corta, normaliza o áudio e queima a legenda na gravação. Esteira de YouTube é opcional (em teste/beta) — só seguir quando o dono pedir, não é passo automático do fluxo principal. Se faltar `voz-canal.md` ou a fórmula (o que mais trava aqui), o sistema reorienta antes.

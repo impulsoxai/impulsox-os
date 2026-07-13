@@ -61,8 +61,13 @@ nunca está numa peça só — "Envia para o sócio" estava em DUAS outras quand
 corrigiu a primeira. Corrigir todas + re-render do que mudou.
 
 ### Passo 5 — Provar e mostrar
-1. `node --test scripts/gate-voz.test.mjs` → todos verdes (o teste novo passa E nenhum
-   antigo quebrou).
+1. `node --test scripts/gate-voz.test.mjs scripts/golden-voz.test.mjs` → todos verdes (o
+   teste novo passa E nenhum antigo quebrou; o golden set garante que a regra nova não
+   deixou passar peça que o dono já corrigiu).
+1b. Se a correção de hoje é regexável, **alimentar o golden set**: extrair o antes/depois
+   com `git show <commit>^:<peça>` / `git show <commit>:<peça>` pra
+   `scripts/fixtures/golden-voz/` + par de asserts no `golden-voz.test.mjs` (as fixtures
+   são DADO do negócio — ficam no clone, não sobem pro template).
 2. `node scripts/gate-voz.mjs` nas peças alteradas → PASS.
 3. Mostrar à dona, cirúrgico: o que entrou, em qual arquivo, uma linha por gravação.
    O resto dos arquivos fica intocado.

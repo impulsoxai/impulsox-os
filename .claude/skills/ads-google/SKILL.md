@@ -28,6 +28,8 @@ disso, perguntar o mínimo antes de montar — campanha sem oferta clara queima 
   (palavras-chave e copy saem do benefício e das objeções da oferta)
 - `producao/ads/analise-*.md` — se `/analisar-ads` já rodou, as campanhas sugeridas lá
   são o ponto de partida (dados > opinião)
+- `nucleo/aprendizados.md` (bloco Tráfego pago) — o que a medição real já provou NESTE
+  negócio; aprendizado consolidado pesa mais que qualquer padrão genérico de skill
 
 ## Pré-requisito de medição (sem isso, o lance automático é cego)
 
@@ -150,4 +152,4 @@ A campanha não termina no lançamento — começa nele.
 
 ---
 
-**✓ Pronto:** campanha de Google Ads pronta pra importar + guia visual de leigo · **→ próximo passo:** o **humano sobe a campanha** no Ads Editor (guia visual; anúncio nunca sobe sozinho — viola termos), depois `/analisar-ads` em ~30 dias pra medir o que converteu. Ads é esteira opcional. Pré-requisito que costuma faltar: `marca/` e uma página de destino que sustente a oferta — se faltar, o sistema reorienta (rodar `/identidade`/`/pagina` antes de pagar clique).
+**✓ Pronto:** campanha de Google Ads pronta pra importar + guia visual de leigo · **→ próximo passo:** `/revisar` — **obrigatório antes do clique** (regra do CLAUDE.md: peça de venda/ads pago não vai ao ar sem crivo frio); aprovada, o **humano sobe a campanha** no Ads Editor (guia visual; anúncio nunca sobe sozinho — viola termos), depois `/analisar-ads` em ~30 dias pra medir o que converteu. Ads é esteira opcional. Pré-requisito que costuma faltar: `marca/` e uma página de destino que sustente a oferta — se faltar, o sistema reorienta (rodar `/identidade`/`/pagina` antes de pagar clique).

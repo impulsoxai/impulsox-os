@@ -266,3 +266,6 @@ Ao terminar, apontar o próximo passo natural (regra do `CLAUDE.md`) e esperar o
 - Falta prova pra sustentar a probabilidade percebida → **/provas** primeiro
 
 A oferta forte é a base; as outras skills só expressam ela. Por isso esta roda **antes**.
+Lembrete de esteira: a oferta em si é documento interno, mas **toda peça pública derivada
+dela** (proposta, página, anúncio, e-mail) passa pelo `/revisar` antes do ar — o gate mora
+nas skills de expressão, não aqui.

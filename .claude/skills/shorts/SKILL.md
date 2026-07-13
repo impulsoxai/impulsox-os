@@ -20,6 +20,10 @@ Autoria: ImpulsoX AI. Conteúdo original.
 1. **Existe `canal-youtube/edicao/<slug>/final.mp4`?** Senão, rodar `/editar-video` antes.
 2. **Existe `palavras.json` no mesmo lugar?** É a transcrição pra legenda dos shorts. Sem
    ele, os shorts saem sem legenda — avisar e sugerir re-rodar `/editar-video`.
+3. `nucleo/aprendizados.md` (bloco vídeo, se existir) — o que o /desempenho já provou que
+   retém neste canal orienta a escolha dos trechos antes do padrão genérico.
+4. `docs/craft-video.md` — a lei do short (payoff no segundo 0-1, loop, muted-first, 20-60s
+   conforme o job) é a régua de cada corte.
 
 ## Fluxo
 

@@ -47,6 +47,8 @@ de envio ele usa (ela costuma resolver a autenticação) — não assumir que es
 - `nucleo/ofertas.md` — a oferta que a sequência empurra, com benefício e objeções
 - `nucleo/provas.md` — só prova com status **autorizada** entra no corpo
 - `docs/persuasao.md` — gatilhos honestos; o contrato do assunto (entrega o que promete)
+- `docs/hooks.md` — o ASSUNTO é hook: nasce com 2-3 variações de mecânicas diferentes
+  (regra da casa); a variação vencedora vem da taxa de abertura medida
 - `docs/entregabilidade-email.md` — a régua de palavras/formatação que tiram o e-mail da
   caixa de entrada; é o **gate** antes de fechar qualquer assunto, preview ou corpo
 
@@ -176,4 +178,4 @@ que cai no spam não vende; este gate é tão obrigatório quanto o `/escritor-b
 
 ---
 
-**✓ Pronto:** sequência de e-mails pronta (assunto, corpo, intervalos, descadastro) · **→ próximo passo:** em follow-up de proposta, é a etapa final — aguardar a resposta e, quando vier, voltar pra `/proposta`; com tráfego rodando, `/analisar-ads` mede o retorno. Fora isso, a sequência fecha aqui.
+**✓ Pronto:** sequência de e-mails pronta (assunto, corpo, intervalos, descadastro) · **→ próximo passo:** sequência que VENDE (oferta, lançamento, win-back) passa pelo `/revisar` antes do disparo (regra do CLAUDE.md: peça de venda não vai ao ar sem crivo frio). Em follow-up de proposta, é a etapa final — aguardar a resposta e, quando vier, voltar pra `/proposta`; com tráfego rodando, `/analisar-ads` mede o retorno. Fora isso, a sequência fecha aqui.

@@ -88,6 +88,10 @@ inteligência, curiosidade, emoção, prova, ritmo, ação) mora em
 Para qualquer PITCH NARRADO (deck de `/slides`, proposta ao vivo, vídeo), ler
 `docs/pitch-narrado.md` — o craft do arco que converte (Sparkline/Duarte, espinha de Raskin,
 Equação de Valor/Hormozi, demo Tell-Show-Tell).
+Para qualquer VÍDEO/REEL/SHORT (post-reel, reel-marca, reel-hyperframes, roteiro-yt, shorts,
+criativo de vídeo de ads), a lei COMPARTILHADA de retenção — hook nos 3s, muted-first,
+Quality-CTR, benchmarks de AVD — mora em `docs/craft-video.md` (fonte canônica; as réguas
+inline nas skills são espelho dela: mudou lá, propaga).
 Para qualquer PÁGINA premium que precisa de MOVIMENTO (animação, efeitos cinematográficos),
 ler `docs/craft-movimento.md` — o catálogo do que dá WOW (10 efeitos), quando usar, e de qual
 site real capturar; lido pelo `/premium-design` (Usos 2 e 4) e pela Etapa 3.5 do `/pagina`.
@@ -281,4 +285,4 @@ melhoria direto num clone — sempre no template, e depois `/atualizar-motor` em
 
 ---
 
-*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.22*
+*ImpulsoX-OS · produto da ImpulsoX AI · impulsoxai.com.br · v0.2.23*

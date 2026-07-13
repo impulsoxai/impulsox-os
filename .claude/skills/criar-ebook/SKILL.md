@@ -98,4 +98,4 @@ Salvar em `producao/ebooks/<slug>/` (fonte + PDF final).
 
 ---
 
-**✓ Pronto:** e-book/isca pronto pra subir (conteúdo + capa + 3 argumentos + FAQ) · **→ próximo passo:** `/email` pra montar a sequência que entrega/vende o material, ou `/pagina` se for criar a página de captura/venda. Se faltar núcleo ou `marca/`, o sistema reorienta antes de gerar.
+**✓ Pronto:** e-book/isca pronto pra subir (conteúdo + capa + 3 argumentos + FAQ) · **→ próximo passo:** `/revisar` antes de subir (peça pública de venda — regra do CLAUDE.md); aprovado, `/email` pra montar a sequência que entrega/vende o material, ou `/pagina` se for criar a página de captura/venda. Se faltar núcleo ou `marca/`, o sistema reorienta antes de gerar.

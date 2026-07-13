@@ -29,6 +29,12 @@ marca, gera o plano e marca os criativos como defaults até a `/identidade` roda
   candidato** (a objeção da oferta vira ângulo de criativo)
 - `nucleo/provas.md` — o criativo de prova só usa material com status autorizada
 - `producao/ads/analise-*.md` — se existe análise, partir das sugestões dela
+- `nucleo/aprendizados.md` (bloco Tráfego pago) — o que a medição real já provou NESTE
+  negócio; aprendizado consolidado pesa mais que qualquer padrão genérico de skill
+- `docs/hooks.md` — headline e primeira linha do texto primário são HOOK: nascem com 2-3
+  variações de mecânicas diferentes (regra da casa; o /desempenho valida qual gruda)
+- `docs/craft-video.md` — se o criativo é VÍDEO: a lei dos 3s (muted-first, hook visual,
+  logo nunca abre) vale no anúncio igual vale no orgânico
 - `producao/posts/` — criativos orgânicos que performaram são candidatos a anúncio
 - `producao/ads/swipe-meta.md` — banco de anúncios vencedores já dissecados (Passo 0); se
   existe e está fresco (<30 dias), partir dele em vez de pesquisar de novo
@@ -284,4 +290,4 @@ Meta Ads não tem importação tipo Editor pra PME — entregar o **guia visual 
 
 ---
 
-**✓ Pronto:** campanha de Meta Ads + criativos da marca + guia visual de leigo · **→ próximo passo:** o **humano sobe a campanha** no Gerenciador (guia visual; anúncio nunca sobe sozinho — viola termos), depois `/analisar-ads` em ~30 dias pra medir o que converteu. Ads é esteira opcional. Pré-requisito que costuma faltar: `marca/` e uma página/destino que funcione — se faltar, o sistema reorienta (rodar `/identidade`/`/pagina` antes).
+**✓ Pronto:** campanha de Meta Ads + criativos da marca + guia visual de leigo · **→ próximo passo:** `/revisar` — **obrigatório antes do clique** (regra do CLAUDE.md: peça de venda/ads pago não vai ao ar sem crivo frio); aprovada, o **humano sobe a campanha** no Gerenciador (guia visual; anúncio nunca sobe sozinho — viola termos), depois `/analisar-ads` em ~30 dias pra medir o que converteu. Ads é esteira opcional. Pré-requisito que costuma faltar: `marca/` e uma página/destino que funcione — se faltar, o sistema reorienta (rodar `/identidade`/`/pagina` antes).

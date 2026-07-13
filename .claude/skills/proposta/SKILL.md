@@ -211,4 +211,4 @@ não conteúdo). Os 4 momentos, nesta ordem:
 
 ---
 
-**✓ Pronto:** proposta comercial fechável (HTML + PDF) com escopo, prova e investimento · **→ próximo passo:** `/cliente` se fechou (pluga o cliente e a produção começa) ou `/email` se ainda não respondeu (sequência de follow-up). Se faltar `nucleo/provas.md` ou `ofertas.md`, o sistema reorienta antes de montar.
+**✓ Pronto:** proposta comercial fechável (HTML + PDF) com escopo, prova e investimento · **→ próximo passo:** `/revisar` **antes de enviar** (peça de venda — regra do CLAUDE.md: não sai sem crivo frio); depois `/cliente` se fechou (pluga o cliente e a produção começa) ou `/email` se ainda não respondeu (sequência de follow-up). Se faltar `nucleo/provas.md` ou `ofertas.md`, o sistema reorienta antes de montar.

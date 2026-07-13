@@ -40,6 +40,8 @@ estilo de capa do canal). Sem marca, gera e marca como default até a `/identida
 - `canal-youtube/criadores-monitorados.md` / `formulas-video.md` — o MOLDE de capa de quem
   performa no nicho (copiar a mecânica: 1 sujeito, tamanho/cor do texto, padrão — nunca a arte)
 - `docs/frase-que-pega.md` — pro título (os 9 padrões de hook §2.5 valem na capa)
+- `docs/hooks.md` — acervo de MECÂNICAS de hook validado pelo /desempenho; o texto da capa
+  nasce com 2-3 variações de mecânicas diferentes antes do crivo Four C's
 
 ## Regra de formato (decidir primeiro — não confundir)
 
