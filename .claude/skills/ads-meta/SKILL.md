@@ -67,6 +67,43 @@ O guia visual entrega o passo a passo de Pixel + CAPI com link do tutorial ofici
 esse pré-requisito, avisar o dono em uma linha: a campanha roda, mas o Advantage+ vai otimizar com
 sinal furado — é a causa nº 1 de PME que paga e não converte.
 
+## Conector oficial Meta↔Claude (MCP) — só para LEITURA do dado
+
+Desde 29/abr/2026 a Meta abriu um **servidor MCP oficial** (`https://mcp.facebook.com/ads`, open
+beta) que pluga a conta de anúncios direto no Claude — auth OAuth pela própria Meta, sem app de
+dev, sem token de API, sem conector de terceiro no meio (fonte: ppc.land, pillitteri, commonthread,
+abr/2026). São **29 tools**; a política da casa é usar **só as de LEITURA** — o conector alimenta o
+diagnóstico e o swipe com dado real da conta, mas **a criação/edição de campanha continua pelo guia
+visual + clique humano** (Passo 4). Motivo: mutação automática na conta de um cliente é risco que a
+skill não assume — o dado a gente lê, a campanha o humano sobe.
+
+**De quem é a conta:** cada **cliente conecta a própria conta Meta ao Claude** e a ImpulsoX opera
+com acesso delegado (revogável no Business Suite a qualquer momento). O sinal fica com o cliente;
+nunca misturar contas de clientes numa org só. Onde plugar isso por cliente é no `/plugar`.
+
+**As tools de LEITURA que interessam** (as outras 10 de escrita/catálogo NÃO usar por ora):
+- **Diagnóstico de sinal** (casa com o pré-requisito Pixel+CAPI acima): `ads_get_dataset_quality`
+  (é o **EMQ** — o check nº 1), `ads_get_dataset_stats` (contagem de evento + dedup),
+  `ads_get_dataset_details`, `ads_get_errors`.
+- **Insights/benchmark** (alimentam o `/analisar-ads` e a régua de criativo): `ads_insights_performance_trend`,
+  `ads_insights_anomaly_signal`, `ads_insights_auction_ranking_benchmarks`, `ads_insights_industry_benchmark`,
+  `ads_get_opportunity_score`, `ads_insights_advertiser_context`.
+- **Estrutura/contexto** (leitura da conta): `ads_get_ad_accounts`, `ads_get_ad_entities`,
+  `ads_get_pages_for_business`.
+
+**Onde encaixa no fluxo:**
+- **Passo 0.5 (gate "casa pronta?")** — o EMQ e as stats de dataset deixam de ser "peça pro dono
+  conferir no Gerenciador": se o conector estiver plugado, **ler direto** e cravar o número.
+- **`/analisar-ads` (leitura de 30 dias)** — puxar `performance_trend` + `anomaly_signal` +
+  benchmarks em vez de depender de export manual. É a maior ganho: o dado chega sem o dono exportar.
+- **Passo 0 (swipe)** — os benchmarks de leilão dão o baseline do nicho pra julgar o que é winner.
+
+**Se o conector NÃO estiver plugado** (cliente sem Claude conectado à Meta, ou beta indisponível na
+conta): a skill **não trava** — cai pro caminho manual de sempre (dono exporta / confere no
+Gerenciador). O MCP é acelerador de leitura, não pré-requisito. Beta muda rápido: reconferir a lista
+de tools e o status de disponibilidade antes de cravar (mesma disciplina da nota de fonte+data da
+casa).
+
 ## Passo 0 — Swipe file: o que JÁ está ganhando no nicho (research antes de criar)
 
 Criativo feito no vácuo queima orçamento. Antes de inventar arte, olhar o que o **mercado já
@@ -132,6 +169,9 @@ casa (mesmo checklist do `/carteira`): destino converte? responde lead rápido (
 tem prova social? tração orgânica? Pixel+CAPI? Se a casa está furada, avisar em uma linha — "ads
 vai vazar em [item]; consertar antes rende mais" — e oferecer a ordem certa. **Não trava** (o
 dono decide), mas não monta campanha fingindo que a casa está pronta quando não está.
+
+Se o **conector MCP** (seção acima) estiver plugado, o check de Pixel+CAPI deixa de ser palpite:
+ler `ads_get_dataset_quality` (EMQ) e `ads_get_dataset_stats` e cravar o número no gate.
 
 ## Passo 1 — Fundamentos (perguntar só o que falta)
 

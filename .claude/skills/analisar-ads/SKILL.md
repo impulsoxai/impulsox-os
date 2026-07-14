@@ -47,6 +47,23 @@ Google e Meta usam modelos e janelas de atribuição **diferentes**, então o RO
 Esta skill não se aplica — dizer isso com clareza e apontar o caminho: `/ads-google`,
 `/ads-meta` ou a skill de ChatGPT Ads para criar a primeira campanha.
 
+## Fonte do dado — export CSV ou conector MCP oficial (Meta)
+
+Dois caminhos pra trazer o dado da conta; o resto da skill é igual (o script sempre calcula):
+
+- **Export CSV** (default, funciona pra Google e Meta) — o dono baixa o relatório, ver Passo 1.
+- **Conector MCP oficial da Meta** (`mcp.facebook.com/ads`, open beta desde abr/2026) — quando o
+  cliente já plugou a conta Meta no Claude (ver a seção de conector na `/ads-meta`), puxar o dado
+  de leitura DIRETO, sem o dono exportar nada. É o maior ganho de fricção: `ads_insights_performance_trend`
+  (tendência histórica), `ads_insights_anomaly_signal` (desvio de KPI), os benchmarks de leilão/indústria
+  e `ads_get_opportunity_score`. Pro diagnóstico de sinal: `ads_get_dataset_quality` (EMQ),
+  `ads_get_dataset_stats`. **Só leitura — a skill nunca cria nem edita campanha pelo MCP.**
+
+**O princípio inegociável não muda com o MCP:** o conector entrega o **dado bruto**; a **aritmética
+de dinheiro continua no script** `scripts/analisar-ads.mjs`. Puxou via MCP → salvar o resultado como
+CSV/JSON em `dados/ads/` e rodar o script em cima, igual ao export manual. LLM não soma ROAS de
+cabeça nem quando o dado veio do conector. (Só Meta tem MCP oficial hoje; Google segue por export CSV.)
+
 ## Passo 1 — Receber os exports
 
 Pedir os arquivos em `dados/ads/`:
